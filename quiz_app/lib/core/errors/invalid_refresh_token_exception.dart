@@ -1,5 +1,10 @@
-import 'package:quiz_app/core/errors/server_exception.dart';
+import 'package:equatable/equatable.dart';
 
-class InvalidRefreshTokenException implements ServerException {
-  String get message => 'Invalid refresh token';
+class InvalidRefreshTokenException extends Equatable implements Exception {
+  const InvalidRefreshTokenException({this.message = 'Invalid refresh token', this.statusCode = 401});
+  final String message;
+  final dynamic statusCode;
+
+  @override
+  List<Object?> get props => [message, statusCode];
 }

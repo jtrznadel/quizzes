@@ -27,3 +27,35 @@ abstract class UserApiService {
   @POST(ApiConstants.deleteUserEndpoint)
   Future<void> deleteUser(@Path('id') String id);
 }
+
+class UserApiServiceImpl implements UserApiService {
+  @override
+  Future<void> deleteUser(String id) {
+    // TODO: implement deleteUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserModel> getUser(String id) {
+    // TODO: implement getUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AuthResponseModel> signin(Map<String, dynamic> body) {
+    // TODO: implement signin
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AuthResponseModel> signup(Map<String, dynamic> body) {
+    // TODO: implement signup
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserModel> updateUser(Map<String, dynamic> body) {
+    // TODO: implement updateUser
+    throw UnimplementedError();
+  }
+}
