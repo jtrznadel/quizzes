@@ -132,7 +132,7 @@ class _UserApiService implements UserApiService {
   }
 
   @override
-  Future<void> deleteUser() async {
+  Future<void> deleteUser(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -144,7 +144,7 @@ class _UserApiService implements UserApiService {
     )
         .compose(
           _dio.options,
-          '/delete_user',
+          '/delete_user/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
