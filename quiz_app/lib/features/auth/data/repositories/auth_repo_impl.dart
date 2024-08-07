@@ -13,15 +13,16 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   ResultFuture<AuthResponseEntity> signIn({required String email, required String password}) async {
-    try {
-      final result = await _remoteDataSource.signin({
-        'email': email,
-        'password': password,
-      });
-      return Right(result);
-    } on ServerException catch (e) {
-      return Left(ServerFailure(message: e.message, statusCode: e.statusCode));
-    }
+    //try {
+    //  final result = await _remoteDataSource.signin({
+    //    'email': email,
+    //    'password': password,
+    //  });
+    //  return Right(result);
+    //} on ServerException catch (e) {
+    //  return Left(ServerFailure(message: e.message, statusCode: e.statusCode));
+    //}
+    throw UnimplementedError();
   }
 
   @override
