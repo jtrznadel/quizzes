@@ -1,10 +1,11 @@
+
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
-class BasicButton extends StatelessWidget {
-  const BasicButton(
+class SecondaryButton extends StatelessWidget {
+  const SecondaryButton(
       {super.key,
       required this.onPressed,
       required this.text,
@@ -20,32 +21,20 @@ class BasicButton extends StatelessWidget {
   final IconData? leadingIcon;
   final IconData? trailingIcon;
   final MainAxisAlignment contentAlignment;
-  final contentColor = AppColorScheme.textContrast;
+  final contentColor = AppColorScheme.primary;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColorScheme.primaryDark,
-          width: 1,
-        ),
-        gradient: const LinearGradient(
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
-          colors: [
-            AppColorScheme.primary,
-            AppColorScheme.primaryLight,
-          ],
-        ),
         borderRadius: BorderRadius.circular(48),
       ),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: Colors.transparent,
+          backgroundColor: AppColorScheme.secondary,
           overlayColor: AppColorScheme.primaryDark,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(48),
