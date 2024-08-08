@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:quiz_app/features/auth/domain/usecases/sign_in.dart';
 import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
+import 'package:quiz_app/features/auth/presentation/views/new_password_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
-import 'package:quiz_app/main.dart';
 import 'package:quiz_app/temp.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -17,6 +16,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _fadePageBuilder((context) => const ForgotPasswordScreen(), settings: settings);
     case SuccessfulPasswordResetRequestScreen.routeName:
       return _fadePageBuilder((context) => const SuccessfulPasswordResetRequestScreen(), settings: settings);
+    case NewPasswordScreen.routeName:
+      return _fadePageBuilder((context) => const NewPasswordScreen(), settings: settings);
     default:
       return _fadePageBuilder((context) => const TempScreen(), settings: settings);
   }
