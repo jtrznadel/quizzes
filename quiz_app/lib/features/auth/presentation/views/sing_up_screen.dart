@@ -5,6 +5,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/auth/presentation/refactors/sign_up_form.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
+import 'package:quiz_app/features/auth/presentation/widgets/auth_redirect_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -60,46 +61,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class AuthRedirectButton extends StatelessWidget {
-  const AuthRedirectButton({
-    super.key,
-    required this.text,
-    required this.buttonText,
-    required this.navigateTo,
-  });
-
-  final String text;
-  final String buttonText;
-  final String navigateTo;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 40),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            text,
-            style: context.textTheme.bodyMedium,
-          ),
-          TextButton(
-            onPressed: () {
-              context.navigator.pushReplacementNamed(navigateTo);
-            },
-            child: Text(
-              buttonText,
-              style: context.textTheme.bodyMedium!.copyWith(
-                color: context.theme.primaryColor,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
