@@ -18,6 +18,12 @@ class TempScreen extends StatelessWidget {
                   Navigator.of(context).pushNamed('/sign-in');
                 },
                 child: const Text('Login page')),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/forgot-password');
+              },
+              child: const Text('Forgot password page'),
+            ),
           ],
         ),
       ),
