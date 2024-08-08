@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_api_service.dart';
+part of 'auth_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'user_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _UserApiService implements UserApiService {
-  _UserApiService(
+class _AuthApiService implements AuthApiService {
+  _AuthApiService(
     this._dio, {
     this.baseUrl,
   }) {
@@ -77,7 +77,7 @@ class _UserApiService implements UserApiService {
   }
 
   @override
-  Future<UserModel> getUser(String id) async {
+  Future<UserModel> getUser() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -90,7 +90,7 @@ class _UserApiService implements UserApiService {
     )
             .compose(
               _dio.options,
-              '/user/${id}',
+              '/user',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -132,7 +132,7 @@ class _UserApiService implements UserApiService {
   }
 
   @override
-  Future<void> deleteUser(String id) async {
+  Future<void> deleteUser() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -144,7 +144,31 @@ class _UserApiService implements UserApiService {
     )
         .compose(
           _dio.options,
-          '/delete_user/${id}',
+          '/delete_user',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<void> signOut() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/signout',
           queryParameters: queryParameters,
           data: _data,
         )

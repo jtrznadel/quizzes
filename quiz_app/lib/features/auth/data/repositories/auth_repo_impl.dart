@@ -1,39 +1,114 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:quiz_app/core/errors/server_exception.dart';
-import 'package:quiz_app/core/errors/server_failure.dart';
+import 'package:quiz_app/core/storage/secure_storage.dart';
 import 'package:quiz_app/core/utils/typedefs.dart';
-import 'package:quiz_app/features/auth/data/data_sources/user_api_service.dart';
+import 'package:quiz_app/features/auth/data/data_sources/auth_api_service.dart';
 import 'package:quiz_app/features/auth/domain/entities/auth_response_entity.dart';
+import 'package:quiz_app/features/auth/domain/entities/user_entity.dart';
 import 'package:quiz_app/features/auth/domain/repositories/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  const AuthRepoImpl(this._remoteDataSource);
+  final AuthApiService authApiService;
 
-  final UserApiService _remoteDataSource;
+  AuthRepoImpl({required this.authApiService});
 
   @override
-  ResultFuture<AuthResponseEntity> signIn({required String email, required String password}) async {
-    //try {
-    //  final result = await _remoteDataSource.signin({
-    //    'email': email,
-    //    'password': password,
-    //  });
-    //  return Right(result);
-    //} on ServerException catch (e) {
-    //  return Left(ServerFailure(message: e.message, statusCode: e.statusCode));
-    //}
-    throw UnimplementedError();
+  ResultFuture<AuthResponseEntity> signIn(
+      {required String email, required String password}) async {
+    final body = {
+      'email': email,
+      'password': password,
+    };
+
+    try {
+      final responseModel = await authApiService.signin(body);
+      final responseEntity = AuthResponseEntity.fromModel(responseModel);
+      return Right(responseEntity);
+    } on DioException catch (e) {
+      final errorCode = e.response?.statusCode;
+      final errorMessage = e.response?.statusMessage;
+      return Left(ServerException(
+          message: errorMessage ?? 'ServerException', statusCode: errorCode));
+    }
   }
 
   @override
-  ResultFuture<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  ResultFuture<void> signOut() async {
+    try {
+      await authApiService.signOut();
+      await SecureStorage().clear();
+      return const Right(null);
+    } catch (e) {
+      return const Left(
+          ServerException(message: 'Error signing out', statusCode: 500));
+    }
   }
 
   @override
-  ResultFuture<void> signUp({required String email, required String password, required String name}) {
-    // TODO: implement signUp
-    throw UnimplementedError();
+  ResultFuture<void> signUp(
+      {required String email,
+      required String password,
+      required String name}) async {
+    final body = {
+      'email': email,
+      'password': password,
+      'username': name,
+    };
+
+    try {
+      await authApiService.signup(body);
+      return const Right(null);
+    } on DioException catch (e) {
+      final errorCode = e.response?.statusCode;
+      final errorMessage = e.response?.statusMessage;
+      return Left(ServerException(
+          message: errorMessage ?? 'ServerException', statusCode: errorCode));
+    }
+  }
+
+  @override
+  ResultFuture<void> deleteUser() async {
+    try {
+      authApiService.deleteUser();
+      return const Right(null);
+    } on DioException catch (e) {
+      final errorCode = e.response?.statusCode;
+      final errorMessage = e.response?.statusMessage;
+      return Left(ServerException(
+          message: errorMessage ?? 'ServerException', statusCode: errorCode));
+    }
+  }
+
+  @override
+  ResultFuture<UserEntity> getUser() async {
+    try{
+      final userModel = await authApiService.getUser();
+      final userEntity = UserEntity.fromModel(userModel);
+      return Right(userEntity);
+    } on DioException catch (e) {
+      final errorCode = e.response?.statusCode;
+      final errorMessage = e.response?.statusMessage;
+      return Left(ServerException(
+          message: errorMessage ?? 'ServerException', statusCode: errorCode));
+    }
+  }
+
+  @override
+  ResultFuture<void> updateUser(
+      {required UserEntity user}) async {
+      final body = {
+        'email': user.email,
+        'username' : user.name
+      };
+    try{
+      await authApiService.updateUser(body);
+      return const Right(null);
+    } on DioException catch (e) {
+      final errorCode = e.response?.statusCode;
+      final errorMessage = e.response?.statusMessage;
+      return Left(ServerException(
+          message: errorMessage ?? 'ServerException', statusCode: errorCode));
+    }
   }
 }

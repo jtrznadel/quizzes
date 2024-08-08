@@ -3,9 +3,10 @@ class ApiConstants{
   static const String authUrl = '${baseUrl}auth';
   static const String signUpEndpoint = '/signup';
   static const String signInEndpoint = '/signin';
-  static const String userEndpoint = '/user/{id}';
+  static const String userEndpoint = '/user';
   static const String updateUserEndpoint = '/update_user';
-  static const String deleteUserEndpoint = '/delete_user/{id}';
+  static const String deleteUserEndpoint = '/delete_user';
+  static const String signOutEndpoint = '/signout';
 
   static const String refreshAccessTokenEndpoint = '/refresh_access_token';
 
