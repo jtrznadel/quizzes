@@ -15,7 +15,7 @@ abstract class AppColorScheme {
   static const Color border = Color(0xFFE6E9EB);
 
   static const Color textPrimary = Color(0xFF2E2E2E);
-  static const Color textSecondary = Color(0xFF898D8F);
+  static const Color textSecondary = Color(0xFF53575A);
   static const Color textContrast = Color(0xFFFDFEFF);
 
   static const Color success = Color(0xFF008557);
