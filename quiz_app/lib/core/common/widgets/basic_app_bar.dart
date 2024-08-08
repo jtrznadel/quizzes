@@ -9,7 +9,7 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
-      preferredSize: const Size.fromHeight(64),
+      preferredSize: preferredSize,
       child: AppBar(
         title: Text(title),
         actions: actions,
