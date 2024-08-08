@@ -33,9 +33,12 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-        leading: const IBackButton(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(64),
+        child: AppBar(
+          title: const Text('Login'),
+          leading: const IBackButton(),
+        ),
       ),
       body: SafeArea(
         child: Padding(
