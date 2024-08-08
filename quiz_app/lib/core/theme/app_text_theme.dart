@@ -11,5 +11,5 @@ final TextTheme textTheme = TextTheme(
   bodySmall: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w400, height: 1.5, color: AppColorScheme.textPrimary),
   labelLarge: GoogleFonts.inter(fontSize: 18, fontWeight: FontWeight.w700, color: AppColorScheme.textPrimary),
   labelMedium: GoogleFonts.inter(fontSize: 16, fontWeight: FontWeight.w700, color: AppColorScheme.textPrimary),
-  labelSmall: GoogleFonts.inter(fontSize: 14, fontWeight: FontWeight.w700, color: AppColorScheme.textPrimary),
+  labelSmall: GoogleFonts.inter(fontSize: 12, fontWeight: FontWeight.w700, color: AppColorScheme.textPrimary),
 );

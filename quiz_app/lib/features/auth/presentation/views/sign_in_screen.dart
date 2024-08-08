@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/back_button.dart';
+import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/text_divider.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
@@ -89,25 +90,22 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: const Text(
+                        child: Text(
                           'Forgot password?',
+                          style: context.textTheme.labelMedium!.copyWith(
+                            color: context.theme.primaryColor,
+                          ),
                         ),
                       ),
                       const SizedBox(
                         height: 40,
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: const Text('Login'),
-                        ),
-                      ),
+                      BasicButton(onPressed: () {}, text: 'Login', width: double.infinity),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 32,
                 ),
                 const TextDivider(text: 'OR'),
                 const Spacer(),
