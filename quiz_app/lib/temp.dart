@@ -16,7 +16,11 @@ class TempScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            const Text('Temp Screen'),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/welcome');
+                },
+                child: const Text('Welcome page')),
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed(SignInScreen.routeName);

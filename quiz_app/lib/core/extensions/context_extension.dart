@@ -8,4 +8,6 @@ extension ContextExtension on BuildContext {
   Size get size => mediaQuery.size;
   double get width => size.width;
   double get height => size.height;
+
+  NavigatorState get navigator => Navigator.of(this);
 }
