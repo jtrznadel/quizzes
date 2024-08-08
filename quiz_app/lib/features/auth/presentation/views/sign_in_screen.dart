@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/back_button.dart';
+import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/text_divider.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
@@ -33,12 +34,8 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(64),
-        child: AppBar(
-          title: const Text('Login'),
-          leading: const IBackButton(),
-        ),
+      appBar: const BasicAppBar(
+        title: 'Login',
       ),
       body: SafeArea(
         child: Padding(

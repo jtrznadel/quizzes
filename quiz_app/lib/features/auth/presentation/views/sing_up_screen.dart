@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/text_divider.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
+import 'package:quiz_app/features/auth/presentation/refactors/sign_up_form.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -24,7 +21,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
-  bool obscurePassword = true;
 
   @override
   void dispose() {
@@ -49,96 +45,61 @@ class _SignUpScreenState extends State<SignUpScreen> {
               StringRes.signUpHeading,
               style: context.textTheme.headlineLarge,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32),
-              child: Form(
-                key: formKey,
-                child: Column(
-                  children: [
-                    AuthFormField(
-                      labelText: 'Username',
-                      hintText: 'Your username',
-                      required: true,
-                      obscureText: false,
-                      controller: usernameController,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    AuthFormField(
-                      labelText: 'E-mail',
-                      hintText: 'Your e-mail',
-                      required: true,
-                      obscureText: false,
-                      controller: emailController,
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    AuthFormField(
-                      labelText: 'Password',
-                      hintText: 'Your password',
-                      required: true,
-                      obscureText: obscurePassword,
-                      controller: passwordController,
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            obscurePassword = !obscurePassword;
-                          });
-                        },
-                        icon: obscurePassword
-                            ? SvgPicture.asset(
-                                MediaRes.fluentEye,
-                                fit: BoxFit.scaleDown,
-                              )
-                            : SvgPicture.asset(
-                                MediaRes.fluentEye,
-                                fit: BoxFit.scaleDown,
-                              ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    BasicButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {}
-                      },
-                      text: 'Register',
-                      width: double.infinity,
-                    ),
-                  ],
-                ),
-              ),
+            SignUpForm(
+              formKey: formKey,
+              usernameController: usernameController,
+              emailController: emailController,
+              passwordController: passwordController,
             ),
             const TextDivider(text: 'OR'),
             const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 40),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    StringRes.signUpAlready,
-                    style: context.textTheme.bodyMedium,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      context.navigator.pushReplacementNamed(SignInScreen.routeName);
-                    },
-                    child: Text(
-                      'Log In',
-                      style: context.textTheme.bodyMedium!.copyWith(
-                        color: context.theme.primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            const AuthRedirectButton(
+              text: StringRes.signUpAlready,
+              buttonText: 'Log In',
+              navigateTo: SignInScreen.routeName,
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AuthRedirectButton extends StatelessWidget {
+  const AuthRedirectButton({
+    super.key,
+    required this.text,
+    required this.buttonText,
+    required this.navigateTo,
+  });
+
+  final String text;
+  final String buttonText;
+  final String navigateTo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 40),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: context.textTheme.bodyMedium,
+          ),
+          TextButton(
+            onPressed: () {
+              context.navigator.pushReplacementNamed(navigateTo);
+            },
+            child: Text(
+              buttonText,
+              style: context.textTheme.bodyMedium!.copyWith(
+                color: context.theme.primaryColor,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
