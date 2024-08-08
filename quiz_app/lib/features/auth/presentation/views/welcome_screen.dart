@@ -4,6 +4,7 @@ import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
+import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -55,7 +56,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 SecondaryButton(
                   onPressed: () {
-                    context.navigator.pushNamed('/sign-up');
+                    context.navigator.pushNamed(SignUpScreen.routeName);
                   },
                   text: 'Register',
                   width: double.infinity,
