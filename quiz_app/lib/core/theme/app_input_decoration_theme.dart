@@ -24,6 +24,13 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
       width: 2,
     ),
   ),
+  focusedErrorBorder: const OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderSide: BorderSide(
+      color: AppColorScheme.error,
+      width: 2,
+    ),
+  ),
   labelStyle: textTheme.bodyMedium,
   hintStyle: textTheme.bodyMedium!.copyWith(color: const Color(0xFF8391A1)),
   floatingLabelBehavior: FloatingLabelBehavior.never,
