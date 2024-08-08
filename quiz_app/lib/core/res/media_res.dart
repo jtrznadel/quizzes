@@ -2,6 +2,7 @@ class MediaRes {
   const MediaRes._();
 
   static const String logo = 'assets/images/app_logo.png';
+  static const String passwordResetSticker = 'assets/images/password_reset_sticker.svg';
   static const String logoSvg = 'assets/images/app_logotype.svg';
 
   //Welcome Screen
