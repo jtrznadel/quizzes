@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
+import 'package:quiz_app/core/extensions/add_padding_extension.dart';
+import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/new_password_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
@@ -28,8 +31,7 @@ class TempScreen extends StatelessWidget {
                 child: const Text('Login page')),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamed(ForgotPasswordScreen.routeName);
+                Navigator.of(context).pushNamed(ForgotPasswordScreen.routeName);
               },
               child: const Text('Forgot password page'),
             ),
@@ -45,7 +47,16 @@ class TempScreen extends StatelessWidget {
                 Navigator.of(context).pushNamed(NewPasswordScreen.routeName);
               },
               child: const Text('New password screen'),
-            ),
+            ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                QuizStatusBadge(
+                    text: 'Active',
+                    backgroundColor: AppColorScheme.successLight,
+                    textColor: AppColorScheme.success)
+              ],
+            )
           ],
         ),
       ),
