@@ -4,15 +4,15 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
 class BasicButton extends StatelessWidget {
-  const BasicButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      required this.width,
-      this.leadingIcon,
-      this.trailingIcon,
-      this.contentAlignment = MainAxisAlignment.center,
-      });
+  const BasicButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    required this.width,
+    this.leadingIcon,
+    this.trailingIcon,
+    this.contentAlignment = MainAxisAlignment.center,
+  });
 
   final VoidCallback onPressed;
   final String text;
@@ -53,14 +53,21 @@ class BasicButton extends StatelessWidget {
           shadowColor: Colors.transparent,
           splashFactory: InkRipple.splashFactory,
         ),
-        child: buttonContent(contentAlignment, text, context, leadingIcon: leadingIcon, trailingIcon: trailingIcon)
-            .addPadding(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12)),
+        child: buttonContent(
+          contentAlignment,
+          text,
+          context,
+          leadingIcon: leadingIcon,
+          trailingIcon: trailingIcon,
+        ).addPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12)),
       ),
     );
   }
 
-  Widget buttonContent(MainAxisAlignment contentAlignment, String text,
-      BuildContext context, {IconData? leadingIcon, IconData? trailingIcon}) {
+  Widget buttonContent(
+      MainAxisAlignment contentAlignment, String text, BuildContext context,
+      {IconData? leadingIcon, IconData? trailingIcon}) {
     if (leadingIcon != null) {
       return Row(
         mainAxisAlignment: contentAlignment,
@@ -74,8 +81,7 @@ class BasicButton extends StatelessWidget {
           ),
         ],
       );
-    } 
-    else if (trailingIcon != null) {
+    } else if (trailingIcon != null) {
       return Row(
         mainAxisAlignment: contentAlignment,
         children: [
@@ -88,8 +94,7 @@ class BasicButton extends StatelessWidget {
               .addPadding(padding: const EdgeInsets.only(left: 8)),
         ],
       );
-    }
-    else {
+    } else {
       return Row(
         mainAxisAlignment: contentAlignment,
         children: [
