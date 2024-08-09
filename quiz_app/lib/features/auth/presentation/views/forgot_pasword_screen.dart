@@ -1,11 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
+import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -32,24 +33,25 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(title: 'Password reset'),
+      appBar: const BasicAppBar(title: StringRes.forgotPasswordAppbarTitle),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Forgot pasword?',
+              StringRes.forgotPasswordHeading,
               style: context.textTheme.headlineLarge,
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
-              'Don\'t worry! It happens. Enter the email address associated with your account.',
-              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+              StringRes.forgotPasswordSubheading,
+              style: context.textTheme.bodyMedium!
+                  .copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,
               child: AuthFormField(
-                labelText: 'E-mail',
-                hintText: 'Your e-mail',
+                labelText: StringRes.forgotPasswordInputLabel,
+                hintText: StringRes.forgotPasswordInputHint,
                 obscureText: false,
                 required: true,
                 controller: emailController,
@@ -57,10 +59,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
             ),
             BasicButton(
-              text: 'Send e-mail',
+              text: StringRes.forgotPasswordButton,
               onPressed: () {
-                formKey.currentState!.validate();
-                kDebugMode ? debugPrint(emailController.text) : null;
+                if (formKey.currentState!.validate()) {
+                  context.navigator.pushReplacementNamed(SuccessfulPasswordResetRequestScreen.routeName);
+                }
               },
               width: double.infinity,
             )
