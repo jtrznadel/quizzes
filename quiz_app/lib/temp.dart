@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
+import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
 import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
+import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/quiz_list_item.dart';
 
 class TempScreen extends StatelessWidget {
@@ -26,9 +29,15 @@ class TempScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/welcome');
+                Navigator.of(context).pushNamed(WelcomeScreen.routeName);
               },
               child: const Text('Welcome page'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.navigator.pushNamed(DashboardScreen.routeName);
+              },
+              child: const Text('Dashboard'),
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.center,

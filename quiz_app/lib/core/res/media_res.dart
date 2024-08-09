@@ -13,4 +13,5 @@ class MediaRes {
   static const String fluentEye = 'assets/icons/fluent_eye.svg';
   static const String arrowBack = 'assets/icons/arrow_back.svg';
   static const String deleteIcon = 'assets/icons/delete_icon.svg';
+  static const String userProfile = 'assets/icons/dashboard_profile_icon.svg';
 }
