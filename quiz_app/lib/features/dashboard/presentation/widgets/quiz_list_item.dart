@@ -53,7 +53,7 @@ class QuizListItem extends StatelessWidget {
                       splashFactory: InkRipple.splashFactory,
                       customBorder: const CircleBorder(),
                       child: SvgPicture.asset(
-                        MediaRes.deleteIcon,
+                        MediaRes.deleteQuiz,
                         width: 24,
                         height: 24,
                       ).addPadding(padding: const EdgeInsets.all(4)),
