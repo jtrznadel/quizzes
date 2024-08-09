@@ -24,6 +24,7 @@ class QuizListItem extends StatelessWidget {
         color: AppColorScheme.border,
         strokeWidth: 1.5,
         radius: const Radius.circular(8),
+        borderPadding: const EdgeInsets.all(0.5),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: Column(
@@ -91,8 +92,6 @@ class QuizListItem extends StatelessWidget {
           ),
         ),
       ),
-    ).addPadding(
-      padding: const EdgeInsets.all(16),
     );
   }
 }
