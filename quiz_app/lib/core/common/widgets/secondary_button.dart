@@ -1,19 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
 class SecondaryButton extends StatelessWidget {
-  const SecondaryButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      required this.width,
-      this.leadingIcon,
-      this.trailingIcon,
-      this.contentAlignment = MainAxisAlignment.center,
-      });
+  const SecondaryButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    required this.width,
+    this.leadingIcon,
+    this.trailingIcon,
+    this.contentAlignment = MainAxisAlignment.center,
+  });
 
   final VoidCallback onPressed;
   final String text;
@@ -48,44 +47,37 @@ class SecondaryButton extends StatelessWidget {
     );
   }
 
-  Widget buttonContent(MainAxisAlignment contentAlignment, String text,
-      BuildContext context, {IconData? leadingIcon, IconData? trailingIcon}) {
+  Widget buttonContent(MainAxisAlignment contentAlignment, String text, BuildContext context,
+      {IconData? leadingIcon, IconData? trailingIcon}) {
     if (leadingIcon != null) {
       return Row(
         mainAxisAlignment: contentAlignment,
         children: [
-          Icon(leadingIcon, color: contentColor)
-              .addPadding(padding: const EdgeInsets.only(right: 8)),
+          Icon(leadingIcon, color: contentColor).addPadding(padding: const EdgeInsets.only(right: 8)),
           Text(
             text,
-            style: context.theme.textTheme.labelLarge!
-                .copyWith(color: contentColor),
+            style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
           ),
         ],
       );
-    } 
-    else if (trailingIcon != null) {
+    } else if (trailingIcon != null) {
       return Row(
         mainAxisAlignment: contentAlignment,
         children: [
           Text(
             text,
-            style: context.theme.textTheme.labelLarge!
-                .copyWith(color: contentColor),
+            style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
           ),
-          Icon(trailingIcon, color: contentColor)
-              .addPadding(padding: const EdgeInsets.only(left: 8)),
+          Icon(trailingIcon, color: contentColor).addPadding(padding: const EdgeInsets.only(left: 8)),
         ],
       );
-    }
-    else {
+    } else {
       return Row(
         mainAxisAlignment: contentAlignment,
         children: [
           Text(
             text,
-            style: context.theme.textTheme.labelLarge!
-                .copyWith(color: contentColor),
+            style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
           ),
         ],
       );

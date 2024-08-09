@@ -1,6 +1,10 @@
 class StringRes {
   const StringRes._();
 
+  //GENERAL
+  static const String continueButton = "Continue";
+  static const String dividerOr = "OR";
+
   //SIGNIN
   static const String signInHeading = "Enter credentials";
   static const String signInDonHave = "Don't have an account?";
@@ -8,7 +12,6 @@ class StringRes {
   //SIGNUP
   static const String signUpHeading = "Hello! 👋 Fill out the form to register";
   static const String signUpAlready = "Already have an account?";
-
 
   //FORGOT PASSWORD
   static const String forgotPasswordAppbarTitle = "Password reset";
@@ -30,4 +33,11 @@ class StringRes {
   static const String newPasswordInputLabel = "New password";
   static const String newPasswordInputHint = "Your password";
   static const String newPasswordButton = "Save and login";
+
+  //QUIZ CREATION
+  static const String quizzCreationHeading = "Text prompt";
+  static const String quizzCreationSubheading = "Here, you can create quizz based on your prompt.";
+  static const String quizzCreationUploadFile = "Upload file";
+  static const String quizzCreationTextAreaLabel = "Prompt";
+  static const String quizzCreationTextAreaHint = "Enter your prompt";
 }

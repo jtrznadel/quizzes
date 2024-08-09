@@ -12,4 +12,5 @@ class MediaRes {
   //ICONS
   static const String fluentEye = 'assets/icons/fluent_eye.svg';
   static const String arrowBack = 'assets/icons/arrow_back.svg';
+  static const String uploadFile = 'assets/icons/upload_file.svg';
 }
