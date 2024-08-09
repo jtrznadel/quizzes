@@ -5,9 +5,7 @@ import 'package:quiz_app/features/auth/presentation/views/new_password_screen.da
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
-
 import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
-import 'package:quiz_app/main.dart';
 import 'package:quiz_app/temp.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -20,7 +18,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _slidePageBuilder((context) => const SignInScreen(), settings: settings);
     case SignUpScreen.routeName:
       return _slidePageBuilder((context) => const SignUpScreen(), settings: settings);
-    case '/forgot-password':
+    case ForgotPasswordScreen.routeName:
       return _fadePageBuilder((context) => const ForgotPasswordScreen(), settings: settings);
     case SuccessfulPasswordResetRequestScreen.routeName:
       return _fadePageBuilder((context) => const SuccessfulPasswordResetRequestScreen(), settings: settings);
