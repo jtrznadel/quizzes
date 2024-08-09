@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
@@ -7,7 +6,9 @@ import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
+import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 
 class NewPasswordScreen extends StatefulWidget {
   const NewPasswordScreen({super.key});
@@ -33,58 +34,62 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(title: 'Password reset'),
+      appBar: const BasicAppBar(title: StringRes.newPasswordAppbarTitle),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'New password',
+              StringRes.newPasswordHeading,
               style: context.textTheme.headlineLarge,
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
-              'This new password must be unique to those previously used.',
+              StringRes.newPasswordSubheading,
               style: context.textTheme.bodyMedium!
                   .copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,
               child: AuthFormField(
-                labelText: 'New password',
-                hintText: 'Your password',
+                labelText: StringRes.newPasswordInputLabel,
+                hintText: StringRes.newPasswordInputHint,
                 obscureText: obscurePassword,
                 required: true,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-                suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              obscurePassword = !obscurePassword;
-                            });
-                          },
-                          icon: obscurePassword
-                              ? SvgPicture.asset(
-                                  MediaRes.fluentEye,
-                                  fit: BoxFit.scaleDown,
-                                )
-                              : SvgPicture.asset(
-                                  MediaRes.fluentEye,
-                                  fit: BoxFit.scaleDown,
-                                ),
-                        ),
+                suffixIcon: obscurePasswordIconButton(),
               ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
             ),
             BasicButton(
-              text: 'Save and login',
+              text: StringRes.newPasswordButton,
               onPressed: () {
                 formKey.currentState!.validate();
-                kDebugMode ? debugPrint(emailController.text) : null;
+                context.navigator.pushReplacementNamed(SignInScreen.routeName);
               },
               width: double.infinity,
             )
           ],
         ).addPadding(padding: const EdgeInsets.symmetric(horizontal: 16)),
       ),
+    );
+  }
+
+  Widget obscurePasswordIconButton() {
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          obscurePassword = !obscurePassword;
+        });
+      },
+      icon: obscurePassword
+          ? SvgPicture.asset(
+              MediaRes.fluentEye,
+              fit: BoxFit.scaleDown,
+            )
+          : SvgPicture.asset(
+              MediaRes.fluentEye,
+              fit: BoxFit.scaleDown,
+            ),
     );
   }
 }
