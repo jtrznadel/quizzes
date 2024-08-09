@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
+import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
@@ -43,8 +43,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
               'Don\'t worry! It happens. Enter the email address associated with your account.',
-              style: context.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,

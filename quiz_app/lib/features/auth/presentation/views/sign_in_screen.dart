@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
+import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/back_button.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
@@ -38,6 +38,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const BasicAppBar(
         title: 'Login',
       ),
@@ -52,13 +53,10 @@ class _SignInScreenState extends State<SignInScreen> {
               'Enter credentials',
               style: context.textTheme.headlineLarge,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32),
-              child: SignInForm(
-                formKey: formKey,
-                emailController: emailController,
-                passwordController: passwordController,
-              ),
+            SignInForm(
+              formKey: formKey,
+              emailController: emailController,
+              passwordController: passwordController,
             ),
             const TextDivider(text: 'OR'),
             const Spacer(),

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
+import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
@@ -44,8 +44,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
               'This new password must be unique to those previously used.',
-              style: context.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,
@@ -57,21 +56,21 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              obscurePassword = !obscurePassword;
-                            });
-                          },
-                          icon: obscurePassword
-                              ? SvgPicture.asset(
-                                  MediaRes.fluentEye,
-                                  fit: BoxFit.scaleDown,
-                                )
-                              : SvgPicture.asset(
-                                  MediaRes.fluentEye,
-                                  fit: BoxFit.scaleDown,
-                                ),
+                  onPressed: () {
+                    setState(() {
+                      obscurePassword = !obscurePassword;
+                    });
+                  },
+                  icon: obscurePassword
+                      ? SvgPicture.asset(
+                          MediaRes.fluentEye,
+                          fit: BoxFit.scaleDown,
+                        )
+                      : SvgPicture.asset(
+                          MediaRes.fluentEye,
+                          fit: BoxFit.scaleDown,
                         ),
+                ),
               ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
             ),
             BasicButton(

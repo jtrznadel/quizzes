@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/auth_form_field.dart';
+import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 
