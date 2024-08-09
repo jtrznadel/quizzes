@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
@@ -58,6 +59,10 @@ class AuthFormField extends StatelessWidget {
             decoration: InputDecoration(
               hintText: hintText,
               suffixIcon: suffixIcon,
+            ),
+            style: context.textTheme.labelMedium!.copyWith(
+              fontWeight: FontWeight.w400,
+              fontFamily: GoogleFonts.inter().fontFamily,
             ),
           ),
         ),
