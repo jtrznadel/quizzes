@@ -1,6 +1,11 @@
 class StringRes {
   const StringRes._();
 
+  //TEMP STRINGS (To fill temporary data e.g. quizz summary)
+  static const String tempQuizzSummaryTitle = "Understanding Cryptocurrencies and Their Impact on Finance";
+  static const String tempQuizzSummaryDescription =
+      "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.";
+
   //GENERAL
   static const String continueButton = "Continue";
   static const String dividerOr = "OR";
@@ -34,6 +39,9 @@ class StringRes {
   static const String newPasswordInputHint = "Your password";
   static const String newPasswordButton = "Save and login";
 
+  //---------QUIZ DETAILS/PREVIEW
+  static const String quizzSummaryTitle = "Title: ";
+
   //---------QUIZ CREATION
 
   //QUIZ CREATION - TEXT PROMPT
@@ -57,4 +65,7 @@ class StringRes {
   static const String quizzCreationConfigureQuestionCount2 = "Medium";
   static const String quizzCreationConfigureQuestionCount3 = "High";
   static const String quizzCreationConfigureQuestionCount4 = "Manual";
+
+  //QUIZ CREATION - PREVIEW
+  static const String quizzCreationPreviewHeading = "Quizz Preview";
 }
