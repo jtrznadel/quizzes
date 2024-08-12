@@ -1,25 +1,24 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
-import 'package:quiz_app/features/dashboard/presentation/widgets/delete_quiz_dialog.dart';
 
-class QuizListItem extends StatelessWidget {
-  const QuizListItem({super.key, required this.quizEntity});
+class QuizDeleteDialogItem extends StatelessWidget {
+  const QuizDeleteDialogItem({super.key, required this.quizEntity});
 
   final TestQuizEntity quizEntity;
 
   @override
   Widget build(BuildContext context) {
-    return quizContainer(
-      [
-        quizHeader(context),
-        quizDescription(context),
+    return Column(
+      children: [
+        quizContainer([
+          quizHeader(context),
+          quizDescription(context),
+        ]).addPadding(padding: const EdgeInsets.only(bottom: 8)),
         quizStatus(),
       ],
     );
@@ -51,48 +50,13 @@ class QuizListItem extends StatelessWidget {
   }
 
   Widget quizHeader(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Text(quizEntity.quizTitle,
-              style: context.theme.textTheme.headlineSmall!.copyWith(
-                fontSize: 16,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis),
-        ),
-        Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxHeight: 418,
-                      ),
-                      child: DeleteQuizDialog(quiz: quizEntity),
-                    ),
-                  );
-                },
-              );
-            },
-            splashColor: AppColorScheme.textPrimary.withOpacity(0.1),
-            splashFactory: InkRipple.splashFactory,
-            customBorder: const CircleBorder(),
-            child: SvgPicture.asset(
-              MediaRes.deleteQuiz,
-              width: 24,
-              height: 24,
-            ).addPadding(padding: const EdgeInsets.all(4)),
-          ),
-        ),
-      ],
-    ).addPadding(
+    return Text(quizEntity.quizTitle,
+            style: context.theme.textTheme.headlineSmall!.copyWith(
+              fontSize: 16,
+            ),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis)
+        .addPadding(
       padding: const EdgeInsets.only(bottom: 8),
     );
   }
@@ -104,8 +68,6 @@ class QuizListItem extends StatelessWidget {
           .copyWith(color: AppColorScheme.textSecondary),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-    ).addPadding(
-      padding: const EdgeInsets.only(bottom: 32),
     );
   }
 

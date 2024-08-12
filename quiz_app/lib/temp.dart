@@ -5,6 +5,7 @@ import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
 import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
 import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
+import 'package:quiz_app/features/dashboard/presentation/widgets/delete_quiz_dialog.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/quiz_list_item.dart';
 
 class TempScreen extends StatelessWidget {
@@ -49,7 +50,7 @@ class TempScreen extends StatelessWidget {
                 )
               ],
             ),
-            QuizListItem(quizEntity: quizEntity)
+            DeleteQuizDialog(quiz: quizEntity),
           ],
         ),
       ),
