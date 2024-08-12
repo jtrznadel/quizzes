@@ -34,7 +34,7 @@ class IRadioListTile<T> extends StatelessWidget {
               onPressed: () => onChanged(value),
               width: double.infinity,
               text: title,
-              leadingIcon: isSelected ? Icons.check : null,
+              //leadingIcon: isSelected ? Icons.check : null,
               contentAlignment: MainAxisAlignment.start,
             )
           : SecondaryButton(
