@@ -5,6 +5,12 @@ class StringRes {
   static const String tempQuizzSummaryTitle = "Understanding Cryptocurrencies and Their Impact on Finance";
   static const String tempQuizzSummaryDescription =
       "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.";
+  static const String tempQuestion = "What is one of the key features of cryptocurrencies?";
+  static const String tempQuestionDescription = "Question description";
+  static const String tempAnswer1 = "Physical existence";
+  static const String tempAnswer2 = "Centralized control";
+  static const String tempAnswer3 = "Decentralization";
+  static const String tempAnswer4 = "Government regulation";
 
   //GENERAL
   static const String continueButton = "Continue";
