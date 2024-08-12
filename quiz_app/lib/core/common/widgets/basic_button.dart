@@ -31,6 +31,7 @@ class BasicButton extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
+          overlayColor: Colors.transparent,
         ),
         label: Text(
           text,
