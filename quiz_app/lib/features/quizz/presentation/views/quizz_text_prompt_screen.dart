@@ -28,57 +28,59 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            StringRes.quizzCreationHeading,
-            style: context.textTheme.headlineLarge,
-          ),
-          Text(
-            StringRes.quizzCreationSubheading,
-            style: context.textTheme.bodyMedium,
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          TextArea(
-            labelText: StringRes.quizzCreationTextAreaLabel,
-            hintText: StringRes.quizzCreationTextAreaHint,
-            minLines: 3,
-            maxLines: 3,
-            required: true,
-            controller: _promptController,
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
-            child: TextDivider(
-              text: StringRes.dividerOr,
-              color: AppColorScheme.textSecondary,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              StringRes.quizzCreationTextPromptHeading,
+              style: context.textTheme.headlineLarge,
             ),
-          ),
-          SecondaryButton(
-            onPressed: () {},
-            text: StringRes.quizzCreationUploadFile,
-            //TODO: fix button to be able to take svg as icon
-            width: double.infinity,
-          ),
-          const SizedBox(
-            height: 40,
-          ),
-          BasicButton(
-            onPressed: () {
-              widget.pageController.nextPage(
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeInOut,
-              );
-            },
-            text: StringRes.continueButton,
-            width: double.infinity,
-          )
-        ],
+            Text(
+              StringRes.quizzCreationTextPromptSubheading,
+              style: context.textTheme.bodyMedium,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            TextArea(
+              labelText: StringRes.quizzCreationTextPromptTextAreaLabel,
+              hintText: StringRes.quizzCreationTextPromptTextAreaHint,
+              minLines: 3,
+              maxLines: 3,
+              required: true,
+              controller: _promptController,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
+              child: TextDivider(
+                text: StringRes.dividerOr,
+                color: AppColorScheme.textSecondary,
+              ),
+            ),
+            SecondaryButton(
+              onPressed: () {},
+              text: StringRes.quizzCreationUploadFile,
+              //TODO: fix button to be able to take svg as icon
+              width: double.infinity,
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            BasicButton(
+              onPressed: () {
+                widget.pageController.nextPage(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                );
+              },
+              text: StringRes.continueButton,
+              width: double.infinity,
+            ),
+          ],
+        ),
       ),
     );
   }

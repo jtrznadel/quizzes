@@ -34,10 +34,27 @@ class StringRes {
   static const String newPasswordInputHint = "Your password";
   static const String newPasswordButton = "Save and login";
 
-  //QUIZ CREATION
-  static const String quizzCreationHeading = "Text prompt";
-  static const String quizzCreationSubheading = "Here, you can create quizz based on your prompt.";
+  //---------QUIZ CREATION
+
+  //QUIZ CREATION - TEXT PROMPT
+  static const String quizzCreationTextPromptHeading = "Text prompt";
+  static const String quizzCreationTextPromptSubheading = "Here, you can create quizz based on your prompt.";
   static const String quizzCreationUploadFile = "Upload file";
-  static const String quizzCreationTextAreaLabel = "Prompt";
-  static const String quizzCreationTextAreaHint = "Enter your prompt";
+  static const String quizzCreationTextPromptTextAreaLabel = "Prompt";
+  static const String quizzCreationTextPromptTextAreaHint = "Enter your prompt";
+
+  //QUIZ CREATION - CONFIGURE
+  static const String quizzCreationConfigureHeading = "Configure quizz";
+  static const String quizzCraetionConfigureSubheading = "Here, you can create quizz based on your prompt.";
+
+  static const String quizzCreationConfigureTypeQuestion = "What type of questions?";
+  static const String quizzCreationConfigureType1 = "Multiple choice";
+  static const String quizzCreationConfigureType2 = "True/False";
+  static const String quizzCreationConfigureType3 = "Fill in the blank";
+
+  static const String quizzCreationConfigureQuestionCount = "How many questions?";
+  static const String quizzCreationConfigureQuestionCount1 = "Low";
+  static const String quizzCreationConfigureQuestionCount2 = "Medium";
+  static const String quizzCreationConfigureQuestionCount3 = "High";
+  static const String quizzCreationConfigureQuestionCount4 = "Manual";
 }

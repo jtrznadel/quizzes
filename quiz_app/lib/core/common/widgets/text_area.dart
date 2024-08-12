@@ -64,6 +64,9 @@ class TextArea extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontFamily: GoogleFonts.inter().fontFamily,
             ),
+            onTapOutside: (event) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
           ),
         ),
       ],

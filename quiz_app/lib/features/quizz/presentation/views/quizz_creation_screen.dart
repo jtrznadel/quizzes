@@ -32,7 +32,9 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
       QuizzTextPromptScreen(
         pageController: _controller,
       ),
-      const QuizzConfigureScreen(),
+      QuizzConfigureScreen(
+        pageController: _controller,
+      ),
       const QuizzPreviewScreen(),
     ];
   }
