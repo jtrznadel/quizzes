@@ -34,7 +34,13 @@ class IRadioListTile<T> extends StatelessWidget {
               onPressed: () => onChanged(value),
               width: double.infinity,
               text: title,
-              //leadingIcon: isSelected ? Icons.check : null,
+              icon: isSelected
+                  ? SvgPicture.asset(
+                      MediaRes.radioChecked,
+                      colorFilter: const ColorFilter.mode(
+                          AppColorScheme.textContrast, BlendMode.srcIn),
+                    )
+                  : null,
               contentAlignment: MainAxisAlignment.start,
             )
           : SecondaryButton(
@@ -42,6 +48,13 @@ class IRadioListTile<T> extends StatelessWidget {
               text: title,
               width: double.infinity,
               contentAlignment: MainAxisAlignment.start,
+              icon: !isSelected
+                  ? SvgPicture.asset(
+                      MediaRes.radioUnchecked,
+                      colorFilter: const ColorFilter.mode(
+                          AppColorScheme.primary, BlendMode.srcIn),
+                    )
+                  : null,
             ),
     );
   }
