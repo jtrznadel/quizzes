@@ -27,11 +27,18 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
     super.dispose();
   }
 
-  final pages = [
-    const QuizzTextPromptScreen(),
-    const QuizzConfigureScreen(),
-    const QuizzPreviewScreen(),
-  ];
+  List<Widget> getPages() {
+    return [
+      QuizzTextPromptScreen(
+        pageController: _controller,
+      ),
+      QuizzConfigureScreen(
+        pageController: _controller,
+      ),
+      const QuizzPreviewScreen(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +49,7 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
             alignment: Alignment.topCenter,
             child: SmoothPageIndicator(
               controller: _controller,
-              count: pages.length,
+              count: getPages().length,
               effect: const WormEffect(
                 dotColor: AppColorScheme.secondary,
                 activeDotColor: AppColorScheme.primary,
@@ -53,7 +60,8 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
           ),
           PageView(
             controller: _controller,
-            children: pages,
+            physics: const NeverScrollableScrollPhysics(),
+            children: getPages(),
           ),
         ],
       ),
