@@ -5,6 +5,7 @@ import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/common/widgets/text_divider.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
+import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
@@ -63,7 +64,9 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
             SecondaryButton(
               onPressed: () {},
               text: StringRes.quizzCreationUploadFile,
-              //TODO: fix button to be able to take svg as icon
+              icon: SvgPicture.asset(
+                MediaRes.uploadFile,
+              ),
               width: double.infinity,
             ),
             const SizedBox(

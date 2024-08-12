@@ -26,7 +26,6 @@ class IRadioListTile<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSelected = value == groupValue;
 
-    //TODO: Implement proper icons
     return SizedBox(
       width: double.infinity,
       child: isSelected
@@ -34,12 +33,25 @@ class IRadioListTile<T> extends StatelessWidget {
               onPressed: () => onChanged(value),
               width: double.infinity,
               text: title,
-              leadingIcon: isSelected ? Icons.check : null,
+              icon: SvgPicture.asset(
+                MediaRes.radioChecked,
+                colorFilter: const ColorFilter.mode(
+                  AppColorScheme.textContrast,
+                  BlendMode.srcIn,
+                ),
+              ),
               contentAlignment: MainAxisAlignment.start,
             )
           : SecondaryButton(
               onPressed: () => onChanged(value),
               text: title,
+              icon: SvgPicture.asset(
+                MediaRes.radioUnchecked,
+                colorFilter: const ColorFilter.mode(
+                  AppColorScheme.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
               width: double.infinity,
               contentAlignment: MainAxisAlignment.start,
             ),
