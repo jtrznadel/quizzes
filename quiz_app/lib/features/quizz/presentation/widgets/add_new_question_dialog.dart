@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
+import 'package:quiz_app/core/common/widgets/form_field.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});
@@ -47,7 +47,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
               height: 24,
             ),
             Material(
-              child: AuthFormField(
+              child: IFormField(
                 labelText: StringRes.quizzCreationAddQuestionTitleLabel,
                 hintText: StringRes.quizzCreationAddQuestionTitleHint,
                 required: true,
@@ -59,7 +59,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
               height: 24,
             ),
             Material(
-              child: AuthFormField(
+              child: IFormField(
                 labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
                 hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
                 required: true,

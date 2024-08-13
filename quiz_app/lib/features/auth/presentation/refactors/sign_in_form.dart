@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
-import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
+import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
@@ -36,7 +36,7 @@ class _SignInFormState extends State<SignInForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            AuthFormField(
+            IFormField(
               controller: widget.emailController,
               labelText: 'E-mail',
               hintText: 'Your e-mail',
@@ -46,7 +46,7 @@ class _SignInFormState extends State<SignInForm> {
             const SizedBox(
               height: 16,
             ),
-            AuthFormField(
+            IFormField(
               controller: widget.passwordController,
               labelText: 'Password',
               hintText: 'Your password',
