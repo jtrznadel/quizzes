@@ -78,4 +78,19 @@ class StringRes {
   static const String addNewQuestionBottomSheetAI = "Generate question with AI";
   //QUIZ CREATION - PREVIEW
   static const String quizzCreationPreviewHeading = "Quizz Preview";
+
+  //QUIZ CREATION - QUIT
+  static const String quizzCreationQuitHeading = "Are you sure?";
+  static const String quizzCreationQuitSubheading =
+      "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.";
+  static const String quizzCreationQuitButton = "Yes, quit";
+  static const String quizzCreationQuitButtonCancel = "Cancel";
+
+  //QUIZ CREATION - ADD QUESTION
+  static const String quizzCreationAddQuestionHeading = "New question";
+  static const String quizzCreationAddQuestionTitleLabel = "Question Title";
+  static const String quizzCreationAddQuestionTitleHint = "Enter question title";
+  static const String quizzCreationAddQuestionDescriptionLabel = "Question Description";
+  static const String quizzCreationAddQuestionDescriptionHint = "Enter question description";
+  static const String quizzCreationAddQuestionAnswersLabel = "Answers";
 }

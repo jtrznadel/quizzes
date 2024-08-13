@@ -4,6 +4,7 @@ import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_dialog.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/bottom_sheet_tile.dart';
 
 class AddNewQuestionBottomSheet extends StatelessWidget {
@@ -24,7 +25,8 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
           text: StringRes.addNewQuestionBottomSheetManual,
           icon: SvgPicture.asset(MediaRes.addQuestionManual),
           onTap: () {
-            //TODO: add manual question logic
+            Navigator.pop(context);
+            AddNewQuestionDialog.show(context);
           },
         ),
         BottomSheetTile(

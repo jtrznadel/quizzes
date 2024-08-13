@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
+import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 
@@ -33,7 +33,7 @@ class _SignUpFormState extends State<SignUpForm> {
         key: widget.formKey,
         child: Column(
           children: [
-            AuthFormField(
+            IFormField(
               labelText: 'Username',
               hintText: 'Your username',
               required: true,
@@ -43,7 +43,7 @@ class _SignUpFormState extends State<SignUpForm> {
             const SizedBox(
               height: 16,
             ),
-            AuthFormField(
+            IFormField(
               labelText: 'E-mail',
               hintText: 'Your e-mail',
               required: true,
@@ -53,7 +53,7 @@ class _SignUpFormState extends State<SignUpForm> {
             const SizedBox(
               height: 16,
             ),
-            AuthFormField(
+            IFormField(
               labelText: 'Password',
               hintText: 'Your password',
               required: true,
