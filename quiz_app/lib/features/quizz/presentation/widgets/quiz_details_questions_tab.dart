@@ -6,6 +6,8 @@ import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/quiz_details_answers_switch.dart';
 
 class QuizDetailsQuestionsTab extends StatefulWidget {
   const QuizDetailsQuestionsTab({super.key});
@@ -65,7 +67,7 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
-                  "Total questions: 10"), //TODO: replace with status badge from the dashboard quiz card
+                  "Total questions: 10",), //TODO: replace with status badge from the dashboard quiz card
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -76,15 +78,11 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
                     height: 32,
                     child: FittedBox(
                       fit: BoxFit.fill,
-                      child: Switch(
-                        value: answersVisible,
-                        onChanged: (value) {
-                          setState(() {
-                            answersVisible = value;
-                          });
-                        },
-                        activeColor: AppColorScheme.primary,
-                      ),
+                      child: QuizDetailsAnswersSwitch(value: answersVisible, onChanged: (value){
+                        setState(() {
+                          answersVisible = value;
+                        });
+                      }),
                     ),
                   ),
                 ],
@@ -98,7 +96,9 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  AddNewQuestionBottomSheet.show(context);
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColorScheme.secondary,
                   shape: RoundedRectangleBorder(
