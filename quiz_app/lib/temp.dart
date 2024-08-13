@@ -5,6 +5,7 @@ import 'package:quiz_app/features/auth/presentation/views/new_password_screen.da
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
+import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
 
 class TempScreen extends StatelessWidget {
@@ -58,7 +59,13 @@ class TempScreen extends StatelessWidget {
                 AddNewQuestionBottomSheet.show(context);
               },
               child: const Text('Show bottom sheet'),
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                context.navigator.pushNamed(QuizzDetailsScreen.routeName);
+              },
+              child: const Text('Quiz details'),
+            ),
           ],
         ),
       ),

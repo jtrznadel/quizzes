@@ -7,6 +7,7 @@ import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
+import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
 import 'package:quiz_app/main.dart';
 import 'package:quiz_app/temp.dart';
 
@@ -28,6 +29,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _fadePageBuilder((context) => const NewPasswordScreen(), settings: settings);
     case QuizzCreationScreen.routeName:
       return _fadePageBuilder((context) => const QuizzCreationScreen(), settings: settings);
+    case QuizzDetailsScreen.routeName:
+      return _fadePageBuilder((context) => const QuizzDetailsScreen(), settings: settings);
     default:
       return _slidePageBuilder((context) => const TempScreen(), settings: settings);
   }

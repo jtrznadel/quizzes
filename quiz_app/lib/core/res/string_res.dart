@@ -78,4 +78,12 @@ class StringRes {
   static const String addNewQuestionBottomSheetAI = "Generate question with AI";
   //QUIZ CREATION - PREVIEW
   static const String quizzCreationPreviewHeading = "Quizz Preview";
+
+  //QUIZ DETAILS
+  static const String quizzDetailsAppbarTitle = "Quiz Detail";
+  static const String quizzDetailsTabQuestions = "Questions";
+  static const String quizzDetailsTabSettings = "Settings";
+  static const String quizzDetailsTabStatistics = "Statistics";
+  static const String quizzDetailsTabGeneral = "General";
+  static const String quizzDetailsTabQuestionsSubheading = "Manage your quiz questions here. You can edit and delete questions. This page is preview page for your questions.";
 }
