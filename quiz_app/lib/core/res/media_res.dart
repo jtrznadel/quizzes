@@ -15,6 +15,8 @@ class MediaRes {
   static const String uploadFile = 'assets/icons/upload_file.svg';
   static const String radioChecked = 'assets/icons/radio_checked.svg';
   static const String radioUnchecked = 'assets/icons/radio_unchecked.svg';
+  static const String addQuestionManual = 'assets/icons/add_question_manual_icon.svg';
+  static const String addQuestionAI = 'assets/icons/add_question_ai_icon.svg';
   static const String pencil = 'assets/icons/pencil_edit.svg';
   static const String trash = 'assets/icons/trash.svg';
   static const String share = 'assets/icons/share.svg';

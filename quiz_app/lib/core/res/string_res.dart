@@ -72,6 +72,10 @@ class StringRes {
   static const String quizzCreationConfigureQuestionCount3 = "High";
   static const String quizzCreationConfigureQuestionCount4 = "Manual";
 
+  //ADD NEW QUESTION BOTTOM SHEET
+  static const String addNewQuestionBottomSheetHeading = "Add new question";
+  static const String addNewQuestionBottomSheetManual = "Manual";
+  static const String addNewQuestionBottomSheetAI = "Generate question with AI";
   //QUIZ CREATION - PREVIEW
   static const String quizzCreationPreviewHeading = "Quizz Preview";
 }
