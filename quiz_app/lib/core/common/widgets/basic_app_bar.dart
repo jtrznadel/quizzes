@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/back_button.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BasicAppBar({super.key, required this.title, this.actions});
+  const BasicAppBar({super.key, required this.title, this.actions, this.onBack});
 
   final String title;
   final List<Widget>? actions;
+  final Function()? onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,9 @@ class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: AppBar(
         title: Text(title),
         actions: actions,
-        leading: const IBackButton()
+        leading: IBackButton(
+          onPressed: onBack,
+        ),
       ),
     );
   }

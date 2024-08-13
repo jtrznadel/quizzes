@@ -79,6 +79,13 @@ class StringRes {
   //QUIZ CREATION - PREVIEW
   static const String quizzCreationPreviewHeading = "Quizz Preview";
 
+  //QUIZ CREATION - QUIT
+  static const String quizzCreationQuitHeading = "Are you sure?";
+  static const String quizzCreationQuitSubheading =
+      "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.";
+  static const String quizzCreationQuitButton = "Yes, quit";
+  static const String quizzCreationQuitButtonCancel = "Cancel";
+
   //QUIZ CREATION - ADD QUESTION
   static const String quizzCreationAddQuestionHeading = "New question";
   static const String quizzCreationAddQuestionTitleLabel = "Question Title";
