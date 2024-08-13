@@ -86,4 +86,6 @@ class StringRes {
   static const String quizzDetailsTabStatistics = "Statistics";
   static const String quizzDetailsTabGeneral = "General";
   static const String quizzDetailsTabQuestionsSubheading = "Manage your quiz questions here. You can edit and delete questions. This page is preview page for your questions.";
+  static const String quizzDetailsTabQuestionsSwitch = "Answers";
+  static const String quizzDetailsTabQuestionsAddNewQuestion = "New question";
 }

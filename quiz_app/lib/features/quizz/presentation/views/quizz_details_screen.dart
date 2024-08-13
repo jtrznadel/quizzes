@@ -7,6 +7,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/quiz_details_questions_tab.dart';
 
 class QuizzDetailsScreen extends StatelessWidget {
   const QuizzDetailsScreen({super.key});
@@ -20,57 +21,65 @@ class QuizzDetailsScreen extends StatelessWidget {
         title: StringRes.quizzDetailsAppbarTitle,
         actions: [
           IconButton(
-            icon: SvgPicture.asset(MediaRes.share)
-                .addPadding(padding: const EdgeInsets.only(right: 16)),
+            icon: SvgPicture.asset(MediaRes.share),
             onPressed: () {},
-          )
+          ).addPadding(padding: const EdgeInsets.only(right: 16)),
         ],
       ),
       body: DefaultTabController(
         length: 4,
-        child: Column(
-          children: [
-            const QuizzSummary(
-                    title: StringRes.tempQuizzSummaryTitle,
-                    description: StringRes.tempQuizzSummaryDescription)
-                .addPadding(padding: const EdgeInsets.only(bottom: 16)),
-            TabBar(
-              dividerColor: AppColorScheme.border,
-              labelColor: AppColorScheme.primary,
-              labelStyle: context.textTheme.labelMedium!,
-              unselectedLabelColor: AppColorScheme.textSecondary,
-              isScrollable: true,
-              tabAlignment: TabAlignment.start,
-              splashBorderRadius: BorderRadius.circular(16),
-              indicatorSize: TabBarIndicatorSize.tab,
-              dividerHeight: 2,
-              indicatorWeight: 2,
-              tabs: const [
-                Tab(text: StringRes.quizzDetailsTabQuestions),
-                Tab(text: StringRes.quizzDetailsTabSettings),
-                Tab(text: StringRes.quizzDetailsTabStatistics),
-                Tab(text: StringRes.quizzDetailsTabGeneral),
-              ],
-            ),
-            const Expanded(
-              child: TabBarView(children: [
-                Center(
-                  child: Text(StringRes.quizzDetailsTabQuestions),
+        child: Material(
+          color: AppColorScheme.surface,
+          child: Column(
+            children: [
+              Material(
+                color: AppColorScheme.surface,
+                child: const QuizzSummary(
+                        title: StringRes.tempQuizzSummaryTitle,
+                        description: StringRes.tempQuizzSummaryDescription)
+                    .addPadding(padding: const EdgeInsets.only(bottom: 16)),
+              ),
+              Material(
+                color: AppColorScheme.surface,
+                child: TabBar(
+                  dividerColor: AppColorScheme.border,
+                  labelColor: AppColorScheme.primary,
+                  labelStyle: context.textTheme.labelMedium!,
+                  unselectedLabelColor: AppColorScheme.textSecondary,
+                  isScrollable: true,
+                  tabAlignment: TabAlignment.start,
+                  splashBorderRadius: BorderRadius.circular(16),
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  dividerHeight: 2,
+                  indicatorWeight: 2,
+                  tabs: const [
+                    Tab(text: StringRes.quizzDetailsTabQuestions),
+                    Tab(text: StringRes.quizzDetailsTabSettings),
+                    Tab(text: StringRes.quizzDetailsTabStatistics),
+                    Tab(text: StringRes.quizzDetailsTabGeneral),
+                  ],
                 ),
-                Center(
-                  child: Text(StringRes.quizzDetailsTabSettings),
+              ),
+              const Expanded(
+                child: TabBarView(
+                  children: [
+                    QuizDetailsQuestionsTab(),
+                    Center(
+                      child: Text(StringRes.quizzDetailsTabSettings),
+                    ),
+                    Center(
+                      child: Text(StringRes.quizzDetailsTabStatistics),
+                    ),
+                    Center(
+                      child: Text(StringRes.quizzDetailsTabGeneral),
+                    ),
+                  ],
                 ),
-                Center(
-                  child: Text(StringRes.quizzDetailsTabStatistics),
-                ),
-                Center(
-                  child: Text(StringRes.quizzDetailsTabGeneral),
-                ),
-              ]),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
-      ).addPadding(padding: const EdgeInsets.all(16)),
+      ).addPadding(padding: const EdgeInsets.only(left: 16, right: 16)),
     );
   }
 }
