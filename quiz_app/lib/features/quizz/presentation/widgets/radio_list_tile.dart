@@ -54,13 +54,6 @@ class IRadioListTile<T> extends StatelessWidget {
               ),
               width: double.infinity,
               contentAlignment: MainAxisAlignment.start,
-              icon: !isSelected
-                  ? SvgPicture.asset(
-                      MediaRes.radioUnchecked,
-                      colorFilter: const ColorFilter.mode(
-                          AppColorScheme.primary, BlendMode.srcIn),
-                    )
-                  : null,
             ),
     );
   }

@@ -78,4 +78,12 @@ class StringRes {
   static const String addNewQuestionBottomSheetAI = "Generate question with AI";
   //QUIZ CREATION - PREVIEW
   static const String quizzCreationPreviewHeading = "Quizz Preview";
+
+  //QUIZ CREATION - ADD QUESTION
+  static const String quizzCreationAddQuestionHeading = "New question";
+  static const String quizzCreationAddQuestionTitleLabel = "Question Title";
+  static const String quizzCreationAddQuestionTitleHint = "Enter question title";
+  static const String quizzCreationAddQuestionDescriptionLabel = "Question Description";
+  static const String quizzCreationAddQuestionDescriptionHint = "Enter question description";
+  static const String quizzCreationAddQuestionAnswersLabel = "Answers";
 }

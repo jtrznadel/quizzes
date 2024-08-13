@@ -6,6 +6,7 @@ import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
 
 class QuizzPreviewScreen extends StatelessWidget {
   const QuizzPreviewScreen({super.key});
@@ -37,7 +38,9 @@ class QuizzPreviewScreen extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: SecondaryButton(
-                onPressed: () {},
+                onPressed: () {
+                  AddNewQuestionBottomSheet.show(context);
+                },
                 text: 'New question',
                 width: context.width / 2,
               ),
