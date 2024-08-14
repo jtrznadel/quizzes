@@ -36,4 +36,6 @@ abstract class AppColorScheme {
   static const Color infoDark = Color(0xFF042961);
 
   static const Color inactiveSwitchTrackColor = Color(0xFFDADDDE);
+
+  static const Color questionBoxContainerColor = Color(0xFFF4F4F5);
 }
