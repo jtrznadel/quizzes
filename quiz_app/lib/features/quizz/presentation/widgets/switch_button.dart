@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
-class QuizDetailsAnswersSwitch extends StatelessWidget {
-  const QuizDetailsAnswersSwitch(
+class SwitchButton extends StatelessWidget {
+  const SwitchButton(
       {super.key, required this.value, required this.onChanged});
 
   final bool value;

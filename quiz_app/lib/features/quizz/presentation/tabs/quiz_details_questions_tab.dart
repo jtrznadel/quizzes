@@ -6,7 +6,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/quiz_details_answers_switch.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/switch_button.dart';
 
 class QuizDetailsQuestionsTab extends StatefulWidget {
   const QuizDetailsQuestionsTab({super.key});
@@ -86,7 +86,7 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
               height: 32,
               child: FittedBox(
                 fit: BoxFit.fill,
-                child: QuizDetailsAnswersSwitch(
+                child: SwitchButton(
                   value: answersVisible,
                   onChanged: (value) {
                     setState(() {

@@ -7,7 +7,8 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/quiz_details_questions_tab.dart';
+import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
+import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
 
 class QuizzDetailsScreen extends StatelessWidget {
   const QuizzDetailsScreen({super.key});
@@ -56,9 +57,7 @@ class QuizzDetailsScreen extends StatelessWidget {
               child: TabBarView(
                 children: [
                   QuizDetailsQuestionsTab(),
-                  Center(
-                    child: Text(StringRes.quizzDetailsTabSettings),
-                  ),
+                  QuizDetailsSettingsTab(),
                   Center(
                     child: Text(StringRes.quizzDetailsTabStatistics),
                   ),
