@@ -10,15 +10,19 @@ class AnswerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.white,
+      ),
       child: ListTile(
         visualDensity: const VisualDensity(vertical: -4),
         leading: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'A',
+              leading,
               style: context.textTheme.labelMedium,
             ),
             const SizedBox(
@@ -31,12 +35,6 @@ class AnswerTile extends StatelessWidget {
           text,
           style: context.textTheme.bodyMedium,
         ),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-        tileColor: Colors.white,
       ),
     );
   }

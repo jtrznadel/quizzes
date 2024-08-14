@@ -28,56 +28,47 @@ class QuizzDetailsScreen extends StatelessWidget {
       ),
       body: DefaultTabController(
         length: 4,
-        child: Material(
-          color: AppColorScheme.surface,
-          child: Column(
-            children: [
-              Material(
-                color: AppColorScheme.surface,
-                child: const QuizzSummary(
-                        title: StringRes.tempQuizzSummaryTitle,
-                        description: StringRes.tempQuizzSummaryDescription)
-                    .addPadding(padding: const EdgeInsets.only(bottom: 16)),
+        child: Column(
+          children: [
+            const QuizzSummary(
+              title: StringRes.tempQuizzSummaryTitle,
+              description: StringRes.tempQuizzSummaryDescription,
+            ).addPadding(padding: const EdgeInsets.only(bottom: 16)),
+            TabBar(
+              dividerColor: AppColorScheme.border,
+              labelColor: AppColorScheme.primary,
+              labelStyle: context.textTheme.labelMedium!,
+              unselectedLabelColor: AppColorScheme.textSecondary,
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              splashBorderRadius: BorderRadius.circular(16),
+              indicatorSize: TabBarIndicatorSize.tab,
+              dividerHeight: 2,
+              indicatorWeight: 2,
+              tabs: const [
+                Tab(text: StringRes.quizzDetailsTabQuestions),
+                Tab(text: StringRes.quizzDetailsTabSettings),
+                Tab(text: StringRes.quizzDetailsTabStatistics),
+                Tab(text: StringRes.quizzDetailsTabGeneral),
+              ],
+            ),
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  QuizDetailsQuestionsTab(),
+                  Center(
+                    child: Text(StringRes.quizzDetailsTabSettings),
+                  ),
+                  Center(
+                    child: Text(StringRes.quizzDetailsTabStatistics),
+                  ),
+                  Center(
+                    child: Text(StringRes.quizzDetailsTabGeneral),
+                  ),
+                ],
               ),
-              Material(
-                color: AppColorScheme.surface,
-                child: TabBar(
-                  dividerColor: AppColorScheme.border,
-                  labelColor: AppColorScheme.primary,
-                  labelStyle: context.textTheme.labelMedium!,
-                  unselectedLabelColor: AppColorScheme.textSecondary,
-                  isScrollable: true,
-                  tabAlignment: TabAlignment.start,
-                  splashBorderRadius: BorderRadius.circular(16),
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  dividerHeight: 2,
-                  indicatorWeight: 2,
-                  tabs: const [
-                    Tab(text: StringRes.quizzDetailsTabQuestions),
-                    Tab(text: StringRes.quizzDetailsTabSettings),
-                    Tab(text: StringRes.quizzDetailsTabStatistics),
-                    Tab(text: StringRes.quizzDetailsTabGeneral),
-                  ],
-                ),
-              ),
-              const Expanded(
-                child: TabBarView(
-                  children: [
-                    QuizDetailsQuestionsTab(),
-                    Center(
-                      child: Text(StringRes.quizzDetailsTabSettings),
-                    ),
-                    Center(
-                      child: Text(StringRes.quizzDetailsTabStatistics),
-                    ),
-                    Center(
-                      child: Text(StringRes.quizzDetailsTabGeneral),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ).addPadding(padding: const EdgeInsets.only(left: 16, right: 16)),
     );
