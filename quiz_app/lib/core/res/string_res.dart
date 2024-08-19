@@ -102,5 +102,11 @@ class StringRes {
   static const String quizzCreationGenerateQuestionPromptHint = "Enter prompt for AI to generate question";
   static const String quizzCreationGenerateQuestionGenerateButton = "Generate";
 
+  //QUIZ CREATION - SUCCESS
+  static const String quizzCreationSuccessHeading = "Success!";
+  static const String quizzCreationSuccessSubheading = "You succesfully created your quizz. You can now share it with others.";
+  static const String quizzCreationSuccessShareButton = "Share with others!";
+  static const String quizzCreationSuccessBackButton = "Back to dashboard";
+
 ////
 }
