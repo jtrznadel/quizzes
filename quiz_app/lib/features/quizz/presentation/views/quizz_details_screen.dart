@@ -9,6 +9,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
+import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_statistics_tab.dart';
 
 class QuizzDetailsScreen extends StatefulWidget {
   const QuizzDetailsScreen({super.key});
@@ -98,9 +99,7 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
       case 1:
         return const QuizDetailsSettingsTab();
       case 2:
-        return const Center(
-          child: Text(StringRes.quizzDetailsTabStatistics),
-        );
+        return const QuizDetailsStatisticsTab();
       case 3:
         return const Center(
           child: Text(StringRes.quizzDetailsTabGeneral),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/new_password_screen.dart';
@@ -7,6 +8,7 @@ import 'package:quiz_app/features/auth/presentation/views/successful_password_re
 import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/quiz_attempt_item.dart';
 
 class TempScreen extends StatelessWidget {
   const TempScreen({super.key});
@@ -66,6 +68,7 @@ class TempScreen extends StatelessWidget {
               },
               child: const Text('Quiz details'),
             ),
+            const QuizAttemptItem().addPadding(padding: const EdgeInsets.all(16)),
           ],
         ),
       ),

@@ -111,4 +111,15 @@ class StringRes {
   static const String quizzDetailsTabSettingsQuizAvailabilityActive = "Active";
   static const String quizzDetailsTabSettingsQuizAvailabilityPublic = "Public";
   static const String quizzDetailsTabSettingsSaveChanges = "Save changes";
+  //QUIZ DETAILS - STATISTICS
+  static const String quizzDetailsTabStatisticsSubheading =
+      "You can view your quiz statistics here.";
+  static const String quizzDetailsTabStatisticsDetailsStatusBadge = "Details";
+  static const String quizzDetailsTabStatisticsFinishedStatusBadge = "Finished";
+  static const String quizzDetailsTabStatisticsStoppedStatusBadge = "Stopped";
+  static const String quizzDetailsTabStatisticsScore = "Score";
+  static const String quizzDetailsTabStatisticsName = "Name";
+  static const String quizzDetailsTabStatisticsDate = "Date";
+  static const String quizzDetailsTabStatisticsTime = "Time";
+  static const String quizzDetailsTabStatisticsEmail = "Duration";
 }

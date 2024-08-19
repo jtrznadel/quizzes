@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
