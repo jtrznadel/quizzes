@@ -18,10 +18,13 @@ class AddNewQuestionDialog extends StatefulWidget {
   static void show(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => const Wrap(
-        children: [
-          AddNewQuestionDialog(),
-        ],
+      builder: (context) => const Align(
+        alignment: Alignment.center,
+        child: Wrap(
+          children: [
+            AddNewQuestionDialog(),
+          ],
+        ),
       ),
     );
   }

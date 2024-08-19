@@ -95,4 +95,12 @@ class StringRes {
   static const String quizzCreationAddQuestionAnswersLabel = "Answers";
   static const String quizzCreationSaveQuestion = "Save";
   static const String quizzCreationAddQuestionAnswerPlaceholder = "What is one of the key features of cryptocurrencies?";
+
+  //QUIZ CREATION - GENERATE QUESTION
+  static const String quizzCreationGenerateQuestionHeading = "Generate new question";
+  static const String quizzCreationGenerateQuestionPromptLabel = "Prompt";
+  static const String quizzCreationGenerateQuestionPromptHint = "Enter prompt for AI to generate question";
+  static const String quizzCreationGenerateQuestionGenerateButton = "Generate";
+
+////
 }
