@@ -122,4 +122,19 @@ class StringRes {
   static const String quizzDetailsTabStatisticsDate = "Date";
   static const String quizzDetailsTabStatisticsTime = "Time";
   static const String quizzDetailsTabStatisticsEmail = "Duration";
+  //QUIZ DETAILS - GENERAL
+  static const String quizzDetailsTabGeneralSubheading =
+      "Manage your quiz page settings here.";
+  static const String quizzDetailsTabGeneralPageSettingsHeading =
+      "Quiz page settings";
+  static const String quizzDetailsTabGeneralQuizTitle = "Quiz title";
+  static const String quizzDetailsTabGeneralQuizTitleTextFieldDescription =
+      "This is you public quiz title. It will be displayed on your quiz page. You can change it anytime.";
+  static const String quizzDetailsTabGeneralQuizTitleHint = "Enter quiz title";
+  static const String quizzDetailsTabGeneralQuizDescription =
+      "Quiz description";
+  static const String
+      quizzDetailsTabGeneralQuizDescriptionTextFieldDescription =
+      "This is your public quiz description. It will be displayed on your quiz page. You can change it anytime.";
+  static const String quizzDetailsTabGeneralQuizDescriptionHint = "Enter quiz title";
 }

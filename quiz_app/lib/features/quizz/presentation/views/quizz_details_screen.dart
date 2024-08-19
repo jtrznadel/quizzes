@@ -7,6 +7,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_general_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_statistics_tab.dart';
@@ -101,9 +102,7 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
       case 2:
         return const QuizDetailsStatisticsTab();
       case 3:
-        return const Center(
-          child: Text(StringRes.quizzDetailsTabGeneral),
-        );
+        return const QuizDetailsGeneralTab();
       default:
         return const Center(
           child: Text(StringRes.quizzDetailsTabGeneral),
