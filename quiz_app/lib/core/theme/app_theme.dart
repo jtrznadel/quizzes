@@ -5,6 +5,7 @@ import 'app_color_scheme.dart';
 
 abstract class AppTheme {
   static const double pageDefaultSpacingSize = 16;
+  static const double answerTextAreaPadding = 8;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,

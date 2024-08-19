@@ -27,51 +27,53 @@ class IFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: bgColor,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          RichText(
-            text: TextSpan(
-              text: labelText,
-              style: context.textTheme.bodyMedium,
-              children: [
-                TextSpan(
-                  text: required ? '*' : '',
-                  style: context.textTheme.bodyMedium!.copyWith(
-                    color: AppColorScheme.error,
+    return Material(
+      child: Container(
+        color: bgColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            RichText(
+              text: TextSpan(
+                text: labelText,
+                style: context.textTheme.bodyMedium,
+                children: [
+                  TextSpan(
+                    text: required ? '*' : '',
+                    style: context.textTheme.bodyMedium!.copyWith(
+                      color: AppColorScheme.error,
+                    ),
                   ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: TextFormField(
+                controller: controller,
+                validator: (value) {
+                  if (required && (value == null || value.isEmpty)) {
+                    return 'This field is required';
+                  }
+                  return null;
+                },
+                obscureText: obscureText,
+                keyboardType: keyboardType,
+                decoration: InputDecoration(
+                  hintText: hintText,
+                  suffixIcon: suffixIcon,
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: TextFormField(
-              controller: controller,
-              validator: (value) {
-                if (required && (value == null || value.isEmpty)) {
-                  return 'This field is required';
-                }
-                return null;
-              },
-              obscureText: obscureText,
-              keyboardType: keyboardType,
-              decoration: InputDecoration(
-                hintText: hintText,
-                suffixIcon: suffixIcon,
-              ),
-              style: context.textTheme.labelMedium!.copyWith(
-                fontWeight: FontWeight.w400,
-                fontFamily: GoogleFonts.inter().fontFamily,
+                style: context.textTheme.labelMedium!.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontFamily: GoogleFonts.inter().fontFamily,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

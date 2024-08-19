@@ -93,4 +93,6 @@ class StringRes {
   static const String quizzCreationAddQuestionDescriptionLabel = "Question Description";
   static const String quizzCreationAddQuestionDescriptionHint = "Enter question description";
   static const String quizzCreationAddQuestionAnswersLabel = "Answers";
+  static const String quizzCreationSaveQuestion = "Save";
+  static const String quizzCreationAddQuestionAnswerPlaceholder = "What is one of the key features of cryptocurrencies?";
 }
