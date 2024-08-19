@@ -10,10 +10,32 @@ import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
 
-class QuizzDetailsScreen extends StatelessWidget {
+class QuizzDetailsScreen extends StatefulWidget {
   const QuizzDetailsScreen({super.key});
 
   static const String routeName = '/quizzDetails';
+
+  @override
+  State<StatefulWidget> createState() {
+    return _QuizzDetailsScreenState();
+  }
+}
+
+class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    tabController = TabController(
+      length: 4,
+      initialIndex: 0,
+      vsync: this,
+    );
+    super.initState();
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +49,7 @@ class QuizzDetailsScreen extends StatelessWidget {
           ).addPadding(padding: const EdgeInsets.only(right: 16)),
         ],
       ),
-      body: DefaultTabController(
-        length: 4,
+      body: SingleChildScrollView(
         child: Column(
           children: [
             const QuizzSummary(
@@ -46,6 +67,10 @@ class QuizzDetailsScreen extends StatelessWidget {
               indicatorSize: TabBarIndicatorSize.tab,
               dividerHeight: 2,
               indicatorWeight: 2,
+              controller: tabController,
+              onTap: (index) {
+                setState(() {});
+              },
               tabs: const [
                 Tab(text: StringRes.quizzDetailsTabQuestions),
                 Tab(text: StringRes.quizzDetailsTabSettings),
@@ -53,23 +78,37 @@ class QuizzDetailsScreen extends StatelessWidget {
                 Tab(text: StringRes.quizzDetailsTabGeneral),
               ],
             ),
-            const Expanded(
-              child: TabBarView(
-                children: [
-                  QuizDetailsQuestionsTab(),
-                  QuizDetailsSettingsTab(),
-                  Center(
-                    child: Text(StringRes.quizzDetailsTabStatistics),
-                  ),
-                  Center(
-                    child: Text(StringRes.quizzDetailsTabGeneral),
-                  ),
-                ],
-              ),
-            ),
+            _getTabAtIndex(tabController.index),
           ],
-        ),
-      ).addPadding(padding: const EdgeInsets.only(left: 16, right: 16)),
+        ).addPadding(padding: const EdgeInsets.only(left: 16, right: 16)),
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
+  Widget _getTabAtIndex(int index) {
+    switch (index) {
+      case 0:
+        return const QuizDetailsQuestionsTab();
+      case 1:
+        return const QuizDetailsSettingsTab();
+      case 2:
+        return const Center(
+          child: Text(StringRes.quizzDetailsTabStatistics),
+        );
+      case 3:
+        return const Center(
+          child: Text(StringRes.quizzDetailsTabGeneral),
+        );
+      default:
+        return const Center(
+          child: Text(StringRes.quizzDetailsTabGeneral),
+        );
+    }
   }
 }

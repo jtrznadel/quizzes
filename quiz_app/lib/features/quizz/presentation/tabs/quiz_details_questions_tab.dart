@@ -23,14 +23,8 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: ListView(
-            children: [
               questionsHeader(context),
               questionsList(context),
-            ],
-          ),
-        ),
       ],
     );
   }
