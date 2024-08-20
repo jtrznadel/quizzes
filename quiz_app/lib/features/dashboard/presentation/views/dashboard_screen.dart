@@ -9,6 +9,7 @@ import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/new_quiz_button.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/quiz_list_item.dart';
+import 'package:quiz_app/features/profile/presentation/views/profile_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -61,7 +62,7 @@ class DashboardScreen extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                //TODO: open user profile
+                context.navigator.pushNamed(ProfileScreen.routeName);
               },
               icon:
                   SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),

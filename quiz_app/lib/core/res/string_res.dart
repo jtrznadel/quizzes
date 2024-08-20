@@ -168,4 +168,14 @@ class StringRes {
   //DASHBOARD
   static const String dashboardTopHeading = "Quizzes";
   static const String dashboardSubheading = "Here, you can effortlessly list, delete, edit and create new exams.";
+
+  //PROFILE
+  static const String profileAppbarTitle = "Profile";
+  static const String profileSubheading = "Manage your profile settings here.";
+  static const String profileNameDescription = "This is your public display name.";
+  static const String profileNameHint = "Enter your name";
+  static const String profileNameLabel = "Name";
+  static const String profileUpdateButton = "Update";
+  static const String profileDeleteButton = "Delete";
+  static const String profileDeleteButtonLabel = "Delete your account";
 }

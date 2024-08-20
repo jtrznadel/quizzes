@@ -5,6 +5,7 @@ import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
 
 class NewQuizButton extends StatelessWidget {
   const NewQuizButton({super.key});
@@ -19,7 +20,9 @@ class NewQuizButton extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            context.navigator.pushNamed(QuizzCreationScreen.routeName);
+          },
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
