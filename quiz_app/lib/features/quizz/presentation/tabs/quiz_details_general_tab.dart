@@ -45,8 +45,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     ]);
   }
 
-  Widget quizTitleTextField(
-      BuildContext context, TextEditingController controller) {
+  Widget quizTitleTextField(BuildContext context, TextEditingController controller) {
     return Column(
       children: [
         TextArea(
@@ -64,13 +63,29 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     ).addPadding(padding: const EdgeInsets.only(top: 16));
   }
 
+  Widget quizDescriptionTextField(BuildContext context, TextEditingController controller) {
+    return Column(
+      children: [
+        TextArea(
+          labelText: StringRes.quizzDetailsTabGeneralQuizDescription,
+          hintText: StringRes.quizzDetailsTabGeneralQuizDescriptionHint,
+          controller: controller,
+          minLines: 1,
+          maxLines: 10,
+        ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+        Text(
+          StringRes.quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
+          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+        ).addPadding(padding: const EdgeInsets.only(bottom: 8))
+      ],
+    ).addPadding(padding: const EdgeInsets.only(top: 16));
+  }
 
   Widget saveButton(BuildContext context, TextEditingController titleController, TextEditingController descriptionController) {
     return Align(
       alignment: Alignment.centerRight,
       child: BasicButton(
-        onPressed: () {
-        },
+        onPressed: () {},
         //TODO: replace with string res
         text: 'Save changes',
       ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
