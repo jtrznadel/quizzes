@@ -20,4 +20,6 @@ class MediaRes {
   static const String pencil = 'assets/icons/pencil_edit.svg';
   static const String trash = 'assets/icons/trash.svg';
   static const String share = 'assets/icons/share.svg';
+  static const String generate = 'assets/icons/generate.svg';
+  static const String copy = 'assets/icons/copy.svg';
 }

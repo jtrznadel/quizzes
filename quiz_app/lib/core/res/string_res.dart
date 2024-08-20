@@ -93,4 +93,20 @@ class StringRes {
   static const String quizzCreationAddQuestionDescriptionLabel = "Question Description";
   static const String quizzCreationAddQuestionDescriptionHint = "Enter question description";
   static const String quizzCreationAddQuestionAnswersLabel = "Answers";
+  static const String quizzCreationSaveQuestion = "Save";
+  static const String quizzCreationAddQuestionAnswerPlaceholder = "What is one of the key features of cryptocurrencies?";
+
+  //QUIZ CREATION - GENERATE QUESTION
+  static const String quizzCreationGenerateQuestionHeading = "Generate new question";
+  static const String quizzCreationGenerateQuestionPromptLabel = "Prompt";
+  static const String quizzCreationGenerateQuestionPromptHint = "Enter prompt for AI to generate question";
+  static const String quizzCreationGenerateQuestionGenerateButton = "Generate";
+
+  //QUIZ CREATION - SUCCESS
+  static const String quizzCreationSuccessHeading = "Success!";
+  static const String quizzCreationSuccessSubheading = "You succesfully created your quizz. You can now share it with others.";
+  static const String quizzCreationSuccessShareButton = "Share with others!";
+  static const String quizzCreationSuccessBackButton = "Back to dashboard";
+
+////
 }

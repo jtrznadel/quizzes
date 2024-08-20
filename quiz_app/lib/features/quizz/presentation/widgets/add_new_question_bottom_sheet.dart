@@ -6,6 +6,7 @@ import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_dialog.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/bottom_sheet_tile.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/generate_new_question_dialog.dart';
 
 class AddNewQuestionBottomSheet extends StatelessWidget {
   const AddNewQuestionBottomSheet({super.key});
@@ -33,7 +34,8 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
           text: StringRes.addNewQuestionBottomSheetAI,
           icon: SvgPicture.asset(MediaRes.addQuestionAI),
           onTap: () {
-            //TODO: add manual question logic
+            Navigator.pop(context);
+            GenerateNewQuestionDialog.show(context);
           },
         )
       ],
