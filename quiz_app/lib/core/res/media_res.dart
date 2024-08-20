@@ -12,4 +12,7 @@ class MediaRes {
   //ICONS
   static const String fluentEye = 'assets/icons/fluent_eye.svg';
   static const String arrowBack = 'assets/icons/arrow_back.svg';
+  static const String deleteQuiz = 'assets/icons/delete_icon.svg';
+  static const String userProfile = 'assets/icons/dashboard_profile_icon.svg';
+  static const String addQuiz = 'assets/icons/add_quiz_icon.svg';
 }

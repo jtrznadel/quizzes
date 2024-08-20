@@ -30,4 +30,8 @@ class StringRes {
   static const String newPasswordInputLabel = "New password";
   static const String newPasswordInputHint = "Your password";
   static const String newPasswordButton = "Save and login";
+
+  //DASHBOARD
+  static const String dashboardTopHeading = "Quizzes";
+  static const String dashboardSubheading = "Here, you can effortlessly list, delete, edit and create new exams.";
 }
