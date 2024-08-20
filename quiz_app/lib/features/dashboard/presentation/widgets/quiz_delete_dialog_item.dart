@@ -42,7 +42,7 @@ class QuizDeleteDialogItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: children)
               .addPadding(
-            padding: const EdgeInsets.all(24),
+            padding: const EdgeInsets.all(16),
           ),
         ),
       ),
