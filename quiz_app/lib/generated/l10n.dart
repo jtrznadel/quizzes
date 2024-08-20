@@ -61,10 +61,10 @@ class S {
   }
 
   /// `Don''t have an account?`
-  String get signInAlreadyHaveAccount {
+  String get signInDontHaveAccount {
     return Intl.message(
       'Don\'\'t have an account?',
-      name: 'signInAlreadyHaveAccount',
+      name: 'signInDontHaveAccount',
       desc: '',
       args: [],
     );
@@ -995,6 +995,106 @@ class S {
     return Intl.message(
       'Here, you can effortlessly list, delete, edit and create new exams.',
       name: 'dashboardSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Understanding Cryptocurrencies and Their Impact on Finance`
+  String get tempQuizzSummaryTitle {
+    return Intl.message(
+      'Understanding Cryptocurrencies and Their Impact on Finance',
+      name: 'tempQuizzSummaryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.`
+  String get tempQuizzSummaryDescription {
+    return Intl.message(
+      'Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.',
+      name: 'tempQuizzSummaryDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is one of the key features of cryptocurrencies?`
+  String get tempQuestion {
+    return Intl.message(
+      'What is one of the key features of cryptocurrencies?',
+      name: 'tempQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Question description`
+  String get tempQuestionDescription {
+    return Intl.message(
+      'Question description',
+      name: 'tempQuestionDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Decentralization`
+  String get tempAnswer1 {
+    return Intl.message(
+      'Decentralization',
+      name: 'tempAnswer1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Physical existence`
+  String get tempAnswer2 {
+    return Intl.message(
+      'Physical existence',
+      name: 'tempAnswer2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Centralized control`
+  String get tempAnswer3 {
+    return Intl.message(
+      'Centralized control',
+      name: 'tempAnswer3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Government regulation`
+  String get tempAnswer4 {
+    return Intl.message(
+      'Government regulation',
+      name: 'tempAnswer4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueButton {
+    return Intl.message(
+      'Continue',
+      name: 'continueButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OR`
+  String get dividerOr {
+    return Intl.message(
+      'OR',
+      name: 'dividerOr',
       desc: '',
       args: [],
     );

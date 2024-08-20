@@ -9,6 +9,7 @@ import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizzTextPromptScreen extends StatefulWidget {
   const QuizzTextPromptScreen({super.key, required this.pageController});
@@ -36,34 +37,34 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.quizzCreationTextPromptHeading,
+              S.of(context).quizzCreationTextPromptHeading,
               style: context.textTheme.headlineLarge,
             ),
             Text(
-              StringRes.quizzCreationTextPromptSubheading,
+              S.of(context).quizzCreationTextPromptSubheading,
               style: context.textTheme.bodyMedium,
             ),
             const SizedBox(
               height: 40,
             ),
             TextArea(
-              labelText: StringRes.quizzCreationTextPromptTextAreaLabel,
-              hintText: StringRes.quizzCreationTextPromptTextAreaHint,
+              labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
+              hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
               minLines: 3,
               maxLines: 3,
               required: true,
               controller: _promptController,
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
               child: TextDivider(
-                text: StringRes.dividerOr,
+                text: S.of(context).dividerOr,
                 color: AppColorScheme.textSecondary,
               ),
             ),
             SecondaryButton(
               onPressed: () {},
-              text: StringRes.quizzCreationUploadFile,
+              text: S.of(context).quizzCreationUploadFile,
               icon: SvgPicture.asset(
                 MediaRes.uploadFile,
               ),
@@ -79,7 +80,7 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
                   curve: Curves.easeInOut,
                 );
               },
-              text: StringRes.continueButton,
+              text: S.of(context).continueButton,
               width: double.infinity,
             ),
           ],

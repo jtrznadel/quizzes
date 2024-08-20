@@ -11,6 +11,7 @@ import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_general_t
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_statistics_tab.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizzDetailsScreen extends StatefulWidget {
   const QuizzDetailsScreen({super.key});
@@ -23,8 +24,7 @@ class QuizzDetailsScreen extends StatefulWidget {
   }
 }
 
-class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
-    with SingleTickerProviderStateMixin {
+class _QuizzDetailsScreenState extends State<QuizzDetailsScreen> with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -37,13 +37,11 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
     super.initState();
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppBar(
-        title: StringRes.quizzDetailsAppbarTitle,
+        title: S.of(context).quizzDetailsAppbarTitle,
         actions: [
           IconButton(
             icon: SvgPicture.asset(MediaRes.share),
@@ -54,9 +52,9 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const QuizzSummary(
-              title: StringRes.tempQuizzSummaryTitle,
-              description: StringRes.tempQuizzSummaryDescription,
+            QuizzSummary(
+              title: S.of(context).tempQuizzSummaryTitle,
+              description: S.of(context).tempQuizzSummaryDescription,
             ).addPadding(padding: const EdgeInsets.only(bottom: 16)),
             TabBar(
               dividerColor: AppColorScheme.border,
@@ -73,11 +71,11 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
               onTap: (index) {
                 setState(() {});
               },
-              tabs: const [
-                Tab(text: StringRes.quizzDetailsTabQuestions),
-                Tab(text: StringRes.quizzDetailsTabSettings),
-                Tab(text: StringRes.quizzDetailsTabStatistics),
-                Tab(text: StringRes.quizzDetailsTabGeneral),
+              tabs: [
+                Tab(text: S.of(context).quizzDetailsTabQuestions),
+                Tab(text: S.of(context).quizzDetailsTabSettings),
+                Tab(text: S.of(context).quizzDetailsTabStatistics),
+                Tab(text: S.of(context).quizzDetailsTabGeneral),
               ],
             ),
             _getTabAtIndex(tabController.index),
@@ -104,8 +102,8 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen>
       case 3:
         return const QuizDetailsGeneralTab();
       default:
-        return const Center(
-          child: Text(StringRes.quizzDetailsTabGeneral),
+        return Center(
+          child: Text(S.of(context).quizzDetailsTabGeneral),
         );
     }
   }

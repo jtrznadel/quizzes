@@ -7,6 +7,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_dialog.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/bottom_sheet_tile.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/generate_new_question_dialog.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class AddNewQuestionBottomSheet extends StatelessWidget {
   const AddNewQuestionBottomSheet({super.key});
@@ -17,13 +18,13 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          StringRes.addNewQuestionBottomSheetHeading,
+          S.of(context).addNewQuestionBottomSheetHeading,
           style: context.theme.textTheme.headlineMedium,
         ).addPadding(
           padding: const EdgeInsets.only(top: 24),
         ),
         BottomSheetTile(
-          text: StringRes.addNewQuestionBottomSheetManual,
+          text: S.of(context).addNewQuestionBottomSheetManual,
           icon: SvgPicture.asset(MediaRes.addQuestionManual),
           onTap: () {
             Navigator.pop(context);
@@ -31,7 +32,7 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
           },
         ),
         BottomSheetTile(
-          text: StringRes.addNewQuestionBottomSheetAI,
+          text: S.of(context).addNewQuestionBottomSheetAI,
           icon: SvgPicture.asset(MediaRes.addQuestionAI),
           onTap: () {
             Navigator.pop(context);

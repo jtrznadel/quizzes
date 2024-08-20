@@ -7,6 +7,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuestionBox extends StatelessWidget {
   const QuestionBox({super.key, required this.questionNumber});
@@ -42,7 +43,7 @@ class QuestionBox extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Text(
-                      '$questionNumber. ${StringRes.tempQuestion}',
+                      '$questionNumber. ${S.of(context).tempQuestion}',
                       style: context.textTheme.labelMedium,
                     ),
                   ),
@@ -69,27 +70,27 @@ class QuestionBox extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                StringRes.tempQuestionDescription,
+                S.of(context).tempQuestionDescription,
                 style: context.textTheme.bodyMedium,
               ),
               const SizedBox(
                 height: 16,
               ),
-              const Column(
+              Column(
                 children: [
-                  AnswerTile(leading: 'A', text: StringRes.tempAnswer1),
-                  SizedBox(
+                  AnswerTile(leading: 'A', text: S.of(context).tempAnswer1),
+                  const SizedBox(
                     height: 8,
                   ),
-                  AnswerTile(leading: 'B', text: StringRes.tempAnswer2),
-                  SizedBox(
+                  AnswerTile(leading: 'B', text: S.of(context).tempAnswer2),
+                  const SizedBox(
                     height: 8,
                   ),
-                  AnswerTile(leading: 'C', text: StringRes.tempAnswer3),
-                  SizedBox(
+                  AnswerTile(leading: 'C', text: S.of(context).tempAnswer3),
+                  const SizedBox(
                     height: 8,
                   ),
-                  AnswerTile(leading: 'D', text: StringRes.tempAnswer4),
+                  AnswerTile(leading: 'D', text: S.of(context).tempAnswer4),
                 ],
               )
             ],

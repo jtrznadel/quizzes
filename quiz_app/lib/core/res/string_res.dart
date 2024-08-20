@@ -25,12 +25,12 @@ class StringRes {
   // static const String signUpAlready = "Already have an account?";
 
   //FORGOT PASSWORD
-  static const String forgotPasswordAppbarTitle = "Password reset";
-  static const String forgotPasswordHeading = "Forgot password?";
-  static const String forgotPasswordSubheading = "Don't worry! It happens. Enter the email address associated with your account.";
-  static const String forgotPasswordInputLabel = "E-mail";
-  static const String forgotPasswordInputHint = "Your e-mail";
-  static const String forgotPasswordButton = "Send e-mail";
+  // static const String forgotPasswordAppbarTitle = "Password reset";
+  // static const String forgotPasswordHeading = "Forgot password?";
+  // static const String forgotPasswordSubheading = "Don't worry! It happens. Enter the email address associated with your account.";
+  // static const String forgotPasswordInputLabel = "E-mail";
+  // static const String forgotPasswordInputHint = "Your e-mail";
+  // static const String forgotPasswordButton = "Send e-mail";
 
   //SUCCESSFUL PASSWORD RESET REQUEST
   static const String successfulPasswordResetRequestHeading = "E-mail sent";

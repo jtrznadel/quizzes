@@ -9,6 +9,8 @@ import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/generated/l10n.dart';
+
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_dialog.dart';
 
 class GenerateNewQuestionDialog extends StatefulWidget {
@@ -56,15 +58,15 @@ class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.quizzCreationGenerateQuestionHeading,
+              S.of(context).quizzCreationGenerateQuestionHeading,
               style: context.textTheme.headlineSmall,
             ),
             const SizedBox(
               height: 24,
             ),
             TextArea(
-              labelText: StringRes.quizzCreationGenerateQuestionPromptLabel,
-              hintText: StringRes.quizzCreationGenerateQuestionPromptHint,
+              labelText: S.of(context).quizzCreationGenerateQuestionPromptLabel,
+              hintText: S.of(context).quizzCreationGenerateQuestionPromptHint,
               controller: promptController,
               maxLines: 10,
               textStyle: context.textTheme.bodyMedium!.copyWith(
@@ -81,7 +83,7 @@ class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  text: StringRes.quizzCreationQuitButtonCancel,
+                  text: S.of(context).quizzCreationQuitButtonCancel,
                   bgColor: Colors.transparent,
                   width: 110,
                 ),
@@ -90,7 +92,7 @@ class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
                     Navigator.pop(context);
                     AddNewQuestionDialog.show(context);
                   },
-                  text: StringRes.quizzCreationGenerateQuestionGenerateButton,
+                  text: S.of(context).quizzCreationGenerateQuestionGenerateButton,
                   icon: SvgPicture.asset(
                     MediaRes.generate,
                     colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),

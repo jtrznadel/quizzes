@@ -7,6 +7,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizzPreviewScreen extends StatelessWidget {
   const QuizzPreviewScreen({super.key, required this.pageController});
@@ -23,15 +24,15 @@ class QuizzPreviewScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.quizzCreationPreviewHeading,
+              S.of(context).quizzCreationPreviewHeading,
               style: context.textTheme.headlineLarge,
             ),
             const SizedBox(
               height: 24,
             ),
-            const QuizzSummary(
-              title: StringRes.tempQuizzSummaryTitle,
-              description: StringRes.tempQuizzSummaryDescription,
+            QuizzSummary(
+              title: S.of(context).tempQuizzSummaryTitle,
+              description: S.of(context).tempQuizzSummaryDescription,
             ),
             const SizedBox(
               height: 40,
@@ -51,7 +52,9 @@ class QuizzPreviewScreen extends StatelessWidget {
             ),
             //TODO: Remove loop and implement a listview.builder with question model
             for (int i = 0; i < 3; i++) ...[
-              QuestionBox(questionNumber: i + 1,),
+              QuestionBox(
+                questionNumber: i + 1,
+              ),
               const SizedBox(
                 height: 32,
               ),

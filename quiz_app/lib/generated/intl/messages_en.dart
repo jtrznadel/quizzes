@@ -28,9 +28,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add new question"),
         "addNewQuestionBottomSheetManual":
             MessageLookupByLibrary.simpleMessage("Manual"),
+        "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Here, you can effortlessly list, delete, edit and create new exams."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzes"),
+        "dividerOr": MessageLookupByLibrary.simpleMessage("OR"),
         "forgotPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Password reset"),
         "forgotPasswordButton":
@@ -207,7 +209,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabStatisticsTime":
             MessageLookupByLibrary.simpleMessage("Time"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Title: "),
-        "signInAlreadyHaveAccount":
+        "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "signInHeading":
             MessageLookupByLibrary.simpleMessage("Enter credentials"),
@@ -221,6 +223,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail sent"),
         "successfulPasswordResetRequestSubheading":
             MessageLookupByLibrary.simpleMessage(
-                "Check your e-mail, there will be an e-mail with password reset link.")
+                "Check your e-mail, there will be an e-mail with password reset link."),
+        "tempAnswer1": MessageLookupByLibrary.simpleMessage("Decentralization"),
+        "tempAnswer2":
+            MessageLookupByLibrary.simpleMessage("Physical existence"),
+        "tempAnswer3":
+            MessageLookupByLibrary.simpleMessage("Centralized control"),
+        "tempAnswer4":
+            MessageLookupByLibrary.simpleMessage("Government regulation"),
+        "tempQuestion": MessageLookupByLibrary.simpleMessage(
+            "What is one of the key features of cryptocurrencies?"),
+        "tempQuestionDescription":
+            MessageLookupByLibrary.simpleMessage("Question description"),
+        "tempQuizzSummaryDescription": MessageLookupByLibrary.simpleMessage(
+            "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges."),
+        "tempQuizzSummaryTitle": MessageLookupByLibrary.simpleMessage(
+            "Understanding Cryptocurrencies and Their Impact on Finance")
       };
 }

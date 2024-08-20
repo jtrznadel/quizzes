@@ -9,6 +9,7 @@ import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/new_quiz_button.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/quiz_list_item.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -31,9 +32,7 @@ class DashboardScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: quizzes.length,
                     itemBuilder: (context, index) {
-                      return QuizListItem(quizEntity: quizzes[index])
-                          .addPadding(
-                              padding: const EdgeInsets.only(bottom: 24));
+                      return QuizListItem(quizEntity: quizzes[index]).addPadding(padding: const EdgeInsets.only(bottom: 24));
                     },
                   ),
                   const NewQuizButton(),
@@ -56,24 +55,22 @@ class DashboardScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              StringRes.dashboardTopHeading,
+              S.of(context).dashboardTopHeading,
               style: context.theme.textTheme.headlineLarge,
             ),
             IconButton(
               onPressed: () {
                 //TODO: open user profile
               },
-              icon:
-                  SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
+              icon: SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
             )
           ],
         ).addPadding(
           padding: const EdgeInsets.only(bottom: 8),
         ),
         Text(
-          StringRes.dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          S.of(context).dashboardSubheading,
+          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     ).addPadding(padding: const EdgeInsets.only(bottom: 8));
@@ -84,8 +81,7 @@ class DashboardScreen extends StatelessWidget {
     for (int i = 0; i < number; i++) {
       quizes.add(
         TestQuizEntity(
-          quizTitle:
-              'Identify your bigest roadblock to succeeding in cryptocurrency',
+          quizTitle: 'Identify your bigest roadblock to succeeding in cryptocurrency',
           quizDescription:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus sagittis augue, vitae facilisis sem volutpat nec. Phasellus ac tincidunt nisl. Donec sed rutrum neque, vitae mattis velit. Donec non neque a erat finibus rutrum. Proin tincidunt leo hendrerit, sagittis lacus quis, finibus massa.',
           quizStatus: 'Active',

@@ -9,6 +9,7 @@ import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizzSuccessScreen extends StatelessWidget {
   const QuizzSuccessScreen({super.key});
@@ -23,14 +24,14 @@ class QuizzSuccessScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            StringRes.quizzCreationSuccessHeading,
+            S.of(context).quizzCreationSuccessHeading,
             style: context.textTheme.headlineLarge,
           ),
           const SizedBox(
             height: 8,
           ),
           Text(
-            StringRes.quizzCreationSuccessSubheading,
+            S.of(context).quizzCreationSuccessSubheading,
             style: context.textTheme.bodyMedium,
           ),
           const SizedBox(
@@ -72,7 +73,7 @@ class QuizzSuccessScreen extends StatelessWidget {
           ),
           BasicButton(
             onPressed: () {},
-            text: StringRes.quizzCreationSuccessShareButton,
+            text: S.of(context).quizzCreationSuccessShareButton,
             width: double.infinity,
           ),
           const SizedBox(
@@ -80,7 +81,7 @@ class QuizzSuccessScreen extends StatelessWidget {
           ),
           SecondaryButton(
             onPressed: () {},
-            text: StringRes.quizzCreationSuccessBackButton,
+            text: S.of(context).quizzCreationSuccessBackButton,
             width: double.infinity,
           ),
         ],

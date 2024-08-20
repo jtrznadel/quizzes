@@ -9,6 +9,7 @@ import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class NewPasswordScreen extends StatefulWidget {
   const NewPasswordScreen({super.key});
@@ -34,24 +35,24 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(title: StringRes.newPasswordAppbarTitle),
+      appBar: BasicAppBar(title: S.of(context).newPasswordAppbarTitle),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.newPasswordHeading,
+              S.of(context).newPasswordHeading,
               style: context.textTheme.headlineLarge,
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
-              StringRes.newPasswordSubheading,
+              S.of(context).newPasswordSubheading,
               style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,
               child: IFormField(
-                labelText: StringRes.newPasswordInputLabel,
-                hintText: StringRes.newPasswordInputHint,
+                labelText: S.of(context).newPasswordInputLabel,
+                hintText: S.of(context).newPasswordInputHint,
                 obscureText: obscurePassword,
                 required: true,
                 controller: emailController,
@@ -60,7 +61,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
             ),
             BasicButton(
-              text: StringRes.newPasswordButton,
+              text: S.of(context).newPasswordButton,
               onPressed: () {
                 formKey.currentState!.validate();
                 context.navigator.pushReplacementNamed(SignInScreen.routeName);

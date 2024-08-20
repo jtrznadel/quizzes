@@ -1,7 +1,7 @@
 {
     "signInHeading": "Enter credentials",
-    "signInAlreadyHaveAccount": "Don''t have an account?",
-    
+    "signInDontHaveAccount": "Don''t have an account?",
+
     "signUpHeading": "Hello! 👋 Fill out the form to register",
     "signUpAlreadyHaveAccount": "Already have an account?",
 
@@ -113,6 +113,18 @@
     "quizzCreationSuccessBackButton": "Back to dashboard",
 
     "dashboardTopHeading": "Quizzes",
-    "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams."
-    }
+    "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
+   
+    "tempQuizzSummaryTitle": "Understanding Cryptocurrencies and Their Impact on Finance",
+    "tempQuizzSummaryDescription": "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.",
+    "tempQuestion": "What is one of the key features of cryptocurrencies?",
+    "tempQuestionDescription": "Question description",
+    "tempAnswer1": "Decentralization",
+    "tempAnswer2": "Physical existence",
+    "tempAnswer3": "Centralized control",
+    "tempAnswer4": "Government regulation",
+    "continueButton": "Continue",
+    "dividerOr": "OR"
+
+}
       

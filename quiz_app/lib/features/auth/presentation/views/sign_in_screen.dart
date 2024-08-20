@@ -11,6 +11,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/auth/presentation/refactors/sign_in_form.dart';
 import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
 import 'package:quiz_app/features/auth/presentation/widgets/auth_redirect_button.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -60,8 +61,8 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             const TextDivider(text: 'OR'),
             const Spacer(),
-            const AuthRedirectButton(
-              text: StringRes.signInDonHave,
+            AuthRedirectButton(
+              text: S.of(context).signInDontHaveAccount,
               buttonText: 'Register',
               navigateTo: SignUpScreen.routeName,
             ),
