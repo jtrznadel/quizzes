@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 extension ContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

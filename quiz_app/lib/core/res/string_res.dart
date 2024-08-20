@@ -2,12 +2,10 @@ class StringRes {
   const StringRes._();
 
   //TEMP STRINGS (To fill temporary data e.g. quizz summary)
-  static const String tempQuizzSummaryTitle =
-      "Understanding Cryptocurrencies and Their Impact on Finance";
+  static const String tempQuizzSummaryTitle = "Understanding Cryptocurrencies and Their Impact on Finance";
   static const String tempQuizzSummaryDescription =
       "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.";
-  static const String tempQuestion =
-      "What is one of the key features of cryptocurrencies?";
+  static const String tempQuestion = "What is one of the key features of cryptocurrencies?";
   static const String tempQuestionDescription = "Question description";
   static const String tempAnswer1 = "Physical existence";
   static const String tempAnswer2 = "Centralized control";
@@ -19,33 +17,30 @@ class StringRes {
   static const String dividerOr = "OR";
 
   //SIGNIN
-  static const String signInHeading = "Enter credentials";
-  static const String signInDonHave = "Don't have an account?";
+  // static const String signInHeading = "Enter credentials";
+  // static const String signInDonHave = "Don't have an account?";
 
   //SIGNUP
-  static const String signUpHeading = "Hello! 👋 Fill out the form to register";
-  static const String signUpAlready = "Already have an account?";
+  // static const String signUpHeading = "Hello! 👋 Fill out the form to register";
+  // static const String signUpAlready = "Already have an account?";
 
   //FORGOT PASSWORD
   static const String forgotPasswordAppbarTitle = "Password reset";
   static const String forgotPasswordHeading = "Forgot password?";
-  static const String forgotPasswordSubheading =
-      "Don't worry! It happens. Enter the email address associated with your account.";
+  static const String forgotPasswordSubheading = "Don't worry! It happens. Enter the email address associated with your account.";
   static const String forgotPasswordInputLabel = "E-mail";
   static const String forgotPasswordInputHint = "Your e-mail";
   static const String forgotPasswordButton = "Send e-mail";
 
   //SUCCESSFUL PASSWORD RESET REQUEST
   static const String successfulPasswordResetRequestHeading = "E-mail sent";
-  static const String successfulPasswordResetRequestSubheading =
-      "Check your e-mail, there will be an e-mail with password reset link.";
+  static const String successfulPasswordResetRequestSubheading = "Check your e-mail, there will be an e-mail with password reset link.";
   static const String successfulPasswordResetRequestButton = "Back";
 
   //NEW PASSWORD
   static const String newPasswordAppbarTitle = "Password reset";
   static const String newPasswordHeading = "New password";
-  static const String newPasswordSubheading =
-      "This new password must be unique to those previously used.";
+  static const String newPasswordSubheading = "This new password must be unique to those previously used.";
   static const String newPasswordInputLabel = "New password";
   static const String newPasswordInputHint = "Your password";
   static const String newPasswordButton = "Save and login";
@@ -56,25 +51,21 @@ class StringRes {
 
   //QUIZ CREATION - TEXT PROMPT
   static const String quizzCreationTextPromptHeading = "Text prompt";
-  static const String quizzCreationTextPromptSubheading =
-      "Here, you can create quizz based on your prompt.";
+  static const String quizzCreationTextPromptSubheading = "Here, you can create quizz based on your prompt.";
   static const String quizzCreationUploadFile = "Upload file";
   static const String quizzCreationTextPromptTextAreaLabel = "Prompt";
   static const String quizzCreationTextPromptTextAreaHint = "Enter your prompt";
 
   //QUIZ CREATION - CONFIGURE
   static const String quizzCreationConfigureHeading = "Configure quizz";
-  static const String quizzCraetionConfigureSubheading =
-      "Here, you can create quizz based on your prompt.";
+  static const String quizzCraetionConfigureSubheading = "Here, you can create quizz based on your prompt.";
 
-  static const String quizzCreationConfigureTypeQuestion =
-      "What type of questions?";
+  static const String quizzCreationConfigureTypeQuestion = "What type of questions?";
   static const String quizzCreationConfigureType1 = "Multiple choice";
   static const String quizzCreationConfigureType2 = "True/False";
   static const String quizzCreationConfigureType3 = "Fill in the blank";
 
-  static const String quizzCreationConfigureQuestionCount =
-      "How many questions?";
+  static const String quizzCreationConfigureQuestionCount = "How many questions?";
   static const String quizzCreationConfigureQuestionCount1 = "Low";
   static const String quizzCreationConfigureQuestionCount2 = "Medium";
   static const String quizzCreationConfigureQuestionCount3 = "High";
@@ -99,8 +90,7 @@ class StringRes {
   static const String quizzDetailsTabQuestionsSwitch = "Answers";
   static const String quizzDetailsTabQuestionsAddNewQuestion = "New question";
   //QUIZ DETAILS - SETTINGS
-  static const String quizzDetailsTabSettingsSubheading =
-      "Manage your quiz settings here.";
+  static const String quizzDetailsTabSettingsSubheading = "Manage your quiz settings here.";
   static const String quizzDetailsTabSettingsQuizStatus = "Quiz Status";
   static const String quizzDetailsTabSettingsQuizStatusDescription =
       "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.";
@@ -111,8 +101,7 @@ class StringRes {
   static const String quizzDetailsTabSettingsQuizAvailabilityPublic = "Public";
   static const String quizzDetailsTabSettingsSaveChanges = "Save changes";
   //QUIZ DETAILS - STATISTICS
-  static const String quizzDetailsTabStatisticsSubheading =
-      "You can view your quiz statistics here.";
+  static const String quizzDetailsTabStatisticsSubheading = "You can view your quiz statistics here.";
   static const String quizzDetailsTabStatisticsDetailsStatusBadge = "Details";
   static const String quizzDetailsTabStatisticsFinishedStatusBadge = "Finished";
   static const String quizzDetailsTabStatisticsStoppedStatusBadge = "Stopped";
@@ -122,18 +111,14 @@ class StringRes {
   static const String quizzDetailsTabStatisticsTime = "Time";
   static const String quizzDetailsTabStatisticsEmail = "Duration";
   //QUIZ DETAILS - GENERAL
-  static const String quizzDetailsTabGeneralSubheading =
-      "Manage your quiz page settings here.";
-  static const String quizzDetailsTabGeneralPageSettingsHeading =
-      "Quiz page settings";
+  static const String quizzDetailsTabGeneralSubheading = "Manage your quiz page settings here.";
+  static const String quizzDetailsTabGeneralPageSettingsHeading = "Quiz page settings";
   static const String quizzDetailsTabGeneralQuizTitle = "Quiz title";
   static const String quizzDetailsTabGeneralQuizTitleTextFieldDescription =
       "This is you public quiz title. It will be displayed on your quiz page. You can change it anytime.";
   static const String quizzDetailsTabGeneralQuizTitleHint = "Enter quiz title";
-  static const String quizzDetailsTabGeneralQuizDescription =
-      "Quiz description";
-  static const String
-      quizzDetailsTabGeneralQuizDescriptionTextFieldDescription =
+  static const String quizzDetailsTabGeneralQuizDescription = "Quiz description";
+  static const String quizzDetailsTabGeneralQuizDescriptionTextFieldDescription =
       "This is your public quiz description. It will be displayed on your quiz page. You can change it anytime.";
   static const String quizzDetailsTabGeneralQuizDescriptionHint = "Enter quiz title";
   //QUIZ CREATION - QUIT
