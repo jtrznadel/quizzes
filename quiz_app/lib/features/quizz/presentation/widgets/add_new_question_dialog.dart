@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/features/quizz/presentation/refactors/add_question_dialog_answer_section.dart';
 import 'package:quiz_app/generated/l10n.dart';
 

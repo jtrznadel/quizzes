@@ -71,11 +71,11 @@ class QuizListItem extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return Center(
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxHeight: 418,
-                      ),
-                      child: DeleteQuizDialog(quiz: quizEntity),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        DeleteQuizDialog(quiz: quizEntity),
+                      ],
                     ),
                   );
                 },
