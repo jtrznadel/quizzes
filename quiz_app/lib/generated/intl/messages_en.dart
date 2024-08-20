@@ -33,6 +33,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Here, you can effortlessly list, delete, edit and create new exams."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzes"),
         "dividerOr": MessageLookupByLibrary.simpleMessage("OR"),
+        "emailHint": MessageLookupByLibrary.simpleMessage("Your e-mail"),
+        "emailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Password reset"),
         "forgotPasswordButton":
@@ -45,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Don\'\'t worry! It happens. Enter the email address associated with your account."),
+        "loginButton": MessageLookupByLibrary.simpleMessage("Log In"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Password reset"),
         "newPasswordButton":
@@ -57,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("New password"),
         "newPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "This new password must be unique to those previously used."),
+        "passwordHint": MessageLookupByLibrary.simpleMessage("Your password"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Here, you can create quizz based on your prompt."),
@@ -65,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "What is one of the key features of cryptocurrencies?"),
         "quizzCreationAddQuestionAnswersLabel":
             MessageLookupByLibrary.simpleMessage("Answers"),
+        "quizzCreationAddQuestionButton":
+            MessageLookupByLibrary.simpleMessage("Add question"),
         "quizzCreationAddQuestionDescriptionHint":
             MessageLookupByLibrary.simpleMessage("Enter question description"),
         "quizzCreationAddQuestionDescriptionLabel":
@@ -75,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter question title"),
         "quizzCreationAddQuestionTitleLabel":
             MessageLookupByLibrary.simpleMessage("Question Title"),
+        "quizzCreationAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Create quizz"),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Configure quizz"),
         "quizzCreationConfigureQuestionCount":
@@ -209,12 +220,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabStatisticsTime":
             MessageLookupByLibrary.simpleMessage("Time"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Title: "),
+        "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
+        "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "signInHeading":
             MessageLookupByLibrary.simpleMessage("Enter credentials"),
         "signUpAlreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "signUpAppBarTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "signUpHeading": MessageLookupByLibrary.simpleMessage(
             "Hello! 👋 Fill out the form to register"),
         "successfulPasswordResetRequestButton":
@@ -238,6 +252,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "tempQuizzSummaryDescription": MessageLookupByLibrary.simpleMessage(
             "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges."),
         "tempQuizzSummaryTitle": MessageLookupByLibrary.simpleMessage(
-            "Understanding Cryptocurrencies and Their Impact on Finance")
+            "Understanding Cryptocurrencies and Their Impact on Finance"),
+        "thisFieldIsRequired":
+            MessageLookupByLibrary.simpleMessage("This field is required"),
+        "usernameHint": MessageLookupByLibrary.simpleMessage("Your username"),
+        "usernameLabel": MessageLookupByLibrary.simpleMessage("Username")
       };
 }

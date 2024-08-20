@@ -36,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const BasicAppBar(title: 'Register'),
+      appBar: BasicAppBar(title: S.of(context).signUpAppBarTitle),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -53,11 +53,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               emailController: emailController,
               passwordController: passwordController,
             ),
-            const TextDivider(text: 'OR'),
+            TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
             AuthRedirectButton(
               text: S.of(context).signUpAlreadyHaveAccount,
-              buttonText: 'Log In',
+              buttonText: S.of(context).loginButton,
               navigateTo: SignInScreen.routeName,
             ),
           ],

@@ -1,7 +1,21 @@
 {
+    "loginButton": "Log In",
+    "registerButton": "Register",
+    "emailLabel": "E-mail",
+    "emailHint": "Your e-mail",
+    "passwordLabel": "Password",
+    "passwordHint": "Your password",
+    "usernameLabel": "Username",
+    "usernameHint": "Your username",
+
+    "forgotPassword": "Forgot password?",
+    "thisFieldIsRequired": "This field is required",
+
+    "signInAppBarTitle": "Login",
     "signInHeading": "Enter credentials",
     "signInDontHaveAccount": "Don''t have an account?",
 
+    "signUpAppBarTitle": "Register",
     "signUpHeading": "Hello! 👋 Fill out the form to register",
     "signUpAlreadyHaveAccount": "Already have an account?",
 
@@ -25,6 +39,7 @@
     
     "quizzSummaryTitle": "Title: ",
     
+    "quizzCreationAppBarTitle": "Create quizz",
     "quizzCreationTextPromptHeading": "Text prompt",
     "quizzCreationTextPromptSubheading": "Here, you can create quizz based on your prompt.",
     "quizzCreationUploadFile": "Upload file",
@@ -49,6 +64,7 @@
     "addNewQuestionBottomSheetAI": "Generate question with AI",
 
     "quizzCreationPreviewHeading": "Quizz Preview",
+    "quizzCreationAddQuestionButton": "Add question",
 
     "quizzDetailsAppbarTitle": "Quiz Detail",
     "quizzDetailsTabQuestions": "Questions",

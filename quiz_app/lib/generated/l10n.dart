@@ -50,6 +50,116 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Log In`
+  String get loginButton {
+    return Intl.message(
+      'Log In',
+      name: 'loginButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get registerButton {
+    return Intl.message(
+      'Register',
+      name: 'registerButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-mail`
+  String get emailLabel {
+    return Intl.message(
+      'E-mail',
+      name: 'emailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your e-mail`
+  String get emailHint {
+    return Intl.message(
+      'Your e-mail',
+      name: 'emailHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get passwordLabel {
+    return Intl.message(
+      'Password',
+      name: 'passwordLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your password`
+  String get passwordHint {
+    return Intl.message(
+      'Your password',
+      name: 'passwordHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get usernameLabel {
+    return Intl.message(
+      'Username',
+      name: 'usernameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your username`
+  String get usernameHint {
+    return Intl.message(
+      'Your username',
+      name: 'usernameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgotPassword {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is required`
+  String get thisFieldIsRequired {
+    return Intl.message(
+      'This field is required',
+      name: 'thisFieldIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get signInAppBarTitle {
+    return Intl.message(
+      'Login',
+      name: 'signInAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter credentials`
   String get signInHeading {
     return Intl.message(
@@ -65,6 +175,16 @@ class S {
     return Intl.message(
       'Don\'\'t have an account?',
       name: 'signInDontHaveAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get signUpAppBarTitle {
+    return Intl.message(
+      'Register',
+      name: 'signUpAppBarTitle',
       desc: '',
       args: [],
     );
@@ -245,6 +365,16 @@ class S {
     return Intl.message(
       'Title: ',
       name: 'quizzSummaryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create quizz`
+  String get quizzCreationAppBarTitle {
+    return Intl.message(
+      'Create quizz',
+      name: 'quizzCreationAppBarTitle',
       desc: '',
       args: [],
     );
@@ -445,6 +575,16 @@ class S {
     return Intl.message(
       'Quizz Preview',
       name: 'quizzCreationPreviewHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add question`
+  String get quizzCreationAddQuestionButton {
+    return Intl.message(
+      'Add question',
+      name: 'quizzCreationAddQuestionButton',
       desc: '',
       args: [],
     );

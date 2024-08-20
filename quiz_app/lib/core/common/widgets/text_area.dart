@@ -4,6 +4,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_text_theme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class TextArea extends StatelessWidget {
   const TextArea({
@@ -59,7 +60,7 @@ class TextArea extends StatelessWidget {
               controller: controller,
               validator: (value) {
                 if (required && (value == null || value.isEmpty)) {
-                  return 'This field is required';
+                  return S.of(context).thisFieldIsRequired;
                 }
                 return null;
               },

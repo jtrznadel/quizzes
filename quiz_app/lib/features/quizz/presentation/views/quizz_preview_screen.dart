@@ -43,7 +43,7 @@ class QuizzPreviewScreen extends StatelessWidget {
                 onPressed: () {
                   AddNewQuestionBottomSheet.show(context);
                 },
-                text: 'New question',
+                text: S.of(context).quizzCreationAddQuestionButton,
                 width: context.width / 2,
               ),
             ),

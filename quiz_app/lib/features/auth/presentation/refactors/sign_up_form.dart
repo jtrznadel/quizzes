@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/res/media_res.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({
@@ -34,8 +35,8 @@ class _SignUpFormState extends State<SignUpForm> {
         child: Column(
           children: [
             IFormField(
-              labelText: 'Username',
-              hintText: 'Your username',
+              labelText: S.of(context).usernameLabel,
+              hintText: S.of(context).usernameHint,
               required: true,
               obscureText: false,
               controller: widget.usernameController,
@@ -44,8 +45,8 @@ class _SignUpFormState extends State<SignUpForm> {
               height: 16,
             ),
             IFormField(
-              labelText: 'E-mail',
-              hintText: 'Your e-mail',
+              labelText: S.of(context).emailLabel,
+              hintText: S.of(context).emailHint,
               required: true,
               obscureText: false,
               controller: widget.emailController,
@@ -54,8 +55,8 @@ class _SignUpFormState extends State<SignUpForm> {
               height: 16,
             ),
             IFormField(
-              labelText: 'Password',
-              hintText: 'Your password',
+              labelText: S.of(context).passwordLabel,
+              hintText: S.of(context).passwordHint,
               required: true,
               obscureText: obscurePassword,
               controller: widget.passwordController,
@@ -83,7 +84,7 @@ class _SignUpFormState extends State<SignUpForm> {
               onPressed: () {
                 if (widget.formKey.currentState!.validate()) {}
               },
-              text: 'Register',
+              text: S.of(context).registerButton,
               width: double.infinity,
             ),
           ],

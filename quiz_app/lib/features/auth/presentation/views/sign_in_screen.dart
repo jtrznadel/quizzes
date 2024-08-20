@@ -40,8 +40,8 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const BasicAppBar(
-        title: 'Login',
+      appBar: BasicAppBar(
+        title: S.of(context).signInAppBarTitle,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -51,7 +51,7 @@ class _SignInScreenState extends State<SignInScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Enter credentials',
+              S.of(context).signInHeading,
               style: context.textTheme.headlineLarge,
             ),
             SignInForm(
@@ -59,11 +59,11 @@ class _SignInScreenState extends State<SignInScreen> {
               emailController: emailController,
               passwordController: passwordController,
             ),
-            const TextDivider(text: 'OR'),
+            TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
             AuthRedirectButton(
               text: S.of(context).signInDontHaveAccount,
-              buttonText: 'Register',
+              buttonText: S.of(context).registerButton,
               navigateTo: SignUpScreen.routeName,
             ),
           ],

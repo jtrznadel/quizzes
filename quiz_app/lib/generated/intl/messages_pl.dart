@@ -31,8 +31,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy."),
-        "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizy"),
+        "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzy"),
         "dividerOr": MessageLookupByLibrary.simpleMessage("LUB"),
+        "emailHint": MessageLookupByLibrary.simpleMessage("Twój e-mail"),
+        "emailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Zapomniałeś hasła?"),
         "forgotPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Resetowanie hasła"),
         "forgotPasswordButton":
@@ -45,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Nie martw się! To się zdarza. Wprowadź adres e-mail powiązany z twoim kontem."),
+        "loginButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Resetowanie hasła"),
         "newPasswordButton":
@@ -57,13 +62,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nowe hasło"),
         "newPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "To nowe hasło musi się różnić od poprzednio używanych."),
+        "passwordHint": MessageLookupByLibrary.simpleMessage("Twoje hasło"),
+        "passwordLabel": MessageLookupByLibrary.simpleMessage("Hasło"),
         "quizzCraetionConfigureSubheading": MessageLookupByLibrary.simpleMessage(
-            "Tutaj możesz stworzyć quiz na podstawie swojego tekstu zachęty."),
+            "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
         "quizzCreationAddQuestionAnswerPlaceholder":
             MessageLookupByLibrary.simpleMessage(
                 "Jakie jest jedno z kluczowych cech kryptowalut?"),
         "quizzCreationAddQuestionAnswersLabel":
             MessageLookupByLibrary.simpleMessage("Odpowiedzi"),
+        "quizzCreationAddQuestionButton":
+            MessageLookupByLibrary.simpleMessage("Dodaj pytanie"),
         "quizzCreationAddQuestionDescriptionHint":
             MessageLookupByLibrary.simpleMessage("Wprowadź opis pytania"),
         "quizzCreationAddQuestionDescriptionLabel":
@@ -74,8 +83,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź tytuł pytania"),
         "quizzCreationAddQuestionTitleLabel":
             MessageLookupByLibrary.simpleMessage("Tytuł pytania"),
+        "quizzCreationAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Stwórz quizz"),
         "quizzCreationConfigureHeading":
-            MessageLookupByLibrary.simpleMessage("Konfiguracja quizu"),
+            MessageLookupByLibrary.simpleMessage("Konfiguracja quizzu"),
         "quizzCreationConfigureQuestionCount":
             MessageLookupByLibrary.simpleMessage("Ile pytań?"),
         "quizzCreationConfigureQuestionCount1":
@@ -100,11 +111,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wygeneruj nowe pytanie"),
         "quizzCreationGenerateQuestionPromptHint":
             MessageLookupByLibrary.simpleMessage(
-                "Wprowadź tekst zachęty dla AI, aby wygenerować pytanie"),
+                "Wprowadź monit tekstowy dla AI, aby wygenerować pytanie"),
         "quizzCreationGenerateQuestionPromptLabel":
-            MessageLookupByLibrary.simpleMessage("Tekst zachęty"),
+            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
         "quizzCreationPreviewHeading":
-            MessageLookupByLibrary.simpleMessage("Podgląd quizu"),
+            MessageLookupByLibrary.simpleMessage("Podgląd quizzu"),
         "quizzCreationQuitButton":
             MessageLookupByLibrary.simpleMessage("Tak, zakończ"),
         "quizzCreationQuitButtonCancel":
@@ -112,7 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationQuitHeading":
             MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
         "quizzCreationQuitSubheading": MessageLookupByLibrary.simpleMessage(
-            "Zamierzasz przerwać proces tworzenia quizu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta."),
+            "Zamierzasz przerwać proces tworzenia quizzu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta."),
         "quizzCreationSaveQuestion":
             MessageLookupByLibrary.simpleMessage("Zapisz"),
         "quizzCreationSuccessBackButton":
@@ -122,46 +133,46 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessShareButton":
             MessageLookupByLibrary.simpleMessage("Podziel się z innymi!"),
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
-            "Pomyślnie utworzyłeś quiz. Możesz teraz podzielić się nim z innymi."),
+            "Pomyślnie utworzyłeś quizz. Możesz teraz podzielić się nim z innymi."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Tekst zachęty"),
+            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
         "quizzCreationTextPromptSubheading": MessageLookupByLibrary.simpleMessage(
-            "Tutaj możesz stworzyć quiz na podstawie swojego tekstu zachęty."),
+            "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
         "quizzCreationTextPromptTextAreaHint":
-            MessageLookupByLibrary.simpleMessage("Wprowadź tekst zachęty"),
+            MessageLookupByLibrary.simpleMessage("Wprowadź monit tekstowy"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Tekst zachęty"),
+            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Prześlij plik"),
         "quizzDetailsAppbarTitle":
-            MessageLookupByLibrary.simpleMessage("Szczegóły quizu"),
+            MessageLookupByLibrary.simpleMessage("Szczegóły quizzu"),
         "quizzDetailsTabGeneral":
             MessageLookupByLibrary.simpleMessage("Ogólne"),
         "quizzDetailsTabGeneralPageSettingsHeading":
-            MessageLookupByLibrary.simpleMessage("Ustawienia strony quizu"),
+            MessageLookupByLibrary.simpleMessage("Ustawienia strony quizzu"),
         "quizzDetailsTabGeneralQuizDescription":
-            MessageLookupByLibrary.simpleMessage("Opis quizu"),
+            MessageLookupByLibrary.simpleMessage("Opis quizzu"),
         "quizzDetailsTabGeneralQuizDescriptionHint":
-            MessageLookupByLibrary.simpleMessage("Wprowadź opis quizu"),
+            MessageLookupByLibrary.simpleMessage("Wprowadź opis quizzu"),
         "quizzDetailsTabGeneralQuizDescriptionTextFieldDescription":
             MessageLookupByLibrary.simpleMessage(
-                "To jest twój publiczny opis quizu. Będzie wyświetlany na stronie twojego quizu. Możesz go zmienić w dowolnym momencie."),
+                "To jest twój publiczny opis quizzu. Będzie wyświetlany na stronie twojego quizzu. Możesz go zmienić w dowolnym momencie."),
         "quizzDetailsTabGeneralQuizTitle":
-            MessageLookupByLibrary.simpleMessage("Tytuł quizu"),
+            MessageLookupByLibrary.simpleMessage("Tytuł quizzu"),
         "quizzDetailsTabGeneralQuizTitleHint":
-            MessageLookupByLibrary.simpleMessage("Wprowadź tytuł quizu"),
+            MessageLookupByLibrary.simpleMessage("Wprowadź tytuł quizzu"),
         "quizzDetailsTabGeneralQuizTitleTextFieldDescription":
             MessageLookupByLibrary.simpleMessage(
-                "To jest twój publiczny tytuł quizu. Będzie wyświetlany na stronie twojego quizu. Możesz go zmienić w dowolnym momencie."),
+                "To jest twój publiczny tytuł quizzu. Będzie wyświetlany na stronie twojego quizzu. Możesz go zmienić w dowolnym momencie."),
         "quizzDetailsTabGeneralSubheading":
             MessageLookupByLibrary.simpleMessage(
-                "Zarządzaj ustawieniami strony quizu tutaj."),
+                "Zarządzaj ustawieniami strony quizzu tutaj."),
         "quizzDetailsTabQuestions":
             MessageLookupByLibrary.simpleMessage("Pytania"),
         "quizzDetailsTabQuestionsAddNewQuestion":
             MessageLookupByLibrary.simpleMessage("Nowe pytanie"),
         "quizzDetailsTabQuestionsSubheading": MessageLookupByLibrary.simpleMessage(
-            "Zarządzaj pytaniami do quizu tutaj. Możesz edytować i usuwać pytania. Ta strona jest podglądem twoich pytań."),
+            "Zarządzaj pytaniami do quizzu tutaj. Możesz edytować i usuwać pytania. Ta strona jest podglądem twoich pytań."),
         "quizzDetailsTabQuestionsSwitch":
             MessageLookupByLibrary.simpleMessage("Odpowiedzi"),
         "quizzDetailsTabSettings":
@@ -172,19 +183,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Aktywny"),
         "quizzDetailsTabSettingsQuizAvailabilityDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Kiedy włączone, quiz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizu z zewnętrznego linku."),
+                "Kiedy włączone, quizz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizzu z zewnętrznego linku."),
         "quizzDetailsTabSettingsQuizAvailabilityPublic":
             MessageLookupByLibrary.simpleMessage("Publiczny"),
         "quizzDetailsTabSettingsQuizStatus":
-            MessageLookupByLibrary.simpleMessage("Status quizu"),
+            MessageLookupByLibrary.simpleMessage("Status quizzu"),
         "quizzDetailsTabSettingsQuizStatusDescription":
             MessageLookupByLibrary.simpleMessage(
-                "Kiedy włączone, quiz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizu z zewnętrznego linku."),
+                "Kiedy włączone, quizz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizzu z zewnętrznego linku."),
         "quizzDetailsTabSettingsSaveChanges":
             MessageLookupByLibrary.simpleMessage("Zapisz zmiany"),
         "quizzDetailsTabSettingsSubheading":
             MessageLookupByLibrary.simpleMessage(
-                "Zarządzaj ustawieniami quizu tutaj."),
+                "Zarządzaj ustawieniami quizzu tutaj."),
         "quizzDetailsTabStatistics":
             MessageLookupByLibrary.simpleMessage("Statystyki"),
         "quizzDetailsTabStatisticsDate":
@@ -203,15 +214,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zatrzymany"),
         "quizzDetailsTabStatisticsSubheading":
             MessageLookupByLibrary.simpleMessage(
-                "Tutaj możesz przeglądać statystyki swojego quizu."),
+                "Tutaj możesz przeglądać statystyki swojego quizzu."),
         "quizzDetailsTabStatisticsTime":
             MessageLookupByLibrary.simpleMessage("Czas"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Tytuł: "),
+        "registerButton":
+            MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
+        "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Logowanie"),
         "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Nie masz konta?"),
         "signInHeading": MessageLookupByLibrary.simpleMessage("Wprowadź dane"),
         "signUpAlreadyHaveAccount":
             MessageLookupByLibrary.simpleMessage("Masz już konto?"),
+        "signUpAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "signUpHeading": MessageLookupByLibrary.simpleMessage(
             "Witaj! 👋 Wypełnij formularz, aby się zarejestrować"),
         "successfulPasswordResetRequestButton":
@@ -235,6 +251,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "tempQuizzSummaryDescription": MessageLookupByLibrary.simpleMessage(
             "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne."),
         "tempQuizzSummaryTitle": MessageLookupByLibrary.simpleMessage(
-            "Zrozumienie kryptowalut i ich wpływu na finanse")
+            "Zrozumienie kryptowalut i ich wpływu na finanse"),
+        "thisFieldIsRequired":
+            MessageLookupByLibrary.simpleMessage("To pole jest wymagane"),
+        "usernameHint":
+            MessageLookupByLibrary.simpleMessage("Twoja nazwa użytkownika"),
+        "usernameLabel":
+            MessageLookupByLibrary.simpleMessage("Nazwa użytkownika")
       };
 }
