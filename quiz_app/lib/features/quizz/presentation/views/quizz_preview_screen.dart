@@ -51,7 +51,7 @@ class QuizzPreviewScreen extends StatelessWidget {
             ),
             //TODO: Remove loop and implement a listview.builder with question model
             for (int i = 0; i < 3; i++) ...[
-              const QuestionBox(),
+              QuestionBox(questionNumber: i + 1,),
               const SizedBox(
                 height: 32,
               ),
