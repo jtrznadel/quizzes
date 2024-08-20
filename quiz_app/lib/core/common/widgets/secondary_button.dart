@@ -18,7 +18,7 @@ class SecondaryButton extends StatelessWidget {
 
   final VoidCallback onPressed;
   final String text;
-  final double width;
+  final double? width;
   final Widget? icon;
   final IconAlignment? iconAlignment;
   final MainAxisAlignment contentAlignment;
@@ -69,10 +69,7 @@ class SecondaryButton extends StatelessWidget {
           ),
           splashColor: contentColor!.withOpacity(0.2),
           highlightColor: contentColor!.withOpacity(0.2),
-          child: Row(
-            mainAxisAlignment: contentAlignment,
-            children: [button],
-          ),
+          child: button.addPadding(padding: const EdgeInsets.symmetric(horizontal: 32)),
         ),
       ),
     );

@@ -56,7 +56,7 @@ class BasicButton extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColorScheme.primaryDark,
-          width: 1,
+          width: 0.5,
         ),
         gradient: const LinearGradient(
           begin: Alignment.bottomCenter,
@@ -77,7 +77,7 @@ class BasicButton extends StatelessWidget {
           ),
           splashColor: AppColorScheme.primaryDark,
           highlightColor: AppColorScheme.primaryDark,
-          child: button.addPadding(padding: const EdgeInsets.symmetric(horizontal: 16)),
+          child: button.addPadding(padding: const EdgeInsets.symmetric(horizontal: 32)),
         ),
       ),
     );

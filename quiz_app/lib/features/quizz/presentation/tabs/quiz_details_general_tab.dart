@@ -45,7 +45,6 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     ]);
   }
 
-  //TODO: modify text area widget to accept a background color
   Widget quizTitleTextField(
       BuildContext context, TextEditingController controller) {
     return Column(
@@ -66,7 +65,6 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     ).addPadding(padding: const EdgeInsets.only(top: 16));
   }
 
-  //TODO: modify text area widget to accept a background color
   Widget quizDescriptionTextField(
       BuildContext context, TextEditingController controller) {
     return Column(
