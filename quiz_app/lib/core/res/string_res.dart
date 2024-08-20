@@ -49,7 +49,6 @@ class StringRes {
   static const String newPasswordInputLabel = "New password";
   static const String newPasswordInputHint = "Your password";
   static const String newPasswordButton = "Save and login";
-
   //---------QUIZ DETAILS/PREVIEW
   static const String quizzSummaryTitle = "Title: ";
 
@@ -137,4 +136,36 @@ class StringRes {
       quizzDetailsTabGeneralQuizDescriptionTextFieldDescription =
       "This is your public quiz description. It will be displayed on your quiz page. You can change it anytime.";
   static const String quizzDetailsTabGeneralQuizDescriptionHint = "Enter quiz title";
+  //QUIZ CREATION - QUIT
+  static const String quizzCreationQuitHeading = "Are you sure?";
+  static const String quizzCreationQuitSubheading =
+      "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.";
+  static const String quizzCreationQuitButton = "Yes, quit";
+  static const String quizzCreationQuitButtonCancel = "Cancel";
+
+  //QUIZ CREATION - ADD QUESTION
+  static const String quizzCreationAddQuestionHeading = "New question";
+  static const String quizzCreationAddQuestionTitleLabel = "Question Title";
+  static const String quizzCreationAddQuestionTitleHint = "Enter question title";
+  static const String quizzCreationAddQuestionDescriptionLabel = "Question Description";
+  static const String quizzCreationAddQuestionDescriptionHint = "Enter question description";
+  static const String quizzCreationAddQuestionAnswersLabel = "Answers";
+  static const String quizzCreationSaveQuestion = "Save";
+  static const String quizzCreationAddQuestionAnswerPlaceholder = "What is one of the key features of cryptocurrencies?";
+
+  //QUIZ CREATION - GENERATE QUESTION
+  static const String quizzCreationGenerateQuestionHeading = "Generate new question";
+  static const String quizzCreationGenerateQuestionPromptLabel = "Prompt";
+  static const String quizzCreationGenerateQuestionPromptHint = "Enter prompt for AI to generate question";
+  static const String quizzCreationGenerateQuestionGenerateButton = "Generate";
+
+  //QUIZ CREATION - SUCCESS
+  static const String quizzCreationSuccessHeading = "Success!";
+  static const String quizzCreationSuccessSubheading = "You succesfully created your quizz. You can now share it with others.";
+  static const String quizzCreationSuccessShareButton = "Share with others!";
+  static const String quizzCreationSuccessBackButton = "Back to dashboard";
+
+  //DASHBOARD
+  static const String dashboardTopHeading = "Quizzes";
+  static const String dashboardSubheading = "Here, you can effortlessly list, delete, edit and create new exams.";
 }

@@ -7,10 +7,12 @@ class SecondaryButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    required this.width,
+    this.width = double.infinity,
     this.icon,
-    this.iconAlignment,
+    this.iconAlignment = IconAlignment.start,
     this.contentAlignment = MainAxisAlignment.center,
+    this.bgColor = AppColorScheme.secondary,
+    this.contentColor = AppColorScheme.primary,
   });
 
   final VoidCallback onPressed;
@@ -19,7 +21,8 @@ class SecondaryButton extends StatelessWidget {
   final Widget? icon;
   final IconAlignment? iconAlignment;
   final MainAxisAlignment contentAlignment;
-  final contentColor = AppColorScheme.primary;
+  final Color? bgColor;
+  final Color? contentColor;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +34,16 @@ class SecondaryButton extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          overlayColor: Colors.transparent
+          overlayColor: Colors.transparent,
         ),
         label: Text(
           text,
-          style:
-              context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
+          style: context.theme.textTheme.labelLarge!.copyWith(
+            color: contentColor,
+          ),
         ),
         icon: icon,
-        iconAlignment: iconAlignment ?? IconAlignment.start,
+        iconAlignment: iconAlignment!,
       ),
     );
   }
@@ -48,7 +52,7 @@ class SecondaryButton extends StatelessWidget {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        color: AppColorScheme.secondary,
+        color: bgColor,
         borderRadius: BorderRadius.circular(48),
       ),
       child: Material(
@@ -58,8 +62,8 @@ class SecondaryButton extends StatelessWidget {
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(48),
           ),
-          splashColor: AppColorScheme.primaryLight.withOpacity(0.2),
-          highlightColor: AppColorScheme.primaryLight.withOpacity(0.2),
+          splashColor: contentColor!.withOpacity(0.2),
+          highlightColor: contentColor!.withOpacity(0.2),
           child: Row(
             mainAxisAlignment: contentAlignment,
             children: [button],
