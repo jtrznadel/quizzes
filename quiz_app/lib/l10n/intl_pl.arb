@@ -1,1 +1,127 @@
-{}
+{
+    "signInHeading": "Wprowadź dane",
+    "signInDontHaveAccount": "Nie masz konta?",
+
+    "signUpHeading": "Witaj! 👋 Wypełnij formularz, aby się zarejestrować",
+    "signUpAlreadyHaveAccount": "Masz już konto?",
+
+    "forgotPasswordAppbarTitle": "Resetowanie hasła",
+    "forgotPasswordHeading": "Zapomniałeś hasła?",
+    "forgotPasswordSubheading": "Nie martw się! To się zdarza. Wprowadź adres e-mail powiązany z twoim kontem.",
+    "forgotPasswordInputLabel": "E-mail",
+    "forgotPasswordInputHint": "Twój e-mail",
+    "forgotPasswordButton": "Wyślij e-mail",
+
+    "successfulPasswordResetRequestHeading": "E-mail wysłany",
+    "successfulPasswordResetRequestSubheading": "Sprawdź swoją skrzynkę pocztową, znajdziesz tam wiadomość z linkiem do resetowania hasła.",
+    "successfulPasswordResetRequestButton": "Powrót",
+    
+    "newPasswordAppbarTitle": "Resetowanie hasła",
+    "newPasswordHeading": "Nowe hasło",
+    "newPasswordSubheading": "To nowe hasło musi się różnić od poprzednio używanych.",
+    "newPasswordInputLabel": "Nowe hasło",
+    "newPasswordInputHint": "Twoje hasło",
+    "newPasswordButton": "Zapisz i zaloguj się",
+    
+    "quizzSummaryTitle": "Tytuł: ",
+
+    "quizzCreationTextPromptHeading": "Tekst zachęty",
+    "quizzCreationTextPromptSubheading": "Tutaj możesz stworzyć quiz na podstawie swojego tekstu zachęty.",
+    "quizzCreationUploadFile": "Prześlij plik",
+    "quizzCreationTextPromptTextAreaLabel": "Tekst zachęty",
+    "quizzCreationTextPromptTextAreaHint": "Wprowadź tekst zachęty",
+    
+    "quizzCreationConfigureHeading": "Konfiguracja quizu",
+    "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quiz na podstawie swojego tekstu zachęty.",
+    "quizzCreationConfigureTypeQuestion": "Jaki typ pytań?",
+    "quizzCreationConfigureType1": "Wielokrotny wybór",
+    "quizzCreationConfigureType2": "Prawda/Fałsz",
+    "quizzCreationConfigureType3": "Uzupełnianie luk",
+
+    "quizzCreationConfigureQuestionCount": "Ile pytań?",
+    "quizzCreationConfigureQuestionCount1": "Mało",
+    "quizzCreationConfigureQuestionCount2": "Średnio",
+    "quizzCreationConfigureQuestionCount3": "Dużo",
+    "quizzCreationConfigureQuestionCount4": "Ręcznie",
+
+    "addNewQuestionBottomSheetHeading": "Dodaj nowe pytanie",
+    "addNewQuestionBottomSheetManual": "Ręcznie",
+    "addNewQuestionBottomSheetAI": "Wygeneruj pytanie przy użyciu AI",
+
+    "quizzCreationPreviewHeading": "Podgląd quizu",
+
+    "quizzDetailsAppbarTitle": "Szczegóły quizu",
+    "quizzDetailsTabQuestions": "Pytania",
+    "quizzDetailsTabSettings": "Ustawienia",
+    "quizzDetailsTabStatistics": "Statystyki",
+    "quizzDetailsTabGeneral": "Ogólne",
+
+    "quizzDetailsTabQuestionsSubheading": "Zarządzaj pytaniami do quizu tutaj. Możesz edytować i usuwać pytania. Ta strona jest podglądem twoich pytań.",
+    "quizzDetailsTabQuestionsSwitch": "Odpowiedzi",
+    "quizzDetailsTabQuestionsAddNewQuestion": "Nowe pytanie",
+
+    "quizzDetailsTabSettingsSubheading": "Zarządzaj ustawieniami quizu tutaj.",
+    "quizzDetailsTabSettingsQuizStatus": "Status quizu",
+    "quizzDetailsTabSettingsQuizStatusDescription": "Kiedy włączone, quiz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizu z zewnętrznego linku.",
+    "quizzDetailsTabSettingsQuizAvailability": "Dostępność",
+    "quizzDetailsTabSettingsQuizAvailabilityDescription": "Kiedy włączone, quiz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizu z zewnętrznego linku.",
+    "quizzDetailsTabSettingsQuizAvailabilityActive": "Aktywny",
+    "quizzDetailsTabSettingsQuizAvailabilityPublic": "Publiczny",
+    "quizzDetailsTabSettingsSaveChanges": "Zapisz zmiany",
+
+    "quizzDetailsTabStatisticsSubheading": "Tutaj możesz przeglądać statystyki swojego quizu.",
+    "quizzDetailsTabStatisticsDetailsStatusBadge": "Szczegóły",
+    "quizzDetailsTabStatisticsFinishedStatusBadge": "Zakończony",
+    "quizzDetailsTabStatisticsStoppedStatusBadge": "Zatrzymany",
+    "quizzDetailsTabStatisticsScore": "Wynik",
+    "quizzDetailsTabStatisticsName": "Imię",
+    "quizzDetailsTabStatisticsDate": "Data",
+    "quizzDetailsTabStatisticsTime": "Czas",
+    "quizzDetailsTabStatisticsEmail": "Czas trwania",
+
+    "quizzDetailsTabGeneralSubheading": "Zarządzaj ustawieniami strony quizu tutaj.",
+    "quizzDetailsTabGeneralPageSettingsHeading": "Ustawienia strony quizu",
+    "quizzDetailsTabGeneralQuizTitle": "Tytuł quizu",
+    "quizzDetailsTabGeneralQuizTitleTextFieldDescription": "To jest twój publiczny tytuł quizu. Będzie wyświetlany na stronie twojego quizu. Możesz go zmienić w dowolnym momencie.",
+    "quizzDetailsTabGeneralQuizTitleHint": "Wprowadź tytuł quizu",
+    "quizzDetailsTabGeneralQuizDescription": "Opis quizu",
+    "quizzDetailsTabGeneralQuizDescriptionTextFieldDescription": "To jest twój publiczny opis quizu. Będzie wyświetlany na stronie twojego quizu. Możesz go zmienić w dowolnym momencie.",
+    "quizzDetailsTabGeneralQuizDescriptionHint": "Wprowadź opis quizu",
+    "quizzCreationQuitHeading": "Czy jesteś pewien?",
+    "quizzCreationQuitSubheading": "Zamierzasz przerwać proces tworzenia quizu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta.",
+    "quizzCreationQuitButton": "Tak, zakończ",
+    "quizzCreationQuitButtonCancel": "Anuluj",
+
+    "quizzCreationAddQuestionHeading": "Nowe pytanie",
+    "quizzCreationAddQuestionTitleLabel": "Tytuł pytania",
+    "quizzCreationAddQuestionTitleHint": "Wprowadź tytuł pytania",
+    "quizzCreationAddQuestionDescriptionLabel": "Opis pytania",
+    "quizzCreationAddQuestionDescriptionHint": "Wprowadź opis pytania",
+    "quizzCreationAddQuestionAnswersLabel": "Odpowiedzi",
+    "quizzCreationSaveQuestion": "Zapisz",
+    "quizzCreationAddQuestionAnswerPlaceholder": "Jakie jest jedno z kluczowych cech kryptowalut?",
+
+    "quizzCreationGenerateQuestionHeading": "Wygeneruj nowe pytanie",
+    "quizzCreationGenerateQuestionPromptLabel": "Tekst zachęty",
+    "quizzCreationGenerateQuestionPromptHint": "Wprowadź tekst zachęty dla AI, aby wygenerować pytanie",
+    "quizzCreationGenerateQuestionGenerateButton": "Wygeneruj",
+
+    "quizzCreationSuccessHeading": "Sukces!",
+    "quizzCreationSuccessSubheading": "Pomyślnie utworzyłeś quiz. Możesz teraz podzielić się nim z innymi.",
+    "quizzCreationSuccessShareButton": "Podziel się z innymi!",
+    "quizzCreationSuccessBackButton": "Powrót do pulpitu",
+
+    "dashboardTopHeading": "Quizy",
+    "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
+
+    "tempQuizzSummaryTitle": "Zrozumienie kryptowalut i ich wpływu na finanse",
+    "tempQuizzSummaryDescription": "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne.",
+    "tempQuestion": "Jakie jest jedno z kluczowych cech kryptowalut?",
+    "tempQuestionDescription": "Opis pytania",
+    "tempAnswer1": "Decentralizacja",
+    "tempAnswer2": "Fizyczna obecność",
+    "tempAnswer3": "Zarządzanie centralne",
+    "tempAnswer4": "Regulacja rządowa",
+    "continueButton": "Kontynuuj",
+    "dividerOr": "LUB"
+}
