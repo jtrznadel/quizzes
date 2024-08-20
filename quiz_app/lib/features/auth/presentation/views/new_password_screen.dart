@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/features/auth/presentation/widgets/auth_form_field.dart';
+import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
@@ -45,12 +45,11 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
               StringRes.newPasswordSubheading,
-              style: context.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,
-              child: AuthFormField(
+              child: IFormField(
                 labelText: StringRes.newPasswordInputLabel,
                 hintText: StringRes.newPasswordInputHint,
                 obscureText: obscurePassword,

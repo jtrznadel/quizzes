@@ -3,9 +3,14 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
 class TextDivider extends StatelessWidget {
-  const TextDivider({super.key, required this.text});
+  const TextDivider({
+    super.key,
+    required this.text,
+    this.color = AppColorScheme.border,
+  });
 
   final String text;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +18,9 @@ class TextDivider extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         children: [
-          const Expanded(
+          Expanded(
             child: Divider(
-              color: AppColorScheme.border,
+              color: color,
               height: 1,
             ),
           ),
@@ -25,15 +30,15 @@ class TextDivider extends StatelessWidget {
           Text(
             text,
             style: context.textTheme.labelSmall!.copyWith(
-              color: AppColorScheme.border,
+              color: color,
             ),
           ),
           const SizedBox(
             width: 16,
           ),
-          const Expanded(
+          Expanded(
             child: Divider(
-              color: AppColorScheme.border,
+              color: color,
               height: 1,
             ),
           ),

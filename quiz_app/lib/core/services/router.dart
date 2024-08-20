@@ -6,6 +6,8 @@ import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
+import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
+import 'package:quiz_app/main.dart';
 import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:quiz_app/temp.dart';
 
@@ -25,6 +27,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _fadePageBuilder((context) => const SuccessfulPasswordResetRequestScreen(), settings: settings);
     case NewPasswordScreen.routeName:
       return _fadePageBuilder((context) => const NewPasswordScreen(), settings: settings);
+    case QuizzCreationScreen.routeName:
+      return _fadePageBuilder((context) => const QuizzCreationScreen(), settings: settings);
     case DashboardScreen.routeName:
       return _fadePageBuilder((context) => const DashboardScreen(), settings: settings);
     default:

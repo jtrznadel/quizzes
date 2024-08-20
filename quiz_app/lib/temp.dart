@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/extensions/context_extension.dart';
+import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
+import 'package:quiz_app/features/auth/presentation/views/new_password_screen.dart';
+import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
+import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
+import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
+import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
 import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
@@ -29,28 +36,16 @@ class TempScreen extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(WelcomeScreen.routeName);
-              },
-              child: const Text('Welcome page'),
-            ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/welcome');
+                },
+                child: const Text('Welcome page')),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(DashboardScreen.routeName);
+                context.navigator.pushNamed(QuizzCreationScreen.routeName);
               },
-              child: const Text('Dashboard'),
+              child: const Text('Quiz'),
             ),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                QuizStatusBadge(
-                  text: 'Active',
-                  backgroundColor: AppColorScheme.successLight,
-                  textColor: AppColorScheme.success,
-                )
-              ],
-            ),
-            DeleteQuizDialog(quiz: quizEntity),
           ],
         ),
       ),
