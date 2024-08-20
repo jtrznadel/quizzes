@@ -48,6 +48,8 @@ dependencies:
   flutter_native_splash: ^2.4.1
   google_fonts: ^6.2.1
   file_picker: ^8.1.2
+  smooth_page_indicator: ^1.2.0+3
+  dotted_border: ^2.1.0
 
 
 dev_dependencies:

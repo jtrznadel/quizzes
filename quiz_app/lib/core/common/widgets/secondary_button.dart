@@ -1,94 +1,75 @@
-
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
 class SecondaryButton extends StatelessWidget {
-  const SecondaryButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      required this.width,
-      this.leadingIcon,
-      this.trailingIcon,
-      this.contentAlignment = MainAxisAlignment.center,
-      });
+  const SecondaryButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.width = double.infinity,
+    this.icon,
+    this.iconAlignment = IconAlignment.start,
+    this.contentAlignment = MainAxisAlignment.center,
+    this.bgColor = AppColorScheme.secondary,
+    this.contentColor = AppColorScheme.primary,
+  });
 
   final VoidCallback onPressed;
   final String text;
   final double width;
-  final IconData? leadingIcon;
-  final IconData? trailingIcon;
+  final Widget? icon;
+  final IconAlignment? iconAlignment;
   final MainAxisAlignment contentAlignment;
-  final contentColor = AppColorScheme.primary;
+  final Color? bgColor;
+  final Color? contentColor;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(48),
-      ),
-      child: ElevatedButton(
+    return buttonContainer(
+      context,
+      ElevatedButton.icon(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: AppColorScheme.secondary,
-          overlayColor: AppColorScheme.primaryDark,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(48),
-          ),
+          backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          splashFactory: InkRipple.splashFactory,
+          overlayColor: Colors.transparent,
         ),
-        child: buttonContent(contentAlignment, text, context, leadingIcon: leadingIcon, trailingIcon: trailingIcon)
-            .addPadding(padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12)),
+        label: Text(
+          text,
+          style: context.theme.textTheme.labelLarge!.copyWith(
+            color: contentColor,
+          ),
+        ),
+        icon: icon,
+        iconAlignment: iconAlignment!,
       ),
     );
   }
 
-  Widget buttonContent(MainAxisAlignment contentAlignment, String text,
-      BuildContext context, {IconData? leadingIcon, IconData? trailingIcon}) {
-    if (leadingIcon != null) {
-      return Row(
-        mainAxisAlignment: contentAlignment,
-        children: [
-          Icon(leadingIcon, color: contentColor)
-              .addPadding(padding: const EdgeInsets.only(right: 8)),
-          Text(
-            text,
-            style: context.theme.textTheme.labelLarge!
-                .copyWith(color: contentColor),
+  Widget buttonContainer(BuildContext context, Widget button) {
+    return Container(
+      width: width,
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(48),
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(48),
           ),
-        ],
-      );
-    } 
-    else if (trailingIcon != null) {
-      return Row(
-        mainAxisAlignment: contentAlignment,
-        children: [
-          Text(
-            text,
-            style: context.theme.textTheme.labelLarge!
-                .copyWith(color: contentColor),
+          splashColor: contentColor!.withOpacity(0.2),
+          highlightColor: contentColor!.withOpacity(0.2),
+          child: Row(
+            mainAxisAlignment: contentAlignment,
+            children: [button],
           ),
-          Icon(trailingIcon, color: contentColor)
-              .addPadding(padding: const EdgeInsets.only(left: 8)),
-        ],
-      );
-    }
-    else {
-      return Row(
-        mainAxisAlignment: contentAlignment,
-        children: [
-          Text(
-            text,
-            style: context.theme.textTheme.labelLarge!
-                .copyWith(color: contentColor),
-          ),
-        ],
-      );
-    }
+        ),
+      ),
+    );
   }
 }

@@ -35,4 +35,6 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   hintStyle: textTheme.bodyMedium!.copyWith(color: const Color(0xFF8391A1)),
   floatingLabelBehavior: FloatingLabelBehavior.never,
   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+  fillColor: AppColorScheme.surfaceContainer,
+  filled: true,
 );
