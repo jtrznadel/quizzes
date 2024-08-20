@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class IFormField extends StatelessWidget {
   const IFormField({
@@ -56,7 +57,7 @@ class IFormField extends StatelessWidget {
                 controller: controller,
                 validator: (value) {
                   if (required && (value == null || value.isEmpty)) {
-                    return 'This field is required';
+                    return S.of(context).thisFieldIsRequired;
                   }
                   return null;
                 },

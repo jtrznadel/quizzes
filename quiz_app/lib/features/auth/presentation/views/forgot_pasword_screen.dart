@@ -7,6 +7,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -33,24 +34,24 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BasicAppBar(title: StringRes.forgotPasswordAppbarTitle),
+      appBar: BasicAppBar(title: S.of(context).forgotPasswordAppbarTitle),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.forgotPasswordHeading,
+              S.of(context).forgotPasswordHeading,
               style: context.textTheme.headlineLarge,
             ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
             Text(
-              StringRes.forgotPasswordSubheading,
+              S.of(context).forgotPasswordSubheading,
               style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
             Form(
               key: formKey,
               child: IFormField(
-                labelText: StringRes.forgotPasswordInputLabel,
-                hintText: StringRes.forgotPasswordInputHint,
+                labelText: S.of(context).forgotPasswordInputLabel,
+                hintText: S.of(context).forgotPasswordInputHint,
                 obscureText: false,
                 required: true,
                 controller: emailController,
@@ -58,7 +59,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
             ),
             BasicButton(
-              text: StringRes.forgotPasswordButton,
+              text: S.of(context).forgotPasswordButton,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   context.navigator.pushReplacementNamed(SuccessfulPasswordResetRequestScreen.routeName);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizAttemptItem extends StatelessWidget {
   const QuizAttemptItem({super.key});
@@ -18,27 +19,27 @@ class QuizAttemptItem extends StatelessWidget {
         children: [
           statusBadges(context),
           infoRow(
-            StringRes.quizzDetailsTabStatisticsScore,
+            S.of(context).quizzDetailsTabStatisticsScore,
             '40',
             context,
           ),
           infoRow(
-            StringRes.quizzDetailsTabStatisticsName,
+            S.of(context).quizzDetailsTabStatisticsName,
             'John B',
             context,
           ),
           infoRow(
-            StringRes.quizzDetailsTabStatisticsEmail,
+            S.of(context).quizzDetailsTabStatisticsEmail,
             '-',
             context,
           ),
           infoRow(
-            StringRes.quizzDetailsTabStatisticsTime,
+            S.of(context).quizzDetailsTabStatisticsTime,
             '12 seconds',
             context,
           ),
           infoRow(
-            StringRes.quizzDetailsTabStatisticsDate,
+            S.of(context).quizzDetailsTabStatisticsDate,
             '21.08.2024',
             context,
           ),
@@ -53,11 +54,11 @@ class QuizAttemptItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          StringRes.quizzDetailsTabStatisticsDetailsStatusBadge,
+          S.of(context).quizzDetailsTabStatisticsDetailsStatusBadge,
           style: context.textTheme.labelMedium,
         ),
         Text(
-          StringRes.quizzDetailsTabStatisticsFinishedStatusBadge,
+          S.of(context).quizzDetailsTabStatisticsFinishedStatusBadge,
           style: context.textTheme.labelMedium,
         )
       ],

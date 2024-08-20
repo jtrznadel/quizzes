@@ -6,6 +6,7 @@ import 'package:quiz_app/features/quizz/presentation/views/quizz_preview_screen.
 import 'package:quiz_app/features/quizz/presentation/views/quizz_success_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/views/quizz_text_prompt_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/quit_quizz_creation_dialog.dart';
+import 'package:quiz_app/generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class QuizzCreationScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppBar(
-          title: 'Create quizz',
+          title: S.of(context).quizzCreationAppBarTitle,
           onBack: () {
             QuitQuizzCreationDialog.show(context);
           }),

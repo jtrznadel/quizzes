@@ -6,6 +6,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/auth/presentation/refactors/sign_in_form.dart';
 import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
 import 'package:quiz_app/features/auth/presentation/widgets/auth_redirect_button.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -34,8 +35,8 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const BasicAppBar(
-        title: 'Login',
+      appBar: BasicAppBar(
+        title: S.of(context).signInAppBarTitle,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -45,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Enter credentials',
+              S.of(context).signInHeading,
               style: context.textTheme.headlineLarge,
             ),
             SignInForm(
@@ -53,11 +54,11 @@ class _SignInScreenState extends State<SignInScreen> {
               emailController: emailController,
               passwordController: passwordController,
             ),
-            const TextDivider(text: 'OR'),
+            TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
-            const AuthRedirectButton(
-              text: StringRes.signInDonHave,
-              buttonText: 'Register',
+            AuthRedirectButton(
+              text: S.of(context).signInDontHaveAccount,
+              buttonText: S.of(context).registerButton,
               navigateTo: SignUpScreen.routeName,
             ),
           ],

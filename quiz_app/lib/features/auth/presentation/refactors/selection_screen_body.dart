@@ -6,6 +6,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class SelectionScreenBody extends StatelessWidget {
   const SelectionScreenBody({
@@ -32,7 +33,7 @@ class SelectionScreenBody extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed(SignInScreen.routeName);
             },
-            text: 'Log In',
+            text: S.of(context).loginButton,
             width: double.infinity,
           ),
           const SizedBox(
@@ -42,7 +43,7 @@ class SelectionScreenBody extends StatelessWidget {
             onPressed: () {
               context.navigator.pushNamed(SignUpScreen.routeName);
             },
-            text: 'Register',
+            text: S.of(context).registerButton,
             width: double.infinity,
           ),
         ],

@@ -6,6 +6,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/features/quizz/presentation/refactors/add_question_dialog_answer_section.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});

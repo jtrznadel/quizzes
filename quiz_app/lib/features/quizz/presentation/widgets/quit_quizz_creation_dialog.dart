@@ -4,6 +4,7 @@ import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuitQuizzCreationDialog extends StatelessWidget {
   const QuitQuizzCreationDialog({super.key});

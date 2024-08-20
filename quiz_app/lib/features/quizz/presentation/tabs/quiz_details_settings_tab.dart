@@ -6,6 +6,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/switch_button.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/text_checkbox.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizDetailsSettingsTab extends StatefulWidget {
   const QuizDetailsSettingsTab({super.key});
@@ -24,12 +25,11 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          StringRes.quizzDetailsTabSettingsSubheading,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          S.of(context).quizzDetailsTabSettingsSubheading,
+          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
         Text(
-          StringRes.quizzDetailsTabSettingsQuizStatus,
+          S.of(context).quizzDetailsTabSettingsQuizStatus,
           style: context.textTheme.labelLarge,
         ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
         Row(
@@ -38,7 +38,7 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
           children: [
             Expanded(
               child: Text(
-                StringRes.quizzDetailsTabSettingsQuizStatusDescription,
+                S.of(context).quizzDetailsTabSettingsQuizStatusDescription,
                 style: context.textTheme.bodyMedium,
               ),
             ),
@@ -53,15 +53,15 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
           ],
         ).addPadding(padding: const EdgeInsets.only(bottom: 24)),
         Text(
-          StringRes.quizzDetailsTabSettingsQuizAvailability,
+          S.of(context).quizzDetailsTabSettingsQuizAvailability,
           style: context.textTheme.labelLarge,
         ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
         Text(
-          StringRes.quizzDetailsTabSettingsQuizAvailabilityDescription,
+          S.of(context).quizzDetailsTabSettingsQuizAvailabilityDescription,
           style: context.textTheme.bodyMedium,
         ).addPadding(padding: const EdgeInsets.only(bottom: 16)),
         TextCheckbox(
-          text: StringRes.quizzDetailsTabSettingsQuizAvailabilityActive,
+          text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityActive,
           value: quizAvailabilityActiveValue,
           onChanged: (value) {
             setState(() {
@@ -70,7 +70,7 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
           },
         ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
         TextCheckbox(
-          text: StringRes.quizzDetailsTabSettingsQuizAvailabilityPublic,
+          text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
           value: quizAvailabilityPublicValue,
           onChanged: (value) {
             setState(() {
@@ -81,7 +81,7 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
         Align(
           alignment: Alignment.centerRight,
           child: BasicButton(
-            text: StringRes.quizzDetailsTabSettingsSaveChanges,
+            text: S.of(context).quizzDetailsTabSettingsSaveChanges,
             onPressed: () {},
           ).addPadding(padding: const EdgeInsets.only(top: 40)),
         )

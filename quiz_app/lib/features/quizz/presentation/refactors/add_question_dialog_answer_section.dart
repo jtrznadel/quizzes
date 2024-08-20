@@ -4,6 +4,7 @@ import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class AddQuestionDialogAnswerSection extends StatelessWidget {
   const AddQuestionDialogAnswerSection({
@@ -25,7 +26,7 @@ class AddQuestionDialogAnswerSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          StringRes.quizzCreationAddQuestionAnswersLabel,
+          S.of(context).quizzCreationAddQuestionAnswersLabel,
           style: context.textTheme.bodyMedium,
         ),
         const SizedBox(
@@ -71,7 +72,7 @@ class AnswerTextArea extends StatelessWidget {
         ),
         Expanded(
           child: TextArea(
-            hintText: StringRes.quizzCreationAddQuestionAnswerPlaceholder,
+            hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
             controller: answerController,
             minLines: 2,
             maxLines: 2,

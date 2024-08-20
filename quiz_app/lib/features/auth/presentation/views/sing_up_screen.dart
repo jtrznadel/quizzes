@@ -6,6 +6,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/auth/presentation/refactors/sign_up_form.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:quiz_app/features/auth/presentation/widgets/auth_redirect_button.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -35,7 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const BasicAppBar(title: 'Register'),
+      appBar: BasicAppBar(title: S.of(context).signUpAppBarTitle),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -43,7 +44,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           children: [
             Text(
-              StringRes.signUpHeading,
+              S.of(context).signUpHeading,
               style: context.textTheme.headlineLarge,
             ),
             SignUpForm(
@@ -52,11 +53,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               emailController: emailController,
               passwordController: passwordController,
             ),
-            const TextDivider(text: 'OR'),
+            TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
-            const AuthRedirectButton(
-              text: StringRes.signUpAlready,
-              buttonText: 'Log In',
+            AuthRedirectButton(
+              text: S.of(context).signUpAlreadyHaveAccount,
+              buttonText: S.of(context).loginButton,
               navigateTo: SignInScreen.routeName,
             ),
           ],
