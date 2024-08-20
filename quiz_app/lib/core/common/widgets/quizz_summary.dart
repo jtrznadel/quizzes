@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuizzSummary extends StatelessWidget {
   const QuizzSummary({
@@ -25,7 +26,7 @@ class QuizzSummary extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              StringRes.quizzSummaryTitle + title,
+              S.of(context).quizzSummaryTitle + title,
               style: context.textTheme.labelMedium,
             ),
             const SizedBox(

@@ -5,6 +5,7 @@ import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({
@@ -38,8 +39,8 @@ class _SignInFormState extends State<SignInForm> {
           children: [
             IFormField(
               controller: widget.emailController,
-              labelText: 'E-mail',
-              hintText: 'Your e-mail',
+              labelText: S.of(context).emailLabel,
+              hintText: S.of(context).emailHint,
               required: true,
               obscureText: false,
             ),
@@ -48,8 +49,8 @@ class _SignInFormState extends State<SignInForm> {
             ),
             IFormField(
               controller: widget.passwordController,
-              labelText: 'Password',
-              hintText: 'Your password',
+              labelText: S.of(context).passwordLabel,
+              hintText: S.of(context).passwordHint,
               required: true,
               obscureText: obscurePassword,
               suffixIcon: IconButton(
@@ -74,7 +75,7 @@ class _SignInFormState extends State<SignInForm> {
                 context.navigator.pushNamed(ForgotPasswordScreen.routeName);
               },
               child: Text(
-                'Forgot password?',
+                S.of(context).forgotPassword,
                 style: context.textTheme.labelMedium!.copyWith(
                   color: context.theme.primaryColor,
                 ),
@@ -87,7 +88,7 @@ class _SignInFormState extends State<SignInForm> {
                 onPressed: () {
                   if (widget.formKey.currentState!.validate()) {}
                 },
-                text: 'Login',
+                text: S.of(context).loginButton,
                 width: double.infinity),
           ],
         ),

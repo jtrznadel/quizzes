@@ -6,6 +6,7 @@ import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/features/quizz/presentation/refactors/add_question_dialog_answer_section.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});
@@ -62,15 +63,15 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.quizzCreationAddQuestionHeading,
+              S.of(context).quizzCreationAddQuestionHeading,
               style: context.textTheme.headlineSmall,
             ),
             const SizedBox(
               height: 24,
             ),
             IFormField(
-              labelText: StringRes.quizzCreationAddQuestionTitleLabel,
-              hintText: StringRes.quizzCreationAddQuestionTitleHint,
+              labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
+              hintText: S.of(context).quizzCreationAddQuestionTitleHint,
               required: true,
               obscureText: false,
               controller: titleController,
@@ -79,8 +80,8 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
               height: 24,
             ),
             IFormField(
-              labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
-              hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
+              labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
+              hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
               required: true,
               obscureText: false,
               controller: descriptionController,
@@ -104,7 +105,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
                   onPressed: () {
                     //TODO: implement cancel button functionality with a confirmation dialog
                   },
-                  text: StringRes.quizzCreationQuitButtonCancel,
+                  text: S.of(context).quizzCreationQuitButtonCancel,
                   contentColor: AppColorScheme.primary,
                   bgColor: Colors.transparent,
                   width: 110,
@@ -113,7 +114,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
                   onPressed: () {
                     //TODO: implement validator to check if all fields are filled and correct answer is picked
                   },
-                  text: StringRes.quizzCreationSaveQuestion,
+                  text: S.of(context).quizzCreationSaveQuestion,
                   width: 100,
                 ),
               ],

@@ -1,0 +1,146 @@
+{
+    "loginButton": "Log In",
+    "registerButton": "Register",
+    "emailLabel": "E-mail",
+    "emailHint": "Your e-mail",
+    "passwordLabel": "Password",
+    "passwordHint": "Your password",
+    "usernameLabel": "Username",
+    "usernameHint": "Your username",
+
+    "forgotPassword": "Forgot password?",
+    "thisFieldIsRequired": "This field is required",
+
+    "signInAppBarTitle": "Login",
+    "signInHeading": "Enter credentials",
+    "signInDontHaveAccount": "Don''t have an account?",
+
+    "signUpAppBarTitle": "Register",
+    "signUpHeading": "Hello! 👋 Fill out the form to register",
+    "signUpAlreadyHaveAccount": "Already have an account?",
+
+    "forgotPasswordAppbarTitle": "Password reset",
+    "forgotPasswordHeading": "Forgot password?",
+    "forgotPasswordSubheading": "Don''t worry! It happens. Enter the email address associated with your account.",
+    "forgotPasswordInputLabel": "E-mail",
+    "forgotPasswordInputHint": "Your e-mail",
+    "forgotPasswordButton": "Send e-mail",
+
+    "successfulPasswordResetRequestHeading": "E-mail sent",
+    "successfulPasswordResetRequestSubheading": "Check your e-mail, there will be an e-mail with password reset link.",
+    "successfulPasswordResetRequestButton": "Back",
+    
+    "newPasswordAppbarTitle": "Password reset",
+    "newPasswordHeading": "New password",
+    "newPasswordSubheading": "This new password must be unique to those previously used.",
+    "newPasswordInputLabel": "New password",
+    "newPasswordInputHint": "Your password",
+    "newPasswordButton": "Save and login",
+    
+    "quizzSummaryTitle": "Title: ",
+    
+    "quizzCreationAppBarTitle": "Create quizz",
+    "quizzCreationTextPromptHeading": "Text prompt",
+    "quizzCreationTextPromptSubheading": "Here, you can create quizz based on your prompt.",
+    "quizzCreationUploadFile": "Upload file",
+    "quizzCreationTextPromptTextAreaLabel": "Prompt",
+    "quizzCreationTextPromptTextAreaHint": "Enter your prompt",
+    
+    "quizzCreationConfigureHeading": "Configure quizz",
+    "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",
+    "quizzCreationConfigureTypeQuestion": "What type of questions?",
+    "quizzCreationConfigureType1": "Multiple choice",
+    "quizzCreationConfigureType2": "True/False",
+    "quizzCreationConfigureType3": "Fill in the blank",
+
+    "quizzCreationConfigureQuestionCount": "How many questions?",
+    "quizzCreationConfigureQuestionCount1": "Low",
+    "quizzCreationConfigureQuestionCount2": "Medium",
+    "quizzCreationConfigureQuestionCount3": "High",
+    "quizzCreationConfigureQuestionCount4": "Manual",
+
+    "addNewQuestionBottomSheetHeading": "Add new question",
+    "addNewQuestionBottomSheetManual": "Manual",
+    "addNewQuestionBottomSheetAI": "Generate question with AI",
+
+    "quizzCreationPreviewHeading": "Quizz Preview",
+    "quizzCreationAddQuestionButton": "Add question",
+
+    "quizzDetailsAppbarTitle": "Quiz Detail",
+    "quizzDetailsTabQuestions": "Questions",
+    "quizzDetailsTabSettings": "Settings",
+    "quizzDetailsTabStatistics": "Statistics",
+    "quizzDetailsTabGeneral": "General",
+
+    "quizzDetailsTabQuestionsSubheading": "Manage your quiz questions here. You can edit and delete questions. This page is preview page for your questions.",
+    "quizzDetailsTabQuestionsSwitch": "Answers",
+    "quizzDetailsTabQuestionsAddNewQuestion": "New question",
+
+    "quizzDetailsTabSettingsSubheading": "Manage your quiz settings here.",
+    "quizzDetailsTabSettingsQuizStatus": "Quiz Status",
+    "quizzDetailsTabSettingsQuizStatusDescription": "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.",
+    "quizzDetailsTabSettingsQuizAvailability": "Availability",
+    "quizzDetailsTabSettingsQuizAvailabilityDescription": "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.",
+    "quizzDetailsTabSettingsQuizAvailabilityActive": "Active",
+    "quizzDetailsTabSettingsQuizAvailabilityPublic": "Public",
+    "quizzDetailsTabSettingsSaveChanges": "Save changes",
+
+    "quizzDetailsTabStatisticsSubheading": "You can view your quiz statistics here.",
+    "quizzDetailsTabStatisticsDetailsStatusBadge": "Details",
+    "quizzDetailsTabStatisticsFinishedStatusBadge": "Finished",
+    "quizzDetailsTabStatisticsStoppedStatusBadge": "Stopped",
+    "quizzDetailsTabStatisticsScore": "Score",
+    "quizzDetailsTabStatisticsName": "Name",
+    "quizzDetailsTabStatisticsDate": "Date",
+    "quizzDetailsTabStatisticsTime": "Time",
+    "quizzDetailsTabStatisticsEmail": "Duration",
+
+    "quizzDetailsTabGeneralSubheading": "Manage your quiz page settings here.",
+    "quizzDetailsTabGeneralPageSettingsHeading": "Quiz page settings",
+    "quizzDetailsTabGeneralQuizTitle": "Quiz title",
+    "quizzDetailsTabGeneralQuizTitleTextFieldDescription": "This is you public quiz title. It will be displayed on your quiz page. You can change it anytime.",
+    "quizzDetailsTabGeneralQuizTitleHint": "Enter quiz title",
+    "quizzDetailsTabGeneralQuizDescription": "Quiz description",
+    "quizzDetailsTabGeneralQuizDescriptionTextFieldDescription": "This is your public quiz description. It will be displayed on your quiz page. You can change it anytime.",
+    "quizzDetailsTabGeneralQuizDescriptionHint": "Enter quiz title",
+
+    "quizzCreationQuitHeading": "Are you sure?",
+    "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",
+    "quizzCreationQuitButton": "Yes, quit",
+    "quizzCreationQuitButtonCancel": "Cancel",
+
+    "quizzCreationAddQuestionHeading": "New question",
+    "quizzCreationAddQuestionTitleLabel": "Question Title",
+    "quizzCreationAddQuestionTitleHint": "Enter question title",
+    "quizzCreationAddQuestionDescriptionLabel": "Question Description",
+    "quizzCreationAddQuestionDescriptionHint": "Enter question description",
+    "quizzCreationAddQuestionAnswersLabel": "Answers",
+    "quizzCreationSaveQuestion": "Save",
+    "quizzCreationAddQuestionAnswerPlaceholder": "What is one of the key features of cryptocurrencies?",
+
+    "quizzCreationGenerateQuestionHeading": "Generate new question",
+    "quizzCreationGenerateQuestionPromptLabel": "Prompt",
+    "quizzCreationGenerateQuestionPromptHint": "Enter prompt for AI to generate question",
+    "quizzCreationGenerateQuestionGenerateButton": "Generate",
+
+    "quizzCreationSuccessHeading": "Success!",
+    "quizzCreationSuccessSubheading": "You succesfully created your quizz. You can now share it with others.",
+    "quizzCreationSuccessShareButton": "Share with others!",
+    "quizzCreationSuccessBackButton": "Back to dashboard",
+
+    "dashboardTopHeading": "Quizzes",
+    "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
+   
+    "tempQuizzSummaryTitle": "Understanding Cryptocurrencies and Their Impact on Finance",
+    "tempQuizzSummaryDescription": "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.",
+    "tempQuestion": "What is one of the key features of cryptocurrencies?",
+    "tempQuestionDescription": "Question description",
+    "tempAnswer1": "Decentralization",
+    "tempAnswer2": "Physical existence",
+    "tempAnswer3": "Centralized control",
+    "tempAnswer4": "Government regulation",
+    "continueButton": "Continue",
+    "dividerOr": "OR"
+
+}
+      

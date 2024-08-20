@@ -3,6 +3,7 @@ import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/generated/l10n.dart';
 
 class QuitQuizzCreationDialog extends StatelessWidget {
   const QuitQuizzCreationDialog({super.key});
@@ -21,14 +22,14 @@ class QuitQuizzCreationDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.quizzCreationQuitHeading,
+              S.of(context).quizzCreationQuitHeading,
               style: context.textTheme.headlineSmall,
             ),
             const SizedBox(
               height: 8,
             ),
             Text(
-              StringRes.quizzCreationQuitSubheading,
+              S.of(context).quizzCreationQuitSubheading,
               style: context.textTheme.bodyMedium,
             ),
             const SizedBox(
@@ -41,7 +42,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  text: StringRes.quizzCreationQuitButtonCancel,
+                  text: S.of(context).quizzCreationQuitButtonCancel,
                   width: 130,
                   bgColor: Colors.transparent,
                   contentColor: AppColorScheme.primary,
@@ -54,7 +55,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
                     Navigator.pop(context);
                     Navigator.pop(context);
                   },
-                  text: StringRes.quizzCreationQuitButton,
+                  text: S.of(context).quizzCreationQuitButton,
                   width: 130,
                   bgColor: AppColorScheme.error,
                   contentColor: AppColorScheme.textContrast,
