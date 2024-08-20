@@ -83,7 +83,6 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
           child: BasicButton(
             text: S.of(context).quizzDetailsTabSettingsSaveChanges,
             onPressed: () {},
-            width: context.width * 0.4,
           ).addPadding(padding: const EdgeInsets.only(top: 40)),
         )
       ],

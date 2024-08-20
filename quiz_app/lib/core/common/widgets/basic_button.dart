@@ -10,7 +10,7 @@ class BasicButton extends StatelessWidget {
     required this.text,
     this.width,
     this.icon,
-    this.iconAlignment,
+    this.iconAlignment = IconAlignment.start,
     this.contentAlignment = MainAxisAlignment.center,
   });
 
@@ -43,7 +43,7 @@ class BasicButton extends StatelessWidget {
           style:
               context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
         ),
-        IconAlignment.end == iconAlignment
+        iconAlignment == IconAlignment.end
             ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container()
             : Container(),
       ],

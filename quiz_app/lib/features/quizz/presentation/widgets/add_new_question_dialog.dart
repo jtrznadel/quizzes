@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
+import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
@@ -50,78 +50,64 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          color: AppColorScheme.dialogBackground,
-          borderRadius: BorderRadius.circular(8),
+    return BasicDialog(
+      title: StringRes.quizzCreationAddQuestionHeading,
+      content: _dialogContent(),
+      actions: [
+        SecondaryButton(
+          onPressed: () {
+            //TODO: implement cancel button functionality with a confirmation dialog
+          },
+          text: StringRes.quizzCreationQuitButtonCancel,
+          contentColor: AppColorScheme.primary,
+          bgColor: Colors.transparent,
+          width: null,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).quizzCreationAddQuestionHeading,
-              style: context.textTheme.headlineSmall,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            IFormField(
-              labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
-              hintText: S.of(context).quizzCreationAddQuestionTitleHint,
-              required: true,
-              obscureText: false,
-              controller: titleController,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            IFormField(
-              labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
-              hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
-              required: true,
-              obscureText: false,
-              controller: descriptionController,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            AddQuestionDialogAnswerSection(
-              answer1Controller: answer1Controller,
-              answer2Controller: answer2Controller,
-              answer3Controller: answer3Controller,
-              answer4Controller: answer4Controller,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SecondaryButton(
-                  onPressed: () {
-                    //TODO: implement cancel button functionality with a confirmation dialog
-                  },
-                  text: S.of(context).quizzCreationQuitButtonCancel,
-                  contentColor: AppColorScheme.primary,
-                  bgColor: Colors.transparent,
-                  width: 110,
-                ),
-                BasicButton(
-                  onPressed: () {
-                    //TODO: implement validator to check if all fields are filled and correct answer is picked
-                  },
-                  text: S.of(context).quizzCreationSaveQuestion,
-                  width: 100,
-                ),
-              ],
-            )
-          ],
+        BasicButton(
+          onPressed: () {
+            //TODO: implement validator to check if all fields are filled and correct answer is picked
+          },
+          text: StringRes.quizzCreationSaveQuestion,
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _dialogContent() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 24,
+        ),
+        IFormField(
+          labelText: StringRes.quizzCreationAddQuestionTitleLabel,
+          hintText: StringRes.quizzCreationAddQuestionTitleHint,
+          required: true,
+          obscureText: false,
+          controller: titleController,
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        IFormField(
+          labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
+          hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
+          required: true,
+          obscureText: false,
+          controller: descriptionController,
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        AddQuestionDialogAnswerSection(
+          answer1Controller: answer1Controller,
+          answer2Controller: answer2Controller,
+          answer3Controller: answer3Controller,
+          answer4Controller: answer4Controller,
+        ),
+      ],
     );
   }
 }

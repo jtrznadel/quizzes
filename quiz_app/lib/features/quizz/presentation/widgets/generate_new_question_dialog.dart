@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/text_area.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/text_area.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/res/string_res.dart';
+import 'add_new_question_dialog.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/generated/l10n.dart';
@@ -18,19 +19,13 @@ class GenerateNewQuestionDialog extends StatefulWidget {
   static void show(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => const Align(
-        alignment: Alignment.center,
-        child: Wrap(
-          children: [
-            GenerateNewQuestionDialog(),
-          ],
-        ),
-      ),
+      builder: (context) => const GenerateNewQuestionDialog(),
     );
   }
 
   @override
-  State<GenerateNewQuestionDialog> createState() => _GenerateNewQuestionDialogState();
+  State<GenerateNewQuestionDialog> createState() =>
+      _GenerateNewQuestionDialogState();
 }
 
 class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
@@ -44,65 +39,48 @@ class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
-      child: Container(
-        padding: const EdgeInsets.all(24),
-        decoration: BoxDecoration(
-          color: AppColorScheme.dialogBackground,
-          borderRadius: BorderRadius.circular(8),
+    return BasicDialog(
+      title: StringRes.quizzCreationGenerateQuestionHeading,
+      content: _dialogContent(),
+      actions: [
+        SecondaryButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          text: StringRes.quizzCreationQuitButtonCancel,
+          bgColor: Colors.transparent,
+          width: null,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).quizzCreationGenerateQuestionHeading,
-              style: context.textTheme.headlineSmall,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            TextArea(
-              labelText: S.of(context).quizzCreationGenerateQuestionPromptLabel,
-              hintText: S.of(context).quizzCreationGenerateQuestionPromptHint,
-              controller: promptController,
-              maxLines: 10,
-              textStyle: context.textTheme.bodyMedium!.copyWith(
-                color: AppColorScheme.textSecondary,
-              ),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SecondaryButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  text: S.of(context).quizzCreationQuitButtonCancel,
-                  bgColor: Colors.transparent,
-                  width: 110,
-                ),
-                BasicButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    AddNewQuestionDialog.show(context);
-                  },
-                  text: S.of(context).quizzCreationGenerateQuestionGenerateButton,
-                  icon: SvgPicture.asset(
-                    MediaRes.generate,
-                    colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                  ),
-                  width: 160,
-                ),
-              ],
-            )
-          ],
+        BasicButton(
+          onPressed: () {
+            Navigator.pop(context);
+            AddNewQuestionDialog.show(context);
+          },
+          text: StringRes.quizzCreationGenerateQuestionGenerateButton,
+          icon: SvgPicture.asset(
+            MediaRes.generate,
+            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+          ),
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _dialogContent() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 24,
+        ),
+        TextArea(
+          labelText: StringRes.quizzCreationGenerateQuestionPromptLabel,
+          hintText: StringRes.quizzCreationGenerateQuestionPromptHint,
+          controller: promptController,
+          maxLines: 10,
+        ),
+      ],
     );
   }
 }
