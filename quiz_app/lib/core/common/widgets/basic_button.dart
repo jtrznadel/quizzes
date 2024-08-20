@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
@@ -7,7 +8,7 @@ class BasicButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    required this.width,
+    this.width,
     this.icon,
     this.iconAlignment,
     this.contentAlignment = MainAxisAlignment.center,
@@ -15,7 +16,7 @@ class BasicButton extends StatelessWidget {
 
   final VoidCallback onPressed;
   final String text;
-  final double width;
+  final double? width;
   final Widget? icon;
   final IconAlignment? iconAlignment;
   final MainAxisAlignment contentAlignment;
@@ -25,23 +26,28 @@ class BasicButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return buttonContainer(
       context,
-      ElevatedButton.icon(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          overlayColor: Colors.transparent,
-        ),
-        label: Text(
+      buttonContent(context),
+    );
+  }
+
+  Widget buttonContent(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: contentAlignment,
+      children: [
+        iconAlignment == IconAlignment.start
+            ? icon?.addPadding(padding: const EdgeInsets.only(right: 8)) ?? Container()
+            : Container(),
+        Text(
           text,
           style:
               context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
         ),
-        icon: icon,
-        iconAlignment: iconAlignment ?? IconAlignment.start,
-      ),
-    );
+        IconAlignment.end == iconAlignment
+            ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container()
+            : Container(),
+      ],
+    ).addPadding(padding: const EdgeInsets.symmetric(vertical: 12));
   }
 
   Widget buttonContainer(BuildContext context, Widget button) {
@@ -71,10 +77,7 @@ class BasicButton extends StatelessWidget {
           ),
           splashColor: AppColorScheme.primaryDark,
           highlightColor: AppColorScheme.primaryDark,
-          child: Row(
-            mainAxisAlignment: contentAlignment,
-            children: [button],
-          ),
+          child: button.addPadding(padding: const EdgeInsets.symmetric(horizontal: 16)),
         ),
       ),
     );

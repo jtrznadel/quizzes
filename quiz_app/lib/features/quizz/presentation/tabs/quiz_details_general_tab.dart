@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
@@ -94,13 +93,9 @@ class QuizDetailsGeneralTab extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: BasicButton(
         onPressed: () {
-          kDebugMode
-              ? debugPrint(
-                  'Title: ${titleController.text}\nDescription: ${descriptionController.text}')
-              : null;
         },
+        //TODO: replace with string res
         text: 'Save changes',
-        width: context.width * 0.4,
       ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
     );
   }

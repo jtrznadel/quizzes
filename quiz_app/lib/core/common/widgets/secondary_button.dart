@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton({
@@ -28,24 +29,28 @@ class SecondaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return buttonContainer(
       context,
-      ElevatedButton.icon(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
-          overlayColor: Colors.transparent,
-        ),
-        label: Text(
-          text,
-          style: context.theme.textTheme.labelLarge!.copyWith(
-            color: contentColor,
-          ),
-        ),
-        icon: icon,
-        iconAlignment: iconAlignment!,
-      ),
+      buttonContent(context),
     );
+  }
+
+  Widget buttonContent(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: contentAlignment,
+      children: [
+        iconAlignment == IconAlignment.start
+            ? icon?.addPadding(padding: const EdgeInsets.only(right: 8)) ?? Container()
+            : Container(),
+        Text(
+          text,
+          style:
+              context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
+        ),
+        IconAlignment.end == iconAlignment
+            ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container()
+            : Container(),
+      ],
+    ).addPadding(padding: const EdgeInsets.symmetric(vertical: 12));
   }
 
   Widget buttonContainer(BuildContext context, Widget button) {

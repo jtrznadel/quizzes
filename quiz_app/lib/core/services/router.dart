@@ -8,7 +8,6 @@ import 'package:quiz_app/features/auth/presentation/views/successful_password_re
 import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
 import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
-import 'package:quiz_app/main.dart';
 import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:quiz_app/temp.dart';
 
