@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_text_theme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 
 class TextArea extends StatelessWidget {
