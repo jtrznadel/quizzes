@@ -67,19 +67,7 @@ class QuizListItem extends StatelessWidget {
           color: Colors.transparent,
           child: InkWell(
             onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        DeleteQuizDialog(quiz: quizEntity),
-                      ],
-                    ),
-                  );
-                },
-              );
+              DeleteQuizDialog.show(context, quizEntity);
             },
             splashColor: AppColorScheme.textPrimary.withOpacity(0.1),
             splashFactory: InkRipple.splashFactory,

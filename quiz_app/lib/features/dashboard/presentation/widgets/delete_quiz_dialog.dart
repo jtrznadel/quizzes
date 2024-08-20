@@ -13,10 +13,13 @@ class DeleteQuizDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DeleteDialog(
+      //TODO: extract to strings
       title: "Are you sure?",
       content: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Text(
+            //TODO: extract to strings
             "This action cannot be undone. Once you delete the quiz there's no going back.",
             style: context.theme.textTheme.bodyMedium,
           ).addPadding(padding: const EdgeInsets.only(bottom: 24, top: 8)),
@@ -26,6 +29,13 @@ class DeleteQuizDialog extends StatelessWidget {
       onConfirm: () {
 
       },
+    );
+  }
+
+  static void show(BuildContext context, TestQuizEntity quiz) {
+    showDialog(
+      context: context,
+      builder: (context) => DeleteQuizDialog(quiz: quiz),
     );
   }
 }
