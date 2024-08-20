@@ -22,4 +22,7 @@ class MediaRes {
   static const String share = 'assets/icons/share.svg';
   static const String generate = 'assets/icons/generate.svg';
   static const String copy = 'assets/icons/copy.svg';
+  static const String deleteQuiz = 'assets/icons/delete_icon.svg';
+  static const String userProfile = 'assets/icons/dashboard_profile_icon.svg';
+  static const String addQuiz = 'assets/icons/add_quiz_icon.svg';
 }
