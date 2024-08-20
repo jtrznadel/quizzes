@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
+import 'package:quiz_app/core/common/widgets/dialogs/delete_dialog.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
@@ -59,7 +60,24 @@ class ProfileScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             SecondaryButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => DeleteDialog(
+                    //TODO: extract to strings
+                    title: "Deleting account",
+                    content: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        //TODO: extract to strings
+                        "You are about to delete your account. This action cannot be undone.",
+                        style: context.theme.textTheme.bodyMedium,
+                      ),
+                    ),
+                    onConfirm: () {},
+                  ),
+                );
+              },
               text: StringRes.profileDeleteButton,
               bgColor: AppColorScheme.error,
               contentColor: AppColorScheme.textContrast,

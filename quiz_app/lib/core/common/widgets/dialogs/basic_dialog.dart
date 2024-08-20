@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
@@ -18,20 +17,16 @@ class BasicDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-      child: AlertDialog(
-        backgroundColor: AppColorScheme.dialogBackground,
-        contentPadding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
-        insetPadding: const EdgeInsets.all(16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        title:
-            Text(title, style: context.theme.textTheme.headlineSmall),
-        content: content,
-        actions: actions,
+    return AlertDialog(
+      backgroundColor: AppColorScheme.dialogBackground,
+      contentPadding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+      insetPadding: const EdgeInsets.all(16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
       ),
+      title: Text(title, style: context.theme.textTheme.headlineSmall),
+      content: content,
+      actions: actions,
     );
   }
 }
