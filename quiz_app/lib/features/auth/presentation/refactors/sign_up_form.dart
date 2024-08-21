@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/generated/l10n.dart';
 
@@ -41,9 +42,7 @@ class _SignUpFormState extends State<SignUpForm> {
               obscureText: false,
               controller: widget.usernameController,
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const MediumVSpacer(),
             IFormField(
               labelText: S.of(context).emailLabel,
               hintText: S.of(context).emailHint,
@@ -51,9 +50,7 @@ class _SignUpFormState extends State<SignUpForm> {
               obscureText: false,
               controller: widget.emailController,
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const MediumVSpacer(),
             IFormField(
               labelText: S.of(context).passwordLabel,
               hintText: S.of(context).passwordHint,
@@ -77,9 +74,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       ),
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {
                 if (widget.formKey.currentState!.validate()) {}

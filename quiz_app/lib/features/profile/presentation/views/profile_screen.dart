@@ -3,6 +3,7 @@ import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/dialogs/delete_dialog.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
@@ -29,36 +30,33 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Text(
               StringRes.profileSubheading,
-              style: context.theme.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
               textAlign: TextAlign.start,
             ),
-            const SizedBox(height: 8),
+            const SmallVSpacer(),
             TextArea(
               hintText: StringRes.profileNameHint,
               controller: controller,
               maxLines: 3,
               labelText: StringRes.profileNameLabel,
             ),
-            const SizedBox(height: 8),
+            const SmallVSpacer(),
             Text(
               StringRes.profileNameDescription,
-              style: context.theme.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
               textAlign: TextAlign.start,
             ),
-            const SizedBox(height: 8),
+            const SmallVSpacer(),
             BasicButton(
               onPressed: () {},
               text: StringRes.profileUpdateButton,
             ),
-            const SizedBox(height: 40),
+            const ExtraLargeVSpacer(),
             Text(
               StringRes.profileDeleteButtonLabel,
-              style: context.theme.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ),
-            const SizedBox(height: 8),
+            const SmallVSpacer(),
             SecondaryButton(
               onPressed: () {
                 showDialog(

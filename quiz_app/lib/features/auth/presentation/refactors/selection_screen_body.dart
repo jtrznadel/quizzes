@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
@@ -26,9 +27,7 @@ class SelectionScreenBody extends StatelessWidget {
           SvgPicture.asset(
             MediaRes.logoSvg,
           ),
-          const SizedBox(
-            height: 80,
-          ),
+          const CustomVSpacer(80),
           BasicButton(
             onPressed: () {
               Navigator.of(context).pushNamed(SignInScreen.routeName);
@@ -36,9 +35,7 @@ class SelectionScreenBody extends StatelessWidget {
             text: S.of(context).loginButton,
             width: double.infinity,
           ),
-          const SizedBox(
-            height: 16,
-          ),
+          const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {
               context.navigator.pushNamed(SignUpScreen.routeName);

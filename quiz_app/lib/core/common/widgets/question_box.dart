@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/answer_tile.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
@@ -66,30 +67,20 @@ class QuestionBox extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SmallVSpacer(),
               Text(
                 S.of(context).tempQuestionDescription,
                 style: context.textTheme.bodyMedium,
               ),
-              const SizedBox(
-                height: 16,
-              ),
+              const MediumVSpacer(),
               Column(
                 children: [
                   AnswerTile(leading: 'A', text: S.of(context).tempAnswer1),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  const SmallVSpacer(),
                   AnswerTile(leading: 'B', text: S.of(context).tempAnswer2),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  const SmallVSpacer(),
                   AnswerTile(leading: 'C', text: S.of(context).tempAnswer3),
-                  const SizedBox(
-                    height: 8,
-                  ),
+                  const SmallVSpacer(),
                   AnswerTile(leading: 'D', text: S.of(context).tempAnswer4),
                 ],
               )

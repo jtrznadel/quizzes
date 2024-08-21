@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
@@ -29,21 +30,13 @@ class AddQuestionDialogAnswerSection extends StatelessWidget {
           S.of(context).quizzCreationAddQuestionAnswersLabel,
           style: context.textTheme.bodyMedium,
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         AnswerTextArea(answerController: answer1Controller),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         AnswerTextArea(answerController: answer2Controller),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         AnswerTextArea(answerController: answer3Controller),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         AnswerTextArea(answerController: answer4Controller),
       ],
     );

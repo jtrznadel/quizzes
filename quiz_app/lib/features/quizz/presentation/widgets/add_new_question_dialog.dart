@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
@@ -78,9 +79,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: 24,
-        ),
+        const LargeVSpacer(),
         IFormField(
           labelText: StringRes.quizzCreationAddQuestionTitleLabel,
           hintText: StringRes.quizzCreationAddQuestionTitleHint,
@@ -88,9 +87,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
           obscureText: false,
           controller: titleController,
         ),
-        const SizedBox(
-          height: 24,
-        ),
+        const LargeVSpacer(),
         IFormField(
           labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
           hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
@@ -98,9 +95,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
           obscureText: false,
           controller: descriptionController,
         ),
-        const SizedBox(
-          height: 24,
-        ),
+        const LargeVSpacer(),
         AddQuestionDialogAnswerSection(
           answer1Controller: answer1Controller,
           answer2Controller: answer2Controller,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 
@@ -24,18 +25,14 @@ class TextDivider extends StatelessWidget {
               height: 1,
             ),
           ),
-          const SizedBox(
-            width: 16,
-          ),
+          const SmallHSpacer(),
           Text(
             text,
             style: context.textTheme.labelSmall!.copyWith(
               color: color,
             ),
           ),
-          const SizedBox(
-            width: 16,
-          ),
+          const MediumHSpacer(),
           Expanded(
             child: Divider(
               color: color,

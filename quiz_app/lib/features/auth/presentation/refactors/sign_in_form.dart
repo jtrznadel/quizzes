@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
@@ -44,9 +45,7 @@ class _SignInFormState extends State<SignInForm> {
               required: true,
               obscureText: false,
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const MediumVSpacer(),
             IFormField(
               controller: widget.passwordController,
               labelText: S.of(context).passwordLabel,
@@ -81,9 +80,7 @@ class _SignInFormState extends State<SignInForm> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const ExtraLargeVSpacer(),
             BasicButton(
                 onPressed: () {
                   if (widget.formKey.currentState!.validate()) {}
