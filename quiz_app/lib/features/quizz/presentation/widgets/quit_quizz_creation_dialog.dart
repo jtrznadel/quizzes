@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
@@ -24,9 +26,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
           bgColor: Colors.transparent,
           contentColor: AppColorScheme.primary,
         ),
-        const SizedBox(
-          width: 8,
-        ),
+        const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
             Navigator.pop(context);
@@ -46,7 +46,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const SizedBox(height: 8),
+        const SmallVSpacer(),
         Text(
           StringRes.quizzCreationQuitSubheading,
           style: context.textTheme.bodyMedium,

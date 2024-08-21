@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
@@ -29,9 +30,7 @@ class QuizzSummary extends StatelessWidget {
               S.of(context).quizzSummaryTitle + title,
               style: context.textTheme.labelMedium,
             ),
-            const SizedBox(
-              height: 8,
-            ),
+            const SmallVSpacer(),
             Text(
               description,
               style: context.textTheme.bodyMedium,

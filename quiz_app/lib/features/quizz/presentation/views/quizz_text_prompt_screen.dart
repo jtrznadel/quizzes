@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/common/widgets/text_divider.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
@@ -44,9 +45,7 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
               S.of(context).quizzCreationTextPromptSubheading,
               style: context.textTheme.bodyMedium,
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const ExtraLargeVSpacer(),
             TextArea(
               labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
               hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
@@ -70,9 +69,7 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
               ),
               width: double.infinity,
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {
                 widget.pageController.nextPage(

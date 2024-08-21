@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
 import 'package:quiz_app/core/common/widgets/vertical_divider.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 
@@ -25,9 +26,7 @@ class AnswerTile extends StatelessWidget {
               leading,
               style: context.textTheme.labelMedium,
             ),
-            const SizedBox(
-              width: 16,
-            ),
+            const MediumHSpacer(),
             const IVerticalDivider(),
           ],
         ),

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
@@ -26,16 +27,12 @@ class QuizzSuccessScreen extends StatelessWidget {
             S.of(context).quizzCreationSuccessHeading,
             style: context.textTheme.headlineLarge,
           ),
-          const SizedBox(
-            height: 8,
-          ),
+          const SmallVSpacer(),
           Text(
             S.of(context).quizzCreationSuccessSubheading,
             style: context.textTheme.bodyMedium,
           ),
-          const SizedBox(
-            height: 40,
-          ),
+          const ExtraLargeVSpacer(),
           Container(
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
@@ -67,17 +64,13 @@ class QuizzSuccessScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(
-            height: 40,
-          ),
+          const ExtraLargeVSpacer(),
           BasicButton(
             onPressed: () {},
             text: S.of(context).quizzCreationSuccessShareButton,
             width: double.infinity,
           ),
-          const SizedBox(
-            height: 16,
-          ),
+          const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {},
             text: S.of(context).quizzCreationSuccessBackButton,

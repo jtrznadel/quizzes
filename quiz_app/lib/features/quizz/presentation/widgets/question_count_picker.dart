@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/radio_list_tile.dart';
@@ -22,9 +23,7 @@ class _QuestionCountPickerState extends State<QuestionCountPicker> {
           S.of(context).quizzCreationConfigureQuestionCount,
           style: context.textTheme.labelLarge,
         ),
-        const SizedBox(
-          height: 12,
-        ),
+        const CustomVSpacer(12),
         IRadioListTile<int>(
           title: S.of(context).quizzCreationConfigureQuestionCount1,
           value: 1,
@@ -35,9 +34,7 @@ class _QuestionCountPickerState extends State<QuestionCountPicker> {
             });
           },
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         IRadioListTile<int>(
           title: S.of(context).quizzCreationConfigureQuestionCount2,
           value: 2,
@@ -48,9 +45,7 @@ class _QuestionCountPickerState extends State<QuestionCountPicker> {
             });
           },
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         IRadioListTile<int>(
           title: S.of(context).quizzCreationConfigureQuestionCount3,
           value: 3,
@@ -61,9 +56,7 @@ class _QuestionCountPickerState extends State<QuestionCountPicker> {
             });
           },
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const SmallVSpacer(),
         IRadioListTile<int>(
           title: S.of(context).quizzCreationConfigureQuestionCount4,
           value: 4,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
@@ -28,17 +29,11 @@ class QuizzConfigureScreen extends StatelessWidget {
               S.of(context).quizzCraetionConfigureSubheading,
               style: context.textTheme.bodyMedium,
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const ExtraLargeVSpacer(),
             const QuestionTypePicker(),
-            const SizedBox(
-              height: 24,
-            ),
+            const LargeVSpacer(),
             const QuestionCountPicker(),
-            const SizedBox(
-              height: 40,
-            ),
+            const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {
                 pageController.nextPage(

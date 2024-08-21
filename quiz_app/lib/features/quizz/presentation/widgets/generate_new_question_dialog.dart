@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
@@ -24,8 +25,7 @@ class GenerateNewQuestionDialog extends StatefulWidget {
   }
 
   @override
-  State<GenerateNewQuestionDialog> createState() =>
-      _GenerateNewQuestionDialogState();
+  State<GenerateNewQuestionDialog> createState() => _GenerateNewQuestionDialogState();
 }
 
 class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
@@ -71,9 +71,7 @@ class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: 24,
-        ),
+        const LargeVSpacer(),
         TextArea(
           labelText: StringRes.quizzCreationGenerateQuestionPromptLabel,
           hintText: StringRes.quizzCreationGenerateQuestionPromptHint,
