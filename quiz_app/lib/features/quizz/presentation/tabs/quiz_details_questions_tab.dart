@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/core/common/widgets/question_box.dart';
+import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
@@ -19,7 +20,7 @@ class QuizDetailsQuestionsTab extends StatefulWidget {
 }
 
 class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
-  bool answersVisible = false;
+  bool _answersVisible = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,7 +36,8 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
       children: [
         Text(
           S.of(context).quizzDetailsTabQuestionsSubheading,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
         answersSwitchRow(context),
         newQuestionButton(context),
@@ -52,7 +54,8 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return QuestionBox(questionNumber: index + 1).addPadding(padding: const EdgeInsets.only(bottom: 32));
+            return QuestionBox(questionNumber: index + 1)
+                .addPadding(padding: const EdgeInsets.only(bottom: 32));
           },
         ),
       ],
@@ -64,24 +67,27 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text(
-          "Total questions: 10", //TODO: replace with status badge from the dashboard quiz card
+        const QuizStatusBadge(
+          text: "Total 10 questions",
+          backgroundColor: AppColorScheme.secondary,
+          textColor: AppColorScheme.primary,
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(S.of(context).quizzDetailsTabQuestionsSwitch, style: context.textTheme.bodyMedium).addPadding(
-              padding: const EdgeInsets.only(right: 4),
-            ),
+            Text(
+              S.of(context).quizzDetailsTabQuestionsSwitch,
+              style: context.textTheme.bodyMedium,
+            ).addPadding(padding: const EdgeInsets.only(right: 4)),
             SizedBox(
               height: 32,
               child: FittedBox(
                 fit: BoxFit.fill,
                 child: SwitchButton(
-                  value: answersVisible,
+                  value: _answersVisible,
                   onChanged: (value) {
                     setState(() {
-                      answersVisible = value;
+                      _answersVisible = value;
                     });
                   },
                 ),
