@@ -1,15 +1,19 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/common/widgets/text_divider.dart';
+import 'package:quiz_app/core/errors/file_read_exception.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/generated/l10n.dart';
+
+import '../../../../core/services/file_reader.dart';
 
 class QuizzTextPromptScreen extends StatefulWidget {
   const QuizzTextPromptScreen({super.key, required this.pageController});
@@ -56,14 +60,31 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
               controller: _promptController,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppTheme.pageDefaultSpacingSize),
               child: TextDivider(
                 text: S.of(context).dividerOr,
                 color: AppColorScheme.textSecondary,
               ),
             ),
             SecondaryButton(
-              onPressed: () {},
+              onPressed: () async {
+                try {
+                  final text = await FileReader.pickFileAndRead();
+                  _promptController.text = text;
+                } on FileReadException catch (exception) {
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Something went wrong"),
+                      ),
+                    );
+                  }
+                  else{
+                    kDebugMode ? debugPrint(exception.toString()) : null;
+                  }
+                }
+              },
               text: S.of(context).quizzCreationUploadFile,
               icon: SvgPicture.asset(
                 MediaRes.uploadFile,
