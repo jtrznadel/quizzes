@@ -50,25 +50,30 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
           onBack: () {
             QuitQuizzCreationDialog.show(context);
           }),
-      body: Stack(
+      body: Column(
         children: [
           Align(
             alignment: Alignment.topCenter,
-            child: SmoothPageIndicator(
-              controller: _controller,
-              count: getPages().length,
-              effect: const WormEffect(
-                dotColor: AppColorScheme.secondary,
-                activeDotColor: AppColorScheme.primary,
-                dotHeight: 8,
-                dotWidth: 32,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SmoothPageIndicator(
+                controller: _controller,
+                count: getPages().length,
+                effect: const WormEffect(
+                  dotColor: AppColorScheme.secondary,
+                  activeDotColor: AppColorScheme.primary,
+                  dotHeight: 8,
+                  dotWidth: 32,
+                ),
               ),
             ),
           ),
-          PageView(
-            controller: _controller,
-            physics: const NeverScrollableScrollPhysics(),
-            children: getPages(),
+          Expanded(
+            child: PageView(
+              controller: _controller,
+              physics: const NeverScrollableScrollPhysics(),
+              children: getPages(),
+            ),
           ),
         ],
       ),

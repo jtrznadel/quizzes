@@ -31,21 +31,23 @@ class AddNewQuestionDialog extends StatefulWidget {
 }
 
 class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController answer1Controller = TextEditingController();
-  final TextEditingController answer2Controller = TextEditingController();
-  final TextEditingController answer3Controller = TextEditingController();
-  final TextEditingController answer4Controller = TextEditingController();
+  final TextEditingController answerController1 = TextEditingController();
+  final TextEditingController answerController2 = TextEditingController();
+  final TextEditingController answerController3 = TextEditingController();
+  final TextEditingController answerController4 = TextEditingController();
 
   @override
   void dispose() {
     titleController.dispose();
     descriptionController.dispose();
-    answer1Controller.dispose();
-    answer2Controller.dispose();
-    answer3Controller.dispose();
-    answer4Controller.dispose();
+    answerController1.dispose();
+    answerController2.dispose();
+    answerController3.dispose();
+    answerController4.dispose();
     super.dispose();
   }
 
@@ -57,7 +59,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
       actions: [
         SecondaryButton(
           onPressed: () {
-            //TODO: implement cancel button functionality with a confirmation dialog
+            Navigator.of(context).pop();
           },
           text: StringRes.quizzCreationQuitButtonCancel,
           contentColor: AppColorScheme.primary,
@@ -66,7 +68,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
         ),
         BasicButton(
           onPressed: () {
-            //TODO: implement validator to check if all fields are filled and correct answer is picked
+            if (_formKey.currentState!.validate()) {}
           },
           text: StringRes.quizzCreationSaveQuestion,
         ),
@@ -75,34 +77,37 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
   }
 
   Widget _dialogContent() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const LargeVSpacer(),
-        IFormField(
-          labelText: StringRes.quizzCreationAddQuestionTitleLabel,
-          hintText: StringRes.quizzCreationAddQuestionTitleHint,
-          required: true,
-          obscureText: false,
-          controller: titleController,
-        ),
-        const LargeVSpacer(),
-        IFormField(
-          labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
-          hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
-          required: true,
-          obscureText: false,
-          controller: descriptionController,
-        ),
-        const LargeVSpacer(),
-        AddQuestionDialogAnswerSection(
-          answer1Controller: answer1Controller,
-          answer2Controller: answer2Controller,
-          answer3Controller: answer3Controller,
-          answer4Controller: answer4Controller,
-        ),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const LargeVSpacer(),
+          IFormField(
+            labelText: StringRes.quizzCreationAddQuestionTitleLabel,
+            hintText: StringRes.quizzCreationAddQuestionTitleHint,
+            required: true,
+            obscureText: false,
+            controller: titleController,
+          ),
+          const LargeVSpacer(),
+          IFormField(
+            labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
+            hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
+            required: true,
+            obscureText: false,
+            controller: descriptionController,
+          ),
+          const LargeVSpacer(),
+          AddQuestionDialogAnswerSection(
+            answerController1: answerController1,
+            answerController2: answerController2,
+            answerController3: answerController3,
+            answerController4: answerController4,
+          ),
+        ],
+      ),
     );
   }
 }

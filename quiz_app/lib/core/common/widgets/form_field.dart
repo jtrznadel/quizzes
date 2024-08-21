@@ -55,7 +55,7 @@ class IFormField extends StatelessWidget {
               child: TextFormField(
                 controller: controller,
                 validator: (value) {
-                  if (required && (value == null || value.isEmpty)) {
+                  if (required && (value == null || value.isEmpty || value.trim().isEmpty)) {
                     return S.of(context).thisFieldIsRequired;
                   }
                   return null;

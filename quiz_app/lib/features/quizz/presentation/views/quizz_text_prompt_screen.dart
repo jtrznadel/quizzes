@@ -26,6 +26,7 @@ class QuizzTextPromptScreen extends StatefulWidget {
 
 class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
   final _promptController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -37,7 +38,7 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,16 +51,18 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
               style: context.textTheme.bodyMedium,
             ),
             const ExtraLargeVSpacer(),
-            TextArea(
-              labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
-              hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
-              minLines: 5,
-              maxLines: 15,
-              controller: _promptController,
+            Form(
+              key: _formKey,
+              child: TextArea(
+                labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
+                hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
+                minLines: 5,
+                maxLines: 15,
+                controller: _promptController,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppTheme.pageDefaultSpacingSize),
+              padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
               child: TextDivider(
                 text: S.of(context).dividerOr,
                 color: AppColorScheme.textSecondary,
@@ -91,10 +94,12 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
             const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {
-                widget.pageController.nextPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut,
-                );
+                if (_formKey.currentState!.validate()) {
+                  widget.pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                }
               },
               text: S.of(context).continueButton,
               width: double.infinity,

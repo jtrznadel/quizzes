@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      locale: const Locale('pl'),
+      locale: const Locale('pl'), // Change this to your desired locale
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

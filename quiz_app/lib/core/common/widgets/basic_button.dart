@@ -35,17 +35,12 @@ class BasicButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: contentAlignment,
       children: [
-        iconAlignment == IconAlignment.start
-            ? icon?.addPadding(padding: const EdgeInsets.only(right: 8)) ?? Container()
-            : Container(),
+        iconAlignment == IconAlignment.start ? icon?.addPadding(padding: const EdgeInsets.only(right: 8)) ?? Container() : Container(),
         Text(
           text,
-          style:
-              context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
+          style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
         ),
-        iconAlignment == IconAlignment.end
-            ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container()
-            : Container(),
+        iconAlignment == IconAlignment.end ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container() : Container(),
       ],
     ).addPadding(padding: const EdgeInsets.symmetric(vertical: 12));
   }

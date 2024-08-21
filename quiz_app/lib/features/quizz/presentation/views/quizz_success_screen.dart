@@ -9,6 +9,7 @@ import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
+import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
 import 'package:quiz_app/generated/l10n.dart';
 
 class QuizzSuccessScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class QuizzSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -72,7 +73,9 @@ class QuizzSuccessScreen extends StatelessWidget {
           ),
           const MediumVSpacer(),
           SecondaryButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, DashboardScreen.routeName);
+            },
             text: S.of(context).quizzCreationSuccessBackButton,
             width: double.infinity,
           ),
