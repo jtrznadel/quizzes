@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/generated/l10n.dart';
@@ -17,10 +17,15 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     descriptionController.text = S.of(context).tempQuizzSummaryDescription;
     return Column(
       children: [
+        const MediumVSpacer(),
         generalHeader(context),
+        const MediumVSpacer(),
         pageSettingsHeader(context),
+        const MediumVSpacer(),
         quizTitleTextField(context, titleController),
+        const MediumVSpacer(),
         quizDescriptionTextField(context, descriptionController),
+        const MediumVSpacer(),
         saveButton(context, titleController, descriptionController)
       ],
     );
@@ -31,7 +36,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
       Text(
         S.of(context).quizzDetailsTabGeneralSubheading,
         style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-      ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
+      ),
     ]);
   }
 
@@ -53,13 +58,15 @@ class QuizDetailsGeneralTab extends StatelessWidget {
           controller: controller,
           minLines: 1,
           maxLines: 3,
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+        ),
+        const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
           style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8))
+        ),
+        const SmallVSpacer(),
       ],
-    ).addPadding(padding: const EdgeInsets.only(top: 16));
+    );
   }
 
   Widget quizDescriptionTextField(BuildContext context, TextEditingController controller) {
@@ -71,13 +78,15 @@ class QuizDetailsGeneralTab extends StatelessWidget {
           controller: controller,
           minLines: 1,
           maxLines: 10,
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+        ),
+        const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
           style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8))
+        ),
+        const SmallVSpacer(),
       ],
-    ).addPadding(padding: const EdgeInsets.only(top: 16));
+    );
   }
 
   Widget saveButton(BuildContext context, TextEditingController titleController, TextEditingController descriptionController) {
@@ -86,7 +95,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
       child: BasicButton(
         onPressed: () {},
         text: S.of(context).quizzDetailsSaveChangesButton,
-      ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
+      ),
     );
   }
 }

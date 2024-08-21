@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+class ExtraSmallHSpacer extends StatelessWidget {
+  const ExtraSmallHSpacer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(width: 8);
+  }
+}
+
 class SmallHSpacer extends StatelessWidget {
   const SmallHSpacer({super.key});
 

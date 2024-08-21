@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
@@ -23,14 +24,17 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabSettingsSubheading,
           style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-        ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
+        ),
+        const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabSettingsQuizStatus,
           style: context.textTheme.labelLarge,
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+        ),
+        const SmallVSpacer(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,15 +54,18 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
               },
             ),
           ],
-        ).addPadding(padding: const EdgeInsets.only(bottom: 24)),
+        ),
+        const LargeVSpacer(),
         Text(
           S.of(context).quizzDetailsTabSettingsQuizAvailability,
           style: context.textTheme.labelLarge,
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+        ),
+        const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabSettingsQuizAvailabilityDescription,
           style: context.textTheme.bodyMedium,
-        ).addPadding(padding: const EdgeInsets.only(bottom: 16)),
+        ),
+        const MediumVSpacer(),
         TextCheckbox(
           text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityActive,
           value: quizAvailabilityActiveValue,
@@ -67,7 +74,8 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
               quizAvailabilityActiveValue = value!;
             });
           },
-        ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+        ),
+        const SmallVSpacer(),
         TextCheckbox(
           text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
           value: quizAvailabilityPublicValue,
@@ -77,12 +85,13 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
             });
           },
         ),
+        const ExtraLargeVSpacer(),
         Align(
           alignment: Alignment.centerRight,
           child: BasicButton(
             text: S.of(context).quizzDetailsTabSettingsSaveChanges,
             onPressed: () {},
-          ).addPadding(padding: const EdgeInsets.only(top: 40)),
+          ),
         )
       ],
     );

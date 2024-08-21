@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
@@ -12,7 +13,9 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const MediumVSpacer(),
         statisticsHeader(context),
+        const MediumVSpacer(),
         statisticsList(context),
       ],
     );
@@ -21,8 +24,9 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
   Widget statisticsHeader(BuildContext context) {
     return Text(
       S.of(context).quizzDetailsTabStatisticsSubheading,
-      style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-    ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16));
+      style: context.textTheme.bodyMedium!
+          .copyWith(color: AppColorScheme.textSecondary),
+    );
   }
 
   Widget statisticsList(context) {
@@ -33,7 +37,12 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return const QuizAttemptItem().addPadding(padding: const EdgeInsets.only(bottom: 16));
+            return const Column(
+              children: [
+                QuizAttemptItem(),
+                MediumVSpacer(),
+              ],
+            );
           },
         ),
       ],
