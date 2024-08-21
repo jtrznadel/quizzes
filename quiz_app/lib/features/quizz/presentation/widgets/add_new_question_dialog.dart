@@ -3,7 +3,6 @@ import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
 import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/common/widgets/form_field.dart';
 import 'package:quiz_app/features/quizz/presentation/refactors/add_question_dialog_answer_section.dart';
@@ -54,14 +53,14 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
   @override
   Widget build(BuildContext context) {
     return BasicDialog(
-      title: StringRes.quizzCreationAddQuestionHeading,
+      title: S.of(context).quizzCreationAddQuestionHeading,
       content: _dialogContent(),
       actions: [
         SecondaryButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          text: StringRes.quizzCreationQuitButtonCancel,
+          text: S.of(context).cancelButton,
           contentColor: AppColorScheme.primary,
           bgColor: Colors.transparent,
           width: null,
@@ -70,7 +69,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
           onPressed: () {
             if (_formKey.currentState!.validate()) {}
           },
-          text: StringRes.quizzCreationSaveQuestion,
+          text: S.of(context).quizzCreationSaveQuestion,
         ),
       ],
     );
@@ -85,16 +84,16 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
         children: [
           const LargeVSpacer(),
           IFormField(
-            labelText: StringRes.quizzCreationAddQuestionTitleLabel,
-            hintText: StringRes.quizzCreationAddQuestionTitleHint,
+            labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
+            hintText: S.of(context).quizzCreationAddQuestionTitleHint,
             required: true,
             obscureText: false,
             controller: titleController,
           ),
           const LargeVSpacer(),
           IFormField(
-            labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
-            hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
+            labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
+            hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
             required: true,
             obscureText: false,
             controller: descriptionController,

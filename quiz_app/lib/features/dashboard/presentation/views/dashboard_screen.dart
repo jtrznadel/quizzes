@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
 import 'package:quiz_app/features/dashboard/presentation/widgets/new_quiz_button.dart';

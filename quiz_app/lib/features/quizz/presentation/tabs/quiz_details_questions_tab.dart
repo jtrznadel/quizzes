@@ -4,7 +4,6 @@ import 'package:quiz_app/core/common/widgets/question_box.dart';
 import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/switch_button.dart';

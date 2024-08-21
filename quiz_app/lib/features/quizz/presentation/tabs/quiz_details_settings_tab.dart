@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/switch_button.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/text_checkbox.dart';

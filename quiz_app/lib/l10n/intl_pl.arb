@@ -107,7 +107,6 @@
     "quizzCreationQuitHeading": "Czy jesteś pewien?",
     "quizzCreationQuitSubheading": "Zamierzasz przerwać proces tworzenia quizzu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta.",
     "quizzCreationQuitButton": "Tak, zakończ",
-    "quizzCreationQuitButtonCancel": "Anuluj",
 
     "quizzCreationAddQuestionHeading": "Nowe pytanie",
     "quizzCreationAddQuestionTitleLabel": "Tytuł pytania",
@@ -130,6 +129,25 @@
 
     "dashboardTopHeading": "Quizzy",
     "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
+
+    "deleteQuizzHeading": "Czy jesteś pewien?",
+    "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu.",
+    "deleteAccountHeading": "Usuwanie konta",
+    "deleteAccountDescription": "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta.",
+    "quizzDetailsSaveChangesButton": "Zapisz zmiany",
+    "cancelButton": "Anuluj",
+    "deleteButton": "Usuń",
+
+    "profileAppbarTitle": "Profil",
+    "profileSubheading": "Zarządzaj ustawieniami swojego profilu tutaj.",
+    "profileNameDescription": "To jest Twoja publiczna nazwa wyświetlana.",
+    "profileNameHint": "Wpisz swoje imię",
+    "profileNameLabel": "Imię",
+    "profileUpdateButton": "Aktualizuj",
+    "profileDeleteButton": "Usuń",
+    "profileDeleteButtonLabel": "Usuń swoje konto",
+    "saveQuizzButton": "Zapisz Quizz",
+    "fileReadException": "Coś poszło nie tak",
 
     "tempQuizzSummaryTitle": "Zrozumienie kryptowalut i ich wpływu na finanse",
     "tempQuizzSummaryDescription": "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne.",

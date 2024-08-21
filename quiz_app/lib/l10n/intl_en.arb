@@ -107,7 +107,6 @@
     "quizzCreationQuitHeading": "Are you sure?",
     "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",
     "quizzCreationQuitButton": "Yes, quit",
-    "quizzCreationQuitButtonCancel": "Cancel",
 
     "quizzCreationAddQuestionHeading": "New question",
     "quizzCreationAddQuestionTitleLabel": "Question Title",
@@ -131,6 +130,26 @@
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
    
+    "deleteQuizzHeading": "Are you sure?",
+    "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
+    "deleteAccountHeading": "Deleting account",
+    "deleteAccountDescription": "You are about to delete your account. This action cannot be undone.",
+    "quizzDetailsSaveChangesButton": "Save changes",
+    "cancelButton": "Cancel",
+    "deleteButton": "Delete",
+    "saveQuizzButton": "Save Quizz",
+
+
+    "profileAppbarTitle": "Profile",
+    "profileSubheading": "Manage your profile settings here.",
+    "profileNameDescription": "This is your public display name.",
+    "profileNameHint": "Enter your name",
+    "profileNameLabel": "Name",
+    "profileUpdateButton": "Update",
+    "profileDeleteButton": "Delete",
+    "profileDeleteButtonLabel": "Delete your account",
+    "fileReadException": "Something went wrong",
+
     "tempQuizzSummaryTitle": "Understanding Cryptocurrencies and Their Impact on Finance",
     "tempQuizzSummaryDescription": "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.",
     "tempQuestion": "What is one of the key features of cryptocurrencies?",

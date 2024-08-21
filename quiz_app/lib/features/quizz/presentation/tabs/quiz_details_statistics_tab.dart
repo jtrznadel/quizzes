@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/widgets/quiz_attempt_item.dart';
 import 'package:quiz_app/generated/l10n.dart';
@@ -22,8 +21,7 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
   Widget statisticsHeader(BuildContext context) {
     return Text(
       S.of(context).quizzDetailsTabStatisticsSubheading,
-      style: context.textTheme.bodyMedium!
-          .copyWith(color: AppColorScheme.textSecondary),
+      style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
     ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16));
   }
 
@@ -35,8 +33,7 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return const QuizAttemptItem()
-                .addPadding(padding: const EdgeInsets.only(bottom: 16));
+            return const QuizAttemptItem().addPadding(padding: const EdgeInsets.only(bottom: 16));
           },
         ),
       ],

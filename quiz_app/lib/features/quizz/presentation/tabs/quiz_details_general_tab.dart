@@ -3,7 +3,6 @@ import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/text_area.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/generated/l10n.dart';
 
@@ -67,14 +66,14 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     return Column(
       children: [
         TextArea(
-          labelText: StringRes.quizzDetailsTabGeneralQuizDescription,
-          hintText: StringRes.quizzDetailsTabGeneralQuizDescriptionHint,
+          labelText: S.of(context).quizzDetailsTabGeneralQuizDescription,
+          hintText: S.of(context).quizzDetailsTabGeneralQuizDescriptionHint,
           controller: controller,
           minLines: 1,
           maxLines: 10,
         ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
         Text(
-          StringRes.quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
+          S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
           style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         ).addPadding(padding: const EdgeInsets.only(bottom: 8))
       ],
@@ -86,8 +85,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: BasicButton(
         onPressed: () {},
-        //TODO: replace with string res
-        text: 'Save changes',
+        text: S.of(context).quizzDetailsSaveChangesButton,
       ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
     );
   }

@@ -830,10 +830,10 @@ class S {
     );
   }
 
-  /// `Duration`
+  /// `E-mail`
   String get quizzDetailsTabStatisticsEmail {
     return Intl.message(
-      'Duration',
+      'E-mail',
       name: 'quizzDetailsTabStatisticsEmail',
       desc: '',
       args: [],
@@ -945,16 +945,6 @@ class S {
     return Intl.message(
       'Yes, quit',
       name: 'quizzCreationQuitButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cancel`
-  String get quizzCreationQuitButtonCancel {
-    return Intl.message(
-      'Cancel',
-      name: 'quizzCreationQuitButtonCancel',
       desc: '',
       args: [],
     );
@@ -1135,6 +1125,176 @@ class S {
     return Intl.message(
       'Here, you can effortlessly list, delete, edit and create new exams.',
       name: 'dashboardSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get deleteQuizzHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'deleteQuizzHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action cannot be undone. Once you delete the quiz there''s no going back.`
+  String get deleteQuizzDescription {
+    return Intl.message(
+      'This action cannot be undone. Once you delete the quiz there\'\'s no going back.',
+      name: 'deleteQuizzDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleting account`
+  String get deleteAccountHeading {
+    return Intl.message(
+      'Deleting account',
+      name: 'deleteAccountHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to delete your account. This action cannot be undone.`
+  String get deleteAccountDescription {
+    return Intl.message(
+      'You are about to delete your account. This action cannot be undone.',
+      name: 'deleteAccountDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save changes`
+  String get quizzDetailsSaveChangesButton {
+    return Intl.message(
+      'Save changes',
+      name: 'quizzDetailsSaveChangesButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancelButton {
+    return Intl.message(
+      'Cancel',
+      name: 'cancelButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get deleteButton {
+    return Intl.message(
+      'Delete',
+      name: 'deleteButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Quizz`
+  String get saveQuizzButton {
+    return Intl.message(
+      'Save Quizz',
+      name: 'saveQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile`
+  String get profileAppbarTitle {
+    return Intl.message(
+      'Profile',
+      name: 'profileAppbarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage your profile settings here.`
+  String get profileSubheading {
+    return Intl.message(
+      'Manage your profile settings here.',
+      name: 'profileSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is your public display name.`
+  String get profileNameDescription {
+    return Intl.message(
+      'This is your public display name.',
+      name: 'profileNameDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your name`
+  String get profileNameHint {
+    return Intl.message(
+      'Enter your name',
+      name: 'profileNameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get profileNameLabel {
+    return Intl.message(
+      'Name',
+      name: 'profileNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get profileUpdateButton {
+    return Intl.message(
+      'Update',
+      name: 'profileUpdateButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get profileDeleteButton {
+    return Intl.message(
+      'Delete',
+      name: 'profileDeleteButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete your account`
+  String get profileDeleteButtonLabel {
+    return Intl.message(
+      'Delete your account',
+      name: 'profileDeleteButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get fileReadException {
+    return Intl.message(
+      'Something went wrong',
+      name: 'fileReadException',
       desc: '',
       args: [],
     );

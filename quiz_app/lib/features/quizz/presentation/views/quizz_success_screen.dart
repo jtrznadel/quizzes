@@ -6,7 +6,6 @@ import 'package:quiz_app/core/common/widgets/secondary_button.dart';
 import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';

@@ -4,7 +4,6 @@ import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
 import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
 import 'package:quiz_app/generated/l10n.dart';

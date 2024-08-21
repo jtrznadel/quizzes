@@ -28,13 +28,25 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj nowe pytanie"),
         "addNewQuestionBottomSheetManual":
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
+        "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzy"),
+        "deleteAccountDescription": MessageLookupByLibrary.simpleMessage(
+            "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta."),
+        "deleteAccountHeading":
+            MessageLookupByLibrary.simpleMessage("Usuwanie konta"),
+        "deleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
+        "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
+            "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu."),
+        "deleteQuizzHeading":
+            MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
         "dividerOr": MessageLookupByLibrary.simpleMessage("LUB"),
         "emailHint": MessageLookupByLibrary.simpleMessage("Twój e-mail"),
         "emailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
+        "fileReadException":
+            MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Zapomniałeś hasła?"),
         "forgotPasswordAppbarTitle":
@@ -64,6 +76,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "To nowe hasło musi się różnić od poprzednio używanych."),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Twoje hasło"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Hasło"),
+        "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profil"),
+        "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
+        "profileDeleteButtonLabel":
+            MessageLookupByLibrary.simpleMessage("Usuń swoje konto"),
+        "profileNameDescription": MessageLookupByLibrary.simpleMessage(
+            "To jest Twoja publiczna nazwa wyświetlana."),
+        "profileNameHint":
+            MessageLookupByLibrary.simpleMessage("Wpisz swoje imię"),
+        "profileNameLabel": MessageLookupByLibrary.simpleMessage("Imię"),
+        "profileSubheading": MessageLookupByLibrary.simpleMessage(
+            "Zarządzaj ustawieniami swojego profilu tutaj."),
+        "profileUpdateButton":
+            MessageLookupByLibrary.simpleMessage("Aktualizuj"),
         "quizzCraetionConfigureSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
         "quizzCreationAddQuestionAnswerPlaceholder":
@@ -118,8 +143,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Podgląd quizzu"),
         "quizzCreationQuitButton":
             MessageLookupByLibrary.simpleMessage("Tak, zakończ"),
-        "quizzCreationQuitButtonCancel":
-            MessageLookupByLibrary.simpleMessage("Anuluj"),
         "quizzCreationQuitHeading":
             MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
         "quizzCreationQuitSubheading": MessageLookupByLibrary.simpleMessage(
@@ -146,6 +169,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Prześlij plik"),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Szczegóły quizzu"),
+        "quizzDetailsSaveChangesButton":
+            MessageLookupByLibrary.simpleMessage("Zapisz zmiany"),
         "quizzDetailsTabGeneral":
             MessageLookupByLibrary.simpleMessage("Ogólne"),
         "quizzDetailsTabGeneralPageSettingsHeading":
@@ -203,7 +228,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabStatisticsDetailsStatusBadge":
             MessageLookupByLibrary.simpleMessage("Szczegóły"),
         "quizzDetailsTabStatisticsEmail":
-            MessageLookupByLibrary.simpleMessage("Czas trwania"),
+            MessageLookupByLibrary.simpleMessage("E-mail"),
         "quizzDetailsTabStatisticsFinishedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Zakończony"),
         "quizzDetailsTabStatisticsName":
@@ -220,6 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Tytuł: "),
         "registerButton":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
+        "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Zapisz Quizz"),
         "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Logowanie"),
         "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Nie masz konta?"),

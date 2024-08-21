@@ -9,7 +9,6 @@ import 'package:quiz_app/core/common/widgets/text_divider.dart';
 import 'package:quiz_app/core/errors/file_read_exception.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/generated/l10n.dart';
@@ -76,8 +75,8 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
                 } on FileReadException catch (exception) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Something went wrong"),
+                      SnackBar(
+                        content: Text(S.of(context).fileReadException),
                       ),
                     );
                   } else {

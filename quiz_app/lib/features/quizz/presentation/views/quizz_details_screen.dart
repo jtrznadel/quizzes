@@ -5,7 +5,6 @@ import 'package:quiz_app/core/common/widgets/quizz_summary.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_general_tab.dart';
 import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
