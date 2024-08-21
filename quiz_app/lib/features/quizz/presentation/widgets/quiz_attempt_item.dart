@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/res/string_res.dart';
 import 'package:quiz_app/generated/l10n.dart';
+
+import '../../../../core/theme/app_color_scheme.dart';
 
 class QuizAttemptItem extends StatelessWidget {
   const QuizAttemptItem({super.key});
@@ -53,13 +56,15 @@ class QuizAttemptItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          S.of(context).quizzDetailsTabStatisticsDetailsStatusBadge,
-          style: context.textTheme.labelMedium,
+        QuizStatusBadge(
+          text: S.of(context).quizzDetailsTabStatisticsDetailsStatusBadge,
+          backgroundColor: AppColorScheme.secondary,
+          textColor: AppColorScheme.primary,
         ),
-        Text(
-          S.of(context).quizzDetailsTabStatisticsFinishedStatusBadge,
-          style: context.textTheme.labelMedium,
+        QuizStatusBadge(
+          text: S.of(context).quizzDetailsTabStatisticsFinishedStatusBadge,
+          backgroundColor: AppColorScheme.successLight,
+          textColor: AppColorScheme.success,
         )
       ],
     );

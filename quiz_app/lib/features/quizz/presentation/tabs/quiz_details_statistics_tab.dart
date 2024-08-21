@@ -20,12 +20,11 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
   }
 
   Widget statisticsHeader(BuildContext context) {
-    return Row(children: [
-      Text(
-        S.of(context).quizzDetailsTabStatisticsSubheading,
-        style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-      ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
-    ]);
+    return Text(
+      S.of(context).quizzDetailsTabStatisticsSubheading,
+      style: context.textTheme.bodyMedium!
+          .copyWith(color: AppColorScheme.textSecondary),
+    ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16));
   }
 
   Widget statisticsList(context) {
@@ -36,7 +35,8 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return const QuizAttemptItem().addPadding(padding: const EdgeInsets.only(bottom: 16));
+            return const QuizAttemptItem()
+                .addPadding(padding: const EdgeInsets.only(bottom: 16));
           },
         ),
       ],

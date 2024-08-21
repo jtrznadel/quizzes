@@ -93,7 +93,7 @@
     "quizzDetailsTabStatisticsName": "Name",
     "quizzDetailsTabStatisticsDate": "Date",
     "quizzDetailsTabStatisticsTime": "Time",
-    "quizzDetailsTabStatisticsEmail": "Duration",
+    "quizzDetailsTabStatisticsEmail": "E-mail",
 
     "quizzDetailsTabGeneralSubheading": "Manage your quiz page settings here.",
     "quizzDetailsTabGeneralPageSettingsHeading": "Quiz page settings",
