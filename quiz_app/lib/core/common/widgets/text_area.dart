@@ -11,7 +11,7 @@ class TextArea extends StatelessWidget {
     required this.hintText,
     required this.controller,
     this.minLines = 1,
-    required this.maxLines,
+    this.maxLines,
     this.required = true,
     this.contentPadding = AppTheme.pageDefaultSpacingSize,
     this.textStyle,
@@ -21,7 +21,7 @@ class TextArea extends StatelessWidget {
   final String? hintText;
   final TextEditingController controller;
   final int minLines;
-  final int maxLines;
+  final int? maxLines;
   final bool required;
   final double contentPadding;
   final TextStyle? textStyle;

@@ -54,9 +54,8 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
             TextArea(
               labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
               hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
-              minLines: 3,
-              maxLines: 3,
-              required: true,
+              minLines: 5,
+              maxLines: 15,
               controller: _promptController,
             ),
             Padding(
@@ -79,8 +78,7 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
                         content: Text("Something went wrong"),
                       ),
                     );
-                  }
-                  else{
+                  } else {
                     kDebugMode ? debugPrint(exception.toString()) : null;
                   }
                 }
