@@ -12,9 +12,23 @@ abstract class AppTheme {
   static const double buttonBorderRadius = 48;
   static const double buttonVerticalPadding = 12;
   static const double buttonBorderWidth = 0.5;
+  static const double dottedBorderWidth = 1.5;
 
   static const double forgotPasswordSuccessScreenPadding = 25;
   static const double forgotPasswordSuccessDescriptionWidth = 225;
+
+  static const double dashboardQuizItemBottomPadding = 16;
+  static const double dashboardUserProfileIconSize = 24;
+  static const double dashboardNewQuizIconSize = 32;
+  static const double dashboardAddNewButtonBorderRadius = 8;
+  static const double dashboardAddNewButtonHeight = 200;
+
+  static const double quizDeleteDialogItemBorderRadius = 8;
+
+  static const double quizListItemPadding = 24;
+  static const double quizListItemBorderRadius = 8;
+  static const double quizListItemDeleteIconSize = 24;
+  static const double quizListItemIconPadding = 4;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,
