@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/common/widgets/form_field.dart';
-import '../refactors/add_question_dialog_answer_section.dart';
 import '../../../../generated/l10n.dart';
+import '../refactors/add_question_dialog_answer_section.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});
@@ -34,19 +35,18 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController answerController1 = TextEditingController();
-  final TextEditingController answerController2 = TextEditingController();
-  final TextEditingController answerController3 = TextEditingController();
-  final TextEditingController answerController4 = TextEditingController();
+  final Map<Answer, TextEditingController> answerControllers = {
+    Answer.A: TextEditingController(),
+    Answer.B: TextEditingController(),
+    Answer.C: TextEditingController(),
+    Answer.D: TextEditingController(),
+  };
 
   @override
   void dispose() {
     titleController.dispose();
     descriptionController.dispose();
-    answerController1.dispose();
-    answerController2.dispose();
-    answerController3.dispose();
-    answerController4.dispose();
+    answerControllers.forEach((key, value) => value.dispose());
     super.dispose();
   }
 
@@ -100,10 +100,7 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
           ),
           const LargeVSpacer(),
           AddQuestionDialogAnswerSection(
-            answerController1: answerController1,
-            answerController2: answerController2,
-            answerController3: answerController3,
-            answerController4: answerController4,
+            answerControllers: answerControllers,
           ),
         ],
       ),

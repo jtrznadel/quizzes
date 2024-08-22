@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/common/widgets/checkbox.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -8,30 +9,32 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 
+enum Answer {
+  A,
+  B,
+  C,
+  D,
+}
+
 class AddQuestionDialogAnswerSection extends StatefulWidget {
   const AddQuestionDialogAnswerSection({
     super.key,
-    required this.answerController1,
-    required this.answerController2,
-    required this.answerController3,
-    required this.answerController4,
+    required this.answerControllers
   });
 
-  final TextEditingController answerController1;
-  final TextEditingController answerController2;
-  final TextEditingController answerController3;
-  final TextEditingController answerController4;
+
+  final Map<Answer, TextEditingController> answerControllers;
 
   @override
   State<AddQuestionDialogAnswerSection> createState() => _AddQuestionDialogAnswerSectionState();
 }
 
 class _AddQuestionDialogAnswerSectionState extends State<AddQuestionDialogAnswerSection> {
-  int _selectedAnswerIndex = 0;
+  Answer _selectedAnswer = Answer.A;
 
-  void _onAnswerSelected(int index) {
+  void _onAnswerSelected(Answer answer) {
     setState(() {
-      _selectedAnswerIndex = index;
+      _selectedAnswer = answer;
     });
   }
 
@@ -46,27 +49,27 @@ class _AddQuestionDialogAnswerSectionState extends State<AddQuestionDialogAnswer
         ),
         const SmallVSpacer(),
         AnswerTextArea(
-          answerController: widget.answerController1,
-          isChecked: _selectedAnswerIndex == 0,
-          onChanged: (value) => _onAnswerSelected(0),
+          answerController: widget.answerControllers[Answer.A]!,
+          isChecked: _selectedAnswer == Answer.A,
+          onChanged: (value) => _onAnswerSelected(Answer.A),
         ),
         const SmallVSpacer(),
         AnswerTextArea(
-          answerController: widget.answerController2,
-          isChecked: _selectedAnswerIndex == 1,
-          onChanged: (value) => _onAnswerSelected(1),
+          answerController: widget.answerControllers[Answer.B]!,
+          isChecked: _selectedAnswer == Answer.B,
+          onChanged: (value) => _onAnswerSelected(Answer.B),
         ),
         const SmallVSpacer(),
         AnswerTextArea(
-          answerController: widget.answerController3,
-          isChecked: _selectedAnswerIndex == 2,
-          onChanged: (value) => _onAnswerSelected(2),
+          answerController: widget.answerControllers[Answer.C]!,
+          isChecked: _selectedAnswer == Answer.C,
+          onChanged: (value) => _onAnswerSelected(Answer.C),
         ),
         const SmallVSpacer(),
         AnswerTextArea(
-          answerController: widget.answerController4,
-          isChecked: _selectedAnswerIndex == 3,
-          onChanged: (value) => _onAnswerSelected(3),
+          answerController: widget.answerControllers[Answer.D]!,
+          isChecked: _selectedAnswer == Answer.D,
+          onChanged: (value) => _onAnswerSelected(Answer.D),
         ),
       ],
     );
@@ -90,7 +93,7 @@ class AnswerTextArea extends StatelessWidget {
     return Row(
       children: [
         ICheckbox(value: isChecked, onChanged: onChanged),
-        const CustomHSpacer(12),
+        const CustomHSpacer(AppTheme.addQuestionDialogAnswerHorizontalSpacer),
         Expanded(
           child: TextArea(
             hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
@@ -100,7 +103,7 @@ class AnswerTextArea extends StatelessWidget {
             contentPadding: AppTheme.pageDefaultSpacingSize,
             textStyle: context.textTheme.bodySmall!.copyWith(
               color: AppColorScheme.textSecondary,
-              height: 20 / 14,
+              height: AppTheme.addQuestionDialogTextAreaHeight,
             ),
           ),
         ),

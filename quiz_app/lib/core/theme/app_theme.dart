@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'app_color_scheme.dart';
 import 'app_input_decoration_theme.dart';
 import 'app_text_theme.dart';
-import 'app_color_scheme.dart';
 
 abstract class AppTheme {
   static const double pageDefaultSpacingSize = 16;
@@ -41,6 +42,18 @@ abstract class AppTheme {
   static const double textCheckboxCheckmarkPadding = 4.5;
   static const double textCheckboxBorderWidth = 2;
   static const double textCheckboxVerticalPadding = 6;
+
+  static const double checkboxDefaultHeight = 24;
+  static const double checkboxDefaultWidth = 24;
+
+  static const double extraSmallSpacerValue = 4;
+  static const double smallSpacerValue = 8;
+  static const double mediumSpacerValue = 16;
+  static const double largeSpacerValue = 24;
+  static const double extraLargeSpacerValue = 40;
+
+  static const double addQuestionDialogAnswerHorizontalSpacer = 12;
+  static const addQuestionDialogTextAreaHeight = 20 / 14;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,
