@@ -13,6 +13,9 @@ abstract class AppTheme {
   static const double buttonVerticalPadding = 12;
   static const double buttonBorderWidth = 0.5;
 
+  static const double forgotPasswordSuccessScreenPadding = 25;
+  static const double forgotPasswordSuccessDescriptionWidth = 225;
+
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light(
