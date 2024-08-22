@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/features/quizz/presentation/refactors/add_question_dialog_answer_section.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/common/widgets/form_field.dart';
+import '../refactors/add_question_dialog_answer_section.dart';
+import '../../../../generated/l10n.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});

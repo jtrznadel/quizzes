@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import 'app_color_scheme.dart';
 
 final TextTheme textTheme = TextTheme(
   headlineLarge: GoogleFonts.inter(fontWeight: FontWeight.w700, fontSize: 32, height: 1.2, color: AppColorScheme.textPrimary),

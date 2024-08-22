@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../generated/l10n.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({

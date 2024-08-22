@@ -1,13 +1,13 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
-import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
+import '../../../../core/common/widgets/quiz_status_badge.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../domain/entities/test_quiz_entity.dart';
 
 class QuizDeleteDialogItem extends StatelessWidget {
   const QuizDeleteDialogItem({super.key, required this.quizEntity});

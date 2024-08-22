@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/core/common/widgets/question_box.dart';
-import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
-import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/switch_button.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/question_box.dart';
+import '../../../../core/common/widgets/quiz_status_badge.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../widgets/add_new_question_bottom_sheet.dart';
+import '../widgets/switch_button.dart';
+import '../../../../generated/l10n.dart';
 
 class QuizDetailsQuestionsTab extends StatefulWidget {
   const QuizDetailsQuestionsTab({super.key});

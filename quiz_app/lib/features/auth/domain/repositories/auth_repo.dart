@@ -1,6 +1,6 @@
-import 'package:quiz_app/core/utils/typedefs.dart';
-import 'package:quiz_app/features/auth/domain/entities/auth_response_entity.dart';
-import 'package:quiz_app/features/auth/domain/entities/user_entity.dart';
+import '../../../../core/utils/typedefs.dart';
+import '../entities/auth_response_entity.dart';
+import '../entities/user_entity.dart';
 
 abstract class AuthRepo {
   ResultFuture<AuthResponseEntity> signIn({required String email, required String password});

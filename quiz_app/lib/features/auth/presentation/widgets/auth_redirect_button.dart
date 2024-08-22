@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
 
 class AuthRedirectButton extends StatelessWidget {
   const AuthRedirectButton({

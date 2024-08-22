@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import '../../../extensions/context_extension.dart';
+import '../../../theme/app_color_scheme.dart';
 
 class BasicDialog extends StatelessWidget {
   const BasicDialog({

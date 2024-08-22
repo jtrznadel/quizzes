@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
-import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../views/forgot_pasword_screen.dart';
+import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../generated/l10n.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({

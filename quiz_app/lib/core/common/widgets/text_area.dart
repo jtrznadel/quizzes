@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import 'spacers/vertical_spacers.dart';
+import '../../extensions/context_extension.dart';
+import '../../theme/app_color_scheme.dart';
+import '../../theme/app_theme.dart';
+import '../../../generated/l10n.dart';
 
 class TextArea extends StatelessWidget {
   const TextArea({
