@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
 import 'package:quiz_app/core/extensions/context_extension.dart';
 import 'package:quiz_app/core/theme/app_color_scheme.dart';
 import 'package:quiz_app/core/extensions/add_padding_extension.dart';
+import 'package:quiz_app/core/theme/app_theme.dart';
 
 class SecondaryButton extends StatelessWidget {
   const SecondaryButton({
@@ -38,14 +40,18 @@ class SecondaryButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: contentAlignment,
       children: [
-        iconAlignment == IconAlignment.start ? icon?.addPadding(padding: const EdgeInsets.only(right: 8)) ?? Container() : Container(),
+        const LargeHSpacer(),
+        iconAlignment == IconAlignment.start ? icon?? Container() : Container(),
+        iconAlignment == IconAlignment.start ? const SmallHSpacer() : Container(),
         Text(
           text,
           style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
         ),
-        IconAlignment.end == iconAlignment ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container() : Container(),
+        iconAlignment == IconAlignment.end ? const SmallHSpacer() : Container(),
+        IconAlignment.end == iconAlignment ? icon?? Container() : Container(),
+        const LargeHSpacer(),
       ],
-    ).addPadding(padding: const EdgeInsets.symmetric(vertical: 12));
+    ).addPadding(padding: const EdgeInsets.symmetric(vertical: AppTheme.buttonVerticalPadding));
   }
 
   Widget buttonContainer(BuildContext context, Widget button) {
@@ -53,18 +59,18 @@ class SecondaryButton extends StatelessWidget {
       width: width,
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(48),
+        borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onPressed,
           customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(48),
+            borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
           ),
           splashColor: contentColor!.withOpacity(0.2),
           highlightColor: contentColor!.withOpacity(0.2),
-          child: button.addPadding(padding: const EdgeInsets.symmetric(horizontal: 32)),
+          child: button,
         ),
       ),
     );

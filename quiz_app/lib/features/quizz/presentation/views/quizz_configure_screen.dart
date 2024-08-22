@@ -15,7 +15,8 @@ class QuizzConfigureScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
       child: Stack(
         children: [
           SingleChildScrollView(

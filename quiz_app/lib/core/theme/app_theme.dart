@@ -9,6 +9,9 @@ abstract class AppTheme {
   static const double quizStatusBadgeVerticalPadding = 8;
   static const double statusBadgeBorderRadius = 32;
   static const double quizAttemptItemBorderRadius = 8;
+  static const double buttonBorderRadius = 48;
+  static const double buttonVerticalPadding = 12;
+  static const double buttonBorderWidth = 0.5;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,
