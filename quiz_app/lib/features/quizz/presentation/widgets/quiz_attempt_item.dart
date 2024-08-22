@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/generated/l10n.dart';
-
+import '../../../../core/common/widgets/quiz_status_badge.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 
 class QuizAttemptItem extends StatelessWidget {

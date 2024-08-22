@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_theme.dart';
 
 class BottomSheetTile extends StatelessWidget {
   const BottomSheetTile(
@@ -29,8 +30,11 @@ class BottomSheetTile extends StatelessWidget {
                 fontFamily: GoogleFonts.inter().fontFamily,
               ),
             ).addPadding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 24, horizontal: 16)),
+              padding: const EdgeInsets.symmetric(
+                vertical: AppTheme.bottomSheetVerticalPadding,
+                horizontal: AppTheme.bottomSheetHorizontalPadding,
+              ),
+            ),
           ],
         ),
       ),

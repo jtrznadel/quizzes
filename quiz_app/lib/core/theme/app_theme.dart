@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/theme/app_input_decoration_theme.dart';
-import 'package:quiz_app/core/theme/app_text_theme.dart';
+import 'app_input_decoration_theme.dart';
+import 'app_text_theme.dart';
 import 'app_color_scheme.dart';
 
 abstract class AppTheme {
@@ -29,6 +29,18 @@ abstract class AppTheme {
   static const double quizListItemBorderRadius = 8;
   static const double quizListItemDeleteIconSize = 24;
   static const double quizListItemIconPadding = 4;
+
+  static const double profileScreenDeleteAccountDialogTextPadding = 8;
+
+  static const double bottomSheetVerticalPadding = 24;
+  static const double bottomSheetHorizontalPadding = 16;
+
+  static const double textCheckboxDefaultHeight = 24;
+  static const double textCheckboxDefaultWidth = 24;
+  static const double textCheckboxBorderRadius = 5;
+  static const double textCheckboxCheckmarkPadding = 4.5;
+  static const double textCheckboxBorderWidth = 2;
+  static const double textCheckboxVerticalPadding = 6;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,
