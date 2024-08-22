@@ -1,5 +1,5 @@
-class ApiConstants{
-  static const String baseUrl = 'https://api.example.com/';
+class ApiConstants {
+  static const String baseUrl = 'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/';
   static const String authUrl = '${baseUrl}auth';
   static const String signUpEndpoint = '/signup';
   static const String signInEndpoint = '/signin';
@@ -12,6 +12,9 @@ class ApiConstants{
 
   static const String authHeader = 'Authorization';
   static const String authBearer = 'Bearer ';
+
+  static const String contentTypeHeader = 'Content-Type';
+  static const String contentTypeJson = 'application/json';
 
   static const String accessTokenStorageKey = 'accessToken';
   static const String refreshTokenStorageKey = 'refreshToken';
