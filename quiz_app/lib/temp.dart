@@ -1,9 +1,13 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
+import 'core/extensions/context_extension.dart';
+import 'core/services/app_router.dart';
+import 'features/dashboard/presentation/views/dashboard_screen.dart';
+import 'features/quizz/presentation/views/quizz_creation_screen.dart';
+import 'features/quizz/presentation/views/quizz_details_screen.dart';
 
+//TODO: Remove this screen on realease
+@RoutePage()
 class TempScreen extends StatelessWidget {
   const TempScreen({super.key});
 
@@ -18,7 +22,7 @@ class TempScreen extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/welcome');
+                  context.router.push(const WelcomeRoute());
                 },
                 child: const Text('Welcome page')),
             ElevatedButton(
