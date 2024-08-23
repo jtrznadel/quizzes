@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:quiz_app/features/auth/data/models/auth_response_model.dart';
-import 'package:quiz_app/features/auth/domain/entities/user_entity.dart';
+import '../../data/models/auth_response_model.dart';
+import 'user_entity.dart';
 
 class AuthResponseEntity extends Equatable {
   const AuthResponseEntity({

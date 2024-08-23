@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:quiz_app/core/services/router.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import 'core/services/router.dart';
+import 'core/theme/app_theme.dart';
+import 'generated/l10n.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      locale: const Locale('pl'),
+      title: 'learnGO quizzes',
+      locale: const Locale('pl'), // Change this to your desired locale
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

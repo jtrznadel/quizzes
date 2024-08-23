@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../generated/l10n.dart';
 
 class QuitQuizzCreationDialog extends StatelessWidget {
   const QuitQuizzCreationDialog({super.key});
@@ -14,14 +13,14 @@ class QuitQuizzCreationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasicDialog(
-      title: StringRes.quizzCreationQuitHeading,
+      title: S.of(context).quizzCreationQuitHeading,
       content: _dialogContent(context),
       actions: [
         SecondaryButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          text: StringRes.quizzCreationQuitButtonCancel,
+          text: S.of(context).cancelButton,
           width: null,
           bgColor: Colors.transparent,
           contentColor: AppColorScheme.primary,
@@ -32,7 +31,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
             Navigator.pop(context);
             Navigator.pop(context);
           },
-          text: StringRes.quizzCreationQuitButton,
+          text: S.of(context).quizzCreationQuitButton,
           width: null,
           bgColor: AppColorScheme.error,
           contentColor: AppColorScheme.textContrast,
@@ -48,7 +47,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
       children: [
         const SmallVSpacer(),
         Text(
-          StringRes.quizzCreationQuitSubheading,
+          S.of(context).quizzCreationQuitSubheading,
           style: context.textTheme.bodyMedium,
         ),
       ],

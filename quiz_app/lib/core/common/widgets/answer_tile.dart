@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/spacers/horizontal_spacers.dart';
-import 'package:quiz_app/core/common/widgets/vertical_divider.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
+import 'spacers/horizontal_spacers.dart';
+import 'vertical_divider.dart';
+import '../../extensions/context_extension.dart';
 
 class AnswerTile extends StatelessWidget {
   const AnswerTile({super.key, required this.leading, required this.text});

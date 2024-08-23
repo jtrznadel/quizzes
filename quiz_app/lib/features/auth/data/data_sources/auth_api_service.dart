@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:quiz_app/core/network/api_constants.dart';
-import 'package:quiz_app/features/auth/data/models/auth_response_model.dart';
-import 'package:quiz_app/features/auth/data/models/user_model.dart';
+import '../../../../core/network/api_constants.dart';
+import '../models/auth_response_model.dart';
+import '../models/user_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'auth_api_service.g.dart';

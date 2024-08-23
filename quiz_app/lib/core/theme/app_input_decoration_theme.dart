@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_text_theme.dart';
+import 'app_color_scheme.dart';
+import 'app_text_theme.dart';
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
   enabledBorder: const OutlineInputBorder(

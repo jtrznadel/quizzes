@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:quiz_app/core/errors/server_exception.dart';
-import 'package:quiz_app/core/storage/secure_storage.dart';
-import 'package:quiz_app/core/utils/typedefs.dart';
-import 'package:quiz_app/features/auth/data/data_sources/auth_api_service.dart';
-import 'package:quiz_app/features/auth/domain/entities/auth_response_entity.dart';
-import 'package:quiz_app/features/auth/domain/entities/user_entity.dart';
-import 'package:quiz_app/features/auth/domain/repositories/auth_repo.dart';
+import '../../../../core/errors/server_exception.dart';
+import '../../../../core/storage/secure_storage.dart';
+import '../../../../core/utils/typedefs.dart';
+import '../data_sources/auth_api_service.dart';
+import '../../domain/entities/auth_response_entity.dart';
+import '../../domain/entities/user_entity.dart';
+import '../../domain/repositories/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final AuthApiService authApiService;

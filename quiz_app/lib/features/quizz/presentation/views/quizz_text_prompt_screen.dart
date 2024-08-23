@@ -1,18 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/common/widgets/text_area.dart';
-import 'package:quiz_app/core/common/widgets/text_divider.dart';
-import 'package:quiz_app/core/errors/file_read_exception.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/common/widgets/text_area.dart';
+import '../../../../core/common/widgets/text_divider.dart';
+import '../../../../core/errors/file_read_exception.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../../core/services/file_reader.dart';
 
@@ -26,6 +25,7 @@ class QuizzTextPromptScreen extends StatefulWidget {
 
 class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
   final _promptController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -37,7 +37,7 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -50,16 +50,18 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
               style: context.textTheme.bodyMedium,
             ),
             const ExtraLargeVSpacer(),
-            TextArea(
-              labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
-              hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
-              minLines: 5,
-              maxLines: 15,
-              controller: _promptController,
+            Form(
+              key: _formKey,
+              child: TextArea(
+                labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
+                hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
+                minLines: 5,
+                maxLines: 15,
+                controller: _promptController,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  vertical: AppTheme.pageDefaultSpacingSize),
+              padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
               child: TextDivider(
                 text: S.of(context).dividerOr,
                 color: AppColorScheme.textSecondary,
@@ -73,8 +75,8 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
                 } on FileReadException catch (exception) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Something went wrong"),
+                      SnackBar(
+                        content: Text(S.of(context).fileReadException),
                       ),
                     );
                   } else {
@@ -91,10 +93,12 @@ class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
             const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {
-                widget.pageController.nextPage(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeInOut,
-                );
+                if (_formKey.currentState!.validate()) {
+                  widget.pageController.nextPage(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                }
               },
               text: S.of(context).continueButton,
               width: double.infinity,

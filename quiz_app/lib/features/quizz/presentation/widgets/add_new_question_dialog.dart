@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/res/string_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/features/quizz/presentation/refactors/add_question_dialog_answer_section.dart';
-import 'package:quiz_app/generated/l10n.dart';
+
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../generated/l10n.dart';
+import '../refactors/add_question_dialog_answer_section.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});
@@ -31,78 +31,79 @@ class AddNewQuestionDialog extends StatefulWidget {
 }
 
 class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final TextEditingController answer1Controller = TextEditingController();
-  final TextEditingController answer2Controller = TextEditingController();
-  final TextEditingController answer3Controller = TextEditingController();
-  final TextEditingController answer4Controller = TextEditingController();
+  final Map<Answer, TextEditingController> answerControllers = {
+    Answer.A: TextEditingController(),
+    Answer.B: TextEditingController(),
+    Answer.C: TextEditingController(),
+    Answer.D: TextEditingController(),
+  };
 
   @override
   void dispose() {
     titleController.dispose();
     descriptionController.dispose();
-    answer1Controller.dispose();
-    answer2Controller.dispose();
-    answer3Controller.dispose();
-    answer4Controller.dispose();
+    answerControllers.forEach((key, value) => value.dispose());
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BasicDialog(
-      title: StringRes.quizzCreationAddQuestionHeading,
+      title: S.of(context).quizzCreationAddQuestionHeading,
       content: _dialogContent(),
       actions: [
         SecondaryButton(
           onPressed: () {
-            //TODO: implement cancel button functionality with a confirmation dialog
+            Navigator.of(context).pop();
           },
-          text: StringRes.quizzCreationQuitButtonCancel,
+          text: S.of(context).cancelButton,
           contentColor: AppColorScheme.primary,
           bgColor: Colors.transparent,
           width: null,
         ),
         BasicButton(
           onPressed: () {
-            //TODO: implement validator to check if all fields are filled and correct answer is picked
+            if (_formKey.currentState!.validate()) {}
           },
-          text: StringRes.quizzCreationSaveQuestion,
+          text: S.of(context).quizzCreationSaveQuestion,
         ),
       ],
     );
   }
 
   Widget _dialogContent() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const LargeVSpacer(),
-        IFormField(
-          labelText: StringRes.quizzCreationAddQuestionTitleLabel,
-          hintText: StringRes.quizzCreationAddQuestionTitleHint,
-          required: true,
-          obscureText: false,
-          controller: titleController,
-        ),
-        const LargeVSpacer(),
-        IFormField(
-          labelText: StringRes.quizzCreationAddQuestionDescriptionLabel,
-          hintText: StringRes.quizzCreationAddQuestionDescriptionHint,
-          required: true,
-          obscureText: false,
-          controller: descriptionController,
-        ),
-        const LargeVSpacer(),
-        AddQuestionDialogAnswerSection(
-          answer1Controller: answer1Controller,
-          answer2Controller: answer2Controller,
-          answer3Controller: answer3Controller,
-          answer4Controller: answer4Controller,
-        ),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const LargeVSpacer(),
+          IFormField(
+            labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
+            hintText: S.of(context).quizzCreationAddQuestionTitleHint,
+            required: true,
+            obscureText: false,
+            controller: titleController,
+          ),
+          const LargeVSpacer(),
+          IFormField(
+            labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
+            hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
+            required: true,
+            obscureText: false,
+            controller: descriptionController,
+          ),
+          const LargeVSpacer(),
+          AddQuestionDialogAnswerSection(
+            answerControllers: answerControllers,
+          ),
+        ],
+      ),
     );
   }
 }

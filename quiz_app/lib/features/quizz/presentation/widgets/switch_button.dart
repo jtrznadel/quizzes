@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 
 class SwitchButton extends StatelessWidget {
   const SwitchButton(

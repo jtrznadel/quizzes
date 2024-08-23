@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:quiz_app/core/utils/typedefs.dart';
-import 'package:quiz_app/core/utils/usecases.dart';
-import 'package:quiz_app/features/auth/domain/repositories/auth_repo.dart';
+import '../../../../core/utils/typedefs.dart';
+import '../../../../core/utils/usecases.dart';
+import '../repositories/auth_repo.dart';
 
 class SignUp extends FutureUsecaseWithParams<void, SignUpParams> {
   const SignUp(this._repo);

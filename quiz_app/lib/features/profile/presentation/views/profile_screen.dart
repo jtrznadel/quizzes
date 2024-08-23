@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/dialogs/delete_dialog.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/common/widgets/text_area.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/string_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/common/widgets/text_area.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -23,37 +24,37 @@ class ProfileScreen extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: const BasicAppBar(title: StringRes.profileAppbarTitle),
+      appBar: BasicAppBar(title: S.of(context).profileAppbarTitle),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              StringRes.profileSubheading,
+              S.of(context).profileSubheading,
               style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
               textAlign: TextAlign.start,
             ),
             const SmallVSpacer(),
             TextArea(
-              hintText: StringRes.profileNameHint,
+              hintText: S.of(context).profileNameHint,
               controller: controller,
               maxLines: 3,
-              labelText: StringRes.profileNameLabel,
+              labelText: S.of(context).profileNameLabel,
             ),
             const SmallVSpacer(),
             Text(
-              StringRes.profileNameDescription,
+              S.of(context).profileNameDescription,
               style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
               textAlign: TextAlign.start,
             ),
             const SmallVSpacer(),
             BasicButton(
               onPressed: () {},
-              text: StringRes.profileUpdateButton,
+              text: S.of(context).profileUpdateButton,
             ),
             const ExtraLargeVSpacer(),
             Text(
-              StringRes.profileDeleteButtonLabel,
+              S.of(context).profileDeleteButtonLabel,
               style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ),
             const SmallVSpacer(),
@@ -62,13 +63,11 @@ class ProfileScreen extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) => DeleteDialog(
-                    //TODO: extract to strings
-                    title: "Deleting account",
+                    title: S.of(context).deleteAccountHeading,
                     content: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: AppTheme.profileScreenDeleteAccountDialogTextPadding),
                       child: Text(
-                        //TODO: extract to strings
-                        "You are about to delete your account. This action cannot be undone.",
+                        S.of(context).deleteAccountDescription,
                         style: context.theme.textTheme.bodyMedium,
                       ),
                     ),
@@ -76,13 +75,12 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               },
-              text: StringRes.profileDeleteButton,
+              text: S.of(context).profileDeleteButton,
               bgColor: AppColorScheme.error,
               contentColor: AppColorScheme.textContrast,
-              width: null,
             ),
           ],
-        ).addPadding(padding: const EdgeInsets.all(16)),
+        ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
       ),
     );
   }

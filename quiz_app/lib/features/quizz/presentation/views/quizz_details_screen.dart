@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/quizz_summary.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/res/string_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_general_tab.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_statistics_tab.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/quizz_summary.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../tabs/quiz_details_general_tab.dart';
+import '../tabs/quiz_details_questions_tab.dart';
+import '../tabs/quiz_details_settings_tab.dart';
+import '../tabs/quiz_details_statistics_tab.dart';
+import '../../../../generated/l10n.dart';
 
 class QuizzDetailsScreen extends StatefulWidget {
   const QuizzDetailsScreen({super.key});
@@ -46,41 +47,46 @@ class _QuizzDetailsScreenState extends State<QuizzDetailsScreen> with SingleTick
           IconButton(
             icon: SvgPicture.asset(MediaRes.share),
             onPressed: () {},
-          ).addPadding(padding: const EdgeInsets.only(right: 16)),
+          ),
+          const SmallHSpacer(),
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            QuizzSummary(
-              title: S.of(context).tempQuizzSummaryTitle,
-              description: S.of(context).tempQuizzSummaryDescription,
-            ).addPadding(padding: const EdgeInsets.only(bottom: 16)),
-            TabBar(
-              dividerColor: AppColorScheme.border,
-              labelColor: AppColorScheme.primary,
-              labelStyle: context.textTheme.labelMedium!,
-              unselectedLabelColor: AppColorScheme.textSecondary,
-              isScrollable: true,
-              tabAlignment: TabAlignment.start,
-              splashBorderRadius: BorderRadius.circular(16),
-              indicatorSize: TabBarIndicatorSize.tab,
-              dividerHeight: 2,
-              indicatorWeight: 2,
-              controller: tabController,
-              onTap: (index) {
-                setState(() {});
-              },
-              tabs: [
-                Tab(text: S.of(context).quizzDetailsTabQuestions),
-                Tab(text: S.of(context).quizzDetailsTabSettings),
-                Tab(text: S.of(context).quizzDetailsTabStatistics),
-                Tab(text: S.of(context).quizzDetailsTabGeneral),
-              ],
-            ),
-            _getTabAtIndex(tabController.index),
-          ],
-        ).addPadding(padding: const EdgeInsets.only(left: 16, right: 16)),
+        child: Padding(
+          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+          child: Column(
+            children: [
+              QuizzSummary(
+                title: S.of(context).tempQuizzSummaryTitle,
+                description: S.of(context).tempQuizzSummaryDescription,
+              ),
+              const MediumVSpacer(),
+              TabBar(
+                dividerColor: AppColorScheme.border,
+                labelColor: AppColorScheme.primary,
+                labelStyle: context.textTheme.labelMedium!,
+                unselectedLabelColor: AppColorScheme.textSecondary,
+                isScrollable: true,
+                tabAlignment: TabAlignment.start,
+                splashBorderRadius: BorderRadius.circular(16),
+                indicatorSize: TabBarIndicatorSize.tab,
+                dividerHeight: 2,
+                indicatorWeight: 2,
+                controller: tabController,
+                onTap: (index) {
+                  setState(() {});
+                },
+                tabs: [
+                  Tab(text: S.of(context).quizzDetailsTabQuestions),
+                  Tab(text: S.of(context).quizzDetailsTabSettings),
+                  Tab(text: S.of(context).quizzDetailsTabStatistics),
+                  Tab(text: S.of(context).quizzDetailsTabGeneral),
+                ],
+              ),
+              _getTabAtIndex(tabController.index),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../../../theme/app_theme.dart';
+
+class ExtraSmallHSpacer extends StatelessWidget {
+  const ExtraSmallHSpacer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(width: AppTheme.extraSmallSpacerValue);
+  }
+}
+
 class SmallHSpacer extends StatelessWidget {
   const SmallHSpacer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 8);
+    return const SizedBox(width: AppTheme.smallSpacerValue);
   }
 }
 
@@ -14,7 +25,7 @@ class MediumHSpacer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 16);
+    return const SizedBox(width: AppTheme.mediumSpacerValue);
   }
 }
 
@@ -23,7 +34,7 @@ class LargeHSpacer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 24);
+    return const SizedBox(width: AppTheme.largeSpacerValue);
   }
 }
 
@@ -32,7 +43,7 @@ class ExtraLargeHSpacer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(width: 40);
+    return const SizedBox(width: AppTheme.extraLargeSpacerValue);
   }
 }
 
