@@ -1,16 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/text_divider.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../refactors/sign_up_form.dart';
 import 'sign_in_page.dart';
 import '../widgets/auth_redirect_button.dart';
 import '../../../../generated/l10n.dart';
 
+@RoutePage()
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
-
-  static const routeName = '/sing-up';
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -57,7 +58,7 @@ class _SignUpPageState extends State<SignUpPage> {
             AuthRedirectButton(
               text: S.of(context).signUpAlreadyHaveAccount,
               buttonText: S.of(context).loginButton,
-              navigateTo: SignInPage.routeName,
+              navigateTo: const SignInRoute(),
             ),
           ],
         ),

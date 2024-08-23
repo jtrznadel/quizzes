@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
 
 class AuthRedirectButton extends StatelessWidget {
   const AuthRedirectButton({
@@ -11,7 +12,7 @@ class AuthRedirectButton extends StatelessWidget {
 
   final String text;
   final String buttonText;
-  final String navigateTo;
+  final PageRouteInfo navigateTo;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class AuthRedirectButton extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              context.navigator.pushReplacementNamed(navigateTo);
+              context.router.replace(navigateTo);
             },
             child: Text(
               buttonText,

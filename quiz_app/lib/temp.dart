@@ -28,19 +28,19 @@ class TempPage extends StatelessWidget {
                 child: const Text('Welcome page')),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(QuizzCreationPage.routeName);
+                context.router.push(const QuizzCreationRoute());
               },
               child: const Text('Quiz'),
             ),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(QuizzDetailsPage.routeName);
+                context.router.push(const QuizzDetailsRoute());
               },
               child: const Text('Quiz details'),
             ),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(DashboardPage.routeName);
+                context.router.push(const DashboardRoute());
               },
               child: const Text('Dashboard'),
             )

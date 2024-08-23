@@ -1,17 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import 'successful_password_reset_request_page.dart';
 import '../../../../generated/l10n.dart';
 
+@RoutePage()
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
-
-  static const routeName = '/forgot-password';
 
   @override
   State<StatefulWidget> createState() {
@@ -61,7 +62,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               text: S.of(context).forgotPasswordButton,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  context.navigator.pushReplacementNamed(SuccessfulPasswordResetRequestPage.routeName);
+                  context.router.push(const SuccessfulPasswordResetRequestRoute());
                 }
               },
               width: double.infinity,

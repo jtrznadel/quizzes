@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
@@ -12,10 +13,9 @@ import '../tabs/quiz_details_settings_tab.dart';
 import '../tabs/quiz_details_statistics_tab.dart';
 import '../../../../generated/l10n.dart';
 
+@RoutePage()
 class QuizzDetailsPage extends StatefulWidget {
   const QuizzDetailsPage({super.key});
-
-  static const String routeName = '/quizzDetails';
 
   @override
   State<StatefulWidget> createState() {

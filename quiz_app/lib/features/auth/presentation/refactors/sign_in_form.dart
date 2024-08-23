@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/services/app_router.dart';
 import '../views/forgot_pasword_page.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -71,7 +73,7 @@ class _SignInFormState extends State<SignInForm> {
             ),
             TextButton(
               onPressed: () {
-                context.navigator.pushNamed(ForgotPasswordPage.routeName);
+                context.router.push(const ForgotPasswordRoute());
               },
               child: Text(
                 S.of(context).forgotPassword,

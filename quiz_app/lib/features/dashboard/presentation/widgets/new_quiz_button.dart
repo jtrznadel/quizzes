@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../quizz/presentation/views/quizz_creation_page.dart';
 
@@ -21,7 +23,7 @@ class NewQuizButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            context.navigator.pushNamed(QuizzCreationPage.routeName);
+            context.router.push(const QuizzCreationRoute());
           },
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),

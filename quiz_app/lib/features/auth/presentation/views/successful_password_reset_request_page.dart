@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -7,10 +8,9 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
+@RoutePage()
 class SuccessfulPasswordResetRequestPage extends StatelessWidget {
   const SuccessfulPasswordResetRequestPage({super.key});
-
-  static const String routeName = '/successful-password-reset-request';
 
   @override
   Widget build(BuildContext context) {

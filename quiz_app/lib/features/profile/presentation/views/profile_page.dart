@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -10,10 +11,9 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
+@RoutePage()
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-
-  static const String routeName = '/profile';
 
   @override
   Widget build(BuildContext context) {

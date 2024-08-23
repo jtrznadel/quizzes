@@ -8,8 +8,6 @@ import '../refactors/selection_Page_body.dart';
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
-  static const String routeName = '/welcome';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
