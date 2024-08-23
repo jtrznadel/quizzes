@@ -5,7 +5,6 @@ import 'package:quiz_app/core/common/widgets/basic_button.dart';
 import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
 import 'package:quiz_app/core/res/media_res.dart';
 import 'package:quiz_app/features/auth/application/auth_controller.dart';
-import 'package:quiz_app/features/auth/application/auth_state.dart';
 import 'package:quiz_app/generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

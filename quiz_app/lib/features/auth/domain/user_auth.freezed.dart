@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user.dart';
+part of 'user_auth.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+UserAuth _$UserAuthFromJson(Map<String, dynamic> json) {
+  return _UserAuth.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
-  String get uid => throw _privateConstructorUsedError;
+mixin _$UserAuth {
   String get email => throw _privateConstructorUsedError;
-  String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $UserAuthCopyWith<UserAuth> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $UserAuthCopyWith<$Res> {
+  factory $UserAuthCopyWith(UserAuth value, $Res Function(UserAuth) then) =
+      _$UserAuthCopyWithImpl<$Res, UserAuth>;
   @useResult
-  $Res call({String uid, String email, String username, String password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$UserAuthCopyWithImpl<$Res, $Val extends UserAuth>
+    implements $UserAuthCopyWith<$Res> {
+  _$UserAuthCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -51,23 +50,13 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uid = null,
     Object? email = null,
-    Object? username = null,
     Object? password = null,
   }) {
     return _then(_value.copyWith(
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -78,42 +67,34 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
 }
 
 /// @nodoc
-abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$UserImplCopyWith(
-          _$UserImpl value, $Res Function(_$UserImpl) then) =
-      __$$UserImplCopyWithImpl<$Res>;
+abstract class _$$UserAuthImplCopyWith<$Res>
+    implements $UserAuthCopyWith<$Res> {
+  factory _$$UserAuthImplCopyWith(
+          _$UserAuthImpl value, $Res Function(_$UserAuthImpl) then) =
+      __$$UserAuthImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String uid, String email, String username, String password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$UserImplCopyWithImpl<$Res>
-    extends _$UserCopyWithImpl<$Res, _$UserImpl>
-    implements _$$UserImplCopyWith<$Res> {
-  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
+class __$$UserAuthImplCopyWithImpl<$Res>
+    extends _$UserAuthCopyWithImpl<$Res, _$UserAuthImpl>
+    implements _$$UserAuthImplCopyWith<$Res> {
+  __$$UserAuthImplCopyWithImpl(
+      _$UserAuthImpl _value, $Res Function(_$UserAuthImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? uid = null,
     Object? email = null,
-    Object? username = null,
     Object? password = null,
   }) {
-    return _then(_$UserImpl(
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$UserAuthImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: null == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -125,38 +106,28 @@ class __$$UserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserImpl with DiagnosticableTreeMixin implements _User {
-  const _$UserImpl(
-      {required this.uid,
-      required this.email,
-      required this.username,
-      required this.password});
+class _$UserAuthImpl with DiagnosticableTreeMixin implements _UserAuth {
+  const _$UserAuthImpl({required this.email, required this.password});
 
-  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserImplFromJson(json);
+  factory _$UserAuthImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserAuthImplFromJson(json);
 
-  @override
-  final String uid;
   @override
   final String email;
-  @override
-  final String username;
   @override
   final String password;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'User(uid: $uid, email: $email, username: $username, password: $password)';
+    return 'UserAuth(email: $email, password: $password)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'User'))
-      ..add(DiagnosticsProperty('uid', uid))
+      ..add(DiagnosticsProperty('type', 'UserAuth'))
       ..add(DiagnosticsProperty('email', email))
-      ..add(DiagnosticsProperty('username', username))
       ..add(DiagnosticsProperty('password', password));
   }
 
@@ -164,52 +135,44 @@ class _$UserImpl with DiagnosticableTreeMixin implements _User {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserImpl &&
-            (identical(other.uid, uid) || other.uid == uid) &&
+            other is _$UserAuthImpl &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
             (identical(other.password, password) ||
                 other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, uid, email, username, password);
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
+  _$$UserAuthImplCopyWith<_$UserAuthImpl> get copyWith =>
+      __$$UserAuthImplCopyWithImpl<_$UserAuthImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserImplToJson(
+    return _$$UserAuthImplToJson(
       this,
     );
   }
 }
 
-abstract class _User implements User {
-  const factory _User(
-      {required final String uid,
-      required final String email,
-      required final String username,
-      required final String password}) = _$UserImpl;
+abstract class _UserAuth implements UserAuth {
+  const factory _UserAuth(
+      {required final String email,
+      required final String password}) = _$UserAuthImpl;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
+  factory _UserAuth.fromJson(Map<String, dynamic> json) =
+      _$UserAuthImpl.fromJson;
 
-  @override
-  String get uid;
   @override
   String get email;
-  @override
-  String get username;
   @override
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+  _$$UserAuthImplCopyWith<_$UserAuthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

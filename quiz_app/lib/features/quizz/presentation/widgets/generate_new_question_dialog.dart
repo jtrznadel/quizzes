@@ -7,11 +7,8 @@ import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/res/media_res.dart';
 import 'add_new_question_dialog.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
 import 'package:quiz_app/generated/l10n.dart';
 
-import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_dialog.dart';
 
 class GenerateNewQuestionDialog extends StatefulWidget {
   const GenerateNewQuestionDialog({super.key});
