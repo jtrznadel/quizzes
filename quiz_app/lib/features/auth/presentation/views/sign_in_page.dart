@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/text_divider.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/features/auth/presentation/refactors/sign_in_form.dart';
-import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
-import 'package:quiz_app/features/auth/presentation/widgets/auth_redirect_button.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/text_divider.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../refactors/sign_in_form.dart';
+import '../widgets/auth_redirect_button.dart';
+import '../../../../generated/l10n.dart';
+import 'sing_up_page.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   static const routeName = '/sign-in';
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignInPageState extends State<SignInPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -58,7 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
             AuthRedirectButton(
               text: S.of(context).signInDontHaveAccount,
               buttonText: S.of(context).registerButton,
-              navigateTo: SignUpScreen.routeName,
+              navigateTo: SignUpPage.routeName,
             ),
           ],
         ),

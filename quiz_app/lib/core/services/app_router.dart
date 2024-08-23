@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:quiz_app/temp.dart';
 
-import '../../features/auth/presentation/views/welcome_screen.dart';
+import '../../features/auth/presentation/views/welcome_page.dart';
+import '../../temp.dart';
 
 part 'app_router.gr.dart';
 

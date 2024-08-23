@@ -1,29 +1,29 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/common/widgets/text_area.dart';
-import 'package:quiz_app/core/common/widgets/text_divider.dart';
-import 'package:quiz_app/core/errors/file_read_exception.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/common/widgets/text_area.dart';
+import '../../../../core/common/widgets/text_divider.dart';
+import '../../../../core/errors/file_read_exception.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../../core/services/file_reader.dart';
 
-class QuizzTextPromptScreen extends StatefulWidget {
-  const QuizzTextPromptScreen({super.key, required this.pageController});
+class QuizzTextPromptPage extends StatefulWidget {
+  const QuizzTextPromptPage({super.key, required this.pageController});
   final PageController pageController;
 
   @override
-  State<QuizzTextPromptScreen> createState() => _QuizzTextPromptScreenState();
+  State<QuizzTextPromptPage> createState() => _QuizzTextPromptPageState();
 }
 
-class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
+class _QuizzTextPromptPageState extends State<QuizzTextPromptPage> {
   final _promptController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quiz_app/core/services/app_router.dart';
-import 'package:quiz_app/core/services/router.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import 'core/services/app_router.dart';
+import 'core/theme/app_theme.dart';
+import 'generated/l10n.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));

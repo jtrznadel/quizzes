@@ -10,7 +10,7 @@
 part of 'app_router.dart';
 
 /// generated route for
-/// [TempScreen]
+/// [TempPage]
 class TempRoute extends PageRouteInfo<void> {
   const TempRoute({List<PageRouteInfo>? children})
       : super(
@@ -23,13 +23,13 @@ class TempRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const TempScreen();
+      return const TempPage();
     },
   );
 }
 
 /// generated route for
-/// [WelcomeScreen]
+/// [WelcomePage]
 class WelcomeRoute extends PageRouteInfo<void> {
   const WelcomeRoute({List<PageRouteInfo>? children})
       : super(
@@ -42,7 +42,7 @@ class WelcomeRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const WelcomeScreen();
+      return const WelcomePage();
     },
   );
 }

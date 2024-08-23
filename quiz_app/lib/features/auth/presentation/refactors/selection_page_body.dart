@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
-import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../views/sign_in_page.dart';
+import '../views/sing_up_page.dart';
+import '../../../../generated/l10n.dart';
 
-class SelectionScreenBody extends StatelessWidget {
-  const SelectionScreenBody({
+class SelectionPageBody extends StatelessWidget {
+  const SelectionPageBody({
     super.key,
   });
 
@@ -30,7 +30,7 @@ class SelectionScreenBody extends StatelessWidget {
           const CustomVSpacer(80),
           BasicButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(SignInScreen.routeName);
+              Navigator.of(context).pushNamed(SignInPage.routeName);
             },
             text: S.of(context).loginButton,
             width: double.infinity,
@@ -38,7 +38,7 @@ class SelectionScreenBody extends StatelessWidget {
           const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {
-              context.navigator.pushNamed(SignUpScreen.routeName);
+              context.navigator.pushNamed(SignUpPage.routeName);
             },
             text: S.of(context).registerButton,
             width: double.infinity,

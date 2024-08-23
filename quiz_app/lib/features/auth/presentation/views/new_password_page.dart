@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import 'sign_in_page.dart';
+import '../../../../generated/l10n.dart';
 
-class NewPasswordScreen extends StatefulWidget {
-  const NewPasswordScreen({super.key});
+class NewPasswordPage extends StatefulWidget {
+  const NewPasswordPage({super.key});
 
   static const String routeName = '/new-password';
 
   @override
-  State<NewPasswordScreen> createState() => _NewPasswordScreenState();
+  State<NewPasswordPage> createState() => _NewPasswordPageState();
 }
 
-class _NewPasswordScreenState extends State<NewPasswordScreen> {
+class _NewPasswordPageState extends State<NewPasswordPage> {
   final emailController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -63,7 +63,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
               text: S.of(context).newPasswordButton,
               onPressed: () {
                 formKey.currentState!.validate();
-                context.navigator.pushReplacementNamed(SignInScreen.routeName);
+                context.navigator.pushReplacementNamed(SignInPage.routeName);
               },
               width: double.infinity,
             )

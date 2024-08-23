@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/form_field.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import 'successful_password_reset_request_page.dart';
+import '../../../../generated/l10n.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
 
   static const routeName = '/forgot-password';
 
   @override
   State<StatefulWidget> createState() {
-    return _ForgotPasswordScreenState();
+    return _ForgotPasswordPageState();
   }
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final emailController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -61,7 +61,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               text: S.of(context).forgotPasswordButton,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  context.navigator.pushReplacementNamed(SuccessfulPasswordResetRequestScreen.routeName);
+                  context.navigator.pushReplacementNamed(SuccessfulPasswordResetRequestPage.routeName);
                 }
               },
               width: double.infinity,

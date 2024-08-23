@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/core/theme/app_theme.dart';
-import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../dashboard/presentation/views/dashboard_page.dart';
+import '../../../../generated/l10n.dart';
 
-class QuizzSuccessScreen extends StatelessWidget {
-  const QuizzSuccessScreen({super.key});
+class QuizzSuccessPage extends StatelessWidget {
+  const QuizzSuccessPage({super.key});
   //TODO: Replace with actual link
   final String mockLink = 'link.com/custom-code';
 
@@ -73,7 +73,7 @@ class QuizzSuccessScreen extends StatelessWidget {
           const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {
-              Navigator.pushNamed(context, DashboardScreen.routeName);
+              Navigator.pushNamed(context, DashboardPage.routeName);
             },
             text: S.of(context).quizzCreationSuccessBackButton,
             width: double.infinity,

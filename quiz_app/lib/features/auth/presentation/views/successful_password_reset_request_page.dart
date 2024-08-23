@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../generated/l10n.dart';
 
-class SuccessfulPasswordResetRequestScreen extends StatelessWidget {
-  const SuccessfulPasswordResetRequestScreen({super.key});
+class SuccessfulPasswordResetRequestPage extends StatelessWidget {
+  const SuccessfulPasswordResetRequestPage({super.key});
 
   static const String routeName = '/successful-password-reset-request';
 

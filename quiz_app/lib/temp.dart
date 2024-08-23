@@ -1,21 +1,22 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'core/extensions/context_extension.dart';
+import 'features/dashboard/presentation/views/dashboard_page.dart';
+import 'features/quizz/presentation/views/quizz_creation_page.dart';
+import 'features/quizz/presentation/views/quizz_details_page.dart';
+
 import 'core/services/app_router.dart';
-import 'features/dashboard/presentation/views/dashboard_screen.dart';
-import 'features/quizz/presentation/views/quizz_creation_screen.dart';
-import 'features/quizz/presentation/views/quizz_details_screen.dart';
 
 //TODO: Remove this screen on realease
 @RoutePage()
-class TempScreen extends StatelessWidget {
-  const TempScreen({super.key});
+class TempPage extends StatelessWidget {
+  const TempPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Temp Screen'),
+        title: const Text('Temp Page'),
       ),
       body: Center(
         child: Column(
@@ -27,19 +28,19 @@ class TempScreen extends StatelessWidget {
                 child: const Text('Welcome page')),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(QuizzCreationScreen.routeName);
+                context.navigator.pushNamed(QuizzCreationPage.routeName);
               },
               child: const Text('Quiz'),
             ),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(QuizzDetailsScreen.routeName);
+                context.navigator.pushNamed(QuizzDetailsPage.routeName);
               },
               child: const Text('Quiz details'),
             ),
             ElevatedButton(
               onPressed: () {
-                context.navigator.pushNamed(DashboardScreen.routeName);
+                context.navigator.pushNamed(DashboardPage.routeName);
               },
               child: const Text('Dashboard'),
             )

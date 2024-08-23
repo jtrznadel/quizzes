@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_configure_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_preview_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_success_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_text_prompt_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/quit_quizz_creation_dialog.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import 'quizz_configure_page.dart';
+import 'quizz_preview_screen.dart';
+import 'quizz_success_page.dart';
+import 'quizz_text_prompt_page.dart';
+import '../widgets/quit_quizz_creation_dialog.dart';
+import '../../../../generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class QuizzCreationScreen extends StatefulWidget {
-  const QuizzCreationScreen({super.key});
+class QuizzCreationPage extends StatefulWidget {
+  const QuizzCreationPage({super.key});
 
   static const routeName = '/quizz-creation';
 
   @override
-  State<QuizzCreationScreen> createState() => _QuizzCreationScreenState();
+  State<QuizzCreationPage> createState() => _QuizzCreationPageState();
 }
 
-class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
+class _QuizzCreationPageState extends State<QuizzCreationPage> {
   final _controller = PageController();
 
   @override
@@ -29,16 +29,16 @@ class _QuizzCreationScreenState extends State<QuizzCreationScreen> {
 
   List<Widget> getPages() {
     return [
-      QuizzTextPromptScreen(
+      QuizzTextPromptPage(
         pageController: _controller,
       ),
-      QuizzConfigureScreen(
+      QuizzConfigurePage(
         pageController: _controller,
       ),
-      QuizzPreviewScreen(
+      QuizzPreviewPage(
         pageController: _controller,
       ),
-      const QuizzSuccessScreen(),
+      const QuizzSuccessPage(),
     ];
   }
 

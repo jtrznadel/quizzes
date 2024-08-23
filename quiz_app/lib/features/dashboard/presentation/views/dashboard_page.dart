@@ -1,19 +1,19 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/dashboard/domain/entities/test_quiz_entity.dart';
-import 'package:quiz_app/features/dashboard/presentation/widgets/new_quiz_button.dart';
-import 'package:quiz_app/features/dashboard/presentation/widgets/quiz_list_item.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../domain/entities/test_quiz_entity.dart';
+import '../widgets/new_quiz_button.dart';
+import '../widgets/quiz_list_item.dart';
+import '../../../../generated/l10n.dart';
 
-import 'package:quiz_app/features/profile/presentation/views/profile_screen.dart';
+import '../../../profile/presentation/views/profile_page.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
 
   static const String routeName = '/dashboard';
 
@@ -61,7 +61,7 @@ class DashboardScreen extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                context.navigator.pushNamed(ProfileScreen.routeName);
+                context.navigator.pushNamed(ProfilePage.routeName);
               },
               icon: SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
             )

@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/quizz_summary.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_general_tab.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_questions_tab.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_settings_tab.dart';
-import 'package:quiz_app/features/quizz/presentation/tabs/quiz_details_statistics_tab.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/quizz_summary.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../tabs/quiz_details_general_tab.dart';
+import '../tabs/quiz_details_questions_tab.dart';
+import '../tabs/quiz_details_settings_tab.dart';
+import '../tabs/quiz_details_statistics_tab.dart';
+import '../../../../generated/l10n.dart';
 
-class QuizzDetailsScreen extends StatefulWidget {
-  const QuizzDetailsScreen({super.key});
+class QuizzDetailsPage extends StatefulWidget {
+  const QuizzDetailsPage({super.key});
 
   static const String routeName = '/quizzDetails';
 
   @override
   State<StatefulWidget> createState() {
-    return _QuizzDetailsScreenState();
+    return _QuizzDetailsPageState();
   }
 }
 
-class _QuizzDetailsScreenState extends State<QuizzDetailsScreen> with SingleTickerProviderStateMixin {
+class _QuizzDetailsPageState extends State<QuizzDetailsPage> with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
