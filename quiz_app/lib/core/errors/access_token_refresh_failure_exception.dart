@@ -1,4 +1,4 @@
-import 'package:quiz_app/core/errors/server_exception.dart';
+import 'server_exception.dart';
 
 class AccessTokenRefreshFailureException implements ServerException {
   @override

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/basic_button.dart';
-import 'package:quiz_app/core/common/widgets/dialogs/delete_dialog.dart';
-import 'package:quiz_app/core/common/widgets/secondary_button.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/common/widgets/text_area.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/common/widgets/text_area.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -64,7 +65,7 @@ class ProfileScreen extends StatelessWidget {
                   builder: (context) => DeleteDialog(
                     title: S.of(context).deleteAccountHeading,
                     content: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: AppTheme.profileScreenDeleteAccountDialogTextPadding),
                       child: Text(
                         S.of(context).deleteAccountDescription,
                         style: context.theme.textTheme.bodyMedium,
@@ -77,10 +78,9 @@ class ProfileScreen extends StatelessWidget {
               text: S.of(context).profileDeleteButton,
               bgColor: AppColorScheme.error,
               contentColor: AppColorScheme.textContrast,
-              width: null,
             ),
           ],
-        ).addPadding(padding: const EdgeInsets.all(16)),
+        ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
       ),
     );
   }

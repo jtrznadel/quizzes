@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 
 class TextCheckbox extends StatelessWidget {
   const TextCheckbox(
@@ -11,8 +13,8 @@ class TextCheckbox extends StatelessWidget {
       required this.text,
       required this.value,
       required this.onChanged,
-      this.height = 24,
-      this.width = 24});
+      this.height = AppTheme.textCheckboxDefaultHeight,
+      this.width = AppTheme.textCheckboxDefaultWidth});
 
   
   final double? height;
@@ -38,22 +40,23 @@ class TextCheckbox extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(
                   color: AppColorScheme.primary,
-                  width: 2,
+                  width: AppTheme.textCheckboxBorderWidth,
                 ),
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(AppTheme.textCheckboxBorderRadius),
                 color: value ? AppColorScheme.primary : Colors.transparent,
               ),
               child: value
                   ? SvgPicture.asset(
                     MediaRes.checkmark,
                     colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                  ).addPadding(padding: const EdgeInsets.all(4.5))
+                  ).addPadding(padding: const EdgeInsets.all(AppTheme.textCheckboxCheckmarkPadding))
                   : null,
             ),
-          ).addPadding(padding: const EdgeInsets.only(right: 12)),
+          ),
+          const MediumHSpacer(),
           Text(text, style: context.theme.textTheme.bodyMedium),
         ],
-      ).addPadding(padding: const EdgeInsets.symmetric(vertical: 7)),
+      ).addPadding(padding: const EdgeInsets.symmetric(vertical: AppTheme.textCheckboxVerticalPadding)),
     );
   }
 }

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:quiz_app/features/auth/presentation/views/forgot_pasword_screen.dart';
-import 'package:quiz_app/features/auth/presentation/views/new_password_screen.dart';
-import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
-import 'package:quiz_app/features/auth/presentation/views/sing_up_screen.dart';
-import 'package:quiz_app/features/auth/presentation/views/successful_password_reset_request_screen.dart';
-import 'package:quiz_app/features/auth/presentation/views/welcome_screen.dart';
-import 'package:quiz_app/features/profile/presentation/views/profile_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
-import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
-import 'package:quiz_app/temp.dart';
+import '../../features/auth/presentation/views/forgot_pasword_screen.dart';
+import '../../features/auth/presentation/views/new_password_screen.dart';
+import '../../features/auth/presentation/views/sign_in_screen.dart';
+import '../../features/auth/presentation/views/sing_up_screen.dart';
+import '../../features/auth/presentation/views/successful_password_reset_request_screen.dart';
+import '../../features/auth/presentation/views/welcome_screen.dart';
+import '../../features/profile/presentation/views/profile_screen.dart';
+import '../../features/quizz/presentation/views/quizz_creation_screen.dart';
+import '../../features/quizz/presentation/views/quizz_details_screen.dart';
+import '../../features/dashboard/presentation/views/dashboard_screen.dart';
+import '../../temp.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {

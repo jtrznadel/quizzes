@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/basic_app_bar.dart';
-import 'package:quiz_app/core/common/widgets/text_divider.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/features/auth/presentation/refactors/sign_up_form.dart';
-import 'package:quiz_app/features/auth/presentation/views/sign_in_screen.dart';
-import 'package:quiz_app/features/auth/presentation/widgets/auth_redirect_button.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/text_divider.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../refactors/sign_up_form.dart';
+import 'sign_in_screen.dart';
+import '../widgets/auth_redirect_button.dart';
+import '../../../../generated/l10n.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});

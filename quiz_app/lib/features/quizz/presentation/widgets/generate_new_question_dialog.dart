@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/res/media_res.dart';
 import 'add_new_question_dialog.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 
 class GenerateNewQuestionDialog extends StatefulWidget {

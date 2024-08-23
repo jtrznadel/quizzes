@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/core/common/widgets/question_box.dart';
-import 'package:quiz_app/core/common/widgets/quiz_status_badge.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_bottom_sheet.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/switch_button.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/question_box.dart';
+import '../../../../core/common/widgets/quiz_status_badge.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../widgets/add_new_question_bottom_sheet.dart';
+import '../widgets/switch_button.dart';
+import '../../../../generated/l10n.dart';
 
 class QuizDetailsQuestionsTab extends StatefulWidget {
   const QuizDetailsQuestionsTab({super.key});
@@ -33,12 +34,15 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
   Widget questionsHeader(BuildContext context) {
     return Column(
       children: [
+        const MediumVSpacer(),
         Text(
           S.of(context).quizzDetailsTabQuestionsSubheading,
           style: context.textTheme.bodyMedium!
               .copyWith(color: AppColorScheme.textSecondary),
-        ).addPadding(padding: const EdgeInsets.symmetric(vertical: 16)),
+        ),
+        const MediumVSpacer(),
         answersSwitchRow(context),
+        //const MediumVSpacer(),
         newQuestionButton(context),
       ],
     );
@@ -47,16 +51,16 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
   Widget questionsList(BuildContext context) {
     return Column(
       children: [
+        const MediumVSpacer(),
         ListView.builder(
-          padding: const EdgeInsets.only(top: 16),
           itemCount: 10,
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return QuestionBox(questionNumber: index + 1)
-                .addPadding(padding: const EdgeInsets.only(bottom: 32));
+            return QuestionBox(questionNumber: index + 1);
           },
         ),
+        const LargeVSpacer()
       ],
     );
   }
@@ -77,7 +81,8 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
             Text(
               S.of(context).quizzDetailsTabQuestionsSwitch,
               style: context.textTheme.bodyMedium,
-            ).addPadding(padding: const EdgeInsets.only(right: 4)),
+            ),
+            const ExtraSmallHSpacer(),
             SizedBox(
               height: 32,
               child: FittedBox(
@@ -122,6 +127,6 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
           ),
         ),
       ),
-    ).addPadding(padding: const EdgeInsets.only(top: 12));
+    );
   }
 }

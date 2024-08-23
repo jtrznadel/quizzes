@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/back_button.dart';
+import 'back_button.dart';
 
 class BasicAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BasicAppBar({super.key, required this.title, this.actions, this.onBack});

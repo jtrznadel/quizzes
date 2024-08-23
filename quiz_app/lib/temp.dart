@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/features/dashboard/presentation/views/dashboard_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_creation_screen.dart';
-import 'package:quiz_app/features/quizz/presentation/views/quizz_details_screen.dart';
+import 'core/extensions/context_extension.dart';
+import 'features/dashboard/presentation/views/dashboard_screen.dart';
+import 'features/quizz/presentation/views/quizz_creation_screen.dart';
+import 'features/quizz/presentation/views/quizz_details_screen.dart';
 
 class TempScreen extends StatelessWidget {
   const TempScreen({super.key});

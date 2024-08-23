@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/dialogs/basic_dialog.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import 'basic_dialog.dart';
+import '../../../extensions/context_extension.dart';
+import '../../../theme/app_color_scheme.dart';
+import '../../../../generated/l10n.dart';
 
 class DeleteDialog extends StatelessWidget {
   const DeleteDialog({
