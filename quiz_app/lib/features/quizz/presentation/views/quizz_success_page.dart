@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,13 +7,14 @@ import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../dashboard/presentation/views/dashboard_screen.dart';
+import '../../../dashboard/presentation/views/dashboard_page.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizzSuccessScreen extends StatelessWidget {
-  const QuizzSuccessScreen({super.key});
+class QuizzSuccessPage extends StatelessWidget {
+  const QuizzSuccessPage({super.key});
   //TODO: Replace with actual link
   final String mockLink = 'link.com/custom-code';
 
@@ -73,7 +75,7 @@ class QuizzSuccessScreen extends StatelessWidget {
           const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {
-              Navigator.pushNamed(context, DashboardScreen.routeName);
+              context.router.push(const DashboardRoute());
             },
             text: S.of(context).quizzCreationSuccessBackButton,
             width: double.infinity,

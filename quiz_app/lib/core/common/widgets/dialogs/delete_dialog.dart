@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'basic_dialog.dart';
 import '../../../extensions/context_extension.dart';
@@ -23,7 +24,7 @@ class DeleteDialog extends StatelessWidget {
     return BasicDialog(title: title, content: content, actions: [
       ElevatedButton(
         onPressed: () {
-          onCancel ?? context.navigator.pop();
+          onCancel ?? context.router.maybePop();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,

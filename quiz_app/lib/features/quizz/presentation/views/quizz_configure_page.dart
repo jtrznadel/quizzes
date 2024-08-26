@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/question_box.dart';
-import '../../../../core/common/widgets/quizz_summary.dart';
-import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../widgets/add_new_question_bottom_sheet.dart';
+import '../widgets/question_count_picker.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizzPreviewScreen extends StatelessWidget {
-  const QuizzPreviewScreen({super.key, required this.pageController});
+import '../widgets/question_type_picker.dart';
+
+class QuizzConfigurePage extends StatelessWidget {
+  const QuizzConfigurePage({super.key, required this.pageController});
   final PageController pageController;
 
   @override
@@ -27,32 +26,18 @@ class QuizzPreviewScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    S.of(context).quizzCreationPreviewHeading,
+                    S.of(context).quizzCreationConfigureHeading,
                     style: context.textTheme.headlineLarge,
                   ),
-                  const LargeVSpacer(),
-                  QuizzSummary(
-                    title: S.of(context).tempQuizzSummaryTitle,
-                    description: S.of(context).tempQuizzSummaryDescription,
+                  Text(
+                    S.of(context).quizzCraetionConfigureSubheading,
+                    style: context.textTheme.bodyMedium,
                   ),
                   const ExtraLargeVSpacer(),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: SecondaryButton(
-                      onPressed: () {
-                        AddNewQuestionBottomSheet.show(context);
-                      },
-                      text: S.of(context).quizzCreationAddQuestionButton,
-                    ),
-                  ),
+                  const QuestionTypePicker(),
                   const LargeVSpacer(),
-                  //TODO: Remove loop and implement a listview.builder with question model
-                  for (int i = 0; i < 3; i++) ...[
-                    QuestionBox(
-                      questionNumber: i + 1,
-                    ),
-                    const CustomVSpacer(32),
-                  ],
+                  const QuestionCountPicker(),
+                  const ExtraLargeVSpacer(),
                 ],
               ),
             ),
@@ -71,10 +56,11 @@ class QuizzPreviewScreen extends StatelessWidget {
                     curve: Curves.easeInOut,
                   );
                 },
-                text: S.of(context).saveQuizzButton,
+                text: S.of(context).continueButton,
+                width: double.infinity,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

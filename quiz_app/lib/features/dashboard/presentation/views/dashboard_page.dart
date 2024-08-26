@@ -1,22 +1,22 @@
 import 'dart:math';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../domain/entities/test_quiz_entity.dart';
 import '../widgets/new_quiz_button.dart';
 import '../widgets/quiz_list_item.dart';
 import '../../../../generated/l10n.dart';
-import '../../../profile/presentation/views/profile_screen.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
-
-  static const String routeName = '/dashboard';
+@RoutePage()
+class DashboardPage extends StatelessWidget {
+  const DashboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +35,7 @@ class DashboardScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: quizzes.length,
                     itemBuilder: (context, index) {
-                      return QuizListItem(quizEntity: quizzes[index])
-                          .addPadding(
+                      return QuizListItem(quizEntity: quizzes[index]).addPadding(
                         padding: const EdgeInsets.only(
                           bottom: AppTheme.dashboardQuizItemBottomPadding,
                         ),
@@ -68,21 +67,16 @@ class DashboardScreen extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                context.navigator.pushNamed(ProfileScreen.routeName);
+                context.router.push(const ProfileRoute());
               },
-              icon: SvgPicture.asset(
-                MediaRes.userProfile,
-                width: AppTheme.dashboardUserProfileIconSize,
-                height: AppTheme.dashboardUserProfileIconSize,
-              ),
+              icon: SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
             )
           ],
         ),
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );
@@ -93,8 +87,7 @@ class DashboardScreen extends StatelessWidget {
     for (int i = 0; i < number; i++) {
       quizes.add(
         TestQuizEntity(
-          quizTitle:
-              'Identify your bigest roadblock to succeeding in cryptocurrency',
+          quizTitle: 'Identify your bigest roadblock to succeeding in cryptocurrency',
           quizDescription:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus sagittis augue, vitae facilisis sem volutpat nec. Phasellus ac tincidunt nisl. Donec sed rutrum neque, vitae mattis velit. Donec non neque a erat finibus rutrum. Proin tincidunt leo hendrerit, sagittis lacus quis, finibus massa.',
           quizStatus: 'Active',

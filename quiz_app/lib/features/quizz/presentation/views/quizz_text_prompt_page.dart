@@ -15,15 +15,15 @@ import '../../../../generated/l10n.dart';
 
 import '../../../../core/services/file_reader.dart';
 
-class QuizzTextPromptScreen extends StatefulWidget {
-  const QuizzTextPromptScreen({super.key, required this.pageController});
+class QuizzTextPromptPage extends StatefulWidget {
+  const QuizzTextPromptPage({super.key, required this.pageController});
   final PageController pageController;
 
   @override
-  State<QuizzTextPromptScreen> createState() => _QuizzTextPromptScreenState();
+  State<QuizzTextPromptPage> createState() => _QuizzTextPromptPageState();
 }
 
-class _QuizzTextPromptScreenState extends State<QuizzTextPromptScreen> {
+class _QuizzTextPromptPageState extends State<QuizzTextPromptPage> {
   final _promptController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
