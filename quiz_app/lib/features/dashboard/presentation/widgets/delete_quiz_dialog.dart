@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../domain/entities/test_quiz_entity.dart';
 import 'quiz_delete_dialog_item.dart';
@@ -18,10 +18,12 @@ class DeleteQuizDialog extends StatelessWidget {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          const SmallVSpacer(),
           Text(
             S.of(context).deleteQuizzDescription,
             style: context.theme.textTheme.bodyMedium,
-          ).addPadding(padding: const EdgeInsets.only(bottom: 24, top: 8)),
+          ),
+          const LargeVSpacer(),
           QuizDeleteDialogItem(quizEntity: quiz),
         ],
       ),

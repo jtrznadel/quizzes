@@ -9,6 +9,7 @@ import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 
 @RoutePage()
@@ -64,7 +65,7 @@ class ProfilePage extends StatelessWidget {
                   builder: (context) => DeleteDialog(
                     title: S.of(context).deleteAccountHeading,
                     content: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.symmetric(vertical: AppTheme.profileScreenDeleteAccountDialogTextPadding),
                       child: Text(
                         S.of(context).deleteAccountDescription,
                         style: context.theme.textTheme.bodyMedium,
@@ -77,10 +78,9 @@ class ProfilePage extends StatelessWidget {
               text: S.of(context).profileDeleteButton,
               bgColor: AppColorScheme.error,
               contentColor: AppColorScheme.textContrast,
-              width: null,
             ),
           ],
-        ).addPadding(padding: const EdgeInsets.all(16)),
+        ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
       ),
     );
   }

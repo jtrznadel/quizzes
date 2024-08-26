@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/radio_list_tile.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import 'radio_list_tile.dart';
+import '../../../../generated/l10n.dart';
 
 class QuestionCountPicker extends StatefulWidget {
   const QuestionCountPicker({super.key});

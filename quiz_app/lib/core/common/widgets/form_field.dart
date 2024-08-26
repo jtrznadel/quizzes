@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import 'spacers/vertical_spacers.dart';
+import '../../extensions/context_extension.dart';
+import '../../theme/app_color_scheme.dart';
+import '../../../generated/l10n.dart';
 
 class IFormField extends StatelessWidget {
   const IFormField({

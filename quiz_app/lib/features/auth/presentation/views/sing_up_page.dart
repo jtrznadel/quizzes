@@ -5,7 +5,6 @@ import '../../../../core/common/widgets/text_divider.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../refactors/sign_up_form.dart';
-import 'sign_in_page.dart';
 import '../widgets/auth_redirect_button.dart';
 import '../../../../generated/l10n.dart';
 

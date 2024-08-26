@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import '../../theme/app_theme.dart';
+import 'spacers/horizontal_spacers.dart';
+import '../../extensions/add_padding_extension.dart';
+import '../../extensions/context_extension.dart';
+import '../../theme/app_color_scheme.dart';
 
 class BasicButton extends StatelessWidget {
   const BasicButton({
@@ -35,14 +37,18 @@ class BasicButton extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: contentAlignment,
       children: [
-        iconAlignment == IconAlignment.start ? icon?.addPadding(padding: const EdgeInsets.only(right: 8)) ?? Container() : Container(),
+        const LargeHSpacer(),
+        iconAlignment == IconAlignment.start ? icon?? Container() : Container(),
+        iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
         Text(
           text,
           style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
         ),
-        iconAlignment == IconAlignment.end ? icon?.addPadding(padding: const EdgeInsets.only(left: 8)) ?? Container() : Container(),
+        iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
+        iconAlignment == IconAlignment.end ? icon?? Container() : Container(),
+        const LargeHSpacer(),
       ],
-    ).addPadding(padding: const EdgeInsets.symmetric(vertical: 12));
+    ).addPadding(padding: const EdgeInsets.symmetric(vertical: AppTheme.buttonVerticalPadding));
   }
 
   Widget buttonContainer(BuildContext context, Widget button) {
@@ -51,7 +57,7 @@ class BasicButton extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColorScheme.primaryDark,
-          width: 0.5,
+          width: AppTheme.buttonBorderWidth,
         ),
         gradient: const LinearGradient(
           begin: Alignment.bottomCenter,
@@ -61,18 +67,18 @@ class BasicButton extends StatelessWidget {
             AppColorScheme.primaryLight,
           ],
         ),
-        borderRadius: BorderRadius.circular(48),
+        borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onPressed,
           customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(48),
+            borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
           ),
           splashColor: AppColorScheme.primaryDark,
           highlightColor: AppColorScheme.primaryDark,
-          child: button.addPadding(padding: const EdgeInsets.symmetric(horizontal: 32)),
+          child: button,
         ),
       ),
     );

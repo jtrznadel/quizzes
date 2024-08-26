@@ -1,4 +1,4 @@
-import 'package:quiz_app/core/utils/typedefs.dart';
+import 'typedefs.dart';
 
 abstract class FutureUsecaseWithParams<T, Params> {
   const FutureUsecaseWithParams();

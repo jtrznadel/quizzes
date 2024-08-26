@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/add_new_question_dialog.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/bottom_sheet_tile.dart';
-import 'package:quiz_app/features/quizz/presentation/widgets/generate_new_question_dialog.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/add_padding_extension.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_theme.dart';
+import 'add_new_question_dialog.dart';
+import 'bottom_sheet_tile.dart';
+import 'generate_new_question_dialog.dart';
+import '../../../../generated/l10n.dart';
 
 class AddNewQuestionBottomSheet extends StatelessWidget {
   const AddNewQuestionBottomSheet({super.key});
@@ -16,11 +18,10 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SmallVSpacer(),
         Text(
           S.of(context).addNewQuestionBottomSheetHeading,
           style: context.theme.textTheme.headlineMedium,
-        ).addPadding(
-          padding: const EdgeInsets.only(top: 24),
         ),
         BottomSheetTile(
           text: S.of(context).addNewQuestionBottomSheetManual,
@@ -39,7 +40,7 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
           },
         )
       ],
-    ).addPadding(padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16));
+    ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize));
   }
 
   //TODO: add return type to get question add mode (manual, AI generated)

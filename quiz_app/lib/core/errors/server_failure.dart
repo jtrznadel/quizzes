@@ -1,5 +1,5 @@
-import 'package:quiz_app/core/errors/failure.dart';
-import 'package:quiz_app/core/errors/server_exception.dart';
+import 'failure.dart';
+import 'server_exception.dart';
 
 class ServerFailure extends Failure {
   const ServerFailure({required super.message, super.statusCode});

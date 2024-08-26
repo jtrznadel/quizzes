@@ -2,17 +2,17 @@ import 'dart:math';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../domain/entities/test_quiz_entity.dart';
 import '../widgets/new_quiz_button.dart';
 import '../widgets/quiz_list_item.dart';
 import '../../../../generated/l10n.dart';
-
-import '../../../profile/presentation/views/profile_page.dart';
 
 @RoutePage()
 class DashboardPage extends StatelessWidget {
@@ -26,6 +26,7 @@ class DashboardPage extends StatelessWidget {
         child: Column(
           children: [
             topBar(context),
+            const SmallVSpacer(),
             Expanded(
               child: ListView(
                 children: [
@@ -34,7 +35,11 @@ class DashboardPage extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: quizzes.length,
                     itemBuilder: (context, index) {
-                      return QuizListItem(quizEntity: quizzes[index]).addPadding(padding: const EdgeInsets.only(bottom: 24));
+                      return QuizListItem(quizEntity: quizzes[index]).addPadding(
+                        padding: const EdgeInsets.only(
+                          bottom: AppTheme.dashboardQuizItemBottomPadding,
+                        ),
+                      );
                     },
                   ),
                   const NewQuizButton(),
@@ -44,7 +49,7 @@ class DashboardPage extends StatelessWidget {
           ],
         ),
       ).addPadding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
       ),
     );
   }
@@ -67,15 +72,14 @@ class DashboardPage extends StatelessWidget {
               icon: SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
             )
           ],
-        ).addPadding(
-          padding: const EdgeInsets.only(bottom: 8),
         ),
+        const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
           style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
-    ).addPadding(padding: const EdgeInsets.only(bottom: 8));
+    );
   }
 
   List<TestQuizEntity> generateMockQuizes(int number) {

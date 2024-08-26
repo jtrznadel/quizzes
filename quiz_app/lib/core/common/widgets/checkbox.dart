@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
+import '../../res/media_res.dart';
+import '../../theme/app_color_scheme.dart';
+import '../../theme/app_theme.dart';
 
 class ICheckbox extends StatelessWidget {
   const ICheckbox({
     super.key,
     required this.value,
     required this.onChanged,
-    this.height = 24,
-    this.width = 24,
+    this.height = AppTheme.checkboxDefaultHeight,
+    this.width = AppTheme.checkboxDefaultWidth,
   });
 
   final double? height;

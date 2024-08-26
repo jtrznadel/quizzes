@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:quiz_app/core/errors/file_read_exception.dart';
+import '../errors/file_read_exception.dart';
 
 class FileReader {
 

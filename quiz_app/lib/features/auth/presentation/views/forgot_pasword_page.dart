@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
-import 'successful_password_reset_request_page.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 
 @RoutePage()
@@ -42,11 +43,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Text(
               S.of(context).forgotPasswordHeading,
               style: context.textTheme.headlineLarge,
-            ).addPadding(padding: const EdgeInsets.only(bottom: 8)),
+            ),
+            const SmallVSpacer(),
             Text(
               S.of(context).forgotPasswordSubheading,
               style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-            ).addPadding(padding: const EdgeInsets.only(bottom: 32)),
+            ),
+            const LargeVSpacer(),
             Form(
               key: formKey,
               child: IFormField(
@@ -56,8 +59,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 required: true,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-              ).addPadding(padding: const EdgeInsets.only(bottom: 40)),
+              ),
             ),
+            const ExtraLargeVSpacer(),
             BasicButton(
               text: S.of(context).forgotPasswordButton,
               onPressed: () {
@@ -68,7 +72,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               width: double.infinity,
             )
           ],
-        ).addPadding(padding: const EdgeInsets.symmetric(horizontal: 16)),
+        ).addPadding(padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize)),
       ),
     );
   }

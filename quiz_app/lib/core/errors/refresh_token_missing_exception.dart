@@ -1,4 +1,4 @@
-import 'package:quiz_app/core/errors/token_exception.dart';
+import 'token_exception.dart';
 
 class RefreshTokenMissingException implements TokenException {
   @override

@@ -1,13 +1,13 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quiz_app/core/common/widgets/answer_tile.dart';
-import 'package:quiz_app/core/common/widgets/spacers/vertical_spacers.dart';
-import 'package:quiz_app/core/extensions/add_padding_extension.dart';
-import 'package:quiz_app/core/extensions/context_extension.dart';
-import 'package:quiz_app/core/res/media_res.dart';
-import 'package:quiz_app/core/theme/app_color_scheme.dart';
-import 'package:quiz_app/generated/l10n.dart';
+import 'answer_tile.dart';
+import 'spacers/vertical_spacers.dart';
+import '../../extensions/add_padding_extension.dart';
+import '../../extensions/context_extension.dart';
+import '../../res/media_res.dart';
+import '../../theme/app_color_scheme.dart';
+import '../../../generated/l10n.dart';
 
 class QuestionBox extends StatelessWidget {
   const QuestionBox({super.key, required this.questionNumber});
