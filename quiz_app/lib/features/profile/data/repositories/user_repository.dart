@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
@@ -42,3 +43,5 @@ class UserRepositoryImpl implements UserRepository {
     }
   }
 }
+
+final userRepositoryProvider = Provider<UserRepository>((ref) => UserRepositoryImpl(ref.watch(userClientProvider)));
