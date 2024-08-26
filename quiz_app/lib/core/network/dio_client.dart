@@ -6,13 +6,16 @@ import '../storage/secure_storage.dart';
 
 Dio buildDioClient(String base) {
   final dio = Dio()..options = BaseOptions(baseUrl: base);
+
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
-        options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
+        options.headers[ApiConstants.contentTypeHeader] =
+            ApiConstants.contentTypeJson;
         final accessToken = await getAccessToken();
         if (accessToken != null) {
-          options.headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$accessToken';
+          options.headers[ApiConstants.authHeader] =
+              '${ApiConstants.authBearer}$accessToken';
         }
         return handler.next(options);
       },
@@ -22,13 +25,19 @@ Dio buildDioClient(String base) {
               () {
                 //TODO: Log out user
                 clearAllTokens();
-                throw RefreshTokenMissingException();
               }();
+          if (refreshToken == null) {
+            return handler.next(
+              RefreshTokenMissingException(
+                  requestOptions: error.requestOptions),
+            );
+          }
           final tokenResponse = await refreshAccessToken(refreshToken, dio);
           saveNewAccessToken(tokenResponse);
-          final retryRequest = error.requestOptions..headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$tokenResponse';
+          final retryRequest = error.requestOptions
+            ..headers[ApiConstants.authHeader] =
+                '${ApiConstants.authBearer}$tokenResponse';
           final response = await dio.fetch(retryRequest);
-
           return handler.resolve(response);
         }
         return handler.next(error);
@@ -69,5 +78,6 @@ Future<void> clearAllTokens() async {
 }
 
 Future<void> saveNewAccessToken(String accessToken) async {
-  await SecureStorage().write(key: ApiConstants.accessTokenStorageKey, value: accessToken);
+  await SecureStorage()
+      .write(key: ApiConstants.accessTokenStorageKey, value: accessToken);
 }

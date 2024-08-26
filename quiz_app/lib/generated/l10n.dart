@@ -1300,6 +1300,16 @@ class S {
     );
   }
 
+  /// `Something went wrong`
+  String get profileSomethingWentWrong {
+    return Intl.message(
+      'Something went wrong',
+      name: 'profileSomethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Understanding Cryptocurrencies and Their Impact on Finance`
   String get tempQuizzSummaryTitle {
     return Intl.message(

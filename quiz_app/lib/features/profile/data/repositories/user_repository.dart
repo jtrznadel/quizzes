@@ -27,7 +27,7 @@ class UserRepositoryImpl implements UserRepository {
       final user = await _userClient.getUser();
       return Right(user);
     } catch (e) {
-      return Left(ServerException(message: e.toString()));
+      throw ServerException(message: e.toString());
     }
   }
 
