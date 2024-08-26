@@ -7,13 +7,11 @@ import '../../domain/user.dart';
 import '../data_sources/user_client.dart';
 
 abstract class UserRepository {
-
   ResultFuture<User> getUser();
 
   ResultFuture<void> updateUser({
     required User user,
   });
-
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -23,12 +21,8 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   ResultFuture<User> getUser() async {
-    try {
-      final user = await _userClient.getUser();
-      return Right(user);
-    } catch (e) {
-      throw ServerException(message: e.toString());
-    }
+    final user = await _userClient.getUser();
+    return Right(user);
   }
 
   @override
@@ -44,4 +38,5 @@ class UserRepositoryImpl implements UserRepository {
   }
 }
 
-final userRepositoryProvider = Provider<UserRepository>((ref) => UserRepositoryImpl(ref.watch(userClientProvider)));
+final userRepositoryProvider = Provider<UserRepository>(
+    (ref) => UserRepositoryImpl(ref.watch(userClientProvider)));

@@ -1,6 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../generated/l10n.dart';
+import '../../../core/errors/refresh_token_missing_exception.dart';
 import '../data/repositories/user_repository.dart';
 import '../domain/user.dart';
 import 'user_state.dart';
@@ -20,11 +21,13 @@ class UserController extends _$UserController {
     try {
       final user = await ref.read(userRepositoryProvider).getUser();
       user.fold(
-        (error) => state = UserState.error(error.message),
+        (error) => state = UserState.error(error),
         (user) => state = UserState.success(user),
       );
-    } catch (_) {
-      state = UserState.error(S.current.profileSomethingWentWrong);
+    } on RefreshTokenMissingException catch (e) {
+      state = UserState.error(e);
+    } on DioException catch (e) {
+      state = UserState.error(e);
     }
   }
 

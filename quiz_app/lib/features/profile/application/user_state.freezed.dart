@@ -21,7 +21,7 @@ mixin _$UserState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(User user) success,
-    required TResult Function(String message) error,
+    required TResult Function(Exception message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$UserState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(User user)? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Exception message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$UserState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(User user)? success,
-    TResult Function(String message)? error,
+    TResult Function(Exception message)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(User user) success,
-    required TResult Function(String message) error,
+    required TResult Function(Exception message) error,
   }) {
     return initial();
   }
@@ -137,7 +137,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(User user)? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Exception message)? error,
   }) {
     return initial?.call();
   }
@@ -148,7 +148,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(User user)? success,
-    TResult Function(String message)? error,
+    TResult Function(Exception message)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -240,7 +240,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(User user) success,
-    required TResult Function(String message) error,
+    required TResult Function(Exception message) error,
   }) {
     return loading();
   }
@@ -251,7 +251,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(User user)? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Exception message)? error,
   }) {
     return loading?.call();
   }
@@ -262,7 +262,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(User user)? success,
-    TResult Function(String message)? error,
+    TResult Function(Exception message)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -390,7 +390,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(User user) success,
-    required TResult Function(String message) error,
+    required TResult Function(Exception message) error,
   }) {
     return success(user);
   }
@@ -401,7 +401,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(User user)? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Exception message)? error,
   }) {
     return success?.call(user);
   }
@@ -412,7 +412,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(User user)? success,
-    TResult Function(String message)? error,
+    TResult Function(Exception message)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -474,7 +474,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Exception message});
 }
 
 /// @nodoc
@@ -494,7 +494,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Exception,
     ));
   }
 }
@@ -505,7 +505,7 @@ class _$ErrorImpl implements _Error {
   const _$ErrorImpl(this.message);
 
   @override
-  final String message;
+  final Exception message;
 
   @override
   String toString() {
@@ -535,7 +535,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(User user) success,
-    required TResult Function(String message) error,
+    required TResult Function(Exception message) error,
   }) {
     return error(message);
   }
@@ -546,7 +546,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(User user)? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Exception message)? error,
   }) {
     return error?.call(message);
   }
@@ -557,7 +557,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(User user)? success,
-    TResult Function(String message)? error,
+    TResult Function(Exception message)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -605,9 +605,9 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements UserState {
-  const factory _Error(final String message) = _$ErrorImpl;
+  const factory _Error(final Exception message) = _$ErrorImpl;
 
-  String get message;
+  Exception get message;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

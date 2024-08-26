@@ -1310,6 +1310,16 @@ class S {
     );
   }
 
+  /// `Session expired, please log in again.`
+  String get sessionExpired {
+    return Intl.message(
+      'Session expired, please log in again.',
+      name: 'sessionExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Understanding Cryptocurrencies and Their Impact on Finance`
   String get tempQuizzSummaryTitle {
     return Intl.message(
