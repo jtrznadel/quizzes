@@ -85,10 +85,9 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
                   initial: () => BasicButton(
                     onPressed: () {
                       if (widget.formKey.currentState!.validate()) {
-                        ref.read(authControllerProvider.notifier).signUp(
-                            username: widget.usernameController.text,
-                            email: widget.emailController.text,
-                            password: widget.passwordController.text);
+                        ref
+                            .read(authControllerProvider.notifier)
+                            .signUp(email: widget.emailController.text, password: widget.passwordController.text);
                       }
                     },
                     text: S.of(context).registerButton,
