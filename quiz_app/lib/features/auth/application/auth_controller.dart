@@ -40,4 +40,16 @@ class AuthController extends _$AuthController {
       },
     );
   }
+
+  Future<void> signOut() async {
+    state = const AuthState.loading();
+    final result = await ref.read(authRepositoryProvider).signOut();
+    result.fold(
+      (error) => state = AuthState.error(error.message),
+      (_) {
+        ref.read(sessionProvider).deleteTokens();
+        state = const AuthState.success();
+      },
+    );
+  }
 }
