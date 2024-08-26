@@ -12,7 +12,7 @@ class AuthRedirectButton extends StatelessWidget {
 
   final String text;
   final String buttonText;
-  final PageRouteInfo navigateTo;
+  final VoidCallback navigateTo;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +26,7 @@ class AuthRedirectButton extends StatelessWidget {
             style: context.textTheme.bodyMedium,
           ),
           TextButton(
-            onPressed: () {
-              context.router.replace(navigateTo);
-            },
+            onPressed: navigateTo,
             child: Text(
               buttonText,
               style: context.textTheme.bodyMedium!.copyWith(

@@ -59,7 +59,7 @@ class _SignInPageState extends State<SignInPage> {
             AuthRedirectButton(
               text: S.of(context).signInDontHaveAccount,
               buttonText: S.of(context).registerButton,
-              navigateTo: const SignUpRoute(),
+              navigateTo: () => context.router.replace(const SignUpRoute()),
             ),
           ],
         ),
