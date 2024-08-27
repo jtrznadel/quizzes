@@ -33,6 +33,7 @@ class AuthController extends _$AuthController {
     state = const AuthState.loading();
     final result =
         await ref.read(authRepositoryProvider).signIn(userAuth: userAuth);
+    print("result: $result");
     result.fold(
       (error) => state = AuthState.error(error.message),
       (tokens) {
@@ -59,6 +60,6 @@ class AuthController extends _$AuthController {
   }
 
   void _routeDetails() {
-    ref.read(appRouterProvider).replace(const DashboardRoute());
+    AppRouter().replace(const DashboardRoute());
   }
 }

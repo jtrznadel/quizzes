@@ -30,7 +30,7 @@ class NewQuizButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            context.router.push(const QuizzCreationRoute());
+            AppRouter().push(const QuizzCreationRoute());
           },
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),

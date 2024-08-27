@@ -67,7 +67,7 @@ class DashboardPage extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                context.router.push(const ProfileRoute());
+                AppRouter().push(const ProfileRoute());
               },
               icon: SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
             )

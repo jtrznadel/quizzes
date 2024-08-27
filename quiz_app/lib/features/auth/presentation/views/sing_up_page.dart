@@ -57,7 +57,7 @@ class _SignUpPageState extends State<SignUpPage> {
             AuthRedirectButton(
               text: S.of(context).signUpAlreadyHaveAccount,
               buttonText: S.of(context).loginButton,
-              navigateTo: () => context.router.replace(const SignInRoute()),
+              navigateTo: () => AppRouter().replace(const SignInRoute()),
             ),
           ],
         ),

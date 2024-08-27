@@ -75,7 +75,7 @@ class QuizzSuccessPage extends StatelessWidget {
           const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {
-              context.router.push(const DashboardRoute());
+              AppRouter().push(const DashboardRoute());
             },
             text: S.of(context).quizzCreationSuccessBackButton,
             width: double.infinity,

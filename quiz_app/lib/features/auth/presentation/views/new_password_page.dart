@@ -69,7 +69,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
               text: S.of(context).newPasswordButton,
               onPressed: () {
                 formKey.currentState!.validate();
-                context.router.push(const SignInRoute());
+                AppRouter().push(const SignInRoute());
               },
               width: double.infinity,
             )

@@ -78,7 +78,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                 ),
                 TextButton(
                   onPressed: () {
-                    context.router.push(const ForgotPasswordRoute());
+                    AppRouter().push(const ForgotPasswordRoute());
                   },
                   child: Text(
                     S.of(context).forgotPassword,

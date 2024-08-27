@@ -66,7 +66,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               text: S.of(context).forgotPasswordButton,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  context.router.push(const SuccessfulPasswordResetRequestRoute());
+                  AppRouter().push(const SuccessfulPasswordResetRequestRoute());
                 }
               },
               width: double.infinity,
