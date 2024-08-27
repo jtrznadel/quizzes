@@ -1,8 +1,10 @@
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
-import 'auth_state.dart';
 import '../data/repositories/auth_repository.dart';
 import '../domain/user_auth.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'auth_state.dart';
 
 part 'auth_controller.g.dart';
 
@@ -18,7 +20,8 @@ class AuthController extends _$AuthController {
     //TODO: Remove this delay after testing
     await Future.delayed(const Duration(seconds: 5));
     final userAuth = UserAuth(email: email, password: password);
-    final result = await ref.read(authRepositoryProvider).signUp(userAuth: userAuth);
+    final result =
+        await ref.read(authRepositoryProvider).signUp(userAuth: userAuth);
     result.fold(
       (error) => state = AuthState.error(error.message),
       (_) => state = const AuthState.success(),
@@ -28,7 +31,8 @@ class AuthController extends _$AuthController {
   Future<void> signIn({required String email, required String password}) async {
     final userAuth = UserAuth(email: email, password: password);
     state = const AuthState.loading();
-    final result = await ref.read(authRepositoryProvider).signIn(userAuth: userAuth);
+    final result =
+        await ref.read(authRepositoryProvider).signIn(userAuth: userAuth);
     result.fold(
       (error) => state = AuthState.error(error.message),
       (tokens) {
@@ -36,6 +40,7 @@ class AuthController extends _$AuthController {
               accessToken: tokens.accessToken,
               refreshToken: tokens.refreshToken,
             );
+        _routeDetails();
         state = const AuthState.success();
       },
     );
@@ -51,5 +56,9 @@ class AuthController extends _$AuthController {
         state = const AuthState.success();
       },
     );
+  }
+
+  void _routeDetails() {
+    ref.read(appRouterProvider).replace(const DashboardRoute());
   }
 }
