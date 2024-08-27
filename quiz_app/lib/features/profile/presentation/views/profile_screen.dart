@@ -40,19 +40,8 @@ class ProfileScreen extends StatelessWidget {
                     return const CircularProgressIndicator();
                   },
                   error: (error) {
+                    handleError(error, context);
                     //TODO: replace with custom error widget
-                    if (error is RefreshTokenMissingException) {
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        Navigator.of(context).pushNamedAndRemoveUntil(
-                            WelcomeScreen.routeName, (route) => false);
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(S.of(context).sessionExpired),
-                            duration: const Duration(seconds: 2),
-                          ),
-                        );
-                      });
-                    }
                     return Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -101,7 +90,18 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         const SmallVSpacer(),
                         BasicButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            try {
+                              await userController.updateUser(
+                                user: user.copyWith(userName: controller.text),
+                              );
+                            } on Exception catch (error) {
+                              context.mounted? handleError(error, context) : null;
+                            } catch (_){
+                              context.mounted ? showErrorSnackBar(
+                                  context, S.of(context).profileSomethingWentWrong) : null;
+                            }
+                          },
                           text: S.of(context).profileUpdateButton,
                         ),
                         const ExtraLargeVSpacer(),
@@ -136,8 +136,9 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ],
                     ).addPadding(
-                        padding: const EdgeInsets.all(
-                            AppTheme.pageDefaultSpacingSize));
+                      padding:
+                          const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+                    );
                   },
                 ),
               ],
@@ -146,5 +147,27 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void handleError(Exception error, BuildContext context) {
+    if (error is RefreshTokenMissingException) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil(WelcomeScreen.routeName, (route) => false);
+        showErrorSnackBar(context, S.of(context).sessionExpired);
+      });
+    } else {
+      showErrorSnackBar(context, S.of(context).profileSomethingWentWrong);
+    }
+  }
+
+  void showErrorSnackBar(BuildContext context, String message) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(message),
+        ),
+      );
+    });
   }
 }

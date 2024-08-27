@@ -20,6 +20,9 @@ abstract class UserClient {
 
   @PUT(ApiConstants.updateUserEndpoint)
   Future<void> updateUser(@Body() Map<String, dynamic> body);
+
+  @POST(ApiConstants.signOutEndpoint)
+  Future<void> signOut();
 }
 
 final userClientProvider = Provider<UserClient>((ref) => UserClient(ref.watch(dioProvider), baseUrl: ApiConstants.baseUrl));

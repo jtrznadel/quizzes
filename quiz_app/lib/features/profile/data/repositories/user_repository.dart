@@ -29,12 +29,8 @@ class UserRepositoryImpl implements UserRepository {
   ResultFuture<void> updateUser({
     required User user,
   }) async {
-    try {
-      await _userClient.updateUser(user.toJson());
-      return const Right(null);
-    } catch (e) {
-      return Left(ServerException(message: e.toString()));
-    }
+    await _userClient.updateUser(user.toJson());
+    return const Right(null);
   }
 }
 

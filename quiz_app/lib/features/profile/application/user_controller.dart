@@ -33,7 +33,12 @@ class UserController extends _$UserController {
 
   Future<void> updateUser({required User user}) async {
     state = const UserState.loading();
-    await ref.read(userRepositoryProvider).updateUser(user: user);
-    await getUser();
+    try{
+      await ref.read(userRepositoryProvider).updateUser(user: user);
+      await getUser();
+    } catch(e) {
+      state = UserState.success(user);
+      rethrow;
+    }
   }
 }
