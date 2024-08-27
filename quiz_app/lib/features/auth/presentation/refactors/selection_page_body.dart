@@ -12,13 +12,13 @@ import '../views/sign_in_page.dart';
 import '../views/sing_up_page.dart';
 import '../../../../generated/l10n.dart';
 
-class SelectionPageBody extends ConsumerWidget {
+class SelectionPageBody extends StatelessWidget {
   const SelectionPageBody({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
