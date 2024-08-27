@@ -10,6 +10,8 @@ abstract class UserRepository {
   ResultFuture<void> updateUser({
     required User user,
   });
+
+  ResultFuture<void> signOut();
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -28,6 +30,12 @@ class UserRepositoryImpl implements UserRepository {
     required User user,
   }) async {
     await _userClient.updateUser(user.toJson());
+    return const Right(null);
+  }
+
+  @override
+  ResultFuture<void> signOut() async {
+    await _userClient.signOut();
     return const Right(null);
   }
 }

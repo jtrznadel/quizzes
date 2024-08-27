@@ -37,4 +37,14 @@ class UserController extends _$UserController {
       state = UserState.error(e);
     }
   }
+
+  Future<void> signOut() async {
+    try {
+      state = const UserState.loading();
+      await ref.read(userRepositoryProvider).signOut();
+      state = const UserState.signout();
+    } on Exception catch (e) {
+      state = UserState.error(e);
+    }
+  }
 }
