@@ -14,7 +14,7 @@ import '../../temp.dart';
 
 part 'app_router.gr.dart';
 
-@AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
+@AutoRouterConfig()
 class AppRouter extends RootStackRouter {
   static final AppRouter _instance = AppRouter._internal();
 
