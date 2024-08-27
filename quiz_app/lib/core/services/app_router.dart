@@ -11,6 +11,7 @@ import '../../features/profile/presentation/views/profile_page.dart';
 import '../../features/quizz/presentation/views/quizz_creation_page.dart';
 import '../../features/quizz/presentation/views/quizz_details_page.dart';
 import '../../temp.dart';
+import 'auth_guard.dart';
 
 part 'app_router.gr.dart';
 
@@ -36,9 +37,17 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: ForgotPasswordRoute.page),
         AutoRoute(page: SuccessfulPasswordResetRequestRoute.page),
         AutoRoute(page: NewPasswordRoute.page),
-        AutoRoute(page: DashboardRoute.page),
-        AutoRoute(page: ProfileRoute.page),
-        AutoRoute(page: QuizzCreationRoute.page),
-        AutoRoute(page: QuizzDetailsRoute.page),
+        AutoRoute(
+          page: DashboardRoute.page,
+        ),
+        AutoRoute(
+          page: ProfileRoute.page,
+        ),
+        AutoRoute(
+          page: QuizzCreationRoute.page,
+        ),
+        AutoRoute(
+          page: QuizzDetailsRoute.page,
+        ),
       ];
 }
