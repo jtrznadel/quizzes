@@ -16,34 +16,31 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserState {
+  bool get isUsernameUpdating => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(User user) success,
-    required TResult Function(Exception message) error,
+    required TResult Function(bool isUsernameUpdating) loading,
+    required TResult Function(User user, bool isUsernameUpdating) success,
+    required TResult Function(Exception message, bool isUsernameUpdating) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(User user)? success,
-    TResult? Function(Exception message)? error,
+    TResult? Function(bool isUsernameUpdating)? loading,
+    TResult? Function(User user, bool isUsernameUpdating)? success,
+    TResult? Function(Exception message, bool isUsernameUpdating)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(User user)? success,
-    TResult Function(Exception message)? error,
+    TResult Function(bool isUsernameUpdating)? loading,
+    TResult Function(User user, bool isUsernameUpdating)? success,
+    TResult Function(Exception message, bool isUsernameUpdating)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -51,7 +48,6 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -59,12 +55,15 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $UserStateCopyWith<UserState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -72,6 +71,8 @@ mixin _$UserState {
 abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
+  @useResult
+  $Res call({bool isUsernameUpdating});
 }
 
 /// @nodoc
@@ -83,127 +84,30 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isUsernameUpdating = null,
+  }) {
+    return _then(_value.copyWith(
+      isUsernameUpdating: null == isUsernameUpdating
+          ? _value.isUsernameUpdating
+          : isUsernameUpdating // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'UserState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(User user) success,
-    required TResult Function(Exception message) error,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(User user)? success,
-    TResult? Function(Exception message)? error,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(User user)? success,
-    TResult Function(Exception message)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements UserState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
+abstract class _$$LoadingImplCopyWith<$Res>
+    implements $UserStateCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
       __$$LoadingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isUsernameUpdating});
 }
 
 /// @nodoc
@@ -213,60 +117,83 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isUsernameUpdating = null,
+  }) {
+    return _then(_$LoadingImpl(
+      isUsernameUpdating: null == isUsernameUpdating
+          ? _value.isUsernameUpdating
+          : isUsernameUpdating // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+  const _$LoadingImpl({this.isUsernameUpdating = false});
+
+  @override
+  @JsonKey()
+  final bool isUsernameUpdating;
 
   @override
   String toString() {
-    return 'UserState.loading()';
+    return 'UserState.loading(isUsernameUpdating: $isUsernameUpdating)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingImpl &&
+            (identical(other.isUsernameUpdating, isUsernameUpdating) ||
+                other.isUsernameUpdating == isUsernameUpdating));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isUsernameUpdating);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(User user) success,
-    required TResult Function(Exception message) error,
+    required TResult Function(bool isUsernameUpdating) loading,
+    required TResult Function(User user, bool isUsernameUpdating) success,
+    required TResult Function(Exception message, bool isUsernameUpdating) error,
   }) {
-    return loading();
+    return loading(isUsernameUpdating);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(User user)? success,
-    TResult? Function(Exception message)? error,
+    TResult? Function(bool isUsernameUpdating)? loading,
+    TResult? Function(User user, bool isUsernameUpdating)? success,
+    TResult? Function(Exception message, bool isUsernameUpdating)? error,
   }) {
-    return loading?.call();
+    return loading?.call(isUsernameUpdating);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(User user)? success,
-    TResult Function(Exception message)? error,
+    TResult Function(bool isUsernameUpdating)? loading,
+    TResult Function(User user, bool isUsernameUpdating)? success,
+    TResult Function(Exception message, bool isUsernameUpdating)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading();
+      return loading(isUsernameUpdating);
     }
     return orElse();
   }
@@ -274,7 +201,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -285,7 +211,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -296,7 +221,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -310,16 +234,25 @@ class _$LoadingImpl implements _Loading {
 }
 
 abstract class _Loading implements UserState {
-  const factory _Loading() = _$LoadingImpl;
+  const factory _Loading({final bool isUsernameUpdating}) = _$LoadingImpl;
+
+  @override
+  bool get isUsernameUpdating;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
+abstract class _$$SuccessImplCopyWith<$Res>
+    implements $UserStateCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({User user});
+  $Res call({User user, bool isUsernameUpdating});
 
   $UserCopyWith<$Res> get user;
 }
@@ -336,12 +269,17 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? isUsernameUpdating = null,
   }) {
     return _then(_$SuccessImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
+      isUsernameUpdating: null == isUsernameUpdating
+          ? _value.isUsernameUpdating
+          : isUsernameUpdating // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -357,14 +295,17 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.user);
+  const _$SuccessImpl(this.user, {this.isUsernameUpdating = false});
 
   @override
   final User user;
+  @override
+  @JsonKey()
+  final bool isUsernameUpdating;
 
   @override
   String toString() {
-    return 'UserState.success(user: $user)';
+    return 'UserState.success(user: $user, isUsernameUpdating: $isUsernameUpdating)';
   }
 
   @override
@@ -372,11 +313,13 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.isUsernameUpdating, isUsernameUpdating) ||
+                other.isUsernameUpdating == isUsernameUpdating));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(runtimeType, user, isUsernameUpdating);
 
   @JsonKey(ignore: true)
   @override
@@ -387,36 +330,33 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(User user) success,
-    required TResult Function(Exception message) error,
+    required TResult Function(bool isUsernameUpdating) loading,
+    required TResult Function(User user, bool isUsernameUpdating) success,
+    required TResult Function(Exception message, bool isUsernameUpdating) error,
   }) {
-    return success(user);
+    return success(user, isUsernameUpdating);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(User user)? success,
-    TResult? Function(Exception message)? error,
+    TResult? Function(bool isUsernameUpdating)? loading,
+    TResult? Function(User user, bool isUsernameUpdating)? success,
+    TResult? Function(Exception message, bool isUsernameUpdating)? error,
   }) {
-    return success?.call(user);
+    return success?.call(user, isUsernameUpdating);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(User user)? success,
-    TResult Function(Exception message)? error,
+    TResult Function(bool isUsernameUpdating)? loading,
+    TResult Function(User user, bool isUsernameUpdating)? success,
+    TResult Function(Exception message, bool isUsernameUpdating)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(user);
+      return success(user, isUsernameUpdating);
     }
     return orElse();
   }
@@ -424,7 +364,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -435,7 +374,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -446,7 +384,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -460,21 +397,26 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements UserState {
-  const factory _Success(final User user) = _$SuccessImpl;
+  const factory _Success(final User user, {final bool isUsernameUpdating}) =
+      _$SuccessImpl;
 
   User get user;
+  @override
+  bool get isUsernameUpdating;
+  @override
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
+abstract class _$$ErrorImplCopyWith<$Res> implements $UserStateCopyWith<$Res> {
   factory _$$ErrorImplCopyWith(
           _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
       __$$ErrorImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({Exception message});
+  $Res call({Exception message, bool isUsernameUpdating});
 }
 
 /// @nodoc
@@ -489,12 +431,17 @@ class __$$ErrorImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? isUsernameUpdating = null,
   }) {
     return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as Exception,
+      isUsernameUpdating: null == isUsernameUpdating
+          ? _value.isUsernameUpdating
+          : isUsernameUpdating // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -502,14 +449,17 @@ class __$$ErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.message);
+  const _$ErrorImpl(this.message, {this.isUsernameUpdating = false});
 
   @override
   final Exception message;
+  @override
+  @JsonKey()
+  final bool isUsernameUpdating;
 
   @override
   String toString() {
-    return 'UserState.error(message: $message)';
+    return 'UserState.error(message: $message, isUsernameUpdating: $isUsernameUpdating)';
   }
 
   @override
@@ -517,11 +467,13 @@ class _$ErrorImpl implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.isUsernameUpdating, isUsernameUpdating) ||
+                other.isUsernameUpdating == isUsernameUpdating));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, isUsernameUpdating);
 
   @JsonKey(ignore: true)
   @override
@@ -532,36 +484,33 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(User user) success,
-    required TResult Function(Exception message) error,
+    required TResult Function(bool isUsernameUpdating) loading,
+    required TResult Function(User user, bool isUsernameUpdating) success,
+    required TResult Function(Exception message, bool isUsernameUpdating) error,
   }) {
-    return error(message);
+    return error(message, isUsernameUpdating);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(User user)? success,
-    TResult? Function(Exception message)? error,
+    TResult? Function(bool isUsernameUpdating)? loading,
+    TResult? Function(User user, bool isUsernameUpdating)? success,
+    TResult? Function(Exception message, bool isUsernameUpdating)? error,
   }) {
-    return error?.call(message);
+    return error?.call(message, isUsernameUpdating);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(User user)? success,
-    TResult Function(Exception message)? error,
+    TResult Function(bool isUsernameUpdating)? loading,
+    TResult Function(User user, bool isUsernameUpdating)? success,
+    TResult Function(Exception message, bool isUsernameUpdating)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(message, isUsernameUpdating);
     }
     return orElse();
   }
@@ -569,7 +518,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -580,7 +528,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -591,7 +538,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -605,9 +551,13 @@ class _$ErrorImpl implements _Error {
 }
 
 abstract class _Error implements UserState {
-  const factory _Error(final Exception message) = _$ErrorImpl;
+  const factory _Error(final Exception message,
+      {final bool isUsernameUpdating}) = _$ErrorImpl;
 
   Exception get message;
+  @override
+  bool get isUsernameUpdating;
+  @override
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

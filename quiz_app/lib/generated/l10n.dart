@@ -1320,6 +1320,16 @@ class S {
     );
   }
 
+  /// `Updating...`
+  String get profileUpdatingUsername{
+    return Intl.message(
+      'Updating...',
+      name: 'profileUpdatingUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Understanding Cryptocurrencies and Their Impact on Finance`
   String get tempQuizzSummaryTitle {
     return Intl.message(

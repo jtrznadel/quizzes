@@ -150,6 +150,7 @@
     "fileReadException": "Coś poszło nie tak",
     "profileSomethingWentWrong": "Coś poszło nie tak",
     "sessionExpired": "Twoja sesja wygasła. Zaloguj się ponownie.",
+    "profileUpdatingUsername": "Aktualizowanie...",
 
     "tempQuizzSummaryTitle": "Zrozumienie kryptowalut i ich wpływu na finanse",
     "tempQuizzSummaryDescription": "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne.",

@@ -33,13 +33,10 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 state.when(
-                  initial: () {
+                  loading: (isUsernameUpdating) {
                     return const CircularProgressIndicator();
                   },
-                  loading: () {
-                    return const CircularProgressIndicator();
-                  },
-                  error: (error) {
+                  error: (error, isUsernameUpdating) {
                     handleError(error, context);
                     //TODO: replace with custom error widget
                     return Expanded(
@@ -62,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  success: (user) {
+                  success: (user, isUsernameUpdating) {
                     var controller = TextEditingController.fromValue(
                         TextEditingValue(text: user.userName));
                     return Column(
@@ -102,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                                   context, S.of(context).profileSomethingWentWrong) : null;
                             }
                           },
-                          text: S.of(context).profileUpdateButton,
+                          text: isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
                         ),
                         const ExtraLargeVSpacer(),
                         Text(

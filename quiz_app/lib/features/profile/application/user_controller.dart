@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/errors/refresh_token_missing_exception.dart';
 import '../data/repositories/user_repository.dart';
 import '../domain/user.dart';
 import 'user_state.dart';
@@ -13,7 +11,7 @@ class UserController extends _$UserController {
   @override
   UserState build() {
     getUser();
-    return const UserState.initial();
+    return const UserState.loading();
   }
 
   Future<void> getUser() async {
@@ -24,21 +22,19 @@ class UserController extends _$UserController {
         (error) => state = UserState.error(error),
         (user) => state = UserState.success(user),
       );
-    } on RefreshTokenMissingException catch (e) {
-      state = UserState.error(e);
-    } on DioException catch (e) {
+    } on Exception catch (e) {
       state = UserState.error(e);
     }
   }
 
   Future<void> updateUser({required User user}) async {
-    state = const UserState.loading();
-    try{
+    state = UserState.success(user, isUsernameUpdating: true);
+    try {
       await ref.read(userRepositoryProvider).updateUser(user: user);
       await getUser();
-    } catch(e) {
       state = UserState.success(user);
-      rethrow;
+    } on Exception catch (e) {
+      state = UserState.error(e);
     }
   }
 }
