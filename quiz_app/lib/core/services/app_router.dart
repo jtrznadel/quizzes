@@ -37,17 +37,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: ForgotPasswordRoute.page),
         AutoRoute(page: SuccessfulPasswordResetRequestRoute.page),
         AutoRoute(page: NewPasswordRoute.page),
-        AutoRoute(
-          page: DashboardRoute.page,
-        ),
-        AutoRoute(
-          page: ProfileRoute.page,
-        ),
-        AutoRoute(
-          page: QuizzCreationRoute.page,
-        ),
-        AutoRoute(
-          page: QuizzDetailsRoute.page,
-        ),
+        AutoRoute(page: DashboardRoute.page),
+        AutoRoute(page: ProfileRoute.page),
+        AutoRoute(page: QuizzCreationRoute.page),
+        AutoRoute(page: QuizzDetailsRoute.page),
       ];
 }

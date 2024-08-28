@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
@@ -8,20 +9,32 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../auth/application/auth_controller.dart';
+import '../../../auth/application/auth_state.dart';
 
 @RoutePage()
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     //TODO: replace with actual user name
     var controller = TextEditingController.fromValue(
       const TextEditingValue(text: 'John Doe'),
     );
+
+    var authController = ref.read(authControllerProvider.notifier);
+    var state = ref.watch(authControllerProvider);
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (state == const AuthState.success()) {
+        context.router.replaceAll([const SignInRoute()]);
+      }
+    });
 
     return Scaffold(
       appBar: BasicAppBar(title: S.of(context).profileAppbarTitle),
@@ -71,7 +84,9 @@ class ProfilePage extends StatelessWidget {
                         style: context.theme.textTheme.bodyMedium,
                       ),
                     ),
-                    onConfirm: () {},
+                    onConfirm: () async {
+                      await authController.signOut();
+                    },
                   ),
                 );
               },

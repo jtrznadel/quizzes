@@ -61,6 +61,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Don\'\'t worry! It happens. Enter the email address associated with your account."),
+        "invalidEmail":
+            MessageLookupByLibrary.simpleMessage("Invalid e-mail address."),
+        "invalidEmailOrPassword":
+            MessageLookupByLibrary.simpleMessage("Invalid e-mail or password."),
         "loginButton": MessageLookupByLibrary.simpleMessage("Log In"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Password reset"),
@@ -76,6 +80,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "This new password must be unique to those previously used."),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Your password"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordRequiresDigit": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one digit."),
+        "passwordRequiresLowercase": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one lowercase letter."),
+        "passwordRequiresSpecialChar": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one special character."),
+        "passwordRequiresUppercase": MessageLookupByLibrary.simpleMessage(
+            "Password must contain at least one uppercase letter."),
+        "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 6 characters long."),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profile"),
         "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
         "profileDeleteButtonLabel":
@@ -263,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "successfulPasswordResetRequestSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Check your e-mail, there will be an e-mail with password reset link."),
+        "successfulRegistration": MessageLookupByLibrary.simpleMessage(
+            "You have successfully registered. You can now log in."),
         "tempAnswer1": MessageLookupByLibrary.simpleMessage("Decentralization"),
         "tempAnswer2":
             MessageLookupByLibrary.simpleMessage("Physical existence"),
@@ -279,7 +295,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "tempQuizzSummaryTitle": MessageLookupByLibrary.simpleMessage(
             "Understanding Cryptocurrencies and Their Impact on Finance"),
         "thisFieldIsRequired":
-            MessageLookupByLibrary.simpleMessage("This field is required"),
+            MessageLookupByLibrary.simpleMessage("This field is required."),
         "usernameHint": MessageLookupByLibrary.simpleMessage("Your username"),
         "usernameLabel": MessageLookupByLibrary.simpleMessage("Username")
       };

@@ -9,27 +9,8 @@ import '../widgets/auth_redirect_button.dart';
 import '../../../../generated/l10n.dart';
 
 @RoutePage()
-class SignUpPage extends StatefulWidget {
+class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
-
-  @override
-  State<SignUpPage> createState() => _SignUpPageState();
-}
-
-class _SignUpPageState extends State<SignUpPage> {
-  final usernameController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
-
-  @override
-  void dispose() {
-    usernameController.dispose();
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
               S.of(context).signUpHeading,
               style: context.textTheme.headlineLarge,
             ),
-            SignUpForm(
-              formKey: formKey,
-              usernameController: usernameController,
-              emailController: emailController,
-              passwordController: passwordController,
-            ),
+            const SignUpForm(),
             TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
             AuthRedirectButton(

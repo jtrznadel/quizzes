@@ -61,6 +61,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Nie martw się! To się zdarza. Wprowadź adres e-mail powiązany z twoim kontem."),
+        "invalidEmail":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
+        "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
+            "Nieprawidłowy adres e-mail lub hasło."),
         "loginButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Resetowanie hasła"),
@@ -76,6 +80,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "To nowe hasło musi się różnić od poprzednio używanych."),
         "passwordHint": MessageLookupByLibrary.simpleMessage("Twoje hasło"),
         "passwordLabel": MessageLookupByLibrary.simpleMessage("Hasło"),
+        "passwordRequiresDigit": MessageLookupByLibrary.simpleMessage(
+            "Hasło musi zawierać co najmniej jedną cyfrę."),
+        "passwordRequiresLowercase": MessageLookupByLibrary.simpleMessage(
+            "Hasło musi zawierać co najmniej jedną małą literę."),
+        "passwordRequiresSpecialChar": MessageLookupByLibrary.simpleMessage(
+            "Hasło musi zawierać co najmniej jeden znak specjalny."),
+        "passwordRequiresUppercase": MessageLookupByLibrary.simpleMessage(
+            "Hasło musi zawierać co najmniej jedną dużą literę."),
+        "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+            "Hasło musi mieć co najmniej 6 znaków."),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profil"),
         "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
         "profileDeleteButtonLabel":
@@ -263,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "successfulPasswordResetRequestSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Sprawdź swoją skrzynkę pocztową, znajdziesz tam wiadomość z linkiem do resetowania hasła."),
+        "successfulRegistration": MessageLookupByLibrary.simpleMessage(
+            "Zarejestrowałeś się pomyślnie. Możesz teraz się zalogować."),
         "tempAnswer1": MessageLookupByLibrary.simpleMessage("Decentralizacja"),
         "tempAnswer2":
             MessageLookupByLibrary.simpleMessage("Fizyczna obecność"),

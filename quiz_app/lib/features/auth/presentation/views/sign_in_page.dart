@@ -10,26 +10,8 @@ import '../../../../generated/l10n.dart';
 import 'sing_up_page.dart';
 
 @RoutePage()
-class SignInPage extends StatefulWidget {
+class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
-
-  @override
-  State<SignInPage> createState() => _SignInPageState();
-}
-
-class _SignInPageState extends State<SignInPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
-  bool obscurePassword = true;
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +31,7 @@ class _SignInPageState extends State<SignInPage> {
               S.of(context).signInHeading,
               style: context.textTheme.headlineLarge,
             ),
-            SignInForm(
-              formKey: formKey,
-              emailController: emailController,
-              passwordController: passwordController,
-            ),
+            const SignInForm(),
             TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
             AuthRedirectButton(

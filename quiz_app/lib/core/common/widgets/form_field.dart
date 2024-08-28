@@ -16,6 +16,7 @@ class IFormField extends StatelessWidget {
     this.keyboardType,
     this.bgColor = AppColorScheme.dialogBackground,
     required this.controller,
+    this.validator,
   });
 
   final TextEditingController controller;
@@ -26,6 +27,7 @@ class IFormField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final Color? bgColor;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -54,22 +56,27 @@ class IFormField extends StatelessWidget {
               width: double.infinity,
               child: TextFormField(
                 controller: controller,
-                validator: (value) {
-                  if (required && (value == null || value.isEmpty || value.trim().isEmpty)) {
-                    return S.of(context).thisFieldIsRequired;
-                  }
-                  return null;
-                },
+                validator: validator ??
+                    (value) {
+                      if (required && (value == null || value.isEmpty || value.trim().isEmpty)) {
+                        return S.of(context).thisFieldIsRequired;
+                      }
+                      return null;
+                    },
                 obscureText: obscureText,
                 keyboardType: keyboardType,
                 decoration: InputDecoration(
                   hintText: hintText,
                   suffixIcon: suffixIcon,
+                  errorMaxLines: 6,
                 ),
                 style: context.textTheme.labelMedium!.copyWith(
                   fontWeight: FontWeight.w400,
                   fontFamily: GoogleFonts.inter().fontFamily,
                 ),
+                onTapOutside: (event) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                },
               ),
             ),
           ],
