@@ -9,7 +9,7 @@ import '../../domain/user.dart';
 
 part 'user_client.g.dart';
 
-final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl));
+final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class UserClient {
