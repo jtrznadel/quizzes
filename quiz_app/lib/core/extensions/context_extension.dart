@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../generated/l10n.dart';
 
 extension ContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);
@@ -8,6 +9,4 @@ extension ContextExtension on BuildContext {
   Size get size => mediaQuery.size;
   double get width => size.width;
   double get height => size.height;
-
-  NavigatorState get navigator => Navigator.of(this);
 }

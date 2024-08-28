@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/services/router.dart';
+import 'core/services/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'generated/l10n.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'learnGO quizzes',
       locale: const Locale('pl'), // Change this to your desired locale
       localizationsDelegates: const [
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: generateRoute,
+      routerConfig: _appRouter.config(),
     );
   }
 }

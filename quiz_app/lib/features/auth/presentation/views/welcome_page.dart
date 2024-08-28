@@ -1,12 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/res/media_res.dart';
-import '../refactors/selection_screen_body.dart';
+import '../refactors/selection_page_body.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
-
-  static const String routeName = '/welcome';
+@RoutePage()
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class WelcomeScreen extends StatelessWidget {
             MediaRes.eclipse,
             alignment: Alignment.topLeft,
           ),
-          const SelectionScreenBody(),
+          const SelectionPageBody(),
         ],
       ),
     );
