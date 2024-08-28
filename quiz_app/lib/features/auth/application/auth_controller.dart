@@ -60,6 +60,6 @@ class AuthController extends _$AuthController {
   }
 
   void _routeDetails() {
-    AppRouter().replace(const DashboardRoute());
+    ref.read(appRouterProvider).replace(const DashboardRoute());
   }
 }

@@ -1,23 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/text_divider.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
+import '../../../../generated/l10n.dart';
 import '../refactors/sign_in_form.dart';
 import '../widgets/auth_redirect_button.dart';
-import '../../../../generated/l10n.dart';
-import 'sing_up_page.dart';
 
 @RoutePage()
-class SignInPage extends StatefulWidget {
+class SignInPage extends ConsumerStatefulWidget {
   const SignInPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  ConsumerState<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignInPageState extends ConsumerState<SignInPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -59,7 +60,8 @@ class _SignInPageState extends State<SignInPage> {
             AuthRedirectButton(
               text: S.of(context).signInDontHaveAccount,
               buttonText: S.of(context).registerButton,
-              navigateTo: () => AppRouter().replace(const SignUpRoute()),
+              navigateTo: () =>
+                  ref.read(appRouterProvider).replace(const SignUpRoute()),
             ),
           ],
         ),

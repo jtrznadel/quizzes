@@ -25,10 +25,10 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class MyAppState extends ConsumerState<MyApp> {
-  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = ref.read(appRouterProvider);
     return MaterialApp.router(
         builder: (context, child) {
           return MediaQuery.withNoTextScaling(
@@ -44,6 +44,6 @@ class MyAppState extends ConsumerState<MyApp> {
         supportedLocales: S.delegate.supportedLocales,
         theme: AppTheme.theme,
         debugShowCheckedModeBanner: false,
-        routerConfig: _appRouter.config());
+        routerConfig: appRouter.config());
   }
 }
