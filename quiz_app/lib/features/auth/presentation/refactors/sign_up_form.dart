@@ -13,6 +13,8 @@ import '../../application/auth_controller.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../application/auth_state.dart';
+
 class SignUpForm extends ConsumerStatefulWidget {
   const SignUpForm({super.key});
 
@@ -77,24 +79,16 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
               ),
             ),
             const ExtraLargeVSpacer(),
-            state.when(
-              initial: () => _initialAction(controller, context),
-              loading: () => _loadingAction(),
+            state.maybeWhen(
+              loading: () => const Center(child: CircularProgressIndicator()),
               success: () => _successAction(controller, context),
               error: (message) => _errorAction(controller, context),
+              orElse: () => _registerButton(controller, context),
             ),
           ],
         ),
       ),
     );
-  }
-
-  Widget _initialAction(AuthController controller, BuildContext context) {
-    return _registerButton(controller, context);
-  }
-
-  Widget _loadingAction() {
-    return const Center(child: CircularProgressIndicator());
   }
 
   Widget _errorAction(AuthController controller, BuildContext context) {

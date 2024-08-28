@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
@@ -18,7 +20,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
       actions: [
         SecondaryButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.router.maybePop();
           },
           text: S.of(context).cancelButton,
           width: null,
@@ -28,8 +30,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
         const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
+            context.router.replace(const DashboardRoute());
           },
           text: S.of(context).quizzCreationQuitButton,
           width: null,

@@ -11,26 +11,8 @@ import '../refactors/sign_in_form.dart';
 import '../widgets/auth_redirect_button.dart';
 
 @RoutePage()
-class SignInPage extends ConsumerStatefulWidget {
+class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
-
-  @override
-  ConsumerState<SignInPage> createState() => _SignInPageState();
-}
-
-class _SignInPageState extends ConsumerState<SignInPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
-  bool obscurePassword = true;
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +20,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
       resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: S.of(context).signInAppBarTitle,
+        onBack: () => context.router.replaceAll([const WelcomeRoute()]),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -53,10 +36,12 @@ class _SignInPageState extends ConsumerState<SignInPage> {
             const SignInForm(),
             TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
-            AuthRedirectButton(
-              text: S.of(context).signInDontHaveAccount,
-              buttonText: S.of(context).registerButton,
-              navigateTo: () => ref.read(appRouterProvider).replace(const SignUpRoute()),
+            Consumer(
+              builder: (context, ref, child) => AuthRedirectButton(
+                text: S.of(context).signInDontHaveAccount,
+                buttonText: S.of(context).registerButton,
+                navigateTo: () => ref.read(appRouterProvider).replace(const SignUpRoute()),
+              ),
             ),
           ],
         ),

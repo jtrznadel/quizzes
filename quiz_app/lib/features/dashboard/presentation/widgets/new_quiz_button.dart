@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,30 +22,26 @@ class NewQuizButton extends ConsumerWidget {
   Widget _container(BuildContext context, Widget content, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius:
-            BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
+        borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
         color: AppColorScheme.primary,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            ref.read(appRouterProvider).push(const QuizzCreationRoute());
+            context.router.replace(const QuizzCreationRoute());
           },
           customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                AppTheme.dashboardAddNewButtonBorderRadius),
+            borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
           ),
           child: DottedBorder(
             borderType: BorderType.RRect,
             color: AppColorScheme.border,
             strokeWidth: AppTheme.dottedBorderWidth,
-            radius: const Radius.circular(
-                AppTheme.dashboardAddNewButtonBorderRadius),
+            radius: const Radius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
             borderPadding: const EdgeInsets.all(0.5),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                  AppTheme.dashboardAddNewButtonBorderRadius),
+              borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
               child: content,
             ),
           ),

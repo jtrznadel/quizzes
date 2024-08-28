@@ -38,7 +38,7 @@ class AuthController extends _$AuthController {
               accessToken: tokens.accessToken,
               refreshToken: tokens.refreshToken,
             );
-        state = const AuthState.success();
+        state = const AuthState.authenticated();
       },
     );
   }
@@ -50,7 +50,7 @@ class AuthController extends _$AuthController {
       (error) => state = AuthState.error(error.message),
       (_) async {
         await ref.read(sessionProvider).deleteTokens();
-        state = const AuthState.success();
+        state = const AuthState.unauthenticated();
       },
     );
   }

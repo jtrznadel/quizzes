@@ -5,7 +5,6 @@ import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/quizz_summary.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/theme/app_color_scheme.dart';

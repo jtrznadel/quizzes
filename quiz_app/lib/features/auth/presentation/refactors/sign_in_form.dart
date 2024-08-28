@@ -93,22 +93,14 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                   ),
                 ),
                 const ExtraLargeVSpacer(),
-                state.when(
-                  initial: () => _loginButton(controller, context),
+                state.maybeWhen(
                   loading: () => const Center(child: CircularProgressIndicator()),
-                  success: () {
+                  authenticated: () {
                     context.router.replaceAll([const DashboardRoute()]);
                     return const SizedBox.shrink();
                   },
-                  error: (message) {
-                    SchedulerBinding.instance.addPostFrameCallback(
-                      (_) => showCustomSnackbar(
-                        context,
-                        S.of(context).invalidEmailOrPassword,
-                      ),
-                    );
-                    return _loginButton(controller, context);
-                  },
+                  error: (message) => _errorAction(controller, context),
+                  orElse: () => _loginButton(controller, context),
                 )
               ],
             ),
@@ -116,6 +108,16 @@ class _SignInFormState extends ConsumerState<SignInForm> {
         );
       },
     );
+  }
+
+  Widget _errorAction(AuthController controller, BuildContext context) {
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) => showCustomSnackbar(
+        context,
+        S.of(context).invalidEmailOrPassword,
+      ),
+    );
+    return _loginButton(controller, context);
   }
 
   BasicButton _loginButton(AuthController controller, BuildContext context) {

@@ -38,8 +38,7 @@ class DashboardPage extends ConsumerWidget {
                     shrinkWrap: true,
                     itemCount: quizzes.length,
                     itemBuilder: (context, index) {
-                      return QuizListItem(quizEntity: quizzes[index])
-                          .addPadding(
+                      return QuizListItem(quizEntity: quizzes[index]).addPadding(
                         padding: const EdgeInsets.only(
                           bottom: AppTheme.dashboardQuizItemBottomPadding,
                         ),
@@ -71,18 +70,16 @@ class DashboardPage extends ConsumerWidget {
             ),
             IconButton(
               onPressed: () {
-                ref.read(appRouterProvider).push(const ProfileRoute());
+                context.router.push(const ProfileRoute());
               },
-              icon:
-                  SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
+              icon: SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
             )
           ],
         ),
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );
@@ -93,8 +90,7 @@ class DashboardPage extends ConsumerWidget {
     for (int i = 0; i < number; i++) {
       quizes.add(
         TestQuizEntity(
-          quizTitle:
-              'Identify your bigest roadblock to succeeding in cryptocurrency',
+          quizTitle: 'Identify your bigest roadblock to succeeding in cryptocurrency',
           quizDescription:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus sagittis augue, vitae facilisis sem volutpat nec. Phasellus ac tincidunt nisl. Donec sed rutrum neque, vitae mattis velit. Donec non neque a erat finibus rutrum. Proin tincidunt leo hendrerit, sagittis lacus quis, finibus massa.',
           quizStatus: 'Active',
