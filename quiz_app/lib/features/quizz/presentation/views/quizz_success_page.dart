@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
@@ -13,13 +14,13 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../dashboard/presentation/views/dashboard_page.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizzSuccessPage extends StatelessWidget {
+class QuizzSuccessPage extends ConsumerWidget {
   const QuizzSuccessPage({super.key});
   //TODO: Replace with actual link
   final String mockLink = 'link.com/custom-code';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
       child: Column(
@@ -75,7 +76,7 @@ class QuizzSuccessPage extends StatelessWidget {
           const MediumVSpacer(),
           SecondaryButton(
             onPressed: () {
-              AppRouter().push(const DashboardRoute());
+              ref.read(appRouterProvider).push(const DashboardRoute());
             },
             text: S.of(context).quizzCreationSuccessBackButton,
             width: double.infinity,

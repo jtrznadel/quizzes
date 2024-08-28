@@ -20,24 +20,24 @@ class TempPage extends ConsumerWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  AppRouter().push(const WelcomeRoute());
+                  ref.read(appRouterProvider).push(const WelcomeRoute());
                 },
                 child: const Text('Welcome page')),
             ElevatedButton(
               onPressed: () {
-                AppRouter().push(const QuizzCreationRoute());
+                ref.read(appRouterProvider).push(const QuizzCreationRoute());
               },
               child: const Text('Quiz'),
             ),
             ElevatedButton(
               onPressed: () {
-                AppRouter().push(const QuizzDetailsRoute());
+                ref.read(appRouterProvider).push(const QuizzDetailsRoute());
               },
               child: const Text('Quiz details'),
             ),
             ElevatedButton(
               onPressed: () {
-                AppRouter().push(const DashboardRoute());
+                ref.read(appRouterProvider).push(const DashboardRoute());
               },
               child: const Text('Dashboard'),
             )

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -12,16 +13,16 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 
 @RoutePage()
-class ForgotPasswordPage extends StatefulWidget {
+class ForgotPasswordPage extends ConsumerStatefulWidget {
   const ForgotPasswordPage({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  ConsumerState<ConsumerStatefulWidget> createState() {
     return _ForgotPasswordPageState();
   }
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
   final emailController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -66,7 +67,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               text: S.of(context).forgotPasswordButton,
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  AppRouter().push(const SuccessfulPasswordResetRequestRoute());
+                  ref.read(appRouterProvider).push(const SuccessfulPasswordResetRequestRoute());
                 }
               },
               width: double.infinity,
