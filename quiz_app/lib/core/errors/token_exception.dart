@@ -1,8 +1,9 @@
-import 'package:equatable/equatable.dart';
+import 'package:dio/dio.dart';
 
-abstract class TokenException extends Equatable implements Exception{
-  String get message => 'token exception';
+abstract class TokenException extends DioException{
+  TokenException({required super.requestOptions});
 
   @override
-  List<Object?> get props => [message];
+  String get message => 'token exception';
+
 }
