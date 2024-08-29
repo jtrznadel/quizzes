@@ -99,9 +99,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileNameHint":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "profileNameLabel": MessageLookupByLibrary.simpleMessage("Name"),
+        "profileSignOutButton":
+            MessageLookupByLibrary.simpleMessage("Sign out"),
+        "profileSignOutDescription":
+            MessageLookupByLibrary.simpleMessage("Sign out from your account"),
+        "profileSomethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Manage your profile settings here."),
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
+        "profileUpdatingUsername":
+            MessageLookupByLibrary.simpleMessage("Updating..."),
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Here, you can create quizz based on your prompt."),
@@ -265,6 +273,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Title: "),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Save Quizz"),
+        "sessionExpired": MessageLookupByLibrary.simpleMessage(
+            "Session expired, please log in again."),
         "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),

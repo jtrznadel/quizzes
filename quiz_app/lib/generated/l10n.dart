@@ -1280,26 +1280,6 @@ class S {
     );
   }
 
-  /// `Sign out`
-  String get profileSignOutButton {
-    return Intl.message(
-      'Sign out',
-      name: 'signOutButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sing out from your account`
-  String get profileSignOutDescription {
-    return Intl.message(
-      'Sing out from your account',
-      name: 'profileSignOutDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Save changes`
   String get quizzDetailsSaveChangesButton {
     return Intl.message(
@@ -1451,10 +1431,30 @@ class S {
   }
 
   /// `Updating...`
-  String get profileUpdatingUsername{
+  String get profileUpdatingUsername {
     return Intl.message(
       'Updating...',
       name: 'profileUpdatingUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out`
+  String get profileSignOutButton {
+    return Intl.message(
+      'Sign out',
+      name: 'profileSignOutButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out from your account`
+  String get profileSignOutDescription {
+    return Intl.message(
+      'Sign out from your account',
+      name: 'profileSignOutDescription',
       desc: '',
       args: [],
     );

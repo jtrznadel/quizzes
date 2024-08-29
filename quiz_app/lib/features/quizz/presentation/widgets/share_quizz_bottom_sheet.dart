@@ -35,7 +35,7 @@ class ShareQuizzBottomSheet extends ConsumerWidget {
               const MediumVSpacer(),
               SecondaryButton(
                 onPressed: () async {
-                  Share.share(S.of(context).quizzShareMessage);
+                  await Share.share(S.of(context).quizzShareMessage);
                 },
                 text: S.of(context).quizzShareButton,
               ),

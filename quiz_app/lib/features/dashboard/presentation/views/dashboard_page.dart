@@ -48,13 +48,6 @@ class DashboardPage extends ConsumerWidget {
                     },
                   ),
                   const NewQuizButton(),
-                  //TODO: remove this
-                  BasicButton(
-                    text: 'Share Quizz',
-                    onPressed: () {
-                      ShareQuizzBottomSheet.show(context);
-                    },
-                  ),
                 ],
               ),
             )

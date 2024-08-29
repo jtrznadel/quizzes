@@ -33,7 +33,11 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: WelcomeRoute.page),
+        CustomRoute(
+          page: WelcomeRoute.page,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
+          durationInMilliseconds: 300,
+        ),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: ForgotPasswordRoute.page),

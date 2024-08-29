@@ -1,6 +1,6 @@
 import 'token_exception.dart';
 
-class AccessTokenRefreshFailureException extends TokenException{
+class AccessTokenRefreshFailureException extends TokenException {
   AccessTokenRefreshFailureException({required super.requestOptions});
 
   @override

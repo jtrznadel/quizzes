@@ -15,8 +15,7 @@ Dio buildDioClient(String base, Ref ref) {
         options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
         final accessToken = await ref.read(sessionProvider).accessToken;
         if (accessToken != null) {
-          options.headers[ApiConstants.authHeader] =
-              '${ApiConstants.authBearer}$accessToken';
+          options.headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$accessToken';
         }
         return handler.next(options);
       },
@@ -29,27 +28,24 @@ Dio buildDioClient(String base, Ref ref) {
               }();
           if (refreshToken == null) {
             return handler.next(
-              RefreshTokenMissingException(
-                  requestOptions: error.requestOptions),
+              RefreshTokenMissingException(requestOptions: error.requestOptions),
             );
           }
-            final tokenResponse = await refreshAccessToken(refreshToken, dio);
-            if(tokenResponse == null) {
-              return handler.next(
-                AccessTokenRefreshFailureException(
-                  requestOptions: error.requestOptions,
-                ),
+          final tokenResponse = await refreshAccessToken(refreshToken, dio);
+          if (tokenResponse == null) {
+            return handler.next(
+              AccessTokenRefreshFailureException(
+                requestOptions: error.requestOptions,
+              ),
+            );
+          }
+          await ref.read(sessionProvider).saveTokens(
+                accessToken: tokenResponse.accessToken,
+                refreshToken: tokenResponse.refreshToken,
               );
-            }
-            await ref.read(sessionProvider).saveTokens(
-                  accessToken: tokenResponse.accessToken,
-                  refreshToken: tokenResponse.refreshToken,
-                );
-            final retryRequest = error.requestOptions
-              ..headers[ApiConstants.authHeader] =
-                  '${ApiConstants.authBearer}$tokenResponse';
-            final response = await dio.fetch(retryRequest);
-            return handler.resolve(response);
+          final retryRequest = error.requestOptions..headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$tokenResponse';
+          final response = await dio.fetch(retryRequest);
+          return handler.resolve(response);
         }
         return handler.next(error);
       },
