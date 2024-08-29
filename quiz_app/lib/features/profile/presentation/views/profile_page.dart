@@ -6,7 +6,6 @@ import '../../application/user_controller.dart';
 import '../../application/user_state.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
@@ -17,11 +16,27 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 
 @RoutePage()
-class ProfilePage extends ConsumerWidget {
+class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
 
+  
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() {
+    return _ProfilePageState();
+  }
+}
+
+class _ProfilePageState extends ConsumerState<ProfilePage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(userControllerProvider.notifier).getUser();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final userController = ref.read(userControllerProvider.notifier);
     final state = ref.watch(userControllerProvider);
 

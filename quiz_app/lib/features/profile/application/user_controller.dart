@@ -10,7 +10,6 @@ part 'user_controller.g.dart';
 class UserController extends _$UserController {
   @override
   UserState build() {
-    getUser();
     return const UserState.loading();
   }
 
