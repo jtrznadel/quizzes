@@ -10,13 +10,15 @@ import 'api_constants.dart';
 @riverpod
 Dio buildDioClient(String base, Ref ref) {
   final dio = Dio()..options = BaseOptions(baseUrl: base);
+
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
         options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
         final accessToken = await ref.read(sessionProvider).accessToken;
         if (accessToken != null) {
-          options.headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$accessToken';
+          options.headers[ApiConstants.authHeader] =
+              '${ApiConstants.authBearer}$accessToken';
         }
         return handler.next(options);
       },
@@ -26,16 +28,22 @@ Dio buildDioClient(String base, Ref ref) {
               () {
                 //TODO: Log out user
                 ref.read(sessionProvider).deleteTokens();
-                throw RefreshTokenMissingException();
               }();
+          if (refreshToken == null) {
+            return handler.next(
+              RefreshTokenMissingException(
+                  requestOptions: error.requestOptions),
+            );
+          }
           final tokenResponse = await refreshAccessToken(refreshToken, dio);
           await ref.read(sessionProvider).saveTokens(
                 accessToken: tokenResponse.accessToken,
                 refreshToken: tokenResponse.refreshToken,
               );
-          final retryRequest = error.requestOptions..headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$tokenResponse';
+          final retryRequest = error.requestOptions
+            ..headers[ApiConstants.authHeader] =
+                '${ApiConstants.authBearer}$tokenResponse';
           final response = await dio.fetch(retryRequest);
-
           return handler.resolve(response);
         }
         return handler.next(error);

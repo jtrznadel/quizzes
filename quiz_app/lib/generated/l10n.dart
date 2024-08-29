@@ -1170,6 +1170,26 @@ class S {
     );
   }
 
+  /// `Sign out`
+  String get profileSignOutButton {
+    return Intl.message(
+      'Sign out',
+      name: 'signOutButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sing out from your account`
+  String get profileSignOutDescription {
+    return Intl.message(
+      'Sing out from your account',
+      name: 'profileSignOutDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save changes`
   String get quizzDetailsSaveChangesButton {
     return Intl.message(
@@ -1295,6 +1315,36 @@ class S {
     return Intl.message(
       'Something went wrong',
       name: 'fileReadException',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get profileSomethingWentWrong {
+    return Intl.message(
+      'Something went wrong',
+      name: 'profileSomethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Session expired, please log in again.`
+  String get sessionExpired {
+    return Intl.message(
+      'Session expired, please log in again.',
+      name: 'sessionExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updating...`
+  String get profileUpdatingUsername{
+    return Intl.message(
+      'Updating...',
+      name: 'profileUpdatingUsername',
       desc: '',
       args: [],
     );
