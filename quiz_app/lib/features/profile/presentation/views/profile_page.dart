@@ -11,9 +11,12 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../auth/application/auth_controller.dart';
+import '../../../auth/application/auth_state.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {

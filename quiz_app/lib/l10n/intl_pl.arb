@@ -10,6 +10,14 @@
 
     "forgotPassword": "Zapomniałeś hasła?",
     "thisFieldIsRequired": "To pole jest wymagane",
+    "passwordTooShort": "Hasło musi mieć co najmniej 6 znaków.",
+    "passwordRequiresLowercase": "Hasło musi zawierać co najmniej jedną małą literę.",
+    "passwordRequiresUppercase": "Hasło musi zawierać co najmniej jedną dużą literę.",
+    "passwordRequiresDigit": "Hasło musi zawierać co najmniej jedną cyfrę.",
+    "passwordRequiresSpecialChar": "Hasło musi zawierać co najmniej jeden znak specjalny.",
+    "invalidEmail": "Nieprawidłowy adres e-mail.",
+    "invalidEmailOrPassword": "Nieprawidłowy adres e-mail lub hasło.",
+    "successfulRegistration": "Zarejestrowałeś się pomyślnie. Możesz teraz się zalogować.",
 
     "signInAppBarTitle": "Logowanie",
     "signInHeading": "Wprowadź dane",

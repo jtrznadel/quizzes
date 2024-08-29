@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../extensions/context_extension.dart';
@@ -11,7 +12,7 @@ class IBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: onPressed ?? () => Navigator.of(context).pop(),
+      onPressed: onPressed ?? () => context.router.maybePop(),
       icon: SvgPicture.asset(
         MediaRes.arrowBack,
         height: 16,

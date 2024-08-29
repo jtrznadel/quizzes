@@ -9,7 +9,15 @@
     "usernameHint": "Your username",
 
     "forgotPassword": "Forgot password?",
-    "thisFieldIsRequired": "This field is required",
+    "thisFieldIsRequired": "This field is required.",
+    "passwordTooShort": "Password must be at least 6 characters long.",
+    "passwordRequiresLowercase": "Password must contain at least one lowercase letter.",
+    "passwordRequiresUppercase": "Password must contain at least one uppercase letter.",
+    "passwordRequiresDigit": "Password must contain at least one digit.",
+    "passwordRequiresSpecialChar": "Password must contain at least one special character.",
+    "invalidEmail": "Invalid e-mail address.",
+    "invalidEmailOrPassword": "Invalid e-mail or password.",
+    "successfulRegistration": "You have successfully registered. You can now log in.",
 
     "signInAppBarTitle": "Login",
     "signInHeading": "Enter credentials",

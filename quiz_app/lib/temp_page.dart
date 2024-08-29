@@ -1,19 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'core/extensions/context_extension.dart';
-import 'features/dashboard/presentation/views/dashboard_page.dart';
-import 'features/quizz/presentation/views/quizz_creation_page.dart';
-import 'features/quizz/presentation/views/quizz_details_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/services/app_router.dart';
 
 //TODO: Remove this screen on realease
 @RoutePage()
-class TempPage extends StatelessWidget {
+class TempPage extends ConsumerWidget {
   const TempPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Temp Page'),
@@ -23,24 +20,24 @@ class TempPage extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  context.router.push(const WelcomeRoute());
+                  ref.read(appRouterProvider).push(const WelcomeRoute());
                 },
                 child: const Text('Welcome page')),
             ElevatedButton(
               onPressed: () {
-                context.router.push(const QuizzCreationRoute());
+                ref.read(appRouterProvider).push(const QuizzCreationRoute());
               },
               child: const Text('Quiz'),
             ),
             ElevatedButton(
               onPressed: () {
-                context.router.push(const QuizzDetailsRoute());
+                ref.read(appRouterProvider).push(const QuizzDetailsRoute());
               },
               child: const Text('Quiz details'),
             ),
             ElevatedButton(
               onPressed: () {
-                context.router.push(const DashboardRoute());
+                ref.read(appRouterProvider).push(const DashboardRoute());
               },
               child: const Text('Dashboard'),
             )

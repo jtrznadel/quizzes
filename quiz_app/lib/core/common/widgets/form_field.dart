@@ -10,22 +10,24 @@ class IFormField extends StatelessWidget {
     super.key,
     required this.labelText,
     required this.hintText,
-    this.required = true,
+    this.isRequired = true,
     this.suffixIcon,
     this.obscureText = false,
     this.keyboardType,
     this.bgColor = AppColorScheme.dialogBackground,
     required this.controller,
+    this.validator,
   });
 
   final TextEditingController controller;
   final String labelText;
   final String hintText;
-  final bool required;
+  final bool isRequired;
   final Widget? suffixIcon;
   final bool obscureText;
   final TextInputType? keyboardType;
   final Color? bgColor;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class IFormField extends StatelessWidget {
                 style: context.textTheme.bodyMedium,
                 children: [
                   TextSpan(
-                    text: required ? '*' : '',
+                    text: isRequired ? '*' : '',
                     style: context.textTheme.bodyMedium!.copyWith(
                       color: AppColorScheme.error,
                     ),
@@ -54,22 +56,28 @@ class IFormField extends StatelessWidget {
               width: double.infinity,
               child: TextFormField(
                 controller: controller,
-                validator: (value) {
-                  if (required && (value == null || value.isEmpty || value.trim().isEmpty)) {
-                    return S.of(context).thisFieldIsRequired;
-                  }
-                  return null;
-                },
+                validator: validator ??
+                    (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return S.of(context).thisFieldIsRequired;
+                      }
+                      return null;
+                    },
                 obscureText: obscureText,
                 keyboardType: keyboardType,
                 decoration: InputDecoration(
                   hintText: hintText,
                   suffixIcon: suffixIcon,
+                  errorMaxLines: 6,
                 ),
                 style: context.textTheme.labelMedium!.copyWith(
                   fontWeight: FontWeight.w400,
                   fontFamily: GoogleFonts.inter().fontFamily,
                 ),
+                onTapOutside: (event) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  //FocusScope.of(context).unfocus();
+                },
               ),
             ),
           ],

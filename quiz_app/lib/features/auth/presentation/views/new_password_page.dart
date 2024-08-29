@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
@@ -11,18 +12,17 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import 'sign_in_page.dart';
 import '../../../../generated/l10n.dart';
 
 @RoutePage()
-class NewPasswordPage extends StatefulWidget {
+class NewPasswordPage extends ConsumerStatefulWidget {
   const NewPasswordPage({super.key});
 
   @override
-  State<NewPasswordPage> createState() => _NewPasswordPageState();
+  ConsumerState<NewPasswordPage> createState() => _NewPasswordPageState();
 }
 
-class _NewPasswordPageState extends State<NewPasswordPage> {
+class _NewPasswordPageState extends ConsumerState<NewPasswordPage> {
   final emailController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
@@ -58,7 +58,6 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
                 labelText: S.of(context).newPasswordInputLabel,
                 hintText: S.of(context).newPasswordInputHint,
                 obscureText: obscurePassword,
-                required: true,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 suffixIcon: obscurePasswordIconButton(),
@@ -69,7 +68,7 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
               text: S.of(context).newPasswordButton,
               onPressed: () {
                 formKey.currentState!.validate();
-                context.router.push(const SignInRoute());
+                ref.read(appRouterProvider).push(const SignInRoute());
               },
               width: double.infinity,
             )

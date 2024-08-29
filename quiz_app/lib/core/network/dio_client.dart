@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../features/auth/domain/token_auth.dart';
 import '../errors/access_token_refresh_failure_exception.dart';
 import '../errors/refresh_token_missing_exception.dart';
 import '../services/session_provider.dart';
 import 'api_constants.dart';
 
-@riverpod
 Dio buildDioClient(String base, Ref ref) {
   final dio = Dio()..options = BaseOptions(baseUrl: base);
 

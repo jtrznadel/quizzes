@@ -9,6 +9,10 @@ class SessionProvider {
   static const _accessTokenKey = 'accessToken';
   static const _refreshTokenKey = 'refreshToken';
 
+  Future<bool> isAuthenticated() async {
+    return await accessToken != null;
+  }
+
   Future<void> saveTokens({required String accessToken, required String refreshToken}) async {
     await _storage.write(key: _accessTokenKey, value: accessToken);
     await _storage.write(key: _refreshTokenKey, value: refreshToken);

@@ -1,11 +1,13 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'basic_dialog.dart';
-import '../../../extensions/context_extension.dart';
-import '../../../theme/app_color_scheme.dart';
-import '../../../../generated/l10n.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DeleteDialog extends StatelessWidget {
+import '../../../../generated/l10n.dart';
+import '../../../extensions/context_extension.dart';
+import '../../../services/app_router.dart';
+import '../../../theme/app_color_scheme.dart';
+import 'basic_dialog.dart';
+
+class DeleteDialog extends ConsumerWidget {
   const DeleteDialog({
     super.key,
     required this.title,
@@ -20,11 +22,11 @@ class DeleteDialog extends StatelessWidget {
   final void Function()? onCancel;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BasicDialog(title: title, content: content, actions: [
       ElevatedButton(
         onPressed: () {
-          onCancel ?? context.router.maybePop();
+          onCancel ?? ref.read(appRouterProvider).maybePop();
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
@@ -32,7 +34,8 @@ class DeleteDialog extends StatelessWidget {
         ),
         child: Text(
           S.of(context).cancelButton,
-          style: context.theme.textTheme.labelMedium!.copyWith(color: AppColorScheme.primary),
+          style: context.theme.textTheme.labelMedium!
+              .copyWith(color: AppColorScheme.primary),
         ),
       ),
       ElevatedButton(
@@ -44,7 +47,8 @@ class DeleteDialog extends StatelessWidget {
         ),
         child: Text(
           S.of(context).deleteButton,
-          style: context.theme.textTheme.labelMedium!.copyWith(color: AppColorScheme.textContrast),
+          style: context.theme.textTheme.labelMedium!
+              .copyWith(color: AppColorScheme.textContrast),
         ),
       )
     ]);

@@ -1,24 +1,27 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
-class QuitQuizzCreationDialog extends StatelessWidget {
+class QuitQuizzCreationDialog extends ConsumerWidget {
   const QuitQuizzCreationDialog({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return BasicDialog(
       title: S.of(context).quizzCreationQuitHeading,
       content: _dialogContent(context),
       actions: [
         SecondaryButton(
           onPressed: () {
-            Navigator.pop(context);
+            ref.read(appRouterProvider).maybePop();
           },
           text: S.of(context).cancelButton,
           width: null,
@@ -28,8 +31,7 @@ class QuitQuizzCreationDialog extends StatelessWidget {
         const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
+            ref.read(appRouterProvider).replace(const DashboardRoute());
           },
           text: S.of(context).quizzCreationQuitButton,
           width: null,

@@ -1,42 +1,26 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/text_divider.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
+import '../../../../generated/l10n.dart';
 import '../refactors/sign_in_form.dart';
 import '../widgets/auth_redirect_button.dart';
-import '../../../../generated/l10n.dart';
-import 'sing_up_page.dart';
 
 @RoutePage()
-class SignInPage extends StatefulWidget {
+class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
-}
-
-class _SignInPageState extends State<SignInPage> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
-  bool obscurePassword = true;
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: S.of(context).signInAppBarTitle,
+        onBack: () => ref.read(appRouterProvider).replaceAll([const WelcomeRoute()]),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -49,17 +33,15 @@ class _SignInPageState extends State<SignInPage> {
               S.of(context).signInHeading,
               style: context.textTheme.headlineLarge,
             ),
-            SignInForm(
-              formKey: formKey,
-              emailController: emailController,
-              passwordController: passwordController,
-            ),
+            const SignInForm(),
             TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
-            AuthRedirectButton(
-              text: S.of(context).signInDontHaveAccount,
-              buttonText: S.of(context).registerButton,
-              navigateTo: () => context.router.replace(const SignUpRoute()),
+            Consumer(
+              builder: (context, ref, child) => AuthRedirectButton(
+                text: S.of(context).signInDontHaveAccount,
+                buttonText: S.of(context).registerButton,
+                navigateTo: () => ref.read(appRouterProvider).replace(const SignUpRoute()),
+              ),
             ),
           ],
         ),

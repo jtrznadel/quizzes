@@ -140,11 +140,91 @@ class S {
     );
   }
 
-  /// `This field is required`
+  /// `This field is required.`
   String get thisFieldIsRequired {
     return Intl.message(
-      'This field is required',
+      'This field is required.',
       name: 'thisFieldIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters long.`
+  String get passwordTooShort {
+    return Intl.message(
+      'Password must be at least 6 characters long.',
+      name: 'passwordTooShort',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one lowercase letter.`
+  String get passwordRequiresLowercase {
+    return Intl.message(
+      'Password must contain at least one lowercase letter.',
+      name: 'passwordRequiresLowercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one uppercase letter.`
+  String get passwordRequiresUppercase {
+    return Intl.message(
+      'Password must contain at least one uppercase letter.',
+      name: 'passwordRequiresUppercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one digit.`
+  String get passwordRequiresDigit {
+    return Intl.message(
+      'Password must contain at least one digit.',
+      name: 'passwordRequiresDigit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain at least one special character.`
+  String get passwordRequiresSpecialChar {
+    return Intl.message(
+      'Password must contain at least one special character.',
+      name: 'passwordRequiresSpecialChar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid e-mail address.`
+  String get invalidEmail {
+    return Intl.message(
+      'Invalid e-mail address.',
+      name: 'invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid e-mail or password.`
+  String get invalidEmailOrPassword {
+    return Intl.message(
+      'Invalid e-mail or password.',
+      name: 'invalidEmailOrPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have successfully registered. You can now log in.`
+  String get successfulRegistration {
+    return Intl.message(
+      'You have successfully registered. You can now log in.',
+      name: 'successfulRegistration',
       desc: '',
       args: [],
     );

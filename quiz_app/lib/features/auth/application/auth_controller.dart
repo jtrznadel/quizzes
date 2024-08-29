@@ -1,8 +1,12 @@
+import 'dart:core';
+
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
-import 'auth_state.dart';
 import '../data/repositories/auth_repository.dart';
 import '../domain/user_auth.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'auth_state.dart';
 
 part 'auth_controller.g.dart';
 
@@ -15,8 +19,6 @@ class AuthController extends _$AuthController {
 
   Future<void> signUp({required String email, required String password}) async {
     state = const AuthState.loading();
-    //TODO: Remove this delay after testing
-    await Future.delayed(const Duration(seconds: 5));
     final userAuth = UserAuth(email: email, password: password);
     final result = await ref.read(authRepositoryProvider).signUp(userAuth: userAuth);
     result.fold(
@@ -31,12 +33,24 @@ class AuthController extends _$AuthController {
     final result = await ref.read(authRepositoryProvider).signIn(userAuth: userAuth);
     result.fold(
       (error) => state = AuthState.error(error.message),
-      (tokens) {
-        ref.read(sessionProvider).saveTokens(
+      (tokens) async {
+        await ref.read(sessionProvider).saveTokens(
               accessToken: tokens.accessToken,
               refreshToken: tokens.refreshToken,
             );
-        state = const AuthState.success();
+        state = const AuthState.authenticated();
+      },
+    );
+  }
+
+  Future<void> signOut() async {
+    state = const AuthState.loading();
+    final result = await ref.read(authRepositoryProvider).signOut();
+    result.fold(
+      (error) => state = AuthState.error(error.message),
+      (_) async {
+        await ref.read(sessionProvider).deleteTokens();
+        state = const AuthState.unauthenticated();
       },
     );
   }

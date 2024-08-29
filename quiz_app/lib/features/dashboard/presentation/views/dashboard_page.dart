@@ -1,7 +1,10 @@
 import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -9,23 +12,23 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 import '../../domain/entities/test_quiz_entity.dart';
 import '../widgets/new_quiz_button.dart';
 import '../widgets/quiz_list_item.dart';
-import '../../../../generated/l10n.dart';
 
 @RoutePage()
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends ConsumerWidget {
   const DashboardPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final quizzes = generateMockQuizes(10);
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            topBar(context),
+            topBar(context, ref),
             const SmallVSpacer(),
             Expanded(
               child: ListView(
@@ -54,7 +57,7 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget topBar(BuildContext context) {
+  Widget topBar(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
         Row(

@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/services/app_router.dart';
 import '../../application/auth_controller.dart';
@@ -14,21 +16,24 @@ import '../../../../generated/l10n.dart';
 class SignInForm extends ConsumerStatefulWidget {
   const SignInForm({
     super.key,
-    required this.formKey,
-    required this.emailController,
-    required this.passwordController,
   });
-
-  final GlobalKey<FormState> formKey;
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _SignInFormState();
 }
 
 class _SignInFormState extends ConsumerState<SignInForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   bool obscurePassword = true;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,23 +46,21 @@ class _SignInFormState extends ConsumerState<SignInForm> {
             vertical: 32,
           ),
           child: Form(
-            key: widget.formKey,
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 IFormField(
-                  controller: widget.emailController,
+                  controller: emailController,
                   labelText: S.of(context).emailLabel,
                   hintText: S.of(context).emailHint,
-                  required: true,
                   obscureText: false,
                 ),
                 const MediumVSpacer(),
                 IFormField(
-                  controller: widget.passwordController,
+                  controller: passwordController,
                   labelText: S.of(context).passwordLabel,
                   hintText: S.of(context).passwordHint,
-                  required: true,
                   obscureText: obscurePassword,
                   suffixIcon: IconButton(
                     onPressed: () {
@@ -78,7 +81,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                 ),
                 TextButton(
                   onPressed: () {
-                    context.router.push(const ForgotPasswordRoute());
+                    ref.read(appRouterProvider).push(const ForgotPasswordRoute());
                   },
                   child: Text(
                     S.of(context).forgotPassword,
@@ -88,27 +91,45 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                   ),
                 ),
                 const ExtraLargeVSpacer(),
-                state.when(
-                  initial: () => BasicButton(
-                      onPressed: () {
-                        if (widget.formKey.currentState!.validate()) {
-                          controller.signIn(
-                            email: widget.emailController.text.trim(),
-                            password: widget.passwordController.text.trim(),
-                          );
-                        }
-                      },
-                      text: S.of(context).loginButton,
-                      width: double.infinity),
-                  loading: () => const CircularProgressIndicator(),
-                  success: () => const Text('Dziala super'),
-                  error: (message) => const Text('Nie dziala'),
+                state.maybeWhen(
+                  loading: () => const Center(child: CircularProgressIndicator()),
+                  authenticated: () {
+                    context.router.replaceAll([const DashboardRoute()]);
+                    return const SizedBox.shrink();
+                  },
+                  error: (message) => _errorAction(controller, context),
+                  orElse: () => _loginButton(controller, context),
                 )
               ],
             ),
           ),
         );
       },
+    );
+  }
+
+  Widget _errorAction(AuthController controller, BuildContext context) {
+    SchedulerBinding.instance.addPostFrameCallback(
+      (_) => showCustomSnackbar(
+        context,
+        S.of(context).invalidEmailOrPassword,
+      ),
+    );
+    return _loginButton(controller, context);
+  }
+
+  BasicButton _loginButton(AuthController controller, BuildContext context) {
+    return BasicButton(
+      onPressed: () {
+        if (formKey.currentState!.validate()) {
+          controller.signIn(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+          );
+        }
+      },
+      text: S.of(context).loginButton,
+      width: double.infinity,
     );
   }
 }

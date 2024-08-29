@@ -26,6 +26,8 @@ abstract class AppTheme {
 
   static const double quizDeleteDialogItemBorderRadius = 8;
 
+  static const double snackBarBorderRadius = 8;
+
   static const double quizListItemPadding = 24;
   static const double quizListItemBorderRadius = 8;
   static const double quizListItemDeleteIconSize = 24;

@@ -78,31 +78,31 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
   Widget _dialogContent() {
     return Form(
       key: _formKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const LargeVSpacer(),
-          IFormField(
-            labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
-            hintText: S.of(context).quizzCreationAddQuestionTitleHint,
-            required: true,
-            obscureText: false,
-            controller: titleController,
-          ),
-          const LargeVSpacer(),
-          IFormField(
-            labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
-            hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
-            required: true,
-            obscureText: false,
-            controller: descriptionController,
-          ),
-          const LargeVSpacer(),
-          AddQuestionDialogAnswerSection(
-            answerControllers: answerControllers,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const LargeVSpacer(),
+            IFormField(
+              labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
+              hintText: S.of(context).quizzCreationAddQuestionTitleHint,
+              obscureText: false,
+              controller: titleController,
+            ),
+            const LargeVSpacer(),
+            IFormField(
+              labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
+              hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
+              obscureText: false,
+              controller: descriptionController,
+            ),
+            const LargeVSpacer(),
+            AddQuestionDialogAnswerSection(
+              answerControllers: answerControllers,
+            ),
+          ],
+        ),
       ),
     );
   }
