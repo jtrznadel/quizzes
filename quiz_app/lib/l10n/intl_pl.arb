@@ -135,6 +135,10 @@
     "quizzCreationSuccessShareButton": "Podziel się z innymi!",
     "quizzCreationSuccessBackButton": "Powrót do pulpitu",
 
+    "quizzShareHeading": "Udostępnij quizz",
+    "quizzShareMessage": "Udostępnij ten quizz swoim znajomym",
+    "quizzShareButton": "Udostępnij",
+
     "dashboardTopHeading": "Quizzy",
     "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
 

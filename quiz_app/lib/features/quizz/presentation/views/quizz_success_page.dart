@@ -5,19 +5,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/share_link_container.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../mocks.dart';
 import '../../../dashboard/presentation/views/dashboard_page.dart';
 import '../../../../generated/l10n.dart';
 
 class QuizzSuccessPage extends ConsumerWidget {
   const QuizzSuccessPage({super.key});
-  //TODO: Replace with actual link
-  final String mockLink = 'link.com/custom-code';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,37 +36,8 @@ class QuizzSuccessPage extends ConsumerWidget {
             style: context.textTheme.bodyMedium,
           ),
           const ExtraLargeVSpacer(),
-          Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  mockLink,
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    color: Colors.black,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () async {
-                    await Clipboard.setData(ClipboardData(text: mockLink));
-                  },
-                  icon: SvgPicture.asset(
-                    MediaRes.copy,
-                    colorFilter: const ColorFilter.mode(
-                      AppColorScheme.primary,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          //TODO: Replace with actual link
+          const ShareLinkContainer(link: mockLink),
           const ExtraLargeVSpacer(),
           BasicButton(
             onPressed: () {},

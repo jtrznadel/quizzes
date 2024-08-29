@@ -256,6 +256,11 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Tutaj możesz przeglądać statystyki swojego quizzu."),
         "quizzDetailsTabStatisticsTime":
             MessageLookupByLibrary.simpleMessage("Czas"),
+        "quizzShareButton": MessageLookupByLibrary.simpleMessage("Udostępnij"),
+        "quizzShareHeading":
+            MessageLookupByLibrary.simpleMessage("Udostępnij quizz"),
+        "quizzShareMessage": MessageLookupByLibrary.simpleMessage(
+            "Udostępnij ten quizz swoim znajomym"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Tytuł: "),
         "registerButton":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),

@@ -135,9 +135,13 @@
     "quizzCreationSuccessShareButton": "Share with others!",
     "quizzCreationSuccessBackButton": "Back to dashboard",
 
+    "quizzShareHeading": "Share quizz",
+    "quizzShareMessage": "Share this quizz with your friends",
+    "quizzShareButton": "Share",
+
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
-   
+
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
     "deleteAccountHeading": "Deleting account",
