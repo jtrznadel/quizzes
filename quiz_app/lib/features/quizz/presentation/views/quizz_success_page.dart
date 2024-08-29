@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/share_link_container.dart';
@@ -40,7 +41,9 @@ class QuizzSuccessPage extends ConsumerWidget {
           const ShareLinkContainer(link: mockLink),
           const ExtraLargeVSpacer(),
           BasicButton(
-            onPressed: () {},
+            onPressed: () async {
+              await Share.share(S.of(context).quizzShareMessage);
+            },
             text: S.of(context).quizzCreationSuccessShareButton,
             width: double.infinity,
           ),

@@ -25,7 +25,7 @@ class DashboardPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quizzes = generateMockQuizes(10);
+    final quizzes = generateMockQuizes(2);
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -48,13 +48,6 @@ class DashboardPage extends ConsumerWidget {
                     },
                   ),
                   const NewQuizButton(),
-                  //TODO: remove this
-                  BasicButton(
-                    text: 'Share Quizz',
-                    onPressed: () {
-                      ShareQuizzBottomSheet.show(context);
-                    },
-                  ),
                 ],
               ),
             )

@@ -460,20 +460,20 @@ class S {
     );
   }
 
-  /// `Text prompt`
+  /// `Source Text`
   String get quizzCreationTextPromptHeading {
     return Intl.message(
-      'Text prompt',
+      'Source Text',
       name: 'quizzCreationTextPromptHeading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Here, you can create quizz based on your prompt.`
+  /// `Enter the text that will be used to create your quizz.`
   String get quizzCreationTextPromptSubheading {
     return Intl.message(
-      'Here, you can create quizz based on your prompt.',
+      'Enter the text that will be used to create your quizz.',
       name: 'quizzCreationTextPromptSubheading',
       desc: '',
       args: [],
@@ -490,20 +490,20 @@ class S {
     );
   }
 
-  /// `Prompt`
+  /// `Source Text`
   String get quizzCreationTextPromptTextAreaLabel {
     return Intl.message(
-      'Prompt',
+      'Source Text',
       name: 'quizzCreationTextPromptTextAreaLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter your prompt`
+  /// `Enter the text for your quizz`
   String get quizzCreationTextPromptTextAreaHint {
     return Intl.message(
-      'Enter your prompt',
+      'Enter the text for your quizz',
       name: 'quizzCreationTextPromptTextAreaHint',
       desc: '',
       args: [],
@@ -1280,26 +1280,6 @@ class S {
     );
   }
 
-  /// `Sign out`
-  String get profileSignOutButton {
-    return Intl.message(
-      'Sign out',
-      name: 'signOutButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sing out from your account`
-  String get profileSignOutDescription {
-    return Intl.message(
-      'Sing out from your account',
-      name: 'profileSignOutDescription',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Save changes`
   String get quizzDetailsSaveChangesButton {
     return Intl.message(
@@ -1451,10 +1431,30 @@ class S {
   }
 
   /// `Updating...`
-  String get profileUpdatingUsername{
+  String get profileUpdatingUsername {
     return Intl.message(
       'Updating...',
       name: 'profileUpdatingUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out`
+  String get profileSignOutButton {
+    return Intl.message(
+      'Sign out',
+      name: 'profileSignOutButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign out from your account`
+  String get profileSignOutDescription {
+    return Intl.message(
+      'Sign out from your account',
+      name: 'profileSignOutDescription',
       desc: '',
       args: [],
     );

@@ -25,7 +25,6 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class MyAppState extends ConsumerState<MyApp> {
-
   @override
   Widget build(BuildContext context) {
     final appRouter = ref.read(appRouterProvider);

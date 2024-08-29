@@ -22,7 +22,6 @@ import '../../../auth/application/auth_state.dart';
 class ProfilePage extends ConsumerStatefulWidget {
   const ProfilePage({super.key});
 
-  
   @override
   ConsumerState<ConsumerStatefulWidget> createState() {
     return _ProfilePageState();
@@ -42,12 +41,12 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   Widget build(BuildContext context) {
     final userController = ref.read(userControllerProvider.notifier);
     final state = ref.watch(userControllerProvider);
+    final authController = ref.read(authControllerProvider.notifier);
+    final authState = ref.watch(authControllerProvider);
 
-    ref.listen(userControllerProvider, (previous, current) {
-      if (current == const UserState.signout()) {
-        //TODO: navigate to sign in page
-      }
-    });
+    if (authState == const AuthState.unauthenticated()) {
+      ref.read(appRouterProvider).replaceAll([const SignInRoute()]);
+    }
 
     //TODO: replace with actual user name
     return Scaffold(
@@ -87,15 +86,13 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 );
               },
               success: (user, isUsernameUpdating) {
-                var controller = TextEditingController.fromValue(
-                    TextEditingValue(text: user.userName));
+                var controller = TextEditingController.fromValue(TextEditingValue(text: user.userName));
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       S.of(context).profileSubheading,
-                      style: context.theme.textTheme.bodyMedium!
-                          .copyWith(color: AppColorScheme.textSecondary),
+                      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
                       textAlign: TextAlign.start,
                     ),
                     const SmallVSpacer(),
@@ -108,8 +105,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     const SmallVSpacer(),
                     Text(
                       S.of(context).profileNameDescription,
-                      style: context.theme.textTheme.bodyMedium!
-                          .copyWith(color: AppColorScheme.textSecondary),
+                      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
                       textAlign: TextAlign.start,
                     ),
                     const SmallVSpacer(),
@@ -120,32 +116,23 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                             user: user.copyWith(userName: controller.text),
                           );
                         } catch (_) {
-                          context.mounted
-                              ? showErrorSnackBar(context,
-                                  S.of(context).profileSomethingWentWrong)
-                              : null;
+                          context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
                         }
                       },
-                      text: isUsernameUpdating
-                          ? S.of(context).profileUpdatingUsername
-                          : S.of(context).profileUpdateButton,
+                      text: isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
                     ),
                     const ExtraLargeVSpacer(),
                     Text(
                       S.of(context).profileSignOutDescription,
-                      style: context.theme.textTheme.bodyMedium!
-                          .copyWith(color: AppColorScheme.textSecondary),
+                      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
                     ),
                     const SmallVSpacer(),
                     SecondaryButton(
                       onPressed: () async {
                         try {
-                          await userController.signOut();
+                          await authController.signOut();
                         } catch (_) {
-                          context.mounted
-                              ? showErrorSnackBar(context,
-                                  S.of(context).profileSomethingWentWrong)
-                              : null;
+                          context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
                         }
                       },
                       text: S.of(context).profileSignOutButton,
@@ -154,8 +141,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     ),
                   ],
                 ).addPadding(
-                  padding:
-                      const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
                 );
               },
             ),

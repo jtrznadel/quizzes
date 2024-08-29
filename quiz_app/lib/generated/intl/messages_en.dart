@@ -99,9 +99,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileNameHint":
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "profileNameLabel": MessageLookupByLibrary.simpleMessage("Name"),
+        "profileSignOutButton":
+            MessageLookupByLibrary.simpleMessage("Sign out"),
+        "profileSignOutDescription":
+            MessageLookupByLibrary.simpleMessage("Sign out from your account"),
+        "profileSomethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Manage your profile settings here."),
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
+        "profileUpdatingUsername":
+            MessageLookupByLibrary.simpleMessage("Updating..."),
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Here, you can create quizz based on your prompt."),
@@ -172,14 +180,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
             "You succesfully created your quizz. You can now share it with others."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Text prompt"),
+            MessageLookupByLibrary.simpleMessage("Source Text"),
         "quizzCreationTextPromptSubheading":
             MessageLookupByLibrary.simpleMessage(
-                "Here, you can create quizz based on your prompt."),
+                "Enter the text that will be used to create your quizz."),
         "quizzCreationTextPromptTextAreaHint":
-            MessageLookupByLibrary.simpleMessage("Enter your prompt"),
+            MessageLookupByLibrary.simpleMessage(
+                "Enter the text for your quizz"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Prompt"),
+            MessageLookupByLibrary.simpleMessage("Source Text"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Upload file"),
         "quizzDetailsAppbarTitle":
@@ -265,6 +274,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Title: "),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Save Quizz"),
+        "sessionExpired": MessageLookupByLibrary.simpleMessage(
+            "Session expired, please log in again."),
         "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),

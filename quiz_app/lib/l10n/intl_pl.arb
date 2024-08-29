@@ -48,11 +48,11 @@
     "quizzSummaryTitle": "Tytuł: ",
 
     "quizzCreationAppBarTitle": "Stwórz quizz",
-    "quizzCreationTextPromptHeading": "Monit tekstowy",
-    "quizzCreationTextPromptSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego.",
+    "quizzCreationTextPromptHeading": "Tekst źródłowy",
+    "quizzCreationTextPromptSubheading": "Wprowadź tekst, który zostanie użyty do stworzenia twojego quizzu.",
     "quizzCreationUploadFile": "Prześlij plik",
-    "quizzCreationTextPromptTextAreaLabel": "Monit tekstowy",
-    "quizzCreationTextPromptTextAreaHint": "Wprowadź monit tekstowy",
+    "quizzCreationTextPromptTextAreaLabel": "Tekst źródłowy",
+    "quizzCreationTextPromptTextAreaHint": "Wprowadź tekst dla swojego quizzu",
     
     "quizzCreationConfigureHeading": "Konfiguracja quizzu",
     "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego.",

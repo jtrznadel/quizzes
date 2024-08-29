@@ -99,10 +99,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileNameHint":
             MessageLookupByLibrary.simpleMessage("Wpisz swoje imię"),
         "profileNameLabel": MessageLookupByLibrary.simpleMessage("Imię"),
+        "profileSignOutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
+        "profileSignOutDescription": MessageLookupByLibrary.simpleMessage(
+            "Wyloguj się ze swojego konta"),
+        "profileSomethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Zarządzaj ustawieniami swojego profilu tutaj."),
         "profileUpdateButton":
             MessageLookupByLibrary.simpleMessage("Aktualizuj"),
+        "profileUpdatingUsername":
+            MessageLookupByLibrary.simpleMessage("Aktualizowanie..."),
         "quizzCraetionConfigureSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
         "quizzCreationAddQuestionAnswerPlaceholder":
@@ -172,13 +179,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
             "Pomyślnie utworzyłeś quizz. Możesz teraz podzielić się nim z innymi."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
+            MessageLookupByLibrary.simpleMessage("Tekst źródłowy"),
         "quizzCreationTextPromptSubheading": MessageLookupByLibrary.simpleMessage(
-            "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
+            "Wprowadź tekst, który zostanie użyty do stworzenia twojego quizzu."),
         "quizzCreationTextPromptTextAreaHint":
-            MessageLookupByLibrary.simpleMessage("Wprowadź monit tekstowy"),
+            MessageLookupByLibrary.simpleMessage(
+                "Wprowadź tekst dla swojego quizzu"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
+            MessageLookupByLibrary.simpleMessage("Tekst źródłowy"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Prześlij plik"),
         "quizzDetailsAppbarTitle":
@@ -265,6 +273,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerButton":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Zapisz Quizz"),
+        "sessionExpired": MessageLookupByLibrary.simpleMessage(
+            "Twoja sesja wygasła. Zaloguj się ponownie."),
         "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Logowanie"),
         "signInDontHaveAccount":
             MessageLookupByLibrary.simpleMessage("Nie masz konta?"),

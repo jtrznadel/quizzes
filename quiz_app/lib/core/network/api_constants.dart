@@ -9,7 +9,7 @@ class ApiConstants {
   static const String deleteUserEndpoint = '/delete_user';
   static const String signOutEndpoint = '/logout';
 
-  static const String refreshAccessTokenEndpoint = '/refresh-token';
+  static const String refreshAccessTokenEndpoint = 'auth/refresh-token';
 
   static const String authHeader = 'Authorization';
   static const String authBearer = 'Bearer ';
