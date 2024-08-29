@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -13,6 +14,7 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../quizz/presentation/widgets/share_quizz_bottom_sheet.dart';
 import '../../domain/entities/test_quiz_entity.dart';
 import '../widgets/new_quiz_button.dart';
 import '../widgets/quiz_list_item.dart';
@@ -46,6 +48,13 @@ class DashboardPage extends ConsumerWidget {
                     },
                   ),
                   const NewQuizButton(),
+                  //TODO: remove this
+                  BasicButton(
+                    text: 'Share Quizz',
+                    onPressed: () {
+                      ShareQuizzBottomSheet.show(context);
+                    },
+                  ),
                 ],
               ),
             )

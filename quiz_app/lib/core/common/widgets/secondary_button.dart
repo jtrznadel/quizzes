@@ -10,7 +10,7 @@ class SecondaryButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    this.width,
+    this.width = double.infinity,
     this.icon,
     this.iconAlignment = IconAlignment.start,
     this.contentAlignment = MainAxisAlignment.center,
@@ -41,14 +41,14 @@ class SecondaryButton extends StatelessWidget {
       mainAxisAlignment: contentAlignment,
       children: [
         const LargeHSpacer(),
-        iconAlignment == IconAlignment.start ? icon?? Container() : Container(),
+        iconAlignment == IconAlignment.start ? icon ?? Container() : Container(),
         iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
         Text(
           text,
           style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
         ),
         iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
-        IconAlignment.end == iconAlignment ? icon?? Container() : Container(),
+        IconAlignment.end == iconAlignment ? icon ?? Container() : Container(),
         const LargeHSpacer(),
       ],
     ).addPadding(padding: const EdgeInsets.symmetric(vertical: AppTheme.buttonVerticalPadding));

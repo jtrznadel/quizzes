@@ -1190,6 +1190,36 @@ class S {
     );
   }
 
+  /// `Share quizz`
+  String get quizzShareHeading {
+    return Intl.message(
+      'Share quizz',
+      name: 'quizzShareHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share this quizz with your friends`
+  String get quizzShareMessage {
+    return Intl.message(
+      'Share this quizz with your friends',
+      name: 'quizzShareMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share`
+  String get quizzShareButton {
+    return Intl.message(
+      'Share',
+      name: 'quizzShareButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Quizzes`
   String get dashboardTopHeading {
     return Intl.message(
