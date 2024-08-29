@@ -25,7 +25,7 @@ class TextDivider extends StatelessWidget {
               height: 1,
             ),
           ),
-          const SmallHSpacer(),
+          const MediumHSpacer(),
           Text(
             text,
             style: context.textTheme.labelSmall!.copyWith(

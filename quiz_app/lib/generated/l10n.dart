@@ -460,20 +460,20 @@ class S {
     );
   }
 
-  /// `Text prompt`
+  /// `Source Text`
   String get quizzCreationTextPromptHeading {
     return Intl.message(
-      'Text prompt',
+      'Source Text',
       name: 'quizzCreationTextPromptHeading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Here, you can create quizz based on your prompt.`
+  /// `Enter the text that will be used to create your quizz.`
   String get quizzCreationTextPromptSubheading {
     return Intl.message(
-      'Here, you can create quizz based on your prompt.',
+      'Enter the text that will be used to create your quizz.',
       name: 'quizzCreationTextPromptSubheading',
       desc: '',
       args: [],
@@ -490,20 +490,20 @@ class S {
     );
   }
 
-  /// `Prompt`
+  /// `Source Text`
   String get quizzCreationTextPromptTextAreaLabel {
     return Intl.message(
-      'Prompt',
+      'Source Text',
       name: 'quizzCreationTextPromptTextAreaLabel',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter your prompt`
+  /// `Enter the text for your quizz`
   String get quizzCreationTextPromptTextAreaHint {
     return Intl.message(
-      'Enter your prompt',
+      'Enter the text for your quizz',
       name: 'quizzCreationTextPromptTextAreaHint',
       desc: '',
       args: [],

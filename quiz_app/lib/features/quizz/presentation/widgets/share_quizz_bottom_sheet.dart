@@ -38,6 +38,7 @@ class ShareQuizzBottomSheet extends ConsumerWidget {
                   await Share.share(S.of(context).quizzShareMessage);
                 },
                 text: S.of(context).quizzShareButton,
+                width: double.infinity,
               ),
               const ExtraLargeVSpacer(),
               SecondaryButton(
@@ -45,6 +46,7 @@ class ShareQuizzBottomSheet extends ConsumerWidget {
                   ref.read(appRouterProvider).maybePop();
                 },
                 text: S.of(context).cancelButton,
+                width: double.infinity,
               ),
             ],
           ),
@@ -57,6 +59,7 @@ class ShareQuizzBottomSheet extends ConsumerWidget {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
+      backgroundColor: Colors.white,
       builder: (context) => const Wrap(
         children: [
           ShareQuizzBottomSheet(),

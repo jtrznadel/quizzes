@@ -25,7 +25,7 @@ class DashboardPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quizzes = generateMockQuizes(3);
+    final quizzes = generateMockQuizes(2);
     return Scaffold(
       body: SafeArea(
         child: Column(

@@ -19,7 +19,7 @@ class ShareLinkContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColorScheme.surface,
         borderRadius: BorderRadius.circular(8),
       ),
       width: double.infinity,

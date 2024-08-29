@@ -179,13 +179,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
             "Pomyślnie utworzyłeś quizz. Możesz teraz podzielić się nim z innymi."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
+            MessageLookupByLibrary.simpleMessage("Tekst źródłowy"),
         "quizzCreationTextPromptSubheading": MessageLookupByLibrary.simpleMessage(
-            "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
+            "Wprowadź tekst, który zostanie użyty do stworzenia twojego quizzu."),
         "quizzCreationTextPromptTextAreaHint":
-            MessageLookupByLibrary.simpleMessage("Wprowadź monit tekstowy"),
+            MessageLookupByLibrary.simpleMessage(
+                "Wprowadź tekst dla swojego quizzu"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
+            MessageLookupByLibrary.simpleMessage("Tekst źródłowy"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Prześlij plik"),
         "quizzDetailsAppbarTitle":

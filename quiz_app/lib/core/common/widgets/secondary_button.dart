@@ -10,7 +10,7 @@ class SecondaryButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.text,
-    this.width = double.infinity,
+    this.width,
     this.icon,
     this.iconAlignment = IconAlignment.start,
     this.contentAlignment = MainAxisAlignment.center,

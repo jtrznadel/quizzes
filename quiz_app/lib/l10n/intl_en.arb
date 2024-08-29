@@ -48,11 +48,11 @@
     "quizzSummaryTitle": "Title: ",
     
     "quizzCreationAppBarTitle": "Create quizz",
-    "quizzCreationTextPromptHeading": "Text prompt",
-    "quizzCreationTextPromptSubheading": "Here, you can create quizz based on your prompt.",
+    "quizzCreationTextPromptHeading": "Source Text",
+    "quizzCreationTextPromptSubheading": "Enter the text that will be used to create your quizz.",
     "quizzCreationUploadFile": "Upload file",
-    "quizzCreationTextPromptTextAreaLabel": "Prompt",
-    "quizzCreationTextPromptTextAreaHint": "Enter your prompt",
+    "quizzCreationTextPromptTextAreaLabel": "Source Text",
+    "quizzCreationTextPromptTextAreaHint": "Enter the text for your quizz",
     
     "quizzCreationConfigureHeading": "Configure quizz",
     "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",
