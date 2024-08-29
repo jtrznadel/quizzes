@@ -33,16 +33,23 @@ Dio buildDioClient(String base, Ref ref) {
                   requestOptions: error.requestOptions),
             );
           }
-          final tokenResponse = await refreshAccessToken(refreshToken, dio);
-          await ref.read(sessionProvider).saveTokens(
-                accessToken: tokenResponse.accessToken,
-                refreshToken: tokenResponse.refreshToken,
+            final tokenResponse = await refreshAccessToken(refreshToken, dio);
+            if(tokenResponse == null) {
+              return handler.next(
+                AccessTokenRefreshFailureException(
+                  requestOptions: error.requestOptions,
+                ),
               );
-          final retryRequest = error.requestOptions
-            ..headers[ApiConstants.authHeader] =
-                '${ApiConstants.authBearer}$tokenResponse';
-          final response = await dio.fetch(retryRequest);
-          return handler.resolve(response);
+            }
+            await ref.read(sessionProvider).saveTokens(
+                  accessToken: tokenResponse.accessToken,
+                  refreshToken: tokenResponse.refreshToken,
+                );
+            final retryRequest = error.requestOptions
+              ..headers[ApiConstants.authHeader] =
+                  '${ApiConstants.authBearer}$tokenResponse';
+            final response = await dio.fetch(retryRequest);
+            return handler.resolve(response);
         }
         return handler.next(error);
       },
@@ -51,19 +58,19 @@ Dio buildDioClient(String base, Ref ref) {
   return dio;
 }
 
-Future<TokenAuth> refreshAccessToken(String refreshToken, Dio dio) async {
+Future<TokenAuth?> refreshAccessToken(String refreshToken, Dio dio) async {
   try {
     final response = await dio.post(
       ApiConstants.refreshAccessTokenEndpoint,
-      data: {'refresh_token': refreshToken},
+      data: {ApiConstants.refreshTokenStorageKey: refreshToken},
     );
     if (response.statusCode == 200) {
       return TokenAuth.fromJson(response.data);
     } else {
-      throw AccessTokenRefreshFailureException(statusCode: response.statusCode);
+      return null;
     }
   } catch (e) {
     //kDebugMode ? debugPrint('Error refreshing access token: $e') : null;
-    throw AccessTokenRefreshFailureException();
+    return null;
   }
 }
