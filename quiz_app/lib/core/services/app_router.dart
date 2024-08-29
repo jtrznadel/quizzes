@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'auth_guard.dart';
 import 'session_provider.dart';
 
 import '../../features/auth/presentation/views/forgot_pasword_page.dart';
@@ -22,7 +23,7 @@ final appRouterProvider = Provider<AppRouter>((ref) {
 });
 
 @AutoRouterConfig()
-class AppRouter extends RootStackRouter implements AutoRouteGuard {
+class AppRouter extends RootStackRouter {
   final Ref ref;
 
   AppRouter(this.ref);
@@ -40,23 +41,13 @@ class AppRouter extends RootStackRouter implements AutoRouteGuard {
         AutoRoute(page: NewPasswordRoute.page),
         CustomRoute(
           page: DashboardRoute.page,
-          guards: [this],
+          guards: [AuthGuard(ref)],
           initial: true,
           transitionsBuilder: TransitionsBuilders.fadeIn,
           durationInMilliseconds: 300,
         ),
-        AutoRoute(page: ProfileRoute.page, guards: [this]),
-        AutoRoute(page: QuizzCreationRoute.page, guards: [this]),
-        AutoRoute(page: QuizzDetailsRoute.page, guards: [this])
+        AutoRoute(page: ProfileRoute.page, guards: [AuthGuard(ref)]),
+        AutoRoute(page: QuizzCreationRoute.page, guards: [AuthGuard(ref)]),
+        AutoRoute(page: QuizzDetailsRoute.page, guards: [AuthGuard(ref)])
       ];
-
-  @override
-  void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    final isAuthenticated = ref.read(sessionProvider).isAuthenticated();
-    if (await isAuthenticated) {
-      resolver.next(true);
-    } else {
-      resolver.redirect(const WelcomeRoute());
-    }
-  }
 }

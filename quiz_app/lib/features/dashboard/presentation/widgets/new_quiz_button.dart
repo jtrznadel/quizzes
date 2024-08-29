@@ -29,7 +29,7 @@ class NewQuizButton extends ConsumerWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: () {
-            context.router.replace(const QuizzCreationRoute());
+            ref.read(appRouterProvider).replace(const QuizzCreationRoute());
           },
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),

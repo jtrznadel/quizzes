@@ -49,7 +49,6 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
               labelText: S.of(context).emailLabel,
               hintText: S.of(context).emailHint,
               validator: emailValidator,
-              required: true,
               obscureText: false,
               controller: emailController,
             ),
@@ -57,7 +56,6 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
             IFormField(
               labelText: S.of(context).passwordLabel,
               hintText: S.of(context).passwordHint,
-              required: true,
               obscureText: obscurePassword,
               controller: passwordController,
               validator: passwordValidator,

@@ -11,16 +11,16 @@ import '../refactors/sign_in_form.dart';
 import '../widgets/auth_redirect_button.dart';
 
 @RoutePage()
-class SignInPage extends StatelessWidget {
+class SignInPage extends ConsumerWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: S.of(context).signInAppBarTitle,
-        onBack: () => context.router.replaceAll([const WelcomeRoute()]),
+        onBack: () => ref.read(appRouterProvider).replaceAll([const WelcomeRoute()]),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

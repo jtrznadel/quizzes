@@ -57,7 +57,6 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                 labelText: S.of(context).forgotPasswordInputLabel,
                 hintText: S.of(context).forgotPasswordInputHint,
                 obscureText: false,
-                required: true,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
               ),

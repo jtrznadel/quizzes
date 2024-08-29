@@ -32,7 +32,7 @@ class ProfilePage extends ConsumerWidget {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (state == const AuthState.unauthenticated()) {
-        context.router.replaceAll([const SignInRoute()]);
+        ref.read(appRouterProvider).replaceAll([const SignInRoute()]);
       }
     });
 

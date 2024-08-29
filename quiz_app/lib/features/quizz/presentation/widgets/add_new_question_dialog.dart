@@ -87,7 +87,6 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
             IFormField(
               labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
               hintText: S.of(context).quizzCreationAddQuestionTitleHint,
-              required: true,
               obscureText: false,
               controller: titleController,
             ),
@@ -95,7 +94,6 @@ class _AddNewQuestionDialogState extends State<AddNewQuestionDialog> {
             IFormField(
               labelText: S.of(context).quizzCreationAddQuestionDescriptionLabel,
               hintText: S.of(context).quizzCreationAddQuestionDescriptionHint,
-              required: true,
               obscureText: false,
               controller: descriptionController,
             ),

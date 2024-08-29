@@ -54,7 +54,6 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                   controller: emailController,
                   labelText: S.of(context).emailLabel,
                   hintText: S.of(context).emailHint,
-                  required: true,
                   obscureText: false,
                 ),
                 const MediumVSpacer(),
@@ -62,7 +61,6 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                   controller: passwordController,
                   labelText: S.of(context).passwordLabel,
                   hintText: S.of(context).passwordHint,
-                  required: true,
                   obscureText: obscurePassword,
                   suffixIcon: IconButton(
                     onPressed: () {

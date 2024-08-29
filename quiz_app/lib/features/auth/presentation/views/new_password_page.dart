@@ -58,7 +58,6 @@ class _NewPasswordPageState extends ConsumerState<NewPasswordPage> {
                 labelText: S.of(context).newPasswordInputLabel,
                 hintText: S.of(context).newPasswordInputHint,
                 obscureText: obscurePassword,
-                required: true,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 suffixIcon: obscurePasswordIconButton(),
