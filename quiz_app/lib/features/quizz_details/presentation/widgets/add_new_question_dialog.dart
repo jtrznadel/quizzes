@@ -7,7 +7,7 @@ import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
-import '../refactors/add_question_dialog_answer_section.dart';
+import '../../../quiz_generation/refactors/add_question_dialog_answer_section.dart';
 
 class AddNewQuestionDialog extends StatefulWidget {
   const AddNewQuestionDialog({super.key});

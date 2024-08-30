@@ -1,21 +1,15 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/secondary_button.dart';
-import '../../../../core/common/widgets/share_link_container.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/res/media_res.dart';
-import '../../../../core/services/app_router.dart';
-import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../../mocks.dart';
-import '../../../dashboard/presentation/views/dashboard_page.dart';
-import '../../../../generated/l10n.dart';
+import '../../../core/common/widgets/basic_button.dart';
+import '../../../core/common/widgets/secondary_button.dart';
+import '../../../core/common/widgets/share_link_container.dart';
+import '../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/services/app_router.dart';
+import '../../../core/theme/app_theme.dart';
+import '../../../mocks.dart';
+import '../../../generated/l10n.dart';
 
 class QuizzSuccessPage extends ConsumerWidget {
   const QuizzSuccessPage({super.key});

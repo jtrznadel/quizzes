@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,12 +7,10 @@ import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/res/media_res.dart';
-import '../../../../core/services/app_router.dart';
 import '../../application/auth_controller.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../application/auth_state.dart';
 
 class SignUpForm extends ConsumerStatefulWidget {
   const SignUpForm({super.key});

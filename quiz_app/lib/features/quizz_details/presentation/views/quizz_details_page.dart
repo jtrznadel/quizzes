@@ -14,7 +14,7 @@ import '../tabs/quiz_details_questions_tab.dart';
 import '../tabs/quiz_details_settings_tab.dart';
 import '../tabs/quiz_details_statistics_tab.dart';
 import '../../../../generated/l10n.dart';
-import '../widgets/share_quizz_bottom_sheet.dart';
+import '../../../quiz_generation/widgets/share_quizz_bottom_sheet.dart';
 
 @RoutePage()
 class QuizzDetailsPage extends StatefulWidget {

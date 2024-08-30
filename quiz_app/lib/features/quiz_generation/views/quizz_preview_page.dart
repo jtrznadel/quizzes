@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/question_box.dart';
-import '../../../../core/common/widgets/quizz_summary.dart';
-import '../../../../core/common/widgets/secondary_button.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../widgets/add_new_question_bottom_sheet.dart';
-import '../../../../generated/l10n.dart';
+import '../../../core/common/widgets/basic_button.dart';
+import '../../../core/common/widgets/question_box.dart';
+import '../../../core/common/widgets/quizz_summary.dart';
+import '../../../core/common/widgets/secondary_button.dart';
+import '../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/theme/app_color_scheme.dart';
+import '../../../core/theme/app_theme.dart';
+import '../../quizz_details/presentation/widgets/add_new_question_bottom_sheet.dart';
+import '../../../generated/l10n.dart';
 
 class QuizzPreviewPage extends StatelessWidget {
   const QuizzPreviewPage({super.key, required this.pageController});

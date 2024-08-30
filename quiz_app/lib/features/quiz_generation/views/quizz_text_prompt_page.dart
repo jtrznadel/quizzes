@@ -1,19 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/secondary_button.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/common/widgets/text_area.dart';
-import '../../../../core/common/widgets/text_divider.dart';
-import '../../../../core/errors/file_read_exception.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/res/media_res.dart';
-import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../../generated/l10n.dart';
+import '../../../core/common/widgets/basic_button.dart';
+import '../../../core/common/widgets/secondary_button.dart';
+import '../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../core/common/widgets/text_area.dart';
+import '../../../core/common/widgets/text_divider.dart';
+import '../../../core/errors/file_read_exception.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/res/media_res.dart';
+import '../../../core/theme/app_color_scheme.dart';
+import '../../../core/theme/app_theme.dart';
+import '../../../generated/l10n.dart';
 
-import '../../../../core/services/file_reader.dart';
+import '../../../core/services/file_reader.dart';
 
 class QuizzTextPromptPage extends StatefulWidget {
   const QuizzTextPromptPage({super.key, required this.pageController});

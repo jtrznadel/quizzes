@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/errors/refresh_token_missing_exception.dart';
 import '../../application/user_controller.dart';
-import '../../application/user_state.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/secondary_button.dart';

@@ -1,16 +1,15 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../../../core/common/widgets/secondary_button.dart';
-import '../../../../core/common/widgets/share_link_container.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/services/app_router.dart';
-import '../../../../core/theme/app_theme.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../mocks.dart';
+import '../../../core/common/widgets/secondary_button.dart';
+import '../../../core/common/widgets/share_link_container.dart';
+import '../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/services/app_router.dart';
+import '../../../core/theme/app_theme.dart';
+import '../../../generated/l10n.dart';
+import '../../../mocks.dart';
 
 class ShareQuizzBottomSheet extends ConsumerWidget {
   const ShareQuizzBottomSheet({super.key});

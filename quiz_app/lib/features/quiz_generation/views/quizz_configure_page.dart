@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../../../core/common/widgets/basic_button.dart';
+import '../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../core/extensions/context_extension.dart';
+import '../../../core/theme/app_color_scheme.dart';
+import '../../../core/theme/app_theme.dart';
 import '../widgets/question_count_picker.dart';
-import '../../../../generated/l10n.dart';
+import '../../../generated/l10n.dart';
 
 import '../widgets/question_type_picker.dart';
 
