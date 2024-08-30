@@ -36,7 +36,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
     )
             .compose(
               _dio.options,
-              '/quiz/generate-quiz',
+              'quiz/generate-quiz',
               queryParameters: queryParameters,
               data: _data,
             )

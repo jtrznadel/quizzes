@@ -21,7 +21,7 @@ AnswerModel _$AnswerModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AnswerModel {
   String get content => throw _privateConstructorUsedError;
-  bool get isCorrect => throw _privateConstructorUsedError;
+  bool get iscorrect => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $AnswerModelCopyWith<$Res> {
           AnswerModel value, $Res Function(AnswerModel) then) =
       _$AnswerModelCopyWithImpl<$Res, AnswerModel>;
   @useResult
-  $Res call({String content, bool isCorrect});
+  $Res call({String content, bool iscorrect});
 }
 
 /// @nodoc
@@ -52,16 +52,16 @@ class _$AnswerModelCopyWithImpl<$Res, $Val extends AnswerModel>
   @override
   $Res call({
     Object? content = null,
-    Object? isCorrect = null,
+    Object? iscorrect = null,
   }) {
     return _then(_value.copyWith(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      isCorrect: null == isCorrect
-          ? _value.isCorrect
-          : isCorrect // ignore: cast_nullable_to_non_nullable
+      iscorrect: null == iscorrect
+          ? _value.iscorrect
+          : iscorrect // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -75,7 +75,7 @@ abstract class _$$AnswerModelImplCopyWith<$Res>
       __$$AnswerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, bool isCorrect});
+  $Res call({String content, bool iscorrect});
 }
 
 /// @nodoc
@@ -90,16 +90,16 @@ class __$$AnswerModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? content = null,
-    Object? isCorrect = null,
+    Object? iscorrect = null,
   }) {
     return _then(_$AnswerModelImpl(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      isCorrect: null == isCorrect
-          ? _value.isCorrect
-          : isCorrect // ignore: cast_nullable_to_non_nullable
+      iscorrect: null == iscorrect
+          ? _value.iscorrect
+          : iscorrect // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -108,7 +108,7 @@ class __$$AnswerModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AnswerModelImpl implements _AnswerModel {
-  const _$AnswerModelImpl({required this.content, required this.isCorrect});
+  const _$AnswerModelImpl({required this.content, required this.iscorrect});
 
   factory _$AnswerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AnswerModelImplFromJson(json);
@@ -116,11 +116,11 @@ class _$AnswerModelImpl implements _AnswerModel {
   @override
   final String content;
   @override
-  final bool isCorrect;
+  final bool iscorrect;
 
   @override
   String toString() {
-    return 'AnswerModel(content: $content, isCorrect: $isCorrect)';
+    return 'AnswerModel(content: $content, iscorrect: $iscorrect)';
   }
 
   @override
@@ -129,13 +129,13 @@ class _$AnswerModelImpl implements _AnswerModel {
         (other.runtimeType == runtimeType &&
             other is _$AnswerModelImpl &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.isCorrect, isCorrect) ||
-                other.isCorrect == isCorrect));
+            (identical(other.iscorrect, iscorrect) ||
+                other.iscorrect == iscorrect));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, content, isCorrect);
+  int get hashCode => Object.hash(runtimeType, content, iscorrect);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +154,7 @@ class _$AnswerModelImpl implements _AnswerModel {
 abstract class _AnswerModel implements AnswerModel {
   const factory _AnswerModel(
       {required final String content,
-      required final bool isCorrect}) = _$AnswerModelImpl;
+      required final bool iscorrect}) = _$AnswerModelImpl;
 
   factory _AnswerModel.fromJson(Map<String, dynamic> json) =
       _$AnswerModelImpl.fromJson;
@@ -162,7 +162,7 @@ abstract class _AnswerModel implements AnswerModel {
   @override
   String get content;
   @override
-  bool get isCorrect;
+  bool get iscorrect;
   @override
   @JsonKey(ignore: true)
   _$$AnswerModelImplCopyWith<_$AnswerModelImpl> get copyWith =>

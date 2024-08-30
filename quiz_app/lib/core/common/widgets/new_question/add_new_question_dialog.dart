@@ -80,7 +80,7 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
                   answerControllers.length,
                   (index) => AnswerModel(
                     content: answerControllers.values.elementAt(index).controller.text,
-                    isCorrect: answerControllers.values.elementAt(index).isCorrect,
+                    iscorrect: answerControllers.values.elementAt(index).isCorrect,
                   ),
                 ),
               );

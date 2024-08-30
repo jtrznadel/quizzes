@@ -142,19 +142,19 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
   List<AnswerModel> get generateAnswersDto => [
         const AnswerModel(
           content: "Answer A",
-          isCorrect: true,
+          iscorrect: true,
         ),
         const AnswerModel(
           content: "Answer B",
-          isCorrect: false,
+          iscorrect: false,
         ),
         const AnswerModel(
           content: "Answer C",
-          isCorrect: false,
+          iscorrect: false,
         ),
         const AnswerModel(
           content: "Answer D",
-          isCorrect: false,
+          iscorrect: false,
         ),
       ];
 }

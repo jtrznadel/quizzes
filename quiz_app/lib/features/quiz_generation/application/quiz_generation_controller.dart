@@ -6,6 +6,8 @@ import '../domain/answer_model.dart';
 import '../domain/question_model.dart';
 import '../domain/quiz_generation_model.dart';
 import '../domain/quiz_model.dart';
+import '../widgets/question_count_picker.dart';
+import '../widgets/question_type_picker.dart';
 import 'quiz_generation_state.dart';
 
 part 'quiz_generation_controller.g.dart';
@@ -17,17 +19,17 @@ class QuizGenerationController extends _$QuizGenerationController {
 
   @override
   QuizGenerationState build() {
-    _quizModel = const QuizGenerationModel(
+    _quizModel = QuizGenerationModel(
       content: '',
-      typeOfQuestions: '',
-      numberOfQuestions: 3,
+      questionType: QuestionType.MultipleChoice.name,
+      numberOfQuestions: QuestionNumberSelection.low.value,
     );
     _quiz = const QuizModel(title: '', description: '', generateQuestionsDto: []);
     return const QuizGenerationState.generating();
   }
 
   String get content => _quizModel.content;
-  String get typeOfQuestions => _quizModel.typeOfQuestions;
+  String get typeOfQuestions => _quizModel.questionType;
   int get numberOfQuestions => _quizModel.numberOfQuestions;
 
   String get title => _quiz.title;
@@ -39,7 +41,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   void setTypeOfQuestions(String typeOfQuestions) {
-    _quizModel = _quizModel.copyWith(typeOfQuestions: typeOfQuestions);
+    _quizModel = _quizModel.copyWith(questionType: typeOfQuestions);
   }
 
   void setNumberOfQuestions(int numberOfQuestions) {
@@ -51,7 +53,6 @@ class QuizGenerationController extends _$QuizGenerationController {
     state = QuizGenerationState.generated(_quiz);
   }
 
-  //TODO: remove after testing
   Map<String, dynamic> quizToJson(){
     return {
       'title': _quiz.title,
@@ -64,7 +65,7 @@ class QuizGenerationController extends _$QuizGenerationController {
               for (var answer in question.generateAnswersDto)
                 {
                   'content': answer.content,
-                  'isCorrect': answer.isCorrect,
+                  'iscorrect': answer.iscorrect,
                 }
             ],
           }
@@ -76,10 +77,10 @@ class QuizGenerationController extends _$QuizGenerationController {
   Future<void> generate() async {
     state = const QuizGenerationState.generating();
 
-    //TODO: remove after testing
-    _quiz = mockQuiz;
-    state = QuizGenerationState.generated(mockQuiz);
-    return;
+    ////TODO: remove after testing
+    //_quiz = mockQuiz;
+    //state = QuizGenerationState.generated(mockQuiz);
+    //return;
 
     final result = await ref
         .read(quizGenerationRepositoryProvider)
@@ -108,19 +109,19 @@ QuizModel mockQuiz = QuizModel(
       generateAnswersDto: [
         AnswerModel(
           content: S.current.tempAnswer1,
-          isCorrect: false,
+          iscorrect: false,
         ),
         AnswerModel(
           content: S.current.tempAnswer2,
-          isCorrect: true,
+          iscorrect: true,
         ),
         AnswerModel(
           content: S.current.tempAnswer3,
-          isCorrect: false,
+          iscorrect: false,
         ),
         AnswerModel(
           content: S.current.tempAnswer4,
-          isCorrect: false,
+          iscorrect: false,
         ),
       ],
     ),
@@ -129,19 +130,19 @@ QuizModel mockQuiz = QuizModel(
       generateAnswersDto: [
         AnswerModel(
           content: S.current.tempAnswer1,
-          isCorrect: false,
+          iscorrect: false,
         ),
         AnswerModel(
           content: S.current.tempAnswer2,
-          isCorrect: true,
+          iscorrect: true,
         ),
         AnswerModel(
           content: S.current.tempAnswer3,
-          isCorrect: false,
+          iscorrect: false,
         ),
         AnswerModel(
           content: S.current.tempAnswer4,
-          isCorrect: false,
+          iscorrect: false,
         ),
       ],
     ),

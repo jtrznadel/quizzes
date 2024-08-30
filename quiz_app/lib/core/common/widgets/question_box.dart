@@ -78,10 +78,15 @@ class QuestionBox extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return AnswerTile(
-                    leading: Answer.values[index].name,
-                    text: question.generateAnswersDto[index].content,
-                    isCorrect: question.generateAnswersDto[index].isCorrect,
+                  return Column(
+                    children: [
+                      AnswerTile(
+                        leading: Answer.values[index].name,
+                        text: question.generateAnswersDto[index].content,
+                        isCorrect: question.generateAnswersDto[index].iscorrect,
+                      ),
+                      const SmallVSpacer(),
+                    ],
                   );
                 },
               )

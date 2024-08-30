@@ -20,7 +20,6 @@ class AnswerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     //TODO: change container appearance if answer is correct
     return Container(
-      height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: isCorrect ? AppColorScheme.successLight : Colors.white,

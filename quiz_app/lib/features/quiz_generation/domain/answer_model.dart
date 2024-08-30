@@ -7,7 +7,7 @@ part 'answer_model.g.dart';
 class AnswerModel with _$AnswerModel {
   const factory AnswerModel({
     required String content,
-    required bool isCorrect,
+    required bool iscorrect,
   }) = _AnswerModel;
 
   factory AnswerModel.fromJson(Map<String, dynamic> json) => _$AnswerModelFromJson(json);
