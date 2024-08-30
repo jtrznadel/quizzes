@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/common/widgets/basic_app_bar.dart';
 import '../../../core/theme/app_color_scheme.dart';
@@ -47,38 +48,48 @@ class _QuizzCreationPageState extends ConsumerState<QuizzCreationPage> {
   @override
   Widget build(BuildContext context) {
     ref.watch(quizGenerationControllerProvider.notifier);
-    return Scaffold(
-      appBar: BasicAppBar(
-          title: S.of(context).quizzCreationAppBarTitle,
-          onBack: () {
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop){
+        if(!didPop){
+          SchedulerBinding.instance.addPostFrameCallback((_) {
             QuitQuizzCreationDialog.show(context);
-          }),
-      body: Column(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SmoothPageIndicator(
-                controller: _controller,
-                count: getPages().length,
-                effect: const WormEffect(
-                  dotColor: AppColorScheme.secondary,
-                  activeDotColor: AppColorScheme.primary,
-                  dotHeight: 8,
-                  dotWidth: 32,
+          });
+        }
+      },
+      child: Scaffold(
+        appBar: BasicAppBar(
+            title: S.of(context).quizzCreationAppBarTitle,
+            onBack: () {
+              QuitQuizzCreationDialog.show(context);
+            }),
+        body: Column(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SmoothPageIndicator(
+                  controller: _controller,
+                  count: getPages().length,
+                  effect: const WormEffect(
+                    dotColor: AppColorScheme.secondary,
+                    activeDotColor: AppColorScheme.primary,
+                    dotHeight: 8,
+                    dotWidth: 32,
+                  ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: PageView(
-              controller: _controller,
-              physics: const NeverScrollableScrollPhysics(),
-              children: getPages(),
+            Expanded(
+              child: PageView(
+                controller: _controller,
+                physics: const NeverScrollableScrollPhysics(),
+                children: getPages(),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -6,6 +6,8 @@ import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../quiz_generation/domain/answer_model.dart';
+import '../../../quiz_generation/domain/question_model.dart';
 import '../widgets/add_new_question_bottom_sheet.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
@@ -57,7 +59,13 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return QuestionBox(questionNumber: index + 1);
+            return QuestionBox(
+              questionIndex: index,
+              question: QuestionModel(
+                title: "Question $index",
+                generateAnswersDto: generateAnswersDto,
+              ),
+            );
           },
         ),
         const LargeVSpacer()
@@ -129,4 +137,24 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
       ),
     );
   }
+
+  //TODO: Remove this method after implementing the real data
+  List<AnswerModel> get generateAnswersDto => [
+        const AnswerModel(
+          content: "Answer A",
+          isCorrect: true,
+        ),
+        const AnswerModel(
+          content: "Answer B",
+          isCorrect: false,
+        ),
+        const AnswerModel(
+          content: "Answer C",
+          isCorrect: false,
+        ),
+        const AnswerModel(
+          content: "Answer D",
+          isCorrect: false,
+        ),
+      ];
 }
