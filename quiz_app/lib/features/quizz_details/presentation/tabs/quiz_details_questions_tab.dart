@@ -8,7 +8,7 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../quiz_generation/domain/answer_model.dart';
 import '../../../quiz_generation/domain/question_model.dart';
-import '../widgets/add_new_question_bottom_sheet.dart';
+import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
 

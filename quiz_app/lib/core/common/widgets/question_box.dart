@@ -2,7 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../features/quiz_generation/domain/question_model.dart';
-import '../../../features/quiz_generation/refactors/add_question_dialog_answer_section.dart';
+import 'new_question/add_question_dialog_answer_section.dart';
 import 'answer_tile.dart';
 import 'spacers/vertical_spacers.dart';
 import '../../extensions/add_padding_extension.dart';

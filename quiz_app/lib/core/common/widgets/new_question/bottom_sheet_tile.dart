@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
-import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/theme/app_theme.dart';
+import '../../../extensions/add_padding_extension.dart';
+import '../../../extensions/context_extension.dart';
+import '../../../theme/app_theme.dart';
 
 class BottomSheetTile extends StatelessWidget {
   const BottomSheetTile(

@@ -11,7 +11,7 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
-import '../../quizz_details/presentation/widgets/add_new_question_bottom_sheet.dart';
+import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../application/quiz_generation_controller.dart';
 
 class QuizzPreviewPage extends ConsumerWidget {

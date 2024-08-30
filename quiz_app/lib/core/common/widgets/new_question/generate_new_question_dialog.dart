@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
-import '../../../../core/common/widgets/secondary_button.dart';
-import '../../../../core/common/widgets/text_area.dart';
-import '../../../../core/res/media_res.dart';
+import '../spacers/vertical_spacers.dart';
+import '../basic_button.dart';
+import '../dialogs/basic_dialog.dart';
+import '../secondary_button.dart';
+import '../text_area.dart';
+import '../../../res/media_res.dart';
 import 'add_new_question_dialog.dart';
 import '../../../../generated/l10n.dart';
 
