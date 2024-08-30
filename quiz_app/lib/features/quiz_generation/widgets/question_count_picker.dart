@@ -6,7 +6,7 @@ import '../application/quiz_generation_controller.dart';
 import 'radio_list_tile.dart';
 import '../../../../generated/l10n.dart';
 
-enum QuestionNumberSelection { low, medium, high, manual, }
+enum QuestionNumberSelection { low, medium, high, }
 
 extension NumberOfQuestions on QuestionNumberSelection{
   int get value {
@@ -16,9 +16,6 @@ extension NumberOfQuestions on QuestionNumberSelection{
       case QuestionNumberSelection.medium:
         return 10;
       case QuestionNumberSelection.high:
-        return 15;
-      //TODO: Implement manual selection
-      case QuestionNumberSelection.manual:
         return 15;
     }
   }
@@ -71,19 +68,6 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
         IRadioListTile<QuestionNumberSelection>(
           title: S.of(context).quizzCreationConfigureQuestionCount3,
           value: QuestionNumberSelection.high,
-          groupValue: _selectedValue,
-          onChanged: (value) {
-            setState(() {
-              _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
-            });
-          },
-        ),
-        const SmallVSpacer(),
-      //TODO: Implement manual selection
-        IRadioListTile<QuestionNumberSelection>(
-          title: S.of(context).quizzCreationConfigureQuestionCount4,
-          value: QuestionNumberSelection.manual,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
