@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/common/widgets/basic_button.dart';
 import '../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/theme/app_color_scheme.dart';
 import '../../../core/theme/app_theme.dart';
+import '../application/quiz_generation_controller.dart';
 import '../widgets/question_count_picker.dart';
 import '../../../generated/l10n.dart';
 
 import '../widgets/question_type_picker.dart';
 
-class QuizzConfigurePage extends StatelessWidget {
+class QuizzConfigurePage extends ConsumerWidget {
   const QuizzConfigurePage({super.key, required this.pageController});
   final PageController pageController;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final quizGenerationController =
+        ref.read(quizGenerationControllerProvider.notifier);
     return SafeArea(
       child: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
+                  .copyWith(top: 0), //TODO: Remove top padding if needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -49,11 +54,26 @@ class QuizzConfigurePage extends StatelessWidget {
               color: AppColorScheme.surface,
               padding: const EdgeInsets.only(top: 8),
               child: BasicButton(
-                onPressed: () {
+                onPressed: () async {
                   pageController.nextPage(
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut,
                   );
+                  try {
+                    print(quizGenerationController.content);
+                    print(quizGenerationController.typeOfQuestions);
+                    print(quizGenerationController.numberOfQuestions);
+                    await quizGenerationController.generate();
+                  } catch (e) {
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          //TODO: replace with translation
+                          content: Text('Something went wrong'),
+                        ),
+                      );
+                    }
+                  }
                 },
                 text: S.of(context).continueButton,
                 width: double.infinity,

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/common/widgets/basic_button.dart';
 import '../../../core/common/widgets/secondary_button.dart';
@@ -14,16 +15,17 @@ import '../../../core/theme/app_theme.dart';
 import '../../../generated/l10n.dart';
 
 import '../../../core/services/file_reader.dart';
+import '../application/quiz_generation_controller.dart';
 
-class QuizzTextPromptPage extends StatefulWidget {
+class QuizzTextPromptPage extends ConsumerStatefulWidget {
   const QuizzTextPromptPage({super.key, required this.pageController});
   final PageController pageController;
 
   @override
-  State<QuizzTextPromptPage> createState() => _QuizzTextPromptPageState();
+  ConsumerState createState() => _QuizzTextPromptPageState();
 }
 
-class _QuizzTextPromptPageState extends State<QuizzTextPromptPage> {
+class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
   final _promptController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -94,6 +96,7 @@ class _QuizzTextPromptPageState extends State<QuizzTextPromptPage> {
             BasicButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  ref.read(quizGenerationControllerProvider.notifier).setContent(_promptController.text);
                   widget.pageController.nextPage(
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut,

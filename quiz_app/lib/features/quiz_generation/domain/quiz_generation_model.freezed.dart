@@ -22,7 +22,7 @@ QuizGenerationModel _$QuizGenerationModelFromJson(Map<String, dynamic> json) {
 mixin _$QuizGenerationModel {
   String get content => throw _privateConstructorUsedError;
   int get numberOfQuestions => throw _privateConstructorUsedError;
-  int get typeOfQuestions => throw _privateConstructorUsedError;
+  String get typeOfQuestions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $QuizGenerationModelCopyWith<$Res> {
           QuizGenerationModel value, $Res Function(QuizGenerationModel) then) =
       _$QuizGenerationModelCopyWithImpl<$Res, QuizGenerationModel>;
   @useResult
-  $Res call({String content, int numberOfQuestions, int typeOfQuestions});
+  $Res call({String content, int numberOfQuestions, String typeOfQuestions});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$QuizGenerationModelCopyWithImpl<$Res, $Val extends QuizGenerationModel>
       typeOfQuestions: null == typeOfQuestions
           ? _value.typeOfQuestions
           : typeOfQuestions // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -81,7 +81,7 @@ abstract class _$$QuizGenerationModelImplCopyWith<$Res>
       __$$QuizGenerationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, int numberOfQuestions, int typeOfQuestions});
+  $Res call({String content, int numberOfQuestions, String typeOfQuestions});
 }
 
 /// @nodoc
@@ -111,7 +111,7 @@ class __$$QuizGenerationModelImplCopyWithImpl<$Res>
       typeOfQuestions: null == typeOfQuestions
           ? _value.typeOfQuestions
           : typeOfQuestions // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -132,7 +132,7 @@ class _$QuizGenerationModelImpl implements _QuizGenerationModel {
   @override
   final int numberOfQuestions;
   @override
-  final int typeOfQuestions;
+  final String typeOfQuestions;
 
   @override
   String toString() {
@@ -175,7 +175,7 @@ abstract class _QuizGenerationModel implements QuizGenerationModel {
   const factory _QuizGenerationModel(
       {required final String content,
       required final int numberOfQuestions,
-      required final int typeOfQuestions}) = _$QuizGenerationModelImpl;
+      required final String typeOfQuestions}) = _$QuizGenerationModelImpl;
 
   factory _QuizGenerationModel.fromJson(Map<String, dynamic> json) =
       _$QuizGenerationModelImpl.fromJson;
@@ -185,7 +185,7 @@ abstract class _QuizGenerationModel implements QuizGenerationModel {
   @override
   int get numberOfQuestions;
   @override
-  int get typeOfQuestions;
+  String get typeOfQuestions;
   @override
   @JsonKey(ignore: true)
   _$$QuizGenerationModelImplCopyWith<_$QuizGenerationModelImpl> get copyWith =>

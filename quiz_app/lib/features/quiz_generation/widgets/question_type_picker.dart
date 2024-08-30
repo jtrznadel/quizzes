@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import '../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../core/extensions/context_extension.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../application/quiz_generation_controller.dart';
 import 'radio_list_tile.dart';
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
-class QuestionTypePicker extends StatefulWidget {
+enum QuestionType { MultipleChoice, TrueFalse }
+
+class QuestionTypePicker extends ConsumerStatefulWidget {
   const QuestionTypePicker({super.key});
 
   @override
-  State<QuestionTypePicker> createState() => _QuestionTypePickerState();
+  ConsumerState<QuestionTypePicker> createState() => _QuestionTypePickerState();
 }
 
-class _QuestionTypePickerState extends State<QuestionTypePicker> {
-  int _selectedValue = 1;
+class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
+  QuestionType _selectedValue = QuestionType.MultipleChoice;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,35 +27,26 @@ class _QuestionTypePickerState extends State<QuestionTypePicker> {
           style: context.textTheme.labelLarge,
         ),
         const CustomVSpacer(12),
-        IRadioListTile<int>(
+        IRadioListTile<QuestionType>(
           title: S.of(context).quizzCreationConfigureType1,
-          value: 1,
+          value: QuestionType.MultipleChoice,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
+              ref.read(quizGenerationControllerProvider.notifier).setTypeOfQuestions(value.name);
             });
           },
         ),
         const SmallVSpacer(),
-        IRadioListTile<int>(
+        IRadioListTile<QuestionType>(
           title: S.of(context).quizzCreationConfigureType2,
-          value: 2,
+          value: QuestionType.TrueFalse,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-            });
-          },
-        ),
-        const SmallVSpacer(),
-        IRadioListTile<int>(
-          title: S.of(context).quizzCreationConfigureType3,
-          value: 3,
-          groupValue: _selectedValue,
-          onChanged: (value) {
-            setState(() {
-              _selectedValue = value!;
+              ref.read(quizGenerationControllerProvider.notifier).setTypeOfQuestions(value.name);
             });
           },
         ),

@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/common/widgets/basic_app_bar.dart';
 import '../../../core/theme/app_color_scheme.dart';
+import '../application/quiz_generation_controller.dart';
 import 'quizz_configure_page.dart';
 import 'quizz_preview_page.dart';
 import 'quizz_success_page.dart';
@@ -11,14 +13,14 @@ import '../../../generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 @RoutePage()
-class QuizzCreationPage extends StatefulWidget {
+class QuizzCreationPage extends ConsumerStatefulWidget {
   const QuizzCreationPage({super.key});
 
   @override
-  State<QuizzCreationPage> createState() => _QuizzCreationPageState();
+  ConsumerState<QuizzCreationPage> createState() => _QuizzCreationPageState();
 }
 
-class _QuizzCreationPageState extends State<QuizzCreationPage> {
+class _QuizzCreationPageState extends ConsumerState<QuizzCreationPage> {
   final _controller = PageController();
 
   @override
@@ -44,6 +46,7 @@ class _QuizzCreationPageState extends State<QuizzCreationPage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(quizGenerationControllerProvider.notifier);
     return Scaffold(
       appBar: BasicAppBar(
           title: S.of(context).quizzCreationAppBarTitle,

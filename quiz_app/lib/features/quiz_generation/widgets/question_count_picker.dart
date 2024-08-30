@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
-import '../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../core/extensions/context_extension.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../application/quiz_generation_controller.dart';
 import 'radio_list_tile.dart';
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
-class QuestionCountPicker extends StatefulWidget {
-  const QuestionCountPicker({super.key});
+enum QuestionNumberSelection { low, medium, high, manual, }
 
-  @override
-  State<QuestionCountPicker> createState() => _QuestionCountPickerState();
+extension NumberOfQuestions on QuestionNumberSelection{
+  int get value {
+    switch (this) {
+      case QuestionNumberSelection.low:
+        return 5;
+      case QuestionNumberSelection.medium:
+        return 10;
+      case QuestionNumberSelection.high:
+        return 15;
+      //TODO: Implement manual selection
+      case QuestionNumberSelection.manual:
+        return 15;
+    }
+  }
 }
 
-class _QuestionCountPickerState extends State<QuestionCountPicker> {
-  int _selectedValue = 1;
+class QuestionCountPicker extends ConsumerStatefulWidget {
+  const QuestionCountPicker({super.key});
+
+
+  @override
+  ConsumerState<QuestionCountPicker> createState() => _QuestionCountPickerState();
+}
+
+class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
+  QuestionNumberSelection _selectedValue = QuestionNumberSelection.low;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,46 +44,51 @@ class _QuestionCountPickerState extends State<QuestionCountPicker> {
           style: context.textTheme.labelLarge,
         ),
         const CustomVSpacer(12),
-        IRadioListTile<int>(
+        IRadioListTile<QuestionNumberSelection>(
           title: S.of(context).quizzCreationConfigureQuestionCount1,
-          value: 1,
+          value: QuestionNumberSelection.low,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
+              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
             });
           },
         ),
         const SmallVSpacer(),
-        IRadioListTile<int>(
+        IRadioListTile<QuestionNumberSelection>(
           title: S.of(context).quizzCreationConfigureQuestionCount2,
-          value: 2,
+          value: QuestionNumberSelection.medium,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
+              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
             });
           },
         ),
         const SmallVSpacer(),
-        IRadioListTile<int>(
+        IRadioListTile<QuestionNumberSelection>(
           title: S.of(context).quizzCreationConfigureQuestionCount3,
-          value: 3,
+          value: QuestionNumberSelection.high,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
+              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
             });
           },
         ),
         const SmallVSpacer(),
-        IRadioListTile<int>(
+      //TODO: Implement manual selection
+        IRadioListTile<QuestionNumberSelection>(
           title: S.of(context).quizzCreationConfigureQuestionCount4,
-          value: 4,
+          value: QuestionNumberSelection.manual,
           groupValue: _selectedValue,
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
+              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
             });
           },
         ),

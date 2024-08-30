@@ -19,7 +19,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   QuizGenerationState build() {
     _quizModel = const QuizGenerationModel(
       content: '',
-      typeOfQuestions: 0,
+      typeOfQuestions: '',
       numberOfQuestions: 3,
     );
     _quiz = const QuizModel(title: '', description: '', generateQuestionsDto: []);
@@ -27,7 +27,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   String get content => _quizModel.content;
-  int get typeOfQuestions => _quizModel.typeOfQuestions;
+  String get typeOfQuestions => _quizModel.typeOfQuestions;
   int get numberOfQuestions => _quizModel.numberOfQuestions;
 
   String get title => _quiz.title;
@@ -38,7 +38,7 @@ class QuizGenerationController extends _$QuizGenerationController {
     _quizModel = _quizModel.copyWith(content: content);
   }
 
-  void setTypeOfQuestions(int typeOfQuestions) {
+  void setTypeOfQuestions(String typeOfQuestions) {
     _quizModel = _quizModel.copyWith(typeOfQuestions: typeOfQuestions);
   }
 

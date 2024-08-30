@@ -11,7 +11,7 @@ _$QuizGenerationModelImpl _$$QuizGenerationModelImplFromJson(
     _$QuizGenerationModelImpl(
       content: json['content'] as String,
       numberOfQuestions: (json['numberOfQuestions'] as num).toInt(),
-      typeOfQuestions: (json['typeOfQuestions'] as num).toInt(),
+      typeOfQuestions: json['typeOfQuestions'] as String,
     );
 
 Map<String, dynamic> _$$QuizGenerationModelImplToJson(
