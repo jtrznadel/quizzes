@@ -10,7 +10,7 @@ _$QuizModelImpl _$$QuizModelImplFromJson(Map<String, dynamic> json) =>
     _$QuizModelImpl(
       title: json['title'] as String,
       description: json['description'] as String,
-      generateQuestionsDto: (json['generateQuestionsDto'] as List<dynamic>)
+      createQuestionsDto: (json['createQuestionsDto'] as List<dynamic>)
           .map((e) => QuestionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$QuizModelImplToJson(_$QuizModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
-      'generateQuestionsDto': instance.generateQuestionsDto,
+      'createQuestionsDto': instance.createQuestionsDto,
     };

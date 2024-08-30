@@ -8,7 +8,7 @@ part 'question_model.g.dart';
 class QuestionModel with _$QuestionModel {
   const factory QuestionModel({
     required String title,
-    required List<AnswerModel> generateAnswersDto,
+    required List<AnswerModel> createAnswersDto,
   }) = _QuestionModel;
 
   factory QuestionModel.fromJson(Map<String, dynamic> json) => _$QuestionModelFromJson(json);

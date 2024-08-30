@@ -74,7 +74,7 @@ class QuestionBox extends StatelessWidget {
               ),
               const MediumVSpacer(),
               ListView.builder(
-                itemCount: question.generateAnswersDto.length,
+                itemCount: question.createAnswersDto.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
@@ -82,8 +82,8 @@ class QuestionBox extends StatelessWidget {
                     children: [
                       AnswerTile(
                         leading: Answer.values[index].name,
-                        text: question.generateAnswersDto[index].content,
-                        isCorrect: question.generateAnswersDto[index].iscorrect,
+                        text: question.createAnswersDto[index].content,
+                        isCorrect: question.createAnswersDto[index].isCorrect,
                       ),
                       const SmallVSpacer(),
                     ],

@@ -9,11 +9,11 @@ part of 'answer_model.dart';
 _$AnswerModelImpl _$$AnswerModelImplFromJson(Map<String, dynamic> json) =>
     _$AnswerModelImpl(
       content: json['content'] as String,
-      iscorrect: json['iscorrect'] as bool,
+      isCorrect: json['isCorrect'] as bool,
     );
 
 Map<String, dynamic> _$$AnswerModelImplToJson(_$AnswerModelImpl instance) =>
     <String, dynamic>{
       'content': instance.content,
-      'iscorrect': instance.iscorrect,
+      'isCorrect': instance.isCorrect,
     };

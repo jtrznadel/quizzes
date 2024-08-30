@@ -9,7 +9,7 @@ part of 'question_model.dart';
 _$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
     _$QuestionModelImpl(
       title: json['title'] as String,
-      generateAnswersDto: (json['generateAnswersDto'] as List<dynamic>)
+      createAnswersDto: (json['createAnswersDto'] as List<dynamic>)
           .map((e) => AnswerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -17,5 +17,5 @@ _$QuestionModelImpl _$$QuestionModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$QuestionModelImplToJson(_$QuestionModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'generateAnswersDto': instance.generateAnswersDto,
+      'createAnswersDto': instance.createAnswersDto,
     };

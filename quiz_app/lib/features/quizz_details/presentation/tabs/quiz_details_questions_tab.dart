@@ -63,7 +63,7 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
               questionIndex: index,
               question: QuestionModel(
                 title: "Question $index",
-                generateAnswersDto: generateAnswersDto,
+                createAnswersDto: generateAnswersDto,
               ),
             );
           },
@@ -142,19 +142,19 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
   List<AnswerModel> get generateAnswersDto => [
         const AnswerModel(
           content: "Answer A",
-          iscorrect: true,
+          isCorrect: true,
         ),
         const AnswerModel(
           content: "Answer B",
-          iscorrect: false,
+          isCorrect: false,
         ),
         const AnswerModel(
           content: "Answer C",
-          iscorrect: false,
+          isCorrect: false,
         ),
         const AnswerModel(
           content: "Answer D",
-          iscorrect: false,
+          isCorrect: false,
         ),
       ];
 }

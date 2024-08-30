@@ -76,11 +76,11 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
             if (_formKey.currentState!.validate()) {
               final question = QuestionModel(
                 title: titleController.text,
-                generateAnswersDto: List.generate(
+                createAnswersDto: List.generate(
                   answerControllers.length,
                   (index) => AnswerModel(
                     content: answerControllers.values.elementAt(index).controller.text,
-                    iscorrect: answerControllers.values.elementAt(index).isCorrect,
+                    isCorrect: answerControllers.values.elementAt(index).isCorrect,
                   ),
                 ),
               );

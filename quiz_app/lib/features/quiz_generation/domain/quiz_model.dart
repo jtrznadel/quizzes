@@ -9,7 +9,7 @@ class QuizModel with _$QuizModel {
   const factory QuizModel({
     required String title,
     required String description,
-    required List<QuestionModel> generateQuestionsDto,
+    required List<QuestionModel> createQuestionsDto,
   }) = _QuizModel;
 
   factory QuizModel.fromJson(Map<String, dynamic> json) => _$QuizModelFromJson(json);

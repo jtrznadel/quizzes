@@ -9,4 +9,5 @@ class QuizGenerationState with _$QuizGenerationState {
   const factory QuizGenerationState.generating() = _Generating;
   const factory QuizGenerationState.generated(QuizModel quiz) = _Generated;
   const factory QuizGenerationState.error(String message) = _Error;
+  const factory QuizGenerationState.created(String quizID) = _Initial;
 }

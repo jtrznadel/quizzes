@@ -16,6 +16,9 @@ abstract class QuizGenerationClient {
 
   @POST(ApiConstants.quizGenerationEndpoint)
   Future<QuizModel> generateQuiz(@Body() Map<String, dynamic> body);
+
+  @POST(ApiConstants.quizCreateEndpoint)
+  Future<String> createQuiz(@Body() Map<String, dynamic> body);
 }
 
 final quizGenerationClientProvider = Provider<QuizGenerationClient>((ref) =>

@@ -47,7 +47,7 @@ class QuizzConfigurePage extends ConsumerWidget {
             ),
           ),
           Positioned(
-            bottom: 0,
+            bottom: 16,
             left: 16,
             right: 16,
             child: Container(
@@ -60,9 +60,6 @@ class QuizzConfigurePage extends ConsumerWidget {
                     curve: Curves.easeInOut,
                   );
                   try {
-                    print(quizGenerationController.content);
-                    print(quizGenerationController.typeOfQuestions);
-                    print(quizGenerationController.numberOfQuestions);
                     await quizGenerationController.generate();
                   } catch (e) {
                     if (context.mounted) {

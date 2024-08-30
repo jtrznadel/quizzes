@@ -1,8 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
-import '../domain/answer_model.dart';
 import '../domain/question_model.dart';
 import '../domain/quiz_generation_model.dart';
 import '../domain/quiz_model.dart';
@@ -24,7 +22,8 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionType: QuestionType.MultipleChoice.name,
       numberOfQuestions: QuestionNumberSelection.low.value,
     );
-    _quiz = const QuizModel(title: '', description: '', generateQuestionsDto: []);
+    _quiz =
+        const QuizModel(title: '', description: '', createQuestionsDto: []);
     return const QuizGenerationState.generating();
   }
 
@@ -34,7 +33,7 @@ class QuizGenerationController extends _$QuizGenerationController {
 
   String get title => _quiz.title;
   String get description => _quiz.description;
-  List<QuestionModel> get questions => _quiz.generateQuestionsDto;
+  List<QuestionModel> get questions => _quiz.createQuestionsDto;
 
   void setContent(String content) {
     _quizModel = _quizModel.copyWith(content: content);
@@ -48,39 +47,14 @@ class QuizGenerationController extends _$QuizGenerationController {
     _quizModel = _quizModel.copyWith(numberOfQuestions: numberOfQuestions);
   }
 
-  void addNewQuestion(QuestionModel question){
-    _quiz = _quiz.copyWith(generateQuestionsDto: [..._quiz.generateQuestionsDto, question]);
+  void addNewQuestion(QuestionModel question) {
+    _quiz = _quiz.copyWith(
+        createQuestionsDto: [..._quiz.createQuestionsDto, question]);
     state = QuizGenerationState.generated(_quiz);
   }
 
-  Map<String, dynamic> quizToJson(){
-    return {
-      'title': _quiz.title,
-      'description': _quiz.description,
-      'createQuestionsDto': [
-        for (var question in _quiz.generateQuestionsDto)
-          {
-            'title': question.title,
-            'createAnswersDto': [
-              for (var answer in question.generateAnswersDto)
-                {
-                  'content': answer.content,
-                  'iscorrect': answer.iscorrect,
-                }
-            ],
-          }
-      ],
-    };
-  }
-
-
   Future<void> generate() async {
     state = const QuizGenerationState.generating();
-
-    ////TODO: remove after testing
-    //_quiz = mockQuiz;
-    //state = QuizGenerationState.generated(mockQuiz);
-    //return;
 
     final result = await ref
         .read(quizGenerationRepositoryProvider)
@@ -97,54 +71,19 @@ class QuizGenerationController extends _$QuizGenerationController {
       },
     );
   }
+
+  Future<void> createQuiz() async {
+    final result = await ref
+        .read(quizGenerationRepositoryProvider)
+        .createQuiz(quizModel: _quiz);
+
+    result.fold(
+      (error) {
+        state = const QuizGenerationState.error('Something went wrong');
+      },
+      (quizID) {
+        state = QuizGenerationState.created(quizID);
+      },
+    );
+  }
 }
-
-
-QuizModel mockQuiz = QuizModel(
-  title: S.current.tempQuizzSummaryTitle,
-  description: S.current.tempQuizzSummaryDescription,
-  generateQuestionsDto: [
-    QuestionModel(
-      title: S.current.tempQuestion,
-      generateAnswersDto: [
-        AnswerModel(
-          content: S.current.tempAnswer1,
-          iscorrect: false,
-        ),
-        AnswerModel(
-          content: S.current.tempAnswer2,
-          iscorrect: true,
-        ),
-        AnswerModel(
-          content: S.current.tempAnswer3,
-          iscorrect: false,
-        ),
-        AnswerModel(
-          content: S.current.tempAnswer4,
-          iscorrect: false,
-        ),
-      ],
-    ),
-    QuestionModel(
-      title: S.current.tempQuestion,
-      generateAnswersDto: [
-        AnswerModel(
-          content: S.current.tempAnswer1,
-          iscorrect: false,
-        ),
-        AnswerModel(
-          content: S.current.tempAnswer2,
-          iscorrect: true,
-        ),
-        AnswerModel(
-          content: S.current.tempAnswer3,
-          iscorrect: false,
-        ),
-        AnswerModel(
-          content: S.current.tempAnswer4,
-          iscorrect: false,
-        ),
-      ],
-    ),
-  ],
-);

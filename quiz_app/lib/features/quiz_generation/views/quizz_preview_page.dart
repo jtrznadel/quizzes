@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -7,10 +6,10 @@ import '../../../../core/common/widgets/quizz_summary.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../core/common/widgets/error_page.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../application/quiz_generation_controller.dart';
 
@@ -22,8 +21,8 @@ class QuizzPreviewPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(quizGenerationControllerProvider);
     final controller = ref.read(quizGenerationControllerProvider.notifier);
-    return state.when(
-      generating: () {
+    return state.maybeWhen(
+      orElse: () {
         return const Center(
           child: CircularProgressIndicator(),
         );
@@ -60,7 +59,6 @@ class QuizzPreviewPage extends ConsumerWidget {
                         ),
                       ),
                       const LargeVSpacer(),
-                      //TODO: Remove loop and implement a listview.builder with question model
                       SingleChildScrollView(
                         child: ListView.builder(
                           itemCount: controller.questions.length,
@@ -92,11 +90,12 @@ class QuizzPreviewPage extends ConsumerWidget {
                   color: AppColorScheme.surface,
                   padding: const EdgeInsets.only(top: 8),
                   child: BasicButton(
-                    onPressed: () {
+                    onPressed: () async {
                       pageController.nextPage(
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut,
                       );
+                      await controller.createQuiz();
                     },
                     text: S.of(context).saveQuizzButton,
                   ),
@@ -107,24 +106,7 @@ class QuizzPreviewPage extends ConsumerWidget {
         );
       },
       error: (error) {
-        return Center(
-          child: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(error),
-                const MediumVSpacer(),
-                SecondaryButton(
-                  onPressed: () {
-                    context.router.push(const DashboardRoute());
-                  },
-                  //TODO: replace with translation
-                  text: 'Go back to dashboard',
-                )
-              ],
-            ),
-          ),
-        );
+        return ErrorPage(error: error);
       },
     );
   }
