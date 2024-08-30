@@ -65,6 +65,9 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
                 title: "Question $index",
                 createAnswersDto: generateAnswersDto,
               ),
+              onDelete: () {
+                //TODO: Implement delete question
+              },
             );
           },
         ),

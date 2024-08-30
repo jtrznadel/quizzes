@@ -9,6 +9,7 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../core/common/widgets/error_page.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../application/quiz_generation_controller.dart';
@@ -70,6 +71,9 @@ class QuizzPreviewPage extends ConsumerWidget {
                                 QuestionBox(
                                   questionIndex: index,
                                   question: controller.questions[index],
+                                  onDelete: () async {
+                                    await onDelete(context, ref, index);
+                                  },
                                 ),
                                 const CustomVSpacer(32),
                               ],
@@ -107,6 +111,27 @@ class QuizzPreviewPage extends ConsumerWidget {
       },
       error: (error) {
         return ErrorPage(error: error);
+      },
+    );
+  }
+
+  Future<void> onDelete(BuildContext context, WidgetRef ref, int index) async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DeleteDialog(
+          title: 'Are you sure?',
+          content: const SizedBox(
+            width: 0,
+            height: 0,
+          ),
+          onConfirm: () async {
+            await ref
+                .read(quizGenerationControllerProvider.notifier)
+                .deleteQuestion(index);
+            Navigator.pop(context);
+          },
+        );
       },
     );
   }

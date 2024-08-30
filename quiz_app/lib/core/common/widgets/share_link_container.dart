@@ -19,17 +19,21 @@ class ShareLinkContainer extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
-        color: AppColorScheme.surface,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
       ),
-      width: double.infinity,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            link,
-            style: context.textTheme.bodyLarge!.copyWith(
-              color: Colors.black,
+          SizedBox(
+            width: context.width * 0.6,
+            child: Text(
+              link,
+              style: context.textTheme.bodyLarge!.copyWith(
+                color: Colors.black,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           IconButton(

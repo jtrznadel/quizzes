@@ -86,4 +86,11 @@ class QuizGenerationController extends _$QuizGenerationController {
       },
     );
   }
+
+  Future<void> deleteQuestion(int index) async {
+    final questionListCopy = List<QuestionModel>.from(_quiz.createQuestionsDto);
+    questionListCopy.removeAt(index);
+    _quiz = _quiz.copyWith(createQuestionsDto: questionListCopy);
+    state = QuizGenerationState.generated(_quiz);
+  }
 }

@@ -41,7 +41,8 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
   }) async {
     try {
       //TODO: replace quizToJson with the correct method after implementation
-      final model = await _quizGenerationClient.createQuiz(quizModel.toJson());
+      final dtoJson = QuizDto(quizModel).toJson();
+      final model = await _quizGenerationClient.createQuiz(dtoJson);
       return Right(model);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
@@ -53,3 +54,16 @@ final quizGenerationRepositoryProvider = Provider<QuizGenerationRepository>(
   (ref) =>
       QuizGenerationRepositoryImpl(ref.watch(quizGenerationClientProvider)),
 );
+
+
+class QuizDto{
+  final QuizModel quizDto;
+
+  QuizDto(this.quizDto);
+
+  Map<String, dynamic> toJson() {
+    return {
+      'quizDto': quizDto.toJson(),
+    };
+  }
+}

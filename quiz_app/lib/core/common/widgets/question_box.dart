@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../features/quiz_generation/domain/question_model.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
@@ -12,10 +13,12 @@ import '../../theme/app_color_scheme.dart';
 import '../../../generated/l10n.dart';
 
 class QuestionBox extends StatelessWidget {
-  const QuestionBox({super.key, required this.questionIndex, required this.question});
+  const QuestionBox(
+      {super.key, required this.questionIndex, required this.question, required this.onDelete});
 
   final int questionIndex;
   final QuestionModel question;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +60,17 @@ class QuestionBox extends StatelessWidget {
                           MediaRes.pencil,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          MediaRes.trash,
-                        ),
+                      Consumer(
+                        builder: (context, ref, child) {
+                          return IconButton(
+                            onPressed: () {
+                              onDelete();
+                            },
+                            icon: SvgPicture.asset(
+                              MediaRes.trash,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

@@ -9,7 +9,6 @@ import '../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/services/app_router.dart';
 import '../../../core/theme/app_theme.dart';
-import '../../../mocks.dart';
 import '../../../generated/l10n.dart';
 import '../application/quiz_generation_controller.dart';
 
@@ -50,7 +49,7 @@ class QuizzSuccessPage extends ConsumerWidget {
               const ExtraLargeVSpacer(),
               BasicButton(
                 onPressed: () async {
-                  await Share.share(S.of(context).quizzShareMessage);
+                  await Share.share(quizID);
                 },
                 text: S.of(context).quizzCreationSuccessShareButton,
                 width: double.infinity,
