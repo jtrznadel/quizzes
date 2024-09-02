@@ -86,21 +86,21 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
           ),
           const ExtraLargeVSpacer(),
           Text(
-            S.of(context).profileSignOutDescription,
-            style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+            S.of(context).profileDeleteButtonLabel,
+            style: context.theme.textTheme.headlineSmall,
           ),
           const SmallVSpacer(),
           SecondaryButton(
             onPressed: () async {
               try {
                 DeleteDialog(
-                  title: S.of(context).profileDeleteButton,
+                  title: S.of(context).profileDeleteDialogHeading,
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       const SmallVSpacer(),
                       Text(
-                        S.of(context).profileDeleteButton,
+                        S.of(context).profileDeleteDialogDescription,
                         style: context.theme.textTheme.bodyMedium,
                       ),
                     ],
@@ -115,7 +115,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
                 context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
               }
             },
-            text: S.of(context).profileSignOutButton,
+            text: S.of(context).profileDeleteButton,
             bgColor: AppColorScheme.error,
             contentColor: AppColorScheme.textContrast,
           ),

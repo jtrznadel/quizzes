@@ -23,7 +23,6 @@ Dio buildDioClient(String base, Ref ref) {
         if (error.response?.statusCode == 401) {
           final refreshToken = await ref.read(sessionProvider).refreshToken ??
               () {
-                //TODO: Log out user
                 ref.read(sessionProvider).deleteTokens();
               }();
           if (refreshToken == null) {

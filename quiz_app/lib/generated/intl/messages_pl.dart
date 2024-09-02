@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj nowe pytanie"),
         "addNewQuestionBottomSheetManual":
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
+        "addNewQuizzButton":
+            MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
@@ -68,6 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Język"),
         "languageEnglish": MessageLookupByLibrary.simpleMessage("Angielski"),
         "languagePolish": MessageLookupByLibrary.simpleMessage("Polski"),
+        "linkCopied":
+            MessageLookupByLibrary.simpleMessage("Skopiowano link do schowka"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Resetowanie hasła"),

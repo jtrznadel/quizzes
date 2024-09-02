@@ -110,7 +110,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
 
   Widget _errorAction(AuthController controller, BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => showCustomSnackbar(
+      (_) => InfoSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
       ),

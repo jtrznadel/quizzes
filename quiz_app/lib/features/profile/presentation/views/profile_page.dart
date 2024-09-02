@@ -1,27 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../../core/errors/refresh_token_missing_exception.dart';
-import '../../../../core/services/language_provider.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
-import '../../application/user_state.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
-import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/secondary_button.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/common/widgets/text_area.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
-import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/theme/app_theme.dart';
 import '../../../auth/application/auth_controller.dart';
 import '../../../auth/application/auth_state.dart';
-import '../../domain/user.dart';
 import '../refactors/profile_content.dart';
-import '../widgets/language_radio_button.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {

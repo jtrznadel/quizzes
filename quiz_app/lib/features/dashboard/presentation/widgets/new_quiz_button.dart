@@ -10,6 +10,7 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 
 class NewQuizButton extends ConsumerWidget {
   const NewQuizButton({super.key});
@@ -64,7 +65,7 @@ class NewQuizButton extends ConsumerWidget {
             ),
             const SmallVSpacer(),
             Text(
-              'Add new quiz',
+              S.of(context).addNewQuizzButton,
               style: context.theme.textTheme.headlineMedium!.copyWith(
                 color: AppColorScheme.onPrimary,
               ),

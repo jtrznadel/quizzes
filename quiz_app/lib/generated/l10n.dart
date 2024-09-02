@@ -1240,6 +1240,16 @@ class S {
     );
   }
 
+  /// `Add new quizz`
+  String get addNewQuizzButton {
+    return Intl.message(
+      'Add new quizz',
+      name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get deleteQuizzHeading {
     return Intl.message(
@@ -1315,6 +1325,16 @@ class S {
     return Intl.message(
       'Save Quizz',
       name: 'saveQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Link copied to clipboard`
+  String get linkCopied {
+    return Intl.message(
+      'Link copied to clipboard',
+      name: 'linkCopied',
       desc: '',
       args: [],
     );

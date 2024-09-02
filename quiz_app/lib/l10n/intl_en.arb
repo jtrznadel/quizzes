@@ -141,6 +141,7 @@
 
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
+    "addNewQuizzButton": "Add new quizz",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
@@ -150,7 +151,7 @@
     "cancelButton": "Cancel",
     "deleteButton": "Delete",
     "saveQuizzButton": "Save Quizz",
-
+    "linkCopied": "Link copied to clipboard",
 
     "profileAppbarTitle": "Profile",
     "profileSubheading": "Manage your profile settings here.",
