@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../../core/errors/refresh_token_missing_exception.dart';
+import '../../../../core/services/language_provider.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
 import '../../application/user_state.dart';
@@ -19,6 +20,8 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../auth/application/auth_controller.dart';
 import '../../../auth/application/auth_state.dart';
 import '../../domain/user.dart';
+import '../refactors/profile_content.dart';
+import '../widgets/language_radio_button.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {
@@ -66,12 +69,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             state.maybeWhen(
-              success: (user, isUsernameUpdating) => _buildProfile(
-                context,
-                user,
-                userController,
-                authController,
-                isUsernameUpdating,
+              success: (user, isUsernameUpdating) => ProfileContent(
+                user: user,
+                isUsernameUpdating: isUsernameUpdating,
               ),
               error: (error) {
                 handleError(error, context);
@@ -102,90 +102,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildProfile(
-    BuildContext context,
-    User user,
-    UserController userController,
-    AuthController authController,
-    bool isUsernameUpdating,
-  ) {
-    var controller = TextEditingController.fromValue(TextEditingValue(text: user.userName));
-    return Padding(
-      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            S.of(context).profileSubheading,
-            style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-            textAlign: TextAlign.start,
-          ),
-          const SmallVSpacer(),
-          TextArea(
-            hintText: S.of(context).profileNameHint,
-            controller: controller,
-            maxLines: 3,
-            labelText: S.of(context).profileNameLabel,
-          ),
-          const SmallVSpacer(),
-          Text(
-            S.of(context).profileNameDescription,
-            style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-            textAlign: TextAlign.start,
-          ),
-          const SmallVSpacer(),
-          BasicButton(
-            onPressed: () async {
-              try {
-                await userController.updateUser(
-                  user: user.copyWith(userName: controller.text),
-                );
-              } catch (_) {
-                context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
-              }
-            },
-            text: isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
-          ),
-          const ExtraLargeVSpacer(),
-          Text(
-            S.of(context).profileSignOutDescription,
-            style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-          ),
-          const SmallVSpacer(),
-          SecondaryButton(
-            onPressed: () async {
-              try {
-                DeleteDialog(
-                  title: S.of(context).profileDeleteButton,
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const SmallVSpacer(),
-                      Text(
-                        S.of(context).profileDeleteButton,
-                        style: context.theme.textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-                  onConfirm: () async {
-                    await authController.signOut();
-                  },
-                ).show(context);
-
-                //TOD
-              } catch (_) {
-                context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
-              }
-            },
-            text: S.of(context).profileSignOutButton,
-            bgColor: AppColorScheme.error,
-            contentColor: AppColorScheme.textContrast,
-          ),
-        ],
       ),
     );
   }

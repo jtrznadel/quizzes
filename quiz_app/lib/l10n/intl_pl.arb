@@ -177,5 +177,8 @@
     "tempAnswer3": "Zarządzanie centralne",
     "tempAnswer4": "Regulacja rządowa",
     "continueButton": "Kontynuuj",
-    "dividerOr": "LUB"
+    "dividerOr": "LUB",
+    "language": "Język",
+    "languagePolish": "Polski",
+    "languageEnglish": "Angielski"
 }

@@ -65,6 +65,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
         "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy adres e-mail lub hasło."),
+        "language": MessageLookupByLibrary.simpleMessage("Język"),
+        "languageEnglish": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "languagePolish": MessageLookupByLibrary.simpleMessage("Polski"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Resetowanie hasła"),

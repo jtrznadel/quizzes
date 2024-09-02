@@ -178,7 +178,9 @@
     "tempAnswer3": "Centralized control",
     "tempAnswer4": "Government regulation",
     "continueButton": "Continue",
-    "dividerOr": "OR"
-
+    "dividerOr": "OR",
+    "language": "Language",
+    "languagePolish": "Polish",
+    "languageEnglish": "English"
 }
       

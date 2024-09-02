@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/services/app_router.dart';
+import 'core/services/language_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'generated/l10n.dart';
 
@@ -28,12 +29,9 @@ class MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     final appRouter = ref.read(appRouterProvider);
+    final appLocale = ref.watch(languageProvider);
     return MaterialApp.router(
-        builder: (context, child) {
-          return MediaQuery.withNoTextScaling(
-            child: child ?? Container(),
-          );
-        },
+        locale: appLocale,
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
