@@ -14,11 +14,12 @@ import '../../../generated/l10n.dart';
 
 class QuestionBox extends StatelessWidget {
   const QuestionBox(
-      {super.key, required this.questionIndex, required this.question, required this.onDelete});
+      {super.key, required this.questionIndex, required this.question, required this.onDelete, required this.correctAnswerVisible});
 
   final int questionIndex;
   final QuestionModel question;
   final VoidCallback onDelete;
+  final bool correctAnswerVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +93,7 @@ class QuestionBox extends StatelessWidget {
                       AnswerTile(
                         leading: Answer.values[index].name,
                         text: question.createAnswersDto[index].content,
-                        isCorrect: question.createAnswersDto[index].isCorrect,
+                        isCorrect: correctAnswerVisible ? question.createAnswersDto[index].isCorrect : false,
                       ),
                       const SmallVSpacer(),
                     ],

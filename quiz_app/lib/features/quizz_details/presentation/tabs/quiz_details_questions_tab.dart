@@ -68,6 +68,7 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
               onDelete: () {
                 //TODO: Implement delete question
               },
+              correctAnswerVisible: _answersVisible,
             );
           },
         ),

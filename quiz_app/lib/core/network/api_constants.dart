@@ -22,4 +22,6 @@ class ApiConstants {
 
   static const String quizGenerationEndpoint = 'quiz/generate-quiz';
   static const String quizCreateEndpoint = 'quiz/create-quiz';
+  
+  static const String getQuizEndpoint = 'quiz/{id}';
 }

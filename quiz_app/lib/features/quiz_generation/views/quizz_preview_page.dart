@@ -74,6 +74,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                                   onDelete: () async {
                                     await onDelete(context, ref, index);
                                   },
+                                  correctAnswerVisible: true,
                                 ),
                                 const CustomVSpacer(32),
                               ],
