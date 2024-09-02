@@ -17,6 +17,12 @@ abstract class QuizDetailsClient {
 
   @GET(ApiConstants.getQuizEndpoint)
   Future<QuizDetailsModel> getQuiz(@Path('id') String id);
+
+  @PATCH(ApiConstants.updateQuizStatusEndpoint)
+  Future<void> updateQuizStatus(@Path('id') String id, @Body() bool status);
+
+  @PATCH(ApiConstants.updateQuizAvailabilityEndpoint)
+  Future<void> updateQuizAvailability(@Path('id') String id, @Body() bool availability);
 }
 
 final quizDetailsClientProvider = Provider<QuizDetailsClient>(

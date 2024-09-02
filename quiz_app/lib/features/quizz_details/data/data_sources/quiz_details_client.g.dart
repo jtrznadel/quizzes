@@ -48,6 +48,60 @@ class _QuizDetailsClient implements QuizDetailsClient {
     return _value;
   }
 
+  @override
+  Future<void> updateQuizStatus(
+    String id,
+    bool status,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = status;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'quiz/${id}/status',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
+  @override
+  Future<void> updateQuizAvailability(
+    String id,
+    bool availability,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = availability;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'quiz/${id}/availability',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
