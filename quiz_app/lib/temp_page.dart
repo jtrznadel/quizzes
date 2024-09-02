@@ -31,7 +31,7 @@ class TempPage extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                ref.read(appRouterProvider).push(const QuizzDetailsRoute());
+                ref.read(appRouterProvider).push(QuizzDetailsRoute(id: '27aef3bf-a59c-4015-a2ad-a62a87c7801b'));
               },
               child: const Text('Quiz details'),
             ),

@@ -106,10 +106,17 @@ class QuizzCreationRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [QuizzDetailsPage]
-class QuizzDetailsRoute extends PageRouteInfo<void> {
-  const QuizzDetailsRoute({List<PageRouteInfo>? children})
-      : super(
+class QuizzDetailsRoute extends PageRouteInfo<QuizzDetailsRouteArgs> {
+  QuizzDetailsRoute({
+    Key? key,
+    required String id,
+    List<PageRouteInfo>? children,
+  }) : super(
           QuizzDetailsRoute.name,
+          args: QuizzDetailsRouteArgs(
+            key: key,
+            id: id,
+          ),
           initialChildren: children,
         );
 
@@ -118,9 +125,29 @@ class QuizzDetailsRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const QuizzDetailsPage();
+      final args = data.argsAs<QuizzDetailsRouteArgs>();
+      return QuizzDetailsPage(
+        key: args.key,
+        id: args.id,
+      );
     },
   );
+}
+
+class QuizzDetailsRouteArgs {
+  const QuizzDetailsRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final String id;
+
+  @override
+  String toString() {
+    return 'QuizzDetailsRouteArgs{key: $key, id: $id}';
+  }
 }
 
 /// generated route for

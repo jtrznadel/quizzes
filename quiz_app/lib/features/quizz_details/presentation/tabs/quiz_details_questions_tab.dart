@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../core/common/widgets/question_box.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
@@ -9,22 +10,27 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../quiz_generation/domain/answer_model.dart';
 import '../../../quiz_generation/domain/question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
+import '../../application/quiz_details_controller.dart';
+import '../../application/quiz_details_state.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizDetailsQuestionsTab extends StatefulWidget {
+class QuizDetailsQuestionsTab extends ConsumerStatefulWidget {
   const QuizDetailsQuestionsTab({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  ConsumerState createState() {
     return _QuizDetailsQuestionsTabState();
   }
 }
 
-class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
+class _QuizDetailsQuestionsTabState
+    extends ConsumerState<QuizDetailsQuestionsTab> {
   bool _answersVisible = false;
+  late QuizDetailsState state;
   @override
   Widget build(BuildContext context) {
+    state = ref.read(quizDetailsControllerProvider);
     return Column(
       children: [
         questionsHeader(context),
@@ -51,67 +57,77 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
   }
 
   Widget questionsList(BuildContext context) {
-    return Column(
-      children: [
-        const MediumVSpacer(),
-        ListView.builder(
-          itemCount: 10,
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-            return QuestionBox(
-              questionIndex: index,
-              question: QuestionModel(
-                title: "Question $index",
-                createAnswersDto: generateAnswersDto,
-              ),
-              onDelete: () {
-                //TODO: Implement delete question
+    return state.maybeWhen(
+      loaded: (quizDetails) {
+        return Column(
+          children: [
+            const MediumVSpacer(),
+            ListView.builder(
+              itemCount: quizDetails.questions.length,
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return QuestionBox(
+                  questionIndex: index,
+                  question: QuestionModel(
+                    title: quizDetails.questions[index].title,
+                    createAnswersDto: quizDetails.questions[index].answers,
+                  ),
+                  onDelete: () {
+                    //TODO: Implement delete question
+                  },
+                  correctAnswerVisible: _answersVisible,
+                );
               },
-              correctAnswerVisible: _answersVisible,
-            );
-          },
-        ),
-        const LargeVSpacer()
-      ],
+            ),
+            const LargeVSpacer()
+          ],
+        );
+      },
+      orElse: () => const SizedBox.shrink(),
     );
   }
 
   Widget answersSwitchRow(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const QuizStatusBadge(
-          text: "Total 10 questions",
-          backgroundColor: AppColorScheme.secondary,
-          textColor: AppColorScheme.primary,
-        ),
-        Row(
+    return state.maybeWhen(
+      loaded: (quizDetails) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              S.of(context).quizzDetailsTabQuestionsSwitch,
-              style: context.textTheme.bodyMedium,
+            QuizStatusBadge(
+              text: 'Total ${quizDetails.questions.length} questions',
+              backgroundColor: AppColorScheme.secondary,
+              textColor: AppColorScheme.primary,
             ),
-            const ExtraSmallHSpacer(),
-            SizedBox(
-              height: 32,
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: SwitchButton(
-                  value: _answersVisible,
-                  onChanged: (value) {
-                    setState(() {
-                      _answersVisible = value;
-                    });
-                  },
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  S.of(context).quizzDetailsTabQuestionsSwitch,
+                  style: context.textTheme.bodyMedium,
                 ),
-              ),
+                const ExtraSmallHSpacer(),
+                SizedBox(
+                  height: 32,
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: SwitchButton(
+                      value: _answersVisible,
+                      onChanged: (value) {
+                        setState(() {
+                          _answersVisible = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
-      ],
+        );
+      },
+      orElse: () => const SizedBox.shrink(),
     );
   }
 
