@@ -23,8 +23,8 @@ mixin _$QuizDetailsModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get availability => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  QuizAvailability get availability => throw _privateConstructorUsedError;
+  QuizStatus get status => throw _privateConstructorUsedError;
   List<QuestionDetailsModel> get questions =>
       throw _privateConstructorUsedError;
 
@@ -44,8 +44,8 @@ abstract class $QuizDetailsModelCopyWith<$Res> {
       {String id,
       String title,
       String description,
-      String availability,
-      String status,
+      QuizAvailability availability,
+      QuizStatus status,
       List<QuestionDetailsModel> questions});
 }
 
@@ -85,11 +85,11 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
       availability: null == availability
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
-              as String,
+              as QuizAvailability,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as QuizStatus,
       questions: null == questions
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
@@ -110,8 +110,8 @@ abstract class _$$QuizDetailsModelImplCopyWith<$Res>
       {String id,
       String title,
       String description,
-      String availability,
-      String status,
+      QuizAvailability availability,
+      QuizStatus status,
       List<QuestionDetailsModel> questions});
 }
 
@@ -149,11 +149,11 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
       availability: null == availability
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
-              as String,
+              as QuizAvailability,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as QuizStatus,
       questions: null == questions
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
@@ -184,9 +184,9 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
   @override
   final String description;
   @override
-  final String availability;
+  final QuizAvailability availability;
   @override
-  final String status;
+  final QuizStatus status;
   final List<QuestionDetailsModel> _questions;
   @override
   List<QuestionDetailsModel> get questions {
@@ -241,8 +241,8 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
           {required final String id,
           required final String title,
           required final String description,
-          required final String availability,
-          required final String status,
+          required final QuizAvailability availability,
+          required final QuizStatus status,
           required final List<QuestionDetailsModel> questions}) =
       _$QuizDetailsModelImpl;
 
@@ -256,9 +256,9 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
   @override
   String get description;
   @override
-  String get availability;
+  QuizAvailability get availability;
   @override
-  String get status;
+  QuizStatus get status;
   @override
   List<QuestionDetailsModel> get questions;
   @override

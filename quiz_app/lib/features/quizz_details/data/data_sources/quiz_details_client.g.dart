@@ -51,7 +51,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
   @override
   Future<void> updateQuizStatus(
     String id,
-    bool status,
+    QuizStatus status,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -78,7 +78,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
   @override
   Future<void> updateQuizAvailability(
     String id,
-    bool availability,
+    QuizAvailability availability,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
