@@ -5,6 +5,7 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../application/quiz_details_controller.dart';
+import '../../application/quiz_details_state.dart';
 import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
 import '../widgets/text_checkbox.dart';
@@ -110,12 +111,24 @@ class _QuizDetailsSettingsTabState
                     alignment: Alignment.centerRight,
                     child: BasicButton(
                       text: S.of(context).quizzDetailsTabSettingsSaveChanges,
-                      onPressed: () {
+                      onPressed: () async {
                         final controller =
                             ref.read(quizDetailsControllerProvider.notifier);
-                        controller.updateQuizStatus(quizDetails.id);
-                        controller.updateQuizAvailability(
-                            quizDetails.id);
+                        await controller.updateQuizStatus(quizDetails.id);
+                        await controller.updateQuizAvailability(quizDetails.id);
+                        state.maybeWhen(
+                          loaded: (quizDetails) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  //TODO: replace with translation
+                                  "Successfully updated quiz settings",
+                                ),
+                              ),
+                            );
+                          },
+                          orElse: () => null,
+                        );
                       },
                     ),
                   );
