@@ -5,11 +5,9 @@ import 'question_details_model.dart';
 part 'quiz_details_model.g.dart';
 part 'quiz_details_model.freezed.dart';
 
-// ignore: constant_identifier_names
-enum QuizAvailability { Public, Private }
+enum QuizAvailability { @JsonValue('Public') Public, @JsonValue('Private') Private }
 
-// ignore: constant_identifier_names
-enum QuizStatus { Active, Inactive }
+enum QuizStatus { @JsonValue('Active') Active, @JsonValue('Inactive') Inactive }
 
 @freezed
 class QuizDetailsModel with _$QuizDetailsModel {

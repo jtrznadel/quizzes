@@ -22,12 +22,12 @@ class QuizDetailsRepositoryImpl implements QuizDetailsRepository {
 
   @override
   Future<void> updateQuizStatus(String id, QuizStatus status) async {
-    return await _quizDetailsClient.updateQuizStatus(id, status);
+    return await _quizDetailsClient.updateQuizStatus(id, '"${status.name}"');
   }
 
   @override
   Future<void> updateQuizAvailability(String id, QuizAvailability availability) async {
-    return await _quizDetailsClient.updateQuizAvailability(id, availability);
+    return await _quizDetailsClient.updateQuizAvailability(id, '"${availability.name}"');
   }
 }
 
