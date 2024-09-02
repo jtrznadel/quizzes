@@ -94,6 +94,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
         "profileDeleteButtonLabel":
             MessageLookupByLibrary.simpleMessage("Delete your account"),
+        "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "You are about to delete your account. This action cannot be undone."),
+        "profileDeleteDialogHeading":
+            MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "This is your public display name."),
         "profileNameHint":

@@ -1400,6 +1400,26 @@ class S {
     );
   }
 
+  /// `Are you sure?`
+  String get profileDeleteDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'profileDeleteDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to delete your account. This action cannot be undone.`
+  String get profileDeleteDialogDescription {
+    return Intl.message(
+      'You are about to delete your account. This action cannot be undone.',
+      name: 'profileDeleteDialogDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Something went wrong`
   String get fileReadException {
     return Intl.message(

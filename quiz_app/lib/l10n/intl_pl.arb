@@ -158,6 +158,8 @@
     "profileUpdateButton": "Aktualizuj",
     "profileDeleteButton": "Usuń",
     "profileDeleteButtonLabel": "Usuń swoje konto",
+    "profileDeleteDialogHeading": "Czy jesteś pewien?",
+    "profileDeleteDialogDescription": "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta.",
     "saveQuizzButton": "Zapisz Quizz",
     "fileReadException": "Coś poszło nie tak",
     "profileSomethingWentWrong": "Coś poszło nie tak",

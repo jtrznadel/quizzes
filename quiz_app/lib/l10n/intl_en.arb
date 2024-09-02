@@ -160,6 +160,8 @@
     "profileUpdateButton": "Update",
     "profileDeleteButton": "Delete",
     "profileDeleteButtonLabel": "Delete your account",
+    "profileDeleteDialogHeading": "Are you sure?",
+    "profileDeleteDialogDescription": "You are about to delete your account. This action cannot be undone.",
     "fileReadException": "Something went wrong",
     "profileSomethingWentWrong": "Something went wrong",
     "sessionExpired": "Session expired, please log in again.",
