@@ -1,3 +1,5 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../domain/quiz_details_model.dart';
 import '../data_sources/quiz_details_client.dart';
 
@@ -15,3 +17,7 @@ class QuizDetailsRepositoryImpl implements QuizDetailsRepository {
     return await _quizDetailsClient.getQuiz(id);
   }
 }
+
+final quizDetailsRepositoryProvider = Provider<QuizDetailsRepository>(
+  (ref) => QuizDetailsRepositoryImpl(ref.read(quizDetailsClientProvider)),
+);
