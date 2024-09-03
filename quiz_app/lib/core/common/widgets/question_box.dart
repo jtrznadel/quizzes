@@ -55,7 +55,7 @@ class QuestionBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () => onDelete(),
                         icon: SvgPicture.asset(
                           MediaRes.pencil,
                         ),

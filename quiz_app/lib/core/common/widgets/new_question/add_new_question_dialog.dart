@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../features/quiz_generation/application/quiz_generation_controller.dart';
 import '../../../../features/quiz_generation/domain/answer_model.dart';
 import '../../../../features/quiz_generation/domain/question_model.dart';
+import '../../../services/app_router.dart';
 import 'add_question_dialog_answer_section.dart';
 import '../basic_button.dart';
 import '../dialogs/basic_dialog.dart';
@@ -39,12 +40,18 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  final Map<Answer, AnswerWithValidation> answerControllers = {
-    Answer.A: AnswerWithValidation(TextEditingController(), true),
-    Answer.B: AnswerWithValidation(TextEditingController(), false),
-    Answer.C: AnswerWithValidation(TextEditingController(), false),
-    Answer.D: AnswerWithValidation(TextEditingController(), false),
-  };
+  final Map<Answer, AnswerWithValidation> answerControllers = () {
+    final Map<Answer, AnswerWithValidation> result = {};
+    for (var element in Answer.values) {
+      result[element] = AnswerWithValidation(
+        TextEditingController(),
+        false,
+      );
+    }
+    result[Answer.A]!.isCorrect = true;
+
+    return result;
+  }();
 
   @override
   void dispose() {
@@ -64,7 +71,7 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
       actions: [
         SecondaryButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            ref.read(appRouterProvider).maybePop();
           },
           text: S.of(context).cancelButton,
           contentColor: AppColorScheme.primary,
@@ -73,19 +80,23 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
         ),
         BasicButton(
           onPressed: () {
-            if (_formKey.currentState!.validate()) {
+            if (_formKey.currentState?.validate() ?? false) {
               final question = QuestionModel(
                 title: titleController.text,
                 createAnswersDto: List.generate(
                   answerControllers.length,
                   (index) => AnswerModel(
-                    content: answerControllers.values.elementAt(index).controller.text,
-                    isCorrect: answerControllers.values.elementAt(index).isCorrect,
+                    content: answerControllers.values
+                        .elementAt(index)
+                        .controller
+                        .text,
+                    isCorrect:
+                        answerControllers.values.elementAt(index).isCorrect,
                   ),
                 ),
               );
               generationController.addNewQuestion(question);
-              Navigator.of(context).pop();
+              ref.read(appRouterProvider).maybePop();
             }
           },
           text: S.of(context).quizzCreationSaveQuestion,
@@ -119,7 +130,7 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
   }
 }
 
-class AnswerWithValidation{
+class AnswerWithValidation {
   final TextEditingController controller;
   bool isCorrect;
 
