@@ -40,7 +40,6 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
     required QuizModel quizModel,
   }) async {
     try {
-      //TODO: replace quizToJson with the correct method after implementation
       final dtoJson = QuizDto(quizModel).toJson();
       final model = await _quizGenerationClient.createQuiz(dtoJson);
       return Right(model);

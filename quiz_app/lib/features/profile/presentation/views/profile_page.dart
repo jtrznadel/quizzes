@@ -47,7 +47,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
       ref.read(appRouterProvider).replaceAll([const SignInRoute()]);
     }
 
-    //TODO: replace with actual user name
     return Scaffold(
       appBar: BasicAppBar(title: S.of(context).profileAppbarTitle),
       body: Center(
@@ -70,7 +69,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        S.of(context).profileSomethingWentWrong,
+                        S.of(context).somethingWentWrong,
                         style: context.theme.textTheme.bodyLarge,
                         textAlign: TextAlign.center,
                       ),
@@ -115,7 +114,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                             user: user.copyWith(userName: controller.text),
                           );
                         } catch (_) {
-                          context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
+                          context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
                         }
                       },
                       text: isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
@@ -131,7 +130,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         try {
                           await authController.signOut();
                         } catch (_) {
-                          context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
+                          context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
                         }
                       },
                       text: S.of(context).profileSignOutButton,
@@ -153,11 +152,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   void handleError(Exception error, BuildContext context) {
     if (error is RefreshTokenMissingException) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        //TODO: navigate to sign in page
         showErrorSnackBar(context, S.of(context).sessionExpired);
       });
     } else {
-      showErrorSnackBar(context, S.of(context).profileSomethingWentWrong);
+      showErrorSnackBar(context, S.of(context).somethingWentWrong);
     }
   }
 

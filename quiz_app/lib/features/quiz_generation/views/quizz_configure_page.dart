@@ -65,10 +65,9 @@ class QuizzConfigurePage extends ConsumerWidget {
                     } else {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
+                          SnackBar(
                             content: Text(
-                              //TODO: replace with translation
-                              "Pick question type and number of questions!",
+                              S.of(context).quizzCreationConfigurationError,
                             ),
                           ),
                         );
@@ -77,9 +76,8 @@ class QuizzConfigurePage extends ConsumerWidget {
                   } catch (e) {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          //TODO: replace with translation
-                          content: Text('Something went wrong'),
+                        SnackBar(
+                          content: Text(S.of(context).somethingWentWrong),
                         ),
                       );
                     }

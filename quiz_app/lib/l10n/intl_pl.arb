@@ -67,6 +67,8 @@
     "quizzCreationConfigureQuestionCount3": "Dużo",
     "quizzCreationConfigureQuestionCount4": "Ręcznie",
 
+    "quizzCreationConfigureError": "Wybierz typ pytania i liczbę pytań.",
+
     "addNewQuestionBottomSheetHeading": "Dodaj nowe pytanie",
     "addNewQuestionBottomSheetManual": "Ręcznie",
     "addNewQuestionBottomSheetAI": "Wygeneruj pytanie przy użyciu AI",
@@ -160,7 +162,8 @@
     "profileDeleteButtonLabel": "Usuń swoje konto",
     "saveQuizzButton": "Zapisz Quizz",
     "fileReadException": "Coś poszło nie tak",
-    "profileSomethingWentWrong": "Coś poszło nie tak",
+    "somethingWentWrong": "Coś poszło nie tak",
+    "goBackToDashboard": "Wróć do pulpitu",
     "sessionExpired": "Twoja sesja wygasła. Zaloguj się ponownie.",
     "profileUpdatingUsername": "Aktualizowanie...",
     "profileSignOutButton": "Wyloguj",

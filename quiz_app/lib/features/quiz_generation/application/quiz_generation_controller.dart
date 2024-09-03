@@ -1,11 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
 import '../domain/question_model.dart';
 import '../domain/quiz_generation_model.dart';
 import '../domain/quiz_model.dart';
 import '../widgets/question_count_picker.dart';
-import '../widgets/question_type_picker.dart';
 import 'quiz_generation_state.dart';
 
 part 'quiz_generation_controller.g.dart';
@@ -22,8 +22,7 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: QuestionNumberSelection.low.value,
     );
-    _quiz =
-        const QuizModel(title: '', description: '', createQuestionsDto: []);
+    _quiz = const QuizModel(title: '', description: '', createQuestionsDto: []);
     return const QuizGenerationState.generating();
   }
 
@@ -55,8 +54,8 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   void addNewQuestion(QuestionModel question) {
-    _quiz = _quiz.copyWith(
-        createQuestionsDto: [..._quiz.createQuestionsDto, question]);
+    _quiz = _quiz
+        .copyWith(createQuestionsDto: [..._quiz.createQuestionsDto, question]);
     state = QuizGenerationState.generated(_quiz);
   }
 
@@ -80,10 +79,11 @@ class QuizGenerationController extends _$QuizGenerationController {
         .read(quizGenerationRepositoryProvider)
         .generateQuiz(quizGenerationModel: _quizModel);
 
+    _quizModel = _quizModel.copyWith(content: '', questionTypes: [], numberOfQuestions: QuestionNumberSelection.low.value);
+
     result.fold(
       (error) {
-        //TODO: replace with translation
-        state = const QuizGenerationState.error('Something went wrong');
+        state = QuizGenerationState.error(S.current.somethingWentWrong);
       },
       (quiz) {
         state = QuizGenerationState.generated(quiz);
@@ -99,7 +99,7 @@ class QuizGenerationController extends _$QuizGenerationController {
 
     result.fold(
       (error) {
-        state = const QuizGenerationState.error('Something went wrong');
+        state = QuizGenerationState.error(S.current.somethingWentWrong);
       },
       (quizID) {
         state = QuizGenerationState.created(quizID);

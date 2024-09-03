@@ -56,7 +56,6 @@ class QuizAttemptItem extends StatelessWidget {
     );
   }
 
-  //TODO: replace with status badges from dashboard
   Widget statusBadges(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

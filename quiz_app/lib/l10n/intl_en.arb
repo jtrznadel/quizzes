@@ -67,6 +67,8 @@
     "quizzCreationConfigureQuestionCount3": "High",
     "quizzCreationConfigureQuestionCount4": "Manual",
 
+    "quizzCreationConfigureError": "Pick question type and number of questions.",
+
     "addNewQuestionBottomSheetHeading": "Add new question",
     "addNewQuestionBottomSheetManual": "Manual",
     "addNewQuestionBottomSheetAI": "Generate question with AI",
@@ -161,7 +163,8 @@
     "profileDeleteButton": "Delete",
     "profileDeleteButtonLabel": "Delete your account",
     "fileReadException": "Something went wrong",
-    "profileSomethingWentWrong": "Something went wrong",
+    "somethingWentWrong": "Something went wrong",
+    "goBackToDashboard": "Go back to dashboard",
     "sessionExpired": "Session expired, please log in again.",
     "profileUpdatingUsername": "Updating...",
     "profileSignOutButton": "Sign out",

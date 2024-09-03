@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  // `Pick question type and number of questions.`
+  String get quizzCreationConfigurationError {
+    return Intl.message(
+      'Pick question type and number of questions.',
+      name: 'quizzCreationConfigurationError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add new question`
   String get addNewQuestionBottomSheetHeading {
     return Intl.message(
@@ -1411,10 +1421,20 @@ class S {
   }
 
   /// `Something went wrong`
-  String get profileSomethingWentWrong {
+  String get somethingWentWrong {
     return Intl.message(
       'Something went wrong',
-      name: 'profileSomethingWentWrong',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go back to dashboard`
+  String get goBackToDashboard {
+    return Intl.message(
+      'Go back to dashboard',
+      name: 'goBackToDashboard',
       desc: '',
       args: [],
     );
