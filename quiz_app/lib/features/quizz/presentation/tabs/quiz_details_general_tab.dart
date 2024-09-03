@@ -35,7 +35,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralSubheading,
-        style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+        style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
       ),
     ]);
   }
@@ -44,7 +44,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralPageSettingsHeading,
-        style: context.textTheme.headlineMedium!.copyWith(fontSize: 18),
+        style: context.textTheme.headlineMedium?.copyWith(fontSize: 18),
       ),
     ]);
   }
@@ -62,7 +62,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
@@ -82,7 +82,7 @@ class QuizDetailsGeneralTab extends StatelessWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],

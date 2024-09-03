@@ -66,7 +66,7 @@ class NewQuizButton extends ConsumerWidget {
             const SmallVSpacer(),
             Text(
               S.of(context).addNewQuizzButton,
-              style: context.theme.textTheme.headlineMedium!.copyWith(
+              style: context.theme.textTheme.headlineMedium?.copyWith(
                 color: AppColorScheme.onPrimary,
               ),
             ),

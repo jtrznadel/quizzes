@@ -85,7 +85,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                   },
                   child: Text(
                     S.of(context).forgotPassword,
-                    style: context.textTheme.labelMedium!.copyWith(
+                    style: context.textTheme.labelMedium?.copyWith(
                       color: context.theme.primaryColor,
                     ),
                   ),

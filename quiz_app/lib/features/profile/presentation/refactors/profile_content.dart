@@ -26,28 +26,22 @@ class ProfileContent extends ConsumerStatefulWidget {
 }
 
 class _ProfileContentState extends ConsumerState<ProfileContent> {
-  var _selectedValue = 'en';
-
-  Future<void> _initializeSelectedValue() async {
-    var languageController = ref.read(languageProvider.notifier);
-    var selectedValue = await languageController.getLocaleCode();
-    setState(() {
-      _selectedValue = selectedValue;
-    });
-  }
+  var usernameTextController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    _initializeSelectedValue();
+  void dispose() {
+    usernameTextController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var usernameTextController = TextEditingController.fromValue(TextEditingValue(text: widget.user.userName));
     var userController = ref.read(userControllerProvider.notifier);
     var authController = ref.read(authControllerProvider.notifier);
     var languageController = ref.read(languageProvider.notifier);
+    var selectedValue = ref.watch(languageProvider).languageCode;
+    usernameTextController.text = widget.user.userName;
+
     return Padding(
       padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
       child: Column(
@@ -130,24 +124,18 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
               const MediumVSpacer(),
               LanguageRadioButton(
                 value: 'en',
-                groupValue: _selectedValue,
+                groupValue: selectedValue,
                 title: S.of(context).languageEnglish,
                 onChanged: (value) {
-                  setState(() {
-                    _selectedValue = value;
-                  });
                   languageController.setLocale(const Locale('en'));
                 },
               ),
               const MediumVSpacer(),
               LanguageRadioButton(
                 value: 'pl',
-                groupValue: _selectedValue,
+                groupValue: selectedValue,
                 title: S.of(context).languagePolish,
                 onChanged: (value) {
-                  setState(() {
-                    _selectedValue = value;
-                  });
                   languageController.setLocale(const Locale('pl'));
                 },
               ),

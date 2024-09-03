@@ -32,7 +32,7 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
     ),
   ),
   labelStyle: textTheme.bodyMedium,
-  hintStyle: textTheme.bodyMedium!.copyWith(color: const Color(0xFF8391A1)),
+  hintStyle: textTheme.bodyMedium?.copyWith(color: const Color(0xFF8391A1)),
   floatingLabelBehavior: FloatingLabelBehavior.never,
   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
   fillColor: AppColorScheme.surfaceContainer,

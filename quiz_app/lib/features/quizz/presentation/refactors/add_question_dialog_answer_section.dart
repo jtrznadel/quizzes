@@ -17,11 +17,7 @@ enum Answer {
 }
 
 class AddQuestionDialogAnswerSection extends StatefulWidget {
-  const AddQuestionDialogAnswerSection({
-    super.key,
-    required this.answerControllers
-  });
-
+  const AddQuestionDialogAnswerSection({super.key, required this.answerControllers});
 
   final Map<Answer, TextEditingController> answerControllers;
 
@@ -101,7 +97,7 @@ class AnswerTextArea extends StatelessWidget {
             minLines: 2,
             maxLines: 2,
             contentPadding: AppTheme.pageDefaultSpacingSize,
-            textStyle: context.textTheme.bodySmall!.copyWith(
+            textStyle: context.textTheme.bodySmall?.copyWith(
               color: AppColorScheme.textSecondary,
               height: AppTheme.addQuestionDialogTextAreaHeight,
             ),

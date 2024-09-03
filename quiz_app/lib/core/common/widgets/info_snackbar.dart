@@ -9,7 +9,7 @@ class InfoSnackbar {
     final snackBar = SnackBar(
       content: Text(
         message,
-        style: context.textTheme.labelMedium!.copyWith(
+        style: context.textTheme.labelMedium?.copyWith(
           color: AppColorScheme.textContrast,
         ),
       ),

@@ -5,12 +5,7 @@ import '../../extensions/context_extension.dart';
 import '../../theme/app_theme.dart';
 
 class QuizStatusBadge extends StatelessWidget {
-  const QuizStatusBadge(
-      {super.key,
-      required this.text,
-      required this.backgroundColor,
-      required this.textColor,
-      this.leadingIcon});
+  const QuizStatusBadge({super.key, required this.text, required this.backgroundColor, required this.textColor, this.leadingIcon});
 
   final String text;
   final Color backgroundColor;
@@ -31,8 +26,7 @@ class QuizStatusBadge extends StatelessWidget {
           if (leadingIcon != null) const SmallHSpacer(),
           Text(
             text,
-            style:
-                context.theme.textTheme.labelMedium!.copyWith(color: textColor),
+            style: context.theme.textTheme.labelMedium?.copyWith(color: textColor),
           ).addPadding(
             padding: const EdgeInsets.symmetric(
               vertical: AppTheme.quizStatusBadgeVerticalPadding,

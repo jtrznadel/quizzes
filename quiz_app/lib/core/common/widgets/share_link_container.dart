@@ -31,7 +31,7 @@ class ShareLinkContainer extends StatelessWidget {
         children: [
           Text(
             link,
-            style: context.textTheme.bodyLarge!.copyWith(
+            style: context.textTheme.bodyLarge?.copyWith(
               color: Colors.black,
             ),
           ),

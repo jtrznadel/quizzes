@@ -33,7 +33,7 @@ class SuccessfulPasswordResetRequestPage extends StatelessWidget {
               width: AppTheme.forgotPasswordSuccessDescriptionWidth,
               child: Text(
                 S.of(context).successfulPasswordResetRequestSubheading,
-                style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+                style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
                 textAlign: TextAlign.center,
               ),
             ),
