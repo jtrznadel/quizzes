@@ -12,7 +12,7 @@ _$QuizListModelImpl _$$QuizListModelImplFromJson(Map<String, dynamic> json) =>
           .map((e) => QuizDashboardModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       totalPages: (json['totalPages'] as num).toInt(),
-      totalItemCount: (json['totalItemCount'] as num).toInt(),
+      totalItemsCount: (json['totalItemsCount'] as num).toInt(),
       itemsFrom: (json['itemsFrom'] as num).toInt(),
       itemsTo: (json['itemsTo'] as num).toInt(),
     );
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$QuizListModelImplToJson(_$QuizListModelImpl instance) =>
     <String, dynamic>{
       'items': instance.items,
       'totalPages': instance.totalPages,
-      'totalItemCount': instance.totalItemCount,
+      'totalItemsCount': instance.totalItemsCount,
       'itemsFrom': instance.itemsFrom,
       'itemsTo': instance.itemsTo,
     };

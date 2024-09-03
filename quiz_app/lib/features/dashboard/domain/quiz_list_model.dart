@@ -10,7 +10,7 @@ class QuizListModel with _$QuizListModel {
   const factory QuizListModel({
     required List<QuizDashboardModel> items,
     required int totalPages,
-    required int totalItemCount,
+    required int totalItemsCount,
     required int itemsFrom,
     required int itemsTo,
   }) = _QuizListModel;

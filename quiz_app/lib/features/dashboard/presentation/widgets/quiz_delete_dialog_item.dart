@@ -8,11 +8,12 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../domain/entities/test_quiz_entity.dart';
+import '../../domain/quiz_dashboard_model.dart';
 
 class QuizDeleteDialogItem extends StatelessWidget {
   const QuizDeleteDialogItem({super.key, required this.quizEntity});
 
-  final TestQuizEntity quizEntity;
+  final QuizDashboardModel quizEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class QuizDeleteDialogItem extends StatelessWidget {
 
   Widget quizHeader(BuildContext context) {
     return Text(
-      quizEntity.quizTitle,
+      quizEntity.title,
       style: context.theme.textTheme.headlineSmall!.copyWith(
         fontSize: 16,
       ),
@@ -70,7 +71,7 @@ class QuizDeleteDialogItem extends StatelessWidget {
 
   Widget quizDescription(BuildContext context) {
     return Text(
-      quizEntity.quizDescription,
+      quizEntity.description,
       style: context.theme.textTheme.bodyMedium!
           .copyWith(color: AppColorScheme.textSecondary),
       maxLines: 1,
@@ -82,13 +83,13 @@ class QuizDeleteDialogItem extends StatelessWidget {
     return Row(
       children: [
         QuizStatusBadge(
-          text: 'Total ${quizEntity.quizNumberOfQuestions} questions',
+          text: 'Total ${quizEntity.totalQuestions} questions',
           backgroundColor: AppColorScheme.secondary,
           textColor: AppColorScheme.primary,
         ),
         const MediumHSpacer(),
         QuizStatusBadge(
-          text: quizEntity.quizStatus,
+          text: quizEntity.status.name,
           backgroundColor: AppColorScheme.successLight,
           textColor: AppColorScheme.success,
         ),

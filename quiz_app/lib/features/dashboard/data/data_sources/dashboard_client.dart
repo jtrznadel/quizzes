@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/http.dart';
 
 import '../../../../core/network/api_constants.dart';
+import '../../../../core/network/dio_client.dart';
 import '../../domain/quiz_list_model.dart';
 
 part 'dashboard_client.g.dart';
+
+final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class DashboardClient {
@@ -22,5 +25,5 @@ abstract class DashboardClient {
 }
 
 final dashboardClientProvider = Provider<DashboardClient>(
-  (ref) => DashboardClient(Dio(), baseUrl: ApiConstants.baseUrl),
+  (ref) => DashboardClient(ref.watch(dioProvider), baseUrl: ApiConstants.baseUrl),
 );

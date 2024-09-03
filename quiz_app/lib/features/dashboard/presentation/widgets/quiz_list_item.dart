@@ -12,19 +12,19 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../domain/entities/test_quiz_entity.dart';
+import '../../domain/quiz_dashboard_model.dart';
 import 'delete_quiz_dialog.dart';
 
 class QuizListItem extends ConsumerWidget {
   const QuizListItem({super.key, required this.quizEntity});
 
-  final TestQuizEntity quizEntity;
+  final QuizDashboardModel quizEntity;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        //TODO: replace hardcoded id with quizEntity.id after dashboard page is implemented
-        ref.read(appRouterProvider).push(QuizzDetailsRoute(id: '27aef3bf-a59c-4015-a2ad-a62a87c7801b'));
+        ref.read(appRouterProvider).push(QuizzDetailsRoute(id: quizEntity.id));
       },
       child: quizContainer(
         [
@@ -65,7 +65,7 @@ class QuizListItem extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Text(quizEntity.quizTitle,
+          child: Text(quizEntity.title,
               style: context.theme.textTheme.headlineSmall!.copyWith(
                 fontSize: 16,
               ),
@@ -94,7 +94,7 @@ class QuizListItem extends ConsumerWidget {
 
   Widget quizDescription(BuildContext context) {
     return Text(
-      quizEntity.quizDescription,
+      quizEntity.description,
       style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
@@ -105,13 +105,13 @@ class QuizListItem extends ConsumerWidget {
     return Row(
       children: [
         QuizStatusBadge(
-          text: 'Total ${quizEntity.quizNumberOfQuestions} questions',
+          text: 'Total ${quizEntity.totalQuestions} questions',
           backgroundColor: AppColorScheme.secondary,
           textColor: AppColorScheme.primary,
         ),
         const MediumHSpacer(),
         QuizStatusBadge(
-          text: quizEntity.quizStatus,
+          text: quizEntity.status.name,
           backgroundColor: AppColorScheme.successLight,
           textColor: AppColorScheme.success,
         ),

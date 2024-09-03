@@ -22,7 +22,7 @@ QuizListModel _$QuizListModelFromJson(Map<String, dynamic> json) {
 mixin _$QuizListModel {
   List<QuizDashboardModel> get items => throw _privateConstructorUsedError;
   int get totalPages => throw _privateConstructorUsedError;
-  int get totalItemCount => throw _privateConstructorUsedError;
+  int get totalItemsCount => throw _privateConstructorUsedError;
   int get itemsFrom => throw _privateConstructorUsedError;
   int get itemsTo => throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $QuizListModelCopyWith<$Res> {
   $Res call(
       {List<QuizDashboardModel> items,
       int totalPages,
-      int totalItemCount,
+      int totalItemsCount,
       int itemsFrom,
       int itemsTo});
 }
@@ -61,7 +61,7 @@ class _$QuizListModelCopyWithImpl<$Res, $Val extends QuizListModel>
   $Res call({
     Object? items = null,
     Object? totalPages = null,
-    Object? totalItemCount = null,
+    Object? totalItemsCount = null,
     Object? itemsFrom = null,
     Object? itemsTo = null,
   }) {
@@ -74,9 +74,9 @@ class _$QuizListModelCopyWithImpl<$Res, $Val extends QuizListModel>
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
               as int,
-      totalItemCount: null == totalItemCount
-          ? _value.totalItemCount
-          : totalItemCount // ignore: cast_nullable_to_non_nullable
+      totalItemsCount: null == totalItemsCount
+          ? _value.totalItemsCount
+          : totalItemsCount // ignore: cast_nullable_to_non_nullable
               as int,
       itemsFrom: null == itemsFrom
           ? _value.itemsFrom
@@ -101,7 +101,7 @@ abstract class _$$QuizListModelImplCopyWith<$Res>
   $Res call(
       {List<QuizDashboardModel> items,
       int totalPages,
-      int totalItemCount,
+      int totalItemsCount,
       int itemsFrom,
       int itemsTo});
 }
@@ -119,7 +119,7 @@ class __$$QuizListModelImplCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
     Object? totalPages = null,
-    Object? totalItemCount = null,
+    Object? totalItemsCount = null,
     Object? itemsFrom = null,
     Object? itemsTo = null,
   }) {
@@ -132,9 +132,9 @@ class __$$QuizListModelImplCopyWithImpl<$Res>
           ? _value.totalPages
           : totalPages // ignore: cast_nullable_to_non_nullable
               as int,
-      totalItemCount: null == totalItemCount
-          ? _value.totalItemCount
-          : totalItemCount // ignore: cast_nullable_to_non_nullable
+      totalItemsCount: null == totalItemsCount
+          ? _value.totalItemsCount
+          : totalItemsCount // ignore: cast_nullable_to_non_nullable
               as int,
       itemsFrom: null == itemsFrom
           ? _value.itemsFrom
@@ -154,7 +154,7 @@ class _$QuizListModelImpl implements _QuizListModel {
   const _$QuizListModelImpl(
       {required final List<QuizDashboardModel> items,
       required this.totalPages,
-      required this.totalItemCount,
+      required this.totalItemsCount,
       required this.itemsFrom,
       required this.itemsTo})
       : _items = items;
@@ -173,7 +173,7 @@ class _$QuizListModelImpl implements _QuizListModel {
   @override
   final int totalPages;
   @override
-  final int totalItemCount;
+  final int totalItemsCount;
   @override
   final int itemsFrom;
   @override
@@ -181,7 +181,7 @@ class _$QuizListModelImpl implements _QuizListModel {
 
   @override
   String toString() {
-    return 'QuizListModel(items: $items, totalPages: $totalPages, totalItemCount: $totalItemCount, itemsFrom: $itemsFrom, itemsTo: $itemsTo)';
+    return 'QuizListModel(items: $items, totalPages: $totalPages, totalItemsCount: $totalItemsCount, itemsFrom: $itemsFrom, itemsTo: $itemsTo)';
   }
 
   @override
@@ -192,8 +192,8 @@ class _$QuizListModelImpl implements _QuizListModel {
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.totalPages, totalPages) ||
                 other.totalPages == totalPages) &&
-            (identical(other.totalItemCount, totalItemCount) ||
-                other.totalItemCount == totalItemCount) &&
+            (identical(other.totalItemsCount, totalItemsCount) ||
+                other.totalItemsCount == totalItemsCount) &&
             (identical(other.itemsFrom, itemsFrom) ||
                 other.itemsFrom == itemsFrom) &&
             (identical(other.itemsTo, itemsTo) || other.itemsTo == itemsTo));
@@ -205,7 +205,7 @@ class _$QuizListModelImpl implements _QuizListModel {
       runtimeType,
       const DeepCollectionEquality().hash(_items),
       totalPages,
-      totalItemCount,
+      totalItemsCount,
       itemsFrom,
       itemsTo);
 
@@ -227,7 +227,7 @@ abstract class _QuizListModel implements QuizListModel {
   const factory _QuizListModel(
       {required final List<QuizDashboardModel> items,
       required final int totalPages,
-      required final int totalItemCount,
+      required final int totalItemsCount,
       required final int itemsFrom,
       required final int itemsTo}) = _$QuizListModelImpl;
 
@@ -239,7 +239,7 @@ abstract class _QuizListModel implements QuizListModel {
   @override
   int get totalPages;
   @override
-  int get totalItemCount;
+  int get totalItemsCount;
   @override
   int get itemsFrom;
   @override

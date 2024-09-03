@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/network/api_constants.dart';
 import '../data/repositories/dashboard_repository.dart';
+import '../domain/quiz_dashboard_model.dart';
 import '../domain/quiz_list_model.dart';
 import 'dashboard_state.dart';
 
@@ -17,7 +18,7 @@ class DashboardController extends _$DashboardController {
     _quizList = const QuizListModel(
       items: [],
       totalPages: 0,
-      totalItemCount: 0,
+      totalItemsCount: 0,
       itemsFrom: 1,
       itemsTo: 0,
     );
@@ -53,7 +54,13 @@ class DashboardController extends _$DashboardController {
           .deleteQuiz(id);
       result.fold(
         (error) => state = DashboardState.error(error.message),
-        (_) => loadQuizzes(),
+        (_) {
+          final tempQuizes = List<QuizDashboardModel>.from(_quizList.items);
+          tempQuizes.removeWhere((element) => element.id == id);
+          state = DashboardState.loaded(
+            _quizList.copyWith(items: tempQuizes),
+          );
+        },
       );
     } catch (e) {
       state = DashboardState.error(e.toString());
