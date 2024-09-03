@@ -51,6 +51,7 @@ class BasicButton extends StatelessWidget {
     ).addPadding(padding: const EdgeInsets.symmetric(vertical: AppTheme.buttonVerticalPadding));
   }
 
+  //TODO: Update button appearance to match design
   Widget buttonContainer(BuildContext context, Widget button) {
     return Container(
       width: width,

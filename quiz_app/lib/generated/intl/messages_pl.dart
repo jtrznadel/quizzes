@@ -173,8 +173,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
         "quizzCreationPreviewHeading":
             MessageLookupByLibrary.simpleMessage("Podgląd quizzu"),
-        "quizzCreationQuitButton":
-            MessageLookupByLibrary.simpleMessage("Tak, zakończ"),
         "quizzCreationQuitHeading":
             MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
         "quizzCreationQuitSubheading": MessageLookupByLibrary.simpleMessage(
@@ -275,12 +273,25 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Tutaj możesz przeglądać statystyki swojego quizzu."),
         "quizzDetailsTabStatisticsTime":
             MessageLookupByLibrary.simpleMessage("Czas"),
+        "quizzQuitButton": MessageLookupByLibrary.simpleMessage("Tak, zakończ"),
         "quizzShareButton": MessageLookupByLibrary.simpleMessage("Udostępnij"),
         "quizzShareHeading":
             MessageLookupByLibrary.simpleMessage("Udostępnij quizz"),
         "quizzShareMessage": MessageLookupByLibrary.simpleMessage(
             "Udostępnij ten quizz swoim znajomym"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Tytuł: "),
+        "quizzTakeAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Rozpocznij quizz"),
+        "quizzTakeFormFieldHint":
+            MessageLookupByLibrary.simpleMessage("Twoje imię"),
+        "quizzTakeFormFieldLabel": MessageLookupByLibrary.simpleMessage("Imię"),
+        "quizzTakeHeading": MessageLookupByLibrary.simpleMessage("Quizz"),
+        "quizzTakeQuitHeading":
+            MessageLookupByLibrary.simpleMessage("Opuścić quizz?"),
+        "quizzTakeQuitSubheading": MessageLookupByLibrary.simpleMessage(
+            "Jeśli teraz wyjdziesz, Twoje postępy zostaną utracone. Będziesz musiał ponownie uzyskać dostęp do quizu z linku, aby go powtórzyć. Czy na pewno chcesz zrezygnować?"),
+        "quizzTakeSubheading": MessageLookupByLibrary.simpleMessage(
+            "Weź udział w naszym quizie, którego celem jest ocena twojego zrozumienia i wiedzy na różne tematy."),
         "registerButton":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Zapisz Quizz"),

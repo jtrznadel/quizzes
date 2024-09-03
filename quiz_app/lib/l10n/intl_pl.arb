@@ -116,7 +116,7 @@
     "quizzDetailsTabGeneralQuizDescriptionHint": "Wprowadź opis quizzu",
     "quizzCreationQuitHeading": "Czy jesteś pewien?",
     "quizzCreationQuitSubheading": "Zamierzasz przerwać proces tworzenia quizzu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta.",
-    "quizzCreationQuitButton": "Tak, zakończ",
+    "quizzQuitButton": "Tak, zakończ",
 
     "quizzCreationAddQuestionHeading": "Nowe pytanie",
     "quizzCreationAddQuestionTitleLabel": "Tytuł pytania",
@@ -144,6 +144,16 @@
     "dashboardTopHeading": "Quizzy",
     "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
     "addNewQuizzButton": "Dodaj nowy quizz",
+
+
+    "quizzTakeAppBarTitle": "Rozpocznij quizz",
+    "quizzTakeQuitHeading": "Opuścić quizz?",
+    "quizzTakeQuitSubheading": "Jeśli teraz wyjdziesz, Twoje postępy zostaną utracone. Będziesz musiał ponownie uzyskać dostęp do quizu z linku, aby go powtórzyć. Czy na pewno chcesz zrezygnować?",
+    "quizzTakeHeading": "Quizz",
+    "quizzTakeSubheading": "Weź udział w naszym quizie, którego celem jest ocena twojego zrozumienia i wiedzy na różne tematy.",
+    "quizzTakeFormFieldLabel": "Imię",
+    "quizzTakeFormFieldHint": "Twoje imię",
+
 
 
     "deleteQuizzHeading": "Czy jesteś pewien?",

@@ -51,7 +51,7 @@ class IFormField extends StatelessWidget {
                 ],
               ),
             ),
-            const SmallVSpacer(),
+            const ExtraSmallVSpacer(),
             SizedBox(
               width: double.infinity,
               child: TextFormField(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/common/widgets/dialogs/basic_dialog.dart';
-import '../../../core/common/widgets/secondary_button.dart';
-import '../../../core/common/widgets/spacers/horizontal_spacers.dart';
-import '../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../core/extensions/context_extension.dart';
-import '../../../core/services/app_router.dart';
-import '../../../core/theme/app_color_scheme.dart';
-import '../../../generated/l10n.dart';
 
-class QuitQuizzCreationDialog extends ConsumerWidget {
-  const QuitQuizzCreationDialog({super.key});
+import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
+import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../generated/l10n.dart';
+
+class QuitQuizzTakingDialog extends ConsumerWidget {
+  const QuitQuizzTakingDialog({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,7 +49,7 @@ class QuitQuizzCreationDialog extends ConsumerWidget {
       children: [
         const SmallVSpacer(),
         Text(
-          S.of(context).quizzCreationQuitSubheading,
+          S.of(context).quizzTakeQuitSubheading,
           style: context.textTheme.bodyMedium,
         ),
       ],
@@ -58,7 +59,7 @@ class QuitQuizzCreationDialog extends ConsumerWidget {
   static void show(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => const QuitQuizzCreationDialog(),
+      builder: (context) => const QuitQuizzTakingDialog(),
     );
   }
 }

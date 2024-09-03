@@ -174,8 +174,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Prompt"),
         "quizzCreationPreviewHeading":
             MessageLookupByLibrary.simpleMessage("Quizz Preview"),
-        "quizzCreationQuitButton":
-            MessageLookupByLibrary.simpleMessage("Yes, quit"),
         "quizzCreationQuitHeading":
             MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "quizzCreationQuitSubheading": MessageLookupByLibrary.simpleMessage(
@@ -277,12 +275,25 @@ class MessageLookup extends MessageLookupByLibrary {
                 "You can view your quiz statistics here."),
         "quizzDetailsTabStatisticsTime":
             MessageLookupByLibrary.simpleMessage("Time"),
+        "quizzQuitButton": MessageLookupByLibrary.simpleMessage("Yes, quit"),
         "quizzShareButton": MessageLookupByLibrary.simpleMessage("Share"),
         "quizzShareHeading":
             MessageLookupByLibrary.simpleMessage("Share quizz"),
         "quizzShareMessage": MessageLookupByLibrary.simpleMessage(
             "Share this quizz with your friends"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Title: "),
+        "quizzTakeAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Take quizz"),
+        "quizzTakeFormFieldHint":
+            MessageLookupByLibrary.simpleMessage("Your name"),
+        "quizzTakeFormFieldLabel": MessageLookupByLibrary.simpleMessage("Name"),
+        "quizzTakeHeading": MessageLookupByLibrary.simpleMessage("Quizz"),
+        "quizzTakeQuitHeading":
+            MessageLookupByLibrary.simpleMessage("Quit quizz?"),
+        "quizzTakeQuitSubheading": MessageLookupByLibrary.simpleMessage(
+            "If you leave now, your progress will be lost. You\'\'ll need access the quizz again from the link to retake it. Are you sure you want to quit?"),
+        "quizzTakeSubheading": MessageLookupByLibrary.simpleMessage(
+            "Engage with our quizz designed to evaluate your understanding and knowledge on various topics."),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Save Quizz"),
         "sessionExpired": MessageLookupByLibrary.simpleMessage(

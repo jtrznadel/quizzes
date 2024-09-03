@@ -18,17 +18,14 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +38,7 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(instance != null, 'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -1031,10 +1027,10 @@ class S {
   }
 
   /// `Yes, quit`
-  String get quizzCreationQuitButton {
+  String get quizzQuitButton {
     return Intl.message(
       'Yes, quit',
-      name: 'quizzCreationQuitButton',
+      name: 'quizzQuitButton',
       desc: '',
       args: [],
     );
@@ -1245,6 +1241,76 @@ class S {
     return Intl.message(
       'Here, you can effortlessly list, delete, edit and create new exams.',
       name: 'dashboardSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take quizz`
+  String get quizzTakeAppBarTitle {
+    return Intl.message(
+      'Take quizz',
+      name: 'quizzTakeAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quit quizz?`
+  String get quizzTakeQuitHeading {
+    return Intl.message(
+      'Quit quizz?',
+      name: 'quizzTakeQuitHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you leave now, your progress will be lost. You''ll need access the quizz again from the link to retake it. Are you sure you want to quit?`
+  String get quizzTakeQuitSubheading {
+    return Intl.message(
+      'If you leave now, your progress will be lost. You\'\'ll need access the quizz again from the link to retake it. Are you sure you want to quit?',
+      name: 'quizzTakeQuitSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizz`
+  String get quizzTakeHeading {
+    return Intl.message(
+      'Quizz',
+      name: 'quizzTakeHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Engage with our quizz designed to evaluate your understanding and knowledge on various topics.`
+  String get quizzTakeSubheading {
+    return Intl.message(
+      'Engage with our quizz designed to evaluate your understanding and knowledge on various topics.',
+      name: 'quizzTakeSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get quizzTakeFormFieldLabel {
+    return Intl.message(
+      'Name',
+      name: 'quizzTakeFormFieldLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your name`
+  String get quizzTakeFormFieldHint {
+    return Intl.message(
+      'Your name',
+      name: 'quizzTakeFormFieldHint',
       desc: '',
       args: [],
     );

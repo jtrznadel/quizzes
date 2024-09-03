@@ -116,7 +116,7 @@
 
     "quizzCreationQuitHeading": "Are you sure?",
     "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",
-    "quizzCreationQuitButton": "Yes, quit",
+    "quizzQuitButton": "Yes, quit",
 
     "quizzCreationAddQuestionHeading": "New question",
     "quizzCreationAddQuestionTitleLabel": "Question Title",
@@ -144,6 +144,14 @@
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
     "addNewQuizzButton": "Add new quizz",
+
+    "quizzTakeAppBarTitle": "Take quizz",
+    "quizzTakeQuitHeading": "Quit quizz?",
+    "quizzTakeQuitSubheading": "If you leave now, your progress will be lost. You''ll need access the quizz again from the link to retake it. Are you sure you want to quit?",
+    "quizzTakeHeading": "Quizz",
+    "quizzTakeSubheading": "Engage with our quizz designed to evaluate your understanding and knowledge on various topics.",
+    "quizzTakeFormFieldLabel": "Name",
+    "quizzTakeFormFieldHint": "Your name",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
