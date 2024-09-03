@@ -44,7 +44,7 @@ class IFormField extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: isRequired ? '*' : '',
-                    style: context.textTheme.bodyMedium!.copyWith(
+                    style: context.textTheme.bodyMedium?.copyWith(
                       color: AppColorScheme.error,
                     ),
                   ),
@@ -70,7 +70,7 @@ class IFormField extends StatelessWidget {
                   suffixIcon: suffixIcon,
                   errorMaxLines: 6,
                 ),
-                style: context.textTheme.labelMedium!.copyWith(
+                style: context.textTheme.labelMedium?.copyWith(
                   fontWeight: FontWeight.w400,
                   fontFamily: GoogleFonts.inter().fontFamily,
                 ),

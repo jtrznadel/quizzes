@@ -5,8 +5,7 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_theme.dart';
 
 class BottomSheetTile extends StatelessWidget {
-  const BottomSheetTile(
-      {super.key, required this.text, required this.icon, required this.onTap});
+  const BottomSheetTile({super.key, required this.text, required this.icon, required this.onTap});
 
   final String text;
   final Widget icon;
@@ -25,7 +24,7 @@ class BottomSheetTile extends StatelessWidget {
             icon,
             Text(
               text,
-              style: context.theme.textTheme.labelMedium!.copyWith(
+              style: context.theme.textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.w400,
                 fontFamily: GoogleFonts.inter().fontFamily,
               ),

@@ -29,7 +29,7 @@ class AuthRedirectButton extends StatelessWidget {
             onPressed: navigateTo,
             child: Text(
               buttonText,
-              style: context.textTheme.bodyMedium!.copyWith(
+              style: context.textTheme.bodyMedium?.copyWith(
                 color: context.theme.primaryColor,
               ),
             ),

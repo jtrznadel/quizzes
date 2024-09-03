@@ -48,7 +48,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
             const SmallVSpacer(),
             Text(
               S.of(context).forgotPasswordSubheading,
-              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
             ),
             const LargeVSpacer(),
             Form(

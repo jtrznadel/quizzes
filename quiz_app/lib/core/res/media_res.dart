@@ -26,4 +26,6 @@ class MediaRes {
   static const String deleteQuiz = 'assets/icons/delete_icon.svg';
   static const String userProfile = 'assets/icons/dashboard_profile_icon.svg';
   static const String addQuiz = 'assets/icons/add_quiz_icon.svg';
+  static const String languageRadioChecked = 'assets/icons/l10n_radio_button_checked.svg';
+  static const String languageRadioUnchecked = 'assets/icons/l10n_radio_button_unchecked.svg';
 }

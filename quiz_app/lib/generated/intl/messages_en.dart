@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add new question"),
         "addNewQuestionBottomSheetManual":
             MessageLookupByLibrary.simpleMessage("Manual"),
+        "addNewQuizzButton":
+            MessageLookupByLibrary.simpleMessage("Add new quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
@@ -65,6 +67,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid e-mail address."),
         "invalidEmailOrPassword":
             MessageLookupByLibrary.simpleMessage("Invalid e-mail or password."),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "languageEnglish": MessageLookupByLibrary.simpleMessage("English"),
+        "languagePolish": MessageLookupByLibrary.simpleMessage("Polish"),
+        "linkCopied":
+            MessageLookupByLibrary.simpleMessage("Link copied to clipboard"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Log In"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Password reset"),
@@ -94,6 +101,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
         "profileDeleteButtonLabel":
             MessageLookupByLibrary.simpleMessage("Delete your account"),
+        "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "You are about to delete your account. This action cannot be undone."),
+        "profileDeleteDialogHeading":
+            MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "This is your public display name."),
         "profileNameHint":

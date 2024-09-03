@@ -38,14 +38,14 @@ class BasicButton extends StatelessWidget {
       mainAxisAlignment: contentAlignment,
       children: [
         const LargeHSpacer(),
-        iconAlignment == IconAlignment.start ? icon?? Container() : Container(),
+        iconAlignment == IconAlignment.start ? icon ?? Container() : Container(),
         iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
         Text(
           text,
-          style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
+          style: context.theme.textTheme.labelLarge?.copyWith(color: contentColor),
         ),
         iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
-        iconAlignment == IconAlignment.end ? icon?? Container() : Container(),
+        iconAlignment == IconAlignment.end ? icon ?? Container() : Container(),
         const LargeHSpacer(),
       ],
     ).addPadding(padding: const EdgeInsets.symmetric(vertical: AppTheme.buttonVerticalPadding));

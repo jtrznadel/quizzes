@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj nowe pytanie"),
         "addNewQuestionBottomSheetManual":
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
+        "addNewQuizzButton":
+            MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
@@ -65,6 +67,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
         "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy adres e-mail lub hasło."),
+        "language": MessageLookupByLibrary.simpleMessage("Język"),
+        "languageEnglish": MessageLookupByLibrary.simpleMessage("Angielski"),
+        "languagePolish": MessageLookupByLibrary.simpleMessage("Polski"),
+        "linkCopied":
+            MessageLookupByLibrary.simpleMessage("Skopiowano link do schowka"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
         "newPasswordAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Resetowanie hasła"),
@@ -94,6 +101,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
         "profileDeleteButtonLabel":
             MessageLookupByLibrary.simpleMessage("Usuń swoje konto"),
+        "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta."),
+        "profileDeleteDialogHeading":
+            MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "To jest Twoja publiczna nazwa wyświetlana."),
         "profileNameHint":
