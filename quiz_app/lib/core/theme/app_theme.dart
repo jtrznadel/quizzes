@@ -9,6 +9,9 @@ abstract class AppTheme {
   static const double pageDefaultTopPaddingSize = 24;
   static const double mediumRadius = 8;
 
+  static const double radiusFull = 9999;
+  static const double radiusMedium = 8;
+
   static const double answerTextAreaPadding = 8;
   static const double quizStatusBadgeVerticalPadding = 8;
   static const double statusBadgeBorderRadius = 32;

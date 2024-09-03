@@ -7,6 +7,7 @@ import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
@@ -56,7 +57,11 @@ class TakeQuizzPage extends StatelessWidget {
             TakeQuizzInfoBox(quizEntity: quizEntity),
             const LargeVSpacer(),
             BasicButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.push(
+                  const TakeQuizzWraperRoute(),
+                );
+              },
               text: 'Start Quizz',
               width: double.infinity,
             ),
