@@ -55,7 +55,7 @@ class QuestionBox extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () => onDelete(),
+                        onPressed: () {},
                         icon: SvgPicture.asset(
                           MediaRes.pencil,
                         ),
@@ -63,9 +63,7 @@ class QuestionBox extends StatelessWidget {
                       Consumer(
                         builder: (context, ref, child) {
                           return IconButton(
-                            onPressed: () {
-                              onDelete();
-                            },
+                            onPressed: () => onDelete(),
                             icon: SvgPicture.asset(
                               MediaRes.trash,
                             ),
