@@ -8,7 +8,7 @@ class QuizGenerationModel with _$QuizGenerationModel {
   const factory QuizGenerationModel({
     required String content,
     required int numberOfQuestions,
-    required String questionType,
+    required List<String> questionTypes,
   }) = _QuizGenerationModel;
 
   factory QuizGenerationModel.fromJson(Map<String, dynamic> json) => _$QuizGenerationModelFromJson(json);

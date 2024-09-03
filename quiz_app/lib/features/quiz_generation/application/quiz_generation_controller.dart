@@ -19,7 +19,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   QuizGenerationState build() {
     _quizModel = QuizGenerationModel(
       content: '',
-      questionType: QuestionType.MultipleChoice.name,
+      questionTypes: [],
       numberOfQuestions: QuestionNumberSelection.low.value,
     );
     _quiz =
@@ -28,7 +28,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   String get content => _quizModel.content;
-  String get typeOfQuestions => _quizModel.questionType;
+  List<String> get typeOfQuestions => _quizModel.questionTypes;
   int get numberOfQuestions => _quizModel.numberOfQuestions;
 
   String get title => _quiz.title;
@@ -39,8 +39,15 @@ class QuizGenerationController extends _$QuizGenerationController {
     _quizModel = _quizModel.copyWith(content: content);
   }
 
-  void setTypeOfQuestions(String typeOfQuestions) {
-    _quizModel = _quizModel.copyWith(questionType: typeOfQuestions);
+  void addTypeOfQuestions(String typeOfQuestions) {
+    _quizModel = _quizModel.copyWith(
+        questionTypes: [..._quizModel.questionTypes, typeOfQuestions]);
+  }
+
+  void removeTypeOfQuestions(String typeOfQuestions) {
+    final questionTypes = List<String>.from(_quizModel.questionTypes);
+    questionTypes.remove(typeOfQuestions);
+    _quizModel = _quizModel.copyWith(questionTypes: questionTypes);
   }
 
   void setNumberOfQuestions(int numberOfQuestions) {
@@ -51,6 +58,19 @@ class QuizGenerationController extends _$QuizGenerationController {
     _quiz = _quiz.copyWith(
         createQuestionsDto: [..._quiz.createQuestionsDto, question]);
     state = QuizGenerationState.generated(_quiz);
+  }
+
+  bool validate() {
+    if (_quizModel.content.isEmpty) {
+      return false;
+    }
+    if (_quizModel.questionTypes.isEmpty) {
+      return false;
+    }
+    if (_quizModel.numberOfQuestions == 0) {
+      return false;
+    }
+    return true;
   }
 
   Future<void> generate() async {

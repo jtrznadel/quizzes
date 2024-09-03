@@ -55,12 +55,25 @@ class QuizzConfigurePage extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 8),
               child: BasicButton(
                 onPressed: () async {
-                  pageController.nextPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut,
-                  );
                   try {
-                    await quizGenerationController.generate();
+                    if (quizGenerationController.validate()) {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      );
+                      await quizGenerationController.generate();
+                    } else {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              //TODO: replace with translation
+                              "Pick question type and number of questions!",
+                            ),
+                          ),
+                        );
+                      }
+                    }
                   } catch (e) {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(

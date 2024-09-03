@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../application/quiz_generation_controller.dart';
-import 'radio_list_tile.dart';
+import 'question_type_button.dart';
 import '../../../../generated/l10n.dart';
 
 enum QuestionType { MultipleChoice, TrueFalse }
@@ -16,7 +16,8 @@ class QuestionTypePicker extends ConsumerStatefulWidget {
 }
 
 class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
-  QuestionType _selectedValue = QuestionType.MultipleChoice;
+  bool multipleChoice = false;
+  bool trueFalse = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,26 +28,36 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
           style: context.textTheme.labelLarge,
         ),
         const CustomVSpacer(12),
-        IRadioListTile<QuestionType>(
+        QuestionTypeButton(
           title: S.of(context).quizzCreationConfigureType1,
-          value: QuestionType.MultipleChoice,
-          groupValue: _selectedValue,
+          value: multipleChoice,
           onChanged: (value) {
             setState(() {
-              _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setTypeOfQuestions(value.name);
+              value = !value;
+              multipleChoice = value;
+              if(value) {
+                ref.read(quizGenerationControllerProvider.notifier).addTypeOfQuestions(QuestionType.MultipleChoice.name);
+              }
+              else{
+                ref.read(quizGenerationControllerProvider.notifier).removeTypeOfQuestions(QuestionType.MultipleChoice.name);
+              }
             });
           },
         ),
         const SmallVSpacer(),
-        IRadioListTile<QuestionType>(
+        QuestionTypeButton(
           title: S.of(context).quizzCreationConfigureType2,
-          value: QuestionType.TrueFalse,
-          groupValue: _selectedValue,
+          value: trueFalse,
           onChanged: (value) {
             setState(() {
-              _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setTypeOfQuestions(value.name);
+              value = !value;
+              trueFalse = value;
+              if(value) {
+                ref.read(quizGenerationControllerProvider.notifier).addTypeOfQuestions(QuestionType.TrueFalse.name);
+              }
+              else{
+                ref.read(quizGenerationControllerProvider.notifier).removeTypeOfQuestions(QuestionType.TrueFalse.name);
+              }
             });
           },
         ),
