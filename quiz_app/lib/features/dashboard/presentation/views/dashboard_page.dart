@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:paginated_list/paginated_list.dart';
 
 import '../../../../core/common/widgets/error_page.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -16,6 +17,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/dashboard_controller.dart';
 import '../../domain/entities/test_quiz_entity.dart';
+import '../../domain/quiz_dashboard_model.dart';
 import '../widgets/new_quiz_button.dart';
 import '../widgets/quiz_list_item.dart';
 
@@ -25,22 +27,19 @@ class DashboardPage extends ConsumerStatefulWidget {
 
   @override
   _DashboardPageState createState() => _DashboardPageState();
-
 }
 
-class _DashboardPageState extends ConsumerState<DashboardPage>{
-
+class _DashboardPageState extends ConsumerState<DashboardPage> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(dashboardControllerProvider.notifier).loadQuizzes();
+      ref.read(dashboardControllerProvider.notifier).initLoad();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final quizzes = generateMockQuizes(2);
     final state = ref.watch(dashboardControllerProvider);
     final controller = ref.read(dashboardControllerProvider.notifier);
 
@@ -54,25 +53,35 @@ class _DashboardPageState extends ConsumerState<DashboardPage>{
                 topBar(context, ref),
                 const SmallVSpacer(),
                 Expanded(
-                  child: ListView(
-                    children: [
-                      ListView.builder(
-                        physics: const ScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: quizListModel.items.length,
-                        itemBuilder: (context, index) {
-                          return QuizListItem(quizEntity: quizListModel.items[index])
-                              .addPadding(
+                  child: PaginatedList<QuizDashboardModel>(
+                    loadingIndicator: const Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: AppTheme.pageDefaultSpacingSize),
+                      child: Center(child: CircularProgressIndicator()),
+                    ),
+                    items: quizListModel.items,
+                    isRecentSearch: false,
+                    isLastPage: quizListModel.totalItemsCount <=
+                        quizListModel.items.length,
+                    onLoadMore: (index) {
+                      controller.loadMore();
+                    },
+                    builder: (quiz, index) {
+                      return Column(
+                        children: [
+                          QuizListItem(quizEntity: quiz).addPadding(
                             padding: const EdgeInsets.only(
                               bottom: AppTheme.dashboardQuizItemBottomPadding,
                             ),
-                          );
-                        },
-                      ),
-                      const NewQuizButton(),
-                    ],
+                          ),
+                          if(index == quizListModel.items.length - 1)
+                            const NewQuizButton(),
+                        ],
+                      );
+                    },
                   ),
-                )
+                ),
+                //const NewQuizButton(),
               ],
             );
           },

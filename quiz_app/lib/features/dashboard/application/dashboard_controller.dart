@@ -25,7 +25,7 @@ class DashboardController extends _$DashboardController {
     return const DashboardState.loading();
   }
 
-  void loadQuizzes() async {
+  void initLoad() async {
     state = const DashboardState.loading();
 
     try {
@@ -38,7 +38,27 @@ class DashboardController extends _$DashboardController {
           _quizList = quizList.copyWith(
             items: [..._quizList.items, ...quizList.items],
           );
-          state = DashboardState.loaded(quizList);
+          state = DashboardState.loaded(_quizList);
+          _currentPage++;
+        },
+      );
+    } catch (e) {
+      state = DashboardState.error(e.toString());
+    }
+  }
+
+  void loadMore() async {
+    try {
+      final result = await ref
+          .read(dashboardRepositoryProvider)
+          .getQuizList(_currentPage, ApiConstants.quizPageSize);
+      result.fold(
+        (error) => state = DashboardState.error(error.message),
+        (quizList) {
+          _quizList = quizList.copyWith(
+            items: [..._quizList.items, ...quizList.items],
+          );
+          state = DashboardState.loaded(_quizList);
           _currentPage++;
         },
       );
@@ -49,16 +69,14 @@ class DashboardController extends _$DashboardController {
 
   void deleteQuiz(String id) async {
     try {
-      final result = await ref
-          .read(dashboardRepositoryProvider)
-          .deleteQuiz(id);
+      final result = await ref.read(dashboardRepositoryProvider).deleteQuiz(id);
       result.fold(
         (error) => state = DashboardState.error(error.message),
         (_) {
           final tempQuizes = List<QuizDashboardModel>.from(_quizList.items);
           tempQuizes.removeWhere((element) => element.id == id);
           state = DashboardState.loaded(
-            _quizList.copyWith(items: tempQuizes),
+            _quizList.copyWith(items: tempQuizes, totalItemsCount: _quizList.totalItemsCount - 1),
           );
         },
       );
