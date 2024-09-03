@@ -29,4 +29,5 @@ class ApiConstants {
 
   static const String quizListEndpoint = 'quiz';
   static const String deleteQuizEndpoint = 'quiz/{id}';
+  static const int quizPageSize = 10;
 }
