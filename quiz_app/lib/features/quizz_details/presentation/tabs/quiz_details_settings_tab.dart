@@ -5,7 +5,6 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../application/quiz_details_controller.dart';
-import '../../application/quiz_details_state.dart';
 import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
 import '../widgets/text_checkbox.dart';

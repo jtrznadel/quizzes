@@ -5,29 +5,36 @@ import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class QuizDetailsGeneralTab extends StatelessWidget {
+import '../../application/quiz_details_controller.dart';
+
+class QuizDetailsGeneralTab extends ConsumerWidget {
   const QuizDetailsGeneralTab({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final titleController = TextEditingController();
-    final descriptionController = TextEditingController();
-    titleController.text = S.of(context).tempQuizzSummaryTitle;
-    descriptionController.text = S.of(context).tempQuizzSummaryDescription;
-    return Column(
-      children: [
-        const MediumVSpacer(),
-        generalHeader(context),
-        const MediumVSpacer(),
-        pageSettingsHeader(context),
-        const MediumVSpacer(),
-        quizTitleTextField(context, titleController),
-        const MediumVSpacer(),
-        quizDescriptionTextField(context, descriptionController),
-        const MediumVSpacer(),
-        saveButton(context, titleController, descriptionController)
-      ],
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(quizDetailsControllerProvider);
+    return state.maybeWhen(
+      loaded: (quizDetails) {
+        final titleController = TextEditingController(text: quizDetails.title);
+        final descriptionController = TextEditingController(text: quizDetails.description);
+        return Column(
+          children: [
+            const MediumVSpacer(),
+            generalHeader(context),
+            const MediumVSpacer(),
+            pageSettingsHeader(context),
+            const MediumVSpacer(),
+            quizTitleTextField(context, titleController),
+            const MediumVSpacer(),
+            quizDescriptionTextField(context, descriptionController),
+            const MediumVSpacer(),
+            saveButton(context, titleController, descriptionController)
+          ],
+        );
+      },
+      orElse: () => const SizedBox.shrink(),
     );
   }
 
@@ -35,7 +42,8 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralSubheading,
-        style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+        style: context.textTheme.bodyMedium!
+            .copyWith(color: AppColorScheme.textSecondary),
       ),
     ]);
   }
@@ -49,7 +57,8 @@ class QuizDetailsGeneralTab extends StatelessWidget {
     ]);
   }
 
-  Widget quizTitleTextField(BuildContext context, TextEditingController controller) {
+  Widget quizTitleTextField(
+      BuildContext context, TextEditingController controller) {
     return Column(
       children: [
         TextArea(
@@ -62,14 +71,16 @@ class QuizDetailsGeneralTab extends StatelessWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
     );
   }
 
-  Widget quizDescriptionTextField(BuildContext context, TextEditingController controller) {
+  Widget quizDescriptionTextField(
+      BuildContext context, TextEditingController controller) {
     return Column(
       children: [
         TextArea(
@@ -81,15 +92,19 @@ class QuizDetailsGeneralTab extends StatelessWidget {
         ),
         const SmallVSpacer(),
         Text(
-          S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          S
+              .of(context)
+              .quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
     );
   }
 
-  Widget saveButton(BuildContext context, TextEditingController titleController, TextEditingController descriptionController) {
+  Widget saveButton(BuildContext context, TextEditingController titleController,
+      TextEditingController descriptionController) {
     return Align(
       alignment: Alignment.centerRight,
       child: BasicButton(
