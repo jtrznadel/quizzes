@@ -1,188 +1,128 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../dashboard/domain/entities/test_quiz_entity.dart';
+import '../../application/quizz_take_controller.dart';
+import '../widgets/quizz_multiple_answer_card.dart';
+import '../widgets/quizz_progress_indicator.dart';
+import '../widgets/quizz_step_content.dart';
 
 @RoutePage()
-class TakeQuizzWraperPage extends StatefulWidget {
+class TakeQuizzWraperPage extends ConsumerStatefulWidget {
   const TakeQuizzWraperPage({super.key});
 
   @override
-  State<TakeQuizzWraperPage> createState() => _TakeQuizzWraperPageState();
+  ConsumerState<TakeQuizzWraperPage> createState() => _TakeQuizzWraperPageState();
 }
 
-class _TakeQuizzWraperPageState extends State<TakeQuizzWraperPage> {
-  final _stepController = PageController();
-  int _currentStep = 1;
+class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
+  final stepController = PageController();
 
-  @override
-  void dispose() {
-    _stepController.dispose();
-    super.dispose();
-  }
-
-  List<QuizzStep> pages = [
-    QuizzStep(
+  List<QuizzStepContent> pages = [
+    QuizzStepContent(
       question: QuestionEntity(
         question: '1. What is one of the key features of cryptocurrencies?',
         answers: ['Physical existence', 'Cannot be counterfeited and double-spent', 'They are centralized', 'They are regulated'],
+        questionId: '1',
       ),
     ),
-    QuizzStep(
+    QuizzStepContent(
       question: QuestionEntity(
-        question: '2. What is one of the key features of cryptocurrencies?',
-        answers: ['Physical existence', 'Physical existence', 'Physical existence', 'Physical existence'],
+        question: '2. What is the underlying technology behind cryptocurrencies?',
+        answers: ['Blockchain', 'Cloud Computing', 'Quantum Computing', 'Artificial Intelligence'],
+        questionId: '2',
       ),
     ),
-    QuizzStep(
+    QuizzStepContent(
       question: QuestionEntity(
-        question: '3. What is one of the key features of cryptocurrencies?',
-        answers: ['Physical existence', 'Physical existence', 'Physical existence', 'Physical existence'],
+        question: '3. Which of the following is a popular cryptocurrency?',
+        answers: ['Bitcoin', 'Dollar', 'Euro', 'Yen'],
+        questionId: '3',
       ),
     ),
-    QuizzStep(
+    QuizzStepContent(
       question: QuestionEntity(
-        question: '4. What is one of the key features of cryptocurrencies?',
-        answers: ['Physical existence', 'Physical existence', 'Physical existence', 'Physical existence'],
+        question: '4. What is the process of verifying transactions in a blockchain called?',
+        answers: ['Mining', 'Harvesting', 'Plowing', 'Sowing'],
+        questionId: '4',
       ),
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final quizzState = ref.watch(quizzTakeControllerProvider);
+    final quizzController = ref.read(quizzTakeControllerProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: QuizzProgressIndicator(numberOfSteps: pages.length, currentStep: _currentStep),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-        child: PageView(
-          controller: _stepController,
-          onPageChanged: (value) => setState(() => _currentStep = value + 1),
-          children: pages,
+        title: quizzState.maybeWhen(
+          loaded: (currentStep, answers) => QuizzProgressIndicator(
+            currentStep: currentStep,
+            numberOfSteps: pages.length,
+          ),
+          orElse: () => const SizedBox.shrink(),
         ),
       ),
-    );
-  }
-}
-
-class QuizzStep extends StatelessWidget {
-  const QuizzStep({super.key, required this.question});
-
-  final QuestionEntity question;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          question.question,
-          style: context.textTheme.headlineMedium,
-        ),
-        const ExtraLargeVSpacer(),
-        GridView.count(
-          physics: const NeverScrollableScrollPhysics(),
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          children: List.generate(question.answers.length, (index) {
-            return QuizzAnswerCard(
-              answer: question.answers[index],
-              indicator: ['A', 'B', 'C', 'D'][index],
-            );
-          }),
-        ),
-      ],
-    );
-  }
-}
-
-class QuizzAnswerCard extends StatelessWidget {
-  const QuizzAnswerCard({super.key, required this.answer, required this.indicator});
-
-  final String answer;
-  final String indicator;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: context.width / 2,
-      height: context.width / 2,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(AppTheme.radiusMedium),
-      ),
-      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-      child: Expanded(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Text(
-                indicator,
-                style: context.textTheme.labelMedium,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView(
+                  controller: stepController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: pages,
+                ),
               ),
-            ),
-            const ExtraLargeVSpacer(),
-            Expanded(
-              flex: 8,
-              child: Text(
-                answer,
-                style: context.textTheme.bodyMedium,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class QuizzProgressIndicator extends StatelessWidget {
-  const QuizzProgressIndicator({super.key, required this.numberOfSteps, required this.currentStep});
-
-  final int numberOfSteps;
-  final int currentStep;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 8,
-          decoration: BoxDecoration(
-            color: AppColorScheme.secondary,
-            borderRadius: BorderRadius.circular(AppTheme.radiusFull),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  quizzState.maybeWhen(
+                    loaded: (currentStep, answers) => currentStep > 1
+                        ? BasicButton(
+                            onPressed: () {
+                              if (currentStep > 0) {
+                                stepController.previousPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+                                quizzController.previousStep();
+                              }
+                            },
+                            text: 'Previous')
+                        : const Spacer(),
+                    orElse: () => const Spacer(),
+                  ),
+                  quizzState.maybeWhen(
+                    loaded: (currentStep, answers) => currentStep < pages.length
+                        ? BasicButton(
+                            onPressed: () {
+                              if (currentStep < pages.length) {
+                                stepController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+                                quizzController.nextStep();
+                              }
+                            },
+                            text: 'Next',
+                          )
+                        : BasicButton(
+                            onPressed: () {
+                              quizzController.finishQuizz(id: '1');
+                              context.router.maybePop();
+                            },
+                            text: 'Finish',
+                          ),
+                    orElse: () => const SizedBox.shrink(),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.decelerate,
-          height: 8,
-          decoration: BoxDecoration(
-            color: AppColorScheme.primary,
-            borderRadius: BorderRadius.circular(AppTheme.radiusFull),
-          ),
-          width: context.width * currentStep / numberOfSteps,
-        ),
-      ],
+      ),
     );
   }
-}
-
-class QuestionEntity {
-  final String question;
-  final List<String> answers;
-
-  QuestionEntity({required this.question, required this.answers});
 }

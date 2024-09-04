@@ -6,18 +6,14 @@ part of 'quiz_generation_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$quizGenerationControllerHash() =>
-    r'05ff7fa06546117d382f9231967c03a8e46b404e';
+String _$quizGenerationControllerHash() => r'05ff7fa06546117d382f9231967c03a8e46b404e';
 
 /// See also [QuizGenerationController].
 @ProviderFor(QuizGenerationController)
-final quizGenerationControllerProvider = AutoDisposeNotifierProvider<
-    QuizGenerationController, QuizGenerationState>.internal(
+final quizGenerationControllerProvider = AutoDisposeNotifierProvider<QuizGenerationController, QuizGenerationState>.internal(
   QuizGenerationController.new,
   name: r'quizGenerationControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$quizGenerationControllerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$quizGenerationControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
