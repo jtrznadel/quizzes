@@ -75,11 +75,6 @@ class QuestionBox extends StatelessWidget {
                   ),
                 ],
               ),
-              const SmallVSpacer(),
-              Text(
-                S.of(context).tempQuestionDescription,
-                style: context.textTheme.bodyMedium,
-              ),
               const MediumVSpacer(),
               ListView.builder(
                 itemCount: question.createAnswersDto.length,
