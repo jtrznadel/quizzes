@@ -11,7 +11,7 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../domain/entities/test_quiz_entity.dart';
+import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../domain/quiz_dashboard_model.dart';
 import 'delete_quiz_dialog.dart';
 
@@ -112,8 +112,8 @@ class QuizListItem extends ConsumerWidget {
         const MediumHSpacer(),
         QuizStatusBadge(
           text: quizEntity.status.name,
-          backgroundColor: AppColorScheme.successLight,
-          textColor: AppColorScheme.success,
+          backgroundColor: quizEntity.status == QuizStatus.Active ? AppColorScheme.successLight : AppColorScheme.warningLight,
+          textColor: quizEntity.status == QuizStatus.Active ? AppColorScheme.success : AppColorScheme.warning,
         ),
       ],
     );

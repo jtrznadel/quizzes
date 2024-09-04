@@ -4,6 +4,7 @@ import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../dashboard/application/dashboard_controller.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
@@ -105,7 +106,6 @@ class _QuizDetailsSettingsTabState
               final state = ref.watch(quizDetailsControllerProvider);
               return state.maybeWhen(
                 loaded: (quizDetails) {
-                  print(quizDetails.status);
                   return Align(
                     alignment: Alignment.centerRight,
                     child: BasicButton(
@@ -115,6 +115,12 @@ class _QuizDetailsSettingsTabState
                             ref.read(quizDetailsControllerProvider.notifier);
                         await controller.updateQuizStatus(quizDetails.id);
                         await controller.updateQuizAvailability(quizDetails.id);
+                        ref
+                            .read(dashboardControllerProvider.notifier)
+                            .notifyStatusChanged(
+                                quizDetails.id,
+                                controller.tempStatus,
+                                controller.tempAvailability);
                         state.maybeWhen(
                           loaded: (quizDetails) {
                             ScaffoldMessenger.of(context).showSnackBar(

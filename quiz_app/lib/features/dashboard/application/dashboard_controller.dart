@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/network/api_constants.dart';
+import '../../quizz_details/domain/quiz_details_model.dart';
 import '../data/repositories/dashboard_repository.dart';
 import '../domain/quiz_dashboard_model.dart';
 import '../domain/quiz_list_model.dart';
@@ -82,6 +83,15 @@ class DashboardController extends _$DashboardController {
       );
     } catch (e) {
       state = DashboardState.error(e.toString());
+    }
+  }
+
+  void notifyStatusChanged(String id, QuizStatus status, QuizAvailability availability) {
+    final tempQuizes = List<QuizDashboardModel>.from(_quizList.items);
+    final index = tempQuizes.indexWhere((element) => element.id == id);
+    if (index != -1) {
+      tempQuizes[index] = tempQuizes[index].copyWith(status: status, availability: availability);
+      state = DashboardState.loaded(_quizList.copyWith(items: tempQuizes));
     }
   }
 }
