@@ -40,10 +40,6 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
     if (authState == const AuthState.unauthenticated()) {
       ref.read(appRouterProvider).replaceAll([const SignInRoute()]);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
     return Scaffold(
       appBar: BasicAppBar(
         title: S.of(context).profileAppbarTitle,
@@ -88,69 +84,8 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                   ),
                 );
               },
-<<<<<<< HEAD
-              success: (user, isUsernameUpdating) {
-                var controller = TextEditingController.fromValue(TextEditingValue(text: user.userName));
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      S.of(context).profileSubheading,
-                      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-                      textAlign: TextAlign.start,
-                    ),
-                    const SmallVSpacer(),
-                    TextArea(
-                      hintText: S.of(context).profileNameHint,
-                      controller: controller,
-                      maxLines: 3,
-                      labelText: S.of(context).profileNameLabel,
-                    ),
-                    const SmallVSpacer(),
-                    Text(
-                      S.of(context).profileNameDescription,
-                      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-                      textAlign: TextAlign.start,
-                    ),
-                    const SmallVSpacer(),
-                    BasicButton(
-                      onPressed: () async {
-                        try {
-                          await userController.updateUser(
-                            user: user.copyWith(userName: controller.text),
-                          );
-                        } catch (_) {
-                          context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
-                        }
-                      },
-                      text: isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
-                    ),
-                    const ExtraLargeVSpacer(),
-                    Text(
-                      S.of(context).profileSignOutDescription,
-                      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-                    ),
-                    const SmallVSpacer(),
-                    SecondaryButton(
-                      onPressed: () async {
-                        try {
-                          await authController.signOut();
-                        } catch (_) {
-                          context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
-                        }
-                      },
-                      text: S.of(context).profileSignOutButton,
-                      bgColor: AppColorScheme.error,
-                      contentColor: AppColorScheme.textContrast,
-                    ),
-                  ],
-                ).addPadding(
-                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-                );
-=======
               orElse: () {
                 return const CircularProgressIndicator();
->>>>>>> dev
               },
             ),
           ],
