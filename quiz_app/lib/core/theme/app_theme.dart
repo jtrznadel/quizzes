@@ -7,6 +7,7 @@ import 'app_text_theme.dart';
 abstract class AppTheme {
   static const double pageDefaultSpacingSize = 16;
   static const double pageDefaultTopPaddingSize = 24;
+  static const double mediumRadius = 8;
 
   static const double answerTextAreaPadding = 8;
   static const double quizStatusBadgeVerticalPadding = 8;

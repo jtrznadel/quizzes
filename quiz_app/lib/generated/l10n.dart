@@ -1250,6 +1250,16 @@ class S {
     );
   }
 
+  /// `Add new quizz`
+  String get addNewQuizzButton {
+    return Intl.message(
+      'Add new quizz',
+      name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get deleteQuizzHeading {
     return Intl.message(
@@ -1330,6 +1340,16 @@ class S {
     );
   }
 
+  /// `Link copied to clipboard`
+  String get linkCopied {
+    return Intl.message(
+      'Link copied to clipboard',
+      name: 'linkCopied',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profileAppbarTitle {
     return Intl.message(
@@ -1405,6 +1425,26 @@ class S {
     return Intl.message(
       'Delete your account',
       name: 'profileDeleteButtonLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get profileDeleteDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'profileDeleteDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to delete your account. This action cannot be undone.`
+  String get profileDeleteDialogDescription {
+    return Intl.message(
+      'You are about to delete your account. This action cannot be undone.',
+      name: 'profileDeleteDialogDescription',
       desc: '',
       args: [],
     );
@@ -1575,6 +1615,36 @@ class S {
     return Intl.message(
       'OR',
       name: 'dividerOr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Polish`
+  String get languagePolish {
+    return Intl.message(
+      'Polish',
+      name: 'languagePolish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get languageEnglish {
+    return Intl.message(
+      'English',
+      name: 'languageEnglish',
       desc: '',
       args: [],
     );

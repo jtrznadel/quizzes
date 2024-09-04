@@ -26,7 +26,7 @@ class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabSettingsSubheading,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
         Text(

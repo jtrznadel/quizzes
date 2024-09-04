@@ -39,8 +39,7 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
         const MediumVSpacer(),
         Text(
           S.of(context).quizzDetailsTabQuestionsSubheading,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         ),
         const MediumVSpacer(),
         answersSwitchRow(context),
@@ -131,7 +130,7 @@ class _QuizDetailsQuestionsTabState extends State<QuizDetailsQuestionsTab> {
         ),
         child: Text(
           S.of(context).quizzDetailsTabQuestionsAddNewQuestion,
-          style: context.textTheme.bodyMedium!.copyWith(
+          style: context.textTheme.bodyMedium?.copyWith(
             color: AppColorScheme.primary,
             fontWeight: FontWeight.w700,
             fontFamily: GoogleFonts.inter().fontFamily,

@@ -42,7 +42,7 @@ class TextArea extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: required ? '*' : '',
-                    style: context.textTheme.bodyMedium!.copyWith(
+                    style: context.textTheme.bodyMedium?.copyWith(
                       color: AppColorScheme.error,
                     ),
                   ),

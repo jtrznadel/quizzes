@@ -34,8 +34,7 @@ class DeleteDialog extends ConsumerWidget {
         ),
         child: Text(
           S.of(context).cancelButton,
-          style: context.theme.textTheme.labelMedium!
-              .copyWith(color: AppColorScheme.primary),
+          style: context.theme.textTheme.labelMedium?.copyWith(color: AppColorScheme.primary),
         ),
       ),
       ElevatedButton(
@@ -47,10 +46,16 @@ class DeleteDialog extends ConsumerWidget {
         ),
         child: Text(
           S.of(context).deleteButton,
-          style: context.theme.textTheme.labelMedium!
-              .copyWith(color: AppColorScheme.textContrast),
+          style: context.theme.textTheme.labelMedium?.copyWith(color: AppColorScheme.textContrast),
         ),
       )
     ]);
+  }
+
+  void show(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => this,
+    );
   }
 }

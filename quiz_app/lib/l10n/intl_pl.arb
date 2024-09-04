@@ -143,6 +143,8 @@
 
     "dashboardTopHeading": "Quizzy",
     "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
+    "addNewQuizzButton": "Dodaj nowy quizz",
+
 
     "deleteQuizzHeading": "Czy jesteś pewien?",
     "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu.",
@@ -151,6 +153,7 @@
     "quizzDetailsSaveChangesButton": "Zapisz zmiany",
     "cancelButton": "Anuluj",
     "deleteButton": "Usuń",
+    "linkCopied": "Skopiowano link do schowka",
 
     "profileAppbarTitle": "Profil",
     "profileSubheading": "Zarządzaj ustawieniami swojego profilu tutaj.",
@@ -160,6 +163,8 @@
     "profileUpdateButton": "Aktualizuj",
     "profileDeleteButton": "Usuń",
     "profileDeleteButtonLabel": "Usuń swoje konto",
+    "profileDeleteDialogHeading": "Czy jesteś pewien?",
+    "profileDeleteDialogDescription": "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta.",
     "saveQuizzButton": "Zapisz Quizz",
     "fileReadException": "Coś poszło nie tak",
     "somethingWentWrong": "Coś poszło nie tak",
@@ -178,5 +183,8 @@
     "tempAnswer3": "Zarządzanie centralne",
     "tempAnswer4": "Regulacja rządowa",
     "continueButton": "Kontynuuj",
-    "dividerOr": "LUB"
+    "dividerOr": "LUB",
+    "language": "Język",
+    "languagePolish": "Polski",
+    "languageEnglish": "Angielski"
 }

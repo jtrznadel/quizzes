@@ -143,6 +143,7 @@
 
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
+    "addNewQuizzButton": "Add new quizz",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
@@ -152,7 +153,7 @@
     "cancelButton": "Cancel",
     "deleteButton": "Delete",
     "saveQuizzButton": "Save Quizz",
-
+    "linkCopied": "Link copied to clipboard",
 
     "profileAppbarTitle": "Profile",
     "profileSubheading": "Manage your profile settings here.",
@@ -162,6 +163,8 @@
     "profileUpdateButton": "Update",
     "profileDeleteButton": "Delete",
     "profileDeleteButtonLabel": "Delete your account",
+    "profileDeleteDialogHeading": "Are you sure?",
+    "profileDeleteDialogDescription": "You are about to delete your account. This action cannot be undone.",
     "fileReadException": "Something went wrong",
     "somethingWentWrong": "Something went wrong",
     "goBackToDashboard": "Go back to dashboard",
@@ -179,7 +182,9 @@
     "tempAnswer3": "Centralized control",
     "tempAnswer4": "Government regulation",
     "continueButton": "Continue",
-    "dividerOr": "OR"
-
+    "dividerOr": "OR",
+    "language": "Language",
+    "languagePolish": "Polish",
+    "languageEnglish": "English"
 }
       
