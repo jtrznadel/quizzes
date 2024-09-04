@@ -5,7 +5,6 @@ import '../../../../generated/l10n.dart';
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../application/dashboard_controller.dart';
-import '../../domain/entities/test_quiz_entity.dart';
 import '../../domain/quiz_dashboard_model.dart';
 import 'quiz_delete_dialog_item.dart';
 
@@ -16,28 +15,30 @@ class DeleteQuizDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, ref, child) {
-        return DeleteDialog(
-          title: S.of(context).deleteAccountHeading,
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SmallVSpacer(),
-              Text(
-                S.of(context).deleteQuizzDescription,
-                style: context.theme.textTheme.bodyMedium,
-              ),
-              const LargeVSpacer(),
-              QuizDeleteDialogItem(quizEntity: quiz),
-            ],
-          ),
-          onConfirm: () {
-            ref.read(dashboardControllerProvider.notifier).deleteQuiz(quiz.id);
-            Navigator.of(context).pop();
-          },
-        );
-      }
+    return Consumer(builder: (context, ref, child) {
+      return DeleteDialog(
+        title: S.of(context).deleteQuizzHeading,
+        content: _dialogContent(context),
+        onConfirm: () {
+          ref.read(dashboardControllerProvider.notifier).deleteQuiz(quiz.id);
+          Navigator.of(context).pop();
+        },
+      );
+    });
+  }
+
+  Widget _dialogContent(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SmallVSpacer(),
+        Text(
+          S.of(context).deleteQuizzDescription,
+          style: context.theme.textTheme.bodyMedium,
+        ),
+        const LargeVSpacer(),
+        QuizDeleteDialogItem(quizModel: quiz),
+      ],
     );
   }
 

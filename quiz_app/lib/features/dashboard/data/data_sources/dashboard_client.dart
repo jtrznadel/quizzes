@@ -16,8 +16,8 @@ abstract class DashboardClient {
 
   @GET(ApiConstants.quizListEndpoint)
   Future<QuizListModel> getQuizList(
-    @Query('Page') int page,
-    @Query('PageSize') int pageSize,
+    @Query(ApiConstants.quizListPageQuery) int page,
+    @Query(ApiConstants.quizListPageSizeQuery) int pageSize,
   );
 
   @DELETE(ApiConstants.deleteQuizEndpoint)

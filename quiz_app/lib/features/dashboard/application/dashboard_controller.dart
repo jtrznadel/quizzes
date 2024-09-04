@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/network/api_constants.dart';
+import '../../../generated/l10n.dart';
 import '../../quizz_details/domain/quiz_details_model.dart';
 import '../data/repositories/dashboard_repository.dart';
 import '../domain/quiz_dashboard_model.dart';
@@ -36,15 +37,13 @@ class DashboardController extends _$DashboardController {
       result.fold(
         (error) => state = DashboardState.error(error.message),
         (quizList) {
-          _quizList = quizList.copyWith(
-            items: [..._quizList.items, ...quizList.items],
-          );
-          state = DashboardState.loaded(_quizList);
+          _quizList = quizList;
+          state = DashboardState.loaded(quizList);
           _currentPage++;
         },
       );
     } catch (e) {
-      state = DashboardState.error(e.toString());
+      state = DashboardState.error(S.current.somethingWentWrong);
     }
   }
 
@@ -64,7 +63,7 @@ class DashboardController extends _$DashboardController {
         },
       );
     } catch (e) {
-      state = DashboardState.error(e.toString());
+      state = DashboardState.error(S.current.somethingWentWrong);
     }
   }
 
@@ -82,7 +81,7 @@ class DashboardController extends _$DashboardController {
         },
       );
     } catch (e) {
-      state = DashboardState.error(e.toString());
+      state = DashboardState.error(S.current.somethingWentWrong);
     }
   }
 

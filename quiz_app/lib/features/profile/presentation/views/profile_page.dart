@@ -70,7 +70,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        S.of(context).profileSomethingWentWrong,
+                        S.of(context).somethingWentWrong,
                         style: context.theme.textTheme.bodyLarge,
                         textAlign: TextAlign.center,
                       ),
@@ -115,7 +115,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                             user: user.copyWith(userName: controller.text),
                           );
                         } catch (_) {
-                          context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
+                          context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
                         }
                       },
                       text: isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
@@ -131,7 +131,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                         try {
                           await authController.signOut();
                         } catch (_) {
-                          context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
+                          context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
                         }
                       },
                       text: S.of(context).profileSignOutButton,
@@ -157,7 +157,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         showErrorSnackBar(context, S.of(context).sessionExpired);
       });
     } else {
-      showErrorSnackBar(context, S.of(context).profileSomethingWentWrong);
+      showErrorSnackBar(context, S.of(context).somethingWentWrong);
     }
   }
 

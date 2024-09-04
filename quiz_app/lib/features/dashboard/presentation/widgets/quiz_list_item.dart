@@ -1,7 +1,7 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/common/widgets/dotted_border_container.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -11,6 +11,7 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../domain/quiz_dashboard_model.dart';
 import 'delete_quiz_dialog.dart';
@@ -32,7 +33,7 @@ class QuizListItem extends ConsumerWidget {
           const SmallVSpacer(),
           quizDescription(context),
           const LargeVSpacer(),
-          quizStatus(),
+          quizStatus(context),
         ],
       ),
     );
@@ -40,20 +41,17 @@ class QuizListItem extends ConsumerWidget {
 
   Widget quizContainer(List<Widget> children) {
     return Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius), color: AppColorScheme.surfaceContainer),
-      child: DottedBorder(
-        borderType: BorderType.RRect,
-        color: AppColorScheme.border,
-        strokeWidth: AppTheme.dottedBorderWidth,
-        radius: const Radius.circular(AppTheme.quizListItemBorderRadius),
-        borderPadding: const EdgeInsets.all(0.5),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius),
-          child: Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children)
-              .addPadding(
-            padding: const EdgeInsets.all(AppTheme.quizListItemPadding),
-          ),
+      decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(AppTheme.quizListItemBorderRadius),
+          color: AppColorScheme.surfaceContainer),
+      child: DottedBorderContainer(
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: children)
+            .addPadding(
+          padding: const EdgeInsets.all(AppTheme.quizListItemPadding),
         ),
       ),
     );
@@ -67,9 +65,9 @@ class QuizListItem extends ConsumerWidget {
         Expanded(
           child: Text(quizEntity.title,
               style: context.theme.textTheme.headlineSmall!.copyWith(
-                fontSize: 16,
+                fontSize: AppTheme.quizItemHeadingFontSize,
               ),
-              maxLines: 2,
+              maxLines: AppTheme.quizItemHeadingMaxLines,
               overflow: TextOverflow.ellipsis),
         ),
         Material(
@@ -85,7 +83,9 @@ class QuizListItem extends ConsumerWidget {
               MediaRes.deleteQuiz,
               width: AppTheme.quizListItemDeleteIconSize,
               height: AppTheme.quizListItemDeleteIconSize,
-            ).addPadding(padding: const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
+            ).addPadding(
+                padding:
+                    const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
           ),
         ),
       ],
@@ -95,25 +95,30 @@ class QuizListItem extends ConsumerWidget {
   Widget quizDescription(BuildContext context) {
     return Text(
       quizEntity.description,
-      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-      maxLines: 1,
+      style: context.theme.textTheme.bodyMedium!
+          .copyWith(color: AppColorScheme.textSecondary),
+      maxLines: AppTheme.quizItemDescriptionMaxLines,
       overflow: TextOverflow.ellipsis,
     );
   }
 
-  Widget quizStatus() {
+  Widget quizStatus(BuildContext context) {
     return Row(
       children: [
         QuizStatusBadge(
-          text: 'Total ${quizEntity.totalQuestions} questions',
+          text: S.of(context).quizQuestionNumberBadge(quizEntity.totalQuestions),
           backgroundColor: AppColorScheme.secondary,
           textColor: AppColorScheme.primary,
         ),
         const MediumHSpacer(),
         QuizStatusBadge(
           text: quizEntity.status.name,
-          backgroundColor: quizEntity.status == QuizStatus.Active ? AppColorScheme.successLight : AppColorScheme.warningLight,
-          textColor: quizEntity.status == QuizStatus.Active ? AppColorScheme.success : AppColorScheme.warning,
+          backgroundColor: quizEntity.status == QuizStatus.Active
+              ? AppColorScheme.successLight
+              : AppColorScheme.warningLight,
+          textColor: quizEntity.status == QuizStatus.Active
+              ? AppColorScheme.success
+              : AppColorScheme.warning,
         ),
       ],
     );

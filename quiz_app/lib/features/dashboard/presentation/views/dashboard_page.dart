@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,8 +14,8 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/dashboard_controller.dart';
-import '../../domain/entities/test_quiz_entity.dart';
 import '../../domain/quiz_dashboard_model.dart';
+import '../../domain/quiz_list_model.dart';
 import '../widgets/new_quiz_button.dart';
 import '../widgets/quiz_list_item.dart';
 
@@ -26,7 +24,7 @@ class DashboardPage extends ConsumerStatefulWidget {
   const DashboardPage({super.key});
 
   @override
-  _DashboardPageState createState() => _DashboardPageState();
+  ConsumerState createState() => _DashboardPageState();
 }
 
 class _DashboardPageState extends ConsumerState<DashboardPage> {
@@ -50,38 +48,11 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
           loaded: (quizListModel) {
             return Column(
               children: [
-                topBar(context, ref),
+                topBar(context),
                 const SmallVSpacer(),
                 Expanded(
-                  child: PaginatedList<QuizDashboardModel>(
-                    loadingIndicator: const Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: AppTheme.pageDefaultSpacingSize),
-                      child: Center(child: CircularProgressIndicator()),
-                    ),
-                    items: quizListModel.items,
-                    isRecentSearch: false,
-                    isLastPage: quizListModel.totalItemsCount <=
-                        quizListModel.items.length,
-                    onLoadMore: (index) {
-                      controller.loadMore();
-                    },
-                    builder: (quiz, index) {
-                      return Column(
-                        children: [
-                          QuizListItem(quizEntity: quiz).addPadding(
-                            padding: const EdgeInsets.only(
-                              bottom: AppTheme.dashboardQuizItemBottomPadding,
-                            ),
-                          ),
-                          if(index == quizListModel.items.length - 1)
-                            const NewQuizButton(),
-                        ],
-                      );
-                    },
-                  ),
+                  child: quizList(quizListModel, controller),
                 ),
-                //const NewQuizButton(),
               ],
             );
           },
@@ -95,7 +66,32 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     );
   }
 
-  Widget topBar(BuildContext context, WidgetRef ref) {
+  Widget quizList(QuizListModel quizListModel, DashboardController controller) {
+    return PaginatedList<QuizDashboardModel>(
+      loadingIndicator: const Padding(
+        padding:
+            EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
+        child: Center(child: CircularProgressIndicator()),
+      ),
+      items: quizListModel.items,
+      isRecentSearch: false,
+      isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
+      onLoadMore: (index) {
+        controller.loadMore();
+      },
+      builder: (quiz, index) {
+        return Column(
+          children: [
+            QuizListItem(quizEntity: quiz),
+            const MediumVSpacer(),
+            if (index == quizListModel.items.length - 1) const NewQuizButton(),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget topBar(BuildContext context) {
     return Column(
       children: [
         Row(
@@ -108,10 +104,13 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
             ),
             IconButton(
               onPressed: () {
-                context.router.push(const ProfileRoute());
+                ref.read(appRouterProvider).push(const ProfileRoute());
               },
-              icon:
-                  SvgPicture.asset(MediaRes.userProfile, width: 24, height: 24),
+              icon: SvgPicture.asset(
+                MediaRes.userProfile,
+                width: AppTheme.dashboardUserProfileIconSize,
+                height: AppTheme.dashboardUserProfileIconSize,
+              ),
             )
           ],
         ),
@@ -123,22 +122,5 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         )
       ],
     );
-  }
-
-  List<TestQuizEntity> generateMockQuizes(int number) {
-    List<TestQuizEntity> quizes = [];
-    for (int i = 0; i < number; i++) {
-      quizes.add(
-        TestQuizEntity(
-          quizTitle:
-              'Identify your bigest roadblock to succeeding in cryptocurrency',
-          quizDescription:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus sagittis augue, vitae facilisis sem volutpat nec. Phasellus ac tincidunt nisl. Donec sed rutrum neque, vitae mattis velit. Donec non neque a erat finibus rutrum. Proin tincidunt leo hendrerit, sagittis lacus quis, finibus massa.',
-          quizStatus: 'Active',
-          quizNumberOfQuestions: Random().nextInt(50),
-        ),
-      );
-    }
-    return quizes;
   }
 }

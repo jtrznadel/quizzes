@@ -141,9 +141,21 @@
 
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
+    "addNewQuizButton": "Add new quiz",
+    "quizQuestionNumberBadge": "Total {questionNumber} questions",
+    "@quizQuestionNumberBadge": {
+        "description": "Badge displaying total number of questions",
+        "placeholders": {
+            "questionNumber": {
+                "type": "int",
+                "example": "5",
+                "description": "Number of questions"
+            }
+        }
+    },
 
     "deleteQuizzHeading": "Are you sure?",
-    "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
+    "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",
     "deleteAccountHeading": "Deleting account",
     "deleteAccountDescription": "You are about to delete your account. This action cannot be undone.",
     "quizzDetailsSaveChangesButton": "Save changes",
@@ -161,7 +173,7 @@
     "profileDeleteButton": "Delete",
     "profileDeleteButtonLabel": "Delete your account",
     "fileReadException": "Something went wrong",
-    "profileSomethingWentWrong": "Something went wrong",
+    "somethingWentWrong": "Something went wrong",
     "sessionExpired": "Session expired, please log in again.",
     "profileUpdatingUsername": "Updating...",
     "profileSignOutButton": "Sign out",
