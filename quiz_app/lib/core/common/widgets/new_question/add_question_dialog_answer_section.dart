@@ -98,6 +98,7 @@ class AnswerTextArea extends StatelessWidget {
         const CustomHSpacer(AppTheme.addQuestionDialogAnswerHorizontalSpacer),
         Expanded(
           child: TextArea(
+            required: false,
             hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
             controller: answerController,
             minLines: AppTheme.addAnswerDialogAnswerLines,
