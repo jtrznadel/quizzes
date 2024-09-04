@@ -70,7 +70,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        S.of(context).profileSomethingWentWrong,
+                        S.of(context).somethingWentWrong,
                         style: context.theme.textTheme.bodyLarge,
                         textAlign: TextAlign.center,
                       ),
@@ -97,11 +97,10 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   void handleError(Exception error, BuildContext context) {
     if (error is RefreshTokenMissingException) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        //TODO: navigate to sign in page
         showErrorSnackBar(context, S.of(context).sessionExpired);
       });
     } else {
-      showErrorSnackBar(context, S.of(context).profileSomethingWentWrong);
+      showErrorSnackBar(context, S.of(context).somethingWentWrong);
     }
   }
 

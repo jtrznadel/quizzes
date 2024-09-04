@@ -2,7 +2,6 @@ import 'dart:core';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
 import '../data/repositories/auth_repository.dart';
 import '../domain/user_auth.dart';

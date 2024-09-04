@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../generated/l10n.dart';
 
 extension ContextExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

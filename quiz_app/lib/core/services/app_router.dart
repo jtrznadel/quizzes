@@ -1,8 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'auth_guard.dart';
-import 'session_provider.dart';
 
 import '../../features/auth/presentation/views/forgot_pasword_page.dart';
 import '../../features/auth/presentation/views/new_password_page.dart';
@@ -12,8 +10,8 @@ import '../../features/auth/presentation/views/successful_password_reset_request
 import '../../features/auth/presentation/views/welcome_page.dart';
 import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/profile/presentation/views/profile_page.dart';
-import '../../features/quizz/presentation/views/quizz_creation_page.dart';
-import '../../features/quizz/presentation/views/quizz_details_page.dart';
+import '../../features/quiz_generation/views/quizz_creation_page.dart';
+import '../../features/quizz_details/presentation/views/quizz_details_page.dart';
 import '../../temp_page.dart';
 
 part 'app_router.gr.dart';

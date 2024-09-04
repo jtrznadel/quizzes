@@ -1,6 +1,9 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../features/quiz_generation/domain/question_model.dart';
+import 'new_question/add_question_dialog_answer_section.dart';
 import 'answer_tile.dart';
 import 'spacers/vertical_spacers.dart';
 import '../../extensions/add_padding_extension.dart';
@@ -10,11 +13,12 @@ import '../../theme/app_color_scheme.dart';
 import '../../../generated/l10n.dart';
 
 class QuestionBox extends StatelessWidget {
-  const QuestionBox({super.key, required this.questionNumber});
+  const QuestionBox(
+      {super.key, required this.questionIndex, required this.question, required this.onDelete});
 
-  final int questionNumber;
-
-  //TODO: Questionbox should operate with a question model, so after receive api documentations we can implement it
+  final int questionIndex;
+  final QuestionModel question;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class QuestionBox extends StatelessWidget {
                   Expanded(
                     flex: 3,
                     child: Text(
-                      '$questionNumber. ${S.of(context).tempQuestion}',
+                      '${questionIndex + 1}. ${question.title}',
                       style: context.textTheme.labelMedium,
                     ),
                   ),
@@ -56,11 +60,15 @@ class QuestionBox extends StatelessWidget {
                           MediaRes.pencil,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          MediaRes.trash,
-                        ),
+                      Consumer(
+                        builder: (context, ref, child) {
+                          return IconButton(
+                            onPressed: () => onDelete(),
+                            icon: SvgPicture.asset(
+                              MediaRes.trash,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -72,16 +80,22 @@ class QuestionBox extends StatelessWidget {
                 style: context.textTheme.bodyMedium,
               ),
               const MediumVSpacer(),
-              Column(
-                children: [
-                  AnswerTile(leading: 'A', text: S.of(context).tempAnswer1),
-                  const SmallVSpacer(),
-                  AnswerTile(leading: 'B', text: S.of(context).tempAnswer2),
-                  const SmallVSpacer(),
-                  AnswerTile(leading: 'C', text: S.of(context).tempAnswer3),
-                  const SmallVSpacer(),
-                  AnswerTile(leading: 'D', text: S.of(context).tempAnswer4),
-                ],
+              ListView.builder(
+                itemCount: question.createAnswersDto.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      AnswerTile(
+                        leading: Answer.values[index].name,
+                        text: question.createAnswersDto[index].content,
+                        isCorrect: question.createAnswersDto[index].isCorrect,
+                      ),
+                      const SmallVSpacer(),
+                    ],
+                  );
+                },
               )
             ],
           ).addPadding(

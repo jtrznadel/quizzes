@@ -73,7 +73,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
                   user: widget.user.copyWith(userName: usernameTextController.text),
                 );
               } catch (_) {
-                context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
+                context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
               }
             },
             text: widget.isUsernameUpdating ? S.of(context).profileUpdatingUsername : S.of(context).profileUpdateButton,
@@ -106,7 +106,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
 
                 //TOD
               } catch (_) {
-                context.mounted ? showErrorSnackBar(context, S.of(context).profileSomethingWentWrong) : null;
+                context.mounted ? showErrorSnackBar(context, S.of(context).somethingWentWrong) : null;
               }
             },
             text: S.of(context).profileDeleteButton,

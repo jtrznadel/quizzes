@@ -17,6 +17,7 @@ class QuizzSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: AppColorScheme.surfaceContainer,
@@ -24,6 +25,7 @@ class QuizzSummary extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               S.of(context).quizzSummaryTitle + title,

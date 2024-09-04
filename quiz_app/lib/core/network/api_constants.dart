@@ -19,4 +19,7 @@ class ApiConstants {
 
   static const String accessTokenStorageKey = 'accessToken';
   static const String refreshTokenStorageKey = 'refreshToken';
+
+  static const String quizGenerationEndpoint = 'quiz/generate-quiz';
+  static const String quizCreateEndpoint = 'quiz/create-quiz';
 }
