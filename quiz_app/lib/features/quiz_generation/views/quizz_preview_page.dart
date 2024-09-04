@@ -130,7 +130,9 @@ class QuizzPreviewPage extends ConsumerWidget {
             await ref
                 .read(quizGenerationControllerProvider.notifier)
                 .deleteQuestion(index);
-            Navigator.pop(context);
+            if(context.mounted) {
+              Navigator.pop(context);
+            }
           },
         );
       },

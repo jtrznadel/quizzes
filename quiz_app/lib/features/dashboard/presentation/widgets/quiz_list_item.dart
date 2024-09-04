@@ -66,7 +66,7 @@ class QuizListItem extends ConsumerWidget {
       children: [
         Expanded(
           child: Text(quizEntity.quizTitle,
-              style: context.theme.textTheme.headlineSmall!.copyWith(
+              style: context.theme.textTheme.headlineSmall?.copyWith(
                 fontSize: 16,
               ),
               maxLines: 2,
@@ -95,7 +95,7 @@ class QuizListItem extends ConsumerWidget {
   Widget quizDescription(BuildContext context) {
     return Text(
       quizEntity.quizDescription,
-      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+      style: context.theme.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );

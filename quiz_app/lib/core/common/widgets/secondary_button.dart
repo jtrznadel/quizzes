@@ -45,7 +45,7 @@ class SecondaryButton extends StatelessWidget {
         iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
         Text(
           text,
-          style: context.theme.textTheme.labelLarge!.copyWith(color: contentColor),
+          style: context.theme.textTheme.labelLarge?.copyWith(color: contentColor),
         ),
         iconAlignment == IconAlignment.start && icon != null ? const SmallHSpacer() : Container(),
         IconAlignment.end == iconAlignment ? icon ?? Container() : Container(),

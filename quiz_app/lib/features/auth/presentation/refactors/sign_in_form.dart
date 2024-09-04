@@ -85,7 +85,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                   },
                   child: Text(
                     S.of(context).forgotPassword,
-                    style: context.textTheme.labelMedium!.copyWith(
+                    style: context.textTheme.labelMedium?.copyWith(
                       color: context.theme.primaryColor,
                     ),
                   ),
@@ -110,7 +110,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
 
   Widget _errorAction(AuthController controller, BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => showCustomSnackbar(
+      (_) => InfoSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
       ),

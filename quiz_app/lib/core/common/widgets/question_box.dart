@@ -64,9 +64,7 @@ class QuestionBox extends StatelessWidget {
                       Consumer(
                         builder: (context, ref, child) {
                           return IconButton(
-                            onPressed: () {
-                              onDelete();
-                            },
+                            onPressed: () => onDelete(),
                             icon: SvgPicture.asset(
                               MediaRes.trash,
                             ),

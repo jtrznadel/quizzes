@@ -32,19 +32,15 @@ class QuizDeleteDialogItem extends StatelessWidget {
   Widget quizContainer(List<Widget> children) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.circular(AppTheme.quizDeleteDialogItemBorderRadius),
-          color: AppColorScheme.surfaceContainer),
+          borderRadius: BorderRadius.circular(AppTheme.quizDeleteDialogItemBorderRadius), color: AppColorScheme.surfaceContainer),
       child: DottedBorder(
         borderType: BorderType.RRect,
         color: AppColorScheme.border,
         strokeWidth: AppTheme.dottedBorderWidth,
-        radius:
-            const Radius.circular(AppTheme.quizDeleteDialogItemBorderRadius),
+        radius: const Radius.circular(AppTheme.quizDeleteDialogItemBorderRadius),
         borderPadding: const EdgeInsets.all(0.5),
         child: ClipRRect(
-          borderRadius:
-              BorderRadius.circular(AppTheme.quizDeleteDialogItemBorderRadius),
+          borderRadius: BorderRadius.circular(AppTheme.quizDeleteDialogItemBorderRadius),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +56,7 @@ class QuizDeleteDialogItem extends StatelessWidget {
   Widget quizHeader(BuildContext context) {
     return Text(
       quizEntity.quizTitle,
-      style: context.theme.textTheme.headlineSmall!.copyWith(
+      style: context.theme.textTheme.headlineSmall?.copyWith(
         fontSize: 16,
       ),
       maxLines: 2,
@@ -71,8 +67,7 @@ class QuizDeleteDialogItem extends StatelessWidget {
   Widget quizDescription(BuildContext context) {
     return Text(
       quizEntity.quizDescription,
-      style: context.theme.textTheme.bodyMedium!
-          .copyWith(color: AppColorScheme.textSecondary),
+      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );

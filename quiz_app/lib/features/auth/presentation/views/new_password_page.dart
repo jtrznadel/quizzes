@@ -49,7 +49,7 @@ class _NewPasswordPageState extends ConsumerState<NewPasswordPage> {
             const SmallVSpacer(),
             Text(
               S.of(context).newPasswordSubheading,
-              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
             ),
             const LargeVSpacer(),
             Form(

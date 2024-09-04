@@ -22,7 +22,7 @@ QuizGenerationModel _$QuizGenerationModelFromJson(Map<String, dynamic> json) {
 mixin _$QuizGenerationModel {
   String get content => throw _privateConstructorUsedError;
   int get numberOfQuestions => throw _privateConstructorUsedError;
-  String get questionType => throw _privateConstructorUsedError;
+  List<String> get questionTypes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,8 @@ abstract class $QuizGenerationModelCopyWith<$Res> {
           QuizGenerationModel value, $Res Function(QuizGenerationModel) then) =
       _$QuizGenerationModelCopyWithImpl<$Res, QuizGenerationModel>;
   @useResult
-  $Res call({String content, int numberOfQuestions, String questionType});
+  $Res call(
+      {String content, int numberOfQuestions, List<String> questionTypes});
 }
 
 /// @nodoc
@@ -54,7 +55,7 @@ class _$QuizGenerationModelCopyWithImpl<$Res, $Val extends QuizGenerationModel>
   $Res call({
     Object? content = null,
     Object? numberOfQuestions = null,
-    Object? questionType = null,
+    Object? questionTypes = null,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -65,10 +66,10 @@ class _$QuizGenerationModelCopyWithImpl<$Res, $Val extends QuizGenerationModel>
           ? _value.numberOfQuestions
           : numberOfQuestions // ignore: cast_nullable_to_non_nullable
               as int,
-      questionType: null == questionType
-          ? _value.questionType
-          : questionType // ignore: cast_nullable_to_non_nullable
-              as String,
+      questionTypes: null == questionTypes
+          ? _value.questionTypes
+          : questionTypes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -81,7 +82,8 @@ abstract class _$$QuizGenerationModelImplCopyWith<$Res>
       __$$QuizGenerationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String content, int numberOfQuestions, String questionType});
+  $Res call(
+      {String content, int numberOfQuestions, List<String> questionTypes});
 }
 
 /// @nodoc
@@ -97,7 +99,7 @@ class __$$QuizGenerationModelImplCopyWithImpl<$Res>
   $Res call({
     Object? content = null,
     Object? numberOfQuestions = null,
-    Object? questionType = null,
+    Object? questionTypes = null,
   }) {
     return _then(_$QuizGenerationModelImpl(
       content: null == content
@@ -108,10 +110,10 @@ class __$$QuizGenerationModelImplCopyWithImpl<$Res>
           ? _value.numberOfQuestions
           : numberOfQuestions // ignore: cast_nullable_to_non_nullable
               as int,
-      questionType: null == questionType
-          ? _value.questionType
-          : questionType // ignore: cast_nullable_to_non_nullable
-              as String,
+      questionTypes: null == questionTypes
+          ? _value._questionTypes
+          : questionTypes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -122,7 +124,8 @@ class _$QuizGenerationModelImpl implements _QuizGenerationModel {
   const _$QuizGenerationModelImpl(
       {required this.content,
       required this.numberOfQuestions,
-      required this.questionType});
+      required final List<String> questionTypes})
+      : _questionTypes = questionTypes;
 
   factory _$QuizGenerationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizGenerationModelImplFromJson(json);
@@ -131,12 +134,17 @@ class _$QuizGenerationModelImpl implements _QuizGenerationModel {
   final String content;
   @override
   final int numberOfQuestions;
+  final List<String> _questionTypes;
   @override
-  final String questionType;
+  List<String> get questionTypes {
+    if (_questionTypes is EqualUnmodifiableListView) return _questionTypes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_questionTypes);
+  }
 
   @override
   String toString() {
-    return 'QuizGenerationModel(content: $content, numberOfQuestions: $numberOfQuestions, questionType: $questionType)';
+    return 'QuizGenerationModel(content: $content, numberOfQuestions: $numberOfQuestions, questionTypes: $questionTypes)';
   }
 
   @override
@@ -147,14 +155,14 @@ class _$QuizGenerationModelImpl implements _QuizGenerationModel {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.numberOfQuestions, numberOfQuestions) ||
                 other.numberOfQuestions == numberOfQuestions) &&
-            (identical(other.questionType, questionType) ||
-                other.questionType == questionType));
+            const DeepCollectionEquality()
+                .equals(other._questionTypes, _questionTypes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, content, numberOfQuestions, questionType);
+  int get hashCode => Object.hash(runtimeType, content, numberOfQuestions,
+      const DeepCollectionEquality().hash(_questionTypes));
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +183,7 @@ abstract class _QuizGenerationModel implements QuizGenerationModel {
   const factory _QuizGenerationModel(
       {required final String content,
       required final int numberOfQuestions,
-      required final String questionType}) = _$QuizGenerationModelImpl;
+      required final List<String> questionTypes}) = _$QuizGenerationModelImpl;
 
   factory _QuizGenerationModel.fromJson(Map<String, dynamic> json) =
       _$QuizGenerationModelImpl.fromJson;
@@ -185,7 +193,7 @@ abstract class _QuizGenerationModel implements QuizGenerationModel {
   @override
   int get numberOfQuestions;
   @override
-  String get questionType;
+  List<String> get questionTypes;
   @override
   @JsonKey(ignore: true)
   _$$QuizGenerationModelImplCopyWith<_$QuizGenerationModelImpl> get copyWith =>

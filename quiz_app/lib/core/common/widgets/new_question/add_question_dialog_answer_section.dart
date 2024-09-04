@@ -58,37 +58,20 @@ class _AddQuestionDialogAnswerSectionState
           S.of(context).quizzCreationAddQuestionAnswersLabel,
           style: context.textTheme.bodyMedium,
         ),
+        for (final entry in widget.answerControllers.entries)
+          _buildAnswerTextArea(entry),
+      ],
+    );
+  }
+
+  _buildAnswerTextArea(MapEntry<Answer, AnswerWithValidation> entry) {
+    return Column(
+      children: [
         const SmallVSpacer(),
         AnswerTextArea(
-          answerController: widget.answerControllers.values.elementAt(0).controller,
-          isChecked:
-              _selectedAnswer == Answer.A,
-          onChanged: (value) =>
-              _onAnswerSelected(widget.answerControllers.entries.elementAt(0)),
-        ),
-        const SmallVSpacer(),
-        AnswerTextArea(
-          answerController: widget.answerControllers.values.elementAt(1).controller,
-          isChecked:
-              _selectedAnswer == Answer.B,
-          onChanged: (value) =>
-              _onAnswerSelected(widget.answerControllers.entries.elementAt(1)),
-        ),
-        const SmallVSpacer(),
-        AnswerTextArea(
-          answerController: widget.answerControllers.values.elementAt(2).controller,
-          isChecked:
-              _selectedAnswer == Answer.C,
-          onChanged: (value) =>
-              _onAnswerSelected(widget.answerControllers.entries.elementAt(2)),
-        ),
-        const SmallVSpacer(),
-        AnswerTextArea(
-          answerController: widget.answerControllers.values.elementAt(3).controller,
-          isChecked:
-              _selectedAnswer == Answer.D,
-          onChanged: (value) =>
-              _onAnswerSelected(widget.answerControllers.entries.elementAt(3)),
+          answerController: entry.value.controller,
+          isChecked: _selectedAnswer == entry.key,
+          onChanged: (value) => _onAnswerSelected(entry),
         ),
       ],
     );
@@ -117,8 +100,8 @@ class AnswerTextArea extends StatelessWidget {
           child: TextArea(
             hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
             controller: answerController,
-            minLines: 2,
-            maxLines: 2,
+            minLines: AppTheme.addAnswerDialogAnswerLines,
+            maxLines: AppTheme.addAnswerDialogAnswerLines,
             contentPadding: AppTheme.pageDefaultSpacingSize,
             textStyle: context.textTheme.bodySmall!.copyWith(
               color: AppColorScheme.textSecondary,

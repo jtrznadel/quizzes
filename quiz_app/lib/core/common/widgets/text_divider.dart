@@ -28,7 +28,7 @@ class TextDivider extends StatelessWidget {
           const MediumHSpacer(),
           Text(
             text,
-            style: context.textTheme.labelSmall!.copyWith(
+            style: context.textTheme.labelSmall?.copyWith(
               color: color,
             ),
           ),

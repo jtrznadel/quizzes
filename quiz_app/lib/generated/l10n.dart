@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  // `Pick question type and number of questions.`
+  String get quizzCreationConfigurationError {
+    return Intl.message(
+      'Pick question type and number of questions.',
+      name: 'quizzCreationConfigurationError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add new question`
   String get addNewQuestionBottomSheetHeading {
     return Intl.message(
@@ -1240,6 +1250,16 @@ class S {
     );
   }
 
+  /// `Add new quizz`
+  String get addNewQuizzButton {
+    return Intl.message(
+      'Add new quizz',
+      name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get deleteQuizzHeading {
     return Intl.message(
@@ -1315,6 +1335,16 @@ class S {
     return Intl.message(
       'Save Quizz',
       name: 'saveQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Link copied to clipboard`
+  String get linkCopied {
+    return Intl.message(
+      'Link copied to clipboard',
+      name: 'linkCopied',
       desc: '',
       args: [],
     );
@@ -1400,6 +1430,26 @@ class S {
     );
   }
 
+  /// `Are you sure?`
+  String get profileDeleteDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'profileDeleteDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to delete your account. This action cannot be undone.`
+  String get profileDeleteDialogDescription {
+    return Intl.message(
+      'You are about to delete your account. This action cannot be undone.',
+      name: 'profileDeleteDialogDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Something went wrong`
   String get fileReadException {
     return Intl.message(
@@ -1411,10 +1461,20 @@ class S {
   }
 
   /// `Something went wrong`
-  String get profileSomethingWentWrong {
+  String get somethingWentWrong {
     return Intl.message(
       'Something went wrong',
-      name: 'profileSomethingWentWrong',
+      name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go back to dashboard`
+  String get goBackToDashboard {
+    return Intl.message(
+      'Go back to dashboard',
+      name: 'goBackToDashboard',
       desc: '',
       args: [],
     );
@@ -1555,6 +1615,36 @@ class S {
     return Intl.message(
       'OR',
       name: 'dividerOr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Polish`
+  String get languagePolish {
+    return Intl.message(
+      'Polish',
+      name: 'languagePolish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get languageEnglish {
+    return Intl.message(
+      'English',
+      name: 'languageEnglish',
       desc: '',
       args: [],
     );

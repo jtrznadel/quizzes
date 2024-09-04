@@ -79,7 +79,7 @@ class DashboardPage extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );

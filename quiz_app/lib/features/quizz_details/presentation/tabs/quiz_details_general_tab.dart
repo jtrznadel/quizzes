@@ -42,8 +42,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralSubheading,
-        style: context.textTheme.bodyMedium!
-            .copyWith(color: AppColorScheme.textSecondary),
+        style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
       ),
     ]);
   }
@@ -52,7 +51,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralPageSettingsHeading,
-        style: context.textTheme.headlineMedium!.copyWith(fontSize: 18),
+        style: context.textTheme.headlineMedium?.copyWith(fontSize: 18),
       ),
     ]);
   }
@@ -71,8 +70,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
@@ -92,11 +90,8 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
         ),
         const SmallVSpacer(),
         Text(
-          S
-              .of(context)
-              .quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],

@@ -88,7 +88,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   Widget _errorAction(AuthController controller, BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => showCustomSnackbar(
+      (_) => InfoSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
       ),
@@ -100,7 +100,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
     emailController.clear();
     passwordController.clear();
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => showCustomSnackbar(
+      (_) => InfoSnackbar.show(
         context,
         S.of(context).successfulRegistration,
       ),
