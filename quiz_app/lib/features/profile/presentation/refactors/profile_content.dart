@@ -22,11 +22,13 @@ class ProfileContent extends ConsumerStatefulWidget {
 }
 
 class _ProfileContentState extends ConsumerState<ProfileContent> {
-  var usernameTextController = TextEditingController();
+  final usernameTextController = TextEditingController();
+  final emailTextController = TextEditingController();
 
   @override
   void dispose() {
     usernameTextController.dispose();
+    emailTextController.dispose();
     super.dispose();
   }
 
@@ -34,6 +36,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
   Widget build(BuildContext context) {
     var selectedValue = ref.watch(languageProvider).languageCode;
     usernameTextController.text = widget.user.userName;
+    emailTextController.text = widget.user.email;
 
     return Padding(
       padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
@@ -48,7 +51,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
           const SmallVSpacer(),
           TextArea(
             hintText: S.of(context).profileNameHint,
-            controller: usernameTextController,
+            controller: emailTextController,
             maxLines: 3,
             labelText: S.of(context).profileEmailLabel,
             enabled: false,
