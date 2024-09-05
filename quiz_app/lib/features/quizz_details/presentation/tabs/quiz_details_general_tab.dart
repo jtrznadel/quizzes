@@ -19,7 +19,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     final state = ref.watch(quizDetailsControllerProvider);
     final controller = ref.read(quizDetailsControllerProvider.notifier);
     return state.maybeWhen(
-      loaded: (quizDetails) {
+      loaded: (quizDetails, _) {
         final titleController = TextEditingController(text: quizDetails.title);
         final descriptionController =
             TextEditingController(text: quizDetails.description);

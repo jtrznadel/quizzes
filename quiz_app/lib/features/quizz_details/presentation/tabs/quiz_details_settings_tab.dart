@@ -20,7 +20,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails) {
+      loaded: (quizDetails, _) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -91,7 +91,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
             Consumer(builder: (context, ref, child) {
               final state = ref.watch(quizDetailsControllerProvider);
               return state.maybeWhen(
-                loaded: (quizDetails) {
+                loaded: (quizDetails, _) {
                   return Align(
                     alignment: Alignment.centerRight,
                     child: BasicButton(

@@ -21,23 +21,29 @@ class QuizDetailsController extends _$QuizDetailsController {
 
     try {
       final quizDetails = await quizDetailsRepository.getQuizDetails(id);
-      state = QuizDetailsState.loaded(quizDetails);
+      state = QuizDetailsState.loaded(quizDetails, false);
     } catch (e) {
       state = QuizDetailsState.error(e.toString());
     }
   }
 
+  void changeAnswerVisibility(bool isVisible) {
+    state = state.maybeWhen(
+        loaded: (quizDetails, _) => state = QuizDetailsState.loaded(quizDetails, isVisible),
+        orElse: () => state);
+  }
+
   void changeQuizStatus(QuizStatus status) {
     state = state.maybeWhen(
-        loaded: (quizDetails) =>
-            QuizDetailsState.loaded(quizDetails.copyWith(status: status)),
+        loaded: (quizDetails, answersVisible) =>
+            QuizDetailsState.loaded(quizDetails.copyWith(status: status), answersVisible),
         orElse: () => state);
   }
 
   void changeQuizAvailability(QuizAvailability availability) {
     state = state.maybeWhen(
-        loaded: (quizDetails) => QuizDetailsState.loaded(
-            quizDetails.copyWith(availability: availability)),
+        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(
+            quizDetails.copyWith(availability: availability), answersVisible),
         orElse: () => state);
   }
 
@@ -74,9 +80,9 @@ class QuizDetailsController extends _$QuizDetailsController {
 
     try {
       await quizDetailsRepository.updateQuizDetails(id, title, description);
-      state.maybeWhen(loaded: (quizDetails) {
+      state.maybeWhen(loaded: (quizDetails, answersVisible) {
         state = QuizDetailsState.loaded(
-            quizDetails.copyWith(title: title, description: description));
+            quizDetails.copyWith(title: title, description: description), answersVisible);
       }, orElse: () {
         state = QuizDetailsState.error(S.current.somethingWentWrong);
       });

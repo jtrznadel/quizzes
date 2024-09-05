@@ -7,7 +7,6 @@ import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
-import '../../../quiz_generation/domain/answer_model.dart';
 import '../../../quiz_generation/domain/question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
@@ -15,31 +14,23 @@ import '../../application/quiz_details_state.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizDetailsQuestionsTab extends ConsumerStatefulWidget {
+class QuizDetailsQuestionsTab extends ConsumerWidget {
   const QuizDetailsQuestionsTab({super.key});
 
-  @override
-  ConsumerState createState() {
-    return _QuizDetailsQuestionsTabState();
-  }
-}
 
-class _QuizDetailsQuestionsTabState
-    extends ConsumerState<QuizDetailsQuestionsTab> {
-  bool _answersVisible = false;
-  late QuizDetailsState state;
   @override
-  Widget build(BuildContext context) {
-    state = ref.read(quizDetailsControllerProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(quizDetailsControllerProvider);
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
     return Column(
       children: [
-        questionsHeader(context),
-        questionsList(context),
+        questionsHeader(context, state, controller),
+        questionsList(context, state),
       ],
     );
   }
 
-  Widget questionsHeader(BuildContext context) {
+  Widget questionsHeader(BuildContext context, QuizDetailsState state, QuizDetailsController controller) {
     return Column(
       children: [
         const MediumVSpacer(),
@@ -48,16 +39,16 @@ class _QuizDetailsQuestionsTabState
           style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         ),
         const MediumVSpacer(),
-        answersSwitchRow(context),
+        answersSwitchRow(context, state, controller),
         //const MediumVSpacer(),
         newQuestionButton(context),
       ],
     );
   }
 
-  Widget questionsList(BuildContext context) {
+  Widget questionsList(BuildContext context, QuizDetailsState state) {
     return state.maybeWhen(
-      loaded: (quizDetails) {
+      loaded: (quizDetails, answersVisible) {
         return Column(
           children: [
             const MediumVSpacer(),
@@ -75,7 +66,7 @@ class _QuizDetailsQuestionsTabState
                   onDelete: () {
                     //TODO: Implement delete question
                   },
-                  correctAnswerVisible: _answersVisible,
+                  correctAnswerVisible: answersVisible,
                 );
               },
             ),
@@ -87,9 +78,9 @@ class _QuizDetailsQuestionsTabState
     );
   }
 
-  Widget answersSwitchRow(BuildContext context) {
+  Widget answersSwitchRow(BuildContext context, QuizDetailsState state, QuizDetailsController controller) {
     return state.maybeWhen(
-      loaded: (quizDetails) {
+      loaded: (quizDetails, answersVisible) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -112,11 +103,9 @@ class _QuizDetailsQuestionsTabState
                   child: FittedBox(
                     fit: BoxFit.fill,
                     child: SwitchButton(
-                      value: _answersVisible,
+                      value: answersVisible,
                       onChanged: (value) {
-                        setState(() {
-                          _answersVisible = value;
-                        });
+                        controller.changeAnswerVisibility(value);
                       },
                     ),
                   ),
@@ -156,24 +145,4 @@ class _QuizDetailsQuestionsTabState
       ),
     );
   }
-
-  //TODO: Remove this method after implementing the real data
-  List<AnswerModel> get generateAnswersDto => [
-        const AnswerModel(
-          content: "Answer A",
-          isCorrect: true,
-        ),
-        const AnswerModel(
-          content: "Answer B",
-          isCorrect: false,
-        ),
-        const AnswerModel(
-          content: "Answer C",
-          isCorrect: false,
-        ),
-        const AnswerModel(
-          content: "Answer D",
-          isCorrect: false,
-        ),
-      ];
 }
