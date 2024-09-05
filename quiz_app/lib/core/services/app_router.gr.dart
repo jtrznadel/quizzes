@@ -10,6 +10,58 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [BasicErrorPage]
+class BasicErrorRoute extends PageRouteInfo<BasicErrorRouteArgs> {
+  BasicErrorRoute({
+    Key? key,
+    required VoidCallback onRefresh,
+    required String refreshButtonText,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BasicErrorRoute.name,
+          args: BasicErrorRouteArgs(
+            key: key,
+            onRefresh: onRefresh,
+            refreshButtonText: refreshButtonText,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BasicErrorRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BasicErrorRouteArgs>();
+      return BasicErrorPage(
+        key: args.key,
+        onRefresh: args.onRefresh,
+        refreshButtonText: args.refreshButtonText,
+      );
+    },
+  );
+}
+
+class BasicErrorRouteArgs {
+  const BasicErrorRouteArgs({
+    this.key,
+    required this.onRefresh,
+    required this.refreshButtonText,
+  });
+
+  final Key? key;
+
+  final VoidCallback onRefresh;
+
+  final String refreshButtonText;
+
+  @override
+  String toString() {
+    return 'BasicErrorRouteArgs{key: $key, onRefresh: $onRefresh, refreshButtonText: $refreshButtonText}';
+  }
+}
+
+/// generated route for
 /// [DashboardPage]
 class DashboardRoute extends PageRouteInfo<void> {
   const DashboardRoute({List<PageRouteInfo>? children})
