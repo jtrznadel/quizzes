@@ -9,6 +9,9 @@ class MediaRes {
   static const String welcomeBackground = 'assets/images/gradient_welcome_screen.svg';
   static const String eclipse = 'assets/images/eclipse_welcome_screen.svg';
 
+  //ANIMATIONS
+  static const String loadingAnimation = 'assets/animations/loading.json';
+
   //ICONS
   static const String fluentEye = 'assets/icons/fluent_eye.svg';
   static const String arrowBack = 'assets/icons/arrow_back.svg';

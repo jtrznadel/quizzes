@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/errors/refresh_token_missing_exception.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
@@ -66,7 +67,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
                 );
               },
               orElse: () {
-                return const CircularProgressIndicator();
+                return const LoadingIndicator();
               },
             ),
           ],
