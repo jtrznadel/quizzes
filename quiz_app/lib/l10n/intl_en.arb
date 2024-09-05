@@ -161,8 +161,7 @@
     "profileNameHint": "Enter your name",
     "profileNameLabel": "Name",
     "profileUpdateButton": "Update",
-    "profileDeleteButton": "Delete",
-    "profileDeleteButtonLabel": "Delete your account",
+    "profileDeleteButton": "Delete account",
     "profileDeleteDialogHeading": "Are you sure?",
     "profileDeleteDialogDescription": "You are about to delete your account. This action cannot be undone.",
     "fileReadException": "Something went wrong",
@@ -172,6 +171,8 @@
     "profileUpdatingUsername": "Updating...",
     "profileSignOutButton": "Sign out",
     "profileSignOutDescription": "Sign out from your account",
+    "profileActionsHeading": "Profile actions",
+    
 
     "tempQuizzSummaryTitle": "Understanding Cryptocurrencies and Their Impact on Finance",
     "tempQuizzSummaryDescription": "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.",

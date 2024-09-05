@@ -6,9 +6,6 @@ import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/services/app_router.dart';
-import '../../../auth/application/auth_controller.dart';
-import '../../../auth/application/auth_state.dart';
 import '../refactors/profile_content.dart';
 
 @RoutePage()
@@ -34,33 +31,17 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
   Widget build(BuildContext context) {
     final userController = ref.read(userControllerProvider.notifier);
     final state = ref.watch(userControllerProvider);
-    final authController = ref.read(authControllerProvider.notifier);
-    final authState = ref.watch(authControllerProvider);
 
-    if (authState == const AuthState.unauthenticated()) {
-      ref.read(appRouterProvider).replaceAll([const SignInRoute()]);
-    }
     return Scaffold(
       appBar: BasicAppBar(
         title: S.of(context).profileAppbarTitle,
-        actions: [
-          IconButton(
-            onPressed: () async {
-              await authController.signOut();
-            },
-            icon: const Icon(Icons.logout),
-          )
-        ],
       ),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             state.maybeWhen(
-              success: (user, isUsernameUpdating) => ProfileContent(
-                user: user,
-                isUsernameUpdating: isUsernameUpdating,
-              ),
+              success: (user, isUsernameUpdating) => ProfileContent(user: user, isUsernameUpdating: isUsernameUpdating),
               error: (error) {
                 handleError(error, context);
                 //TODO: replace with custom error widget
