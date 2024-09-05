@@ -16,6 +16,8 @@ class BasicErrorRoute extends PageRouteInfo<BasicErrorRouteArgs> {
     Key? key,
     required VoidCallback onRefresh,
     required String refreshButtonText,
+    required String imageAsset,
+    required String errorText,
     List<PageRouteInfo>? children,
   }) : super(
           BasicErrorRoute.name,
@@ -23,6 +25,8 @@ class BasicErrorRoute extends PageRouteInfo<BasicErrorRouteArgs> {
             key: key,
             onRefresh: onRefresh,
             refreshButtonText: refreshButtonText,
+            imageAsset: imageAsset,
+            errorText: errorText,
           ),
           initialChildren: children,
         );
@@ -37,6 +41,8 @@ class BasicErrorRoute extends PageRouteInfo<BasicErrorRouteArgs> {
         key: args.key,
         onRefresh: args.onRefresh,
         refreshButtonText: args.refreshButtonText,
+        imageAsset: args.imageAsset,
+        errorText: args.errorText,
       );
     },
   );
@@ -47,6 +53,8 @@ class BasicErrorRouteArgs {
     this.key,
     required this.onRefresh,
     required this.refreshButtonText,
+    required this.imageAsset,
+    required this.errorText,
   });
 
   final Key? key;
@@ -55,9 +63,13 @@ class BasicErrorRouteArgs {
 
   final String refreshButtonText;
 
+  final String imageAsset;
+
+  final String errorText;
+
   @override
   String toString() {
-    return 'BasicErrorRouteArgs{key: $key, onRefresh: $onRefresh, refreshButtonText: $refreshButtonText}';
+    return 'BasicErrorRouteArgs{key: $key, onRefresh: $onRefresh, refreshButtonText: $refreshButtonText, imageAsset: $imageAsset, errorText: $errorText}';
   }
 }
 

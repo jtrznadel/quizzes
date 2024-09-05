@@ -31,4 +31,5 @@ class MediaRes {
 
   ///ERROR
   static const String basicError = 'assets/images/basic_error.svg';
+  static const String networkError = 'assets/images/network_error.svg';
 }

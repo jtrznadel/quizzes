@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -29,10 +30,13 @@ class DashboardPage extends ConsumerWidget {
         onPressed: () {
           ref.read(appRouterProvider).push(
                 BasicErrorRoute(
-                    onRefresh: () {},
-                    refreshButtonText:
-                        'Refresh'),
+                  onRefresh: () {},
+                  refreshButtonText: 'Refresh',
+                  imageAsset: MediaRes.networkError,
+                  errorText: 'Unable to connect to the internet. Please check your network settings and try again.',
+                ),
               );
+          ErrorSnackbar.show(context, 'This is an error message');
         },
         child: SvgPicture.asset(MediaRes.addQuiz, width: 24, height: 24),
       ),

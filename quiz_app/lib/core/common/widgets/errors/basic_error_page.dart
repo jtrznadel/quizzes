@@ -3,16 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../extensions/context_extension.dart';
-import '../../../res/media_res.dart';
 import '../secondary_button.dart';
 import '../spacers/vertical_spacers.dart';
 
 @RoutePage()
 class BasicErrorPage extends StatelessWidget {
-  const BasicErrorPage({super.key, required this.onRefresh, required this.refreshButtonText});
+  const BasicErrorPage({
+    super.key,
+    required this.onRefresh,
+    required this.refreshButtonText,
+    required this.imageAsset,
+    required this.errorText,
+  });
 
   final VoidCallback onRefresh;
   final String refreshButtonText;
+  final String imageAsset;
+  final String errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +33,14 @@ class BasicErrorPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SvgPicture.asset(
-                  MediaRes.basicError,
+                  imageAsset,
                   width: 128,
                   height: 128,
                 ),
                 const LargeVSpacer(),
                 Text(
                   //TODO: replace with translation
-                  'An error occurred. Please try again or contact the administrator',
+                  errorText,
                   style: context.theme.textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
