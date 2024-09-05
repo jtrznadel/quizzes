@@ -125,19 +125,25 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
       alignment: Alignment.centerRight,
       child: BasicButton(
         onPressed: () async {
-          await controller.updateQuizDetails(
-              id, titleController.text, descriptionController.text);
-          state.maybeWhen(
-            error: (error) {
-              InfoSnackbar.show(context, error, color: AppColorScheme.error);
-            },
-            orElse: () => InfoSnackbar.show(
-              context,
-              //TODO: replace with translation
-              "Successfully updated quiz details",
-              color: AppColorScheme.success,
-            ),
+          final success = await controller.updateQuizDetails(
+            id,
+            titleController.text,
+            descriptionController.text,
           );
+          if (context.mounted) {
+            success
+                ? InfoSnackbar.show(
+                    context,
+                    //TODO: replace with translation
+                    'Succesfully updated quiz details',
+                    color: AppColorScheme.success,
+                  )
+                : InfoSnackbar.show(
+                    context,
+                    S.current.somethingWentWrong,
+                    color: AppColorScheme.error,
+                  );
+          }
         },
         text: S.of(context).quizzDetailsSaveChangesButton,
       ),
