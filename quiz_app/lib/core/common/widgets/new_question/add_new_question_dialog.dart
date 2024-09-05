@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../features/quiz_generation/application/quiz_generation_controller.dart';
 import '../../../../features/quiz_generation/domain/answer_model.dart';
 import '../../../../features/quiz_generation/domain/question_model.dart';
 import '../../../services/app_router.dart';
@@ -16,21 +15,23 @@ import '../../../theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
 class AddNewQuestionDialog extends ConsumerStatefulWidget {
-  const AddNewQuestionDialog({super.key});
+  const AddNewQuestionDialog({super.key, required this.onQuestionAdd});
+
+  final void Function(QuestionModel question) onQuestionAdd;
 
   @override
   ConsumerState createState() => _AddNewQuestionDialogState();
 
-  static void show(BuildContext context) {
+  static void show(BuildContext context, {required void Function(QuestionModel question) onQuestionAdd}) {
     showDialog(
       context: context,
-      builder: (context) => const Scaffold(
+      builder: (context) => Scaffold(
         backgroundColor: Colors.transparent,
         body: Align(
           alignment: Alignment.center,
           child: Wrap(
             children: [
-              AddNewQuestionDialog(),
+              AddNewQuestionDialog(onQuestionAdd: onQuestionAdd),
             ],
           ),
         ),
@@ -65,8 +66,6 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final generationController =
-        ref.read(quizGenerationControllerProvider.notifier);
     return BasicDialog(
       title: S.of(context).quizzCreationAddQuestionHeading,
       content: _dialogContent(),
@@ -100,7 +99,7 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
                   ),
                 ),
               );
-              generationController.addNewQuestion(question);
+              widget.onQuestionAdd(question);
               ref.read(appRouterProvider).maybePop();
             }
             else{

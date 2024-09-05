@@ -135,7 +135,9 @@ class _QuizDetailsQuestionsTabState
       alignment: Alignment.centerRight,
       child: ElevatedButton(
         onPressed: () {
-          AddNewQuestionBottomSheet.show(context);
+          AddNewQuestionBottomSheet.show(context, onQuestionAdd: (question){
+            //TODO: Implement add new question in quiz details controller
+          },);
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColorScheme.secondary,
