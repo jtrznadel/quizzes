@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta."),
         "profileDeleteDialogHeading":
             MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
+        "profileEmailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "To jest Twoja publiczna nazwa wyświetlana."),
         "profileNameHint":

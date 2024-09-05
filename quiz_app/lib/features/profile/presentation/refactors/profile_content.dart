@@ -5,6 +5,7 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/language_provider.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/user.dart';
@@ -43,6 +44,14 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
             S.of(context).profileSubheading,
             style: context.theme.textTheme.headlineMedium,
             textAlign: TextAlign.start,
+          ),
+          const SmallVSpacer(),
+          TextArea(
+            hintText: S.of(context).profileNameHint,
+            controller: usernameTextController,
+            maxLines: 3,
+            labelText: S.of(context).profileEmailLabel,
+            enabled: false,
           ),
           const SmallVSpacer(),
           TextArea(

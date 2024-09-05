@@ -160,6 +160,7 @@
     "profileNameDescription": "This is your public display name.",
     "profileNameHint": "Enter your name",
     "profileNameLabel": "Name",
+    "profileEmailLabel": "E-mail",
     "profileUpdateButton": "Update",
     "profileDeleteButton": "Delete account",
     "profileDeleteDialogHeading": "Are you sure?",

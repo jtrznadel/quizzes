@@ -160,6 +160,7 @@
     "profileNameDescription": "To jest Twoja publiczna nazwa wyświetlana.",
     "profileNameHint": "Wpisz swoje imię",
     "profileNameLabel": "Imię",
+    "profileEmailLabel": "E-mail",
     "profileUpdateButton": "Aktualizuj",
     "profileDeleteButton": "Usuń konto",
     "profileDeleteDialogHeading": "Czy jesteś pewien?",

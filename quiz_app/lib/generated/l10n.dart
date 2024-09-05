@@ -1400,6 +1400,16 @@ class S {
     );
   }
 
+  /// `E-mail`
+  String get profileEmailLabel {
+    return Intl.message(
+      'E-mail',
+      name: 'profileEmailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Update`
   String get profileUpdateButton {
     return Intl.message(
