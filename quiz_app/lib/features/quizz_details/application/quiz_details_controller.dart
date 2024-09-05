@@ -49,4 +49,14 @@ class QuizDetailsController extends _$QuizDetailsController {
       state = QuizDetailsState.error(e.toString());
     }
   }
+
+  Future<void> updateQuizDetails(String id, String title, String description) async {
+    final QuizDetailsRepository quizDetailsRepository = ref.read(quizDetailsRepositoryProvider);
+
+    try {
+      await quizDetailsRepository.updateQuizDetails(id, title, description);
+    } catch (e) {
+      state = QuizDetailsState.error(e.toString());
+    }
+  }
 }

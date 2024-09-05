@@ -23,6 +23,9 @@ abstract class QuizDetailsClient {
 
   @PATCH(ApiConstants.updateQuizAvailabilityEndpoint)
   Future<void> updateQuizAvailability(@Path('id') String id, @Body() String availability);
+
+  @PUT(ApiConstants.updateQuizDetailsEndpoint)      
+  Future<void> updateQuizDetails(@Body() Map<String, dynamic> quizDetails);
 }
 
 final quizDetailsClientProvider = Provider<QuizDetailsClient>(
