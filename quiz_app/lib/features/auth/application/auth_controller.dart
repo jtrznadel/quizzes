@@ -2,6 +2,7 @@ import 'dart:core';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
 import '../data/repositories/auth_repository.dart';
 import '../domain/user_auth.dart';
@@ -45,11 +46,13 @@ class AuthController extends _$AuthController {
   Future<void> signOut() async {
     state = const AuthState.loading();
     final result = await ref.read(authRepositoryProvider).signOut();
+    final router = ref.read(appRouterProvider);
     result.fold(
       (error) => state = AuthState.error(error.message),
       (_) async {
         await ref.read(sessionProvider).deleteTokens();
         state = const AuthState.unauthenticated();
+        router.replaceAll([const SignInRoute()]);
       },
     );
   }

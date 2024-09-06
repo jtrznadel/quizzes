@@ -18,17 +18,14 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +38,7 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(instance != null, 'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -624,7 +620,7 @@ class S {
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
-      name: 'quizzCreationConfigurationError',
+      name: 'quizzCreationConfigureError',
       desc: '',
       args: [],
     );
@@ -1470,6 +1466,16 @@ class S {
     );
   }
 
+  /// `E-mail`
+  String get profileEmailLabel {
+    return Intl.message(
+      'E-mail',
+      name: 'profileEmailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Update`
   String get profileUpdateButton {
     return Intl.message(
@@ -1480,21 +1486,11 @@ class S {
     );
   }
 
-  /// `Delete`
+  /// `Delete account`
   String get profileDeleteButton {
     return Intl.message(
-      'Delete',
+      'Delete account',
       name: 'profileDeleteButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Delete your account`
-  String get profileDeleteButtonLabel {
-    return Intl.message(
-      'Delete your account',
-      name: 'profileDeleteButtonLabel',
       desc: '',
       args: [],
     );
@@ -1585,6 +1581,16 @@ class S {
     return Intl.message(
       'Sign out from your account',
       name: 'profileSignOutDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile actions`
+  String get profileActionsHeading {
+    return Intl.message(
+      'Profile actions',
+      name: 'profileActionsHeading',
       desc: '',
       args: [],
     );
