@@ -11,6 +11,7 @@ import '../../../quiz_generation/domain/question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
+import '../widgets/delete_question_dialog.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
 
@@ -64,7 +65,7 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
                     createAnswersDto: quizDetails.questions[index].answers,
                   ),
                   onDelete: () {
-                    //TODO: Implement delete question
+                    DeleteQuestionDialog.show(context, quizDetails.questions[index]);
                   },
                   correctAnswerVisible: answersVisible,
                 );
