@@ -620,7 +620,7 @@ class S {
     );
   }
 
-  // `Pick question type and number of questions.`
+  /// `Pick question type and number of questions.`
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
@@ -755,6 +755,36 @@ class S {
     return Intl.message(
       'New question',
       name: 'quizzDetailsTabQuestionsAddNewQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get deleteQuestionDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'deleteQuestionDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action cannot be undone. Once you delete the question there is no going back.`
+  String get deleteQuestionDialogDescription {
+    return Intl.message(
+      'This action cannot be undone. Once you delete the question there is no going back.',
+      name: 'deleteQuestionDialogDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete question.`
+  String get deleteQuestionFailure {
+    return Intl.message(
+      'Failed to delete question.',
+      name: 'deleteQuestionFailure',
       desc: '',
       args: [],
     );

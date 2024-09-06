@@ -8,6 +8,7 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 import '../../../quizz/presentation/refactors/add_question_dialog_answer_section.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../domain/question_details_model.dart';
@@ -28,60 +29,16 @@ class DeleteQuestionDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DeleteDialog(
-      //TODO: replace with translation
-      title: 'Are you sure?',
+      title: S.of(context).deleteQuestionDialogHeading,
       content: Column(
         children: [
           Text(
-            //TODO: replace with translation
-            'This action cannot be undone. Once you delete the question, there is no going back.',
+            S.of(context).deleteQuestionDialogDescription,
             style: context.theme.textTheme.bodyMedium
                 ?.copyWith(color: AppColorScheme.textSecondary),
           ),
           const LargeVSpacer(),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppTheme.mediumRadius),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(
-                  AppTheme.deleteQuestionDetailsQuestionBoxPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    question.title,
-                    style: context.theme.textTheme.headlineSmall
-                        ?.copyWith(color: AppColorScheme.textPrimary),
-                  ),
-                  const MediumVSpacer(),
-                  for (final (index, answer) in question.answers.indexed)
-                    Column(
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              Answer.values[index].name,
-                              style: context.theme.textTheme.labelMedium,
-                            ),
-                            const MediumHSpacer(),
-                            Text(
-                              answer.content,
-                              style: context.theme.textTheme.bodyMedium
-                                  ?.copyWith(
-                                      color: AppColorScheme.textSecondary),
-                            ),
-                          ],
-                        ),
-                        const ExtraSmallVSpacer(),
-                      ],
-                    ),
-                ],
-              ),
-            ),
-          )
+          _questionItem(context),
         ],
       ),
       onConfirm: () async {
@@ -90,13 +47,61 @@ class DeleteQuestionDialog extends ConsumerWidget {
             .deleteQuestion(question.id);
         if (context.mounted) {
           if (!success) {
-            //TODO: replace with translation
-            InfoSnackbar.show(context, 'Failed to delete a question',
+            InfoSnackbar.show(context, S.of(context).deleteQuestionFailure,
                 color: AppColorScheme.error);
           }
           Navigator.of(context).pop();
         }
       },
+    );
+  }
+
+  Widget _questionItem(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppTheme.mediumRadius),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(
+            AppTheme.deleteQuestionDetailsQuestionBoxPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              question.title,
+              style: context.theme.textTheme.headlineSmall
+                  ?.copyWith(color: AppColorScheme.textPrimary),
+            ),
+            const MediumVSpacer(),
+            _answers(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _answers(BuildContext context) {
+    return Column(
+      children: [
+        for (final (index, answer) in question.answers.indexed)
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                Answer.values[index].name,
+                style: context.theme.textTheme.labelMedium,
+              ),
+              const MediumHSpacer(),
+              Text(
+                answer.content,
+                style: context.theme.textTheme.bodyMedium
+                    ?.copyWith(color: AppColorScheme.textSecondary),
+              ),
+            ],
+          ),
+        const ExtraSmallVSpacer(),
+      ],
     );
   }
 }

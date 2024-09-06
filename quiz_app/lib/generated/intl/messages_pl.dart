@@ -40,6 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccountHeading":
             MessageLookupByLibrary.simpleMessage("Usuwanie konta"),
         "deleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
+        "deleteQuestionDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "Tej operacji nie można cofnąć. Jeżeli usuniesz to pytanie, nie będzie możliwości jego przywrócenia."),
+        "deleteQuestionDialogHeading": MessageLookupByLibrary.simpleMessage(
+            "Na pewno chcesz usunąć to pytanie?"),
+        "deleteQuestionFailure": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się usunąć pytania."),
         "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
             "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu."),
         "deleteQuizzHeading":
@@ -63,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Nie martw się! To się zdarza. Wprowadź adres e-mail powiązany z twoim kontem."),
+        "goBackToDashboard":
+            MessageLookupByLibrary.simpleMessage("Wróć do pulpitu"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
         "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
@@ -113,8 +121,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileSignOutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
         "profileSignOutDescription": MessageLookupByLibrary.simpleMessage(
             "Wyloguj się ze swojego konta"),
-        "profileSomethingWentWrong":
-            MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Zarządzaj ustawieniami swojego profilu tutaj."),
         "profileUpdateButton":
@@ -142,6 +148,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tytuł pytania"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Stwórz quizz"),
+        "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
+            "Wybierz typ pytania i liczbę pytań."),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Konfiguracja quizzu"),
         "quizzCreationConfigureQuestionCount":
@@ -296,6 +304,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "signUpHeading": MessageLookupByLibrary.simpleMessage(
             "Witaj! 👋 Wypełnij formularz, aby się zarejestrować"),
+        "somethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "successfulPasswordResetRequestButton":
             MessageLookupByLibrary.simpleMessage("Powrót"),
         "successfulPasswordResetRequestHeading":

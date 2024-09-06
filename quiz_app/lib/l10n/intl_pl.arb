@@ -67,7 +67,7 @@
     "quizzCreationConfigureQuestionCount3": "Dużo",
     "quizzCreationConfigureQuestionCount4": "Ręcznie",
 
-    "quizzCreationConfigureError": "Wybierz typ pytania i liczbę pytań.",
+    "quizzCreationConfigurationError": "Wybierz typ pytania i liczbę pytań.",
 
     "addNewQuestionBottomSheetHeading": "Dodaj nowe pytanie",
     "addNewQuestionBottomSheetManual": "Ręcznie",
@@ -86,6 +86,9 @@
     "quizzDetailsTabQuestionsSubheading": "Zarządzaj pytaniami do quizzu tutaj. Możesz edytować i usuwać pytania. Ta strona jest podglądem twoich pytań.",
     "quizzDetailsTabQuestionsSwitch": "Odpowiedzi",
     "quizzDetailsTabQuestionsAddNewQuestion": "Nowe pytanie",
+    "deleteQuestionDialogHeading": "Na pewno chcesz usunąć to pytanie?",
+    "deleteQuestionDialogDescription": "Tej operacji nie można cofnąć. Jeżeli usuniesz to pytanie, nie będzie możliwości jego przywrócenia.",
+    "deleteQuestionFailure": "Nie udało się usunąć pytania.",
 
     "quizzDetailsTabSettingsSubheading": "Zarządzaj ustawieniami quizzu tutaj.",
     "quizzDetailsTabSettingsQuizStatus": "Status quizzu",
