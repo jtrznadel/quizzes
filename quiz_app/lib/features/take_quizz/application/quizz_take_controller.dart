@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/utils/enums/quizz_score_enum.dart';
+import '../presentation/views/take_quizz_summary_page.dart';
 import 'quizz_take_state.dart';
 
 part 'quizz_take_controller.g.dart';

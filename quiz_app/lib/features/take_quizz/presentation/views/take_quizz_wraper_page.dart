@@ -6,7 +6,9 @@ import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 import '../../application/quizz_take_controller.dart';
+import '../widgets/finish_quizz_dialog.dart';
 import '../widgets/quizz_multiple_answer_card.dart';
 import '../widgets/quizz_progress_indicator.dart';
 import '../widgets/quizz_step_content.dart';
@@ -110,10 +112,9 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                           )
                         : BasicButton(
                             onPressed: () {
-                              quizzController.finishQuizz(id: '1');
-                              context.router.maybePop();
+                              FinishQuizzDialog.show(context);
                             },
-                            text: 'Finish',
+                            text: S.of(context).quizzTakeFinishButton,
                           ),
                     orElse: () => const SizedBox.shrink(),
                   ),

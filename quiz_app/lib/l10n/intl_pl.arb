@@ -153,7 +153,19 @@
     "quizzTakeSubheading": "Weź udział w naszym quizie, którego celem jest ocena twojego zrozumienia i wiedzy na różne tematy.",
     "quizzTakeFormFieldLabel": "Imię",
     "quizzTakeFormFieldHint": "Twoje imię",
-
+    "quizzTakeFinishHeading": "Zakończ quizz",
+    "quizzTakeFinishDescription": "Czy jesteś pewien, że odpowiedziałeś na wszystkie pytania? Po zatwierdzeniu nie będziesz mógł wprowadzać żadnych zmian.",
+    "quizzTakeFinishButton": "Zakończ",
+    "quizzTakeSummaryHeading": "Podsumowanie",
+    "quizzTakeSummaryDescription": "Gratulacje za ukończenie quizu! Twoje odpowiedzi zostały zapisane. Sprawdź swoje wyniki poniżej i zobacz, jak Ci poszło. Dziękujemy za udział!",
+    "quizzTakeSummaryYourScore": "Twój wynik to...",
+    "quizzTakeScoreURGenius": "Jesteś geniuszem!",
+    "quizzTakeScoreAwesome": "Świetnie!",
+    "quizzTakeScoreGood": "Dobrze!",
+    "quizzTakeScoreCouldBeBetter": "Mogło być lepiej!",
+    "quizzTakeScoreBad": "To nie Twój dzień...",
+    "quizzTakeSummarySeeResults": "Zobacz wyniki",
+    "quizzTakeSummaryBackToDashboard": "Wróć do pulpitu",
 
 
     "deleteQuizzHeading": "Czy jesteś pewien?",

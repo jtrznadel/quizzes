@@ -18,14 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -38,7 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null, 'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -620,7 +624,7 @@ class S {
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
-      name: 'quizzCreationConfigureError',
+      name: 'quizzCreationConfigurationError',
       desc: '',
       args: [],
     );
@@ -1321,6 +1325,136 @@ class S {
     return Intl.message(
       'Your name',
       name: 'quizzTakeFormFieldHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finish quizz`
+  String get quizzTakeFinishHeading {
+    return Intl.message(
+      'Finish quizz',
+      name: 'quizzTakeFinishHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure that all questions have been answered? Once you submit, you won''t be able to make any changes.`
+  String get quizzTakeFinishDescription {
+    return Intl.message(
+      'Are you sure that all questions have been answered? Once you submit, you won\'\'t be able to make any changes.',
+      name: 'quizzTakeFinishDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Finish`
+  String get quizzTakeFinishButton {
+    return Intl.message(
+      'Finish',
+      name: 'quizzTakeFinishButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summary`
+  String get quizzTakeSummaryHeading {
+    return Intl.message(
+      'Summary',
+      name: 'quizzTakeSummaryHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Congratulations on finishing the quiz! Your responses have been recorded. Review your results below, and see how you did. Thank you for participating!`
+  String get quizzTakeSummaryDescription {
+    return Intl.message(
+      'Congratulations on finishing the quiz! Your responses have been recorded. Review your results below, and see how you did. Thank you for participating!',
+      name: 'quizzTakeSummaryDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your score is...`
+  String get quizzTakeSummaryYourScore {
+    return Intl.message(
+      'Your score is...',
+      name: 'quizzTakeSummaryYourScore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are a genius!`
+  String get quizzTakeScoreURGenius {
+    return Intl.message(
+      'You are a genius!',
+      name: 'quizzTakeScoreURGenius',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Awesome!`
+  String get quizzTakeScoreAwesome {
+    return Intl.message(
+      'Awesome!',
+      name: 'quizzTakeScoreAwesome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good!`
+  String get quizzTakeScoreGood {
+    return Intl.message(
+      'Good!',
+      name: 'quizzTakeScoreGood',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could be better!`
+  String get quizzTakeScoreCouldBeBetter {
+    return Intl.message(
+      'Could be better!',
+      name: 'quizzTakeScoreCouldBeBetter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This is not your day...`
+  String get quizzTakeScoreBad {
+    return Intl.message(
+      'This is not your day...',
+      name: 'quizzTakeScoreBad',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See results`
+  String get quizzTakeSummarySeeResults {
+    return Intl.message(
+      'See results',
+      name: 'quizzTakeSummarySeeResults',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to dashboard`
+  String get quizzTakeSummaryBackToDashboard {
+    return Intl.message(
+      'Back to dashboard',
+      name: 'quizzTakeSummaryBackToDashboard',
       desc: '',
       args: [],
     );

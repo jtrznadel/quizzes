@@ -23,8 +23,10 @@ class TakeQuizzPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final usernameController = TextEditingController();
+    final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: S.of(context).quizzTakeAppBarTitle,
         onBack: () {
@@ -47,6 +49,7 @@ class TakeQuizzPage extends StatelessWidget {
             ),
             const LargeVSpacer(),
             Form(
+              key: formKey,
               child: IFormField(
                 labelText: S.of(context).quizzTakeFormFieldLabel,
                 hintText: S.of(context).quizzTakeFormFieldHint,
@@ -58,9 +61,11 @@ class TakeQuizzPage extends StatelessWidget {
             const LargeVSpacer(),
             BasicButton(
               onPressed: () {
-                context.router.push(
-                  const TakeQuizzWraperRoute(),
-                );
+                if (formKey.currentState!.validate()) {
+                  context.router.push(
+                    const TakeQuizzWraperRoute(),
+                  );
+                }
               },
               text: 'Start Quizz',
               width: double.infinity,

@@ -9,21 +9,24 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
+import '../../application/quizz_take_controller.dart';
 
-class QuitQuizzTakingDialog extends ConsumerWidget {
-  const QuitQuizzTakingDialog({super.key});
+class FinishQuizzDialog extends ConsumerWidget {
+  const FinishQuizzDialog({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final quizzController = ref.read(quizzTakeControllerProvider.notifier);
+
     return BasicDialog(
-      title: S.of(context).quizzCreationQuitHeading,
+      title: S.of(context).quizzTakeFinishHeading,
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           const SmallVSpacer(),
           Text(
-            S.of(context).quizzTakeQuitSubheading,
+            S.of(context).quizzTakeFinishDescription,
             style: context.textTheme.bodyMedium,
           ),
         ],
@@ -41,9 +44,10 @@ class QuitQuizzTakingDialog extends ConsumerWidget {
         const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
-            ref.read(appRouterProvider).replace(const DashboardRoute());
+            quizzController.finishQuizz(id: '1');
+            ref.read(appRouterProvider).replace(const TakeQuizzSummaryRoute());
           },
-          text: S.of(context).quizzQuitButton,
+          text: S.of(context).quizzTakeFinishButton,
           width: null,
           bgColor: AppColorScheme.error,
           contentColor: AppColorScheme.textContrast,
@@ -55,7 +59,7 @@ class QuitQuizzTakingDialog extends ConsumerWidget {
   static void show(BuildContext context) {
     showDialog(
       context: context,
-      builder: (context) => const QuitQuizzTakingDialog(),
+      builder: (context) => const FinishQuizzDialog(),
     );
   }
 }
