@@ -18,30 +18,31 @@ class LanguageRadioButton<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final isSelected = value == groupValue;
     return SizedBox(
-        width: double.infinity,
-        child: ListTile(
-          title: Text(
-            title,
-            style: context.textTheme.bodyMedium,
+      width: double.infinity,
+      child: ListTile(
+        title: Text(
+          title,
+          style: context.textTheme.bodyMedium,
+        ),
+        trailing: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return ScaleTransition(
+              scale: animation,
+              child: child,
+            );
+          },
+          child: SvgPicture.asset(
+            isSelected ? MediaRes.languageRadioChecked : MediaRes.languageRadioUnchecked,
+            key: ValueKey<bool>(isSelected),
           ),
-          trailing: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              return ScaleTransition(
-                scale: animation,
-                child: child,
-              );
-            },
-            child: SvgPicture.asset(
-              isSelected ? MediaRes.languageRadioChecked : MediaRes.languageRadioUnchecked,
-              key: ValueKey<bool>(isSelected),
-            ),
-          ),
-          onTap: () => onChanged(value),
-          tileColor: AppColorScheme.surfaceContainer,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppTheme.mediumRadius),
-          ),
-        ));
+        ),
+        onTap: () => onChanged(value),
+        tileColor: AppColorScheme.surfaceContainer,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppTheme.mediumRadius),
+        ),
+      ),
+    );
   }
 }
