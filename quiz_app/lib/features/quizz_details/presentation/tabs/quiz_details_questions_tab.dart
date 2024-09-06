@@ -58,16 +58,21 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                return QuestionBox(
-                  questionIndex: index,
-                  question: QuestionModel(
-                    title: quizDetails.questions[index].title,
-                    createAnswersDto: quizDetails.questions[index].answers,
-                  ),
-                  onDelete: () {
-                    DeleteQuestionDialog.show(context, quizDetails.questions[index]);
-                  },
-                  correctAnswerVisible: answersVisible,
+                return Column(
+                  children: [
+                    QuestionBox(
+                      questionIndex: index,
+                      question: QuestionModel(
+                        title: quizDetails.questions[index].title,
+                        createAnswersDto: quizDetails.questions[index].answers,
+                      ),
+                      onDelete: () {
+                        DeleteQuestionDialog.show(context, quizDetails.questions[index]);
+                      },
+                      correctAnswerVisible: answersVisible,
+                    ),
+                    const LargeVSpacer(),
+                  ],
                 );
               },
             ),

@@ -29,14 +29,15 @@ class QuizDetailsController extends _$QuizDetailsController {
 
   void changeAnswerVisibility(bool isVisible) {
     state = state.maybeWhen(
-        loaded: (quizDetails, _) => state = QuizDetailsState.loaded(quizDetails, isVisible),
+        loaded: (quizDetails, _) =>
+            state = QuizDetailsState.loaded(quizDetails, isVisible),
         orElse: () => state);
   }
 
   void changeQuizStatus(QuizStatus status) {
     state = state.maybeWhen(
-        loaded: (quizDetails, answersVisible) =>
-            QuizDetailsState.loaded(quizDetails.copyWith(status: status), answersVisible),
+        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(
+            quizDetails.copyWith(status: status), answersVisible),
         orElse: () => state);
   }
 
@@ -82,7 +83,8 @@ class QuizDetailsController extends _$QuizDetailsController {
       await quizDetailsRepository.updateQuizDetails(id, title, description);
       state.maybeWhen(loaded: (quizDetails, answersVisible) {
         state = QuizDetailsState.loaded(
-            quizDetails.copyWith(title: title, description: description), answersVisible);
+            quizDetails.copyWith(title: title, description: description),
+            answersVisible);
       }, orElse: () {
         state = QuizDetailsState.error(S.current.somethingWentWrong);
       });
@@ -91,5 +93,28 @@ class QuizDetailsController extends _$QuizDetailsController {
       kDebugMode ? debugPrint(e.toString()) : null;
     }
     return false;
+  }
+
+  Future<bool> deleteQuestion(String id) async {
+    final QuizDetailsRepository quizDetailsRepository =
+        ref.read(quizDetailsRepositoryProvider);
+
+    try {
+      await quizDetailsRepository.deleteQuestion(id);
+      state.maybeWhen(loaded: (quizDetails, answersVisible) {
+        state = QuizDetailsState.loaded(
+          quizDetails.copyWith(
+            questions: quizDetails.questions.where((q) => q.id != id).toList(),
+          ),
+          answersVisible,
+        );
+      }, orElse: () {
+        state = QuizDetailsState.error(S.current.somethingWentWrong);
+      });
+      return true;
+    } catch (e) {
+      kDebugMode ? debugPrint(e.toString()) : null;
+      return false;
+    }
   }
 }

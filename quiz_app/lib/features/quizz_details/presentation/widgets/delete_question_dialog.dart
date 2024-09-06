@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../quizz/presentation/refactors/add_question_dialog_answer_section.dart';
+import '../../application/quiz_details_controller.dart';
 import '../../domain/question_details_model.dart';
 
 class DeleteQuestionDialog extends ConsumerWidget {
@@ -18,7 +20,8 @@ class DeleteQuestionDialog extends ConsumerWidget {
   static void show(BuildContext context, QuestionDetailsModel question) {
     showDialog(
       context: context,
-      builder: (context) => Center(child: Wrap(children: [DeleteQuestionDialog(question: question)])),
+      builder: (context) => Center(
+          child: Wrap(children: [DeleteQuestionDialog(question: question)])),
     );
   }
 
@@ -42,7 +45,8 @@ class DeleteQuestionDialog extends ConsumerWidget {
               borderRadius: BorderRadius.circular(AppTheme.mediumRadius),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.deleteQuestionDetailsQuestionBoxPadding),
+              padding: const EdgeInsets.all(
+                  AppTheme.deleteQuestionDetailsQuestionBoxPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -66,22 +70,32 @@ class DeleteQuestionDialog extends ConsumerWidget {
                             Text(
                               answer.content,
                               style: context.theme.textTheme.bodyMedium
-                                  ?.copyWith(color: AppColorScheme.textSecondary),
+                                  ?.copyWith(
+                                      color: AppColorScheme.textSecondary),
                             ),
                           ],
                         ),
                         const ExtraSmallVSpacer(),
                       ],
                     ),
-                  
                 ],
               ),
             ),
           )
         ],
       ),
-      onConfirm: () {
-        //TODO: Implement delete question
+      onConfirm: () async {
+        final success = await ref
+            .read(quizDetailsControllerProvider.notifier)
+            .deleteQuestion(question.id);
+        if (context.mounted) {
+          if (!success) {
+            //TODO: replace with translation
+            InfoSnackbar.show(context, 'Failed to delete a question',
+                color: AppColorScheme.error);
+          }
+          Navigator.of(context).pop();
+        }
       },
     );
   }

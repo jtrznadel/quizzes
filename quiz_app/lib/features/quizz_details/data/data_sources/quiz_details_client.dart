@@ -26,6 +26,9 @@ abstract class QuizDetailsClient {
 
   @PUT(ApiConstants.updateQuizDetailsEndpoint)      
   Future<void> updateQuizDetails(@Body() Map<String, dynamic> quizDetails);
+
+  @DELETE(ApiConstants.deleteQuestionEndpoint)
+  Future<void> deleteQuestion(@Path('id') String id);
 }
 
 final quizDetailsClientProvider = Provider<QuizDetailsClient>(
