@@ -105,14 +105,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hasło musi zawierać co najmniej jedną dużą literę."),
         "passwordTooShort": MessageLookupByLibrary.simpleMessage(
             "Hasło musi mieć co najmniej 6 znaków."),
+        "profileActionsHeading":
+            MessageLookupByLibrary.simpleMessage("Akcje profilu"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profil"),
-        "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
-        "profileDeleteButtonLabel":
-            MessageLookupByLibrary.simpleMessage("Usuń swoje konto"),
+        "profileDeleteButton":
+            MessageLookupByLibrary.simpleMessage("Usuń konto"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
             "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta."),
         "profileDeleteDialogHeading":
             MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
+        "profileEmailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "To jest Twoja publiczna nazwa wyświetlana."),
         "profileNameHint":

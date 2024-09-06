@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../common/widgets/errors/basic_error_page.dart';
 import 'auth_guard.dart';
 
 import '../../features/auth/presentation/views/forgot_pasword_page.dart';
@@ -51,6 +52,7 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(page: ProfileRoute.page, guards: [AuthGuard(ref)]),
         AutoRoute(page: QuizzCreationRoute.page, guards: [AuthGuard(ref)]),
-        AutoRoute(page: QuizzDetailsRoute.page, guards: [AuthGuard(ref)])
+        AutoRoute(page: QuizzDetailsRoute.page, guards: [AuthGuard(ref)]),
+        AutoRoute(page: BasicErrorRoute.page),
       ];
 }

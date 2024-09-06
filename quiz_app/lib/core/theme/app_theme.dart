@@ -52,6 +52,8 @@ abstract class AppTheme {
   static const double checkboxDefaultHeight = 24;
   static const double checkboxDefaultWidth = 24;
 
+  static const double profileSpacerValue = 32;
+
   static const double extraSmallSpacerValue = 4;
   static const double smallSpacerValue = 8;
   static const double mediumSpacerValue = 16;

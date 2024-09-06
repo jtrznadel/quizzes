@@ -624,7 +624,7 @@ class S {
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
-      name: 'quizzCreationConfigurationError',
+      name: 'quizzCreationConfigureError',
       desc: '',
       args: [],
     );
@@ -1430,6 +1430,16 @@ class S {
     );
   }
 
+  /// `E-mail`
+  String get profileEmailLabel {
+    return Intl.message(
+      'E-mail',
+      name: 'profileEmailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Update`
   String get profileUpdateButton {
     return Intl.message(
@@ -1440,21 +1450,11 @@ class S {
     );
   }
 
-  /// `Delete`
+  /// `Delete account`
   String get profileDeleteButton {
     return Intl.message(
-      'Delete',
+      'Delete account',
       name: 'profileDeleteButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Delete your account`
-  String get profileDeleteButtonLabel {
-    return Intl.message(
-      'Delete your account',
-      name: 'profileDeleteButtonLabel',
       desc: '',
       args: [],
     );
@@ -1545,6 +1545,16 @@ class S {
     return Intl.message(
       'Sign out from your account',
       name: 'profileSignOutDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile actions`
+  String get profileActionsHeading {
+    return Intl.message(
+      'Profile actions',
+      name: 'profileActionsHeading',
       desc: '',
       args: [],
     );

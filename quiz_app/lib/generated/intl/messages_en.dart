@@ -105,14 +105,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least one uppercase letter."),
         "passwordTooShort": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 6 characters long."),
+        "profileActionsHeading":
+            MessageLookupByLibrary.simpleMessage("Profile actions"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profile"),
-        "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
-        "profileDeleteButtonLabel":
-            MessageLookupByLibrary.simpleMessage("Delete your account"),
+        "profileDeleteButton":
+            MessageLookupByLibrary.simpleMessage("Delete account"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
             "You are about to delete your account. This action cannot be undone."),
         "profileDeleteDialogHeading":
             MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "profileEmailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "This is your public display name."),
         "profileNameHint":
