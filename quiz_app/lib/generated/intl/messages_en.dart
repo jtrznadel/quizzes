@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Don\'\'t worry! It happens. Enter the email address associated with your account."),
+        "goBackToDashboard":
+            MessageLookupByLibrary.simpleMessage("Go back to dashboard"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Invalid e-mail address."),
         "invalidEmailOrPassword":
@@ -114,8 +116,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "profileSignOutDescription":
             MessageLookupByLibrary.simpleMessage("Sign out from your account"),
-        "profileSomethingWentWrong":
-            MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Manage your profile settings here."),
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
@@ -143,6 +143,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Question Title"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Create quizz"),
+        "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
+            "Pick question type and number of questions."),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Configure quizz"),
         "quizzCreationConfigureQuestionCount":
@@ -308,6 +310,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpAppBarTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "signUpHeading": MessageLookupByLibrary.simpleMessage(
             "Hello! 👋 Fill out the form to register"),
+        "somethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "successfulPasswordResetRequestButton":
             MessageLookupByLibrary.simpleMessage("Back"),
         "successfulPasswordResetRequestHeading":

@@ -67,7 +67,7 @@
     "quizzCreationConfigureQuestionCount3": "High",
     "quizzCreationConfigureQuestionCount4": "Manual",
 
-    "quizzCreationConfigureError": "Pick question type and number of questions.",
+    "quizzCreationConfigurationError": "Pick question type and number of questions.",
 
     "addNewQuestionBottomSheetHeading": "Add new question",
     "addNewQuestionBottomSheetManual": "Manual",

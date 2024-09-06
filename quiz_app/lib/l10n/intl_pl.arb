@@ -67,7 +67,7 @@
     "quizzCreationConfigureQuestionCount3": "Dużo",
     "quizzCreationConfigureQuestionCount4": "Ręcznie",
 
-    "quizzCreationConfigureError": "Wybierz typ pytania i liczbę pytań.",
+    "quizzCreationConfigurationError": "Wybierz typ pytania i liczbę pytań.",
 
     "addNewQuestionBottomSheetHeading": "Dodaj nowe pytanie",
     "addNewQuestionBottomSheetManual": "Ręcznie",

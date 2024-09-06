@@ -18,14 +18,17 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -38,7 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null, 'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -616,7 +620,7 @@ class S {
     );
   }
 
-  // `Pick question type and number of questions.`
+  /// `Pick question type and number of questions.`
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
@@ -1246,6 +1250,16 @@ class S {
     );
   }
 
+  /// `Add new quizz`
+  String get addNewQuizzButton {
+    return Intl.message(
+      'Add new quizz',
+      name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Take quizz`
   String get quizzTakeAppBarTitle {
     return Intl.message(
@@ -1311,16 +1325,6 @@ class S {
     return Intl.message(
       'Your name',
       name: 'quizzTakeFormFieldHint',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add new quizz`
-  String get addNewQuizzButton {
-    return Intl.message(
-      'Add new quizz',
-      name: 'addNewQuizzButton',
       desc: '',
       args: [],
     );
