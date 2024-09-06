@@ -16,6 +16,7 @@ class TextArea extends StatelessWidget {
     this.required = true,
     this.contentPadding = AppTheme.pageDefaultSpacingSize,
     this.textStyle,
+    this.enabled = true,
   });
 
   final String? labelText;
@@ -26,6 +27,7 @@ class TextArea extends StatelessWidget {
   final bool required;
   final double contentPadding;
   final TextStyle? textStyle;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +57,9 @@ class TextArea extends StatelessWidget {
             width: double.infinity,
             child: TextFormField(
               controller: controller,
+              enabled: enabled,
               validator: (value) {
-                if (required && (value == null || value.trim().isEmpty)) {
+                if (value == null || value.trim().isEmpty) {
                   return S.of(context).thisFieldIsRequired;
                 }
                 return null;
@@ -67,8 +70,9 @@ class TextArea extends StatelessWidget {
                 contentPadding: EdgeInsets.all(contentPadding).copyWith(top: 0),
                 hintText: hintText,
                 hintStyle: textStyle ?? context.textTheme.bodyMedium,
+                fillColor: enabled ? AppColorScheme.surfaceContainer : AppColorScheme.border,
               ),
-              style: textStyle ?? context.textTheme.bodyMedium,
+              style: textStyle ?? context.textTheme.bodyMedium?.copyWith(color: enabled ? null : AppColorScheme.textSecondary),
               onTapOutside: (event) {
                 FocusManager.instance.primaryFocus?.unfocus();
               },

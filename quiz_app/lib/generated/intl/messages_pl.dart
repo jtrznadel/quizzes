@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Nie martw się! To się zdarza. Wprowadź adres e-mail powiązany z twoim kontem."),
+        "goBackToDashboard":
+            MessageLookupByLibrary.simpleMessage("Wróć do pulpitu"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
         "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
@@ -97,14 +99,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hasło musi zawierać co najmniej jedną dużą literę."),
         "passwordTooShort": MessageLookupByLibrary.simpleMessage(
             "Hasło musi mieć co najmniej 6 znaków."),
+        "profileActionsHeading":
+            MessageLookupByLibrary.simpleMessage("Akcje profilu"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profil"),
-        "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
-        "profileDeleteButtonLabel":
-            MessageLookupByLibrary.simpleMessage("Usuń swoje konto"),
+        "profileDeleteButton":
+            MessageLookupByLibrary.simpleMessage("Usuń konto"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
             "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta."),
         "profileDeleteDialogHeading":
             MessageLookupByLibrary.simpleMessage("Czy jesteś pewien?"),
+        "profileEmailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "To jest Twoja publiczna nazwa wyświetlana."),
         "profileNameHint":
@@ -113,8 +117,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileSignOutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
         "profileSignOutDescription": MessageLookupByLibrary.simpleMessage(
             "Wyloguj się ze swojego konta"),
-        "profileSomethingWentWrong":
-            MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Zarządzaj ustawieniami swojego profilu tutaj."),
         "profileUpdateButton":
@@ -142,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tytuł pytania"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Stwórz quizz"),
+        "quizzCreationConfigureError": MessageLookupByLibrary.simpleMessage(
+            "Wybierz typ pytania i liczbę pytań."),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Konfiguracja quizzu"),
         "quizzCreationConfigureQuestionCount":
@@ -296,6 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "signUpHeading": MessageLookupByLibrary.simpleMessage(
             "Witaj! 👋 Wypełnij formularz, aby się zarejestrować"),
+        "somethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Coś poszło nie tak"),
         "successfulPasswordResetRequestButton":
             MessageLookupByLibrary.simpleMessage("Powrót"),
         "successfulPasswordResetRequestHeading":
