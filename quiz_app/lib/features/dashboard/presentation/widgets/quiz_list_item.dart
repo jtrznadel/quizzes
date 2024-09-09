@@ -23,7 +23,8 @@ class QuizListItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        ref.read(appRouterProvider).push(const QuizzDetailsRoute());
+        //TODO: replace hardcoded id with quizEntity.id after dashboard page is implemented
+        ref.read(appRouterProvider).push(QuizzDetailsRoute(id: '27aef3bf-a59c-4015-a2ad-a62a87c7801b'));
       },
       child: quizContainer(
         [

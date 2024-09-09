@@ -67,7 +67,7 @@
     "quizzCreationConfigureQuestionCount3": "High",
     "quizzCreationConfigureQuestionCount4": "Manual",
 
-    "quizzCreationConfigureError": "Pick question type and number of questions.",
+    "quizzCreationConfigurationError": "Pick question type and number of questions.",
 
     "addNewQuestionBottomSheetHeading": "Add new question",
     "addNewQuestionBottomSheetManual": "Manual",
@@ -85,6 +85,9 @@
     "quizzDetailsTabQuestionsSubheading": "Manage your quiz questions here. You can edit and delete questions. This page is preview page for your questions.",
     "quizzDetailsTabQuestionsSwitch": "Answers",
     "quizzDetailsTabQuestionsAddNewQuestion": "New question",
+    "deleteQuestionDialogHeading": "Are you sure?",
+    "deleteQuestionDialogDescription": "This action cannot be undone. Once you delete the question there is no going back.",
+    "deleteQuestionFailure": "Failed to delete question.",
 
     "quizzDetailsTabSettingsSubheading": "Manage your quiz settings here.",
     "quizzDetailsTabSettingsQuizStatus": "Quiz Status",

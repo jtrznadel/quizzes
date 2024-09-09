@@ -40,6 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccountHeading":
             MessageLookupByLibrary.simpleMessage("Deleting account"),
         "deleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteQuestionDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "This action cannot be undone. Once you delete the question there is no going back."),
+        "deleteQuestionDialogHeading":
+            MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "deleteQuestionFailure":
+            MessageLookupByLibrary.simpleMessage("Failed to delete question."),
         "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone. Once you delete the quiz there\'\'s no going back."),
         "deleteQuizzHeading":
@@ -145,7 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Question Title"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Create quizz"),
-        "quizzCreationConfigureError": MessageLookupByLibrary.simpleMessage(
+        "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
             "Pick question type and number of questions."),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Configure quizz"),

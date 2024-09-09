@@ -21,7 +21,9 @@ QuestionModel _$QuestionModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$QuestionModel {
   String get title => throw _privateConstructorUsedError;
-  List<AnswerModel> get createAnswersDto => throw _privateConstructorUsedError;
+  @AnswerModelConverter()
+  List<AnswerModelInterface> get createAnswersDto =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,9 @@ abstract class $QuestionModelCopyWith<$Res> {
           QuestionModel value, $Res Function(QuestionModel) then) =
       _$QuestionModelCopyWithImpl<$Res, QuestionModel>;
   @useResult
-  $Res call({String title, List<AnswerModel> createAnswersDto});
+  $Res call(
+      {String title,
+      @AnswerModelConverter() List<AnswerModelInterface> createAnswersDto});
 }
 
 /// @nodoc
@@ -62,7 +66,7 @@ class _$QuestionModelCopyWithImpl<$Res, $Val extends QuestionModel>
       createAnswersDto: null == createAnswersDto
           ? _value.createAnswersDto
           : createAnswersDto // ignore: cast_nullable_to_non_nullable
-              as List<AnswerModel>,
+              as List<AnswerModelInterface>,
     ) as $Val);
   }
 }
@@ -75,7 +79,9 @@ abstract class _$$QuestionModelImplCopyWith<$Res>
       __$$QuestionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, List<AnswerModel> createAnswersDto});
+  $Res call(
+      {String title,
+      @AnswerModelConverter() List<AnswerModelInterface> createAnswersDto});
 }
 
 /// @nodoc
@@ -100,7 +106,7 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
       createAnswersDto: null == createAnswersDto
           ? _value._createAnswersDto
           : createAnswersDto // ignore: cast_nullable_to_non_nullable
-              as List<AnswerModel>,
+              as List<AnswerModelInterface>,
     ));
   }
 }
@@ -109,7 +115,9 @@ class __$$QuestionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuestionModelImpl implements _QuestionModel {
   const _$QuestionModelImpl(
-      {required this.title, required final List<AnswerModel> createAnswersDto})
+      {required this.title,
+      @AnswerModelConverter()
+      required final List<AnswerModelInterface> createAnswersDto})
       : _createAnswersDto = createAnswersDto;
 
   factory _$QuestionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -117,9 +125,10 @@ class _$QuestionModelImpl implements _QuestionModel {
 
   @override
   final String title;
-  final List<AnswerModel> _createAnswersDto;
+  final List<AnswerModelInterface> _createAnswersDto;
   @override
-  List<AnswerModel> get createAnswersDto {
+  @AnswerModelConverter()
+  List<AnswerModelInterface> get createAnswersDto {
     if (_createAnswersDto is EqualUnmodifiableListView)
       return _createAnswersDto;
     // ignore: implicit_dynamic_type
@@ -162,8 +171,10 @@ class _$QuestionModelImpl implements _QuestionModel {
 
 abstract class _QuestionModel implements QuestionModel {
   const factory _QuestionModel(
-      {required final String title,
-      required final List<AnswerModel> createAnswersDto}) = _$QuestionModelImpl;
+          {required final String title,
+          @AnswerModelConverter()
+          required final List<AnswerModelInterface> createAnswersDto}) =
+      _$QuestionModelImpl;
 
   factory _QuestionModel.fromJson(Map<String, dynamic> json) =
       _$QuestionModelImpl.fromJson;
@@ -171,7 +182,8 @@ abstract class _QuestionModel implements QuestionModel {
   @override
   String get title;
   @override
-  List<AnswerModel> get createAnswersDto;
+  @AnswerModelConverter()
+  List<AnswerModelInterface> get createAnswersDto;
   @override
   @JsonKey(ignore: true)
   _$$QuestionModelImplCopyWith<_$QuestionModelImpl> get copyWith =>

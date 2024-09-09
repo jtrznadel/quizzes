@@ -8,6 +8,7 @@ abstract class AppTheme {
   static const double pageDefaultSpacingSize = 16;
   static const double pageDefaultTopPaddingSize = 24;
   static const double mediumRadius = 8;
+  static const double smallRadius = 4;
 
   static const double answerTextAreaPadding = 8;
   static const double quizStatusBadgeVerticalPadding = 8;
@@ -63,6 +64,8 @@ abstract class AppTheme {
   static const addQuestionDialogTextAreaHeight = 20 / 14;
 
   static const int addAnswerDialogAnswerLines = 2;
+
+  static const double deleteQuestionDetailsQuestionBoxPadding = 12;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,

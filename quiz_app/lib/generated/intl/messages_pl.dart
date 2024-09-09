@@ -40,6 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccountHeading":
             MessageLookupByLibrary.simpleMessage("Usuwanie konta"),
         "deleteButton": MessageLookupByLibrary.simpleMessage("Usuń"),
+        "deleteQuestionDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "Tej operacji nie można cofnąć. Jeżeli usuniesz to pytanie, nie będzie możliwości jego przywrócenia."),
+        "deleteQuestionDialogHeading": MessageLookupByLibrary.simpleMessage(
+            "Na pewno chcesz usunąć to pytanie?"),
+        "deleteQuestionFailure": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się usunąć pytania."),
         "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
             "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu."),
         "deleteQuizzHeading":
@@ -144,7 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tytuł pytania"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Stwórz quizz"),
-        "quizzCreationConfigureError": MessageLookupByLibrary.simpleMessage(
+        "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
             "Wybierz typ pytania i liczbę pytań."),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Konfiguracja quizzu"),
