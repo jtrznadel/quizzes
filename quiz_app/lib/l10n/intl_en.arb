@@ -53,6 +53,8 @@
     "quizzCreationUploadFile": "Upload file",
     "quizzCreationTextPromptTextAreaLabel": "Source Text",
     "quizzCreationTextPromptTextAreaHint": "Enter the text for your quizz",
+    "quizzCreationAttachFileMaxSize": "Max size: 5MB",
+    "quizzCreationAttachFileAllowedTypes": "Types supported: .txt, .pdf, .docx, .xlsx, .pptx",
     
     "quizzCreationConfigureHeading": "Configure quizz",
     "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",

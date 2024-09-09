@@ -510,6 +510,26 @@ class S {
     );
   }
 
+  /// `Max size: 5MB`
+  String get quizzCreationAttachFileMaxSize {
+    return Intl.message(
+      'Max size: 5MB',
+      name: 'quizzCreationAttachFileMaxSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Types supported: .txt, .pdf, .docx, .xlsx, .pptx`
+  String get quizzCreationAttachFileAllowedTypes {
+    return Intl.message(
+      'Types supported: .txt, .pdf, .docx, .xlsx, .pptx',
+      name: 'quizzCreationAttachFileAllowedTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Configure quizz`
   String get quizzCreationConfigureHeading {
     return Intl.message(

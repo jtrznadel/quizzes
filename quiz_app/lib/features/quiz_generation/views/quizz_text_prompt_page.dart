@@ -92,6 +92,15 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
               ),
               width: double.infinity,
             ),
+            const MediumVSpacer(),
+            Text(
+              S.of(context).quizzCreationAttachFileMaxSize,
+              style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
+            ),
+            Text(
+              S.of(context).quizzCreationAttachFileAllowedTypes,
+              style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
+            ),
             const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {

@@ -157,6 +157,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tytuł pytania"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Stwórz quizz"),
+        "quizzCreationAttachFileAllowedTypes":
+            MessageLookupByLibrary.simpleMessage(
+                "Dozwolone typy: .txt, .pdf, .docx, .xlsx, .pptx"),
+        "quizzCreationAttachFileMaxSize":
+            MessageLookupByLibrary.simpleMessage("Maks. rozmiar: 5MB"),
         "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
             "Wybierz typ pytania i liczbę pytań."),
         "quizzCreationConfigureHeading":

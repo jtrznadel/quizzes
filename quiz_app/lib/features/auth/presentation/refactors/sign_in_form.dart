@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/services/app_router.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 import '../../application/auth_controller.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -113,6 +114,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
       (_) => InfoSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
+        color: AppColorScheme.error,
       ),
     );
     return _loginButton(controller, context);

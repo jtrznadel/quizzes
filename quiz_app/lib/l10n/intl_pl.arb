@@ -53,6 +53,8 @@
     "quizzCreationUploadFile": "Prześlij plik",
     "quizzCreationTextPromptTextAreaLabel": "Tekst źródłowy",
     "quizzCreationTextPromptTextAreaHint": "Wprowadź tekst dla swojego quizzu",
+    "quizzCreationAttachFileMaxSize": "Maks. rozmiar: 5MB",
+    "quizzCreationAttachFileAllowedTypes": "Dozwolone typy: .txt, .pdf, .docx, .xlsx, .pptx",
     
     "quizzCreationConfigureHeading": "Konfiguracja quizzu",
     "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego.",
