@@ -72,6 +72,7 @@
     "addNewQuestionBottomSheetHeading": "Add new question",
     "addNewQuestionBottomSheetManual": "Manual",
     "addNewQuestionBottomSheetAI": "Generate question with AI",
+    "quizzCreationAddQuestionError": "Question title and at least two answers are required.",
 
     "quizzCreationPreviewHeading": "Quizz Preview",
     "quizzCreationAddQuestionButton": "Add question",

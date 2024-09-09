@@ -54,7 +54,10 @@ class QuizzPreviewPage extends ConsumerWidget {
                         alignment: Alignment.centerRight,
                         child: SecondaryButton(
                           onPressed: () {
-                            AddNewQuestionBottomSheet.show(context);
+                            AddNewQuestionBottomSheet.show(context,
+                                onQuestionAdd: (question) {
+                              controller.addNewQuestion(question);
+                            });
                           },
                           text: S.of(context).quizzCreationAddQuestionButton,
                         ),
@@ -130,7 +133,7 @@ class QuizzPreviewPage extends ConsumerWidget {
             await ref
                 .read(quizGenerationControllerProvider.notifier)
                 .deleteQuestion(index);
-            if(context.mounted) {
+            if (context.mounted) {
               Navigator.pop(context);
             }
           },

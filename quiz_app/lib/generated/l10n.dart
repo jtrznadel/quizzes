@@ -660,6 +660,16 @@ class S {
     );
   }
 
+  /// `Question title and at least two answers are required.`
+  String get quizzCreationAddQuestionError {
+    return Intl.message(
+      'Question title and at least two answers are required.',
+      name: 'quizzCreationAddQuestionError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Quizz Preview`
   String get quizzCreationPreviewHeading {
     return Intl.message(
