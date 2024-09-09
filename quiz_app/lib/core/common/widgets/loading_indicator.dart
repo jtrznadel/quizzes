@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../extensions/context_extension.dart';
 import '../../res/media_res.dart';
 
 class LoadingIndicator extends StatelessWidget {
