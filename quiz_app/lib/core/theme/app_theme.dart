@@ -18,6 +18,7 @@ abstract class AppTheme {
   static const double buttonVerticalPadding = 12;
   static const double buttonBorderWidth = 0.5;
   static const double dottedBorderWidth = 1.5;
+  static const double dottedBorderPadding = 0.5;
 
   static const double forgotPasswordSuccessScreenPadding = 25;
   static const double forgotPasswordSuccessDescriptionWidth = 225;
@@ -29,6 +30,12 @@ abstract class AppTheme {
   static const double dashboardAddNewButtonHeight = 200;
 
   static const double quizDeleteDialogItemBorderRadius = 8;
+  static const double quizDeleteDialogHeaderFontSize = 16;
+  static const int quizDeleteDialogHeaderMaxLines = 1;
+  static const int quizDeleteDialogDescriptionMaxLines = 2;
+  static const double quizItemHeadingFontSize = 16;
+  static const int quizItemHeadingMaxLines = 2;
+  static const int quizItemDescriptionMaxLines = 2;
 
   static const double snackBarBorderRadius = 8;
 

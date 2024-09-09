@@ -147,7 +147,17 @@
     "dashboardTopHeading": "Quizzy",
     "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
     "addNewQuizzButton": "Dodaj nowy quizz",
-
+    "quizQuestionNumberBadge": "{questionNumber} pytań",
+    "@quizQuestionNumberBadge": {
+        "description": "Badge displaying total number of questions",
+        "placeholders": {
+            "questionNumber": {
+                "type": "int",
+                "example": "5",
+                "description": "Number of questions"
+            }
+        }
+    },
 
     "deleteQuizzHeading": "Czy jesteś pewien?",
     "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu.",

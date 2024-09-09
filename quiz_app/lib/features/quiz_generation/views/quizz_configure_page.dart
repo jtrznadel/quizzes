@@ -65,7 +65,7 @@ class QuizzConfigurePage extends ConsumerWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              S.of(context).quizzCreationConfigureError,
+                              S.of(context).quizzCreationConfigurationError,
                             ),
                           ),
                         );

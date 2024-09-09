@@ -1280,13 +1280,24 @@ class S {
     );
   }
 
-  /// `Add new quizz`
+  /// `Add new quiz`
   String get addNewQuizzButton {
     return Intl.message(
-      'Add new quizz',
+      'Add new quiz',
       name: 'addNewQuizzButton',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Badge displaying total number of questions`
+  String quizQuestionNumberBadge(int questionNumber) {
+    return Intl.message(
+      'Total $questionNumber questions',
+      name: 'quizQuestionNumberBadge',
+      desc: 'Badge displaying total number of questions',
+      args: [questionNumber],
+      examples: const {'questionNumber': 5},
     );
   }
 
@@ -1300,10 +1311,10 @@ class S {
     );
   }
 
-  /// `This action cannot be undone. Once you delete the quiz there''s no going back.`
+  /// `This action cannot be undone. Once you delete the quiz there is no going back.`
   String get deleteQuizzDescription {
     return Intl.message(
-      'This action cannot be undone. Once you delete the quiz there\'\'s no going back.',
+      'This action cannot be undone. Once you delete the quiz there is no going back.',
       name: 'deleteQuizzDescription',
       desc: '',
       args: [],
