@@ -80,7 +80,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
                 ),
               );
             },
-            loaded: (quizDetails) {
+            loaded: (quizDetails, _) {
           return Padding(
             padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
             child: Column(

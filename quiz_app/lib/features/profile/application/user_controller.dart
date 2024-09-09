@@ -14,7 +14,6 @@ class UserController extends _$UserController {
   }
 
   Future<void> getUser() async {
-    state = const UserState.loading();
     try {
       final user = await ref.read(userRepositoryProvider).getUser();
       user.fold(

@@ -1,37 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../domain/entities/test_quiz_entity.dart';
+import '../../application/dashboard_controller.dart';
+import '../../domain/quiz_dashboard_model.dart';
 import 'quiz_delete_dialog_item.dart';
 
 class DeleteQuizDialog extends StatelessWidget {
   const DeleteQuizDialog({super.key, required this.quiz});
 
-  final TestQuizEntity quiz;
+  final QuizDashboardModel quiz;
 
   @override
   Widget build(BuildContext context) {
-    return DeleteDialog(
-      title: S.of(context).deleteAccountHeading,
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SmallVSpacer(),
-          Text(
-            S.of(context).deleteQuizzDescription,
-            style: context.theme.textTheme.bodyMedium,
-          ),
-          const LargeVSpacer(),
-          QuizDeleteDialogItem(quizEntity: quiz),
-        ],
-      ),
-      onConfirm: () {},
+    return Consumer(builder: (context, ref, child) {
+      return DeleteDialog(
+        title: S.of(context).deleteQuizzHeading,
+        content: _dialogContent(context),
+        onConfirm: () {
+          ref.read(dashboardControllerProvider.notifier).deleteQuiz(quiz.id);
+          Navigator.of(context).pop();
+        },
+      );
+    });
+  }
+
+  Widget _dialogContent(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const SmallVSpacer(),
+        Text(
+          S.of(context).deleteQuizzDescription,
+          style: context.theme.textTheme.bodyMedium,
+        ),
+        const LargeVSpacer(),
+        QuizDeleteDialogItem(quizModel: quiz),
+      ],
     );
   }
 
-  static void show(BuildContext context, TestQuizEntity quiz) {
+  static void show(BuildContext context, QuizDashboardModel quiz) {
     showDialog(
       context: context,
       builder: (context) => DeleteQuizDialog(quiz: quiz),

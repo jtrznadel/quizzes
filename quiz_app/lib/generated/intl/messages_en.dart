@@ -40,6 +40,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccountHeading":
             MessageLookupByLibrary.simpleMessage("Deleting account"),
         "deleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deleteQuestionDialogDescription": MessageLookupByLibrary.simpleMessage(
+            "This action cannot be undone. Once you delete the question there is no going back."),
+        "deleteQuestionDialogHeading":
+            MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "deleteQuestionFailure":
+            MessageLookupByLibrary.simpleMessage("Failed to delete question."),
         "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
             "This action cannot be undone. Once you delete the quiz there\'\'s no going back."),
         "deleteQuizzHeading":
@@ -63,6 +69,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
             "Don\'\'t worry! It happens. Enter the email address associated with your account."),
+        "goBackToDashboard":
+            MessageLookupByLibrary.simpleMessage("Go back to dashboard"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Invalid e-mail address."),
         "invalidEmailOrPassword":
@@ -97,14 +105,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must contain at least one uppercase letter."),
         "passwordTooShort": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 6 characters long."),
+        "profileActionsHeading":
+            MessageLookupByLibrary.simpleMessage("Profile actions"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profile"),
-        "profileDeleteButton": MessageLookupByLibrary.simpleMessage("Delete"),
-        "profileDeleteButtonLabel":
-            MessageLookupByLibrary.simpleMessage("Delete your account"),
+        "profileDeleteButton":
+            MessageLookupByLibrary.simpleMessage("Delete account"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
             "You are about to delete your account. This action cannot be undone."),
         "profileDeleteDialogHeading":
             MessageLookupByLibrary.simpleMessage("Are you sure?"),
+        "profileEmailLabel": MessageLookupByLibrary.simpleMessage("E-mail"),
         "profileNameDescription": MessageLookupByLibrary.simpleMessage(
             "This is your public display name."),
         "profileNameHint":
@@ -114,8 +124,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign out"),
         "profileSignOutDescription":
             MessageLookupByLibrary.simpleMessage("Sign out from your account"),
-        "profileSomethingWentWrong":
-            MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
             "Manage your profile settings here."),
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
@@ -143,6 +151,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Question Title"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Create quizz"),
+        "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
+            "Pick question type and number of questions."),
         "quizzCreationConfigureHeading":
             MessageLookupByLibrary.simpleMessage("Configure quizz"),
         "quizzCreationConfigureQuestionCount":
@@ -297,6 +307,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpAppBarTitle": MessageLookupByLibrary.simpleMessage("Register"),
         "signUpHeading": MessageLookupByLibrary.simpleMessage(
             "Hello! 👋 Fill out the form to register"),
+        "somethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "successfulPasswordResetRequestButton":
             MessageLookupByLibrary.simpleMessage("Back"),
         "successfulPasswordResetRequestHeading":

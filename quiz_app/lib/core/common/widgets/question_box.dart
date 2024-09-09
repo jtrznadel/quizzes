@@ -1,9 +1,9 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../features/quiz_generation/domain/question_model.dart';
 import '../../../generated/l10n.dart';
+import 'dotted_border_container.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
 import 'answer_tile.dart';
 import 'spacers/vertical_spacers.dart';
@@ -29,79 +29,67 @@ class QuestionBox extends StatelessWidget {
         color: AppColorScheme.questionBoxContainerColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: DottedBorder(
-        color: AppColorScheme.border,
-        strokeWidth: 1.5,
-        dashPattern: const [4, 2],
-        radius: const Radius.circular(8),
-        borderType: BorderType.RRect,
-        borderPadding: const EdgeInsets.all(0.5),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Text(
-                      '${questionIndex + 1}. ${question.title}',
-                      style: context.textTheme.labelMedium,
+      child: DottedBorderContainer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    '${questionIndex + 1}. ${question.title}',
+                    style: context.textTheme.labelMedium,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset(
+                        MediaRes.pencil,
+                      ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset(
-                          MediaRes.pencil,
-                        ),
-                      ),
-                      Consumer(
-                        builder: (context, ref, child) {
-                          return IconButton(
-                            onPressed: () => onDelete(),
-                            icon: SvgPicture.asset(
-                              MediaRes.trash,
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SmallVSpacer(),
-              Text(
-                S.of(context).tempQuestionDescription,
-                style: context.textTheme.bodyMedium,
-              ),
-              const MediumVSpacer(),
-              ListView.builder(
-                itemCount: question.createAnswersDto.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      AnswerTile(
-                        leading: Answer.values[index].name,
-                        text: question.createAnswersDto[index].content,
-                        isCorrect: correctAnswerVisible ? question.createAnswersDto[index].isCorrect : false,
-                      ),
-                      const SmallVSpacer(),
-                    ],
-                  );
-                },
-              )
-            ],
-          ).addPadding(
-            padding: const EdgeInsets.all(24),
-          ),
+                    Consumer(
+                      builder: (context, ref, child) {
+                        return IconButton(
+                          onPressed: () {
+                            onDelete();
+                          },
+                          icon: SvgPicture.asset(
+                            MediaRes.trash,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const MediumVSpacer(),
+            ListView.builder(
+              itemCount: question.createAnswersDto.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    AnswerTile(
+                      leading: Answer.values[index].name,
+                      text: question.createAnswersDto[index].content,
+                      isCorrect: correctAnswerVisible ? question.createAnswersDto[index].isCorrect : false,
+                    ),
+                    const SmallVSpacer(),
+                  ],
+                );
+              },
+            )
+          ],
+        ).addPadding(
+          padding: const EdgeInsets.all(24),
         ),
       ),
     );

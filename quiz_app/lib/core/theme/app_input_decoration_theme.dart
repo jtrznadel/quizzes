@@ -31,10 +31,16 @@ InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
       width: 2,
     ),
   ),
+  disabledBorder: const OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderSide: BorderSide(
+      color: AppColorScheme.border,
+      width: 2,
+    ),
+  ),
   labelStyle: textTheme.bodyMedium,
   hintStyle: textTheme.bodyMedium?.copyWith(color: const Color(0xFF8391A1)),
   floatingLabelBehavior: FloatingLabelBehavior.never,
   contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-  fillColor: AppColorScheme.surfaceContainer,
   filled: true,
 );

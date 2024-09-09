@@ -620,11 +620,11 @@ class S {
     );
   }
 
-  // `Pick question type and number of questions.`
+  /// `Pick question type and number of questions.`
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
-      name: 'quizzCreationConfigurationError',
+      name: 'quizzCreationConfigureError',
       desc: '',
       args: [],
     );
@@ -765,6 +765,36 @@ class S {
     return Intl.message(
       'New question',
       name: 'quizzDetailsTabQuestionsAddNewQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get deleteQuestionDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'deleteQuestionDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action cannot be undone. Once you delete the question there is no going back.`
+  String get deleteQuestionDialogDescription {
+    return Intl.message(
+      'This action cannot be undone. Once you delete the question there is no going back.',
+      name: 'deleteQuestionDialogDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete question.`
+  String get deleteQuestionFailure {
+    return Intl.message(
+      'Failed to delete question.',
+      name: 'deleteQuestionFailure',
       desc: '',
       args: [],
     );
@@ -1260,13 +1290,24 @@ class S {
     );
   }
 
-  /// `Add new quizz`
+  /// `Add new quiz`
   String get addNewQuizzButton {
     return Intl.message(
-      'Add new quizz',
+      'Add new quiz',
       name: 'addNewQuizzButton',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Badge displaying total number of questions`
+  String quizQuestionNumberBadge(int questionNumber) {
+    return Intl.message(
+      'Total $questionNumber questions',
+      name: 'quizQuestionNumberBadge',
+      desc: 'Badge displaying total number of questions',
+      args: [questionNumber],
+      examples: const {'questionNumber': 5},
     );
   }
 
@@ -1280,10 +1321,10 @@ class S {
     );
   }
 
-  /// `This action cannot be undone. Once you delete the quiz there''s no going back.`
+  /// `This action cannot be undone. Once you delete the quiz there is no going back.`
   String get deleteQuizzDescription {
     return Intl.message(
-      'This action cannot be undone. Once you delete the quiz there\'\'s no going back.',
+      'This action cannot be undone. Once you delete the quiz there is no going back.',
       name: 'deleteQuizzDescription',
       desc: '',
       args: [],
@@ -1410,6 +1451,16 @@ class S {
     );
   }
 
+  /// `E-mail`
+  String get profileEmailLabel {
+    return Intl.message(
+      'E-mail',
+      name: 'profileEmailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Update`
   String get profileUpdateButton {
     return Intl.message(
@@ -1420,21 +1471,11 @@ class S {
     );
   }
 
-  /// `Delete`
+  /// `Delete account`
   String get profileDeleteButton {
     return Intl.message(
-      'Delete',
+      'Delete account',
       name: 'profileDeleteButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Delete your account`
-  String get profileDeleteButtonLabel {
-    return Intl.message(
-      'Delete your account',
-      name: 'profileDeleteButtonLabel',
       desc: '',
       args: [],
     );
@@ -1525,6 +1566,16 @@ class S {
     return Intl.message(
       'Sign out from your account',
       name: 'profileSignOutDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile actions`
+  String get profileActionsHeading {
+    return Intl.message(
+      'Profile actions',
+      name: 'profileActionsHeading',
       desc: '',
       args: [],
     );
