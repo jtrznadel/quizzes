@@ -18,7 +18,6 @@ import '../../../../generated/l10n.dart';
 class QuizDetailsQuestionsTab extends ConsumerWidget {
   const QuizDetailsQuestionsTab({super.key});
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(quizDetailsControllerProvider);
@@ -92,7 +91,7 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             QuizStatusBadge(
-              text: 'Total ${quizDetails.questions.length} questions',
+              text: S.of(context).quizQuestionNumberBadge(quizDetails.questions.length),
               backgroundColor: AppColorScheme.secondary,
               textColor: AppColorScheme.primary,
             ),
@@ -130,9 +129,12 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
       alignment: Alignment.centerRight,
       child: ElevatedButton(
         onPressed: () {
-          AddNewQuestionBottomSheet.show(context, onQuestionAdd: (question){
-            //TODO: Implement add new question in quiz details controller
-          },);
+          AddNewQuestionBottomSheet.show(
+            context,
+            onQuestionAdd: (question) {
+              //TODO: Implement add new question in quiz details controller
+            },
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColorScheme.secondary,

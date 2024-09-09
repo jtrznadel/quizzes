@@ -98,6 +98,7 @@
     "quizzDetailsTabSettingsQuizAvailabilityDescription": "Kiedy włączone, quizz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizzu z zewnętrznego linku.",
     "quizzDetailsTabSettingsQuizAvailabilityActive": "Aktywny",
     "quizzDetailsTabSettingsQuizAvailabilityPublic": "Publiczny",
+    "quizzDetailsTabSettingsQuizAvailabilityPrivate": "Prywatny",
     "quizzDetailsTabSettingsSaveChanges": "Zapisz zmiany",
 
     "quizzDetailsTabStatisticsSubheading": "Tutaj możesz przeglądać statystyki swojego quizzu.",
@@ -109,6 +110,17 @@
     "quizzDetailsTabStatisticsDate": "Data",
     "quizzDetailsTabStatisticsTime": "Czas",
     "quizzDetailsTabStatisticsEmail": "E-mail",
+    "quizzDetailsTabStatisticsSecondsElapsed": "{seconds} sekund",
+    "@quizzDetailsTabStatisticsSecondsElapsed": {
+        "description": "Time elapsed in seconds",
+        "placeholders": {
+            "seconds": {
+                "type": "int",
+                "example": "5",
+                "description": "Number of seconds"
+        }
+      }
+    },
 
     "quizzDetailsTabGeneralSubheading": "Zarządzaj ustawieniami strony quizzu tutaj.",
     "quizzDetailsTabGeneralPageSettingsHeading": "Ustawienia strony quizzu",
@@ -148,7 +160,7 @@
     "dashboardTopHeading": "Quizzy",
     "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
     "addNewQuizzButton": "Dodaj nowy quizz",
-    "quizQuestionNumberBadge": "{questionNumber} pytań",
+    "quizQuestionNumberBadge": "Łącznie {questionNumber} pytań",
     "@quizQuestionNumberBadge": {
         "description": "Badge displaying total number of questions",
         "placeholders": {

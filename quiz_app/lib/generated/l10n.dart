@@ -624,7 +624,7 @@ class S {
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
-      name: 'quizzCreationConfigureError',
+      name: 'quizzCreationConfigurationError',
       desc: '',
       args: [],
     );
@@ -870,6 +870,16 @@ class S {
     );
   }
 
+  /// `Private`
+  String get quizzDetailsTabSettingsQuizAvailabilityPrivate {
+    return Intl.message(
+      'Private',
+      name: 'quizzDetailsTabSettingsQuizAvailabilityPrivate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save changes`
   String get quizzDetailsTabSettingsSaveChanges {
     return Intl.message(
@@ -967,6 +977,16 @@ class S {
       name: 'quizzDetailsTabStatisticsEmail',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `{seconds} seconds`
+  String quizzDetailsTabStatisticsSecondsElapsed(int seconds) {
+    return Intl.message(
+      '$seconds seconds',
+      name: 'quizzDetailsTabStatisticsSecondsElapsed',
+      desc: 'Time elapsed in seconds',
+      args: [seconds],
     );
   }
 
@@ -1290,24 +1310,23 @@ class S {
     );
   }
 
-  /// `Add new quiz`
-  String get addNewQuizzButton {
-    return Intl.message(
-      'Add new quiz',
-      name: 'addNewQuizzButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Badge displaying total number of questions`
+  /// `Total {questionNumber} questions`
   String quizQuestionNumberBadge(int questionNumber) {
     return Intl.message(
       'Total $questionNumber questions',
       name: 'quizQuestionNumberBadge',
       desc: 'Badge displaying total number of questions',
       args: [questionNumber],
-      examples: const {'questionNumber': 5},
+    );
+  }
+
+  /// `Add new quizz`
+  String get addNewQuizzButton {
+    return Intl.message(
+      'Add new quizz',
+      name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
     );
   }
 

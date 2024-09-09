@@ -97,6 +97,7 @@
     "quizzDetailsTabSettingsQuizAvailabilityDescription": "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.",
     "quizzDetailsTabSettingsQuizAvailabilityActive": "Active",
     "quizzDetailsTabSettingsQuizAvailabilityPublic": "Public",
+    "quizzDetailsTabSettingsQuizAvailabilityPrivate": "Private",
     "quizzDetailsTabSettingsSaveChanges": "Save changes",
 
     "quizzDetailsTabStatisticsSubheading": "You can view your quiz statistics here.",
@@ -108,6 +109,17 @@
     "quizzDetailsTabStatisticsDate": "Date",
     "quizzDetailsTabStatisticsTime": "Time",
     "quizzDetailsTabStatisticsEmail": "E-mail",
+    "quizzDetailsTabStatisticsSecondsElapsed": "{seconds} seconds",
+    "@quizzDetailsTabStatisticsSecondsElapsed": {
+        "description": "Time elapsed in seconds",
+        "placeholders": {
+            "seconds": {
+                "type": "int",
+                "example": "5",
+                "description": "Number of seconds"
+        }
+      }
+    },
 
     "quizzDetailsTabGeneralSubheading": "Manage your quiz page settings here.",
     "quizzDetailsTabGeneralPageSettingsHeading": "Quiz page settings",

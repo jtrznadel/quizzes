@@ -28,19 +28,19 @@ class NewQuizButton extends ConsumerWidget {
   Widget _container(BuildContext context, Widget content, VoidCallback onTap) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius:
-            BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
-        color: AppColorScheme.primary,
+        borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
+        color: AppColorScheme.secondary,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           customBorder: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                AppTheme.dashboardAddNewButtonBorderRadius),
+            borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
           ),
-          child: DottedBorderContainer(child: content),
+          child: DottedBorderContainer(
+            child: content,
+          ),
         ),
       ),
     );
@@ -55,14 +55,13 @@ class NewQuizButton extends ConsumerWidget {
           children: [
             SvgPicture.asset(
               MediaRes.addQuiz,
-              width: AppTheme.dashboardNewQuizIconSize,
-              height: AppTheme.dashboardNewQuizIconSize,
+              colorFilter: const ColorFilter.mode(AppColorScheme.primary, BlendMode.srcIn),
             ),
             const SmallVSpacer(),
             Text(
               S.of(context).addNewQuizzButton,
-              style: context.theme.textTheme.headlineMedium!.copyWith(
-                color: AppColorScheme.onPrimary,
+              style: context.theme.textTheme.labelMedium?.copyWith(
+                color: AppColorScheme.primary,
               ),
             ),
           ],

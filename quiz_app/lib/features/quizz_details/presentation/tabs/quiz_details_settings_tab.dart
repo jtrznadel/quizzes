@@ -27,8 +27,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
             const SmallVSpacer(),
             Text(
               S.of(context).quizzDetailsTabSettingsSubheading,
-              style: context.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
             ),
             const SmallVSpacer(),
             Text(
@@ -68,8 +67,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
             ),
             const MediumVSpacer(),
             TextCheckbox(
-              //TODO: replace with translation
-              text: "Private",
+              text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPrivate,
               value: quizDetails.availability == QuizAvailability.Private,
               onChanged: (value) {
                 controller.changeQuizAvailability(

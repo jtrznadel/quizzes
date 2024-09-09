@@ -23,26 +23,21 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
   Widget statisticsHeader(BuildContext context) {
     return Text(
       S.of(context).quizzDetailsTabStatisticsSubheading,
-      style: context.textTheme.bodyMedium!
-          .copyWith(color: AppColorScheme.textSecondary),
+      style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
     );
   }
 
   Widget statisticsList(context) {
     return Column(
       children: [
-        ListView.builder(
+        ListView.separated(
           itemCount: 10,
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
-            return const Column(
-              children: [
-                QuizAttemptItem(),
-                MediumVSpacer(),
-              ],
-            );
+            return const QuizAttemptItem();
           },
+          separatorBuilder: (context, index) => const MediumVSpacer(),
         ),
       ],
     );

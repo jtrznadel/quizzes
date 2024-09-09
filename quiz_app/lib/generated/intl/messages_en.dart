@@ -20,6 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(questionNumber) => "Total ${questionNumber} questions";
+
+  static String m1(seconds) => "${seconds} seconds";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addNewQuestionBottomSheetAI":
@@ -47,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteQuestionFailure":
             MessageLookupByLibrary.simpleMessage("Failed to delete question."),
         "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
-            "This action cannot be undone. Once you delete the quiz there\'\'s no going back."),
+            "This action cannot be undone. Once you delete the quiz there is no going back."),
         "deleteQuizzHeading":
             MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "dividerOr": MessageLookupByLibrary.simpleMessage("OR"),
@@ -129,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),
+        "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Here, you can create quizz based on your prompt."),
@@ -143,6 +148,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter question description"),
         "quizzCreationAddQuestionDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Question Description"),
+        "quizzCreationAddQuestionError": MessageLookupByLibrary.simpleMessage(
+            "Question title and at least two answers are required."),
         "quizzCreationAddQuestionHeading":
             MessageLookupByLibrary.simpleMessage("New question"),
         "quizzCreationAddQuestionTitleHint":
@@ -254,6 +261,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabSettingsQuizAvailabilityDescription":
             MessageLookupByLibrary.simpleMessage(
                 "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link."),
+        "quizzDetailsTabSettingsQuizAvailabilityPrivate":
+            MessageLookupByLibrary.simpleMessage("Private"),
         "quizzDetailsTabSettingsQuizAvailabilityPublic":
             MessageLookupByLibrary.simpleMessage("Public"),
         "quizzDetailsTabSettingsQuizStatus":
@@ -280,6 +289,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Name"),
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Score"),
+        "quizzDetailsTabStatisticsSecondsElapsed": m1,
         "quizzDetailsTabStatisticsStoppedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Stopped"),
         "quizzDetailsTabStatisticsSubheading":

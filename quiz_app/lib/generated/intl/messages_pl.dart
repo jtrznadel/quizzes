@@ -20,6 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'pl';
 
+  static String m0(questionNumber) => "Łącznie ${questionNumber} pytań";
+
+  static String m1(seconds) => "${seconds} sekund";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addNewQuestionBottomSheetAI": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Aktualizuj"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Aktualizowanie..."),
+        "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego."),
         "quizzCreationAddQuestionAnswerPlaceholder":
@@ -142,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wprowadź opis pytania"),
         "quizzCreationAddQuestionDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Opis pytania"),
+        "quizzCreationAddQuestionError": MessageLookupByLibrary.simpleMessage(
+            "Question title and at least two answers are required."),
         "quizzCreationAddQuestionHeading":
             MessageLookupByLibrary.simpleMessage("Nowe pytanie"),
         "quizzCreationAddQuestionTitleHint":
@@ -252,6 +259,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabSettingsQuizAvailabilityDescription":
             MessageLookupByLibrary.simpleMessage(
                 "Kiedy włączone, quizz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizzu z zewnętrznego linku."),
+        "quizzDetailsTabSettingsQuizAvailabilityPrivate":
+            MessageLookupByLibrary.simpleMessage("Prywatny"),
         "quizzDetailsTabSettingsQuizAvailabilityPublic":
             MessageLookupByLibrary.simpleMessage("Publiczny"),
         "quizzDetailsTabSettingsQuizStatus":
@@ -278,6 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Imię"),
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Wynik"),
+        "quizzDetailsTabStatisticsSecondsElapsed": m1,
         "quizzDetailsTabStatisticsStoppedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Zatrzymany"),
         "quizzDetailsTabStatisticsSubheading":

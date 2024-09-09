@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
+import '../../../../core/common/widgets/quizz_status_tile.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
@@ -33,7 +34,7 @@ class QuizListItem extends ConsumerWidget {
           const SmallVSpacer(),
           quizDescription(context),
           const LargeVSpacer(),
-          quizStatus(context),
+          QuizzStatusTile(quizz: quizEntity),
         ],
       ),
     );
@@ -41,16 +42,11 @@ class QuizListItem extends ConsumerWidget {
 
   Widget quizContainer(List<Widget> children) {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.circular(AppTheme.quizListItemBorderRadius),
-          color: AppColorScheme.surfaceContainer),
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius), color: AppColorScheme.surfaceContainer),
       child: DottedBorderContainer(
-        child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: children)
-            .addPadding(
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children).addPadding(
           padding: const EdgeInsets.all(AppTheme.quizListItemPadding),
         ),
       ),
@@ -83,9 +79,7 @@ class QuizListItem extends ConsumerWidget {
               MediaRes.deleteQuiz,
               width: AppTheme.quizListItemDeleteIconSize,
               height: AppTheme.quizListItemDeleteIconSize,
-            ).addPadding(
-                padding:
-                    const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
+            ).addPadding(padding: const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
           ),
         ),
       ],
@@ -95,32 +89,9 @@ class QuizListItem extends ConsumerWidget {
   Widget quizDescription(BuildContext context) {
     return Text(
       quizEntity.description,
-      style: context.theme.textTheme.bodyMedium!
-          .copyWith(color: AppColorScheme.textSecondary),
+      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
       maxLines: AppTheme.quizItemDescriptionMaxLines,
       overflow: TextOverflow.ellipsis,
-    );
-  }
-
-  Widget quizStatus(BuildContext context) {
-    return Row(
-      children: [
-        QuizStatusBadge(
-          text: S.of(context).quizQuestionNumberBadge(quizEntity.totalQuestions),
-          backgroundColor: AppColorScheme.secondary,
-          textColor: AppColorScheme.primary,
-        ),
-        const MediumHSpacer(),
-        QuizStatusBadge(
-          text: quizEntity.status.name,
-          backgroundColor: quizEntity.status == QuizStatus.Active
-              ? AppColorScheme.successLight
-              : AppColorScheme.warningLight,
-          textColor: quizEntity.status == QuizStatus.Active
-              ? AppColorScheme.success
-              : AppColorScheme.warning,
-        ),
-      ],
     );
   }
 }

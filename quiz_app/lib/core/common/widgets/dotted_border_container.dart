@@ -13,7 +13,7 @@ class DottedBorderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return DottedBorder(
       borderType: BorderType.RRect,
-      color: AppColorScheme.border,
+      color: AppColorScheme.dottedBorder,
       dashPattern: const [4, 2],
       strokeWidth: AppTheme.dottedBorderWidth,
       radius: const Radius.circular(AppTheme.quizListItemBorderRadius),
