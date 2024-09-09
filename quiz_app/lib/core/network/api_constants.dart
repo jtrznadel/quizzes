@@ -26,6 +26,9 @@ class ApiConstants {
   static const String getQuizEndpoint = 'quiz/{id}';
   static const String updateQuizStatusEndpoint = 'quiz/{id}/status';
   static const String updateQuizAvailabilityEndpoint = 'quiz/{id}/availability';
+  static const String updateQuizDetailsEndpoint = 'quiz';
+
+  static const String deleteQuestionEndpoint = 'questionsandanswers/{id}';
 
   static const String quizListEndpoint = 'quiz';
   static const String deleteQuizEndpoint = 'quiz/{id}';

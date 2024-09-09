@@ -9,6 +9,9 @@ class MediaRes {
   static const String welcomeBackground = 'assets/images/gradient_welcome_screen.svg';
   static const String eclipse = 'assets/images/eclipse_welcome_screen.svg';
 
+  //ANIMATIONS
+  static const String loadingAnimation = 'assets/animations/loading.json';
+
   //ICONS
   static const String fluentEye = 'assets/icons/fluent_eye.svg';
   static const String arrowBack = 'assets/icons/arrow_back.svg';
@@ -26,4 +29,12 @@ class MediaRes {
   static const String deleteQuiz = 'assets/icons/delete_icon.svg';
   static const String userProfile = 'assets/icons/dashboard_profile_icon.svg';
   static const String addQuiz = 'assets/icons/add_quiz_icon.svg';
+  static const String languageRadioChecked = 'assets/icons/l10n_radio_button_checked.svg';
+  static const String languageRadioUnchecked = 'assets/icons/l10n_radio_button_unchecked.svg';
+  static const String logout = 'assets/icons/logout.svg';
+  
+  ///ERROR
+  static const String basicError = 'assets/images/basic_error.svg';
+  static const String networkError = 'assets/images/network_error.svg';
+  
 }

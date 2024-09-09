@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
@@ -11,25 +12,16 @@ import '../widgets/switch_button.dart';
 import '../widgets/text_checkbox.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizDetailsSettingsTab extends ConsumerStatefulWidget {
+class QuizDetailsSettingsTab extends ConsumerWidget {
   const QuizDetailsSettingsTab({super.key});
 
   @override
-  ConsumerState<QuizDetailsSettingsTab> createState() =>
-      _QuizDetailsSettingsTabState();
-}
-
-class _QuizDetailsSettingsTabState
-    extends ConsumerState<QuizDetailsSettingsTab> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(quizDetailsControllerProvider);
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails) {
-        QuizStatus quizStatus = controller.tempStatus;
-        QuizAvailability quizAvailability = controller.tempAvailability;
+      loaded: (quizDetails, _) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -56,12 +48,11 @@ class _QuizDetailsSettingsTabState
                   ),
                 ),
                 SwitchButton(
-                  value: quizStatus == QuizStatus.Active,
+                  value: quizDetails.status == QuizStatus.Active,
                   onChanged: (value) {
-                    setState(() {
-                      controller.tempStatus =
-                          value ? QuizStatus.Active : QuizStatus.Inactive;
-                    });
+                    controller.changeQuizStatus(
+                      value ? QuizStatus.Active : QuizStatus.Inactive,
+                    );
                   },
                 ),
               ],
@@ -80,60 +71,52 @@ class _QuizDetailsSettingsTabState
             TextCheckbox(
               //TODO: replace with translation
               text: "Private",
-              value: quizAvailability == QuizAvailability.Private,
+              value: quizDetails.availability == QuizAvailability.Private,
               onChanged: (value) {
-                setState(() {
-                  controller.tempAvailability = value!
-                      ? QuizAvailability.Private
-                      : QuizAvailability.Public;
-                });
+                controller.changeQuizAvailability(
+                  value! ? QuizAvailability.Private : QuizAvailability.Public,
+                );
               },
             ),
             const SmallVSpacer(),
             TextCheckbox(
               text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
-              value: quizAvailability == QuizAvailability.Public,
+              value: quizDetails.availability == QuizAvailability.Public,
               onChanged: (value) {
-                setState(() {
-                  controller.tempAvailability = quizAvailability = value!
-                      ? QuizAvailability.Public
-                      : QuizAvailability.Private;
-                });
+                controller.changeQuizAvailability(
+                  value! ? QuizAvailability.Public : QuizAvailability.Private,
+                );
               },
             ),
             const ExtraLargeVSpacer(),
             Consumer(builder: (context, ref, child) {
               final state = ref.watch(quizDetailsControllerProvider);
               return state.maybeWhen(
-                loaded: (quizDetails) {
+                loaded: (quizDetails, _) {
                   return Align(
                     alignment: Alignment.centerRight,
                     child: BasicButton(
                       text: S.of(context).quizzDetailsTabSettingsSaveChanges,
                       onPressed: () async {
-                        final controller =
-                            ref.read(quizDetailsControllerProvider.notifier);
-                        await controller.updateQuizStatus(quizDetails.id);
-                        await controller.updateQuizAvailability(quizDetails.id);
-                        ref
-                            .read(dashboardControllerProvider.notifier)
-                            .notifyStatusChanged(
-                                quizDetails.id,
-                                controller.tempStatus,
-                                controller.tempAvailability);
-                        state.maybeWhen(
-                          loaded: (quizDetails) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  //TODO: replace with translation
-                                  "Successfully updated quiz settings",
-                                ),
-                              ),
-                            );
-                          },
-                          orElse: () => null,
+                        final success = await controller.updateQuizProperties(
+                          quizDetails.id,
+                          quizDetails.status,
+                          quizDetails.availability,
                         );
+                        if (context.mounted) {
+                          success
+                              ? InfoSnackbar.show(
+                                  context,
+                                  //TODO: replace with translation
+                                  'Succesfully updated quiz settings',
+                                  color: AppColorScheme.success,
+                                )
+                              : InfoSnackbar.show(
+                                  context,
+                                  S.current.somethingWentWrong,
+                                  color: AppColorScheme.error,
+                                );
+                        }
                       },
                     ),
                   );

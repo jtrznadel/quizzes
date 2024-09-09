@@ -18,7 +18,6 @@ class AnswerTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: change container appearance if answer is correct
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),

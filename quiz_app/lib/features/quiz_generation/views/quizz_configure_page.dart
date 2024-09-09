@@ -17,15 +17,13 @@ class QuizzConfigurePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quizGenerationController =
-        ref.read(quizGenerationControllerProvider.notifier);
+    final quizGenerationController = ref.read(quizGenerationControllerProvider.notifier);
     return SafeArea(
       child: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
-                  .copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -55,18 +53,29 @@ class QuizzConfigurePage extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 8),
               child: BasicButton(
                 onPressed: () async {
-                  pageController.nextPage(
-                    duration: const Duration(milliseconds: 500),
-                    curve: Curves.easeInOut,
-                  );
                   try {
-                    await quizGenerationController.generate();
+                    if (quizGenerationController.validate()) {
+                      pageController.nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      );
+                      await quizGenerationController.generate();
+                    } else {
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              S.of(context).quizzCreationConfigureError,
+                            ),
+                          ),
+                        );
+                      }
+                    }
                   } catch (e) {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          //TODO: replace with translation
-                          content: Text('Something went wrong'),
+                        SnackBar(
+                          content: Text(S.of(context).somethingWentWrong),
                         ),
                       );
                     }

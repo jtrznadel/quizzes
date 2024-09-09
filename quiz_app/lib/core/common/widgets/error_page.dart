@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../../generated/l10n.dart';
 import '../../services/app_router.dart';
 import 'secondary_button.dart';
 import 'spacers/vertical_spacers.dart';
@@ -23,8 +24,7 @@ class ErrorPage extends StatelessWidget {
                   onPressed: () {
                     context.router.push(const DashboardRoute());
                   },
-                  //TODO: replace with translation
-                  text: 'Go back to dashboard',
+                  text: S.of(context).goBackToDashboard
                 )
               ],
             ),

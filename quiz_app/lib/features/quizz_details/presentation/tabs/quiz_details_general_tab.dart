@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -8,6 +9,7 @@ import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../application/quiz_details_controller.dart';
+import '../../application/quiz_details_state.dart';
 
 class QuizDetailsGeneralTab extends ConsumerWidget {
   const QuizDetailsGeneralTab({super.key});
@@ -15,10 +17,12 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(quizDetailsControllerProvider);
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
     return state.maybeWhen(
-      loaded: (quizDetails) {
+      loaded: (quizDetails, _) {
         final titleController = TextEditingController(text: quizDetails.title);
-        final descriptionController = TextEditingController(text: quizDetails.description);
+        final descriptionController =
+            TextEditingController(text: quizDetails.description);
         return Column(
           children: [
             const MediumVSpacer(),
@@ -30,7 +34,14 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
             const MediumVSpacer(),
             quizDescriptionTextField(context, descriptionController),
             const MediumVSpacer(),
-            saveButton(context, titleController, descriptionController)
+            saveButton(
+              context,
+              quizDetails.id,
+              titleController,
+              descriptionController,
+              controller,
+              state,
+            ),
           ],
         );
       },
@@ -42,8 +53,8 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralSubheading,
-        style: context.textTheme.bodyMedium!
-            .copyWith(color: AppColorScheme.textSecondary),
+        style: context.textTheme.bodyMedium
+            ?.copyWith(color: AppColorScheme.textSecondary),
       ),
     ]);
   }
@@ -52,7 +63,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     return Row(children: [
       Text(
         S.of(context).quizzDetailsTabGeneralPageSettingsHeading,
-        style: context.textTheme.headlineMedium!.copyWith(fontSize: 18),
+        style: context.textTheme.headlineMedium?.copyWith(fontSize: 18),
       ),
     ]);
   }
@@ -71,8 +82,8 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium
+              ?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
@@ -95,20 +106,45 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
           S
               .of(context)
               .quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium
+              ?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
     );
   }
 
-  Widget saveButton(BuildContext context, TextEditingController titleController,
-      TextEditingController descriptionController) {
+  Widget saveButton(
+      BuildContext context,
+      String id,
+      TextEditingController titleController,
+      TextEditingController descriptionController,
+      QuizDetailsController controller,
+      QuizDetailsState state) {
     return Align(
       alignment: Alignment.centerRight,
       child: BasicButton(
-        onPressed: () {},
+        onPressed: () async {
+          final success = await controller.updateQuizDetails(
+            id,
+            titleController.text,
+            descriptionController.text,
+          );
+          if (context.mounted) {
+            success
+                ? InfoSnackbar.show(
+                    context,
+                    //TODO: replace with translation
+                    'Succesfully updated quiz details',
+                    color: AppColorScheme.success,
+                  )
+                : InfoSnackbar.show(
+                    context,
+                    S.current.somethingWentWrong,
+                    color: AppColorScheme.error,
+                  );
+          }
+        },
         text: S.of(context).quizzDetailsSaveChangesButton,
       ),
     );

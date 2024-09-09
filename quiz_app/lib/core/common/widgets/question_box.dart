@@ -10,7 +10,6 @@ import '../../extensions/add_padding_extension.dart';
 import '../../extensions/context_extension.dart';
 import '../../res/media_res.dart';
 import '../../theme/app_color_scheme.dart';
-import '../../../generated/l10n.dart';
 
 class QuestionBox extends StatelessWidget {
   const QuestionBox(
@@ -68,11 +67,6 @@ class QuestionBox extends StatelessWidget {
                   ],
                 ),
               ],
-            ),
-            const SmallVSpacer(),
-            Text(
-              S.of(context).tempQuestionDescription,
-              style: context.textTheme.bodyMedium,
             ),
             const MediumVSpacer(),
             ListView.builder(

@@ -67,6 +67,8 @@
     "quizzCreationConfigureQuestionCount3": "Dużo",
     "quizzCreationConfigureQuestionCount4": "Ręcznie",
 
+    "quizzCreationConfigurationError": "Wybierz typ pytania i liczbę pytań.",
+
     "addNewQuestionBottomSheetHeading": "Dodaj nowe pytanie",
     "addNewQuestionBottomSheetManual": "Ręcznie",
     "addNewQuestionBottomSheetAI": "Wygeneruj pytanie przy użyciu AI",
@@ -84,6 +86,9 @@
     "quizzDetailsTabQuestionsSubheading": "Zarządzaj pytaniami do quizzu tutaj. Możesz edytować i usuwać pytania. Ta strona jest podglądem twoich pytań.",
     "quizzDetailsTabQuestionsSwitch": "Odpowiedzi",
     "quizzDetailsTabQuestionsAddNewQuestion": "Nowe pytanie",
+    "deleteQuestionDialogHeading": "Na pewno chcesz usunąć to pytanie?",
+    "deleteQuestionDialogDescription": "Tej operacji nie można cofnąć. Jeżeli usuniesz to pytanie, nie będzie możliwości jego przywrócenia.",
+    "deleteQuestionFailure": "Nie udało się usunąć pytania.",
 
     "quizzDetailsTabSettingsSubheading": "Zarządzaj ustawieniami quizzu tutaj.",
     "quizzDetailsTabSettingsQuizStatus": "Status quizzu",
@@ -161,22 +166,27 @@
     "quizzDetailsSaveChangesButton": "Zapisz zmiany",
     "cancelButton": "Anuluj",
     "deleteButton": "Usuń",
+    "linkCopied": "Skopiowano link do schowka",
 
     "profileAppbarTitle": "Profil",
     "profileSubheading": "Zarządzaj ustawieniami swojego profilu tutaj.",
     "profileNameDescription": "To jest Twoja publiczna nazwa wyświetlana.",
     "profileNameHint": "Wpisz swoje imię",
     "profileNameLabel": "Imię",
+    "profileEmailLabel": "E-mail",
     "profileUpdateButton": "Aktualizuj",
-    "profileDeleteButton": "Usuń",
-    "profileDeleteButtonLabel": "Usuń swoje konto",
+    "profileDeleteButton": "Usuń konto",
+    "profileDeleteDialogHeading": "Czy jesteś pewien?",
+    "profileDeleteDialogDescription": "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta.",
     "saveQuizzButton": "Zapisz Quizz",
     "fileReadException": "Coś poszło nie tak",
     "somethingWentWrong": "Coś poszło nie tak",
+    "goBackToDashboard": "Wróć do pulpitu",
     "sessionExpired": "Twoja sesja wygasła. Zaloguj się ponownie.",
     "profileUpdatingUsername": "Aktualizowanie...",
     "profileSignOutButton": "Wyloguj",
     "profileSignOutDescription": "Wyloguj się ze swojego konta",
+    "profileActionsHeading": "Akcje profilu",
 
     "tempQuizzSummaryTitle": "Zrozumienie kryptowalut i ich wpływu na finanse",
     "tempQuizzSummaryDescription": "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne.",
@@ -187,5 +197,8 @@
     "tempAnswer3": "Zarządzanie centralne",
     "tempAnswer4": "Regulacja rządowa",
     "continueButton": "Kontynuuj",
-    "dividerOr": "LUB"
+    "dividerOr": "LUB",
+    "language": "Język",
+    "languagePolish": "Polski",
+    "languageEnglish": "Angielski"
 }

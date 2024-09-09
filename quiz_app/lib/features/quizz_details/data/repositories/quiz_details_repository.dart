@@ -8,6 +8,8 @@ abstract class QuizDetailsRepository {
 
   Future<void> updateQuizStatus(String id, QuizStatus status);
   Future<void> updateQuizAvailability(String id, QuizAvailability availability);
+  Future<void> updateQuizDetails(String id, String title, String description);
+  Future<void> deleteQuestion(String id);
 }
 
 class QuizDetailsRepositoryImpl implements QuizDetailsRepository {
@@ -28,6 +30,20 @@ class QuizDetailsRepositoryImpl implements QuizDetailsRepository {
   @override
   Future<void> updateQuizAvailability(String id, QuizAvailability availability) async {
     return await _quizDetailsClient.updateQuizAvailability(id, '"${availability.name}"');
+  }
+
+  @override
+  Future<void> updateQuizDetails(String id, String title, String description) async {
+    return await _quizDetailsClient.updateQuizDetails({
+      'id': id,
+      'title': title,
+      'description': description,
+    });
+  }
+
+  @override
+  Future<void> deleteQuestion(String id) async {
+    return await _quizDetailsClient.deleteQuestion(id);
   }
 }
 

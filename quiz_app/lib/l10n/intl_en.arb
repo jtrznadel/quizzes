@@ -67,6 +67,8 @@
     "quizzCreationConfigureQuestionCount3": "High",
     "quizzCreationConfigureQuestionCount4": "Manual",
 
+    "quizzCreationConfigurationError": "Pick question type and number of questions.",
+
     "addNewQuestionBottomSheetHeading": "Add new question",
     "addNewQuestionBottomSheetManual": "Manual",
     "addNewQuestionBottomSheetAI": "Generate question with AI",
@@ -83,6 +85,9 @@
     "quizzDetailsTabQuestionsSubheading": "Manage your quiz questions here. You can edit and delete questions. This page is preview page for your questions.",
     "quizzDetailsTabQuestionsSwitch": "Answers",
     "quizzDetailsTabQuestionsAddNewQuestion": "New question",
+    "deleteQuestionDialogHeading": "Are you sure?",
+    "deleteQuestionDialogDescription": "This action cannot be undone. Once you delete the question there is no going back.",
+    "deleteQuestionFailure": "Failed to delete question.",
 
     "quizzDetailsTabSettingsSubheading": "Manage your quiz settings here.",
     "quizzDetailsTabSettingsQuizStatus": "Quiz Status",
@@ -141,7 +146,6 @@
 
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
-    "addNewQuizButton": "Add new quiz",
     "quizQuestionNumberBadge": "Total {questionNumber} questions",
     "@quizQuestionNumberBadge": {
         "description": "Badge displaying total number of questions",
@@ -153,6 +157,7 @@
             }
         }
     },
+    "addNewQuizzButton": "Add new quizz",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",
@@ -162,22 +167,27 @@
     "cancelButton": "Cancel",
     "deleteButton": "Delete",
     "saveQuizzButton": "Save Quizz",
-
+    "linkCopied": "Link copied to clipboard",
 
     "profileAppbarTitle": "Profile",
     "profileSubheading": "Manage your profile settings here.",
     "profileNameDescription": "This is your public display name.",
     "profileNameHint": "Enter your name",
     "profileNameLabel": "Name",
+    "profileEmailLabel": "E-mail",
     "profileUpdateButton": "Update",
-    "profileDeleteButton": "Delete",
-    "profileDeleteButtonLabel": "Delete your account",
+    "profileDeleteButton": "Delete account",
+    "profileDeleteDialogHeading": "Are you sure?",
+    "profileDeleteDialogDescription": "You are about to delete your account. This action cannot be undone.",
     "fileReadException": "Something went wrong",
     "somethingWentWrong": "Something went wrong",
+    "goBackToDashboard": "Go back to dashboard",
     "sessionExpired": "Session expired, please log in again.",
     "profileUpdatingUsername": "Updating...",
     "profileSignOutButton": "Sign out",
     "profileSignOutDescription": "Sign out from your account",
+    "profileActionsHeading": "Profile actions",
+    
 
     "tempQuizzSummaryTitle": "Understanding Cryptocurrencies and Their Impact on Finance",
     "tempQuizzSummaryDescription": "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.",
@@ -188,7 +198,9 @@
     "tempAnswer3": "Centralized control",
     "tempAnswer4": "Government regulation",
     "continueButton": "Continue",
-    "dividerOr": "OR"
-
+    "dividerOr": "OR",
+    "language": "Language",
+    "languagePolish": "Polish",
+    "languageEnglish": "English"
 }
       

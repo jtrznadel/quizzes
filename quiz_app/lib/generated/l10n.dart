@@ -620,6 +620,16 @@ class S {
     );
   }
 
+  /// `Pick question type and number of questions.`
+  String get quizzCreationConfigurationError {
+    return Intl.message(
+      'Pick question type and number of questions.',
+      name: 'quizzCreationConfigureError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add new question`
   String get addNewQuestionBottomSheetHeading {
     return Intl.message(
@@ -745,6 +755,36 @@ class S {
     return Intl.message(
       'New question',
       name: 'quizzDetailsTabQuestionsAddNewQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get deleteQuestionDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'deleteQuestionDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action cannot be undone. Once you delete the question there is no going back.`
+  String get deleteQuestionDialogDescription {
+    return Intl.message(
+      'This action cannot be undone. Once you delete the question there is no going back.',
+      name: 'deleteQuestionDialogDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete question.`
+  String get deleteQuestionFailure {
+    return Intl.message(
+      'Failed to delete question.',
+      name: 'deleteQuestionFailure',
       desc: '',
       args: [],
     );
@@ -1341,6 +1381,16 @@ class S {
     );
   }
 
+  /// `Link copied to clipboard`
+  String get linkCopied {
+    return Intl.message(
+      'Link copied to clipboard',
+      name: 'linkCopied',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profileAppbarTitle {
     return Intl.message(
@@ -1391,6 +1441,16 @@ class S {
     );
   }
 
+  /// `E-mail`
+  String get profileEmailLabel {
+    return Intl.message(
+      'E-mail',
+      name: 'profileEmailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Update`
   String get profileUpdateButton {
     return Intl.message(
@@ -1401,21 +1461,31 @@ class S {
     );
   }
 
-  /// `Delete`
+  /// `Delete account`
   String get profileDeleteButton {
     return Intl.message(
-      'Delete',
+      'Delete account',
       name: 'profileDeleteButton',
       desc: '',
       args: [],
     );
   }
 
-  /// `Delete your account`
-  String get profileDeleteButtonLabel {
+  /// `Are you sure?`
+  String get profileDeleteDialogHeading {
     return Intl.message(
-      'Delete your account',
-      name: 'profileDeleteButtonLabel',
+      'Are you sure?',
+      name: 'profileDeleteDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are about to delete your account. This action cannot be undone.`
+  String get profileDeleteDialogDescription {
+    return Intl.message(
+      'You are about to delete your account. This action cannot be undone.',
+      name: 'profileDeleteDialogDescription',
       desc: '',
       args: [],
     );
@@ -1436,6 +1506,16 @@ class S {
     return Intl.message(
       'Something went wrong',
       name: 'somethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go back to dashboard`
+  String get goBackToDashboard {
+    return Intl.message(
+      'Go back to dashboard',
+      name: 'goBackToDashboard',
       desc: '',
       args: [],
     );
@@ -1476,6 +1556,16 @@ class S {
     return Intl.message(
       'Sign out from your account',
       name: 'profileSignOutDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile actions`
+  String get profileActionsHeading {
+    return Intl.message(
+      'Profile actions',
+      name: 'profileActionsHeading',
       desc: '',
       args: [],
     );
@@ -1576,6 +1666,36 @@ class S {
     return Intl.message(
       'OR',
       name: 'dividerOr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Polish`
+  String get languagePolish {
+    return Intl.message(
+      'Polish',
+      name: 'languagePolish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get languageEnglish {
+    return Intl.message(
+      'English',
+      name: 'languageEnglish',
       desc: '',
       args: [],
     );
