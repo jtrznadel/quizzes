@@ -1,40 +1,44 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import '../errors/file_read_exception.dart';
 
 class FileReader {
-
   FileReader._();
 
-  static Future<String> pickFileAndRead() async{
-    final filePath = await _pickFile();
-    if(filePath != null) {
-      return await _readFile(filePath);
+  static Future<PlatformFile> pickFileAndRead() async {
+    final file = await _pickFile();
+    if (file != null) {
+      if (file.bytes == null) {
+        throw FileReadException('File bytes are null');
+      }
+      return file;
     } else {
       throw FileReadException('No file selected');
     }
   }
 
-  static Future<String?> _pickFile() async{
+  static Future<PlatformFile?> _pickFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
+      withData: true,
       type: FileType.custom,
-      allowedExtensions: ['txt'],
+      allowedExtensions: ['pdf', 'docx', 'doc', 'txt'],
     );
-    if(result != null) {
-      return result.files.single.path!;
+    if (result != null) {
+      return result.files.single;
     } else {
       return null;
     }
   }
 
-  static Future<String> _readFile(String filePath) async{
-    final file = File(filePath);
-
-    try {
-      return await file.readAsString();
-    } catch (exception) {
-      throw FileReadException(exception.toString());
+  static MultipartFile toMultipartFile(PlatformFile file) {
+    if (file.bytes == null) {
+      throw FileReadException('File bytes are null');
     }
+    return MultipartFile.fromBytes(
+      file.bytes!,
+      filename: file.name,
+    );
   }
 }

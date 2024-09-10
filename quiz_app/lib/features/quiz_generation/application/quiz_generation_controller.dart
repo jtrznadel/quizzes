@@ -1,10 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
-import '../domain/question_model.dart';
-import '../domain/quiz_generation_model.dart';
-import '../domain/quiz_model.dart';
+import '../domain/create_quiz_model.dart';
+import '../domain/generate_question_model.dart';
+import '../domain/generate_quiz_model.dart';
+import '../domain/quiz_request_model.dart';
 import '../widgets/question_count_picker.dart';
 import 'quiz_generation_state.dart';
 
@@ -12,61 +14,61 @@ part 'quiz_generation_controller.g.dart';
 
 @riverpod
 class QuizGenerationController extends _$QuizGenerationController {
-  late QuizGenerationModel _quizModel;
-  late QuizModel _quiz;
+  late QuizRequestModel _requestModel;
+  late GenerateQuizModel _quiz;
 
   @override
   QuizGenerationState build() {
-    _quizModel = QuizGenerationModel(
+    _requestModel = QuizRequestModel(
       content: '',
       questionTypes: [],
       numberOfQuestions: QuestionNumberSelection.low.value,
+      attachments: [],
     );
-    _quiz = const QuizModel(title: '', description: '', createQuestionsDto: []);
+    _quiz = const GenerateQuizModel(title: '', description: '', generateQuestions: []);
     return const QuizGenerationState.generating();
   }
 
-  String get content => _quizModel.content;
-  List<String> get typeOfQuestions => _quizModel.questionTypes;
-  int get numberOfQuestions => _quizModel.numberOfQuestions;
+  String get content => _requestModel.content;
+  List<String> get typeOfQuestions => _requestModel.questionTypes;
+  int get numberOfQuestions => _requestModel.numberOfQuestions;
+  List<MultipartFile> get attachments => _requestModel.attachments;
 
   String get title => _quiz.title;
   String get description => _quiz.description;
-  List<QuestionModel> get questions => _quiz.createQuestionsDto;
+  List<GenerateQuestionModel> get questions => _quiz.generateQuestions;
 
   void setContent(String content) {
-    _quizModel = _quizModel.copyWith(content: content);
+    _requestModel = _requestModel.copyWith(content: content);
   }
 
   void addTypeOfQuestions(String typeOfQuestions) {
-    _quizModel = _quizModel.copyWith(
-        questionTypes: [..._quizModel.questionTypes, typeOfQuestions]);
+    _requestModel = _requestModel.copyWith(questionTypes: [..._requestModel.questionTypes, typeOfQuestions]);
   }
 
   void removeTypeOfQuestions(String typeOfQuestions) {
-    final questionTypes = List<String>.from(_quizModel.questionTypes);
+    final questionTypes = List<String>.from(_requestModel.questionTypes);
     questionTypes.remove(typeOfQuestions);
-    _quizModel = _quizModel.copyWith(questionTypes: questionTypes);
+    _requestModel = _requestModel.copyWith(questionTypes: questionTypes);
   }
 
   void setNumberOfQuestions(int numberOfQuestions) {
-    _quizModel = _quizModel.copyWith(numberOfQuestions: numberOfQuestions);
+    _requestModel = _requestModel.copyWith(numberOfQuestions: numberOfQuestions);
   }
 
-  void addNewQuestion(QuestionModel question) {
-    _quiz = _quiz
-        .copyWith(createQuestionsDto: [..._quiz.createQuestionsDto, question]);
+  void addNewQuestion(GenerateQuestionModel question) {
+    _quiz = _quiz.copyWith(generateQuestions: [..._quiz.generateQuestions, question]);
     state = QuizGenerationState.generated(_quiz);
   }
 
   bool validate() {
-    if (_quizModel.content.isEmpty) {
+    if (_requestModel.content.isEmpty) {
       return false;
     }
-    if (_quizModel.questionTypes.isEmpty) {
+    if (_requestModel.questionTypes.isEmpty) {
       return false;
     }
-    if (_quizModel.numberOfQuestions == 0) {
+    if (_requestModel.numberOfQuestions == 0) {
       return false;
     }
     return true;
@@ -75,11 +77,9 @@ class QuizGenerationController extends _$QuizGenerationController {
   Future<void> generate() async {
     state = const QuizGenerationState.generating();
 
-    final result = await ref
-        .read(quizGenerationRepositoryProvider)
-        .generateQuiz(quizGenerationModel: _quizModel);
+    final result = await ref.read(quizGenerationRepositoryProvider).generateQuiz(quizRequestModel: _requestModel);
 
-    _quizModel = _quizModel.copyWith(content: '', questionTypes: [], numberOfQuestions: QuestionNumberSelection.low.value);
+    _requestModel = _requestModel.copyWith(content: '', questionTypes: [], numberOfQuestions: QuestionNumberSelection.low.value);
 
     result.fold(
       (error) {
@@ -93,9 +93,12 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> createQuiz() async {
-    final result = await ref
-        .read(quizGenerationRepositoryProvider)
-        .createQuiz(quizModel: _quiz);
+    final createQuizModel = CreateQuizModel.fromGenerateQuizModel(
+      title: _quiz.title,
+      description: _quiz.description,
+      generateQuizQuestions: _quiz.generateQuestions,
+    );
+    final result = await ref.read(quizGenerationRepositoryProvider).createQuiz(quizModel: createQuizModel);
 
     result.fold(
       (error) {
@@ -108,9 +111,9 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> deleteQuestion(int index) async {
-    final questionListCopy = List<QuestionModel>.from(_quiz.createQuestionsDto);
+    final questionListCopy = List<GenerateQuestionModel>.from(_quiz.generateQuestions);
     questionListCopy.removeAt(index);
-    _quiz = _quiz.copyWith(createQuestionsDto: questionListCopy);
+    _quiz = _quiz.copyWith(generateQuestions: questionListCopy);
     state = QuizGenerationState.generated(_quiz);
   }
 }

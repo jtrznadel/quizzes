@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,6 +38,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
 
   @override
   Widget build(BuildContext context) {
+    final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
@@ -72,8 +74,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
             SecondaryButton(
               onPressed: () async {
                 try {
-                  final text = await FileReader.pickFileAndRead();
-                  _promptController.text = text;
+                  final file = await FileReader.pickFileAndRead();
+                  quizzGenerationController.addAttachment(FileReader.toMultipartFile(file));
                 } on FileReadException catch (exception) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(

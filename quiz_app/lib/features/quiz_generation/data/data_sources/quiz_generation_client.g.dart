@@ -22,17 +22,34 @@ class _QuizGenerationClient implements QuizGenerationClient {
   String? baseUrl;
 
   @override
-  Future<QuizModel> generateQuiz(Map<String, dynamic> body) async {
+  Future<GenerateQuizModel> generateQuiz({
+    required String content,
+    required int numberOfQuestions,
+    required List<String> questionTypes,
+    required List<MultipartFile> attachments,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Content',
+      content,
+    ));
+    _data.fields.add(MapEntry(
+      'NumberOfQuestions',
+      numberOfQuestions.toString(),
+    ));
+    questionTypes.forEach((i) {
+      _data.fields.add(MapEntry('QuestionTypes', i));
+    });
+    _data.files.addAll(attachments.map((i) => MapEntry('Attachments', i)));
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<QuizModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<GenerateQuizModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
@@ -45,7 +62,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = QuizModel.fromJson(_result.data!);
+    final _value = GenerateQuizModel.fromJson(_result.data!);
     return _value;
   }
 
