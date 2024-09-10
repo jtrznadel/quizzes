@@ -185,6 +185,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fill in the blank"),
         "quizzCreationConfigureTypeQuestion":
             MessageLookupByLibrary.simpleMessage("What type of questions?"),
+        "quizzCreationDuplicateAttachmentsError":
+            MessageLookupByLibrary.simpleMessage(
+                "You have already attached this file."),
         "quizzCreationGenerateQuestionGenerateButton":
             MessageLookupByLibrary.simpleMessage("Generate"),
         "quizzCreationGenerateQuestionHeading":
@@ -194,6 +197,9 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Enter prompt for AI to generate question"),
         "quizzCreationGenerateQuestionPromptLabel":
             MessageLookupByLibrary.simpleMessage("Prompt"),
+        "quizzCreationMaxAttachmentsError":
+            MessageLookupByLibrary.simpleMessage(
+                "You can attach maximum of 3 files."),
         "quizzCreationPreviewHeading":
             MessageLookupByLibrary.simpleMessage("Quizz Preview"),
         "quizzCreationQuitButton":

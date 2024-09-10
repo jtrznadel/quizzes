@@ -184,6 +184,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Uzupełnianie luk"),
         "quizzCreationConfigureTypeQuestion":
             MessageLookupByLibrary.simpleMessage("Jaki typ pytań?"),
+        "quizzCreationDuplicateAttachmentsError":
+            MessageLookupByLibrary.simpleMessage(
+                "Ten plik został już załączony."),
         "quizzCreationGenerateQuestionGenerateButton":
             MessageLookupByLibrary.simpleMessage("Wygeneruj"),
         "quizzCreationGenerateQuestionHeading":
@@ -193,6 +196,9 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Wprowadź monit tekstowy dla AI, aby wygenerować pytanie"),
         "quizzCreationGenerateQuestionPromptLabel":
             MessageLookupByLibrary.simpleMessage("Monit tekstowy"),
+        "quizzCreationMaxAttachmentsError":
+            MessageLookupByLibrary.simpleMessage(
+                "Możesz załączyć maksymalnie 3 pliki."),
         "quizzCreationPreviewHeading":
             MessageLookupByLibrary.simpleMessage("Podgląd quizzu"),
         "quizzCreationQuitButton":

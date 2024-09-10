@@ -55,6 +55,8 @@
     "quizzCreationTextPromptTextAreaHint": "Enter the text for your quizz",
     "quizzCreationAttachFileMaxSize": "Max size: 5MB",
     "quizzCreationAttachFileAllowedTypes": "Types supported: .txt, .pdf, .docx, .xlsx, .pptx",
+    "quizzCreationMaxAttachmentsError": "You can attach maximum of 3 files.",
+    "quizzCreationDuplicateAttachmentsError": "You have already attached this file.",
     
     "quizzCreationConfigureHeading": "Configure quizz",
     "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",

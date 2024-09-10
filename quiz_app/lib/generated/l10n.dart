@@ -530,6 +530,26 @@ class S {
     );
   }
 
+  /// `You can attach maximum of 3 files.`
+  String get quizzCreationMaxAttachmentsError {
+    return Intl.message(
+      'You can attach maximum of 3 files.',
+      name: 'quizzCreationMaxAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have already attached this file.`
+  String get quizzCreationDuplicateAttachmentsError {
+    return Intl.message(
+      'You have already attached this file.',
+      name: 'quizzCreationDuplicateAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Configure quizz`
   String get quizzCreationConfigureHeading {
     return Intl.message(
