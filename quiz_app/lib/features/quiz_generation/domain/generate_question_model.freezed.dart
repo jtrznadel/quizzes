@@ -23,7 +23,7 @@ GenerateQuestionModel _$GenerateQuestionModelFromJson(
 mixin _$GenerateQuestionModel {
   String get title => throw _privateConstructorUsedError;
   @AnswerModelConverter()
-  List<AnswerModelInterface> get generateQuizAnswers =>
+  List<AnswerModelInterface> get generateAnswers =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $GenerateQuestionModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      @AnswerModelConverter() List<AnswerModelInterface> generateQuizAnswers});
+      @AnswerModelConverter() List<AnswerModelInterface> generateAnswers});
 }
 
 /// @nodoc
@@ -58,16 +58,16 @@ class _$GenerateQuestionModelCopyWithImpl<$Res,
   @override
   $Res call({
     Object? title = null,
-    Object? generateQuizAnswers = null,
+    Object? generateAnswers = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      generateQuizAnswers: null == generateQuizAnswers
-          ? _value.generateQuizAnswers
-          : generateQuizAnswers // ignore: cast_nullable_to_non_nullable
+      generateAnswers: null == generateAnswers
+          ? _value.generateAnswers
+          : generateAnswers // ignore: cast_nullable_to_non_nullable
               as List<AnswerModelInterface>,
     ) as $Val);
   }
@@ -84,7 +84,7 @@ abstract class _$$GenerateQuestionModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String title,
-      @AnswerModelConverter() List<AnswerModelInterface> generateQuizAnswers});
+      @AnswerModelConverter() List<AnswerModelInterface> generateAnswers});
 }
 
 /// @nodoc
@@ -100,16 +100,16 @@ class __$$GenerateQuestionModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? generateQuizAnswers = null,
+    Object? generateAnswers = null,
   }) {
     return _then(_$GenerateQuestionModelImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      generateQuizAnswers: null == generateQuizAnswers
-          ? _value._generateQuizAnswers
-          : generateQuizAnswers // ignore: cast_nullable_to_non_nullable
+      generateAnswers: null == generateAnswers
+          ? _value._generateAnswers
+          : generateAnswers // ignore: cast_nullable_to_non_nullable
               as List<AnswerModelInterface>,
     ));
   }
@@ -121,27 +121,26 @@ class _$GenerateQuestionModelImpl implements _GenerateQuestionModel {
   const _$GenerateQuestionModelImpl(
       {required this.title,
       @AnswerModelConverter()
-      required final List<AnswerModelInterface> generateQuizAnswers})
-      : _generateQuizAnswers = generateQuizAnswers;
+      required final List<AnswerModelInterface> generateAnswers})
+      : _generateAnswers = generateAnswers;
 
   factory _$GenerateQuestionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GenerateQuestionModelImplFromJson(json);
 
   @override
   final String title;
-  final List<AnswerModelInterface> _generateQuizAnswers;
+  final List<AnswerModelInterface> _generateAnswers;
   @override
   @AnswerModelConverter()
-  List<AnswerModelInterface> get generateQuizAnswers {
-    if (_generateQuizAnswers is EqualUnmodifiableListView)
-      return _generateQuizAnswers;
+  List<AnswerModelInterface> get generateAnswers {
+    if (_generateAnswers is EqualUnmodifiableListView) return _generateAnswers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_generateQuizAnswers);
+    return EqualUnmodifiableListView(_generateAnswers);
   }
 
   @override
   String toString() {
-    return 'GenerateQuestionModel(title: $title, generateQuizAnswers: $generateQuizAnswers)';
+    return 'GenerateQuestionModel(title: $title, generateAnswers: $generateAnswers)';
   }
 
   @override
@@ -151,13 +150,13 @@ class _$GenerateQuestionModelImpl implements _GenerateQuestionModel {
             other is _$GenerateQuestionModelImpl &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
-                .equals(other._generateQuizAnswers, _generateQuizAnswers));
+                .equals(other._generateAnswers, _generateAnswers));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, title,
-      const DeepCollectionEquality().hash(_generateQuizAnswers));
+      const DeepCollectionEquality().hash(_generateAnswers));
 
   @JsonKey(ignore: true)
   @override
@@ -178,7 +177,7 @@ abstract class _GenerateQuestionModel implements GenerateQuestionModel {
   const factory _GenerateQuestionModel(
           {required final String title,
           @AnswerModelConverter()
-          required final List<AnswerModelInterface> generateQuizAnswers}) =
+          required final List<AnswerModelInterface> generateAnswers}) =
       _$GenerateQuestionModelImpl;
 
   factory _GenerateQuestionModel.fromJson(Map<String, dynamic> json) =
@@ -188,7 +187,7 @@ abstract class _GenerateQuestionModel implements GenerateQuestionModel {
   String get title;
   @override
   @AnswerModelConverter()
-  List<AnswerModelInterface> get generateQuizAnswers;
+  List<AnswerModelInterface> get generateAnswers;
   @override
   @JsonKey(ignore: true)
   _$$GenerateQuestionModelImplCopyWith<_$GenerateQuestionModelImpl>

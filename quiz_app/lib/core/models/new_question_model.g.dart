@@ -1,26 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'generate_question_model.dart';
+part of 'new_question_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GenerateQuestionModelImpl _$$GenerateQuestionModelImplFromJson(
+_$NewQuestionModelImpl _$$NewQuestionModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$GenerateQuestionModelImpl(
+    _$NewQuestionModelImpl(
       title: json['title'] as String,
-      generateAnswers: (json['generateAnswers'] as List<dynamic>)
+      createAnswers: (json['createAnswers'] as List<dynamic>)
           .map((e) =>
               const AnswerModelConverter().fromJson(e as Map<String, dynamic>))
           .toList(),
+      quizID: json['quizID'] as String,
     );
 
-Map<String, dynamic> _$$GenerateQuestionModelImplToJson(
-        _$GenerateQuestionModelImpl instance) =>
+Map<String, dynamic> _$$NewQuestionModelImplToJson(
+        _$NewQuestionModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'generateAnswers': instance.generateAnswers
+      'createAnswers': instance.createAnswers
           .map(const AnswerModelConverter().toJson)
           .toList(),
+      'quizID': instance.quizID,
     };

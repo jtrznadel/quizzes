@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../features/quiz_generation/domain/question_model.dart';
+import '../../../features/quiz_generation/domain/generate_question_model.dart';
 import '../../../generated/l10n.dart';
 import 'dotted_border_container.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
@@ -17,7 +17,7 @@ class QuestionBox extends StatelessWidget {
       {super.key, required this.questionIndex, required this.question, required this.onDelete, required this.correctAnswerVisible});
 
   final int questionIndex;
-  final QuestionModel question;
+  final GenerateQuestionModel question;
   final VoidCallback onDelete;
   final bool correctAnswerVisible;
 
@@ -71,7 +71,7 @@ class QuestionBox extends StatelessWidget {
             ),
             const MediumVSpacer(),
             ListView.builder(
-              itemCount: question.createAnswersDto.length,
+              itemCount: question.generateAnswers.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
@@ -79,8 +79,8 @@ class QuestionBox extends StatelessWidget {
                   children: [
                     AnswerTile(
                       leading: Answer.values[index].name,
-                      text: question.createAnswersDto[index].content,
-                      isCorrect: correctAnswerVisible ? question.createAnswersDto[index].isCorrect : false,
+                      text: question.generateAnswers[index].content,
+                      isCorrect: correctAnswerVisible ? question.generateAnswers[index].isCorrect : false,
                     ),
                     const SmallVSpacer(),
                   ],

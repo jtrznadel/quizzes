@@ -7,7 +7,7 @@ import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
-import '../../../quiz_generation/domain/question_model.dart';
+import '../../../quiz_generation/domain/generate_question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
@@ -61,9 +61,9 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
                   children: [
                     QuestionBox(
                       questionIndex: index,
-                      question: QuestionModel(
+                      question: GenerateQuestionModel(
                         title: quizDetails.questions[index].title,
-                        createAnswersDto: quizDetails.questions[index].answers,
+                        generateAnswers: quizDetails.questions[index].answers,
                       ),
                       onDelete: () {
                         DeleteQuestionDialog.show(context, quizDetails.questions[index]);

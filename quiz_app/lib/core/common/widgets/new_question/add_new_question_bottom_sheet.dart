@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../features/quiz_generation/domain/question_model.dart';
+import '../../../../features/quiz_generation/domain/generate_question_model.dart';
+import '../../../models/new_question_model.dart';
 import '../spacers/vertical_spacers.dart';
 import '../../../extensions/add_padding_extension.dart';
 import '../../../extensions/context_extension.dart';
@@ -14,7 +15,7 @@ import '../../../../generated/l10n.dart';
 class AddNewQuestionBottomSheet extends StatelessWidget {
   const AddNewQuestionBottomSheet({super.key, required this.onQuestionAdd});
 
-  final void Function(QuestionModel question) onQuestionAdd;
+  final void Function(GenerateQuestionModel question) onQuestionAdd;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
   }
 
   //TODO: add return type to get question add mode (manual, AI generated)
-  static void show(BuildContext context, {required void Function(QuestionModel question) onQuestionAdd}) {
+  static void show(BuildContext context, {required void Function(GenerateQuestionModel question) onQuestionAdd}) {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,

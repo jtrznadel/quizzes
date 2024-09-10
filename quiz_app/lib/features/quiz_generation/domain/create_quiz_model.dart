@@ -24,7 +24,7 @@ class CreateQuizModel with _$CreateQuizModel {
       createQuizQuestions: generateQuizQuestions
           .map((question) => CreateQuestionModel.fromGenerateQuestionModel(
                 title: question.title,
-                generateQuizAnswers: question.generateQuizAnswers,
+                generateQuizAnswers: question.generateAnswers,
               ))
           .toList(),
     );

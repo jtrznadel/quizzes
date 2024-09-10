@@ -9,7 +9,7 @@ part 'generate_question_model.g.dart';
 class GenerateQuestionModel with _$GenerateQuestionModel {
   const factory GenerateQuestionModel({
     required String title,
-    @AnswerModelConverter() required List<AnswerModelInterface> generateQuizAnswers,
+    @AnswerModelConverter() required List<AnswerModelInterface> generateAnswers,
   }) = _GenerateQuestionModel;
 
   factory GenerateQuestionModel.fromJson(Map<String, dynamic> json) => _$GenerateQuestionModelFromJson(json);

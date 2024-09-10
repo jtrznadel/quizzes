@@ -56,6 +56,10 @@ class QuizGenerationController extends _$QuizGenerationController {
     _requestModel = _requestModel.copyWith(numberOfQuestions: numberOfQuestions);
   }
 
+  void addAttachment(MultipartFile attachment) {
+    _requestModel = _requestModel.copyWith(attachments: [..._requestModel.attachments, attachment]);
+  }
+
   void addNewQuestion(GenerateQuestionModel question) {
     _quiz = _quiz.copyWith(generateQuestions: [..._quiz.generateQuestions, question]);
     state = QuizGenerationState.generated(_quiz);

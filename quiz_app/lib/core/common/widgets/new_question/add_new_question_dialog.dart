@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../features/quiz_generation/domain/answer_model.dart';
-import '../../../../features/quiz_generation/domain/question_model.dart';
+import '../../../../features/quiz_generation/domain/generate_question_model.dart';
+import '../../../models/new_question_model.dart';
 import '../../../services/app_router.dart';
 import '../info_snackbar.dart';
 import 'add_question_dialog_answer_section.dart';
@@ -17,12 +18,12 @@ import '../../../../generated/l10n.dart';
 class AddNewQuestionDialog extends ConsumerStatefulWidget {
   const AddNewQuestionDialog({super.key, required this.onQuestionAdd});
 
-  final void Function(QuestionModel question) onQuestionAdd;
+  final void Function(GenerateQuestionModel question) onQuestionAdd;
 
   @override
   ConsumerState createState() => _AddNewQuestionDialogState();
 
-  static void show(BuildContext context, {required void Function(QuestionModel question) onQuestionAdd}) {
+  static void show(BuildContext context, {required void Function(GenerateQuestionModel question) onQuestionAdd}) {
     showDialog(
       context: context,
       builder: (context) => Scaffold(
@@ -82,27 +83,20 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
         BasicButton(
           onPressed: () {
             if (validateQuestion()) {
-              final answers = answerControllers.values
-                  .toList()
-                  .where((element) => element.controller.text.trim().isNotEmpty);
-              final question = QuestionModel(
+              final answers = answerControllers.values.toList().where((element) => element.controller.text.trim().isNotEmpty);
+              final question = GenerateQuestionModel(
                 title: titleController.text,
-                createAnswersDto: List.generate(
+                generateAnswers: List.generate(
                   answers.length,
                   (index) => AnswerModel(
-                    content: answers
-                        .elementAt(index)
-                        .controller
-                        .text,
-                    isCorrect:
-                        answers.elementAt(index).isCorrect,
+                    content: answers.elementAt(index).controller.text,
+                    isCorrect: answers.elementAt(index).isCorrect,
                   ),
                 ),
               );
               widget.onQuestionAdd(question);
               ref.read(appRouterProvider).maybePop();
-            }
-            else{
+            } else {
               InfoSnackbar.show(
                 context,
                 S.of(context).quizzCreationAddQuestionError,
@@ -121,17 +115,13 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
       return false;
     }
 
-    final notEmptyAnswers = answerControllers.entries
-        .toList()
-        .where((element) => element.value.controller.text.trim().isNotEmpty);
+    final notEmptyAnswers = answerControllers.entries.toList().where((element) => element.value.controller.text.trim().isNotEmpty);
     if (notEmptyAnswers.length < 2) {
       return false;
     }
 
     final correctAnswers = answerControllers.entries.toList().where(
-          (element) =>
-              element.value.isCorrect &&
-              element.value.controller.text.trim().isNotEmpty,
+          (element) => element.value.isCorrect && element.value.controller.text.trim().isNotEmpty,
         );
     if (correctAnswers.isEmpty) {
       return false;

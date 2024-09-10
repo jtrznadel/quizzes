@@ -31,7 +31,7 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
       final model = await _quizGenerationClient.generateQuiz(
         content: quizRequestModel.content,
         numberOfQuestions: quizRequestModel.numberOfQuestions,
-        questionTypes: quizRequestModel.questionTypes,
+        questionTypes: quizRequestModel.questionTypes.join(','),
         attachments: quizRequestModel.attachments,
       );
       return Right(model);
