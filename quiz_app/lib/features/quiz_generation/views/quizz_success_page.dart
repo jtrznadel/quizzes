@@ -57,6 +57,7 @@ class QuizzSuccessPage extends ConsumerWidget {
               const MediumVSpacer(),
               SecondaryButton(
                 onPressed: () {
+                  ref.read(quizGenerationControllerProvider.notifier).resetState();
                   ref.read(appRouterProvider).push(const DashboardRoute());
                 },
                 text: S.of(context).quizzCreationSuccessBackButton,

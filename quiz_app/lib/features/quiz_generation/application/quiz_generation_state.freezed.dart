@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QuizGenerationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() generating,
+    required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
     required TResult Function(String quizID) created,
@@ -26,7 +26,7 @@ mixin _$QuizGenerationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? generating,
+    TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
     TResult? Function(String quizID)? created,
@@ -34,7 +34,7 @@ mixin _$QuizGenerationState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? generating,
+    TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
     TResult Function(String quizID)? created,
@@ -91,6 +91,10 @@ abstract class _$$GeneratingImplCopyWith<$Res> {
   factory _$$GeneratingImplCopyWith(
           _$GeneratingImpl value, $Res Function(_$GeneratingImpl) then) =
       __$$GeneratingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({QuizRequestModel request});
+
+  $QuizRequestModelCopyWith<$Res> get request;
 }
 
 /// @nodoc
@@ -100,60 +104,92 @@ class __$$GeneratingImplCopyWithImpl<$Res>
   __$$GeneratingImplCopyWithImpl(
       _$GeneratingImpl _value, $Res Function(_$GeneratingImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? request = null,
+  }) {
+    return _then(_$GeneratingImpl(
+      null == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as QuizRequestModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $QuizRequestModelCopyWith<$Res> get request {
+    return $QuizRequestModelCopyWith<$Res>(_value.request, (value) {
+      return _then(_value.copyWith(request: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$GeneratingImpl implements _Generating {
-  const _$GeneratingImpl();
+  const _$GeneratingImpl(this.request);
+
+  @override
+  final QuizRequestModel request;
 
   @override
   String toString() {
-    return 'QuizGenerationState.generating()';
+    return 'QuizGenerationState.generating(request: $request)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GeneratingImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GeneratingImpl &&
+            (identical(other.request, request) || other.request == request));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, request);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GeneratingImplCopyWith<_$GeneratingImpl> get copyWith =>
+      __$$GeneratingImplCopyWithImpl<_$GeneratingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() generating,
+    required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
     required TResult Function(String quizID) created,
   }) {
-    return generating();
+    return generating(request);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? generating,
+    TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
     TResult? Function(String quizID)? created,
   }) {
-    return generating?.call();
+    return generating?.call(request);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? generating,
+    TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
     TResult Function(String quizID)? created,
     required TResult orElse(),
   }) {
     if (generating != null) {
-      return generating();
+      return generating(request);
     }
     return orElse();
   }
@@ -197,7 +233,12 @@ class _$GeneratingImpl implements _Generating {
 }
 
 abstract class _Generating implements QuizGenerationState {
-  const factory _Generating() = _$GeneratingImpl;
+  const factory _Generating(final QuizRequestModel request) = _$GeneratingImpl;
+
+  QuizRequestModel get request;
+  @JsonKey(ignore: true)
+  _$$GeneratingImplCopyWith<_$GeneratingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -274,7 +315,7 @@ class _$GeneratedImpl implements _Generated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() generating,
+    required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
     required TResult Function(String quizID) created,
@@ -285,7 +326,7 @@ class _$GeneratedImpl implements _Generated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? generating,
+    TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
     TResult? Function(String quizID)? created,
@@ -296,7 +337,7 @@ class _$GeneratedImpl implements _Generated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? generating,
+    TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
     TResult Function(String quizID)? created,
@@ -419,7 +460,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() generating,
+    required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
     required TResult Function(String quizID) created,
@@ -430,7 +471,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? generating,
+    TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
     TResult? Function(String quizID)? created,
@@ -441,7 +482,7 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? generating,
+    TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
     TResult Function(String quizID)? created,
@@ -564,7 +605,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() generating,
+    required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
     required TResult Function(String quizID) created,
@@ -575,7 +616,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? generating,
+    TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
     TResult? Function(String quizID)? created,
@@ -586,7 +627,7 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? generating,
+    TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
     TResult Function(String quizID)? created,

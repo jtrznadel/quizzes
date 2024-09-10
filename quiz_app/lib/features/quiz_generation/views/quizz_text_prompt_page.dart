@@ -38,10 +38,13 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
 
   @override
   Widget build(BuildContext context) {
-    final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
+    final quizzGenerationController =
+        ref.read(quizGenerationControllerProvider.notifier);
+    final state = ref.watch(quizGenerationControllerProvider);
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
+            .copyWith(top: 0), //TODO: Remove top padding if needed
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -65,7 +68,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
+              padding: const EdgeInsets.symmetric(
+                  vertical: AppTheme.pageDefaultSpacingSize),
               child: TextDivider(
                 text: S.of(context).dividerOr,
                 color: AppColorScheme.textSecondary,
@@ -75,7 +79,16 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
               onPressed: () async {
                 try {
                   final file = await FileReader.pickFileAndRead();
-                  quizzGenerationController.addAttachment(FileReader.toMultipartFile(file));
+                  state.maybeWhen(
+                    generating: (request) {
+                      request = request.copyWith(attachments: [
+                        ...request.attachments,
+                        FileReader.toMultipartFile(file)
+                      ]);
+                      quizzGenerationController.modifyRequest(request);
+                    },
+                    orElse: () {},
+                  );
                 } on FileReadException catch (exception) {
                   if (context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -97,17 +110,26 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
             const MediumVSpacer(),
             Text(
               S.of(context).quizzCreationAttachFileMaxSize,
-              style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodySmall
+                  ?.copyWith(color: AppColorScheme.textSecondary),
             ),
             Text(
               S.of(context).quizzCreationAttachFileAllowedTypes,
-              style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
+              style: context.textTheme.bodySmall
+                  ?.copyWith(color: AppColorScheme.textSecondary),
             ),
             const ExtraLargeVSpacer(),
             BasicButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  ref.read(quizGenerationControllerProvider.notifier).setContent(_promptController.text);
+                  state.maybeWhen(
+                    generating: (request) {
+                      request =
+                          request.copyWith(content: _promptController.text);
+                      quizzGenerationController.modifyRequest(request);
+                    },
+                    orElse: () {},
+                  );
                   widget.pageController.nextPage(
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.easeInOut,

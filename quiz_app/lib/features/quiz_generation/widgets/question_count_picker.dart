@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../application/quiz_generation_controller.dart';
+import '../application/quiz_generation_state.dart';
 import 'radio_list_tile.dart';
 import '../../../../generated/l10n.dart';
 
@@ -33,6 +34,7 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
   QuestionNumberSelection _selectedValue = QuestionNumberSelection.low;
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(quizGenerationControllerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -48,7 +50,13 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
+              state.maybeWhen(
+                generating: (request) {
+                  request = request.copyWith(numberOfQuestions: value.value);
+                  ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
+                },
+                orElse: () {},
+              );
             });
           },
         ),
@@ -60,7 +68,13 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
+              state.maybeWhen(
+                generating: (request) {
+                  request = request.copyWith(numberOfQuestions: value.value);
+                  ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
+                },
+                orElse: () {},
+              );
             });
           },
         ),
@@ -72,7 +86,13 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
+              state.maybeWhen(
+                generating: (request) {
+                  request = request.copyWith(numberOfQuestions: value.value);
+                  ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
+                },
+                orElse: () {},
+              );
             });
           },
         ),

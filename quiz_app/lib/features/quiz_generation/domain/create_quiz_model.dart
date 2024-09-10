@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'create_question_model.dart';
-import 'generate_question_model.dart';
+import 'generate_quiz_model.dart';
 
 part 'create_quiz_model.g.dart';
 part 'create_quiz_model.freezed.dart';
@@ -14,14 +14,12 @@ class CreateQuizModel with _$CreateQuizModel {
   }) = _CreateQuizModel;
 
   factory CreateQuizModel.fromGenerateQuizModel({
-    required String title,
-    required String description,
-    required List<GenerateQuestionModel> generateQuizQuestions,
+required GenerateQuizModel model
   }) {
     return CreateQuizModel(
-      title: title,
-      description: description,
-      createQuizQuestions: generateQuizQuestions
+      title: model.title,
+      description: model.description,
+      createQuizQuestions: model.generateQuestions
           .map((question) => CreateQuestionModel.fromGenerateQuestionModel(
                 title: question.title,
                 generateQuizAnswers: question.generateAnswers,
