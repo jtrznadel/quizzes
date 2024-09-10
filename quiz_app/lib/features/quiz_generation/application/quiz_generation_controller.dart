@@ -57,7 +57,9 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   void addAttachment(MultipartFile attachment) {
-    _requestModel = _requestModel.copyWith(attachments: [..._requestModel.attachments, attachment]);
+    if (!_requestModel.attachments.contains(attachment)) {
+      _requestModel = _requestModel.copyWith(attachments: [..._requestModel.attachments, attachment]);
+    }
   }
 
   void addNewQuestion(GenerateQuestionModel question) {
@@ -83,7 +85,8 @@ class QuizGenerationController extends _$QuizGenerationController {
 
     final result = await ref.read(quizGenerationRepositoryProvider).generateQuiz(quizRequestModel: _requestModel);
 
-    _requestModel = _requestModel.copyWith(content: '', questionTypes: [], numberOfQuestions: QuestionNumberSelection.low.value);
+    _requestModel =
+        _requestModel.copyWith(content: '', questionTypes: [], numberOfQuestions: QuestionNumberSelection.low.value, attachments: []);
 
     result.fold(
       (error) {
