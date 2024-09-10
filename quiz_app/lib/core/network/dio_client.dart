@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import '../../features/auth/domain/token_auth.dart';
 import '../errors/access_token_refresh_failure_exception.dart';
 import '../errors/refresh_token_missing_exception.dart';
@@ -12,13 +13,27 @@ Dio buildDioClient(String base, Ref ref) {
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
-        options.headers[ApiConstants.contentTypeHeader] =
-            ApiConstants.contentTypeJson;
         final accessToken = await ref.read(sessionProvider).accessToken;
         if (accessToken != null) {
-          options.headers[ApiConstants.authHeader] =
-              '${ApiConstants.authBearer}$accessToken';
+          bool hasExpired = JwtDecoder.isExpired(accessToken);
+          if (hasExpired) {
+            final refreshToken = await ref.read(sessionProvider).refreshToken;
+            if (refreshToken == null) {
+              throw RefreshTokenMissingException(requestOptions: options);
+            }
+            final tokenResponse = await refreshAccessToken(refreshToken, dio);
+            if (tokenResponse == null) {
+              throw AccessTokenRefreshFailureException(requestOptions: options);
+            }
+            await ref.read(sessionProvider).saveTokens(
+                  accessToken: tokenResponse.accessToken,
+                  refreshToken: tokenResponse.refreshToken,
+                );
+          }
         }
+        options.headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$accessToken';
+
+        options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
         return handler.next(options);
       },
       onError: (error, handler) async {
@@ -29,8 +44,7 @@ Dio buildDioClient(String base, Ref ref) {
               }();
           if (refreshToken == null) {
             return handler.next(
-              RefreshTokenMissingException(
-                  requestOptions: error.requestOptions),
+              RefreshTokenMissingException(requestOptions: error.requestOptions),
             );
           }
           final tokenResponse = await refreshAccessToken(refreshToken, dio);
@@ -45,9 +59,7 @@ Dio buildDioClient(String base, Ref ref) {
                 accessToken: tokenResponse.accessToken,
                 refreshToken: tokenResponse.refreshToken,
               );
-          final retryRequest = error.requestOptions
-            ..headers[ApiConstants.authHeader] =
-                '${ApiConstants.authBearer}$tokenResponse';
+          final retryRequest = error.requestOptions..headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$tokenResponse';
           final response = await dio.fetch(retryRequest);
           return handler.resolve(response);
         }
