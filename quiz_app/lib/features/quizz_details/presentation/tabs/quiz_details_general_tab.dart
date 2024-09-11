@@ -8,8 +8,6 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../dashboard/application/dashboard_controller.dart';
-import '../../../dashboard/domain/quiz_dashboard_model.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
 import '../../domain/quiz_details_model.dart';
@@ -144,11 +142,6 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
                 'Succesfully updated quiz details',
                 color: AppColorScheme.success,
               );
-              final dashboardQuizModel = QuizDashboardModel.fromQuizDetailsModel(quiz).copyWith(
-                title: titleController.text,
-                description: descriptionController.text,
-              );
-              ref.read(dashboardControllerProvider.notifier).notifyItemChanged(dashboardQuizModel);
             } else {
               InfoSnackbar.show(
                 context,

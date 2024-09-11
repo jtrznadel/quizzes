@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/network/api_constants.dart';
 import '../../../generated/l10n.dart';
+import '../../quizz_details/domain/quiz_details_model.dart';
 import '../data/repositories/dashboard_repository.dart';
 import '../domain/quiz_dashboard_model.dart';
 import 'dashboard_state.dart';
@@ -90,13 +91,14 @@ class DashboardController extends _$DashboardController {
     }
   }
 
-  void notifyItemChanged(QuizDashboardModel quiz) {
+  void reloadItem(QuizDetailsModel quiz){
+    final quizDashboardModel = QuizDashboardModel.fromQuizDetailsModel(quiz);
     state.maybeWhen(
       loaded: (quizList, currentPage) {
         final tempQuizes = List<QuizDashboardModel>.from(quizList.items);
         final index = tempQuizes.indexWhere((element) => element.id == quiz.id);
         if (index != -1) {
-          tempQuizes[index] = quiz;
+          tempQuizes[index] = quizDashboardModel;
           state = DashboardState.loaded(
             quizList.copyWith(items: tempQuizes),
             currentPage,
@@ -106,4 +108,5 @@ class DashboardController extends _$DashboardController {
       orElse: () {},
     );
   }
+
 }

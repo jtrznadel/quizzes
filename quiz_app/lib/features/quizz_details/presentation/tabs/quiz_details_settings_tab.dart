@@ -5,8 +5,6 @@ import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
-import '../../../dashboard/application/dashboard_controller.dart';
-import '../../../dashboard/domain/quiz_dashboard_model.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
@@ -45,15 +43,6 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
                       'Succesfully updated quiz settings',
                       color: AppColorScheme.success,
                     );
-                    final dashboardQuizModel =
-                        QuizDashboardModel.fromQuizDetailsModel(quizDetails)
-                            .copyWith(
-                      availability: quizDetails.availability,
-                      status: quizDetails.status,
-                    );
-                    ref
-                        .read(dashboardControllerProvider.notifier)
-                        .notifyItemChanged(dashboardQuizModel);
                   } else {
                     InfoSnackbar.show(
                       context,
