@@ -36,7 +36,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   bool validate(QuizRequestModel requestModel) {
-    if (requestModel.content.isEmpty) {
+    if (requestModel.content.isEmpty && requestModel.attachments.isEmpty) {
       return false;
     }
     if (requestModel.questionTypes.isEmpty) {

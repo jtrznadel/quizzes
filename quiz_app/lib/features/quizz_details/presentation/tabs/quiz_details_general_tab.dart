@@ -52,13 +52,11 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   }
 
   Widget generalHeader(BuildContext context) {
-    return Row(children: [
-      Text(
-        S.of(context).quizzDetailsTabGeneralSubheading,
-        style: context.textTheme.bodyMedium
-            ?.copyWith(color: AppColorScheme.textSecondary),
-      ),
-    ]);
+    return Text(
+      S.of(context).quizzDetailsTabGeneralSubheading,
+      style: context.textTheme.bodyMedium
+          ?.copyWith(color: AppColorScheme.textSecondary),
+    );
   }
 
   Widget pageSettingsHeader(BuildContext context) {
@@ -138,8 +136,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
             if (success) {
               InfoSnackbar.show(
                 context,
-                //TODO: replace with translation
-                'Succesfully updated quiz details',
+                S.of(context).quizzDetailsTabGeneralSuccessfullSave,
                 color: AppColorScheme.success,
               );
             } else {

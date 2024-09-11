@@ -310,10 +310,10 @@ class S {
     );
   }
 
-  /// `Don''t worry! It happens. Enter the email address associated with your account.`
+  /// `Do not worry! It happens. Enter the email address associated with your account.`
   String get forgotPasswordSubheading {
     return Intl.message(
-      'Don\'\'t worry! It happens. Enter the email address associated with your account.',
+      'Do not worry! It happens. Enter the email address associated with your account.',
       name: 'forgotPasswordSubheading',
       desc: '',
       args: [],
@@ -870,10 +870,10 @@ class S {
     );
   }
 
-  /// `When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.`
+  /// `When switched on, quizz is active and available for solving. If not, no one can solve the quiz.`
   String get quizzDetailsTabSettingsQuizStatusDescription {
     return Intl.message(
-      'When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.',
+      'When switched on, quizz is active and available for solving. If not, no one can solve the quiz.',
       name: 'quizzDetailsTabSettingsQuizStatusDescription',
       desc: '',
       args: [],
@@ -890,10 +890,10 @@ class S {
     );
   }
 
-  /// `When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.`
+  /// `When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.`
   String get quizzDetailsTabSettingsQuizAvailabilityDescription {
     return Intl.message(
-      'When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.',
+      'When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.',
       name: 'quizzDetailsTabSettingsQuizAvailabilityDescription',
       desc: '',
       args: [],
@@ -935,6 +935,16 @@ class S {
     return Intl.message(
       'Save changes',
       name: 'quizzDetailsTabSettingsSaveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Succesfully updated quiz settings.`
+  String get quizzDetailsTabSettingsSuccessfullSave {
+    return Intl.message(
+      'Succesfully updated quiz settings.',
+      name: 'quizzDetailsTabSettingsSuccessfullSave',
       desc: '',
       args: [],
     );
@@ -1010,10 +1020,10 @@ class S {
     );
   }
 
-  /// `Time`
+  /// `Duration`
   String get quizzDetailsTabStatisticsTime {
     return Intl.message(
-      'Time',
+      'Duration',
       name: 'quizzDetailsTabStatisticsTime',
       desc: '',
       args: [],
@@ -1115,6 +1125,16 @@ class S {
     return Intl.message(
       'Enter quiz title',
       name: 'quizzDetailsTabGeneralQuizDescriptionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Succesfully updated quiz details.`
+  String get quizzDetailsTabGeneralSuccessfullSave {
+    return Intl.message(
+      'Succesfully updated quiz details.',
+      name: 'quizzDetailsTabGeneralSuccessfullSave',
       desc: '',
       args: [],
     );
@@ -1380,10 +1400,10 @@ class S {
     );
   }
 
-  /// `You don''t have any quizzes yet. Create one now!`
+  /// `You do not have any quizzes yet. Create one now!`
   String get dashboardQuizzesEmpty {
     return Intl.message(
-      'You don\'\'t have any quizzes yet. Create one now!',
+      'You do not have any quizzes yet. Create one now!',
       name: 'dashboardQuizzesEmpty',
       desc: '',
       args: [],

@@ -39,7 +39,6 @@ class BasicErrorPage extends StatelessWidget {
                 ),
                 const LargeVSpacer(),
                 Text(
-                  //TODO: replace with translation
                   errorText,
                   style: context.theme.textTheme.bodyMedium,
                   textAlign: TextAlign.center,

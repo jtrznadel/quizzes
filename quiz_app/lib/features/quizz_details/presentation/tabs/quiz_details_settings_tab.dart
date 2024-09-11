@@ -39,8 +39,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
                   if (success) {
                     InfoSnackbar.show(
                       context,
-                      //TODO: replace with translation
-                      'Succesfully updated quiz settings',
+                      S.of(context).quizzDetailsTabSettingsSuccessfullSave,
                       color: AppColorScheme.success,
                     );
                   } else {

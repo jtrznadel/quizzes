@@ -37,7 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
-            "You don\'\'t have any quizzes yet. Create one now!"),
+            "You do not have any quizzes yet. Create one now!"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Here, you can effortlessly list, delete, edit and create new exams."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzes"),
@@ -74,7 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPasswordInputLabel":
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
-            "Don\'\'t worry! It happens. Enter the email address associated with your account."),
+            "Do not worry! It happens. Enter the email address associated with your account."),
         "goBackToDashboard":
             MessageLookupByLibrary.simpleMessage("Go back to dashboard"),
         "invalidEmail":
@@ -259,6 +259,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabGeneralSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Manage your quiz page settings here."),
+        "quizzDetailsTabGeneralSuccessfullSave":
+            MessageLookupByLibrary.simpleMessage(
+                "Succesfully updated quiz details."),
         "quizzDetailsTabQuestions":
             MessageLookupByLibrary.simpleMessage("Questions"),
         "quizzDetailsTabQuestionsAddNewQuestion":
@@ -275,7 +278,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Active"),
         "quizzDetailsTabSettingsQuizAvailabilityDescription":
             MessageLookupByLibrary.simpleMessage(
-                "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link."),
+                "When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you."),
         "quizzDetailsTabSettingsQuizAvailabilityPrivate":
             MessageLookupByLibrary.simpleMessage("Private"),
         "quizzDetailsTabSettingsQuizAvailabilityPublic":
@@ -284,12 +287,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Quiz Status"),
         "quizzDetailsTabSettingsQuizStatusDescription":
             MessageLookupByLibrary.simpleMessage(
-                "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link."),
+                "When switched on, quizz is active and available for solving. If not, no one can solve the quiz."),
         "quizzDetailsTabSettingsSaveChanges":
             MessageLookupByLibrary.simpleMessage("Save changes"),
         "quizzDetailsTabSettingsSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Manage your quiz settings here."),
+        "quizzDetailsTabSettingsSuccessfullSave":
+            MessageLookupByLibrary.simpleMessage(
+                "Succesfully updated quiz settings."),
         "quizzDetailsTabStatistics":
             MessageLookupByLibrary.simpleMessage("Statistics"),
         "quizzDetailsTabStatisticsDate":
@@ -311,7 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "You can view your quiz statistics here."),
         "quizzDetailsTabStatisticsTime":
-            MessageLookupByLibrary.simpleMessage("Time"),
+            MessageLookupByLibrary.simpleMessage("Duration"),
         "quizzShareButton": MessageLookupByLibrary.simpleMessage("Share"),
         "quizzShareHeading":
             MessageLookupByLibrary.simpleMessage("Share quizz"),

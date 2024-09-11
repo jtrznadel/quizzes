@@ -40,7 +40,7 @@
     
     "newPasswordAppbarTitle": "Resetowanie hasła",
     "newPasswordHeading": "Nowe hasło",
-    "newPasswordSubheading": "To nowe hasło musi się różnić od poprzednio używanych.",
+    "newPasswordSubheading": "Nowe hasło musi różnić się od poprzednio używanych.",
     "newPasswordInputLabel": "Nowe hasło",
     "newPasswordInputHint": "Twoje hasło",
     "newPasswordButton": "Zapisz i zaloguj się",
@@ -48,10 +48,10 @@
     "quizzSummaryTitle": "Tytuł: ",
 
     "quizzCreationAppBarTitle": "Stwórz quizz",
-    "quizzCreationTextPromptHeading": "Źródło zawartości",
+    "quizzCreationTextPromptHeading": "Tekst źródłowy",
     "quizzCreationTextPromptSubheading": "Możesz wpisać tekst, przesłać pliki lub skorzystać z obu opcji, aby stworzyć quizz.",
     "quizzCreationUploadFile": "Prześlij plik",
-    "quizzCreationTextPromptTextAreaLabel": "Źródło zawartości",
+    "quizzCreationTextPromptTextAreaLabel": "Tekst źródłowy",
     "quizzCreationTextPromptTextAreaHint": "Wprowadź tekst dla swojego quizzu",
     "quizzCreationAttachFileMaxSize": "Maks. rozmiar: 5MB",
     "quizzCreationAttachFileAllowedTypes": "Dozwolone typy: .txt, .pdf, .docx, .xlsx, .pptx",
@@ -60,7 +60,7 @@
     "quizzCreationYouNeedToProvideContent": "Musisz wprowadzić treść quizzu lub przesłać plik.",
 
     "quizzCreationConfigureHeading": "Konfiguracja quizzu",
-    "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego.",
+    "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego tekstu źródłowego.",
     "quizzCreationConfigureTypeQuestion": "Jaki typ pytań?",
     "quizzCreationConfigureType1": "Wielokrotny wybór",
     "quizzCreationConfigureType2": "Prawda/Fałsz",
@@ -77,7 +77,7 @@
     "addNewQuestionBottomSheetHeading": "Dodaj nowe pytanie",
     "addNewQuestionBottomSheetManual": "Ręcznie",
     "addNewQuestionBottomSheetAI": "Wygeneruj pytanie przy użyciu AI",
-    "quizzCreationAddQuestionError": "Question title and at least two answers are required.",
+    "quizzCreationAddQuestionError": "Wymagany jest tytuł pytania i co najmniej dwie odpowiedzi",
 
     "quizzCreationPreviewHeading": "Podgląd quizzu",
     "quizzCreationAddQuestionButton": "Dodaj pytanie",
@@ -89,22 +89,23 @@
     "quizzDetailsTabStatistics": "Statystyki",
     "quizzDetailsTabGeneral": "Ogólne",
 
-    "quizzDetailsTabQuestionsSubheading": "Zarządzaj pytaniami do quizzu tutaj. Możesz edytować i usuwać pytania. Ta strona jest podglądem twoich pytań.",
+    "quizzDetailsTabQuestionsSubheading": "Na tej stronie możesz edytować, dodawać lub usuwać pytania swojego quizzu.",
     "quizzDetailsTabQuestionsSwitch": "Odpowiedzi",
     "quizzDetailsTabQuestionsAddNewQuestion": "Nowe pytanie",
-    "deleteQuestionDialogHeading": "Na pewno chcesz usunąć to pytanie?",
+    "deleteQuestionDialogHeading": "Czy na pewno chcesz usunąć to pytanie?",
     "deleteQuestionDialogDescription": "Tej operacji nie można cofnąć. Jeżeli usuniesz to pytanie, nie będzie możliwości jego przywrócenia.",
     "deleteQuestionFailure": "Nie udało się usunąć pytania.",
 
-    "quizzDetailsTabSettingsSubheading": "Zarządzaj ustawieniami quizzu tutaj.",
+    "quizzDetailsTabSettingsSubheading": "Na tej stronie możesz edytować ustawienia swojego quizzu.",
     "quizzDetailsTabSettingsQuizStatus": "Status quizzu",
-    "quizzDetailsTabSettingsQuizStatusDescription": "Kiedy włączone, quizz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizzu z zewnętrznego linku.",
+    "quizzDetailsTabSettingsQuizStatusDescription": "Jeżeli ta opcja jest włączona, użytkownicy mogą przystąpić do quizzu. W przeciwnym razie, quizz jest niedostępny do rozwiązywania.",
     "quizzDetailsTabSettingsQuizAvailability": "Dostępność",
-    "quizzDetailsTabSettingsQuizAvailabilityDescription": "Kiedy włączone, quizz jest aktywny i dostępny dla wszystkich. W przeciwnym razie, nikt nie ma dostępu do quizzu z zewnętrznego linku.",
+    "quizzDetailsTabSettingsQuizAvailabilityDescription": "Jeżeli ta opcja jest włączona, quizz jest dostępny dla wszystkich. W przeciwnym razie, quiz jest prywatny i dostępny tylko dla Ciebie.",
     "quizzDetailsTabSettingsQuizAvailabilityActive": "Aktywny",
     "quizzDetailsTabSettingsQuizAvailabilityPublic": "Publiczny",
     "quizzDetailsTabSettingsQuizAvailabilityPrivate": "Prywatny",
     "quizzDetailsTabSettingsSaveChanges": "Zapisz zmiany",
+    "quizzDetailsTabSettingsSuccessfullSave": "Pomyślnie zapisano zmiany.",
 
     "quizzDetailsTabStatisticsSubheading": "Tutaj możesz przeglądać statystyki swojego quizzu.",
     "quizzDetailsTabStatisticsDetailsStatusBadge": "Szczegóły",
@@ -127,14 +128,16 @@
       }
     },
 
-    "quizzDetailsTabGeneralSubheading": "Zarządzaj ustawieniami strony quizzu tutaj.",
+    "quizzDetailsTabGeneralSubheading": "Na tej stronie możesz edytować ogólne ustawienia swojego quizzu.",
     "quizzDetailsTabGeneralPageSettingsHeading": "Ustawienia strony quizzu",
     "quizzDetailsTabGeneralQuizTitle": "Tytuł quizzu",
-    "quizzDetailsTabGeneralQuizTitleTextFieldDescription": "To jest twój publiczny tytuł quizzu. Będzie wyświetlany na stronie twojego quizzu. Możesz go zmienić w dowolnym momencie.",
+    "quizzDetailsTabGeneralQuizTitleTextFieldDescription": "To jest publiczny tytuł twojego quizzu. Będzie on wyświetlany na stronie quizzu. Możesz go zmienić w dowolnym momencie.",
     "quizzDetailsTabGeneralQuizTitleHint": "Wprowadź tytuł quizzu",
     "quizzDetailsTabGeneralQuizDescription": "Opis quizzu",
-    "quizzDetailsTabGeneralQuizDescriptionTextFieldDescription": "To jest twój publiczny opis quizzu. Będzie wyświetlany na stronie twojego quizzu. Możesz go zmienić w dowolnym momencie.",
+    "quizzDetailsTabGeneralQuizDescriptionTextFieldDescription": "To jest publiczny opis twojego quizzu. Będzie on wyświetlany na stronie quizzu. Możesz go zmienić w dowolnym momencie.",
     "quizzDetailsTabGeneralQuizDescriptionHint": "Wprowadź opis quizzu",
+    "quizzDetailsTabGeneralSuccessfullSave": "Pomyślnie zapisano zmiany.",
+
     "quizzCreationQuitHeading": "Czy jesteś pewien?",
     "quizzCreationQuitSubheading": "Zamierzasz przerwać proces tworzenia quizzu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta.",
     "quizzCreationQuitButton": "Tak, zakończ",
@@ -150,7 +153,7 @@
 
     "quizzCreationGenerateQuestionHeading": "Wygeneruj nowe pytanie",
     "quizzCreationGenerateQuestionPromptLabel": "Monit tekstowy",
-    "quizzCreationGenerateQuestionPromptHint": "Wprowadź monit tekstowy dla AI, aby wygenerować pytanie",
+    "quizzCreationGenerateQuestionPromptHint": "Wprowadź tekst źródłowy dla AI, aby wygenerować pytanie",
     "quizzCreationGenerateQuestionGenerateButton": "Wygeneruj",
 
     "quizzCreationSuccessHeading": "Sukces!",
@@ -163,7 +166,7 @@
     "quizzShareButton": "Udostępnij",
 
     "dashboardTopHeading": "Quizzy",
-    "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy.",
+    "dashboardSubheading": "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe quizy.",
     "addNewQuizzButton": "Dodaj nowy quizz",
     "quizQuestionNumberBadge": "Łącznie {questionNumber} pytań",
     "@quizQuestionNumberBadge": {
@@ -176,10 +179,10 @@
             }
         }
     },
-    "dashboardQuizzesEmpty": "Nie masz jeszcze żadnych quizów. Możesz dodać nowy, klikając przycisk powyzej.",
+    "dashboardQuizzesEmpty": "Nie masz jeszcze żadnych quizów. Możesz utworzyć nowy, klikając przycisk powyżej.",
 
     "deleteQuizzHeading": "Czy jesteś pewien?",
-    "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu.",
+    "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości jego przywrócenia.",
     "deleteAccountHeading": "Usuwanie konta",
     "deleteAccountDescription": "Zamierzasz usunąć swoje konto. Ta operacja nie może zostać cofnięta.",
     "quizzDetailsSaveChangesButton": "Zapisz zmiany",
@@ -189,7 +192,7 @@
 
     "profileAppbarTitle": "Profil",
     "profileSubheading": "Zarządzaj ustawieniami swojego profilu tutaj.",
-    "profileNameDescription": "To jest Twoja publiczna nazwa wyświetlana.",
+    "profileNameDescription": "To jest Twoja publiczna nazwa.",
     "profileNameHint": "Wpisz swoje imię",
     "profileNameLabel": "Imię",
     "profileEmailLabel": "E-mail",
