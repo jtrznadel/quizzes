@@ -48,15 +48,16 @@
     "quizzSummaryTitle": "Title: ",
     
     "quizzCreationAppBarTitle": "Create quizz",
-    "quizzCreationTextPromptHeading": "Source Text",
-    "quizzCreationTextPromptSubheading": "Enter the text that will be used to create your quizz.",
+    "quizzCreationTextPromptHeading": "Content Text",
+    "quizzCreationTextPromptSubheading": "You can either enter text, upload files, or use a combination of both to create your quizz.",
     "quizzCreationUploadFile": "Upload file",
-    "quizzCreationTextPromptTextAreaLabel": "Source Text",
+    "quizzCreationTextPromptTextAreaLabel": "Content Text",
     "quizzCreationTextPromptTextAreaHint": "Enter the text for your quizz",
     "quizzCreationAttachFileMaxSize": "Max size: 5MB",
     "quizzCreationAttachFileAllowedTypes": "Types supported: .txt, .pdf, .docx, .xlsx, .pptx",
     "quizzCreationMaxAttachmentsError": "You can attach maximum of 3 files.",
     "quizzCreationDuplicateAttachmentsError": "You have already attached this file.",
+    "quizzCreationYouNeedToProvideContent": "You need to provide either text or upload file.",
     
     "quizzCreationConfigureHeading": "Configure quizz",
     "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",
@@ -175,6 +176,7 @@
         }
     },
     "addNewQuizzButton": "Add new quizz",
+    "dashboardQuizzesEmpty": "You don''t have any quizzes yet. Create one now!",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",

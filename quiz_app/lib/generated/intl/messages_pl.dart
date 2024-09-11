@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
+        "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
+            "Nie masz jeszcze żadnych quizów. Możesz dodać nowy, klikając przycisk powyzej."),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz łatwo przeglądać, usuwać, edytować i tworzyć nowe egzaminy."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzy"),
@@ -218,16 +220,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
             "Pomyślnie utworzyłeś quizz. Możesz teraz podzielić się nim z innymi."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Tekst źródłowy"),
+            MessageLookupByLibrary.simpleMessage("Źródło zawartości"),
         "quizzCreationTextPromptSubheading": MessageLookupByLibrary.simpleMessage(
-            "Wprowadź tekst, który zostanie użyty do stworzenia twojego quizzu."),
+            "Możesz wpisać tekst, przesłać pliki lub skorzystać z obu opcji, aby stworzyć quizz."),
         "quizzCreationTextPromptTextAreaHint":
             MessageLookupByLibrary.simpleMessage(
                 "Wprowadź tekst dla swojego quizzu"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Tekst źródłowy"),
+            MessageLookupByLibrary.simpleMessage("Źródło zawartości"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Prześlij plik"),
+        "quizzCreationYouNeedToProvideContent":
+            MessageLookupByLibrary.simpleMessage(
+                "Musisz wprowadzić treść quizzu lub przesłać plik."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Szczegóły quizzu"),
         "quizzDetailsSaveChangesButton":

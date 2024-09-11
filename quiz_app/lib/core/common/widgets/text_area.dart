@@ -17,6 +17,7 @@ class TextArea extends StatelessWidget {
     this.contentPadding = AppTheme.pageDefaultSpacingSize,
     this.textStyle,
     this.enabled = true,
+    this.overrideValidator,
   });
 
   final String? labelText;
@@ -28,7 +29,7 @@ class TextArea extends StatelessWidget {
   final double contentPadding;
   final TextStyle? textStyle;
   final bool enabled;
-
+  final String? Function(String?)? overrideValidator;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -58,12 +59,13 @@ class TextArea extends StatelessWidget {
             child: TextFormField(
               controller: controller,
               enabled: enabled,
-              validator: (value) {
-                if (value == null || value.trim().isEmpty) {
-                  return S.of(context).thisFieldIsRequired;
-                }
-                return null;
-              },
+              validator: overrideValidator ??
+                  (value) {
+                    if (required && value!.isEmpty) {
+                      return S.of(context).thisFieldIsRequired;
+                    }
+                    return null;
+                  },
               minLines: minLines,
               maxLines: maxLines,
               decoration: InputDecoration(

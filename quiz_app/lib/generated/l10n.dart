@@ -460,20 +460,20 @@ class S {
     );
   }
 
-  /// `Source Text`
+  /// `Content Text`
   String get quizzCreationTextPromptHeading {
     return Intl.message(
-      'Source Text',
+      'Content Text',
       name: 'quizzCreationTextPromptHeading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter the text that will be used to create your quizz.`
+  /// `You can either enter text, upload files, or use a combination of both to create your quizz.`
   String get quizzCreationTextPromptSubheading {
     return Intl.message(
-      'Enter the text that will be used to create your quizz.',
+      'You can either enter text, upload files, or use a combination of both to create your quizz.',
       name: 'quizzCreationTextPromptSubheading',
       desc: '',
       args: [],
@@ -490,10 +490,10 @@ class S {
     );
   }
 
-  /// `Source Text`
+  /// `Content Text`
   String get quizzCreationTextPromptTextAreaLabel {
     return Intl.message(
-      'Source Text',
+      'Content Text',
       name: 'quizzCreationTextPromptTextAreaLabel',
       desc: '',
       args: [],
@@ -545,6 +545,16 @@ class S {
     return Intl.message(
       'You have already attached this file.',
       name: 'quizzCreationDuplicateAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to provide either text or upload file.`
+  String get quizzCreationYouNeedToProvideContent {
+    return Intl.message(
+      'You need to provide either text or upload file.',
+      name: 'quizzCreationYouNeedToProvideContent',
       desc: '',
       args: [],
     );
@@ -1365,6 +1375,16 @@ class S {
     return Intl.message(
       'Add new quizz',
       name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You don''t have any quizzes yet. Create one now!`
+  String get dashboardQuizzesEmpty {
+    return Intl.message(
+      'You don\'\'t have any quizzes yet. Create one now!',
+      name: 'dashboardQuizzesEmpty',
       desc: '',
       args: [],
     );

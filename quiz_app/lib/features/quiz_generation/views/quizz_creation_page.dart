@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/common/widgets/basic_app_bar.dart';
+import '../../../core/services/app_router.dart';
 import '../../../core/theme/app_color_scheme.dart';
 import '../application/quiz_generation_controller.dart';
 import 'quizz_configure_page.dart';
@@ -50,19 +51,28 @@ class _QuizzCreationPageState extends ConsumerState<QuizzCreationPage> {
     ref.watch(quizGenerationControllerProvider.notifier);
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop){
-        if(!didPop){
+      onPopInvoked: (didPop) {
+        if (!didPop) {
           SchedulerBinding.instance.addPostFrameCallback((_) {
-            QuitQuizzCreationDialog.show(context);
+            if (_controller.page!.toInt() == getPages().length - 1) {
+              ref.read(appRouterProvider).replaceAll([const DashboardRoute()]);
+            } else {
+              QuitQuizzCreationDialog.show(context);
+            }
           });
         }
       },
       child: Scaffold(
         appBar: BasicAppBar(
-            title: S.of(context).quizzCreationAppBarTitle,
-            onBack: () {
+          title: S.of(context).quizzCreationAppBarTitle,
+          onBack: () {
+            if (_controller.page!.toInt() == getPages().length - 1) {
+              ref.read(appRouterProvider).replaceAll([const DashboardRoute()]);
+            } else {
               QuitQuizzCreationDialog.show(context);
-            }),
+            }
+          },
+        ),
         body: Column(
           children: [
             Align(

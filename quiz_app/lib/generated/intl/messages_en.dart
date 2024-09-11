@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add new quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+        "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
+            "You don\'\'t have any quizzes yet. Create one now!"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Here, you can effortlessly list, delete, edit and create new exams."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzes"),
@@ -219,17 +221,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
             "You succesfully created your quizz. You can now share it with others."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Source Text"),
-        "quizzCreationTextPromptSubheading":
-            MessageLookupByLibrary.simpleMessage(
-                "Enter the text that will be used to create your quizz."),
+            MessageLookupByLibrary.simpleMessage("Content Text"),
+        "quizzCreationTextPromptSubheading": MessageLookupByLibrary.simpleMessage(
+            "You can either enter text, upload files, or use a combination of both to create your quizz."),
         "quizzCreationTextPromptTextAreaHint":
             MessageLookupByLibrary.simpleMessage(
                 "Enter the text for your quizz"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Source Text"),
+            MessageLookupByLibrary.simpleMessage("Content Text"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Upload file"),
+        "quizzCreationYouNeedToProvideContent":
+            MessageLookupByLibrary.simpleMessage(
+                "You need to provide either text or upload file."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Quiz Detail"),
         "quizzDetailsSaveChangesButton":

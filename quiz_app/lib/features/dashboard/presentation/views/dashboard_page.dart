@@ -54,9 +54,21 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 children: [
                   topBar(context),
                   const SmallVSpacer(),
-                  Expanded(
-                    child: quizList(quizListModel, controller),
-                  ),
+                  quizListModel.items.isEmpty
+                      ? Column(
+                          children: [
+                            const NewQuizButton(),
+                            const LargeVSpacer(),
+                            Text(
+                              S.of(context).dashboardQuizzesEmpty,
+                              style: context.theme.textTheme.bodyLarge,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )
+                      : Expanded(
+                          child: quizList(quizListModel, controller),
+                        ),
                 ],
               ),
             );

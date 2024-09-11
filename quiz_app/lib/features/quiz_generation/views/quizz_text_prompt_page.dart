@@ -49,6 +49,10 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
       orElse: () => const [],
     );
 
+    bool isInputValid() {
+      return _promptController.text.isNotEmpty || files.isNotEmpty;
+    }
+
     Future<void> handleFileUpload() async {
       try {
         if (files.length >= 3) {
@@ -90,15 +94,16 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                     S.of(context).quizzCreationTextPromptSubheading,
                     style: context.textTheme.bodyMedium,
                   ),
-                  const ExtraLargeVSpacer(),
+                  const LargeVSpacer(),
                   Form(
                     key: _formKey,
                     child: TextArea(
                       labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
                       hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
                       minLines: 5,
-                      maxLines: 15,
+                      maxLines: 10,
                       controller: _promptController,
+                      required: false,
                     ),
                   ),
                   Padding(
@@ -142,7 +147,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
               padding: const EdgeInsets.only(top: 8),
               child: BasicButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+                  if (isInputValid()) {
                     state.maybeWhen(
                       generating: (request) {
                         request = request.copyWith(content: _promptController.text);
@@ -154,6 +159,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                     );
+                  } else {
+                    ErrorSnackbar.show(context, S.of(context).quizzCreationYouNeedToProvideContent);
                   }
                 },
                 text: S.of(context).continueButton,

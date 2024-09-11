@@ -16,9 +16,15 @@ class AttachmentTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
     final state = ref.watch(quizGenerationControllerProvider);
-    final fileType = fileName.split('.').last;
-    final minimalizedFileName = (fileName.split('.').first).substring(0, 20);
-    final displayedFileName = '$minimalizedFileName....$fileType';
+
+    final fileFormat = fileName.split('.').last;
+    var filenameWithoutFormat = fileName.split('.').first;
+
+    if (filenameWithoutFormat.length > 20) {
+      filenameWithoutFormat = '${filenameWithoutFormat.substring(0, 20)}[...]';
+    }
+    final displayedFileName = '$filenameWithoutFormat.$fileFormat';
+
     return ListTile(
       title: Text(
         displayedFileName,

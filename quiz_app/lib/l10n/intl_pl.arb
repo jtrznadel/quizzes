@@ -48,15 +48,16 @@
     "quizzSummaryTitle": "Tytuł: ",
 
     "quizzCreationAppBarTitle": "Stwórz quizz",
-    "quizzCreationTextPromptHeading": "Tekst źródłowy",
-    "quizzCreationTextPromptSubheading": "Wprowadź tekst, który zostanie użyty do stworzenia twojego quizzu.",
+    "quizzCreationTextPromptHeading": "Źródło zawartości",
+    "quizzCreationTextPromptSubheading": "Możesz wpisać tekst, przesłać pliki lub skorzystać z obu opcji, aby stworzyć quizz.",
     "quizzCreationUploadFile": "Prześlij plik",
-    "quizzCreationTextPromptTextAreaLabel": "Tekst źródłowy",
+    "quizzCreationTextPromptTextAreaLabel": "Źródło zawartości",
     "quizzCreationTextPromptTextAreaHint": "Wprowadź tekst dla swojego quizzu",
     "quizzCreationAttachFileMaxSize": "Maks. rozmiar: 5MB",
     "quizzCreationAttachFileAllowedTypes": "Dozwolone typy: .txt, .pdf, .docx, .xlsx, .pptx",
     "quizzCreationMaxAttachmentsError": "Możesz załączyć maksymalnie 3 pliki.",
     "quizzCreationDuplicateAttachmentsError": "Ten plik został już załączony.",
+    "quizzCreationYouNeedToProvideContent": "Musisz wprowadzić treść quizzu lub przesłać plik.",
 
     "quizzCreationConfigureHeading": "Konfiguracja quizzu",
     "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego monitu tekstowego.",
@@ -175,6 +176,7 @@
             }
         }
     },
+    "dashboardQuizzesEmpty": "Nie masz jeszcze żadnych quizów. Możesz dodać nowy, klikając przycisk powyzej.",
 
     "deleteQuizzHeading": "Czy jesteś pewien?",
     "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości powrotu.",
