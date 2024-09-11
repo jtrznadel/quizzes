@@ -61,14 +61,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                             AddNewQuestionBottomSheet.show(
                               context,
                               onQuestionAdd: (question) {
-                                final tempQuestions =
-                                    List<GenerateQuestionModel>.from(quiz.generateQuestions);
-                                tempQuestions.add(question);
-                                quiz = quiz.copyWith(
-                                  generateQuestions: tempQuestions,
-                                );
-                                controller.modifyGeneratedQuiz(quiz);
-
+                                addQuestion(controller, quiz, question);
                               },
                             );
                           },
@@ -161,5 +154,14 @@ class QuizzPreviewPage extends ConsumerWidget {
         );
       },
     );
+  }
+
+  void addQuestion(QuizGenerationController controller, GenerateQuizModel quiz, GenerateQuestionModel question) {
+    final tempQuestions = List<GenerateQuestionModel>.from(quiz.generateQuestions);
+    tempQuestions.add(question);
+    quiz = quiz.copyWith(
+      generateQuestions: tempQuestions,
+    );
+    controller.modifyGeneratedQuiz(quiz);
   }
 }

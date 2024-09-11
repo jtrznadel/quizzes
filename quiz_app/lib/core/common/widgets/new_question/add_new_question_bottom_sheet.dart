@@ -48,7 +48,7 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
   }
 
   //TODO: add return type to get question add mode (manual, AI generated)
-  static void show(BuildContext context, {required void Function(GenerateQuestionModel question) onQuestionAdd}) {
+  static void show(BuildContext context, {required void Function(GenerateQuestionModel) onQuestionAdd}) {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,

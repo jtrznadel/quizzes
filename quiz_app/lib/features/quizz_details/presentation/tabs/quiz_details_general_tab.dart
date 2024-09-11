@@ -8,8 +8,11 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../dashboard/application/dashboard_controller.dart';
+import '../../../dashboard/domain/quiz_dashboard_model.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
+import '../../domain/quiz_details_model.dart';
 
 class QuizDetailsGeneralTab extends ConsumerWidget {
   const QuizDetailsGeneralTab({super.key});
@@ -36,11 +39,12 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
             const MediumVSpacer(),
             saveButton(
               context,
-              quizDetails.id,
+              quizDetails,
               titleController,
               descriptionController,
               controller,
               state,
+              ref,
             ),
           ],
         );
@@ -115,34 +119,43 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   }
 
   Widget saveButton(
-      BuildContext context,
-      String id,
-      TextEditingController titleController,
-      TextEditingController descriptionController,
-      QuizDetailsController controller,
-      QuizDetailsState state) {
+    BuildContext context,
+    QuizDetailsModel quiz,
+    TextEditingController titleController,
+    TextEditingController descriptionController,
+    QuizDetailsController controller,
+    QuizDetailsState state,
+    WidgetRef ref,
+  ) {
     return Align(
       alignment: Alignment.centerRight,
       child: BasicButton(
         onPressed: () async {
           final success = await controller.updateQuizDetails(
-            id,
+            quiz.id,
             titleController.text,
             descriptionController.text,
           );
           if (context.mounted) {
-            success
-                ? InfoSnackbar.show(
-                    context,
-                    //TODO: replace with translation
-                    'Succesfully updated quiz details',
-                    color: AppColorScheme.success,
-                  )
-                : InfoSnackbar.show(
-                    context,
-                    S.current.somethingWentWrong,
-                    color: AppColorScheme.error,
-                  );
+            if (success) {
+              InfoSnackbar.show(
+                context,
+                //TODO: replace with translation
+                'Succesfully updated quiz details',
+                color: AppColorScheme.success,
+              );
+              final dashboardQuizModel = QuizDashboardModel.fromQuizDetailsModel(quiz).copyWith(
+                title: titleController.text,
+                description: descriptionController.text,
+              );
+              ref.read(dashboardControllerProvider.notifier).notifyItemChanged(dashboardQuizModel);
+            } else {
+              InfoSnackbar.show(
+                context,
+                S.current.somethingWentWrong,
+                color: AppColorScheme.error,
+              );
+            }
           }
         },
         text: S.of(context).quizzDetailsSaveChangesButton,

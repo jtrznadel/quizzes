@@ -13,6 +13,8 @@ part 'quiz_generation_controller.g.dart';
 @riverpod
 class QuizGenerationController extends _$QuizGenerationController {
 
+  late final QuizGenerationRepository _quizGenerationRepository;
+
   @override
   QuizGenerationState build() {
     const requestModel = QuizRequestModel(
@@ -21,6 +23,7 @@ class QuizGenerationController extends _$QuizGenerationController {
       numberOfQuestions: 5,
       attachments: [],
     );
+    _quizGenerationRepository = ref.read(quizGenerationRepositoryProvider);
     return const QuizGenerationState.generating(requestModel);
   }
 
@@ -46,7 +49,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> generate(QuizRequestModel requestModel) async {
-    final result = await ref.read(quizGenerationRepositoryProvider).generateQuiz(quizRequestModel: requestModel);
+    final result = await _quizGenerationRepository.generateQuiz(quizRequestModel: requestModel);
 
     result.fold(
       (error) {
@@ -59,7 +62,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> createQuiz(CreateQuizModel quiz) async {
-    final result = await ref.read(quizGenerationRepositoryProvider).createQuiz(quizModel: quiz);
+    final result = await _quizGenerationRepository.createQuiz(quizModel: quiz);
 
     result.fold(
       (error) {

@@ -47,7 +47,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
       body: SafeArea(
         child: state.when(
           loading: () => const LoadingIndicator(),
-          loaded: (quizListModel) {
+          loaded: (quizListModel, currentPage) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
               child: Column(

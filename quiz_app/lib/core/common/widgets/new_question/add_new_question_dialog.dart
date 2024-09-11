@@ -18,12 +18,13 @@ import '../../../../generated/l10n.dart';
 class AddNewQuestionDialog extends ConsumerStatefulWidget {
   const AddNewQuestionDialog({super.key, required this.onQuestionAdd});
 
+  //TODO: change when implementing quesiton adding in quiz details
   final void Function(GenerateQuestionModel question) onQuestionAdd;
 
   @override
   ConsumerState createState() => _AddNewQuestionDialogState();
 
-  static void show(BuildContext context, {required void Function(GenerateQuestionModel question) onQuestionAdd}) {
+  static void show(BuildContext context, {required void Function(GenerateQuestionModel) onQuestionAdd}) {
     showDialog(
       context: context,
       builder: (context) => Scaffold(
