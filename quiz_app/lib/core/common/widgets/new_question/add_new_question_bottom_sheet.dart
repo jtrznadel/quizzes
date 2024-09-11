@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../features/quiz_generation/domain/generate_question_model.dart';
-import '../../../models/new_question_model.dart';
 import '../spacers/vertical_spacers.dart';
 import '../../../extensions/add_padding_extension.dart';
 import '../../../extensions/context_extension.dart';

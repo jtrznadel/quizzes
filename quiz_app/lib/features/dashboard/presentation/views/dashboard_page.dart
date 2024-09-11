@@ -5,10 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:paginated_list/paginated_list.dart';
 
 import '../../../../core/common/widgets/error_page.dart';
-import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
@@ -82,33 +80,39 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
   }
 
   Widget quizList(QuizListModel quizListModel, DashboardController controller) {
-    return PaginatedList<QuizDashboardModel>(
-      loadingIndicator: const LoadingIndicator(),
-      items: quizListModel.items,
-      isRecentSearch: false,
-      isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
-      onLoadMore: (index) {
-        controller.loadMore();
-      },
-      builder: (quiz, index) {
-        if (index == 0) {
-          return Column(
-            children: [
-              const NewQuizButton(),
-              const MediumVSpacer(),
-              QuizListItem(quizEntity: quiz),
-              const MediumVSpacer(),
-            ],
-          );
-        } else {
-          return Column(
-            children: [
-              QuizListItem(quizEntity: quiz),
-              const MediumVSpacer(),
-            ],
-          );
-        }
-      },
+    return Theme(
+      data: AppTheme.theme.copyWith(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+      ),
+      child: PaginatedList<QuizDashboardModel>(
+        loadingIndicator: const LoadingIndicator(),
+        items: quizListModel.items,
+        isRecentSearch: false,
+        isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
+        onLoadMore: (index) {
+          controller.loadMore();
+        },
+        builder: (quiz, index) {
+          if (index == 0) {
+            return Column(
+              children: [
+                const NewQuizButton(),
+                const MediumVSpacer(),
+                QuizListItem(quizEntity: quiz),
+                const MediumVSpacer(),
+              ],
+            );
+          } else {
+            return Column(
+              children: [
+                QuizListItem(quizEntity: quiz),
+                const MediumVSpacer(),
+              ],
+            );
+          }
+        },
+      ),
     );
   }
 

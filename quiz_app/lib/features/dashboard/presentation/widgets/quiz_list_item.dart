@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
-import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/quizz_status_tile.dart';
-import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -12,8 +10,6 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../../generated/l10n.dart';
-import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../domain/quiz_dashboard_model.dart';
 import 'delete_quiz_dialog.dart';
 
@@ -24,18 +20,24 @@ class QuizListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () {
-        ref.read(appRouterProvider).push(QuizzDetailsRoute(id: quizEntity.id));
-      },
-      child: quizContainer(
-        [
-          quizHeader(context),
-          const SmallVSpacer(),
-          quizDescription(context),
-          const LargeVSpacer(),
-          QuizzStatusTile(quizz: quizEntity),
-        ],
+    return Material(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius)),
+      child: InkWell(
+        onTap: () {
+          ref.read(appRouterProvider).push(QuizzDetailsRoute(id: quizEntity.id));
+        },
+        borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius),
+        splashColor: AppColorScheme.textPrimary.withOpacity(0.1),
+        splashFactory: InkRipple.splashFactory,
+        child: quizContainer(
+          [
+            quizHeader(context),
+            const SmallVSpacer(),
+            quizDescription(context),
+            const LargeVSpacer(),
+            QuizzStatusTile(quizz: quizEntity),
+          ],
+        ),
       ),
     );
   }
@@ -43,7 +45,7 @@ class QuizListItem extends ConsumerWidget {
   Widget quizContainer(List<Widget> children) {
     return Container(
       decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius), color: AppColorScheme.surfaceContainer),
+          BoxDecoration(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius), color: Colors.transparent),
       child: DottedBorderContainer(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children).addPadding(

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../application/quiz_generation_controller.dart';
-import '../application/quiz_generation_state.dart';
 import 'radio_list_tile.dart';
 import '../../../../generated/l10n.dart';
 

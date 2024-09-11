@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../features/quiz_generation/domain/answer_model.dart';
 import '../../../../features/quiz_generation/domain/generate_question_model.dart';
-import '../../../models/new_question_model.dart';
 import '../../../services/app_router.dart';
 import '../info_snackbar.dart';
 import 'add_question_dialog_answer_section.dart';

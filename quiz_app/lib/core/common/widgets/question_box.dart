@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../features/quiz_generation/domain/generate_question_model.dart';
-import '../../../generated/l10n.dart';
 import 'dotted_border_container.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
 import 'answer_tile.dart';
