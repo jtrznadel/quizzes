@@ -29,10 +29,13 @@ class ApiConstants {
   static const String updateQuizDetailsEndpoint = 'quiz';
 
   static const String deleteQuestionEndpoint = 'questionsandanswers/{id}';
+  static const String addQuestionEndpoint = 'questionsandanswers/create-question';
+  static const String updateQuestionEndpoint = 'questionsandanswers/update-question';
 
   static const String quizListEndpoint = 'quiz';
   static const String deleteQuizEndpoint = 'quiz/{id}';
   static const int quizPageSize = 10;
   static const String quizListPageQuery = 'Page';
   static const String quizListPageSizeQuery = 'PageSize';
+
 }

@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../features/quiz_generation/domain/answer_model_converter.dart';
-import 'answer_model_interface.dart';
-import 'question_model_interface.dart';
+import '../../quiz_generation/domain/answer_model_converter.dart';
+import '../../../core/models/answer_model_interface.dart';
+import '../../../core/models/question_model_interface.dart';
 
 part 'new_question_model.freezed.dart';
 part 'new_question_model.g.dart';

@@ -26,6 +26,12 @@ abstract class QuizDetailsClient {
   @PUT(ApiConstants.updateQuizDetailsEndpoint)      
   Future<void> updateQuizDetails(@Body() Map<String, dynamic> quizDetails);
 
+  @POST(ApiConstants.addQuestionEndpoint)
+  Future<void> addQuestion(@Body() Map<String, dynamic> question);
+
+  @PUT(ApiConstants.updateQuestionEndpoint)
+  Future<void> updateQuestion(@Body() Map<String, dynamic> question);
+
   @DELETE(ApiConstants.deleteQuestionEndpoint)
   Future<void> deleteQuestion(@Path('id') String id);
 }

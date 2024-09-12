@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_details_repository.dart';
+import '../domain/new_question_model.dart';
 import '../domain/quiz_details_model.dart';
 import 'quiz_details_state.dart';
 
@@ -10,7 +11,6 @@ part 'quiz_details_controller.g.dart';
 
 @riverpod
 class QuizDetailsController extends _$QuizDetailsController {
-
   final _quizDetailsRepository = quizDetailsRepositoryProvider;
 
   @override
@@ -20,7 +20,8 @@ class QuizDetailsController extends _$QuizDetailsController {
     state = const QuizDetailsState.loading();
 
     try {
-      final quizDetails = await ref.read(_quizDetailsRepository).getQuizDetails(id);
+      final quizDetails =
+          await ref.read(_quizDetailsRepository).getQuizDetails(id);
       state = QuizDetailsState.loaded(quizDetails, false);
     } catch (e) {
       state = QuizDetailsState.error(e.toString());
@@ -55,13 +56,13 @@ class QuizDetailsController extends _$QuizDetailsController {
   ) async {
     try {
       await ref.read(_quizDetailsRepository).updateQuizStatus(
-        id,
-        status,
-      );
+            id,
+            status,
+          );
       await ref.read(_quizDetailsRepository).updateQuizAvailability(
-        id,
-        availability,
-      );
+            id,
+            availability,
+          );
       return true;
     } catch (e) {
       kDebugMode ? debugPrint(e.toString()) : null;
@@ -75,7 +76,9 @@ class QuizDetailsController extends _$QuizDetailsController {
     String description,
   ) async {
     try {
-      await ref.read(_quizDetailsRepository).updateQuizDetails(id, title, description);
+      await ref
+          .read(_quizDetailsRepository)
+          .updateQuizDetails(id, title, description);
       state.maybeWhen(loaded: (quizDetails, answersVisible) {
         state = QuizDetailsState.loaded(
             quizDetails.copyWith(title: title, description: description),
@@ -107,6 +110,31 @@ class QuizDetailsController extends _$QuizDetailsController {
     } catch (e) {
       kDebugMode ? debugPrint(e.toString()) : null;
       return false;
+    }
+  }
+
+  Future<void> addNewQuestion(NewQuestionModel question) async {
+    try {
+      await ref.read(_quizDetailsRepository).addQuestion(question);
+      _reloadQuestionList();
+    } catch (e) {
+      state = QuizDetailsState.error(S.current.somethingWentWrong);
+    }
+  }
+
+  Future<void> _reloadQuestionList() async {
+    try {
+      state.maybeWhen(
+        loaded: (quizDetails, answersVisible) async {
+          final updatedQuizDetails = await ref
+              .read(_quizDetailsRepository)
+              .getQuizDetails(quizDetails.id);
+          state = QuizDetailsState.loaded(updatedQuizDetails, answersVisible);
+        },
+        orElse: () => state,
+      );
+    } catch (e) {
+      state = QuizDetailsState.error(S.current.somethingWentWrong);
     }
   }
 }
