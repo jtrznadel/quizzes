@@ -1,12 +1,15 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/errors/server_exception.dart';
+import '../../../../core/services/file_reader.dart';
 import '../../../../core/utils/typedefs.dart';
 import '../../domain/create_quiz_model.dart';
 import '../../domain/generate_quiz_model.dart';
 import '../../domain/quiz_request_model.dart';
 import '../data_sources/quiz_generation_client.dart';
+
+part 'quiz_generation_repository.g.dart';
 
 abstract class QuizGenerationRepository {
   ResultFuture<GenerateQuizModel> generateQuiz({
@@ -28,11 +31,12 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
     required QuizRequestModel quizRequestModel,
   }) async {
     try {
+      final attachments = quizRequestModel.attachments.map((e) => FileReader.toMultipartFile(e)).toList();
       final model = await _quizGenerationClient.generateQuiz(
         content: quizRequestModel.content,
         numberOfQuestions: quizRequestModel.numberOfQuestions,
         questionTypes: quizRequestModel.questionTypes.join(','),
-        attachments: quizRequestModel.attachments,
+        attachments: attachments,
       );
       return Right(model);
     } catch (e) {
@@ -53,6 +57,7 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
   }
 }
 
-final quizGenerationRepositoryProvider = Provider<QuizGenerationRepository>(
-  (ref) => QuizGenerationRepositoryImpl(ref.watch(quizGenerationClientProvider)),
-);
+@riverpod
+QuizGenerationRepository quizGenerationRepository(
+        QuizGenerationRepositoryRef ref) =>
+    QuizGenerationRepositoryImpl(ref.read(quizGenerationClientProvider));

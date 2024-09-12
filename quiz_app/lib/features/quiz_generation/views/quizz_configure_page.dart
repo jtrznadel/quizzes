@@ -58,7 +58,7 @@ class QuizzConfigurePage extends ConsumerWidget {
                 generating: (request) => BasicButton(
                   onPressed: () async {
                     try {
-                      if (quizGenerationController.validate(request)) {
+                      if (quizGenerationController.validateRequest(request)) {
                         pageController.nextPage(
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.easeInOut,

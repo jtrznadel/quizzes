@@ -124,3 +124,27 @@ class _QuizGenerationClient implements QuizGenerationClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$quizGenerationClientHash() =>
+    r'2a611a98c708a6436811d652dd05cc8d8bdb57cb';
+
+/// See also [quizGenerationClient].
+@ProviderFor(quizGenerationClient)
+final quizGenerationClientProvider =
+    AutoDisposeProvider<QuizGenerationClient>.internal(
+  quizGenerationClient,
+  name: r'quizGenerationClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$quizGenerationClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef QuizGenerationClientRef = AutoDisposeProviderRef<QuizGenerationClient>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

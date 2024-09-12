@@ -2,14 +2,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/http.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/network/api_constants.dart';
-import '../../../../core/network/dio_client.dart';
+import '../../../../core/network/base_dio_client.dart';
 import '../../domain/quiz_details_model.dart';
 
 part 'quiz_details_client.g.dart';
-
-final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class QuizDetailsClient {
@@ -31,6 +30,6 @@ abstract class QuizDetailsClient {
   Future<void> deleteQuestion(@Path('id') String id);
 }
 
-final quizDetailsClientProvider = Provider<QuizDetailsClient>(
-  (ref) => QuizDetailsClient(ref.read(dioProvider)),
-);
+@riverpod
+QuizDetailsClient quizDetailsClient(QuizDetailsClientRef ref) =>
+    QuizDetailsClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.baseUrl);

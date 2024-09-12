@@ -11,11 +11,11 @@ part 'dashboard_controller.g.dart';
 
 @riverpod
 class DashboardController extends _$DashboardController {
-  late DashboardRepository _dashboardRepository;
+  
+  final _dashboardRepository = dashboardRepositoryProvider;
 
   @override
   DashboardState build() {
-    _dashboardRepository = ref.read(dashboardRepositoryProvider);
     return const DashboardState.loading();
   }
 
@@ -24,7 +24,7 @@ class DashboardController extends _$DashboardController {
 
     try {
       final result =
-          await _dashboardRepository.getQuizList(1, ApiConstants.quizPageSize);
+          await ref.read(_dashboardRepository).getQuizList(1, ApiConstants.quizPageSize);
       result.fold(
         (error) => state = DashboardState.error(error.message),
         (quizList) {
@@ -40,7 +40,7 @@ class DashboardController extends _$DashboardController {
     try {
       state.maybeWhen(
         loaded: (quizListModel, currentPage) async {
-          final result = await _dashboardRepository.getQuizList(
+          final result = await ref.read(_dashboardRepository).getQuizList(
             currentPage,
             ApiConstants.quizPageSize,
           );
@@ -68,7 +68,7 @@ class DashboardController extends _$DashboardController {
     try {
       state.maybeWhen(
         loaded: (quizList, currentPage) async {
-          final result = await _dashboardRepository.deleteQuiz(id);
+          final result = await ref.read(_dashboardRepository).deleteQuiz(id);
           result.fold(
             (error) => state = DashboardState.error(error.message),
             (_) {

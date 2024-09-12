@@ -38,7 +38,7 @@ class AttachmentTile extends ConsumerWidget {
           state.maybeWhen(
             generating: (request) {
               request = request.copyWith(
-                attachments: request.attachments.where((element) => element.filename != fileName).toList(),
+                attachments: request.attachments.where((element) => element.name != fileName).toList(),
               );
               quizzGenerationController.modifyRequest(request);
             },

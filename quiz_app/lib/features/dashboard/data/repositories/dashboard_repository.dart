@@ -1,10 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
 import '../../domain/quiz_list_model.dart';
 import '../data_sources/dashboard_client.dart';
+
+part 'dashboard_repository.g.dart';
 
 abstract class DashboardRepository {
   ResultFuture<QuizListModel> getQuizList(int page, int pageSize);
@@ -18,25 +21,25 @@ class DashboardRepositoryImpl implements DashboardRepository {
 
   @override
   ResultFuture<void> deleteQuiz(String id) async {
-    try{
+    try {
       await _client.deleteQuiz(id);
       return const Right(null);
-    } catch(e){
+    } catch (e) {
       return Left(ServerException(message: e.toString()));
     }
   }
 
   @override
   ResultFuture<QuizListModel> getQuizList(int page, int pageSize) async {
-    try{
+    try {
       final model = await _client.getQuizList(page, pageSize);
       return Right(model);
-    } catch(e){
+    } catch (e) {
       return Left(ServerException(message: e.toString()));
     }
   }
 }
 
-final dashboardRepositoryProvider = Provider<DashboardRepository>(
-  (ref) => DashboardRepositoryImpl(ref.watch(dashboardClientProvider)),
-);
+@riverpod
+DashboardRepository dashboardRepository(DashboardRepositoryRef ref) =>
+    DashboardRepositoryImpl(ref.read(dashboardClientProvider));

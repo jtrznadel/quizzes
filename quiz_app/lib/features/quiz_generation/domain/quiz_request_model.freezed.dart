@@ -14,19 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-QuizRequestModel _$QuizRequestModelFromJson(Map<String, dynamic> json) {
-  return _QuizRequestModel.fromJson(json);
-}
-
 /// @nodoc
 mixin _$QuizRequestModel {
   String get content => throw _privateConstructorUsedError;
   int get numberOfQuestions => throw _privateConstructorUsedError;
   List<String> get questionTypes => throw _privateConstructorUsedError;
-  @MultipartFileConverter()
-  List<MultipartFile> get attachments => throw _privateConstructorUsedError;
+  List<PlatformFile> get attachments => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $QuizRequestModelCopyWith<QuizRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,7 +36,7 @@ abstract class $QuizRequestModelCopyWith<$Res> {
       {String content,
       int numberOfQuestions,
       List<String> questionTypes,
-      @MultipartFileConverter() List<MultipartFile> attachments});
+      List<PlatformFile> attachments});
 }
 
 /// @nodoc
@@ -79,7 +73,7 @@ class _$QuizRequestModelCopyWithImpl<$Res, $Val extends QuizRequestModel>
       attachments: null == attachments
           ? _value.attachments
           : attachments // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
+              as List<PlatformFile>,
     ) as $Val);
   }
 }
@@ -96,7 +90,7 @@ abstract class _$$QuizRequestModelImplCopyWith<$Res>
       {String content,
       int numberOfQuestions,
       List<String> questionTypes,
-      @MultipartFileConverter() List<MultipartFile> attachments});
+      List<PlatformFile> attachments});
 }
 
 /// @nodoc
@@ -131,24 +125,21 @@ class __$$QuizRequestModelImplCopyWithImpl<$Res>
       attachments: null == attachments
           ? _value._attachments
           : attachments // ignore: cast_nullable_to_non_nullable
-              as List<MultipartFile>,
+              as List<PlatformFile>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$QuizRequestModelImpl implements _QuizRequestModel {
   const _$QuizRequestModelImpl(
       {required this.content,
       required this.numberOfQuestions,
       required final List<String> questionTypes,
-      @MultipartFileConverter() required final List<MultipartFile> attachments})
+      required final List<PlatformFile> attachments})
       : _questionTypes = questionTypes,
         _attachments = attachments;
-
-  factory _$QuizRequestModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$QuizRequestModelImplFromJson(json);
 
   @override
   final String content;
@@ -162,10 +153,9 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
     return EqualUnmodifiableListView(_questionTypes);
   }
 
-  final List<MultipartFile> _attachments;
+  final List<PlatformFile> _attachments;
   @override
-  @MultipartFileConverter()
-  List<MultipartFile> get attachments {
+  List<PlatformFile> get attachments {
     if (_attachments is EqualUnmodifiableListView) return _attachments;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_attachments);
@@ -190,7 +180,6 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
                 .equals(other._attachments, _attachments));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -205,13 +194,6 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
   _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>
       __$$QuizRequestModelImplCopyWithImpl<_$QuizRequestModelImpl>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$QuizRequestModelImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _QuizRequestModel implements QuizRequestModel {
@@ -219,11 +201,7 @@ abstract class _QuizRequestModel implements QuizRequestModel {
       {required final String content,
       required final int numberOfQuestions,
       required final List<String> questionTypes,
-      @MultipartFileConverter()
-      required final List<MultipartFile> attachments}) = _$QuizRequestModelImpl;
-
-  factory _QuizRequestModel.fromJson(Map<String, dynamic> json) =
-      _$QuizRequestModelImpl.fromJson;
+      required final List<PlatformFile> attachments}) = _$QuizRequestModelImpl;
 
   @override
   String get content;
@@ -232,8 +210,7 @@ abstract class _QuizRequestModel implements QuizRequestModel {
   @override
   List<String> get questionTypes;
   @override
-  @MultipartFileConverter()
-  List<MultipartFile> get attachments;
+  List<PlatformFile> get attachments;
   @override
   @JsonKey(ignore: true)
   _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>

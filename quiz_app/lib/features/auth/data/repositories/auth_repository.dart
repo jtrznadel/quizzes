@@ -1,11 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
 import '../data_sources/auth_client.dart';
 import '../../domain/user_auth.dart';
-
 import '../../domain/token_auth.dart';
+
+part 'auth_repository.g.dart';
 
 abstract class AuthRepository {
   ResultFuture<void> signUp({
@@ -57,4 +59,6 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 }
 
-final authRepositoryProvider = Provider<AuthRepository>((ref) => AuthRepositoryImpl(ref.watch(authClientProvider)));
+@riverpod
+AuthRepository authRepository(AuthRepositoryRef ref) =>
+    AuthRepositoryImpl(ref.read(authClientProvider));

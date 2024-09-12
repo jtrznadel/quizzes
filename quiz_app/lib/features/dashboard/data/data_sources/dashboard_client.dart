@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/http.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/network/api_constants.dart';
-import '../../../../core/network/dio_client.dart';
+import '../../../../core/network/base_dio_client.dart';
 import '../../domain/quiz_list_model.dart';
 
 part 'dashboard_client.g.dart';
-
-final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class DashboardClient {
@@ -24,6 +23,6 @@ abstract class DashboardClient {
   Future<void> deleteQuiz(@Path('id') String id);
 }
 
-final dashboardClientProvider = Provider<DashboardClient>(
-  (ref) => DashboardClient(ref.watch(dioProvider), baseUrl: ApiConstants.baseUrl),
-);
+@riverpod
+DashboardClient dashboardClient(DashboardClientRef ref) =>
+    DashboardClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.baseUrl);

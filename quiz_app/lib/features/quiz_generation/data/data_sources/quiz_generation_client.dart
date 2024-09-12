@@ -1,14 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/network/api_constants.dart';
-import '../../../../core/network/dio_client.dart';
+import '../../../../core/network/base_dio_client.dart';
 import 'package:retrofit/http.dart';
 
 import '../../domain/generate_quiz_model.dart';
 
 part 'quiz_generation_client.g.dart';
-
-final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class QuizGenerationClient {
@@ -27,5 +25,6 @@ abstract class QuizGenerationClient {
   Future<String> createQuiz(@Body() Map<String, dynamic> body);
 }
 
-final quizGenerationClientProvider =
-    Provider<QuizGenerationClient>((ref) => QuizGenerationClient(ref.watch(dioProvider), baseUrl: ApiConstants.baseUrl));
+@riverpod
+QuizGenerationClient quizGenerationClient(QuizGenerationClientRef ref) =>
+    QuizGenerationClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.baseUrl);

@@ -40,25 +40,24 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
 
   @override
   Widget build(BuildContext context) {
-    final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
-
-    final List<MultipartFile> files = quizzGenerationController.getAttachments();
-
-    bool isInputValid() {
-      return _promptController.text.isNotEmpty || files.isNotEmpty;
-    }
+    final quizzGenerationController =
+        ref.read(quizGenerationControllerProvider.notifier);
+    final state = ref.watch(quizGenerationControllerProvider);
 
     Future<void> handleFileUpload() async {
       try {
-        if (files.length >= 3) {
-          ErrorSnackbar.show(context, S.of(context).quizzCreationMaxAttachmentsError);
+        if (!quizzGenerationController.validateFileUpload()) {
+          ErrorSnackbar.show(
+              context, S.of(context).quizzCreationMaxAttachmentsError);
           return;
         }
         final file = await FileReader.pickFileAndRead();
         quizzGenerationController.addAttachment(file);
       } on FileReadException catch (exception) {
         if (mounted) {
-          if (context.mounted) ErrorSnackbar.show(context, S.of(context).fileReadException);
+          if (context.mounted) {
+            ErrorSnackbar.show(context, S.of(context).fileReadException);
+          }
         } else {
           kDebugMode ? debugPrint(exception.toString()) : null;
         }
@@ -71,7 +70,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
           SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
+                  .copyWith(top: 0), //TODO: Remove top padding if needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -87,8 +87,10 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                   Form(
                     key: _formKey,
                     child: TextArea(
-                      labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
-                      hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
+                      labelText:
+                          S.of(context).quizzCreationTextPromptTextAreaLabel,
+                      hintText:
+                          S.of(context).quizzCreationTextPromptTextAreaHint,
                       minLines: 5,
                       maxLines: 10,
                       controller: _promptController,
@@ -96,7 +98,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: AppTheme.pageDefaultSpacingSize),
                     child: TextDivider(
                       text: S.of(context).dividerOr,
                       color: AppColorScheme.textSecondary,
@@ -113,14 +116,23 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                   const MediumVSpacer(),
                   Text(
                     S.of(context).quizzCreationAttachFileMaxSize,
-                    style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
+                    style: context.textTheme.bodySmall
+                        ?.copyWith(color: AppColorScheme.textSecondary),
                   ),
                   Text(
                     S.of(context).quizzCreationAttachFileAllowedTypes,
-                    style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
+                    style: context.textTheme.bodySmall
+                        ?.copyWith(color: AppColorScheme.textSecondary),
                   ),
                   Column(
-                    children: files.map((file) => AttachmentTile(fileName: file.filename ?? '')).toList(),
+                    children: state.maybeWhen(
+                      generating: (request) {
+                        return request.attachments
+                            .map((file) => AttachmentTile(fileName: file.name))
+                            .toList();
+                      },
+                      orElse: () => [],
+                    ),
                   ),
                   const ExtraLargeVSpacer(),
                 ],
@@ -136,14 +148,15 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
               padding: const EdgeInsets.only(top: 8),
               child: BasicButton(
                 onPressed: () {
-                  if (isInputValid()) {
-                    quizzGenerationController.setContent(_promptController.text);
+                  quizzGenerationController.setContent(_promptController.text);
+                  if (quizzGenerationController.validateInput()) {
                     widget.pageController.nextPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    ErrorSnackbar.show(context, S.of(context).quizzCreationYouNeedToProvideContent);
+                    ErrorSnackbar.show(context,
+                        S.of(context).quizzCreationYouNeedToProvideContent);
                   }
                 },
                 text: S.of(context).continueButton,

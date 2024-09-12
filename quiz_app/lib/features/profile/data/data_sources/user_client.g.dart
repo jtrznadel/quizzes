@@ -127,3 +127,24 @@ class _UserClient implements UserClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$userClientHash() => r'7b87725d698d6d8b95904bfc046a2d9be2425ab7';
+
+/// See also [userClient].
+@ProviderFor(userClient)
+final userClientProvider = AutoDisposeProvider<UserClient>.internal(
+  userClient,
+  name: r'userClientProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef UserClientRef = AutoDisposeProviderRef<UserClient>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

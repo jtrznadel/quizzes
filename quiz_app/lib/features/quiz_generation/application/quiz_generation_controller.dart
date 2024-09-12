@@ -1,10 +1,6 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/services/file_reader.dart';
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
 import '../domain/create_quiz_model.dart';
@@ -17,7 +13,7 @@ part 'quiz_generation_controller.g.dart';
 
 @riverpod
 class QuizGenerationController extends _$QuizGenerationController {
-  late final QuizGenerationRepository _quizGenerationRepository;
+  final _quizGenerationRepository = quizGenerationRepositoryProvider;
 
   @override
   QuizGenerationState build() {
@@ -27,12 +23,13 @@ class QuizGenerationController extends _$QuizGenerationController {
       numberOfQuestions: 5,
       attachments: [],
     );
-    _quizGenerationRepository = ref.read(quizGenerationRepositoryProvider);
     return const QuizGenerationState.generating(requestModel);
   }
 
   Future<void> generate(QuizRequestModel requestModel) async {
-    final result = await _quizGenerationRepository.generateQuiz(quizRequestModel: requestModel);
+    final result = await ref
+        .read(_quizGenerationRepository)
+        .generateQuiz(quizRequestModel: requestModel);
 
     result.fold(
       (error) {
@@ -45,7 +42,8 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> createQuiz(CreateQuizModel quiz) async {
-    final result = await _quizGenerationRepository.createQuiz(quizModel: quiz);
+    final result =
+        await ref.read(_quizGenerationRepository).createQuiz(quizModel: quiz);
 
     result.fold(
       (error) {
@@ -67,7 +65,8 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> deleteQuestion(GenerateQuizModel quiz, int index) async {
-    final questionListCopy = List<GenerateQuestionModel>.from(quiz.generateQuestions);
+    final questionListCopy =
+        List<GenerateQuestionModel>.from(quiz.generateQuestions);
     questionListCopy.removeAt(index);
     quiz = quiz.copyWith(generateQuestions: questionListCopy);
     state = QuizGenerationState.generated(quiz);
@@ -81,8 +80,10 @@ class QuizGenerationController extends _$QuizGenerationController {
     state = QuizGenerationState.generated(quiz);
   }
 
-  bool validate(QuizRequestModel requestModel) {
-    return requestModel.content.isNotEmpty && requestModel.questionTypes.isNotEmpty && requestModel.numberOfQuestions > 0;
+  bool validateRequest(QuizRequestModel requestModel) {
+    return (requestModel.content.isNotEmpty || requestModel.attachments.isNotEmpty) &&
+        requestModel.questionTypes.isNotEmpty &&
+        requestModel.numberOfQuestions > 0;
   }
 
   void setContent(String content) {
@@ -98,17 +99,26 @@ class QuizGenerationController extends _$QuizGenerationController {
   void addAttachment(PlatformFile file) {
     state.maybeWhen(
       generating: (request) {
-        request = request.copyWith(attachments: [...request.attachments, FileReader.toMultipartFile(file)]);
+        request = request.copyWith(attachments: [...request.attachments, file]);
         modifyRequest(request);
       },
       orElse: () {},
     );
   }
 
-  List<MultipartFile> getAttachments() {
-    return state.maybeWhen(
-      generating: (request) => request.attachments,
-      orElse: () => const [],
-    );
+  bool validateFileUpload() {
+    return state.maybeWhen(generating: (request) {
+      return request.attachments.length <= 3;
+    }, orElse: () {
+      return false;
+    });
+  }
+
+  bool validateInput() {
+    return state.maybeWhen(generating: (request) {
+      return request.content.isNotEmpty || request.attachments.isNotEmpty;
+    }, orElse: () {
+      return false;
+    });
   }
 }
