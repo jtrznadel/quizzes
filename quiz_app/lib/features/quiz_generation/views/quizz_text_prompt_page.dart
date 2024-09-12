@@ -41,11 +41,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
   @override
   Widget build(BuildContext context) {
     final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
-    final state = ref.watch(quizGenerationControllerProvider);
-    final List<MultipartFile> files = state.maybeWhen(
-      generating: (quiz) => quiz.attachments,
-      orElse: () => const [],
-    );
+
+    final List<MultipartFile> files = quizzGenerationController.getAttachments();
 
     bool isInputValid() {
       return _promptController.text.isNotEmpty || files.isNotEmpty;
@@ -58,13 +55,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
           return;
         }
         final file = await FileReader.pickFileAndRead();
-        state.maybeWhen(
-          generating: (request) {
-            request = request.copyWith(attachments: [...request.attachments, FileReader.toMultipartFile(file)]);
-            quizzGenerationController.modifyRequest(request);
-          },
-          orElse: () {},
-        );
+        quizzGenerationController.addAttachment(file);
       } on FileReadException catch (exception) {
         if (mounted) {
           if (context.mounted) ErrorSnackbar.show(context, S.of(context).fileReadException);
@@ -146,13 +137,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
               child: BasicButton(
                 onPressed: () {
                   if (isInputValid()) {
-                    state.maybeWhen(
-                      generating: (request) {
-                        request = request.copyWith(content: _promptController.text);
-                        quizzGenerationController.modifyRequest(request);
-                      },
-                      orElse: () {},
-                    );
+                    quizzGenerationController.setContent(_promptController.text);
                     widget.pageController.nextPage(
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,

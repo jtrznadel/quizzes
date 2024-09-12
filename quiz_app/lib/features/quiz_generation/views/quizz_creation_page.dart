@@ -48,7 +48,7 @@ class _QuizzCreationPageState extends ConsumerState<QuizzCreationPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(quizGenerationControllerProvider.notifier);
+    ref.watch(quizGenerationControllerProvider);
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {

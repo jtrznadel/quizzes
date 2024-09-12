@@ -1,5 +1,10 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/services/file_reader.dart';
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
 import '../domain/create_quiz_model.dart';
@@ -12,7 +17,6 @@ part 'quiz_generation_controller.g.dart';
 
 @riverpod
 class QuizGenerationController extends _$QuizGenerationController {
-
   late final QuizGenerationRepository _quizGenerationRepository;
 
   @override
@@ -25,27 +29,6 @@ class QuizGenerationController extends _$QuizGenerationController {
     );
     _quizGenerationRepository = ref.read(quizGenerationRepositoryProvider);
     return const QuizGenerationState.generating(requestModel);
-  }
-
-  void modifyRequest(QuizRequestModel requestModel) {
-    state = QuizGenerationState.generating(requestModel);
-  }
-
-  void modifyGeneratedQuiz(GenerateQuizModel quiz) {
-    state = QuizGenerationState.generated(quiz);
-  }
-
-  bool validate(QuizRequestModel requestModel) {
-    if (requestModel.content.isEmpty && requestModel.attachments.isEmpty) {
-      return false;
-    }
-    if (requestModel.questionTypes.isEmpty) {
-      return false;
-    }
-    if (requestModel.numberOfQuestions == 0) {
-      return false;
-    }
-    return true;
   }
 
   Future<void> generate(QuizRequestModel requestModel) async {
@@ -88,5 +71,44 @@ class QuizGenerationController extends _$QuizGenerationController {
     questionListCopy.removeAt(index);
     quiz = quiz.copyWith(generateQuestions: questionListCopy);
     state = QuizGenerationState.generated(quiz);
+  }
+
+  void modifyRequest(QuizRequestModel requestModel) {
+    state = QuizGenerationState.generating(requestModel);
+  }
+
+  void modifyGeneratedQuiz(GenerateQuizModel quiz) {
+    state = QuizGenerationState.generated(quiz);
+  }
+
+  bool validate(QuizRequestModel requestModel) {
+    return requestModel.content.isNotEmpty && requestModel.questionTypes.isNotEmpty && requestModel.numberOfQuestions > 0;
+  }
+
+  void setContent(String content) {
+    state.maybeWhen(
+      generating: (request) {
+        request = request.copyWith(content: content);
+        modifyRequest(request);
+      },
+      orElse: () {},
+    );
+  }
+
+  void addAttachment(PlatformFile file) {
+    state.maybeWhen(
+      generating: (request) {
+        request = request.copyWith(attachments: [...request.attachments, FileReader.toMultipartFile(file)]);
+        modifyRequest(request);
+      },
+      orElse: () {},
+    );
+  }
+
+  List<MultipartFile> getAttachments() {
+    return state.maybeWhen(
+      generating: (request) => request.attachments,
+      orElse: () => const [],
+    );
   }
 }
