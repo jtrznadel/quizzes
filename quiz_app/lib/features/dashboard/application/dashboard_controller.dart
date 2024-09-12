@@ -5,25 +5,17 @@ import '../../../generated/l10n.dart';
 import '../../quizz_details/domain/quiz_details_model.dart';
 import '../data/repositories/dashboard_repository.dart';
 import '../domain/quiz_dashboard_model.dart';
-import '../domain/quiz_list_model.dart';
 import 'dashboard_state.dart';
 
 part 'dashboard_controller.g.dart';
 
 @riverpod
 class DashboardController extends _$DashboardController {
-  int _currentPage = 1;
-  late QuizListModel _quizList;
+  
+  final _dashboardRepository = dashboardRepositoryProvider;
 
   @override
   DashboardState build() {
-    _quizList = const QuizListModel(
-      items: [],
-      totalPages: 0,
-      totalItemsCount: 0,
-      itemsFrom: 1,
-      itemsTo: 0,
-    );
     return const DashboardState.loading();
   }
 
@@ -31,15 +23,12 @@ class DashboardController extends _$DashboardController {
     state = const DashboardState.loading();
 
     try {
-      final result = await ref
-          .read(dashboardRepositoryProvider)
-          .getQuizList(_currentPage, ApiConstants.quizPageSize);
+      final result =
+          await ref.read(_dashboardRepository).getQuizList(1, ApiConstants.quizPageSize);
       result.fold(
         (error) => state = DashboardState.error(error.message),
         (quizList) {
-          _quizList = quizList;
-          state = DashboardState.loaded(quizList);
-          _currentPage++;
+          state = DashboardState.loaded(quizList, 2);
         },
       );
     } catch (e) {
@@ -49,18 +38,26 @@ class DashboardController extends _$DashboardController {
 
   void loadMore() async {
     try {
-      final result = await ref
-          .read(dashboardRepositoryProvider)
-          .getQuizList(_currentPage, ApiConstants.quizPageSize);
-      result.fold(
-        (error) => state = DashboardState.error(error.message),
-        (quizList) {
-          _quizList = quizList.copyWith(
-            items: [..._quizList.items, ...quizList.items],
+      state.maybeWhen(
+        loaded: (quizListModel, currentPage) async {
+          final result = await ref.read(_dashboardRepository).getQuizList(
+            currentPage,
+            ApiConstants.quizPageSize,
           );
-          state = DashboardState.loaded(_quizList);
-          _currentPage++;
+          result.fold(
+            (error) => state = DashboardState.error(error.message),
+            (quizList) {
+              state = DashboardState.loaded(
+                quizListModel.copyWith(
+                  items: [...quizListModel.items, ...quizList.items],
+                  totalItemsCount: quizList.totalItemsCount,
+                ),
+                currentPage + 1,
+              );
+            },
+          );
         },
+        orElse: () {},
       );
     } catch (e) {
       state = DashboardState.error(S.current.somethingWentWrong);
@@ -69,28 +66,47 @@ class DashboardController extends _$DashboardController {
 
   void deleteQuiz(String id) async {
     try {
-      final result = await ref.read(dashboardRepositoryProvider).deleteQuiz(id);
-      result.fold(
-        (error) => state = DashboardState.error(error.message),
-        (_) {
-          final tempQuizes = List<QuizDashboardModel>.from(_quizList.items);
-          tempQuizes.removeWhere((element) => element.id == id);
-          state = DashboardState.loaded(
-            _quizList.copyWith(items: tempQuizes, totalItemsCount: _quizList.totalItemsCount - 1),
+      state.maybeWhen(
+        loaded: (quizList, currentPage) async {
+          final result = await ref.read(_dashboardRepository).deleteQuiz(id);
+          result.fold(
+            (error) => state = DashboardState.error(error.message),
+            (_) {
+              final tempQuizes = List<QuizDashboardModel>.from(quizList.items);
+              tempQuizes.removeWhere((element) => element.id == id);
+              state = DashboardState.loaded(
+                quizList.copyWith(
+                  items: tempQuizes,
+                  totalItemsCount: quizList.totalItemsCount - 1,
+                ),
+                currentPage,
+              );
+            },
           );
         },
+        orElse: () {},
       );
     } catch (e) {
       state = DashboardState.error(S.current.somethingWentWrong);
     }
   }
 
-  void notifyStatusChanged(String id, QuizStatus status, QuizAvailability availability) {
-    final tempQuizes = List<QuizDashboardModel>.from(_quizList.items);
-    final index = tempQuizes.indexWhere((element) => element.id == id);
-    if (index != -1) {
-      tempQuizes[index] = tempQuizes[index].copyWith(status: status, availability: availability);
-      state = DashboardState.loaded(_quizList.copyWith(items: tempQuizes));
-    }
+  void reloadItem(QuizDetailsModel quiz){
+    final quizDashboardModel = QuizDashboardModel.fromQuizDetailsModel(quiz);
+    state.maybeWhen(
+      loaded: (quizList, currentPage) {
+        final tempQuizes = List<QuizDashboardModel>.from(quizList.items);
+        final index = tempQuizes.indexWhere((element) => element.id == quiz.id);
+        if (index != -1) {
+          tempQuizes[index] = quizDashboardModel;
+          state = DashboardState.loaded(
+            quizList.copyWith(items: tempQuizes),
+            currentPage,
+          );
+        }
+      },
+      orElse: () {},
+    );
   }
+
 }

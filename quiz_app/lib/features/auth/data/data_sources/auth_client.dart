@@ -1,14 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/network/api_constants.dart';
-import '../../../../core/network/dio_client.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../../core/network/base_dio_client.dart';
 import '../../domain/token_auth.dart';
 
 part 'auth_client.g.dart';
-
-final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.authUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.authUrl)
 abstract class AuthClient {
@@ -24,4 +22,6 @@ abstract class AuthClient {
   Future<void> signOut();
 }
 
-final authClientProvider = Provider<AuthClient>((ref) => AuthClient(ref.watch(dioProvider), baseUrl: ApiConstants.authUrl));
+@riverpod
+AuthClient authClient(AuthClientRef ref) =>
+    AuthClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.authUrl);

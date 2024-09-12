@@ -8,6 +8,9 @@ part 'user_controller.g.dart';
 
 @riverpod
 class UserController extends _$UserController {
+
+  final _userRepository = userRepositoryProvider;
+
   @override
   UserState build() {
     return const UserState.loading();
@@ -15,7 +18,7 @@ class UserController extends _$UserController {
 
   Future<void> getUser() async {
     try {
-      final user = await ref.read(userRepositoryProvider).getUser();
+      final user = await ref.read(_userRepository).getUser();
       user.fold(
         (error) => state = UserState.error(error),
         (user) => state = UserState.success(user),
@@ -28,7 +31,7 @@ class UserController extends _$UserController {
   Future<void> updateUser({required User user}) async {
     state = UserState.success(user, isUsernameUpdating: true);
     try {
-      await ref.read(userRepositoryProvider).updateUser(user: user);
+      await ref.read(_userRepository).updateUser(user: user);
       await getUser();
       state = UserState.success(user);
     } on Exception catch (e) {

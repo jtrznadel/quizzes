@@ -1,85 +1,35 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
-import '../domain/question_model.dart';
-import '../domain/quiz_generation_model.dart';
-import '../domain/quiz_model.dart';
-import '../widgets/question_count_picker.dart';
+import '../domain/create_quiz_model.dart';
+import '../domain/generate_question_model.dart';
+import '../domain/generate_quiz_model.dart';
+import '../domain/quiz_request_model.dart';
 import 'quiz_generation_state.dart';
 
 part 'quiz_generation_controller.g.dart';
 
 @riverpod
 class QuizGenerationController extends _$QuizGenerationController {
-  late QuizGenerationModel _quizModel;
-  late QuizModel _quiz;
+  final _quizGenerationRepository = quizGenerationRepositoryProvider;
 
   @override
   QuizGenerationState build() {
-    _quizModel = QuizGenerationModel(
+    const requestModel = QuizRequestModel(
       content: '',
       questionTypes: [],
-      numberOfQuestions: QuestionNumberSelection.low.value,
+      numberOfQuestions: 5,
+      attachments: [],
     );
-    _quiz = const QuizModel(title: '', description: '', createQuestionsDto: []);
-    return const QuizGenerationState.generating();
+    return const QuizGenerationState.generating(requestModel);
   }
 
-  String get content => _quizModel.content;
-  List<String> get typeOfQuestions => _quizModel.questionTypes;
-  int get numberOfQuestions => _quizModel.numberOfQuestions;
-
-  String get title => _quiz.title;
-  String get description => _quiz.description;
-  List<QuestionModel> get questions => _quiz.createQuestionsDto;
-
-  void setContent(String content) {
-    _quizModel = _quizModel.copyWith(content: content);
-  }
-
-  void addTypeOfQuestions(String typeOfQuestions) {
-    _quizModel = _quizModel.copyWith(
-        questionTypes: [..._quizModel.questionTypes, typeOfQuestions]);
-  }
-
-  void removeTypeOfQuestions(String typeOfQuestions) {
-    final questionTypes = List<String>.from(_quizModel.questionTypes);
-    questionTypes.remove(typeOfQuestions);
-    _quizModel = _quizModel.copyWith(questionTypes: questionTypes);
-  }
-
-  void setNumberOfQuestions(int numberOfQuestions) {
-    _quizModel = _quizModel.copyWith(numberOfQuestions: numberOfQuestions);
-  }
-
-  void addNewQuestion(QuestionModel question) {
-    _quiz = _quiz
-        .copyWith(createQuestionsDto: [..._quiz.createQuestionsDto, question]);
-    state = QuizGenerationState.generated(_quiz);
-  }
-
-  bool validate() {
-    if (_quizModel.content.isEmpty) {
-      return false;
-    }
-    if (_quizModel.questionTypes.isEmpty) {
-      return false;
-    }
-    if (_quizModel.numberOfQuestions == 0) {
-      return false;
-    }
-    return true;
-  }
-
-  Future<void> generate() async {
-    state = const QuizGenerationState.generating();
-
+  Future<void> generate(QuizRequestModel requestModel) async {
     final result = await ref
-        .read(quizGenerationRepositoryProvider)
-        .generateQuiz(quizGenerationModel: _quizModel);
-
-    _quizModel = _quizModel.copyWith(content: '', questionTypes: [], numberOfQuestions: QuestionNumberSelection.low.value);
+        .read(_quizGenerationRepository)
+        .generateQuiz(quizRequestModel: requestModel);
 
     result.fold(
       (error) {
@@ -87,15 +37,13 @@ class QuizGenerationController extends _$QuizGenerationController {
       },
       (quiz) {
         state = QuizGenerationState.generated(quiz);
-        _quiz = quiz;
       },
     );
   }
 
-  Future<void> createQuiz() async {
-    final result = await ref
-        .read(quizGenerationRepositoryProvider)
-        .createQuiz(quizModel: _quiz);
+  Future<void> createQuiz(CreateQuizModel quiz) async {
+    final result =
+        await ref.read(_quizGenerationRepository).createQuiz(quizModel: quiz);
 
     result.fold(
       (error) {
@@ -107,10 +55,70 @@ class QuizGenerationController extends _$QuizGenerationController {
     );
   }
 
-  Future<void> deleteQuestion(int index) async {
-    final questionListCopy = List<QuestionModel>.from(_quiz.createQuestionsDto);
+  void resetState() {
+    state = const QuizGenerationState.generating(QuizRequestModel(
+      content: '',
+      questionTypes: [],
+      numberOfQuestions: 5,
+      attachments: [],
+    ));
+  }
+
+  Future<void> deleteQuestion(GenerateQuizModel quiz, int index) async {
+    final questionListCopy =
+        List<GenerateQuestionModel>.from(quiz.generateQuestions);
     questionListCopy.removeAt(index);
-    _quiz = _quiz.copyWith(createQuestionsDto: questionListCopy);
-    state = QuizGenerationState.generated(_quiz);
+    quiz = quiz.copyWith(generateQuestions: questionListCopy);
+    state = QuizGenerationState.generated(quiz);
+  }
+
+  void modifyRequest(QuizRequestModel requestModel) {
+    state = QuizGenerationState.generating(requestModel);
+  }
+
+  void modifyGeneratedQuiz(GenerateQuizModel quiz) {
+    state = QuizGenerationState.generated(quiz);
+  }
+
+  bool validateRequest(QuizRequestModel requestModel) {
+    return (requestModel.content.isNotEmpty || requestModel.attachments.isNotEmpty) &&
+        requestModel.questionTypes.isNotEmpty &&
+        requestModel.numberOfQuestions > 0;
+  }
+
+  void setContent(String content) {
+    state.maybeWhen(
+      generating: (request) {
+        request = request.copyWith(content: content);
+        modifyRequest(request);
+      },
+      orElse: () {},
+    );
+  }
+
+  void addAttachment(PlatformFile file) {
+    state.maybeWhen(
+      generating: (request) {
+        request = request.copyWith(attachments: [...request.attachments, file]);
+        modifyRequest(request);
+      },
+      orElse: () {},
+    );
+  }
+
+  bool validateFileUpload() {
+    return state.maybeWhen(generating: (request) {
+      return request.attachments.length <= 3;
+    }, orElse: () {
+      return false;
+    });
+  }
+
+  bool validateInput() {
+    return state.maybeWhen(generating: (request) {
+      return request.content.isNotEmpty || request.attachments.isNotEmpty;
+    }, orElse: () {
+      return false;
+    });
   }
 }

@@ -310,10 +310,10 @@ class S {
     );
   }
 
-  /// `Don''t worry! It happens. Enter the email address associated with your account.`
+  /// `Do not worry! It happens. Enter the email address associated with your account.`
   String get forgotPasswordSubheading {
     return Intl.message(
-      'Don\'\'t worry! It happens. Enter the email address associated with your account.',
+      'Do not worry! It happens. Enter the email address associated with your account.',
       name: 'forgotPasswordSubheading',
       desc: '',
       args: [],
@@ -460,20 +460,20 @@ class S {
     );
   }
 
-  /// `Source Text`
+  /// `Content Text`
   String get quizzCreationTextPromptHeading {
     return Intl.message(
-      'Source Text',
+      'Content Text',
       name: 'quizzCreationTextPromptHeading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter the text that will be used to create your quizz.`
+  /// `You can either enter text, upload files, or use a combination of both to create your quizz.`
   String get quizzCreationTextPromptSubheading {
     return Intl.message(
-      'Enter the text that will be used to create your quizz.',
+      'You can either enter text, upload files, or use a combination of both to create your quizz.',
       name: 'quizzCreationTextPromptSubheading',
       desc: '',
       args: [],
@@ -490,10 +490,10 @@ class S {
     );
   }
 
-  /// `Source Text`
+  /// `Content Text`
   String get quizzCreationTextPromptTextAreaLabel {
     return Intl.message(
-      'Source Text',
+      'Content Text',
       name: 'quizzCreationTextPromptTextAreaLabel',
       desc: '',
       args: [],
@@ -505,6 +505,56 @@ class S {
     return Intl.message(
       'Enter the text for your quizz',
       name: 'quizzCreationTextPromptTextAreaHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Max size: 5MB`
+  String get quizzCreationAttachFileMaxSize {
+    return Intl.message(
+      'Max size: 5MB',
+      name: 'quizzCreationAttachFileMaxSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Types supported: .txt, .pdf, .docx, .xlsx, .pptx`
+  String get quizzCreationAttachFileAllowedTypes {
+    return Intl.message(
+      'Types supported: .txt, .pdf, .docx, .xlsx, .pptx',
+      name: 'quizzCreationAttachFileAllowedTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can attach maximum of 3 files.`
+  String get quizzCreationMaxAttachmentsError {
+    return Intl.message(
+      'You can attach maximum of 3 files.',
+      name: 'quizzCreationMaxAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have already attached this file.`
+  String get quizzCreationDuplicateAttachmentsError {
+    return Intl.message(
+      'You have already attached this file.',
+      name: 'quizzCreationDuplicateAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to provide either text or upload file.`
+  String get quizzCreationYouNeedToProvideContent {
+    return Intl.message(
+      'You need to provide either text or upload file.',
+      name: 'quizzCreationYouNeedToProvideContent',
       desc: '',
       args: [],
     );
@@ -624,7 +674,7 @@ class S {
   String get quizzCreationConfigurationError {
     return Intl.message(
       'Pick question type and number of questions.',
-      name: 'quizzCreationConfigureError',
+      name: 'quizzCreationConfigurationError',
       desc: '',
       args: [],
     );
@@ -820,10 +870,10 @@ class S {
     );
   }
 
-  /// `When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.`
+  /// `When switched on, quizz is active and available for solving. If not, no one can solve the quiz.`
   String get quizzDetailsTabSettingsQuizStatusDescription {
     return Intl.message(
-      'When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.',
+      'When switched on, quizz is active and available for solving. If not, no one can solve the quiz.',
       name: 'quizzDetailsTabSettingsQuizStatusDescription',
       desc: '',
       args: [],
@@ -840,10 +890,10 @@ class S {
     );
   }
 
-  /// `When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.`
+  /// `When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.`
   String get quizzDetailsTabSettingsQuizAvailabilityDescription {
     return Intl.message(
-      'When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.',
+      'When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.',
       name: 'quizzDetailsTabSettingsQuizAvailabilityDescription',
       desc: '',
       args: [],
@@ -870,11 +920,31 @@ class S {
     );
   }
 
+  /// `Private`
+  String get quizzDetailsTabSettingsQuizAvailabilityPrivate {
+    return Intl.message(
+      'Private',
+      name: 'quizzDetailsTabSettingsQuizAvailabilityPrivate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save changes`
   String get quizzDetailsTabSettingsSaveChanges {
     return Intl.message(
       'Save changes',
       name: 'quizzDetailsTabSettingsSaveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Succesfully updated quiz settings.`
+  String get quizzDetailsTabSettingsSuccessfullSave {
+    return Intl.message(
+      'Succesfully updated quiz settings.',
+      name: 'quizzDetailsTabSettingsSuccessfullSave',
       desc: '',
       args: [],
     );
@@ -950,10 +1020,10 @@ class S {
     );
   }
 
-  /// `Time`
+  /// `Duration`
   String get quizzDetailsTabStatisticsTime {
     return Intl.message(
-      'Time',
+      'Duration',
       name: 'quizzDetailsTabStatisticsTime',
       desc: '',
       args: [],
@@ -967,6 +1037,16 @@ class S {
       name: 'quizzDetailsTabStatisticsEmail',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `{seconds} seconds`
+  String quizzDetailsTabStatisticsSecondsElapsed(int seconds) {
+    return Intl.message(
+      '$seconds seconds',
+      name: 'quizzDetailsTabStatisticsSecondsElapsed',
+      desc: 'Time elapsed in seconds',
+      args: [seconds],
     );
   }
 
@@ -1045,6 +1125,16 @@ class S {
     return Intl.message(
       'Enter quiz title',
       name: 'quizzDetailsTabGeneralQuizDescriptionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Succesfully updated quiz details.`
+  String get quizzDetailsTabGeneralSuccessfullSave {
+    return Intl.message(
+      'Succesfully updated quiz details.',
+      name: 'quizzDetailsTabGeneralSuccessfullSave',
       desc: '',
       args: [],
     );
@@ -1290,24 +1380,33 @@ class S {
     );
   }
 
-  /// `Add new quiz`
-  String get addNewQuizzButton {
-    return Intl.message(
-      'Add new quiz',
-      name: 'addNewQuizzButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Badge displaying total number of questions`
+  /// `Total {questionNumber} questions`
   String quizQuestionNumberBadge(int questionNumber) {
     return Intl.message(
       'Total $questionNumber questions',
       name: 'quizQuestionNumberBadge',
       desc: 'Badge displaying total number of questions',
       args: [questionNumber],
-      examples: const {'questionNumber': 5},
+    );
+  }
+
+  /// `Add new quizz`
+  String get addNewQuizzButton {
+    return Intl.message(
+      'Add new quizz',
+      name: 'addNewQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You do not have any quizzes yet. Create one now!`
+  String get dashboardQuizzesEmpty {
+    return Intl.message(
+      'You do not have any quizzes yet. Create one now!',
+      name: 'dashboardQuizzesEmpty',
+      desc: '',
+      args: [],
     );
   }
 

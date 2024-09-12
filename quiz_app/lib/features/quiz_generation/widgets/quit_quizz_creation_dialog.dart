@@ -8,6 +8,7 @@ import '../../../core/extensions/context_extension.dart';
 import '../../../core/services/app_router.dart';
 import '../../../core/theme/app_color_scheme.dart';
 import '../../../generated/l10n.dart';
+import '../application/quiz_generation_controller.dart';
 
 class QuitQuizzCreationDialog extends ConsumerWidget {
   const QuitQuizzCreationDialog({super.key});
@@ -30,6 +31,7 @@ class QuitQuizzCreationDialog extends ConsumerWidget {
         const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
+            ref.read(quizGenerationControllerProvider.notifier).resetState();
             ref.read(appRouterProvider).replace(const DashboardRoute());
           },
           text: S.of(context).quizzCreationQuitButton,

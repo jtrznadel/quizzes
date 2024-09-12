@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'quiz_generation_model.dart';
+part of 'quiz_request_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,36 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-QuizGenerationModel _$QuizGenerationModelFromJson(Map<String, dynamic> json) {
-  return _QuizGenerationModel.fromJson(json);
-}
-
 /// @nodoc
-mixin _$QuizGenerationModel {
+mixin _$QuizRequestModel {
   String get content => throw _privateConstructorUsedError;
   int get numberOfQuestions => throw _privateConstructorUsedError;
   List<String> get questionTypes => throw _privateConstructorUsedError;
+  List<PlatformFile> get attachments => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $QuizGenerationModelCopyWith<QuizGenerationModel> get copyWith =>
+  $QuizRequestModelCopyWith<QuizRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $QuizGenerationModelCopyWith<$Res> {
-  factory $QuizGenerationModelCopyWith(
-          QuizGenerationModel value, $Res Function(QuizGenerationModel) then) =
-      _$QuizGenerationModelCopyWithImpl<$Res, QuizGenerationModel>;
+abstract class $QuizRequestModelCopyWith<$Res> {
+  factory $QuizRequestModelCopyWith(
+          QuizRequestModel value, $Res Function(QuizRequestModel) then) =
+      _$QuizRequestModelCopyWithImpl<$Res, QuizRequestModel>;
   @useResult
   $Res call(
-      {String content, int numberOfQuestions, List<String> questionTypes});
+      {String content,
+      int numberOfQuestions,
+      List<String> questionTypes,
+      List<PlatformFile> attachments});
 }
 
 /// @nodoc
-class _$QuizGenerationModelCopyWithImpl<$Res, $Val extends QuizGenerationModel>
-    implements $QuizGenerationModelCopyWith<$Res> {
-  _$QuizGenerationModelCopyWithImpl(this._value, this._then);
+class _$QuizRequestModelCopyWithImpl<$Res, $Val extends QuizRequestModel>
+    implements $QuizRequestModelCopyWith<$Res> {
+  _$QuizRequestModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -56,6 +55,7 @@ class _$QuizGenerationModelCopyWithImpl<$Res, $Val extends QuizGenerationModel>
     Object? content = null,
     Object? numberOfQuestions = null,
     Object? questionTypes = null,
+    Object? attachments = null,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -70,28 +70,35 @@ class _$QuizGenerationModelCopyWithImpl<$Res, $Val extends QuizGenerationModel>
           ? _value.questionTypes
           : questionTypes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attachments: null == attachments
+          ? _value.attachments
+          : attachments // ignore: cast_nullable_to_non_nullable
+              as List<PlatformFile>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$QuizGenerationModelImplCopyWith<$Res>
-    implements $QuizGenerationModelCopyWith<$Res> {
-  factory _$$QuizGenerationModelImplCopyWith(_$QuizGenerationModelImpl value,
-          $Res Function(_$QuizGenerationModelImpl) then) =
-      __$$QuizGenerationModelImplCopyWithImpl<$Res>;
+abstract class _$$QuizRequestModelImplCopyWith<$Res>
+    implements $QuizRequestModelCopyWith<$Res> {
+  factory _$$QuizRequestModelImplCopyWith(_$QuizRequestModelImpl value,
+          $Res Function(_$QuizRequestModelImpl) then) =
+      __$$QuizRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String content, int numberOfQuestions, List<String> questionTypes});
+      {String content,
+      int numberOfQuestions,
+      List<String> questionTypes,
+      List<PlatformFile> attachments});
 }
 
 /// @nodoc
-class __$$QuizGenerationModelImplCopyWithImpl<$Res>
-    extends _$QuizGenerationModelCopyWithImpl<$Res, _$QuizGenerationModelImpl>
-    implements _$$QuizGenerationModelImplCopyWith<$Res> {
-  __$$QuizGenerationModelImplCopyWithImpl(_$QuizGenerationModelImpl _value,
-      $Res Function(_$QuizGenerationModelImpl) _then)
+class __$$QuizRequestModelImplCopyWithImpl<$Res>
+    extends _$QuizRequestModelCopyWithImpl<$Res, _$QuizRequestModelImpl>
+    implements _$$QuizRequestModelImplCopyWith<$Res> {
+  __$$QuizRequestModelImplCopyWithImpl(_$QuizRequestModelImpl _value,
+      $Res Function(_$QuizRequestModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,8 +107,9 @@ class __$$QuizGenerationModelImplCopyWithImpl<$Res>
     Object? content = null,
     Object? numberOfQuestions = null,
     Object? questionTypes = null,
+    Object? attachments = null,
   }) {
-    return _then(_$QuizGenerationModelImpl(
+    return _then(_$QuizRequestModelImpl(
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
@@ -114,21 +122,24 @@ class __$$QuizGenerationModelImplCopyWithImpl<$Res>
           ? _value._questionTypes
           : questionTypes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      attachments: null == attachments
+          ? _value._attachments
+          : attachments // ignore: cast_nullable_to_non_nullable
+              as List<PlatformFile>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$QuizGenerationModelImpl implements _QuizGenerationModel {
-  const _$QuizGenerationModelImpl(
+
+class _$QuizRequestModelImpl implements _QuizRequestModel {
+  const _$QuizRequestModelImpl(
       {required this.content,
       required this.numberOfQuestions,
-      required final List<String> questionTypes})
-      : _questionTypes = questionTypes;
-
-  factory _$QuizGenerationModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$QuizGenerationModelImplFromJson(json);
+      required final List<String> questionTypes,
+      required final List<PlatformFile> attachments})
+      : _questionTypes = questionTypes,
+        _attachments = attachments;
 
   @override
   final String content;
@@ -142,51 +153,55 @@ class _$QuizGenerationModelImpl implements _QuizGenerationModel {
     return EqualUnmodifiableListView(_questionTypes);
   }
 
+  final List<PlatformFile> _attachments;
+  @override
+  List<PlatformFile> get attachments {
+    if (_attachments is EqualUnmodifiableListView) return _attachments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_attachments);
+  }
+
   @override
   String toString() {
-    return 'QuizGenerationModel(content: $content, numberOfQuestions: $numberOfQuestions, questionTypes: $questionTypes)';
+    return 'QuizRequestModel(content: $content, numberOfQuestions: $numberOfQuestions, questionTypes: $questionTypes, attachments: $attachments)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$QuizGenerationModelImpl &&
+            other is _$QuizRequestModelImpl &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.numberOfQuestions, numberOfQuestions) ||
                 other.numberOfQuestions == numberOfQuestions) &&
             const DeepCollectionEquality()
-                .equals(other._questionTypes, _questionTypes));
+                .equals(other._questionTypes, _questionTypes) &&
+            const DeepCollectionEquality()
+                .equals(other._attachments, _attachments));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, content, numberOfQuestions,
-      const DeepCollectionEquality().hash(_questionTypes));
+  int get hashCode => Object.hash(
+      runtimeType,
+      content,
+      numberOfQuestions,
+      const DeepCollectionEquality().hash(_questionTypes),
+      const DeepCollectionEquality().hash(_attachments));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$QuizGenerationModelImplCopyWith<_$QuizGenerationModelImpl> get copyWith =>
-      __$$QuizGenerationModelImplCopyWithImpl<_$QuizGenerationModelImpl>(
+  _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>
+      __$$QuizRequestModelImplCopyWithImpl<_$QuizRequestModelImpl>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$QuizGenerationModelImplToJson(
-      this,
-    );
-  }
 }
 
-abstract class _QuizGenerationModel implements QuizGenerationModel {
-  const factory _QuizGenerationModel(
+abstract class _QuizRequestModel implements QuizRequestModel {
+  const factory _QuizRequestModel(
       {required final String content,
       required final int numberOfQuestions,
-      required final List<String> questionTypes}) = _$QuizGenerationModelImpl;
-
-  factory _QuizGenerationModel.fromJson(Map<String, dynamic> json) =
-      _$QuizGenerationModelImpl.fromJson;
+      required final List<String> questionTypes,
+      required final List<PlatformFile> attachments}) = _$QuizRequestModelImpl;
 
   @override
   String get content;
@@ -195,7 +210,9 @@ abstract class _QuizGenerationModel implements QuizGenerationModel {
   @override
   List<String> get questionTypes;
   @override
+  List<PlatformFile> get attachments;
+  @override
   @JsonKey(ignore: true)
-  _$$QuizGenerationModelImplCopyWith<_$QuizGenerationModelImpl> get copyWith =>
+  _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

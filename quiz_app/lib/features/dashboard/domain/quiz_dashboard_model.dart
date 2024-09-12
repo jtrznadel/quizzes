@@ -18,4 +18,15 @@ class QuizDashboardModel with _$QuizDashboardModel{
 
   factory QuizDashboardModel.fromJson(Map<String, dynamic> json) =>
       _$QuizDashboardModelFromJson(json);
+
+  factory QuizDashboardModel.fromQuizDetailsModel(QuizDetailsModel quizDetailsModel) {
+    return QuizDashboardModel(
+      id: quizDetailsModel.id,
+      title: quizDetailsModel.title,
+      description: quizDetailsModel.description,
+      availability: quizDetailsModel.availability,
+      status: quizDetailsModel.status,
+      totalQuestions: quizDetailsModel.questions.length,
+    );
+  }
 }

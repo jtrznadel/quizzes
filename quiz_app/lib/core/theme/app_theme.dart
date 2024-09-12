@@ -27,7 +27,7 @@ abstract class AppTheme {
   static const double dashboardUserProfileIconSize = 24;
   static const double dashboardNewQuizIconSize = 32;
   static const double dashboardAddNewButtonBorderRadius = 8;
-  static const double dashboardAddNewButtonHeight = 200;
+  static const double dashboardAddNewButtonHeight = 120;
 
   static const double quizDeleteDialogItemBorderRadius = 8;
   static const double quizDeleteDialogHeaderFontSize = 16;

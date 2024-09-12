@@ -10,6 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
+import '../../domain/quiz_details_model.dart';
 
 class QuizDetailsGeneralTab extends ConsumerWidget {
   const QuizDetailsGeneralTab({super.key});
@@ -36,11 +37,12 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
             const MediumVSpacer(),
             saveButton(
               context,
-              quizDetails.id,
+              quizDetails,
               titleController,
               descriptionController,
               controller,
               state,
+              ref,
             ),
           ],
         );
@@ -50,13 +52,11 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   }
 
   Widget generalHeader(BuildContext context) {
-    return Row(children: [
-      Text(
-        S.of(context).quizzDetailsTabGeneralSubheading,
-        style: context.textTheme.bodyMedium
-            ?.copyWith(color: AppColorScheme.textSecondary),
-      ),
-    ]);
+    return Text(
+      S.of(context).quizzDetailsTabGeneralSubheading,
+      style: context.textTheme.bodyMedium
+          ?.copyWith(color: AppColorScheme.textSecondary),
+    );
   }
 
   Widget pageSettingsHeader(BuildContext context) {
@@ -115,34 +115,37 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   }
 
   Widget saveButton(
-      BuildContext context,
-      String id,
-      TextEditingController titleController,
-      TextEditingController descriptionController,
-      QuizDetailsController controller,
-      QuizDetailsState state) {
+    BuildContext context,
+    QuizDetailsModel quiz,
+    TextEditingController titleController,
+    TextEditingController descriptionController,
+    QuizDetailsController controller,
+    QuizDetailsState state,
+    WidgetRef ref,
+  ) {
     return Align(
       alignment: Alignment.centerRight,
       child: BasicButton(
         onPressed: () async {
           final success = await controller.updateQuizDetails(
-            id,
+            quiz.id,
             titleController.text,
             descriptionController.text,
           );
           if (context.mounted) {
-            success
-                ? InfoSnackbar.show(
-                    context,
-                    //TODO: replace with translation
-                    'Succesfully updated quiz details',
-                    color: AppColorScheme.success,
-                  )
-                : InfoSnackbar.show(
-                    context,
-                    S.current.somethingWentWrong,
-                    color: AppColorScheme.error,
-                  );
+            if (success) {
+              InfoSnackbar.show(
+                context,
+                S.of(context).quizzDetailsTabGeneralSuccessfullSave,
+                color: AppColorScheme.success,
+              );
+            } else {
+              InfoSnackbar.show(
+                context,
+                S.current.somethingWentWrong,
+                color: AppColorScheme.error,
+              );
+            }
           }
         },
         text: S.of(context).quizzDetailsSaveChangesButton,

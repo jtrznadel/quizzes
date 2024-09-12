@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../domain/quiz_details_model.dart';
 import '../data_sources/quiz_details_client.dart';
+
+part 'quiz_details_repository.g.dart';
 
 abstract class QuizDetailsRepository {
   Future<QuizDetailsModel> getQuizDetails(String id);
@@ -47,6 +50,6 @@ class QuizDetailsRepositoryImpl implements QuizDetailsRepository {
   }
 }
 
-final quizDetailsRepositoryProvider = Provider<QuizDetailsRepository>(
-  (ref) => QuizDetailsRepositoryImpl(ref.read(quizDetailsClientProvider)),
-);
+@riverpod
+QuizDetailsRepository quizDetailsRepository(QuizDetailsRepositoryRef ref) =>
+    QuizDetailsRepositoryImpl(ref.read(quizDetailsClientProvider));

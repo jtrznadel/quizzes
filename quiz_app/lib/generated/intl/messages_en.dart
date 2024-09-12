@@ -20,6 +20,10 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(questionNumber) => "Total ${questionNumber} questions";
+
+  static String m1(seconds) => "${seconds} seconds";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "addNewQuestionBottomSheetAI":
@@ -32,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add new quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+        "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
+            "You do not have any quizzes yet. Create one now!"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
             "Here, you can effortlessly list, delete, edit and create new exams."),
         "dashboardTopHeading": MessageLookupByLibrary.simpleMessage("Quizzes"),
@@ -47,7 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteQuestionFailure":
             MessageLookupByLibrary.simpleMessage("Failed to delete question."),
         "deleteQuizzDescription": MessageLookupByLibrary.simpleMessage(
-            "This action cannot be undone. Once you delete the quiz there\'\'s no going back."),
+            "This action cannot be undone. Once you delete the quiz there is no going back."),
         "deleteQuizzHeading":
             MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "dividerOr": MessageLookupByLibrary.simpleMessage("OR"),
@@ -68,7 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPasswordInputLabel":
             MessageLookupByLibrary.simpleMessage("E-mail"),
         "forgotPasswordSubheading": MessageLookupByLibrary.simpleMessage(
-            "Don\'\'t worry! It happens. Enter the email address associated with your account."),
+            "Do not worry! It happens. Enter the email address associated with your account."),
         "goBackToDashboard":
             MessageLookupByLibrary.simpleMessage("Go back to dashboard"),
         "invalidEmail":
@@ -129,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),
+        "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Here, you can create quizz based on your prompt."),
@@ -143,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter question description"),
         "quizzCreationAddQuestionDescriptionLabel":
             MessageLookupByLibrary.simpleMessage("Question Description"),
+        "quizzCreationAddQuestionError": MessageLookupByLibrary.simpleMessage(
+            "Question title and at least two answers are required."),
         "quizzCreationAddQuestionHeading":
             MessageLookupByLibrary.simpleMessage("New question"),
         "quizzCreationAddQuestionTitleHint":
@@ -151,6 +160,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Question Title"),
         "quizzCreationAppBarTitle":
             MessageLookupByLibrary.simpleMessage("Create quizz"),
+        "quizzCreationAttachFileAllowedTypes":
+            MessageLookupByLibrary.simpleMessage(
+                "Types supported: .txt, .pdf, .docx, .xlsx, .pptx"),
+        "quizzCreationAttachFileMaxSize":
+            MessageLookupByLibrary.simpleMessage("Max size: 5MB"),
         "quizzCreationConfigurationError": MessageLookupByLibrary.simpleMessage(
             "Pick question type and number of questions."),
         "quizzCreationConfigureHeading":
@@ -173,6 +187,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Fill in the blank"),
         "quizzCreationConfigureTypeQuestion":
             MessageLookupByLibrary.simpleMessage("What type of questions?"),
+        "quizzCreationDuplicateAttachmentsError":
+            MessageLookupByLibrary.simpleMessage(
+                "You have already attached this file."),
         "quizzCreationGenerateQuestionGenerateButton":
             MessageLookupByLibrary.simpleMessage("Generate"),
         "quizzCreationGenerateQuestionHeading":
@@ -182,6 +199,9 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Enter prompt for AI to generate question"),
         "quizzCreationGenerateQuestionPromptLabel":
             MessageLookupByLibrary.simpleMessage("Prompt"),
+        "quizzCreationMaxAttachmentsError":
+            MessageLookupByLibrary.simpleMessage(
+                "You can attach maximum of 3 files."),
         "quizzCreationPreviewHeading":
             MessageLookupByLibrary.simpleMessage("Quizz Preview"),
         "quizzCreationQuitButton":
@@ -201,17 +221,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationSuccessSubheading": MessageLookupByLibrary.simpleMessage(
             "You succesfully created your quizz. You can now share it with others."),
         "quizzCreationTextPromptHeading":
-            MessageLookupByLibrary.simpleMessage("Source Text"),
-        "quizzCreationTextPromptSubheading":
-            MessageLookupByLibrary.simpleMessage(
-                "Enter the text that will be used to create your quizz."),
+            MessageLookupByLibrary.simpleMessage("Content Text"),
+        "quizzCreationTextPromptSubheading": MessageLookupByLibrary.simpleMessage(
+            "You can either enter text, upload files, or use a combination of both to create your quizz."),
         "quizzCreationTextPromptTextAreaHint":
             MessageLookupByLibrary.simpleMessage(
                 "Enter the text for your quizz"),
         "quizzCreationTextPromptTextAreaLabel":
-            MessageLookupByLibrary.simpleMessage("Source Text"),
+            MessageLookupByLibrary.simpleMessage("Content Text"),
         "quizzCreationUploadFile":
             MessageLookupByLibrary.simpleMessage("Upload file"),
+        "quizzCreationYouNeedToProvideContent":
+            MessageLookupByLibrary.simpleMessage(
+                "You need to provide either text or upload file."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Quiz Detail"),
         "quizzDetailsSaveChangesButton":
@@ -237,6 +259,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabGeneralSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Manage your quiz page settings here."),
+        "quizzDetailsTabGeneralSuccessfullSave":
+            MessageLookupByLibrary.simpleMessage(
+                "Succesfully updated quiz details."),
         "quizzDetailsTabQuestions":
             MessageLookupByLibrary.simpleMessage("Questions"),
         "quizzDetailsTabQuestionsAddNewQuestion":
@@ -253,19 +278,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Active"),
         "quizzDetailsTabSettingsQuizAvailabilityDescription":
             MessageLookupByLibrary.simpleMessage(
-                "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link."),
+                "When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you."),
+        "quizzDetailsTabSettingsQuizAvailabilityPrivate":
+            MessageLookupByLibrary.simpleMessage("Private"),
         "quizzDetailsTabSettingsQuizAvailabilityPublic":
             MessageLookupByLibrary.simpleMessage("Public"),
         "quizzDetailsTabSettingsQuizStatus":
             MessageLookupByLibrary.simpleMessage("Quiz Status"),
         "quizzDetailsTabSettingsQuizStatusDescription":
             MessageLookupByLibrary.simpleMessage(
-                "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link."),
+                "When switched on, quizz is active and available for solving. If not, no one can solve the quiz."),
         "quizzDetailsTabSettingsSaveChanges":
             MessageLookupByLibrary.simpleMessage("Save changes"),
         "quizzDetailsTabSettingsSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Manage your quiz settings here."),
+        "quizzDetailsTabSettingsSuccessfullSave":
+            MessageLookupByLibrary.simpleMessage(
+                "Succesfully updated quiz settings."),
         "quizzDetailsTabStatistics":
             MessageLookupByLibrary.simpleMessage("Statistics"),
         "quizzDetailsTabStatisticsDate":
@@ -280,13 +310,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Name"),
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Score"),
+        "quizzDetailsTabStatisticsSecondsElapsed": m1,
         "quizzDetailsTabStatisticsStoppedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Stopped"),
         "quizzDetailsTabStatisticsSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "You can view your quiz statistics here."),
         "quizzDetailsTabStatisticsTime":
-            MessageLookupByLibrary.simpleMessage("Time"),
+            MessageLookupByLibrary.simpleMessage("Duration"),
         "quizzShareButton": MessageLookupByLibrary.simpleMessage("Share"),
         "quizzShareHeading":
             MessageLookupByLibrary.simpleMessage("Share quizz"),

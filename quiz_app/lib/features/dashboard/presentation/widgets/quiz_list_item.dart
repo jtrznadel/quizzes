@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
-import '../../../../core/common/widgets/quiz_status_badge.dart';
-import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
+import '../../../../core/common/widgets/quizz_status_tile.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -11,8 +10,6 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../../generated/l10n.dart';
-import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../domain/quiz_dashboard_model.dart';
 import 'delete_quiz_dialog.dart';
 
@@ -23,34 +20,35 @@ class QuizListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: () {
-        ref.read(appRouterProvider).push(QuizzDetailsRoute(id: quizEntity.id));
-      },
-      child: quizContainer(
-        [
-          quizHeader(context),
-          const SmallVSpacer(),
-          quizDescription(context),
-          const LargeVSpacer(),
-          quizStatus(context),
-        ],
+    return Material(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius)),
+      child: InkWell(
+        onTap: () {
+          ref.read(appRouterProvider).push(QuizzDetailsRoute(id: quizEntity.id));
+        },
+        borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius),
+        splashColor: AppColorScheme.textPrimary.withOpacity(0.1),
+        splashFactory: InkRipple.splashFactory,
+        child: quizContainer(
+          [
+            quizHeader(context),
+            const SmallVSpacer(),
+            quizDescription(context),
+            const LargeVSpacer(),
+            QuizzStatusTile(quizz: quizEntity),
+          ],
+        ),
       ),
     );
   }
 
   Widget quizContainer(List<Widget> children) {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.circular(AppTheme.quizListItemBorderRadius),
-          color: AppColorScheme.surfaceContainer),
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius), color: Colors.transparent),
       child: DottedBorderContainer(
-        child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: children)
-            .addPadding(
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children).addPadding(
           padding: const EdgeInsets.all(AppTheme.quizListItemPadding),
         ),
       ),
@@ -83,9 +81,7 @@ class QuizListItem extends ConsumerWidget {
               MediaRes.deleteQuiz,
               width: AppTheme.quizListItemDeleteIconSize,
               height: AppTheme.quizListItemDeleteIconSize,
-            ).addPadding(
-                padding:
-                    const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
+            ).addPadding(padding: const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
           ),
         ),
       ],
@@ -95,32 +91,9 @@ class QuizListItem extends ConsumerWidget {
   Widget quizDescription(BuildContext context) {
     return Text(
       quizEntity.description,
-      style: context.theme.textTheme.bodyMedium!
-          .copyWith(color: AppColorScheme.textSecondary),
+      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
       maxLines: AppTheme.quizItemDescriptionMaxLines,
       overflow: TextOverflow.ellipsis,
-    );
-  }
-
-  Widget quizStatus(BuildContext context) {
-    return Row(
-      children: [
-        QuizStatusBadge(
-          text: S.of(context).quizQuestionNumberBadge(quizEntity.totalQuestions),
-          backgroundColor: AppColorScheme.secondary,
-          textColor: AppColorScheme.primary,
-        ),
-        const MediumHSpacer(),
-        QuizStatusBadge(
-          text: quizEntity.status.name,
-          backgroundColor: quizEntity.status == QuizStatus.Active
-              ? AppColorScheme.successLight
-              : AppColorScheme.warningLight,
-          textColor: quizEntity.status == QuizStatus.Active
-              ? AppColorScheme.success
-              : AppColorScheme.warning,
-        ),
-      ],
     );
   }
 }

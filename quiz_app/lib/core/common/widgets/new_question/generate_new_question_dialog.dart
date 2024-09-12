@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../features/quiz_generation/domain/question_model.dart';
+import '../../../../features/quiz_generation/domain/generate_question_model.dart';
 import '../spacers/vertical_spacers.dart';
 import '../basic_button.dart';
 import '../dialogs/basic_dialog.dart';
@@ -13,10 +13,9 @@ import '../../../../generated/l10n.dart';
 class GenerateNewQuestionDialog extends StatefulWidget {
   const GenerateNewQuestionDialog({super.key, required this.onQuestionAdd});
 
-  final void Function(QuestionModel question) onQuestionAdd;
+  final void Function(GenerateQuestionModel question) onQuestionAdd;
 
-  static void show(BuildContext context,
-      {required void Function(QuestionModel question) onQuestionAdd}) {
+  static void show(BuildContext context, {required void Function(GenerateQuestionModel question) onQuestionAdd}) {
     showDialog(
       context: context,
       builder: (context) => GenerateNewQuestionDialog(
@@ -26,8 +25,7 @@ class GenerateNewQuestionDialog extends StatefulWidget {
   }
 
   @override
-  State<GenerateNewQuestionDialog> createState() =>
-      _GenerateNewQuestionDialogState();
+  State<GenerateNewQuestionDialog> createState() => _GenerateNewQuestionDialogState();
 }
 
 class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {

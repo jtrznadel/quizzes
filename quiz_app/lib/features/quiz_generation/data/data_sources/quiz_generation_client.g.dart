@@ -22,17 +22,35 @@ class _QuizGenerationClient implements QuizGenerationClient {
   String? baseUrl;
 
   @override
-  Future<QuizModel> generateQuiz(Map<String, dynamic> body) async {
+  Future<GenerateQuizModel> generateQuiz({
+    required String content,
+    required int numberOfQuestions,
+    required String questionTypes,
+    required List<MultipartFile> attachments,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Content',
+      content,
+    ));
+    _data.fields.add(MapEntry(
+      'NumberOfQuestions',
+      numberOfQuestions.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'QuestionTypes',
+      questionTypes,
+    ));
+    _data.files.addAll(attachments.map((i) => MapEntry('Attachments', i)));
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<QuizModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<GenerateQuizModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
@@ -45,7 +63,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = QuizModel.fromJson(_result.data!);
+    final _value = GenerateQuizModel.fromJson(_result.data!);
     return _value;
   }
 
@@ -106,3 +124,27 @@ class _QuizGenerationClient implements QuizGenerationClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$quizGenerationClientHash() =>
+    r'2a611a98c708a6436811d652dd05cc8d8bdb57cb';
+
+/// See also [quizGenerationClient].
+@ProviderFor(quizGenerationClient)
+final quizGenerationClientProvider =
+    AutoDisposeProvider<QuizGenerationClient>.internal(
+  quizGenerationClient,
+  name: r'quizGenerationClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$quizGenerationClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef QuizGenerationClientRef = AutoDisposeProviderRef<QuizGenerationClient>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

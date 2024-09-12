@@ -13,6 +13,10 @@ import '../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../core/common/widgets/error_page.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../application/quiz_generation_controller.dart';
+import '../application/quiz_generation_state.dart';
+import '../domain/create_quiz_model.dart';
+import '../domain/generate_question_model.dart';
+import '../domain/generate_quiz_model.dart';
 
 class QuizzPreviewPage extends ConsumerWidget {
   const QuizzPreviewPage({super.key, required this.pageController});
@@ -46,18 +50,20 @@ class QuizzPreviewPage extends ConsumerWidget {
                       ),
                       const LargeVSpacer(),
                       QuizzSummary(
-                        title: controller.title,
-                        description: controller.description,
+                        title: quiz.title,
+                        description: quiz.description,
                       ),
                       const ExtraLargeVSpacer(),
                       Align(
                         alignment: Alignment.centerRight,
                         child: SecondaryButton(
                           onPressed: () {
-                            AddNewQuestionBottomSheet.show(context,
-                                onQuestionAdd: (question) {
-                              controller.addNewQuestion(question);
-                            });
+                            AddNewQuestionBottomSheet.show(
+                              context,
+                              onQuestionAdd: (question) {
+                                addQuestion(controller, quiz, question);
+                              },
+                            );
                           },
                           text: S.of(context).quizzCreationAddQuestionButton,
                         ),
@@ -65,7 +71,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                       const LargeVSpacer(),
                       SingleChildScrollView(
                         child: ListView.builder(
-                          itemCount: controller.questions.length,
+                          itemCount: quiz.generateQuestions.length,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
@@ -73,9 +79,10 @@ class QuizzPreviewPage extends ConsumerWidget {
                               children: [
                                 QuestionBox(
                                   questionIndex: index,
-                                  question: controller.questions[index],
+                                  question: quiz.generateQuestions[index],
                                   onDelete: () async {
-                                    await onDelete(context, ref, index);
+                                    await onDelete(
+                                        context, index, state, controller);
                                   },
                                   correctAnswerVisible: true,
                                 ),
@@ -103,7 +110,9 @@ class QuizzPreviewPage extends ConsumerWidget {
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut,
                       );
-                      await controller.createQuiz();
+                      final quizCreationModel =
+                          CreateQuizModel.fromGenerateQuizModel(model: quiz);
+                      await controller.createQuiz(quizCreationModel);
                     },
                     text: S.of(context).saveQuizzButton,
                   ),
@@ -119,7 +128,8 @@ class QuizzPreviewPage extends ConsumerWidget {
     );
   }
 
-  Future<void> onDelete(BuildContext context, WidgetRef ref, int index) async {
+  Future<void> onDelete(BuildContext context, int index,
+      QuizGenerationState state, QuizGenerationController controller) async {
     showDialog(
       context: context,
       builder: (context) {
@@ -130,15 +140,28 @@ class QuizzPreviewPage extends ConsumerWidget {
             height: 0,
           ),
           onConfirm: () async {
-            await ref
-                .read(quizGenerationControllerProvider.notifier)
-                .deleteQuestion(index);
-            if (context.mounted) {
-              Navigator.pop(context);
-            }
+            state.maybeWhen(
+              generated: (quiz) async {
+                final questionListCopy =
+                    List<GenerateQuestionModel>.from(quiz.generateQuestions);
+                questionListCopy.removeAt(index);
+                quiz = quiz.copyWith(generateQuestions: questionListCopy);
+                controller.modifyGeneratedQuiz(quiz);
+              },
+              orElse: () {},
+            );
           },
         );
       },
     );
+  }
+
+  void addQuestion(QuizGenerationController controller, GenerateQuizModel quiz, GenerateQuestionModel question) {
+    final tempQuestions = List<GenerateQuestionModel>.from(quiz.generateQuestions);
+    tempQuestions.add(question);
+    quiz = quiz.copyWith(
+      generateQuestions: tempQuestions,
+    );
+    controller.modifyGeneratedQuiz(quiz);
   }
 }

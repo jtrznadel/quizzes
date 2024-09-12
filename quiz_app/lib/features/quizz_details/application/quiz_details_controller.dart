@@ -10,17 +10,17 @@ part 'quiz_details_controller.g.dart';
 
 @riverpod
 class QuizDetailsController extends _$QuizDetailsController {
+
+  final _quizDetailsRepository = quizDetailsRepositoryProvider;
+
   @override
   QuizDetailsState build() => const QuizDetailsState.loading();
 
   Future<void> getQuizDetails(String id) async {
     state = const QuizDetailsState.loading();
 
-    final QuizDetailsRepository quizDetailsRepository =
-        ref.read(quizDetailsRepositoryProvider);
-
     try {
-      final quizDetails = await quizDetailsRepository.getQuizDetails(id);
+      final quizDetails = await ref.read(_quizDetailsRepository).getQuizDetails(id);
       state = QuizDetailsState.loaded(quizDetails, false);
     } catch (e) {
       state = QuizDetailsState.error(e.toString());
@@ -53,14 +53,12 @@ class QuizDetailsController extends _$QuizDetailsController {
     QuizStatus status,
     QuizAvailability availability,
   ) async {
-    final QuizDetailsRepository quizDetailsRepository =
-        ref.read(quizDetailsRepositoryProvider);
     try {
-      await quizDetailsRepository.updateQuizStatus(
+      await ref.read(_quizDetailsRepository).updateQuizStatus(
         id,
         status,
       );
-      await quizDetailsRepository.updateQuizAvailability(
+      await ref.read(_quizDetailsRepository).updateQuizAvailability(
         id,
         availability,
       );
@@ -76,11 +74,8 @@ class QuizDetailsController extends _$QuizDetailsController {
     String title,
     String description,
   ) async {
-    final QuizDetailsRepository quizDetailsRepository =
-        ref.read(quizDetailsRepositoryProvider);
-
     try {
-      await quizDetailsRepository.updateQuizDetails(id, title, description);
+      await ref.read(_quizDetailsRepository).updateQuizDetails(id, title, description);
       state.maybeWhen(loaded: (quizDetails, answersVisible) {
         state = QuizDetailsState.loaded(
             quizDetails.copyWith(title: title, description: description),
@@ -96,11 +91,8 @@ class QuizDetailsController extends _$QuizDetailsController {
   }
 
   Future<bool> deleteQuestion(String id) async {
-    final QuizDetailsRepository quizDetailsRepository =
-        ref.read(quizDetailsRepositoryProvider);
-
     try {
-      await quizDetailsRepository.deleteQuestion(id);
+      await ref.read(_quizDetailsRepository).deleteQuestion(id);
       state.maybeWhen(loaded: (quizDetails, answersVisible) {
         state = QuizDetailsState.loaded(
           quizDetails.copyWith(

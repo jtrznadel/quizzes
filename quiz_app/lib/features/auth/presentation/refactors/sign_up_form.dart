@@ -7,10 +7,10 @@ import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 import '../../application/auth_controller.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 
 class SignUpForm extends ConsumerStatefulWidget {
   const SignUpForm({super.key});
@@ -91,6 +91,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
       (_) => InfoSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
+        color: AppColorScheme.error,
       ),
     );
     return _registerButton(controller, context);

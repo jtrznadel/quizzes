@@ -108,3 +108,25 @@ class _DashboardClient implements DashboardClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$dashboardClientHash() => r'f5a0b2cd9a899ced99eb8206a4f5a03170eb932d';
+
+/// See also [dashboardClient].
+@ProviderFor(dashboardClient)
+final dashboardClientProvider = AutoDisposeProvider<DashboardClient>.internal(
+  dashboardClient,
+  name: r'dashboardClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$dashboardClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef DashboardClientRef = AutoDisposeProviderRef<DashboardClient>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

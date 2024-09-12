@@ -5,9 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:paginated_list/paginated_list.dart';
 
 import '../../../../core/common/widgets/error_page.dart';
-import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
@@ -43,66 +42,77 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     final controller = ref.read(dashboardControllerProvider.notifier);
 
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          ref.read(appRouterProvider).push(
-                BasicErrorRoute(
-                  onRefresh: () {},
-                  refreshButtonText: 'Refresh',
-                  imageAsset: MediaRes.networkError,
-                  errorText: 'Unable to connect to the internet. Please check your network settings and try again.',
-                ),
-              );
-          ErrorSnackbar.show(context, 'This is an error message');
-        },
-        child: SvgPicture.asset(MediaRes.addQuiz, width: 24, height: 24),
-      ),
       body: SafeArea(
         child: state.when(
-          loading: () => const Center(child: CircularProgressIndicator()),
-          loaded: (quizListModel) {
-            return Column(
-              children: [
-                topBar(context),
-                const SmallVSpacer(),
-                Expanded(
-                  child: quizList(quizListModel, controller),
-                ),
-              ],
+          loading: () => const LoadingIndicator(),
+          loaded: (quizListModel, currentPage) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
+              child: Column(
+                children: [
+                  topBar(context),
+                  const SmallVSpacer(),
+                  quizListModel.items.isEmpty
+                      ? Column(
+                          children: [
+                            const NewQuizButton(),
+                            const LargeVSpacer(),
+                            Text(
+                              S.of(context).dashboardQuizzesEmpty,
+                              style: context.theme.textTheme.bodyLarge,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )
+                      : Expanded(
+                          child: quizList(quizListModel, controller),
+                        ),
+                ],
+              ),
             );
           },
           error: (message) => Center(
             child: ErrorPage(error: message),
           ),
         ),
-      ).addPadding(
-        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
       ),
     );
   }
 
   Widget quizList(QuizListModel quizListModel, DashboardController controller) {
-    return PaginatedList<QuizDashboardModel>(
-      loadingIndicator: const Padding(
-        padding:
-            EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
-        child: Center(child: CircularProgressIndicator()),
+    return Theme(
+      data: AppTheme.theme.copyWith(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
       ),
-      items: quizListModel.items,
-      isRecentSearch: false,
-      isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
-      onLoadMore: (index) {
-        controller.loadMore();
-      },
-      builder: (quiz, index) {
-        return Column(
-          children: [
-            QuizListItem(quizEntity: quiz),
-            const MediumVSpacer(),
-            if (index == quizListModel.items.length - 1) const NewQuizButton(),
-          ],
-        );
-      },
+      child: PaginatedList<QuizDashboardModel>(
+        loadingIndicator: const LoadingIndicator(),
+        items: quizListModel.items,
+        isRecentSearch: false,
+        isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
+        onLoadMore: (index) {
+          controller.loadMore();
+        },
+        builder: (quiz, index) {
+          if (index == 0) {
+            return Column(
+              children: [
+                const NewQuizButton(),
+                const MediumVSpacer(),
+                QuizListItem(quizEntity: quiz),
+                const MediumVSpacer(),
+              ],
+            );
+          } else {
+            return Column(
+              children: [
+                QuizListItem(quizEntity: quiz),
+                const MediumVSpacer(),
+              ],
+            );
+          }
+        },
+      ),
     );
   }
 
@@ -132,8 +142,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );

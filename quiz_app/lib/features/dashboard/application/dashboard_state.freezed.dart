@@ -19,21 +19,22 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizListModel quizListModel) loaded,
+    required TResult Function(QuizListModel quizListModel, int currentPage)
+        loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizListModel quizListModel)? loaded,
+    TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizListModel quizListModel)? loaded,
+    TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -119,7 +120,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizListModel quizListModel) loaded,
+    required TResult Function(QuizListModel quizListModel, int currentPage)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -129,7 +131,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizListModel quizListModel)? loaded,
+    TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -139,7 +141,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizListModel quizListModel)? loaded,
+    TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -194,7 +196,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({QuizListModel quizListModel});
+  $Res call({QuizListModel quizListModel, int currentPage});
 
   $QuizListModelCopyWith<$Res> get quizListModel;
 }
@@ -211,12 +213,17 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? quizListModel = null,
+    Object? currentPage = null,
   }) {
     return _then(_$LoadedImpl(
       null == quizListModel
           ? _value.quizListModel
           : quizListModel // ignore: cast_nullable_to_non_nullable
               as QuizListModel,
+      null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -232,14 +239,16 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.quizListModel);
+  const _$LoadedImpl(this.quizListModel, this.currentPage);
 
   @override
   final QuizListModel quizListModel;
+  @override
+  final int currentPage;
 
   @override
   String toString() {
-    return 'DashboardState.loaded(quizListModel: $quizListModel)';
+    return 'DashboardState.loaded(quizListModel: $quizListModel, currentPage: $currentPage)';
   }
 
   @override
@@ -248,11 +257,13 @@ class _$LoadedImpl implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
             (identical(other.quizListModel, quizListModel) ||
-                other.quizListModel == quizListModel));
+                other.quizListModel == quizListModel) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, quizListModel);
+  int get hashCode => Object.hash(runtimeType, quizListModel, currentPage);
 
   @JsonKey(ignore: true)
   @override
@@ -264,32 +275,33 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizListModel quizListModel) loaded,
+    required TResult Function(QuizListModel quizListModel, int currentPage)
+        loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(quizListModel);
+    return loaded(quizListModel, currentPage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizListModel quizListModel)? loaded,
+    TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(quizListModel);
+    return loaded?.call(quizListModel, currentPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizListModel quizListModel)? loaded,
+    TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(quizListModel);
+      return loaded(quizListModel, currentPage);
     }
     return orElse();
   }
@@ -330,9 +342,11 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements DashboardState {
-  const factory _Loaded(final QuizListModel quizListModel) = _$LoadedImpl;
+  const factory _Loaded(
+      final QuizListModel quizListModel, final int currentPage) = _$LoadedImpl;
 
   QuizListModel get quizListModel;
+  int get currentPage;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -403,7 +417,8 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizListModel quizListModel) loaded,
+    required TResult Function(QuizListModel quizListModel, int currentPage)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -413,7 +428,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizListModel quizListModel)? loaded,
+    TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -423,7 +438,7 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizListModel quizListModel)? loaded,
+    TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

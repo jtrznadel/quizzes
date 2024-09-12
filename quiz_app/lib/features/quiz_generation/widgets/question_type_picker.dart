@@ -20,6 +20,7 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
   bool trueFalse = false;
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(quizGenerationControllerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,11 +36,33 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
             setState(() {
               value = !value;
               multipleChoice = value;
-              if(value) {
-                ref.read(quizGenerationControllerProvider.notifier).addTypeOfQuestions(QuestionType.MultipleChoice.name);
-              }
-              else{
-                ref.read(quizGenerationControllerProvider.notifier).removeTypeOfQuestions(QuestionType.MultipleChoice.name);
+              if (value) {
+                state.maybeWhen(
+                  generating: (request) {
+                    request = request.copyWith(questionTypes: [
+                      ...request.questionTypes,
+                      QuestionType.MultipleChoice.name
+                    ]);
+                    ref
+                        .read(quizGenerationControllerProvider.notifier)
+                        .modifyRequest(request);
+                  },
+                  orElse: () {},
+                );
+              } else {
+                state.maybeWhen(
+                  generating: (request) {
+                    request = request.copyWith(
+                        questionTypes: request.questionTypes
+                            .where((element) =>
+                                element != QuestionType.MultipleChoice.name)
+                            .toList());
+                    ref
+                        .read(quizGenerationControllerProvider.notifier)
+                        .modifyRequest(request);
+                  },
+                  orElse: () {},
+                );
               }
             });
           },
@@ -52,11 +75,33 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
             setState(() {
               value = !value;
               trueFalse = value;
-              if(value) {
-                ref.read(quizGenerationControllerProvider.notifier).addTypeOfQuestions(QuestionType.TrueFalse.name);
-              }
-              else{
-                ref.read(quizGenerationControllerProvider.notifier).removeTypeOfQuestions(QuestionType.TrueFalse.name);
+              if (value) {
+                state.maybeWhen(
+                  generating: (request) {
+                    request = request.copyWith(questionTypes: [
+                      ...request.questionTypes,
+                      QuestionType.TrueFalse.name
+                    ]);
+                    ref
+                        .read(quizGenerationControllerProvider.notifier)
+                        .modifyRequest(request);
+                  },
+                  orElse: () {},
+                );
+              } else {
+                state.maybeWhen(
+                  generating: (request) {
+                    request = request.copyWith(
+                        questionTypes: request.questionTypes
+                            .where((element) =>
+                                element != QuestionType.TrueFalse.name)
+                            .toList());
+                    ref
+                        .read(quizGenerationControllerProvider.notifier)
+                        .modifyRequest(request);
+                  },
+                  orElse: () {},
+                );
               }
             });
           },

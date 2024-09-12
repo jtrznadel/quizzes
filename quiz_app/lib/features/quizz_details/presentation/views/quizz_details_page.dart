@@ -11,6 +11,7 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../dashboard/application/dashboard_controller.dart';
 import '../../application/quiz_details_controller.dart';
 import '../tabs/quiz_details_general_tab.dart';
 import '../tabs/quiz_details_questions_tab.dart';
@@ -54,74 +55,89 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColorScheme.surface,
-      appBar: BasicAppBar(
-        title: S.of(context).quizzDetailsAppbarTitle,
-        actions: [
-          IconButton(
-            icon: SvgPicture.asset(MediaRes.share),
-            onPressed: () {
-              ShareQuizzBottomSheet.show(context);
-            },
-          ),
-          const SmallHSpacer(),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Consumer(builder: (context, ref, child) {
-          final state = ref.watch(quizDetailsControllerProvider);
-          return state.when(
-            loading: () {
-              return const Padding(
-                padding: EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            },
+    final state = ref.watch(quizDetailsControllerProvider);
+    return PopScope(
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          state.maybeWhen(
             loaded: (quizDetails, _) {
-          return Padding(
-            padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-            child: Column(
-              children: [
-                QuizzSummary(
-                  title: quizDetails.title,
-                  description: quizDetails.description,
-                ),
-                const MediumVSpacer(),
-                TabBar(
-                  dividerColor: AppColorScheme.border,
-                  labelColor: AppColorScheme.primary,
-                  labelStyle: context.textTheme.labelMedium!,
-                  unselectedLabelColor: AppColorScheme.textSecondary,
-                  isScrollable: true,
-                  tabAlignment: TabAlignment.start,
-                  splashBorderRadius: BorderRadius.circular(16),
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  dividerHeight: 2,
-                  indicatorWeight: 2,
-                  controller: tabController,
-                  onTap: (index) {
-                    setState(() {});
-                  },
-                  tabs: [
-                    Tab(text: S.of(context).quizzDetailsTabQuestions),
-                    Tab(text: S.of(context).quizzDetailsTabSettings),
-                    Tab(text: S.of(context).quizzDetailsTabStatistics),
-                    Tab(text: S.of(context).quizzDetailsTabGeneral),
-                  ],
-                ),
-                _getTabAtIndex(tabController.index),
-              ],
+              ref
+                  .read(dashboardControllerProvider.notifier)
+                  .reloadItem(quizDetails);
+            },
+            orElse: () {},
+          );
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColorScheme.surface,
+        appBar: BasicAppBar(
+          title: S.of(context).quizzDetailsAppbarTitle,
+          actions: [
+            IconButton(
+              icon: SvgPicture.asset(MediaRes.share),
+              onPressed: () {
+                ShareQuizzBottomSheet.show(context);
+              },
             ),
-          );
-            },
-            error: (error) {
-              return ErrorPage(error: error);
-            },
-          );
-        }),
+            const SmallHSpacer(),
+          ],
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: state.when(
+              loading: () {
+                return const Padding(
+                  padding: EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              },
+              loaded: (quizDetails, _) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+                  child: Column(
+                    children: [
+                      QuizzSummary(
+                        title: quizDetails.title,
+                        description: quizDetails.description,
+                      ),
+                      const MediumVSpacer(),
+                      TabBar(
+                        dividerColor: AppColorScheme.border,
+                        labelColor: AppColorScheme.primary,
+                        labelStyle: context.textTheme.labelMedium!,
+                        unselectedLabelColor: AppColorScheme.textSecondary,
+                        isScrollable: true,
+                        tabAlignment: TabAlignment.start,
+                        splashBorderRadius: BorderRadius.circular(16),
+                        indicatorSize: TabBarIndicatorSize.tab,
+                        dividerHeight: 2,
+                        indicatorWeight: 2,
+                        controller: tabController,
+                        onTap: (index) {
+                          setState(() {});
+                        },
+                        tabs: [
+                          Tab(text: S.of(context).quizzDetailsTabQuestions),
+                          Tab(text: S.of(context).quizzDetailsTabSettings),
+                          Tab(text: S.of(context).quizzDetailsTabStatistics),
+                          Tab(text: S.of(context).quizzDetailsTabGeneral),
+                        ],
+                      ),
+                      _getTabAtIndex(tabController.index),
+                    ],
+                  ),
+                );
+              },
+              error: (error) {
+                return ErrorPage(error: error);
+              },
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -181,3 +181,26 @@ class _QuizDetailsClient implements QuizDetailsClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$quizDetailsClientHash() => r'7f080b29c9e6215b44965bbb013253ea209c2cc9';
+
+/// See also [quizDetailsClient].
+@ProviderFor(quizDetailsClient)
+final quizDetailsClientProvider =
+    AutoDisposeProvider<QuizDetailsClient>.internal(
+  quizDetailsClient,
+  name: r'quizDetailsClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$quizDetailsClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef QuizDetailsClientRef = AutoDisposeProviderRef<QuizDetailsClient>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

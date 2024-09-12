@@ -2,14 +2,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/http.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/network/api_constants.dart';
-import '../../../../core/network/dio_client.dart';
+import '../../../../core/network/base_dio_client.dart';
 import '../../domain/user.dart';
 
 part 'user_client.g.dart';
-
-final dioProvider = Provider<Dio>((ref) => buildDioClient(ApiConstants.baseUrl, ref));
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class UserClient {
@@ -25,4 +24,6 @@ abstract class UserClient {
   Future<void> signOut();
 }
 
-final userClientProvider = Provider<UserClient>((ref) => UserClient(ref.watch(dioProvider), baseUrl: ApiConstants.baseUrl));
+@riverpod
+UserClient userClient(UserClientRef ref) =>
+    UserClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.baseUrl);
