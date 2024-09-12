@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
@@ -22,8 +23,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     return state.maybeWhen(
       loaded: (quizDetails, _) {
         final titleController = TextEditingController(text: quizDetails.title);
-        final descriptionController =
-            TextEditingController(text: quizDetails.description);
+        final descriptionController = TextEditingController(text: quizDetails.description);
         return Column(
           children: [
             const MediumVSpacer(),
@@ -54,8 +54,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   Widget generalHeader(BuildContext context) {
     return Text(
       S.of(context).quizzDetailsTabGeneralSubheading,
-      style: context.textTheme.bodyMedium
-          ?.copyWith(color: AppColorScheme.textSecondary),
+      style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
     );
   }
 
@@ -68,8 +67,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
     ]);
   }
 
-  Widget quizTitleTextField(
-      BuildContext context, TextEditingController controller) {
+  Widget quizTitleTextField(BuildContext context, TextEditingController controller) {
     return Column(
       children: [
         TextArea(
@@ -82,16 +80,14 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
-          style: context.textTheme.bodyMedium
-              ?.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
     );
   }
 
-  Widget quizDescriptionTextField(
-      BuildContext context, TextEditingController controller) {
+  Widget quizDescriptionTextField(BuildContext context, TextEditingController controller) {
     return Column(
       children: [
         TextArea(
@@ -103,11 +99,8 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
         ),
         const SmallVSpacer(),
         Text(
-          S
-              .of(context)
-              .quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
-          style: context.textTheme.bodyMedium
-              ?.copyWith(color: AppColorScheme.textSecondary),
+          S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
       ],
@@ -140,10 +133,9 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
                 color: AppColorScheme.success,
               );
             } else {
-              InfoSnackbar.show(
+              ErrorSnackbar.show(
                 context,
                 S.current.somethingWentWrong,
-                color: AppColorScheme.error,
               );
             }
           }

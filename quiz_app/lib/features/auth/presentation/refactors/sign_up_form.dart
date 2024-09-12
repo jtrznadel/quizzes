@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/validators/validators.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
@@ -88,10 +89,9 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   Widget _errorAction(AuthController controller, BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => InfoSnackbar.show(
+      (_) => ErrorSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
-        color: AppColorScheme.error,
       ),
     );
     return _registerButton(controller, context);
@@ -103,6 +103,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
     SchedulerBinding.instance.addPostFrameCallback(
       (_) => InfoSnackbar.show(
         context,
+        color: AppColorScheme.success,
         S.of(context).successfulRegistration,
       ),
     );
