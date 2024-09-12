@@ -11,6 +11,7 @@ import '../../../quiz_generation/domain/generate_question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
+import '../../domain/new_question_model.dart';
 import '../widgets/delete_question_dialog.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
@@ -41,7 +42,16 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
         const MediumVSpacer(),
         answersSwitchRow(context, state, controller),
         //const MediumVSpacer(),
-        newQuestionButton(context),
+        Consumer(
+          builder: (context, ref, child) {
+            return state.maybeWhen(
+              loaded: (quizDetails, _) {
+                return newQuestionButton(context, quizDetails.id, controller);
+              },
+              orElse: () => const SizedBox.shrink(),
+            );
+          }
+        ),
       ],
     );
   }
@@ -124,15 +134,20 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     );
   }
 
-  Widget newQuestionButton(BuildContext context) {
+  Widget newQuestionButton(BuildContext context, String quizID, QuizDetailsController controller) {
     return Align(
       alignment: Alignment.centerRight,
       child: ElevatedButton(
         onPressed: () {
           AddNewQuestionBottomSheet.show(
             context,
-            onQuestionAdd: (question) {
-              //TODO: Implement add new question in quiz details controller
+            onQuestionAdd: (question) async {
+              final newQuestionModel = NewQuestionModel(
+                title: question.title,
+                createAnswers: question.answers,
+                quizID: quizID
+              );
+              await controller.addNewQuestion(newQuestionModel);
             },
           );
         },
