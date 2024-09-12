@@ -117,12 +117,13 @@ class __$$GenerateQuestionModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GenerateQuestionModelImpl implements _GenerateQuestionModel {
+class _$GenerateQuestionModelImpl extends _GenerateQuestionModel {
   const _$GenerateQuestionModelImpl(
       {required this.title,
       @AnswerModelConverter()
       required final List<AnswerModelInterface> generateAnswers})
-      : _generateAnswers = generateAnswers;
+      : _generateAnswers = generateAnswers,
+        super._();
 
   factory _$GenerateQuestionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GenerateQuestionModelImplFromJson(json);
@@ -173,12 +174,13 @@ class _$GenerateQuestionModelImpl implements _GenerateQuestionModel {
   }
 }
 
-abstract class _GenerateQuestionModel implements GenerateQuestionModel {
+abstract class _GenerateQuestionModel extends GenerateQuestionModel {
   const factory _GenerateQuestionModel(
           {required final String title,
           @AnswerModelConverter()
           required final List<AnswerModelInterface> generateAnswers}) =
       _$GenerateQuestionModelImpl;
+  const _GenerateQuestionModel._() : super._();
 
   factory _GenerateQuestionModel.fromJson(Map<String, dynamic> json) =
       _$GenerateQuestionModelImpl.fromJson;

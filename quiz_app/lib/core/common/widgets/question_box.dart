@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../features/quiz_generation/domain/generate_question_model.dart';
+import '../../models/question_model_interface.dart';
 import 'dotted_border_container.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
 import 'answer_tile.dart';
@@ -16,7 +16,7 @@ class QuestionBox extends StatelessWidget {
       {super.key, required this.questionIndex, required this.question, required this.onDelete, required this.correctAnswerVisible});
 
   final int questionIndex;
-  final GenerateQuestionModel question;
+  final QuestionModelInterface question;
   final VoidCallback onDelete;
   final bool correctAnswerVisible;
 
@@ -70,7 +70,7 @@ class QuestionBox extends StatelessWidget {
             ),
             const MediumVSpacer(),
             ListView.builder(
-              itemCount: question.generateAnswers.length,
+              itemCount: question.answers.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
@@ -78,8 +78,8 @@ class QuestionBox extends StatelessWidget {
                   children: [
                     AnswerTile(
                       leading: Answer.values[index].name,
-                      text: question.generateAnswers[index].content,
-                      isCorrect: correctAnswerVisible ? question.generateAnswers[index].isCorrect : false,
+                      text: question.answers[index].content,
+                      isCorrect: correctAnswerVisible ? question.answers[index].isCorrect : false,
                     ),
                     const SmallVSpacer(),
                   ],

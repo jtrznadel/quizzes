@@ -126,13 +126,14 @@ class __$$NewQuestionModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NewQuestionModelImpl implements _NewQuestionModel {
+class _$NewQuestionModelImpl extends _NewQuestionModel {
   const _$NewQuestionModelImpl(
       {required this.title,
       @AnswerModelConverter()
       required final List<AnswerModelInterface> createAnswers,
       required this.quizID})
-      : _createAnswers = createAnswers;
+      : _createAnswers = createAnswers,
+        super._();
 
   factory _$NewQuestionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewQuestionModelImplFromJson(json);
@@ -187,12 +188,13 @@ class _$NewQuestionModelImpl implements _NewQuestionModel {
   }
 }
 
-abstract class _NewQuestionModel implements NewQuestionModel {
+abstract class _NewQuestionModel extends NewQuestionModel {
   const factory _NewQuestionModel(
       {required final String title,
       @AnswerModelConverter()
       required final List<AnswerModelInterface> createAnswers,
       required final String quizID}) = _$NewQuestionModelImpl;
+  const _NewQuestionModel._() : super._();
 
   factory _NewQuestionModel.fromJson(Map<String, dynamic> json) =
       _$NewQuestionModelImpl.fromJson;

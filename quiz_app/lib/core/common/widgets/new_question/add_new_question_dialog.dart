@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../features/quiz_generation/domain/answer_model.dart';
 import '../../../../features/quiz_generation/domain/generate_question_model.dart';
+import '../../../models/question_model_interface.dart';
 import '../../../services/app_router.dart';
 import '../info_snackbar.dart';
 import 'add_question_dialog_answer_section.dart';
@@ -18,12 +19,12 @@ class AddNewQuestionDialog extends ConsumerStatefulWidget {
   const AddNewQuestionDialog({super.key, required this.onQuestionAdd});
 
   //TODO: change when implementing quesiton adding in quiz details
-  final void Function(GenerateQuestionModel question) onQuestionAdd;
+  final void Function(QuestionModelInterface question) onQuestionAdd;
 
   @override
   ConsumerState createState() => _AddNewQuestionDialogState();
 
-  static void show(BuildContext context, {required void Function(GenerateQuestionModel) onQuestionAdd}) {
+  static void show(BuildContext context, {required void Function(QuestionModelInterface) onQuestionAdd}) {
     showDialog(
       context: context,
       builder: (context) => Scaffold(
