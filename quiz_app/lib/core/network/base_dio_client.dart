@@ -11,8 +11,7 @@ import 'api_constants.dart';
 part 'base_dio_client.g.dart';
 
 @riverpod
-Dio baseDioClient(BaseDioClientRef ref) =>
-    buildDioClient(ApiConstants.baseUrl, ref);
+Dio baseDioClient(BaseDioClientRef ref) => buildDioClient(ApiConstants.baseUrl, ref);
 
 Dio buildDioClient(String base, Ref ref) {
   final dio = Dio()..options = BaseOptions(baseUrl: base);
@@ -26,10 +25,12 @@ Dio buildDioClient(String base, Ref ref) {
           if (hasExpired) {
             final refreshToken = await ref.read(sessionProvider).refreshToken;
             if (refreshToken == null) {
+              await ref.read(sessionProvider).deleteTokens();
               throw RefreshTokenMissingException(requestOptions: options);
             }
             final tokenResponse = await refreshAccessToken(refreshToken, Dio());
             if (tokenResponse == null) {
+              await ref.read(sessionProvider).deleteTokens();
               throw AccessTokenRefreshFailureException(requestOptions: options);
             }
             await ref.read(sessionProvider).saveTokens(
@@ -39,11 +40,9 @@ Dio buildDioClient(String base, Ref ref) {
           }
           accessToken = await ref.read(sessionProvider).accessToken;
         }
-        options.headers[ApiConstants.authHeader] =
-            '${ApiConstants.authBearer}$accessToken';
+        options.headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$accessToken';
 
-        options.headers[ApiConstants.contentTypeHeader] =
-            ApiConstants.contentTypeJson;
+        options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
 
         if (options.data is FormData) {
           FormData newFormData = FormData();
@@ -93,8 +92,7 @@ Dio refreshTokenDioClient(String base, Ref ref) {
         if (refreshToken == null) {
           throw RefreshTokenMissingException(requestOptions: options);
         }
-        options.headers[ApiConstants.contentTypeHeader] =
-            ApiConstants.contentTypeJson;
+        options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
         return handler.next(options);
       },
       onError: (error, handler) async {

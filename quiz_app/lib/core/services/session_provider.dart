@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final sessionProvider = Provider<SessionProvider>((ref) => SessionProvider());
 
@@ -8,6 +10,16 @@ class SessionProvider {
 
   static const _accessTokenKey = 'accessToken';
   static const _refreshTokenKey = 'refreshToken';
+
+  Future<void> checkFirstRun() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    if (!prefs.containsKey('firstRun')) {
+      debugPrint(prefs.containsKey('firstRun').toString());
+      await prefs.setBool('firstRun', true);
+      await deleteTokens();
+    }
+  }
 
   Future<bool> isAuthenticated() async {
     return await accessToken != null;
