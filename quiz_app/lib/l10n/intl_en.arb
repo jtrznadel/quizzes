@@ -30,7 +30,7 @@
 
     "forgotPasswordAppbarTitle": "Password reset",
     "forgotPasswordHeading": "Forgot password?",
-    "forgotPasswordSubheading": "Don''t worry! It happens. Enter the email address associated with your account.",
+    "forgotPasswordSubheading": "Do not worry! It happens. Enter the email address associated with your account.",
     "forgotPasswordInputLabel": "E-mail",
     "forgotPasswordInputHint": "Your e-mail",
     "forgotPasswordButton": "Send e-mail",
@@ -49,11 +49,16 @@
     "quizzSummaryTitle": "Title: ",
     
     "quizzCreationAppBarTitle": "Create quizz",
-    "quizzCreationTextPromptHeading": "Source Text",
-    "quizzCreationTextPromptSubheading": "Enter the text that will be used to create your quizz.",
+    "quizzCreationTextPromptHeading": "Content Text",
+    "quizzCreationTextPromptSubheading": "You can either enter text, upload files, or use a combination of both to create your quizz.",
     "quizzCreationUploadFile": "Upload file",
-    "quizzCreationTextPromptTextAreaLabel": "Source Text",
+    "quizzCreationTextPromptTextAreaLabel": "Content Text",
     "quizzCreationTextPromptTextAreaHint": "Enter the text for your quizz",
+    "quizzCreationAttachFileMaxSize": "Max size: 5MB",
+    "quizzCreationAttachFileAllowedTypes": "Types supported: .txt, .pdf, .docx, .xlsx, .pptx",
+    "quizzCreationMaxAttachmentsError": "You can attach maximum of 3 files.",
+    "quizzCreationDuplicateAttachmentsError": "You have already attached this file.",
+    "quizzCreationYouNeedToProvideContent": "You need to provide either text or upload file.",
     
     "quizzCreationConfigureHeading": "Configure quizz",
     "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",
@@ -73,6 +78,7 @@
     "addNewQuestionBottomSheetHeading": "Add new question",
     "addNewQuestionBottomSheetManual": "Manual",
     "addNewQuestionBottomSheetAI": "Generate question with AI",
+    "quizzCreationAddQuestionError": "Question title and at least two answers are required.",
 
     "quizzCreationPreviewHeading": "Quizz Preview",
     "quizzCreationAddQuestionButton": "Add question",
@@ -86,15 +92,20 @@
     "quizzDetailsTabQuestionsSubheading": "Manage your quiz questions here. You can edit and delete questions. This page is preview page for your questions.",
     "quizzDetailsTabQuestionsSwitch": "Answers",
     "quizzDetailsTabQuestionsAddNewQuestion": "New question",
+    "deleteQuestionDialogHeading": "Are you sure?",
+    "deleteQuestionDialogDescription": "This action cannot be undone. Once you delete the question there is no going back.",
+    "deleteQuestionFailure": "Failed to delete question.",
 
     "quizzDetailsTabSettingsSubheading": "Manage your quiz settings here.",
     "quizzDetailsTabSettingsQuizStatus": "Quiz Status",
-    "quizzDetailsTabSettingsQuizStatusDescription": "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.",
+    "quizzDetailsTabSettingsQuizStatusDescription": "When switched on, quizz is active and available for solving. If not, no one can solve the quiz.",
     "quizzDetailsTabSettingsQuizAvailability": "Availability",
-    "quizzDetailsTabSettingsQuizAvailabilityDescription": "When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.",
+    "quizzDetailsTabSettingsQuizAvailabilityDescription": "When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.",
     "quizzDetailsTabSettingsQuizAvailabilityActive": "Active",
     "quizzDetailsTabSettingsQuizAvailabilityPublic": "Public",
+    "quizzDetailsTabSettingsQuizAvailabilityPrivate": "Private",
     "quizzDetailsTabSettingsSaveChanges": "Save changes",
+    "quizzDetailsTabSettingsSuccessfullSave": "Succesfully updated quiz settings.",
 
     "quizzDetailsTabStatisticsSubheading": "You can view your quiz statistics here.",
     "quizzDetailsTabStatisticsDetailsStatusBadge": "Details",
@@ -103,8 +114,19 @@
     "quizzDetailsTabStatisticsScore": "Score",
     "quizzDetailsTabStatisticsName": "Name",
     "quizzDetailsTabStatisticsDate": "Date",
-    "quizzDetailsTabStatisticsTime": "Time",
+    "quizzDetailsTabStatisticsTime": "Duration",
     "quizzDetailsTabStatisticsEmail": "E-mail",
+    "quizzDetailsTabStatisticsSecondsElapsed": "{seconds} seconds",
+    "@quizzDetailsTabStatisticsSecondsElapsed": {
+        "description": "Time elapsed in seconds",
+        "placeholders": {
+            "seconds": {
+                "type": "int",
+                "example": "5",
+                "description": "Number of seconds"
+        }
+      }
+    },
 
     "quizzDetailsTabGeneralSubheading": "Manage your quiz page settings here.",
     "quizzDetailsTabGeneralPageSettingsHeading": "Quiz page settings",
@@ -114,6 +136,7 @@
     "quizzDetailsTabGeneralQuizDescription": "Quiz description",
     "quizzDetailsTabGeneralQuizDescriptionTextFieldDescription": "This is your public quiz description. It will be displayed on your quiz page. You can change it anytime.",
     "quizzDetailsTabGeneralQuizDescriptionHint": "Enter quiz title",
+    "quizzDetailsTabGeneralSuccessfullSave": "Succesfully updated quiz details.",
 
     "quizzCreationQuitHeading": "Are you sure?",
     "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",
@@ -144,7 +167,19 @@
 
     "dashboardTopHeading": "Quizzes",
     "dashboardSubheading": "Here, you can effortlessly list, delete, edit and create new exams.",
+    "quizQuestionNumberBadge": "Total {questionNumber} questions",
+    "@quizQuestionNumberBadge": {
+        "description": "Badge displaying total number of questions",
+        "placeholders": {
+            "questionNumber": {
+                "type": "int",
+                "example": "5",
+                "description": "Number of questions"
+            }
+        }
+    },
     "addNewQuizzButton": "Add new quizz",
+    "dashboardQuizzesEmpty": "You do not have any quizzes yet. Create one now!",
 
     "quizzTakeAppBarTitle": "Take quizz",
     "quizzTakeQuitHeading": "Quit quizz?",
@@ -168,7 +203,7 @@
     "quizzTakeSummaryBackToDashboard": "Back to dashboard",
 
     "deleteQuizzHeading": "Are you sure?",
-    "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there''s no going back.",
+    "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",
     "deleteAccountHeading": "Deleting account",
     "deleteAccountDescription": "You are about to delete your account. This action cannot be undone.",
     "quizzDetailsSaveChangesButton": "Save changes",

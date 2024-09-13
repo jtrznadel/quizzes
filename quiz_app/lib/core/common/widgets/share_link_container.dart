@@ -28,10 +28,14 @@ class ShareLinkContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            link,
-            style: context.textTheme.bodyLarge?.copyWith(
-              color: Colors.black,
+          Expanded(
+            child: Text(
+              link,
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: Colors.black,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           IconButton(

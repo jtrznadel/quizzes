@@ -18,6 +18,7 @@ class QuizzConfigurePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quizGenerationController = ref.read(quizGenerationControllerProvider.notifier);
+    final state = ref.watch(quizGenerationControllerProvider);
     return SafeArea(
       child: Stack(
         children: [
@@ -51,38 +52,41 @@ class QuizzConfigurePage extends ConsumerWidget {
             child: Container(
               color: AppColorScheme.surface,
               padding: const EdgeInsets.only(top: 8),
-              child: BasicButton(
-                onPressed: () async {
-                  try {
-                    if (quizGenerationController.validate()) {
-                      pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                      await quizGenerationController.generate();
-                    } else {
+              child: state.maybeWhen(
+                generating: (request) => BasicButton(
+                  onPressed: () async {
+                    try {
+                      if (quizGenerationController.validateRequest(request)) {
+                        pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                        await quizGenerationController.generate(request);
+                      } else {
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                S.of(context).quizzCreationConfigurationError,
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                    } catch (e) {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(
-                              S.of(context).quizzCreationConfigurationError,
-                            ),
+                            content: Text(S.of(context).somethingWentWrong),
                           ),
                         );
                       }
                     }
-                  } catch (e) {
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(S.of(context).somethingWentWrong),
-                        ),
-                      );
-                    }
-                  }
-                },
-                text: S.of(context).continueButton,
-                width: double.infinity,
+                  },
+                  text: S.of(context).continueButton,
+                  width: double.infinity,
+                ),
+                orElse: () => const SizedBox.shrink(),
               ),
             ),
           ),

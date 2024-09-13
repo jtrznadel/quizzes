@@ -12,6 +12,9 @@ part 'auth_controller.g.dart';
 
 @riverpod
 class AuthController extends _$AuthController {
+
+  final _authRepostiory = authRepositoryProvider;
+
   @override
   AuthState build() {
     return const AuthState.initial();
@@ -20,7 +23,7 @@ class AuthController extends _$AuthController {
   Future<void> signUp({required String email, required String password}) async {
     state = const AuthState.loading();
     final userAuth = UserAuth(email: email, password: password);
-    final result = await ref.read(authRepositoryProvider).signUp(userAuth: userAuth);
+    final result = await ref.read(_authRepostiory).signUp(userAuth: userAuth);
     result.fold(
       (error) => state = AuthState.error(error.message),
       (_) => state = const AuthState.success(),
@@ -30,7 +33,7 @@ class AuthController extends _$AuthController {
   Future<void> signIn({required String email, required String password}) async {
     final userAuth = UserAuth(email: email, password: password);
     state = const AuthState.loading();
-    final result = await ref.read(authRepositoryProvider).signIn(userAuth: userAuth);
+    final result = await ref.read(_authRepostiory).signIn(userAuth: userAuth);
     result.fold(
       (error) => state = AuthState.error(error.message),
       (tokens) async {
@@ -45,7 +48,7 @@ class AuthController extends _$AuthController {
 
   Future<void> signOut() async {
     state = const AuthState.loading();
-    final result = await ref.read(authRepositoryProvider).signOut();
+    final result = await ref.read(_authRepostiory).signOut();
     final router = ref.read(appRouterProvider);
     result.fold(
       (error) => state = AuthState.error(error.message),

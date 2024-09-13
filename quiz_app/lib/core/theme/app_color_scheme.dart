@@ -13,6 +13,7 @@ abstract class AppColorScheme {
   static const Color surface = Color(0xFFF4F6F7);
   static const Color surfaceContainer = Color(0xFFFDFEFF);
   static const Color border = Color(0xFFE6E9EB);
+  static const Color dottedBorder = Color(0xFFD4D4D8);
 
   static const Color textPrimary = Color(0xFF2E2E2E);
   static const Color textSecondary = Color(0xFF53575A);

@@ -1,98 +1,161 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../application/quiz_details_controller.dart';
+import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
 import '../widgets/text_checkbox.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizDetailsSettingsTab extends StatefulWidget {
+class QuizDetailsSettingsTab extends ConsumerWidget {
   const QuizDetailsSettingsTab({super.key});
 
   @override
-  State<QuizDetailsSettingsTab> createState() => _QuizDetailsSettingsTabState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(quizDetailsControllerProvider);
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
 
-class _QuizDetailsSettingsTabState extends State<QuizDetailsSettingsTab> {
-  bool quizStatusValue = false;
-  bool quizAvailabilityActiveValue = false;
-  bool quizAvailabilityPublicValue = false;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SmallVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabSettingsSubheading,
-          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
-        ),
-        const SmallVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabSettingsQuizStatus,
-          style: context.textTheme.labelLarge,
-        ),
-        const SmallVSpacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return state.maybeWhen(
+      loaded: (quizDetails, _) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: Text(
-                S.of(context).quizzDetailsTabSettingsQuizStatusDescription,
-                style: context.textTheme.bodyMedium,
-              ),
-            ),
-            SwitchButton(
-              value: quizStatusValue,
-              onChanged: (value) {
-                setState(() {
-                  quizStatusValue = value;
-                });
+            ...heading(context),
+            ...statusSection(context, quizDetails, controller),
+            ...availabilitySection(context, quizDetails, controller),
+            saveButton(
+              quizDetails,
+              () async {
+                final success = await controller.updateQuizProperties(
+                  quizDetails.id,
+                  quizDetails.status,
+                  quizDetails.availability,
+                );
+                if (context.mounted) {
+                  if (success) {
+                    InfoSnackbar.show(
+                      context,
+                      S.of(context).quizzDetailsTabSettingsSuccessfullSave,
+                      color: AppColorScheme.success,
+                    );
+                  } else {
+                    ErrorSnackbar.show(
+                      context,
+                      S.current.somethingWentWrong,
+                    );
+                  }
+                }
               },
+              context,
             ),
           ],
-        ),
-        const LargeVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabSettingsQuizAvailability,
-          style: context.textTheme.labelLarge,
-        ),
-        const SmallVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabSettingsQuizAvailabilityDescription,
-          style: context.textTheme.bodyMedium,
-        ),
-        const MediumVSpacer(),
-        TextCheckbox(
-          text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityActive,
-          value: quizAvailabilityActiveValue,
-          onChanged: (value) {
-            setState(() {
-              quizAvailabilityActiveValue = value!;
-            });
-          },
-        ),
-        const SmallVSpacer(),
-        TextCheckbox(
-          text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
-          value: quizAvailabilityPublicValue,
-          onChanged: (value) {
-            setState(() {
-              quizAvailabilityPublicValue = value!;
-            });
-          },
-        ),
-        const ExtraLargeVSpacer(),
-        Align(
-          alignment: Alignment.centerRight,
-          child: BasicButton(
-            text: S.of(context).quizzDetailsTabSettingsSaveChanges,
-            onPressed: () {},
+        );
+      },
+      orElse: () {
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  List<Widget> heading(BuildContext context) {
+    return [
+      const SmallVSpacer(),
+      Text(
+        S.of(context).quizzDetailsTabSettingsSubheading,
+        style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+      ),
+      const SmallVSpacer(),
+    ];
+  }
+
+  List<Widget> statusSection(
+    BuildContext context,
+    QuizDetailsModel quizDetails,
+    QuizDetailsController controller,
+  ) {
+    return [
+      Text(
+        S.of(context).quizzDetailsTabSettingsQuizStatus,
+        style: context.textTheme.labelLarge,
+      ),
+      const SmallVSpacer(),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Text(
+              S.of(context).quizzDetailsTabSettingsQuizStatusDescription,
+              style: context.textTheme.bodyMedium,
+            ),
           ),
-        )
-      ],
+          SwitchButton(
+            value: quizDetails.status == QuizStatus.Active,
+            onChanged: (value) {
+              controller.changeQuizStatus(
+                value ? QuizStatus.Active : QuizStatus.Inactive,
+              );
+            },
+          ),
+        ],
+      ),
+      const LargeVSpacer(),
+    ];
+  }
+
+  List<Widget> availabilitySection(
+    BuildContext context,
+    QuizDetailsModel quizDetails,
+    QuizDetailsController controller,
+  ) {
+    return [
+      Text(
+        S.of(context).quizzDetailsTabSettingsQuizAvailability,
+        style: context.textTheme.labelLarge,
+      ),
+      const SmallVSpacer(),
+      Text(
+        S.of(context).quizzDetailsTabSettingsQuizAvailabilityDescription,
+        style: context.textTheme.bodyMedium,
+      ),
+      const MediumVSpacer(),
+      TextCheckbox(
+        text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPrivate,
+        value: quizDetails.availability == QuizAvailability.Private,
+        onChanged: (value) {
+          controller.changeQuizAvailability(
+            value! ? QuizAvailability.Private : QuizAvailability.Public,
+          );
+        },
+      ),
+      const SmallVSpacer(),
+      TextCheckbox(
+        text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
+        value: quizDetails.availability == QuizAvailability.Public,
+        onChanged: (value) {
+          controller.changeQuizAvailability(
+            value! ? QuizAvailability.Public : QuizAvailability.Private,
+          );
+        },
+      ),
+      const ExtraLargeVSpacer(),
+    ];
+  }
+
+  Widget saveButton(QuizDetailsModel quizDetailsModel, VoidCallback onPressed, BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: BasicButton(
+        text: S.of(context).quizzDetailsTabSettingsSaveChanges,
+        onPressed: () {
+          onPressed();
+        },
+      ),
     );
   }
 }

@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/validators/validators.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 import '../../application/auth_controller.dart';
 import '../../../../generated/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 
 class SignUpForm extends ConsumerStatefulWidget {
   const SignUpForm({super.key});
@@ -88,7 +89,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 
   Widget _errorAction(AuthController controller, BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => InfoSnackbar.show(
+      (_) => ErrorSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
       ),
@@ -102,6 +103,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
     SchedulerBinding.instance.addPostFrameCallback(
       (_) => InfoSnackbar.show(
         context,
+        color: AppColorScheme.success,
         S.of(context).successfulRegistration,
       ),
     );

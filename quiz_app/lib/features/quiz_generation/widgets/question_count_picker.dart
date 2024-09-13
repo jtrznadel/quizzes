@@ -33,6 +33,7 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
   QuestionNumberSelection _selectedValue = QuestionNumberSelection.low;
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(quizGenerationControllerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -48,7 +49,13 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
+              state.maybeWhen(
+                generating: (request) {
+                  request = request.copyWith(numberOfQuestions: value.value);
+                  ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
+                },
+                orElse: () {},
+              );
             });
           },
         ),
@@ -60,7 +67,13 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
+              state.maybeWhen(
+                generating: (request) {
+                  request = request.copyWith(numberOfQuestions: value.value);
+                  ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
+                },
+                orElse: () {},
+              );
             });
           },
         ),
@@ -72,7 +85,13 @@ class _QuestionCountPickerState extends ConsumerState<QuestionCountPicker> {
           onChanged: (value) {
             setState(() {
               _selectedValue = value!;
-              ref.read(quizGenerationControllerProvider.notifier).setNumberOfQuestions(value.value);
+              state.maybeWhen(
+                generating: (request) {
+                  request = request.copyWith(numberOfQuestions: value.value);
+                  ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
+                },
+                orElse: () {},
+              );
             });
           },
         ),

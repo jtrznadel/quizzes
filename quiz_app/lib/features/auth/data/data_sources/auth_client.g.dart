@@ -128,3 +128,24 @@ class _AuthClient implements AuthClient {
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$authClientHash() => r'84aa9401c0bc33600214cf7a867cb4e4f1c05752';
+
+/// See also [authClient].
+@ProviderFor(authClient)
+final authClientProvider = AutoDisposeProvider<AuthClient>.internal(
+  authClient,
+  name: r'authClientProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$authClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AuthClientRef = AutoDisposeProviderRef<AuthClient>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

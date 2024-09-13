@@ -60,6 +60,9 @@ dependencies:
   flutter_native_splash: ^2.4.1
   intl_utils: ^2.8.7
   lottie: ^3.1.2
+  
+  paginated_list: ^1.2.3
+  jwt_decoder: ^2.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -119,4 +122,7 @@ flutter_native_splash:
   android: true
   ios: true
   web: false
+  android_12:
+    image: assets/images/splash_image_android12.png
+    icon_background_color: "#ffffff"
 

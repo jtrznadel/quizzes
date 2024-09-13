@@ -1,19 +1,23 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/errors/server_exception.dart';
+import '../../../../core/services/file_reader.dart';
 import '../../../../core/utils/typedefs.dart';
-import '../../domain/quiz_generation_model.dart';
-import '../../domain/quiz_model.dart';
+import '../../domain/create_quiz_model.dart';
+import '../../domain/generate_quiz_model.dart';
+import '../../domain/quiz_request_model.dart';
 import '../data_sources/quiz_generation_client.dart';
 
+part 'quiz_generation_repository.g.dart';
+
 abstract class QuizGenerationRepository {
-  ResultFuture<QuizModel> generateQuiz({
-    required QuizGenerationModel quizGenerationModel,
+  ResultFuture<GenerateQuizModel> generateQuiz({
+    required QuizRequestModel quizRequestModel,
   });
 
   ResultFuture<String> createQuiz({
-    required QuizModel quizModel,
+    required CreateQuizModel quizModel,
   });
 }
 
@@ -23,12 +27,17 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
   final QuizGenerationClient _quizGenerationClient;
 
   @override
-  ResultFuture<QuizModel> generateQuiz({
-    required QuizGenerationModel quizGenerationModel,
+  ResultFuture<GenerateQuizModel> generateQuiz({
+    required QuizRequestModel quizRequestModel,
   }) async {
     try {
-      final model = await _quizGenerationClient
-          .generateQuiz(quizGenerationModel.toJson());
+      final attachments = quizRequestModel.attachments.map((e) => FileReader.toMultipartFile(e)).toList();
+      final model = await _quizGenerationClient.generateQuiz(
+        content: quizRequestModel.content,
+        numberOfQuestions: quizRequestModel.numberOfQuestions,
+        questionTypes: quizRequestModel.questionTypes.join(','),
+        attachments: attachments,
+      );
       return Right(model);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
@@ -37,11 +46,10 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
 
   @override
   ResultFuture<String> createQuiz({
-    required QuizModel quizModel,
+    required CreateQuizModel quizModel,
   }) async {
     try {
-      final dtoJson = QuizDto(quizModel).toJson();
-      final model = await _quizGenerationClient.createQuiz(dtoJson);
+      final model = await _quizGenerationClient.createQuiz(quizModel.toJson());
       return Right(model);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
@@ -49,20 +57,7 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
   }
 }
 
-final quizGenerationRepositoryProvider = Provider<QuizGenerationRepository>(
-  (ref) =>
-      QuizGenerationRepositoryImpl(ref.watch(quizGenerationClientProvider)),
-);
-
-
-class QuizDto{
-  final QuizModel quizDto;
-
-  QuizDto(this.quizDto);
-
-  Map<String, dynamic> toJson() {
-    return {
-      'quizDto': quizDto.toJson(),
-    };
-  }
-}
+@riverpod
+QuizGenerationRepository quizGenerationRepository(
+        QuizGenerationRepositoryRef ref) =>
+    QuizGenerationRepositoryImpl(ref.read(quizGenerationClientProvider));

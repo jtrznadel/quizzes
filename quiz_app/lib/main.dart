@@ -4,10 +4,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/services/app_router.dart';
 import 'core/services/language_provider.dart';
+import 'core/services/session_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'generated/l10n.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const ProviderScope(

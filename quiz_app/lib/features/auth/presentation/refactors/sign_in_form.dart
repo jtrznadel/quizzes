@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/services/app_router.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 import '../../application/auth_controller.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -110,7 +112,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
 
   Widget _errorAction(AuthController controller, BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => InfoSnackbar.show(
+      (_) => ErrorSnackbar.show(
         context,
         S.of(context).invalidEmailOrPassword,
       ),

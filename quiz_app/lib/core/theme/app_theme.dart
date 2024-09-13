@@ -8,6 +8,7 @@ abstract class AppTheme {
   static const double pageDefaultSpacingSize = 16;
   static const double pageDefaultTopPaddingSize = 24;
   static const double mediumRadius = 8;
+  static const double smallRadius = 4;
 
   static const double radiusFull = 9999;
   static const double radiusMedium = 8;
@@ -18,8 +19,10 @@ abstract class AppTheme {
   static const double quizAttemptItemBorderRadius = 8;
   static const double buttonBorderRadius = 48;
   static const double buttonVerticalPadding = 12;
+  static const double buttonHorizontalPadding = 32;
   static const double buttonBorderWidth = 0.5;
   static const double dottedBorderWidth = 1.5;
+  static const double dottedBorderPadding = 0.5;
 
   static const double forgotPasswordSuccessScreenPadding = 25;
   static const double forgotPasswordSuccessDescriptionWidth = 225;
@@ -28,9 +31,15 @@ abstract class AppTheme {
   static const double dashboardUserProfileIconSize = 24;
   static const double dashboardNewQuizIconSize = 32;
   static const double dashboardAddNewButtonBorderRadius = 8;
-  static const double dashboardAddNewButtonHeight = 200;
+  static const double dashboardAddNewButtonHeight = 120;
 
   static const double quizDeleteDialogItemBorderRadius = 8;
+  static const double quizDeleteDialogHeaderFontSize = 16;
+  static const int quizDeleteDialogHeaderMaxLines = 1;
+  static const int quizDeleteDialogDescriptionMaxLines = 2;
+  static const double quizItemHeadingFontSize = 16;
+  static const int quizItemHeadingMaxLines = 2;
+  static const int quizItemDescriptionMaxLines = 2;
 
   static const double snackBarBorderRadius = 8;
 
@@ -69,6 +78,8 @@ abstract class AppTheme {
   static const addQuestionDialogTextAreaHeight = 20 / 14;
 
   static const int addAnswerDialogAnswerLines = 2;
+
+  static const double deleteQuestionDetailsQuestionBoxPadding = 12;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,

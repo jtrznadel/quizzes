@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../features/quiz_generation/domain/generate_question_model.dart';
 import '../spacers/vertical_spacers.dart';
 import '../basic_button.dart';
 import '../dialogs/basic_dialog.dart';
@@ -9,14 +10,17 @@ import '../../../res/media_res.dart';
 import 'add_new_question_dialog.dart';
 import '../../../../generated/l10n.dart';
 
-
 class GenerateNewQuestionDialog extends StatefulWidget {
-  const GenerateNewQuestionDialog({super.key});
+  const GenerateNewQuestionDialog({super.key, required this.onQuestionAdd});
 
-  static void show(BuildContext context) {
+  final void Function(GenerateQuestionModel question) onQuestionAdd;
+
+  static void show(BuildContext context, {required void Function(GenerateQuestionModel question) onQuestionAdd}) {
     showDialog(
       context: context,
-      builder: (context) => const GenerateNewQuestionDialog(),
+      builder: (context) => GenerateNewQuestionDialog(
+        onQuestionAdd: onQuestionAdd,
+      ),
     );
   }
 
@@ -50,7 +54,7 @@ class _GenerateNewQuestionDialogState extends State<GenerateNewQuestionDialog> {
         BasicButton(
           onPressed: () {
             Navigator.pop(context);
-            AddNewQuestionDialog.show(context);
+            AddNewQuestionDialog.show(context, onQuestionAdd: widget.onQuestionAdd);
           },
           text: S.of(context).quizzCreationGenerateQuestionGenerateButton,
           icon: SvgPicture.asset(

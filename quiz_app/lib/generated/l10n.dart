@@ -18,17 +18,14 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(_current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +38,7 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(instance != null, 'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -310,10 +306,10 @@ class S {
     );
   }
 
-  /// `Don''t worry! It happens. Enter the email address associated with your account.`
+  /// `Do not worry! It happens. Enter the email address associated with your account.`
   String get forgotPasswordSubheading {
     return Intl.message(
-      'Don\'\'t worry! It happens. Enter the email address associated with your account.',
+      'Do not worry! It happens. Enter the email address associated with your account.',
       name: 'forgotPasswordSubheading',
       desc: '',
       args: [],
@@ -460,20 +456,20 @@ class S {
     );
   }
 
-  /// `Source Text`
+  /// `Content Text`
   String get quizzCreationTextPromptHeading {
     return Intl.message(
-      'Source Text',
+      'Content Text',
       name: 'quizzCreationTextPromptHeading',
       desc: '',
       args: [],
     );
   }
 
-  /// `Enter the text that will be used to create your quizz.`
+  /// `You can either enter text, upload files, or use a combination of both to create your quizz.`
   String get quizzCreationTextPromptSubheading {
     return Intl.message(
-      'Enter the text that will be used to create your quizz.',
+      'You can either enter text, upload files, or use a combination of both to create your quizz.',
       name: 'quizzCreationTextPromptSubheading',
       desc: '',
       args: [],
@@ -490,10 +486,10 @@ class S {
     );
   }
 
-  /// `Source Text`
+  /// `Content Text`
   String get quizzCreationTextPromptTextAreaLabel {
     return Intl.message(
-      'Source Text',
+      'Content Text',
       name: 'quizzCreationTextPromptTextAreaLabel',
       desc: '',
       args: [],
@@ -505,6 +501,56 @@ class S {
     return Intl.message(
       'Enter the text for your quizz',
       name: 'quizzCreationTextPromptTextAreaHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Max size: 5MB`
+  String get quizzCreationAttachFileMaxSize {
+    return Intl.message(
+      'Max size: 5MB',
+      name: 'quizzCreationAttachFileMaxSize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Types supported: .txt, .pdf, .docx, .xlsx, .pptx`
+  String get quizzCreationAttachFileAllowedTypes {
+    return Intl.message(
+      'Types supported: .txt, .pdf, .docx, .xlsx, .pptx',
+      name: 'quizzCreationAttachFileAllowedTypes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can attach maximum of 3 files.`
+  String get quizzCreationMaxAttachmentsError {
+    return Intl.message(
+      'You can attach maximum of 3 files.',
+      name: 'quizzCreationMaxAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have already attached this file.`
+  String get quizzCreationDuplicateAttachmentsError {
+    return Intl.message(
+      'You have already attached this file.',
+      name: 'quizzCreationDuplicateAttachmentsError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need to provide either text or upload file.`
+  String get quizzCreationYouNeedToProvideContent {
+    return Intl.message(
+      'You need to provide either text or upload file.',
+      name: 'quizzCreationYouNeedToProvideContent',
       desc: '',
       args: [],
     );
@@ -660,6 +706,16 @@ class S {
     );
   }
 
+  /// `Question title and at least two answers are required.`
+  String get quizzCreationAddQuestionError {
+    return Intl.message(
+      'Question title and at least two answers are required.',
+      name: 'quizzCreationAddQuestionError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Quizz Preview`
   String get quizzCreationPreviewHeading {
     return Intl.message(
@@ -760,6 +816,36 @@ class S {
     );
   }
 
+  /// `Are you sure?`
+  String get deleteQuestionDialogHeading {
+    return Intl.message(
+      'Are you sure?',
+      name: 'deleteQuestionDialogHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This action cannot be undone. Once you delete the question there is no going back.`
+  String get deleteQuestionDialogDescription {
+    return Intl.message(
+      'This action cannot be undone. Once you delete the question there is no going back.',
+      name: 'deleteQuestionDialogDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to delete question.`
+  String get deleteQuestionFailure {
+    return Intl.message(
+      'Failed to delete question.',
+      name: 'deleteQuestionFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Manage your quiz settings here.`
   String get quizzDetailsTabSettingsSubheading {
     return Intl.message(
@@ -780,10 +866,10 @@ class S {
     );
   }
 
-  /// `When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.`
+  /// `When switched on, quizz is active and available for solving. If not, no one can solve the quiz.`
   String get quizzDetailsTabSettingsQuizStatusDescription {
     return Intl.message(
-      'When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.',
+      'When switched on, quizz is active and available for solving. If not, no one can solve the quiz.',
       name: 'quizzDetailsTabSettingsQuizStatusDescription',
       desc: '',
       args: [],
@@ -800,10 +886,10 @@ class S {
     );
   }
 
-  /// `When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.`
+  /// `When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.`
   String get quizzDetailsTabSettingsQuizAvailabilityDescription {
     return Intl.message(
-      'When switched on, quizz is active and available for everyone. If not, no one can access the quizz from the external link.',
+      'When switched on, quizz is available for everyone. If not, the quiz is private and only visible for you.',
       name: 'quizzDetailsTabSettingsQuizAvailabilityDescription',
       desc: '',
       args: [],
@@ -830,11 +916,31 @@ class S {
     );
   }
 
+  /// `Private`
+  String get quizzDetailsTabSettingsQuizAvailabilityPrivate {
+    return Intl.message(
+      'Private',
+      name: 'quizzDetailsTabSettingsQuizAvailabilityPrivate',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save changes`
   String get quizzDetailsTabSettingsSaveChanges {
     return Intl.message(
       'Save changes',
       name: 'quizzDetailsTabSettingsSaveChanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Succesfully updated quiz settings.`
+  String get quizzDetailsTabSettingsSuccessfullSave {
+    return Intl.message(
+      'Succesfully updated quiz settings.',
+      name: 'quizzDetailsTabSettingsSuccessfullSave',
       desc: '',
       args: [],
     );
@@ -910,10 +1016,10 @@ class S {
     );
   }
 
-  /// `Time`
+  /// `Duration`
   String get quizzDetailsTabStatisticsTime {
     return Intl.message(
-      'Time',
+      'Duration',
       name: 'quizzDetailsTabStatisticsTime',
       desc: '',
       args: [],
@@ -927,6 +1033,16 @@ class S {
       name: 'quizzDetailsTabStatisticsEmail',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `{seconds} seconds`
+  String quizzDetailsTabStatisticsSecondsElapsed(int seconds) {
+    return Intl.message(
+      '$seconds seconds',
+      name: 'quizzDetailsTabStatisticsSecondsElapsed',
+      desc: 'Time elapsed in seconds',
+      args: [seconds],
     );
   }
 
@@ -1005,6 +1121,16 @@ class S {
     return Intl.message(
       'Enter quiz title',
       name: 'quizzDetailsTabGeneralQuizDescriptionHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Succesfully updated quiz details.`
+  String get quizzDetailsTabGeneralSuccessfullSave {
+    return Intl.message(
+      'Succesfully updated quiz details.',
+      name: 'quizzDetailsTabGeneralSuccessfullSave',
       desc: '',
       args: [],
     );
@@ -1250,6 +1376,16 @@ class S {
     );
   }
 
+  /// `Total {questionNumber} questions`
+  String quizQuestionNumberBadge(int questionNumber) {
+    return Intl.message(
+      'Total $questionNumber questions',
+      name: 'quizQuestionNumberBadge',
+      desc: 'Badge displaying total number of questions',
+      args: [questionNumber],
+    );
+  }
+
   /// `Add new quizz`
   String get addNewQuizzButton {
     return Intl.message(
@@ -1460,6 +1596,16 @@ class S {
     );
   }
 
+  /// `You do not have any quizzes yet. Create one now!`
+  String get dashboardQuizzesEmpty {
+    return Intl.message(
+      'You do not have any quizzes yet. Create one now!',
+      name: 'dashboardQuizzesEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get deleteQuizzHeading {
     return Intl.message(
@@ -1470,10 +1616,10 @@ class S {
     );
   }
 
-  /// `This action cannot be undone. Once you delete the quiz there''s no going back.`
+  /// `This action cannot be undone. Once you delete the quiz there is no going back.`
   String get deleteQuizzDescription {
     return Intl.message(
-      'This action cannot be undone. Once you delete the quiz there\'\'s no going back.',
+      'This action cannot be undone. Once you delete the quiz there is no going back.',
       name: 'deleteQuizzDescription',
       desc: '',
       args: [],

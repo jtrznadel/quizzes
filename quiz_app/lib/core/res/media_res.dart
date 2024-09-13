@@ -36,4 +36,5 @@ class MediaRes {
   static const String languageRadioChecked = 'assets/icons/l10n_radio_button_checked.svg';
   static const String languageRadioUnchecked = 'assets/icons/l10n_radio_button_unchecked.svg';
   static const String logout = 'assets/icons/logout.svg';
+  static const String attachment = 'assets/icons/attachment.svg';
 }

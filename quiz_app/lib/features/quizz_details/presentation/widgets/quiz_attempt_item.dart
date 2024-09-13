@@ -22,34 +22,30 @@ class QuizAttemptItem extends StatelessWidget {
         children: [
           statusBadges(context),
           const SmallVSpacer(),
-          infoRow(
-            S.of(context).quizzDetailsTabStatisticsScore,
-            '40',
-            context,
+          InfoRow(
+            label: S.of(context).quizzDetailsTabStatisticsScore,
+            value: '40',
           ),
           const SmallVSpacer(),
-          infoRow(
-            S.of(context).quizzDetailsTabStatisticsName,
-            'John B',
-            context,
+          InfoRow(
+            label: S.of(context).quizzDetailsTabStatisticsName,
+            value: 'John B',
           ),
           const SmallVSpacer(),
-          infoRow(
-            S.of(context).quizzDetailsTabStatisticsEmail,
-            '-',
-            context,
+          InfoRow(
+            label: S.of(context).quizzDetailsTabStatisticsEmail,
+            value: '-',
           ),
           const SmallVSpacer(),
-          infoRow(
-            S.of(context).quizzDetailsTabStatisticsTime,
-            '12 seconds',
-            context,
+          InfoRow(
+            label: S.of(context).quizzDetailsTabStatisticsTime,
+            //TODO: Replace with real data
+            value: S.of(context).quizzDetailsTabStatisticsSecondsElapsed(12),
           ),
           const SmallVSpacer(),
-          infoRow(
-            S.of(context).quizzDetailsTabStatisticsDate,
-            '21.08.2024',
-            context,
+          InfoRow(
+            label: S.of(context).quizzDetailsTabStatisticsDate,
+            value: '21.08.2024',
           ),
         ],
       ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
@@ -73,8 +69,16 @@ class QuizAttemptItem extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget infoRow(String label, String value, BuildContext context) {
+class InfoRow extends StatelessWidget {
+  const InfoRow({super.key, required this.label, required this.value});
+
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

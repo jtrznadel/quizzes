@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/utils/typedefs.dart';
 import '../../domain/user.dart';
 import '../data_sources/user_client.dart';
+
+part 'user_repository.g.dart';
 
 abstract class UserRepository {
   ResultFuture<User> getUser();
@@ -40,5 +42,6 @@ class UserRepositoryImpl implements UserRepository {
   }
 }
 
-final userRepositoryProvider = Provider<UserRepository>(
-    (ref) => UserRepositoryImpl(ref.watch(userClientProvider)));
+@riverpod
+UserRepository userRepository(UserRepositoryRef ref) =>
+    UserRepositoryImpl(ref.read(userClientProvider));

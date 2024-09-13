@@ -10,13 +10,10 @@ String _$userControllerHash() => r'c09274e88b186a64c7c7565dbf16c102e4ecb12a';
 
 /// See also [UserController].
 @ProviderFor(UserController)
-final userControllerProvider =
-    AutoDisposeNotifierProvider<UserController, UserState>.internal(
+final userControllerProvider = AutoDisposeNotifierProvider<UserController, UserState>.internal(
   UserController.new,
   name: r'userControllerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$userControllerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product') ? null : _$userControllerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

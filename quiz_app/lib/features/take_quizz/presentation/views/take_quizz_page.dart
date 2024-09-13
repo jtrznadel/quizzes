@@ -11,7 +11,6 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
-import '../../../dashboard/domain/entities/test_quiz_entity.dart';
 import '../widgets/quit_quizz_taking_dialog.dart';
 
 @RoutePage()
@@ -132,4 +131,13 @@ class TakeQuizzInfoBox extends StatelessWidget {
       ),
     );
   }
+}
+
+class TestQuizEntity {
+  final String quizTitle;
+  final String quizDescription;
+  final String quizStatus;
+  final int quizNumberOfQuestions;
+
+  TestQuizEntity({required this.quizTitle, required this.quizDescription, required this.quizStatus, required this.quizNumberOfQuestions});
 }
