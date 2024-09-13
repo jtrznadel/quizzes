@@ -34,14 +34,6 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
-        "addNewQuestionBottomSheetAI": MessageLookupByLibrary.simpleMessage(
-            "Wygeneruj pytanie przy użyciu AI"),
-        "addNewQuestionBottomSheetHeading":
-            MessageLookupByLibrary.simpleMessage("Dodaj nowe pytanie"),
-        "addNewQuestionBottomSheetManual":
-            MessageLookupByLibrary.simpleMessage("Ręcznie"),
-        "addNewQuizzButton":
-            MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
