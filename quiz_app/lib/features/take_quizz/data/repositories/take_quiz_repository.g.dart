@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_controller.dart';
+part of 'take_quiz_repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userControllerHash() => r'a3d3dd2ed8cf5c06b3d483ace7ff961151ef2716';
+String _$takeQuizRepositoryHash() =>
+    r'fecf04a6024eb72ae6aad20aa9a20ca141987267';
 
-/// See also [UserController].
-@ProviderFor(UserController)
-final userControllerProvider =
-    AutoDisposeNotifierProvider<UserController, UserState>.internal(
-  UserController.new,
-  name: r'userControllerProvider',
+/// See also [takeQuizRepository].
+@ProviderFor(takeQuizRepository)
+final takeQuizRepositoryProvider =
+    AutoDisposeProvider<TakeQuizRepository>.internal(
+  takeQuizRepository,
+  name: r'takeQuizRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$userControllerHash,
+      : _$takeQuizRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserController = AutoDisposeNotifier<UserState>;
+typedef TakeQuizRepositoryRef = AutoDisposeProviderRef<TakeQuizRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
