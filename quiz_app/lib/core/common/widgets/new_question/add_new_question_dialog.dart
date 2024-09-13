@@ -5,6 +5,7 @@ import '../../../../features/quiz_generation/domain/answer_model.dart';
 import '../../../../features/quiz_generation/domain/generate_question_model.dart';
 import '../../../models/question_model_interface.dart';
 import '../../../services/app_router.dart';
+import '../errors/error_snackbar.dart';
 import '../info_snackbar.dart';
 import 'add_question_dialog_answer_section.dart';
 import '../basic_button.dart';
@@ -116,10 +117,9 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
               widget.onQuestionAdd(question);
               ref.read(appRouterProvider).maybePop();
             } else {
-              InfoSnackbar.show(
+              ErrorSnackbar.show(
                 context,
                 S.of(context).quizzCreationAddQuestionError,
-                color: AppColorScheme.error,
               );
             }
           },

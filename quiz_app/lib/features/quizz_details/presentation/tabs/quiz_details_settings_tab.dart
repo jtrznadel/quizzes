@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -43,10 +44,9 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
                       color: AppColorScheme.success,
                     );
                   } else {
-                    InfoSnackbar.show(
+                    ErrorSnackbar.show(
                       context,
                       S.current.somethingWentWrong,
-                      color: AppColorScheme.error,
                     );
                   }
                 }
@@ -67,8 +67,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
       const SmallVSpacer(),
       Text(
         S.of(context).quizzDetailsTabSettingsSubheading,
-        style: context.textTheme.bodyMedium!
-            .copyWith(color: AppColorScheme.textSecondary),
+        style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
       ),
       const SmallVSpacer(),
     ];
@@ -148,8 +147,7 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
     ];
   }
 
-  Widget saveButton(QuizDetailsModel quizDetailsModel, VoidCallback onPressed,
-      BuildContext context) {
+  Widget saveButton(QuizDetailsModel quizDetailsModel, VoidCallback onPressed, BuildContext context) {
     return Align(
       alignment: Alignment.centerRight,
       child: BasicButton(

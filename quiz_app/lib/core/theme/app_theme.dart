@@ -16,6 +16,7 @@ abstract class AppTheme {
   static const double quizAttemptItemBorderRadius = 8;
   static const double buttonBorderRadius = 48;
   static const double buttonVerticalPadding = 12;
+  static const double buttonHorizontalPadding = 32;
   static const double buttonBorderWidth = 0.5;
   static const double dottedBorderWidth = 1.5;
   static const double dottedBorderPadding = 0.5;
