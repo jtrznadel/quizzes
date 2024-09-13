@@ -137,6 +137,9 @@
     "quizzDetailsTabGeneralQuizDescriptionHint": "Enter quiz title",
     "quizzDetailsTabGeneralSuccessfullSave": "Succesfully updated quiz details.",
 
+    "quizzDetailsAddNewQuestionSuccess": "Successfully added a new question.",
+    "quizzDetailsAddNewQuestionFailure": "Failed to add a new question.",
+
     "quizzCreationQuitHeading": "Are you sure?",
     "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",
     "quizzCreationQuitButton": "Yes, quit",
@@ -148,7 +151,7 @@
     "quizzCreationAddQuestionDescriptionHint": "Enter question description",
     "quizzCreationAddQuestionAnswersLabel": "Answers",
     "quizzCreationSaveQuestion": "Save",
-    "quizzCreationAddQuestionAnswerPlaceholder": "What is one of the key features of cryptocurrencies?",
+    "quizzCreationAddQuestionAnswerPlaceholder": "Your answer",
 
     "quizzCreationGenerateQuestionHeading": "Generate new question",
     "quizzCreationGenerateQuestionPromptLabel": "Prompt",
@@ -222,6 +225,8 @@
     "dividerOr": "OR",
     "language": "Language",
     "languagePolish": "Polish",
-    "languageEnglish": "English"
+    "languageEnglish": "English",
+
+    "refreshButton": "Refresh"
 }
       

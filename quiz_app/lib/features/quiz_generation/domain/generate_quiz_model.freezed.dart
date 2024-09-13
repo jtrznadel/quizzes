@@ -22,7 +22,8 @@ GenerateQuizModel _$GenerateQuizModelFromJson(Map<String, dynamic> json) {
 mixin _$GenerateQuizModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<GenerateQuestionModel> get generateQuestions =>
+  @QuestionModelConverter()
+  List<QuestionModelInterface> get generateQuestions =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +41,8 @@ abstract class $GenerateQuizModelCopyWith<$Res> {
   $Res call(
       {String title,
       String description,
-      List<GenerateQuestionModel> generateQuestions});
+      @QuestionModelConverter()
+      List<QuestionModelInterface> generateQuestions});
 }
 
 /// @nodoc
@@ -72,7 +74,7 @@ class _$GenerateQuizModelCopyWithImpl<$Res, $Val extends GenerateQuizModel>
       generateQuestions: null == generateQuestions
           ? _value.generateQuestions
           : generateQuestions // ignore: cast_nullable_to_non_nullable
-              as List<GenerateQuestionModel>,
+              as List<QuestionModelInterface>,
     ) as $Val);
   }
 }
@@ -88,7 +90,8 @@ abstract class _$$GenerateQuizModelImplCopyWith<$Res>
   $Res call(
       {String title,
       String description,
-      List<GenerateQuestionModel> generateQuestions});
+      @QuestionModelConverter()
+      List<QuestionModelInterface> generateQuestions});
 }
 
 /// @nodoc
@@ -118,7 +121,7 @@ class __$$GenerateQuizModelImplCopyWithImpl<$Res>
       generateQuestions: null == generateQuestions
           ? _value._generateQuestions
           : generateQuestions // ignore: cast_nullable_to_non_nullable
-              as List<GenerateQuestionModel>,
+              as List<QuestionModelInterface>,
     ));
   }
 }
@@ -129,7 +132,8 @@ class _$GenerateQuizModelImpl implements _GenerateQuizModel {
   const _$GenerateQuizModelImpl(
       {required this.title,
       required this.description,
-      required final List<GenerateQuestionModel> generateQuestions})
+      @QuestionModelConverter()
+      required final List<QuestionModelInterface> generateQuestions})
       : _generateQuestions = generateQuestions;
 
   factory _$GenerateQuizModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -139,9 +143,10 @@ class _$GenerateQuizModelImpl implements _GenerateQuizModel {
   final String title;
   @override
   final String description;
-  final List<GenerateQuestionModel> _generateQuestions;
+  final List<QuestionModelInterface> _generateQuestions;
   @override
-  List<GenerateQuestionModel> get generateQuestions {
+  @QuestionModelConverter()
+  List<QuestionModelInterface> get generateQuestions {
     if (_generateQuestions is EqualUnmodifiableListView)
       return _generateQuestions;
     // ignore: implicit_dynamic_type
@@ -189,7 +194,8 @@ abstract class _GenerateQuizModel implements GenerateQuizModel {
   const factory _GenerateQuizModel(
           {required final String title,
           required final String description,
-          required final List<GenerateQuestionModel> generateQuestions}) =
+          @QuestionModelConverter()
+          required final List<QuestionModelInterface> generateQuestions}) =
       _$GenerateQuizModelImpl;
 
   factory _GenerateQuizModel.fromJson(Map<String, dynamic> json) =
@@ -200,7 +206,8 @@ abstract class _GenerateQuizModel implements GenerateQuizModel {
   @override
   String get description;
   @override
-  List<GenerateQuestionModel> get generateQuestions;
+  @QuestionModelConverter()
+  List<QuestionModelInterface> get generateQuestions;
   @override
   @JsonKey(ignore: true)
   _$$GenerateQuizModelImplCopyWith<_$GenerateQuizModelImpl> get copyWith =>

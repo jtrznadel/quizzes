@@ -50,7 +50,7 @@ class _AddQuestionDialogAnswerSectionState
 
   @override
   Widget build(BuildContext context) {
-    _selectedAnswer ??= widget.answerControllers.keys.first;
+    _selectedAnswer ??= widget.answerControllers.entries.firstWhere((element) => element.value.isCorrect).key;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -97,16 +97,18 @@ class AnswerTextArea extends StatelessWidget {
         ICheckbox(value: isChecked, onChanged: onChanged),
         const CustomHSpacer(AppTheme.addQuestionDialogAnswerHorizontalSpacer),
         Expanded(
-          child: TextArea(
-            required: false,
-            hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
-            controller: answerController,
-            minLines: AppTheme.addAnswerDialogAnswerLines,
-            maxLines: AppTheme.addAnswerDialogAnswerLines,
-            contentPadding: AppTheme.pageDefaultSpacingSize,
-            textStyle: context.textTheme.bodySmall!.copyWith(
-              color: AppColorScheme.textSecondary,
-              height: AppTheme.addQuestionDialogTextAreaHeight,
+          child: SizedBox(
+            width: context.width,
+            child: TextArea(
+              required: false,
+              hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
+              controller: answerController,
+              maxLines: AppTheme.addAnswerDialogMaxAnswerLines,
+              contentPadding: AppTheme.pageDefaultSpacingSize,
+              textStyle: context.textTheme.bodySmall!.copyWith(
+                color: AppColorScheme.textSecondary,
+                height: AppTheme.addQuestionDialogTextAreaHeight,
+              ),
             ),
           ),
         ),

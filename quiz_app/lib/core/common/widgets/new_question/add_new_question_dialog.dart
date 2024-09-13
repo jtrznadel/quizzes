@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../features/quiz_generation/domain/answer_model.dart';
 import '../../../../features/quiz_generation/domain/generate_question_model.dart';
+import '../../../models/question_model_interface.dart';
 import '../../../services/app_router.dart';
 import '../errors/error_snackbar.dart';
-import '../info_snackbar.dart';
 import 'add_question_dialog_answer_section.dart';
 import '../basic_button.dart';
 import '../dialogs/basic_dialog.dart';
@@ -16,15 +16,19 @@ import '../../../theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
 class AddNewQuestionDialog extends ConsumerStatefulWidget {
-  const AddNewQuestionDialog({super.key, required this.onQuestionAdd});
+  const AddNewQuestionDialog(
+      {super.key, required this.onQuestionAdd, this.question});
 
   //TODO: change when implementing quesiton adding in quiz details
-  final void Function(GenerateQuestionModel question) onQuestionAdd;
+  final void Function(QuestionModelInterface question) onQuestionAdd;
+  final QuestionModelInterface? question;
 
   @override
   ConsumerState createState() => _AddNewQuestionDialogState();
 
-  static void show(BuildContext context, {required void Function(GenerateQuestionModel) onQuestionAdd}) {
+  static void show(BuildContext context,
+      {required void Function(QuestionModelInterface) onQuestionAdd,
+      QuestionModelInterface? question}) {
     showDialog(
       context: context,
       builder: (context) => Scaffold(
@@ -33,7 +37,10 @@ class AddNewQuestionDialog extends ConsumerStatefulWidget {
           alignment: Alignment.center,
           child: Wrap(
             children: [
-              AddNewQuestionDialog(onQuestionAdd: onQuestionAdd),
+              AddNewQuestionDialog(
+                onQuestionAdd: onQuestionAdd,
+                question: question,
+              ),
             ],
           ),
         ),
@@ -44,7 +51,6 @@ class AddNewQuestionDialog extends ConsumerStatefulWidget {
 
 class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
   final TextEditingController titleController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
   final Map<Answer, AnswerWithValidation> answerControllers = () {
     final Map<Answer, AnswerWithValidation> result = {};
     for (var element in Answer.values) {
@@ -61,13 +67,22 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
   @override
   void dispose() {
     titleController.dispose();
-    descriptionController.dispose();
     answerControllers.forEach((key, value) => value.controller.dispose());
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.question != null) {
+      titleController.text = widget.question!.title;
+      for (var i = 0; i < widget.question!.answers.length; i++) {
+        answerControllers[Answer.values[i]]!.controller.text =
+            widget.question!.answers[i].content;
+        answerControllers[Answer.values[i]]!.isCorrect =
+            widget.question!.answers[i].isCorrect;
+      }
+    }
+
     return BasicDialog(
       title: S.of(context).quizzCreationAddQuestionHeading,
       content: _dialogContent(),
@@ -84,7 +99,8 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
         BasicButton(
           onPressed: () {
             if (validateQuestion()) {
-              final answers = answerControllers.values.toList().where((element) => element.controller.text.trim().isNotEmpty);
+              final answers = answerControllers.values.toList().where(
+                  (element) => element.controller.text.trim().isNotEmpty);
               final question = GenerateQuestionModel(
                 title: titleController.text,
                 generateAnswers: List.generate(
@@ -115,13 +131,17 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
       return false;
     }
 
-    final notEmptyAnswers = answerControllers.entries.toList().where((element) => element.value.controller.text.trim().isNotEmpty);
+    final notEmptyAnswers = answerControllers.entries
+        .toList()
+        .where((element) => element.value.controller.text.trim().isNotEmpty);
     if (notEmptyAnswers.length < 2) {
       return false;
     }
 
     final correctAnswers = answerControllers.entries.toList().where(
-          (element) => element.value.isCorrect && element.value.controller.text.trim().isNotEmpty,
+          (element) =>
+              element.value.isCorrect &&
+              element.value.controller.text.trim().isNotEmpty,
         );
     if (correctAnswers.isEmpty) {
       return false;
@@ -132,23 +152,25 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
 
   Widget _dialogContent() {
     return Form(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const LargeVSpacer(),
-          IFormField(
-            labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
-            hintText: S.of(context).quizzCreationAddQuestionTitleHint,
-            isRequired: true,
-            obscureText: false,
-            controller: titleController,
-          ),
-          const LargeVSpacer(),
-          AddQuestionDialogAnswerSection(
-            answerControllers: answerControllers,
-          ),
-        ],
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const LargeVSpacer(),
+            IFormField(
+              labelText: S.of(context).quizzCreationAddQuestionTitleLabel,
+              hintText: S.of(context).quizzCreationAddQuestionTitleHint,
+              isRequired: true,
+              obscureText: false,
+              controller: titleController,
+            ),
+            const LargeVSpacer(),
+            AddQuestionDialogAnswerSection(
+              answerControllers: answerControllers,
+            ),
+          ],
+        ),
       ),
     );
   }

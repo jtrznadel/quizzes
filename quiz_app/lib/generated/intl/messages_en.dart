@@ -140,8 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Here, you can create quizz based on your prompt."),
         "quizzCreationAddQuestionAnswerPlaceholder":
-            MessageLookupByLibrary.simpleMessage(
-                "What is one of the key features of cryptocurrencies?"),
+            MessageLookupByLibrary.simpleMessage("Your answer"),
         "quizzCreationAddQuestionAnswersLabel":
             MessageLookupByLibrary.simpleMessage("Answers"),
         "quizzCreationAddQuestionButton":
@@ -234,6 +233,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationYouNeedToProvideContent":
             MessageLookupByLibrary.simpleMessage(
                 "You need to provide either text or upload file."),
+        "quizzDetailsAddNewQuestionFailure":
+            MessageLookupByLibrary.simpleMessage(
+                "Failed to add a new question."),
+        "quizzDetailsAddNewQuestionSuccess":
+            MessageLookupByLibrary.simpleMessage(
+                "Successfully added a new question."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Quiz Detail"),
         "quizzDetailsSaveChangesButton":
@@ -324,6 +329,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzShareMessage": MessageLookupByLibrary.simpleMessage(
             "Share this quizz with your friends"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Title: "),
+        "refreshButton": MessageLookupByLibrary.simpleMessage("Refresh"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Save Quizz"),
         "sessionExpired": MessageLookupByLibrary.simpleMessage(

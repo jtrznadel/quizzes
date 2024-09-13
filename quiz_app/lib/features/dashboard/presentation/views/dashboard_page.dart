@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:paginated_list/paginated_list.dart';
 
-import '../../../../core/common/widgets/error_page.dart';
+import '../../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -47,7 +47,8 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
           loading: () => const LoadingIndicator(),
           loaded: (quizListModel, currentPage) {
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppTheme.pageDefaultSpacingSize),
               child: Column(
                 children: [
                   topBar(context),
@@ -72,7 +73,12 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
             );
           },
           error: (message) => Center(
-            child: ErrorPage(error: message),
+            child: BasicErrorPage(
+              errorText: S.of(context).somethingWentWrong,
+              onRefresh: () => controller.initLoad(),
+              refreshButtonText: S.of(context).refreshButton,
+              imageAsset: MediaRes.basicError,
+            ),
           ),
         ),
       ),
@@ -142,7 +148,8 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );

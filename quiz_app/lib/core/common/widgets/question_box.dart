@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../features/quiz_generation/domain/generate_question_model.dart';
+import '../../models/question_model_interface.dart';
 import 'dotted_border_container.dart';
+import 'new_question/add_new_question_dialog.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
 import 'answer_tile.dart';
 import 'spacers/vertical_spacers.dart';
@@ -11,17 +12,23 @@ import '../../extensions/context_extension.dart';
 import '../../res/media_res.dart';
 import '../../theme/app_color_scheme.dart';
 
-class QuestionBox extends StatelessWidget {
+class QuestionBox extends ConsumerWidget {
   const QuestionBox(
-      {super.key, required this.questionIndex, required this.question, required this.onDelete, required this.correctAnswerVisible});
+      {super.key,
+      required this.questionIndex,
+      required this.question,
+      required this.onDelete,
+      required this.onEdit,
+      required this.correctAnswerVisible});
 
   final int questionIndex;
-  final GenerateQuestionModel question;
+  final QuestionModelInterface question;
   final VoidCallback onDelete;
   final bool correctAnswerVisible;
+  final Function(QuestionModelInterface) onEdit;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -47,7 +54,15 @@ class QuestionBox extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        AddNewQuestionDialog.show(
+                          context,
+                          onQuestionAdd: (newQuestion) {
+                            onEdit(newQuestion);
+                          },
+                          question: question,
+                        );
+                      },
                       icon: SvgPicture.asset(
                         MediaRes.pencil,
                       ),
@@ -70,7 +85,7 @@ class QuestionBox extends StatelessWidget {
             ),
             const MediumVSpacer(),
             ListView.builder(
-              itemCount: question.generateAnswers.length,
+              itemCount: question.answers.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
@@ -78,8 +93,10 @@ class QuestionBox extends StatelessWidget {
                   children: [
                     AnswerTile(
                       leading: Answer.values[index].name,
-                      text: question.generateAnswers[index].content,
-                      isCorrect: correctAnswerVisible ? question.generateAnswers[index].isCorrect : false,
+                      text: question.answers[index].content,
+                      isCorrect: correctAnswerVisible
+                          ? question.answers[index].isCorrect
+                          : false,
                     ),
                     const SmallVSpacer(),
                   ],

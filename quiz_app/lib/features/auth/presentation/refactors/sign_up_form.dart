@@ -91,7 +91,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
     SchedulerBinding.instance.addPostFrameCallback(
       (_) => ErrorSnackbar.show(
         context,
-        S.of(context).invalidEmailOrPassword,
+        S.of(context).somethingWentWrong,
       ),
     );
     return _registerButton(controller, context);

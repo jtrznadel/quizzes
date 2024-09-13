@@ -71,7 +71,8 @@ abstract class AppTheme {
   static const double addQuestionDialogAnswerHorizontalSpacer = 12;
   static const addQuestionDialogTextAreaHeight = 20 / 14;
 
-  static const int addAnswerDialogAnswerLines = 2;
+  static const int addAnswerDialogMinAnswerLines = 1;
+  static const int addAnswerDialogMaxAnswerLines = 2;
 
   static const double deleteQuestionDetailsQuestionBoxPadding = 12;
 

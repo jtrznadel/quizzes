@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/question_box.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
@@ -11,6 +13,7 @@ import '../../../quiz_generation/domain/generate_question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../application/quiz_details_state.dart';
+import '../../domain/new_question_model.dart';
 import '../widgets/delete_question_dialog.dart';
 import '../widgets/switch_button.dart';
 import '../../../../generated/l10n.dart';
@@ -25,28 +28,41 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     return Column(
       children: [
         questionsHeader(context, state, controller),
-        questionsList(context, state),
+        questionsList(context, state, controller),
       ],
     );
   }
 
-  Widget questionsHeader(BuildContext context, QuizDetailsState state, QuizDetailsController controller) {
+  Widget questionsHeader(BuildContext context, QuizDetailsState state,
+      QuizDetailsController controller) {
     return Column(
       children: [
         const MediumVSpacer(),
         Text(
           S.of(context).quizzDetailsTabQuestionsSubheading,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         ),
         const MediumVSpacer(),
         answersSwitchRow(context, state, controller),
         //const MediumVSpacer(),
-        newQuestionButton(context),
+        Consumer(builder: (context, ref, child) {
+          return state.maybeWhen(
+            loaded: (quizDetails, _) {
+              return newQuestionButton(context, quizDetails.id, controller);
+            },
+            orElse: () => const SizedBox.shrink(),
+          );
+        }),
       ],
     );
   }
 
-  Widget questionsList(BuildContext context, QuizDetailsState state) {
+  Widget questionsList(
+    BuildContext context,
+    QuizDetailsState state,
+    QuizDetailsController controller,
+  ) {
     return state.maybeWhen(
       loaded: (quizDetails, answersVisible) {
         return Column(
@@ -66,9 +82,37 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
                         generateAnswers: quizDetails.questions[index].answers,
                       ),
                       onDelete: () {
-                        DeleteQuestionDialog.show(context, quizDetails.questions[index]);
+                        DeleteQuestionDialog.show(
+                            context, quizDetails.questions[index]);
                       },
                       correctAnswerVisible: answersVisible,
+                      onEdit: (question) async {
+                        await controller
+                            .deleteQuestion(quizDetails.questions[index].id);
+                        final newQuestionModel = NewQuestionModel(
+                          title: question.title,
+                          createAnswers: question.answers,
+                          quizID: quizDetails.id,
+                        );
+                        final success =
+                            await controller.addNewQuestion(newQuestionModel);
+                        if (context.mounted) {
+                          success
+                              ? InfoSnackbar.show(
+                                  context,
+                                  S
+                                      .of(context)
+                                      .quizzDetailsAddNewQuestionSuccess,
+                                  color: AppColorScheme.success,
+                                )
+                              : ErrorSnackbar.show(
+                                  context,
+                                  S
+                                      .of(context)
+                                      .quizzDetailsAddNewQuestionFailure,
+                                );
+                        }
+                      },
                     ),
                     const LargeVSpacer(),
                   ],
@@ -83,7 +127,8 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     );
   }
 
-  Widget answersSwitchRow(BuildContext context, QuizDetailsState state, QuizDetailsController controller) {
+  Widget answersSwitchRow(BuildContext context, QuizDetailsState state,
+      QuizDetailsController controller) {
     return state.maybeWhen(
       loaded: (quizDetails, answersVisible) {
         return Row(
@@ -91,7 +136,9 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             QuizStatusBadge(
-              text: S.of(context).quizQuestionNumberBadge(quizDetails.questions.length),
+              text: S
+                  .of(context)
+                  .quizQuestionNumberBadge(quizDetails.questions.length),
               backgroundColor: AppColorScheme.secondary,
               textColor: AppColorScheme.primary,
             ),
@@ -124,15 +171,20 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     );
   }
 
-  Widget newQuestionButton(BuildContext context) {
+  Widget newQuestionButton(
+      BuildContext context, String quizID, QuizDetailsController controller) {
     return Align(
       alignment: Alignment.centerRight,
       child: ElevatedButton(
         onPressed: () {
           AddNewQuestionBottomSheet.show(
             context,
-            onQuestionAdd: (question) {
-              //TODO: Implement add new question in quiz details controller
+            onQuestionAdd: (question) async {
+              final newQuestionModel = NewQuestionModel(
+                  title: question.title,
+                  createAnswers: question.answers,
+                  quizID: quizID);
+              await controller.addNewQuestion(newQuestionModel);
             },
           );
         },

@@ -22,7 +22,7 @@ required GenerateQuizModel model
       createQuizQuestions: model.generateQuestions
           .map((question) => CreateQuestionModel.fromGenerateQuestionModel(
                 title: question.title,
-                generateQuizAnswers: question.generateAnswers,
+                generateQuizAnswers: question.answers,
               ))
           .toList(),
     );
