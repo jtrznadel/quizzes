@@ -155,6 +155,7 @@ class QuizzPreviewPage extends ConsumerWidget {
               },
               orElse: () {},
             );
+            Navigator.of(context).pop();
           },
         );
       },

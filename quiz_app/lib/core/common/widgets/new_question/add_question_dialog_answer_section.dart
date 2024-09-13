@@ -103,7 +103,7 @@ class AnswerTextArea extends StatelessWidget {
               required: false,
               hintText: S.of(context).quizzCreationAddQuestionAnswerPlaceholder,
               controller: answerController,
-              maxLines: 2,
+              maxLines: AppTheme.addAnswerDialogMaxAnswerLines,
               contentPadding: AppTheme.pageDefaultSpacingSize,
               textStyle: context.textTheme.bodySmall!.copyWith(
                 color: AppColorScheme.textSecondary,

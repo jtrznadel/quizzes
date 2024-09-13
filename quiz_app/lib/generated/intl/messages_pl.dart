@@ -232,6 +232,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationYouNeedToProvideContent":
             MessageLookupByLibrary.simpleMessage(
                 "Musisz wprowadzić treść quizzu lub przesłać plik."),
+        "quizzDetailsAddNewQuestionFailure":
+            MessageLookupByLibrary.simpleMessage(
+                "Nie udało się dodać nowego pytania."),
+        "quizzDetailsAddNewQuestionSuccess":
+            MessageLookupByLibrary.simpleMessage(
+                "Pomyślnie dodano nowe pytanie."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Szczegóły quizzu"),
         "quizzDetailsSaveChangesButton":
@@ -319,6 +325,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzShareMessage": MessageLookupByLibrary.simpleMessage(
             "Udostępnij ten quizz swoim znajomym"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Tytuł: "),
+        "refreshButton": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "registerButton":
             MessageLookupByLibrary.simpleMessage("Zarejestruj się"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Zapisz Quizz"),

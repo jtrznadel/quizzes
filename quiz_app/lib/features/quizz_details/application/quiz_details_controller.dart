@@ -114,25 +114,29 @@ class QuizDetailsController extends _$QuizDetailsController {
     }
   }
 
-  Future<void> addNewQuestion(NewQuestionModel question) async {
+  Future<bool> addNewQuestion(NewQuestionModel question) async {
     try {
       state = const QuizDetailsState.loading();
       await ref.read(_quizDetailsRepository).addQuestion(question);
       //_reloadQuestionList();
       getQuizDetails(question.quizID);
+      return true;
     } catch (e) {
       state = QuizDetailsState.error(S.current.somethingWentWrong);
+      return false;
     }
   }
 
-  Future<void> updateQuestion(UpdateQuestionModel question) async {
+  Future<bool> updateQuestion(UpdateQuestionModel question) async {
     try {
       state = const QuizDetailsState.loading();
       ref.read(_quizDetailsRepository).updateQuestion(question);
       //_reloadQuestionList();
       getQuizDetails(question.quizID);
+      return true;
     } catch (e) {
       state = QuizDetailsState.error(S.current.somethingWentWrong);
+      return false;
     }
   }
 

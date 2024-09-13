@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
-import '../../../../core/common/widgets/error_page.dart';
+import '../../../../core/common/widgets/errors/basic_error_page.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/quizz_summary.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../dashboard/application/dashboard_controller.dart';
@@ -69,33 +71,43 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
           );
         }
       },
-      child: Scaffold(
-        backgroundColor: AppColorScheme.surface,
-        appBar: BasicAppBar(
-          title: S.of(context).quizzDetailsAppbarTitle,
-          actions: [
-            IconButton(
-              icon: SvgPicture.asset(MediaRes.share),
-              onPressed: () {
-                ShareQuizzBottomSheet.show(context);
-              },
+      child: state.when(
+        loading: () {
+          return const Scaffold(
+            body: Padding(
+              padding: EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+              child: Center(
+                child: LoadingIndicator(),
+              ),
             ),
-            const SmallHSpacer(),
-          ],
-        ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: state.when(
-              loading: () {
-                return const Padding(
-                  padding: EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-                  child: Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                );
-              },
-              loaded: (quizDetails, _) {
-                return Padding(
+          );
+        },
+        error: (error) {
+          return BasicErrorPage(
+            onRefresh: () => ref.read(appRouterProvider).maybePop(),
+            refreshButtonText: S.of(context).goBackToDashboard,
+            imageAsset: MediaRes.basicError,
+            errorText: S.of(context).somethingWentWrong,
+          );
+        },
+        loaded: (quizDetails, _) {
+          return Scaffold(
+            backgroundColor: AppColorScheme.surface,
+            appBar: BasicAppBar(
+              title: S.of(context).quizzDetailsAppbarTitle,
+              actions: [
+                IconButton(
+                  icon: SvgPicture.asset(MediaRes.share),
+                  onPressed: () {
+                    ShareQuizzBottomSheet.show(context);
+                  },
+                ),
+                const SmallHSpacer(),
+              ],
+            ),
+            body: SafeArea(
+              child: SingleChildScrollView(
+                child: Padding(
                   padding:
                       const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
                   child: Column(
@@ -130,14 +142,11 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
                       _getTabAtIndex(tabController.index),
                     ],
                   ),
-                );
-              },
-              error: (error) {
-                return ErrorPage(error: error);
-              },
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

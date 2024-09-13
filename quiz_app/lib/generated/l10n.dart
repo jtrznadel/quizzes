@@ -1140,6 +1140,26 @@ class S {
     );
   }
 
+  /// `Successfully added a new question.`
+  String get quizzDetailsAddNewQuestionSuccess {
+    return Intl.message(
+      'Successfully added a new question.',
+      name: 'quizzDetailsAddNewQuestionSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to add a new question.`
+  String get quizzDetailsAddNewQuestionFailure {
+    return Intl.message(
+      'Failed to add a new question.',
+      name: 'quizzDetailsAddNewQuestionFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get quizzCreationQuitHeading {
     return Intl.message(
@@ -1805,6 +1825,16 @@ class S {
     return Intl.message(
       'English',
       name: 'languageEnglish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refresh`
+  String get refreshButton {
+    return Intl.message(
+      'Refresh',
+      name: 'refreshButton',
       desc: '',
       args: [],
     );

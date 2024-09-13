@@ -25,6 +25,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
         final descriptionController =
             TextEditingController(text: quizDetails.description);
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const MediumVSpacer(),
             generalHeader(context),

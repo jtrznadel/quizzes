@@ -90,7 +90,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
     SchedulerBinding.instance.addPostFrameCallback(
       (_) => InfoSnackbar.show(
         context,
-        S.of(context).invalidEmailOrPassword,
+        S.of(context).somethingWentWrong,
         color: AppColorScheme.error,
       ),
     );

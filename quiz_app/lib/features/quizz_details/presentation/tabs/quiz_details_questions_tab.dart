@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/question_box.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
@@ -56,8 +58,11 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     );
   }
 
-  Widget questionsList(BuildContext context, QuizDetailsState state,
-      QuizDetailsController controller) {
+  Widget questionsList(
+    BuildContext context,
+    QuizDetailsState state,
+    QuizDetailsController controller,
+  ) {
     return state.maybeWhen(
       loaded: (quizDetails, answersVisible) {
         return Column(
@@ -89,7 +94,24 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
                           createAnswers: question.answers,
                           quizID: quizDetails.id,
                         );
-                        await controller.addNewQuestion(newQuestionModel);
+                        final success =
+                            await controller.addNewQuestion(newQuestionModel);
+                        if (context.mounted) {
+                          success
+                              ? InfoSnackbar.show(
+                                  context,
+                                  S
+                                      .of(context)
+                                      .quizzDetailsAddNewQuestionSuccess,
+                                  color: AppColorScheme.success,
+                                )
+                              : ErrorSnackbar.show(
+                                  context,
+                                  S
+                                      .of(context)
+                                      .quizzDetailsAddNewQuestionFailure,
+                                );
+                        }
                       },
                     ),
                     const LargeVSpacer(),
