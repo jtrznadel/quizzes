@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../features/auth/domain/token_auth.dart';
+import '../errors/access_token_refresh_failure_exception.dart';
 import '../errors/refresh_token_missing_exception.dart';
-import '../services/app_router.dart';
 import '../services/session_provider.dart';
 import 'api_constants.dart';
 
@@ -27,13 +27,16 @@ Dio buildDioClient(String base, Ref ref) {
             final refreshToken = await ref.read(sessionProvider).refreshToken;
             if (refreshToken == null) {
               ref.read(sessionProvider).deleteTokens();
-              ref.read(appRouterProvider).replaceAll([const WelcomeRoute()]);
-              handler.resolve(Response(requestOptions: options));
+              handler.reject(
+                RefreshTokenMissingException(requestOptions: options),
+              );
               return;
             }
             final tokenResponse = await refreshAccessToken(refreshToken, Dio());
             if (tokenResponse == null) {
-              handler.resolve(Response(requestOptions: options));
+              handler.reject(
+                AccessTokenRefreshFailureException(requestOptions: options),
+              );
               return;
             }
             await ref.read(sessionProvider).saveTokens(
