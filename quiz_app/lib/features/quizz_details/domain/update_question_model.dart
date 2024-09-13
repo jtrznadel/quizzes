@@ -11,6 +11,7 @@ part 'update_question_model.g.dart';
 class UpdateQuestionModel with _$UpdateQuestionModel implements QuestionModelInterface {
   const UpdateQuestionModel._();
   const factory UpdateQuestionModel({
+    required String id,
     required String title,
     @AnswerModelConverter() required List<AnswerModelInterface> updateAnswers,
     required String quizID,

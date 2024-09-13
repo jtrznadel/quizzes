@@ -20,6 +20,7 @@ UpdateQuestionModel _$UpdateQuestionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UpdateQuestionModel {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   @AnswerModelConverter()
   List<AnswerModelInterface> get updateAnswers =>
@@ -39,7 +40,8 @@ abstract class $UpdateQuestionModelCopyWith<$Res> {
       _$UpdateQuestionModelCopyWithImpl<$Res, UpdateQuestionModel>;
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       @AnswerModelConverter() List<AnswerModelInterface> updateAnswers,
       String quizID});
 }
@@ -57,11 +59,16 @@ class _$UpdateQuestionModelCopyWithImpl<$Res, $Val extends UpdateQuestionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? updateAnswers = null,
     Object? quizID = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -87,7 +94,8 @@ abstract class _$$UpdateQuestionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       @AnswerModelConverter() List<AnswerModelInterface> updateAnswers,
       String quizID});
 }
@@ -103,11 +111,16 @@ class __$$UpdateQuestionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? updateAnswers = null,
     Object? quizID = null,
   }) {
     return _then(_$UpdateQuestionModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -128,7 +141,8 @@ class __$$UpdateQuestionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
   const _$UpdateQuestionModelImpl(
-      {required this.title,
+      {required this.id,
+      required this.title,
       @AnswerModelConverter()
       required final List<AnswerModelInterface> updateAnswers,
       required this.quizID})
@@ -138,6 +152,8 @@ class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
   factory _$UpdateQuestionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdateQuestionModelImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String title;
   final List<AnswerModelInterface> _updateAnswers;
@@ -154,7 +170,7 @@ class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
 
   @override
   String toString() {
-    return 'UpdateQuestionModel(title: $title, updateAnswers: $updateAnswers, quizID: $quizID)';
+    return 'UpdateQuestionModel(id: $id, title: $title, updateAnswers: $updateAnswers, quizID: $quizID)';
   }
 
   @override
@@ -162,6 +178,7 @@ class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateQuestionModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
                 .equals(other._updateAnswers, _updateAnswers) &&
@@ -170,7 +187,7 @@ class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title,
+  int get hashCode => Object.hash(runtimeType, id, title,
       const DeepCollectionEquality().hash(_updateAnswers), quizID);
 
   @JsonKey(ignore: true)
@@ -190,7 +207,8 @@ class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
 
 abstract class _UpdateQuestionModel extends UpdateQuestionModel {
   const factory _UpdateQuestionModel(
-      {required final String title,
+      {required final String id,
+      required final String title,
       @AnswerModelConverter()
       required final List<AnswerModelInterface> updateAnswers,
       required final String quizID}) = _$UpdateQuestionModelImpl;
@@ -199,6 +217,8 @@ abstract class _UpdateQuestionModel extends UpdateQuestionModel {
   factory _UpdateQuestionModel.fromJson(Map<String, dynamic> json) =
       _$UpdateQuestionModelImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override

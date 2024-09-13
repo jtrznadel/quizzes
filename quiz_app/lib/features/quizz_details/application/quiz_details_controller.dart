@@ -5,6 +5,7 @@ import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_details_repository.dart';
 import '../domain/new_question_model.dart';
 import '../domain/quiz_details_model.dart';
+import '../domain/update_question_model.dart';
 import 'quiz_details_state.dart';
 
 part 'quiz_details_controller.g.dart';
@@ -115,8 +116,21 @@ class QuizDetailsController extends _$QuizDetailsController {
 
   Future<void> addNewQuestion(NewQuestionModel question) async {
     try {
+      state = const QuizDetailsState.loading();
       await ref.read(_quizDetailsRepository).addQuestion(question);
-      _reloadQuestionList();
+      //_reloadQuestionList();
+      getQuizDetails(question.quizID);
+    } catch (e) {
+      state = QuizDetailsState.error(S.current.somethingWentWrong);
+    }
+  }
+
+  Future<void> updateQuestion(UpdateQuestionModel question) async {
+    try {
+      state = const QuizDetailsState.loading();
+      ref.read(_quizDetailsRepository).updateQuestion(question);
+      //_reloadQuestionList();
+      getQuizDetails(question.quizID);
     } catch (e) {
       state = QuizDetailsState.error(S.current.somethingWentWrong);
     }

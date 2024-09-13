@@ -148,7 +148,7 @@
     "quizzCreationAddQuestionDescriptionHint": "Enter question description",
     "quizzCreationAddQuestionAnswersLabel": "Answers",
     "quizzCreationSaveQuestion": "Save",
-    "quizzCreationAddQuestionAnswerPlaceholder": "What is one of the key features of cryptocurrencies?",
+    "quizzCreationAddQuestionAnswerPlaceholder": "Your answer",
 
     "quizzCreationGenerateQuestionHeading": "Generate new question",
     "quizzCreationGenerateQuestionPromptLabel": "Prompt",

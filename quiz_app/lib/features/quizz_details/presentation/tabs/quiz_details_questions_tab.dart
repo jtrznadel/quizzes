@@ -26,37 +26,38 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     return Column(
       children: [
         questionsHeader(context, state, controller),
-        questionsList(context, state),
+        questionsList(context, state, controller),
       ],
     );
   }
 
-  Widget questionsHeader(BuildContext context, QuizDetailsState state, QuizDetailsController controller) {
+  Widget questionsHeader(BuildContext context, QuizDetailsState state,
+      QuizDetailsController controller) {
     return Column(
       children: [
         const MediumVSpacer(),
         Text(
           S.of(context).quizzDetailsTabQuestionsSubheading,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         ),
         const MediumVSpacer(),
         answersSwitchRow(context, state, controller),
         //const MediumVSpacer(),
-        Consumer(
-          builder: (context, ref, child) {
-            return state.maybeWhen(
-              loaded: (quizDetails, _) {
-                return newQuestionButton(context, quizDetails.id, controller);
-              },
-              orElse: () => const SizedBox.shrink(),
-            );
-          }
-        ),
+        Consumer(builder: (context, ref, child) {
+          return state.maybeWhen(
+            loaded: (quizDetails, _) {
+              return newQuestionButton(context, quizDetails.id, controller);
+            },
+            orElse: () => const SizedBox.shrink(),
+          );
+        }),
       ],
     );
   }
 
-  Widget questionsList(BuildContext context, QuizDetailsState state) {
+  Widget questionsList(BuildContext context, QuizDetailsState state,
+      QuizDetailsController controller) {
     return state.maybeWhen(
       loaded: (quizDetails, answersVisible) {
         return Column(
@@ -76,9 +77,20 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
                         generateAnswers: quizDetails.questions[index].answers,
                       ),
                       onDelete: () {
-                        DeleteQuestionDialog.show(context, quizDetails.questions[index]);
+                        DeleteQuestionDialog.show(
+                            context, quizDetails.questions[index]);
                       },
                       correctAnswerVisible: answersVisible,
+                      onEdit: (question) async {
+                        await controller
+                            .deleteQuestion(quizDetails.questions[index].id);
+                        final newQuestionModel = NewQuestionModel(
+                          title: question.title,
+                          createAnswers: question.answers,
+                          quizID: quizDetails.id,
+                        );
+                        await controller.addNewQuestion(newQuestionModel);
+                      },
                     ),
                     const LargeVSpacer(),
                   ],
@@ -93,7 +105,8 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     );
   }
 
-  Widget answersSwitchRow(BuildContext context, QuizDetailsState state, QuizDetailsController controller) {
+  Widget answersSwitchRow(BuildContext context, QuizDetailsState state,
+      QuizDetailsController controller) {
     return state.maybeWhen(
       loaded: (quizDetails, answersVisible) {
         return Row(
@@ -101,7 +114,9 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             QuizStatusBadge(
-              text: S.of(context).quizQuestionNumberBadge(quizDetails.questions.length),
+              text: S
+                  .of(context)
+                  .quizQuestionNumberBadge(quizDetails.questions.length),
               backgroundColor: AppColorScheme.secondary,
               textColor: AppColorScheme.primary,
             ),
@@ -134,7 +149,8 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
     );
   }
 
-  Widget newQuestionButton(BuildContext context, String quizID, QuizDetailsController controller) {
+  Widget newQuestionButton(
+      BuildContext context, String quizID, QuizDetailsController controller) {
     return Align(
       alignment: Alignment.centerRight,
       child: ElevatedButton(
@@ -143,10 +159,9 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
             context,
             onQuestionAdd: (question) async {
               final newQuestionModel = NewQuestionModel(
-                title: question.title,
-                createAnswers: question.answers,
-                quizID: quizID
-              );
+                  title: question.title,
+                  createAnswers: question.answers,
+                  quizID: quizID);
               await controller.addNewQuestion(newQuestionModel);
             },
           );

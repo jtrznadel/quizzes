@@ -149,7 +149,7 @@
     "quizzCreationAddQuestionDescriptionHint": "Wprowadź opis pytania",
     "quizzCreationAddQuestionAnswersLabel": "Odpowiedzi",
     "quizzCreationSaveQuestion": "Zapisz",
-    "quizzCreationAddQuestionAnswerPlaceholder": "Jakie jest jedno z kluczowych cech kryptowalut?",
+    "quizzCreationAddQuestionAnswerPlaceholder": "Twoja odpowiedź",
 
     "quizzCreationGenerateQuestionHeading": "Wygeneruj nowe pytanie",
     "quizzCreationGenerateQuestionPromptLabel": "Monit tekstowy",
