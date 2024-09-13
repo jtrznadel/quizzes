@@ -4,6 +4,7 @@ import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../features/auth/domain/token_auth.dart';
 import '../errors/access_token_refresh_failure_exception.dart';
+import '../errors/invalid_refresh_token_exception.dart';
 import '../errors/refresh_token_missing_exception.dart';
 import '../services/session_provider.dart';
 import 'api_constants.dart';
@@ -11,7 +12,8 @@ import 'api_constants.dart';
 part 'base_dio_client.g.dart';
 
 @riverpod
-Dio baseDioClient(BaseDioClientRef ref) => buildDioClient(ApiConstants.baseUrl, ref);
+Dio baseDioClient(BaseDioClientRef ref) =>
+    buildDioClient(ApiConstants.baseUrl, ref);
 
 Dio buildDioClient(String base, Ref ref) {
   final dio = Dio()..options = BaseOptions(baseUrl: base);
@@ -31,23 +33,32 @@ Dio buildDioClient(String base, Ref ref) {
               );
               return;
             }
-            final tokenResponse = await refreshAccessToken(refreshToken, Dio());
-            if (tokenResponse == null) {
-              handler.reject(
-                AccessTokenRefreshFailureException(requestOptions: options),
-              );
+            try {
+              final tokenResponse =
+                  await refreshAccessToken(refreshToken, refreshTokenDioClient(base, ref));
+              if (tokenResponse == null) {
+                handler.reject(
+                  AccessTokenRefreshFailureException(requestOptions: options),
+                );
+                return;
+              }
+              await ref.read(sessionProvider).saveTokens(
+                    accessToken: tokenResponse.accessToken,
+                    refreshToken: tokenResponse.refreshToken,
+                  );
+            } on InvalidRefreshTokenException catch (e) {
+              ref.read(sessionProvider).deleteTokens();
+              handler.reject(e);
               return;
             }
-            await ref.read(sessionProvider).saveTokens(
-                  accessToken: tokenResponse.accessToken,
-                  refreshToken: tokenResponse.refreshToken,
-                );
           }
           accessToken = await ref.read(sessionProvider).accessToken;
         }
-        options.headers[ApiConstants.authHeader] = '${ApiConstants.authBearer}$accessToken';
+        options.headers[ApiConstants.authHeader] =
+            '${ApiConstants.authBearer}$accessToken';
 
-        options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
+        options.headers[ApiConstants.contentTypeHeader] =
+            ApiConstants.contentTypeJson;
 
         if (options.data is FormData) {
           FormData newFormData = FormData();
@@ -78,11 +89,13 @@ Future<TokenAuth?> refreshAccessToken(String refreshToken, Dio dio) async {
     );
     if (response.statusCode == 200) {
       return TokenAuth.fromJson(response.data);
+    } else if (response.statusCode == 401) {
+      throw InvalidRefreshTokenException(
+          requestOptions: response.requestOptions);
     } else {
       return null;
     }
   } catch (e) {
-    //kDebugMode ? debugPrint('Error refreshing access token: $e') : null;
     return null;
   }
 }
@@ -95,9 +108,13 @@ Dio refreshTokenDioClient(String base, Ref ref) {
       onRequest: (options, handler) async {
         final refreshToken = await ref.read(sessionProvider).refreshToken;
         if (refreshToken == null) {
-          throw RefreshTokenMissingException(requestOptions: options);
+          ref.read(sessionProvider).deleteTokens();
+          handler.reject(
+            RefreshTokenMissingException(requestOptions: options),
+          );
         }
-        options.headers[ApiConstants.contentTypeHeader] = ApiConstants.contentTypeJson;
+        options.headers[ApiConstants.contentTypeHeader] =
+            ApiConstants.contentTypeJson;
         return handler.next(options);
       },
       onError: (error, handler) async {

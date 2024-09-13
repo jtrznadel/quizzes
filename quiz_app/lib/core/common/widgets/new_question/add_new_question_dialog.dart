@@ -6,7 +6,6 @@ import '../../../../features/quiz_generation/domain/generate_question_model.dart
 import '../../../models/question_model_interface.dart';
 import '../../../services/app_router.dart';
 import '../errors/error_snackbar.dart';
-import '../info_snackbar.dart';
 import 'add_question_dialog_answer_section.dart';
 import '../basic_button.dart';
 import '../dialogs/basic_dialog.dart';
@@ -74,17 +73,15 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      if (widget.question != null) {
-        titleController.text = widget.question!.title;
-        for (var i = 0; i < widget.question!.answers.length; i++) {
-          answerControllers[Answer.values[i]]!.controller.text =
-              widget.question!.answers[i].content;
-          answerControllers[Answer.values[i]]!.isCorrect =
-              widget.question!.answers[i].isCorrect;
-        }
+    if (widget.question != null) {
+      titleController.text = widget.question!.title;
+      for (var i = 0; i < widget.question!.answers.length; i++) {
+        answerControllers[Answer.values[i]]!.controller.text =
+            widget.question!.answers[i].content;
+        answerControllers[Answer.values[i]]!.isCorrect =
+            widget.question!.answers[i].isCorrect;
       }
-    });
+    }
 
     return BasicDialog(
       title: S.of(context).quizzCreationAddQuestionHeading,
