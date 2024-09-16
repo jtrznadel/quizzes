@@ -17,9 +17,6 @@ abstract class AuthClient {
 
   @POST(ApiConstants.signInEndpoint)
   Future<TokenAuth> signIn(@Body() Map<String, dynamic> body);
-
-  @POST(ApiConstants.signOutEndpoint)
-  Future<void> signOut();
 }
 
 @riverpod

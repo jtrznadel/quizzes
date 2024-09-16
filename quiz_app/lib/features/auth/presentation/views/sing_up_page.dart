@@ -7,7 +7,7 @@ import '../../../../core/common/widgets/text_divider.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../generated/l10n.dart';
-import '../refactors/sign_up_form.dart';
+import 'sign_up_form.dart';
 import '../widgets/auth_redirect_button.dart';
 
 @RoutePage()
@@ -32,7 +32,7 @@ class SignUpPage extends ConsumerWidget {
               S.of(context).signUpHeading,
               style: context.textTheme.headlineLarge,
             ),
-            const SignUpForm(),
+            const SingUpForm(),
             TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
             Consumer(

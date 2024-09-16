@@ -62,45 +62,45 @@ class BasicButton extends StatelessWidget {
       );
     }
 
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: AppTheme.buttonVerticalPadding,
-        horizontal: AppTheme.buttonHorizontalPadding,
-      ),
-      width: width,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
-        gradient: const LinearGradient(
-          colors: [
-            AppColorScheme.primaryLight,
-            AppColorScheme.primary,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: AppTheme.buttonVerticalPadding,
+          horizontal: AppTheme.buttonHorizontalPadding,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColorScheme.primaryLight.withOpacity(0.7),
-            spreadRadius: 0,
-            blurRadius: 0,
-            offset: const Offset(0, -2),
+        width: width,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
+          gradient: const LinearGradient(
+            colors: [
+              AppColorScheme.primaryLight,
+              AppColorScheme.primary,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          BoxShadow(
-            color: AppColorScheme.primaryDark.withOpacity(.15),
-            spreadRadius: 0,
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-          BoxShadow(
-            color: AppColorScheme.primaryDark.withOpacity(.15),
-            spreadRadius: 0,
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: InkWell(
-        onTap: onPressed,
+          boxShadow: [
+            BoxShadow(
+              color: AppColorScheme.primaryLight.withOpacity(0.7),
+              spreadRadius: 0,
+              blurRadius: 0,
+              offset: const Offset(0, -2),
+            ),
+            BoxShadow(
+              color: AppColorScheme.primaryDark.withOpacity(.15),
+              spreadRadius: 0,
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+            BoxShadow(
+              color: AppColorScheme.primaryDark.withOpacity(.15),
+              spreadRadius: 0,
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: contentAlignment,

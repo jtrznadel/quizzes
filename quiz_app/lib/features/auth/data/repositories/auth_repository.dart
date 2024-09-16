@@ -15,7 +15,6 @@ abstract class AuthRepository {
   ResultFuture<TokenAuth> signIn({
     required UserAuth userAuth,
   });
-  ResultFuture<void> signOut();
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -42,16 +41,6 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final result = await _authClient.signIn(userAuth.toJson());
       return Right(result);
-    } catch (e) {
-      return Left(ServerException(message: e.toString()));
-    }
-  }
-
-  @override
-  ResultFuture<void> signOut() async {
-    try {
-      await _authClient.signOut();
-      return const Right(null);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
     }
