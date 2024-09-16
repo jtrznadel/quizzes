@@ -34,6 +34,9 @@ class NewQuizButton extends ConsumerWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
+          splashColor: AppColorScheme.primaryLight.withOpacity(0.2),
+          highlightColor: AppColorScheme.primaryLight.withOpacity(0.2),
+          splashFactory: InkRipple.splashFactory,
           onTap: onTap,
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppTheme.dashboardAddNewButtonBorderRadius),
