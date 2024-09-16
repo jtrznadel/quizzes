@@ -5,6 +5,7 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/enums/answer_indicator_enum.dart';
 import '../../../quizz_details/domain/answer_details_model.dart';
 import '../../application/quizz_take_controller.dart';
 import 'quizz_step_content.dart';

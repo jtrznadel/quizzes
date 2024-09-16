@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/utils/enums/answer_indicator_enum.dart';
 import '../../../quizz_details/domain/question_details_model.dart';
 import 'quizz_answer_card.dart';
-
-enum AnswerIndicators { A, B, C, D }
 
 class QuizzStepContent extends StatelessWidget {
   const QuizzStepContent({super.key, required this.question});

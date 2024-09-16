@@ -89,7 +89,9 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
               ),
               const Spacer(),
               BasicButton(
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(appRouterProvider).push(const TakeQuizzResultRoute());
+                },
                 text: S.of(context).quizzTakeSummarySeeResults,
                 width: double.infinity,
               ),

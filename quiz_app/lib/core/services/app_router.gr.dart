@@ -291,6 +291,25 @@ class TakeQuizzRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [TakeQuizzResultPage]
+class TakeQuizzResultRoute extends PageRouteInfo<void> {
+  const TakeQuizzResultRoute({List<PageRouteInfo>? children})
+      : super(
+          TakeQuizzResultRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TakeQuizzResultRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TakeQuizzResultPage();
+    },
+  );
+}
+
+/// generated route for
 /// [TakeQuizzSummaryPage]
 class TakeQuizzSummaryRoute extends PageRouteInfo<void> {
   const TakeQuizzSummaryRoute({List<PageRouteInfo>? children})
