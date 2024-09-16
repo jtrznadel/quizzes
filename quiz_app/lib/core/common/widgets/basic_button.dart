@@ -62,49 +62,59 @@ class BasicButton extends StatelessWidget {
       );
     }
 
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: AppTheme.buttonVerticalPadding,
-          horizontal: AppTheme.buttonHorizontalPadding,
-        ),
-        width: width,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
-          gradient: const LinearGradient(
-            colors: [
-              AppColorScheme.primaryLight,
-              AppColorScheme.primary,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: AppColorScheme.primaryLight.withOpacity(0.7),
-              spreadRadius: 0,
-              blurRadius: 0,
-              offset: const Offset(0, -2),
-            ),
-            BoxShadow(
-              color: AppColorScheme.primaryDark.withOpacity(.15),
-              spreadRadius: 0,
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
-            BoxShadow(
-              color: AppColorScheme.primaryDark.withOpacity(.15),
-              spreadRadius: 0,
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
+    return Container(
+      width: width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
+        gradient: const LinearGradient(
+          colors: [
+            AppColorScheme.primaryLight,
+            AppColorScheme.primary,
           ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: contentAlignment,
-          children: children,
+        boxShadow: [
+          BoxShadow(
+            color: AppColorScheme.primaryLight.withOpacity(0.7),
+            spreadRadius: 0,
+            blurRadius: 0,
+            offset: const Offset(0, -2),
+          ),
+          BoxShadow(
+            color: AppColorScheme.primaryDark.withOpacity(.15),
+            spreadRadius: 0,
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+          BoxShadow(
+            color: AppColorScheme.primaryDark.withOpacity(.15),
+            spreadRadius: 0,
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
+          ),
+          splashColor: AppColorScheme.primaryDark,
+          highlightColor: AppColorScheme.primaryDark,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: AppTheme.buttonVerticalPadding,
+              horizontal: AppTheme.buttonHorizontalPadding,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: contentAlignment,
+              children: children,
+            ),
+          ),
         ),
       ),
     );
