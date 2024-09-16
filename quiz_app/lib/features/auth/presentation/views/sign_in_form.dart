@@ -12,14 +12,28 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/password_form_field.dart';
 
-class SignInForm extends ConsumerWidget {
+class SignInForm extends ConsumerStatefulWidget {
   const SignInForm({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
+  ConsumerState createState() => _SignInFormState();
+}
+
+class _SignInFormState extends ConsumerState<SignInForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    formKey.currentState?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 32,
@@ -59,7 +73,6 @@ class SignInForm extends ConsumerWidget {
     );
   }
 }
-
 
 class LoginButton extends ConsumerWidget {
   const LoginButton(

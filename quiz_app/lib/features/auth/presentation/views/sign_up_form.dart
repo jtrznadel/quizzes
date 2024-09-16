@@ -15,14 +15,28 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../widgets/password_form_field.dart';
 
-class SingUpForm extends ConsumerWidget {
-  const SingUpForm({super.key});
+class SignUpForm extends ConsumerStatefulWidget {
+  const SignUpForm({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
+  ConsumerState createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends ConsumerState<SignUpForm> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    formKey.currentState?.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 32),
       child: Form(

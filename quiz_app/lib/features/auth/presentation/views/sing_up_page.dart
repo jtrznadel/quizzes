@@ -32,7 +32,7 @@ class SignUpPage extends ConsumerWidget {
               S.of(context).signUpHeading,
               style: context.textTheme.headlineLarge,
             ),
-            const SingUpForm(),
+            const SignUpForm(),
             TextDivider(text: S.of(context).dividerOr),
             const Spacer(),
             Consumer(
