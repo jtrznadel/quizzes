@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UserState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signout,
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
@@ -26,7 +25,6 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signout,
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
@@ -34,7 +32,6 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signout,
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
@@ -43,7 +40,6 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Signout value) signout,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -51,7 +47,6 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Signout value)? signout,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -59,7 +54,6 @@ mixin _$UserState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Signout value)? signout,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -83,120 +77,6 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$SignoutImplCopyWith<$Res> {
-  factory _$$SignoutImplCopyWith(
-          _$SignoutImpl value, $Res Function(_$SignoutImpl) then) =
-      __$$SignoutImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SignoutImplCopyWithImpl<$Res>
-    extends _$UserStateCopyWithImpl<$Res, _$SignoutImpl>
-    implements _$$SignoutImplCopyWith<$Res> {
-  __$$SignoutImplCopyWithImpl(
-      _$SignoutImpl _value, $Res Function(_$SignoutImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SignoutImpl implements _Signout {
-  const _$SignoutImpl();
-
-  @override
-  String toString() {
-    return 'UserState.signout()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SignoutImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() signout,
-    required TResult Function() loading,
-    required TResult Function(User user, bool isUsernameUpdating) success,
-    required TResult Function(Exception message) error,
-  }) {
-    return signout();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signout,
-    TResult? Function()? loading,
-    TResult? Function(User user, bool isUsernameUpdating)? success,
-    TResult? Function(Exception message)? error,
-  }) {
-    return signout?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signout,
-    TResult Function()? loading,
-    TResult Function(User user, bool isUsernameUpdating)? success,
-    TResult Function(Exception message)? error,
-    required TResult orElse(),
-  }) {
-    if (signout != null) {
-      return signout();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Signout value) signout,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
-  }) {
-    return signout(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Signout value)? signout,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
-  }) {
-    return signout?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Signout value)? signout,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (signout != null) {
-      return signout(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Signout implements UserState {
-  const factory _Signout() = _$SignoutImpl;
 }
 
 /// @nodoc
@@ -237,7 +117,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signout,
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
@@ -248,7 +127,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signout,
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
@@ -259,7 +137,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signout,
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
@@ -274,7 +151,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Signout value) signout,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -285,7 +161,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Signout value)? signout,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -296,7 +171,6 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Signout value)? signout,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -397,7 +271,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signout,
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
@@ -408,7 +281,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signout,
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
@@ -419,7 +291,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signout,
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
@@ -434,7 +305,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Signout value) signout,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -445,7 +315,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Signout value)? signout,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -456,7 +325,6 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Signout value)? signout,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
@@ -544,7 +412,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() signout,
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
@@ -555,7 +422,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? signout,
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
@@ -566,7 +432,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? signout,
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
@@ -581,7 +446,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Signout value) signout,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
@@ -592,7 +456,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Signout value)? signout,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
@@ -603,7 +466,6 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Signout value)? signout,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,

@@ -8,7 +8,7 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
-import '../../../auth/application/auth_controller.dart';
+import '../../application/user_controller.dart';
 import '../widgets/profile_action_button.dart';
 
 class ActionProfileSection extends ConsumerWidget {
@@ -18,7 +18,7 @@ class ActionProfileSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var authController = ref.read(authControllerProvider.notifier);
+    final userController = ref.watch(userControllerProvider.notifier);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -63,7 +63,7 @@ class ActionProfileSection extends ConsumerWidget {
         ProfileActionButton(
           title: S.of(context).profileSignOutButton,
           onPressed: () async {
-            await authController.signOut();
+            await userController.signOut();
           },
           trailing: SvgPicture.asset(
             MediaRes.logout,

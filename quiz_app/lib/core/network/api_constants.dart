@@ -7,7 +7,7 @@ class ApiConstants {
   static const String updateUserEndpoint = '/profile';
   //TODO: not implemented on backend yet
   static const String deleteUserEndpoint = '/delete_user';
-  static const String signOutEndpoint = '/logout';
+  static const String signOutEndpoint = 'auth/logout';
 
   static const String refreshAccessTokenEndpoint = 'auth/refresh-token';
 

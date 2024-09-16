@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
-import '../../../../core/errors/refresh_token_missing_exception.dart';
+import '../../../../core/res/media_res.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
-import '../../../../core/extensions/context_extension.dart';
 import '../refactors/profile_content.dart';
 
 @RoutePage()
@@ -37,62 +37,23 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
       appBar: BasicAppBar(
         title: S.of(context).profileAppbarTitle,
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            state.maybeWhen(
-              success: (user, isUsernameUpdating) => ProfileContent(user: user, isUsernameUpdating: isUsernameUpdating),
-              error: (error) {
-                handleError(error, context);
-                //TODO: replace with custom error widget
-                return Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        S.of(context).somethingWentWrong,
-                        style: context.theme.textTheme.bodyLarge,
-                        textAlign: TextAlign.center,
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          userController.getUser();
-                        },
-                        icon: const Icon(Icons.refresh),
-                      )
-                    ],
-                  ),
-                );
+      body: state.maybeWhen(
+        success: (user, isUsernameUpdating) =>
+            ProfileContent(user: user, isUsernameUpdating: isUsernameUpdating),
+        orElse: () => const LoadingIndicator(),
+        error: (error) {
+          return Center(
+            child: BasicErrorPage(
+              onRefresh: () {
+                userController.getUser();
               },
-              orElse: () {
-                return const LoadingIndicator();
-              },
+              refreshButtonText: S.of(context).refreshButton,
+              imageAsset: MediaRes.basicError,
+              errorText: S.of(context).somethingWentWrong,
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
-  }
-
-  void handleError(Exception error, BuildContext context) {
-    if (error is RefreshTokenMissingException) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        showErrorSnackBar(context, S.of(context).sessionExpired);
-      });
-    } else {
-      showErrorSnackBar(context, S.of(context).somethingWentWrong);
-    }
-  }
-
-  void showErrorSnackBar(BuildContext context, String message) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message),
-        ),
-      );
-    });
   }
 }

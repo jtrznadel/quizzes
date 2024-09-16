@@ -4,10 +4,7 @@ part 'auth_state.freezed.dart';
 
 @freezed
 class AuthState with _$AuthState {
-  const factory AuthState.initial() = _Initial;
-  const factory AuthState.loading() = _Loading;
-  const factory AuthState.authenticated() = _Authenticated;
-  const factory AuthState.unauthenticated() = _Unauthenticated;
-  const factory AuthState.success() = _Success;
+  const factory AuthState.unauthenticated(bool obscurePassword) = _Initial;
+  const factory AuthState.loading(bool obscurePassword) = _Loading;
   const factory AuthState.error(String message) = _Error;
 }

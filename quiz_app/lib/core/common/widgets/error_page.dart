@@ -13,22 +13,21 @@ class ErrorPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return Center(
-          child: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(error, style: Theme.of(context).textTheme.labelLarge),
-                const MediumVSpacer(),
-                SecondaryButton(
-                  onPressed: () {
-                    context.router.push(const DashboardRoute());
-                  },
-                  text: S.of(context).goBackToDashboard
-                )
-              ],
-            ),
-          ),
-        );
+    return Center(
+      child: Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(error, style: Theme.of(context).textTheme.labelLarge),
+            const MediumVSpacer(),
+            SecondaryButton(
+                onPressed: () {
+                  context.router.push(const DashboardRoute());
+                },
+                text: S.of(context).goBackToDashboard)
+          ],
+        ),
+      ),
+    );
   }
 }

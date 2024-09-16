@@ -19,7 +19,7 @@ abstract class UserClient {
   @PUT(ApiConstants.updateUserEndpoint)
   Future<void> updateUser(@Body() Map<String, dynamic> body);
 
-  @POST('auth/${ApiConstants.signOutEndpoint}')
+  @POST(ApiConstants.signOutEndpoint)
   Future<void> signOut();
 }
 
