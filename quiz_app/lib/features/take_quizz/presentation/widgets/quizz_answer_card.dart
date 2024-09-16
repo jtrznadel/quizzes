@@ -5,41 +5,45 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../quizz_details/domain/answer_details_model.dart';
 import '../../application/quizz_take_controller.dart';
 import 'quizz_step_content.dart';
 
-class QuizzMultipleAnswerCard extends ConsumerWidget {
-  const QuizzMultipleAnswerCard({required this.indicator, required this.questionId, super.key, required this.answer});
+class QuizzAnswerCard extends ConsumerWidget {
+  const QuizzAnswerCard({required this.indicator, required this.questionId, super.key, required this.answer, this.isTrueFalseType = false});
 
-  final String answer;
+  final AnswerDetailsModel answer;
   final String questionId;
   final AnswerIndicators indicator;
+  final bool? isTrueFalseType;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quizzController = ref.read(quizzTakeControllerProvider.notifier);
     final quizzState = ref.watch(quizzTakeControllerProvider);
     final selectedAnswer = quizzState.maybeWhen(
-      loaded: (currentStep, answers) => answers[questionId],
+      loaded: (quiz, userAnswers, currentStep) {
+        final userAnswer = userAnswers.where((element) => element.questionId == questionId).firstOrNull;
+        return userAnswer?.answerId;
+      },
       orElse: () => null,
     );
-    final isSelected = answer == selectedAnswer;
+    final isSelected = answer.id == selectedAnswer;
     return InkWell(
       onTap: () {
-        quizzController.answerQuestion(questionId: questionId, answer: answer);
+        quizzController.answerQuestion(questionId: questionId, answerId: answer.id);
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
-        width: context.width / 2,
-        height: context.width / 2,
+        height: context.height / 2,
         decoration: BoxDecoration(
           color: isSelected ? AppColorScheme.primary : Colors.white,
           borderRadius: BorderRadius.circular(AppTheme.radiusMedium),
         ),
         padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: isTrueFalseType == true ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
             Expanded(
               flex: 2,
@@ -54,7 +58,7 @@ class QuizzMultipleAnswerCard extends ConsumerWidget {
             Expanded(
               flex: 8,
               child: Text(
-                answer,
+                answer.content,
                 style: isSelected
                     ? context.textTheme.labelMedium?.copyWith(
                         color: Colors.white,

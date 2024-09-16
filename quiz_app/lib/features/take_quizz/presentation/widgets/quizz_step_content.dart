@@ -1,43 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../application/quizz_take_controller.dart';
-import 'quizz_multiple_answer_card.dart';
-import 'quizz_progress_indicator.dart';
+import '../../../quizz_details/domain/question_details_model.dart';
+import 'quizz_answer_card.dart';
 
 enum AnswerIndicators { A, B, C, D }
 
 class QuizzStepContent extends StatelessWidget {
   const QuizzStepContent({super.key, required this.question});
 
-  final QuestionEntity question;
+  final QuestionDetailsModel question;
 
   @override
   Widget build(BuildContext context) {
+    final isTrueFalseType = question.answers.length == 2;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          question.question,
+          question.title,
           style: context.textTheme.headlineMedium,
         ),
         const ExtraLargeVSpacer(),
-        GridView.count(
-          physics: const NeverScrollableScrollPhysics(),
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-          crossAxisCount: 2,
-          shrinkWrap: true,
-          children: List.generate(question.answers.length, (index) {
-            return QuizzMultipleAnswerCard(
-              answer: question.answers[index],
-              questionId: question.questionId,
-              indicator: AnswerIndicators.values[index],
-            );
-          }),
-        ),
+        AspectRatio(
+          aspectRatio: 1.0,
+          child: isTrueFalseType
+              ? Row(
+                  children: [
+                    Expanded(
+                      child: QuizzAnswerCard(
+                        answer: question.answers[0],
+                        questionId: question.id,
+                        indicator: AnswerIndicators.A,
+                        isTrueFalseType: true,
+                      ),
+                    ),
+                    const SmallHSpacer(),
+                    Expanded(
+                      child: QuizzAnswerCard(
+                        answer: question.answers[1],
+                        questionId: question.id,
+                        indicator: AnswerIndicators.B,
+                        isTrueFalseType: true,
+                      ),
+                    ),
+                  ],
+                )
+              : GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  children: List.generate(
+                    question.answers.length,
+                    (index) {
+                      return QuizzAnswerCard(
+                        answer: question.answers[index],
+                        questionId: question.id,
+                        indicator: AnswerIndicators.values[index],
+                      );
+                    },
+                  ),
+                ),
+        )
       ],
     );
   }

@@ -133,15 +133,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
             IconButton(
               onPressed: () {
                 //TODO: Replace with real data
-                context.router.push(TakeQuizzRoute(
-                  quizEntity: TestQuizEntity(
-                    quizTitle: 'Identify your bigest roadblock to succeeding in cryptocurrency',
-                    quizDescription:
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus sagittis augue, vitae facilisis sem volutpat nec. Phasellus ac tincidunt nisl. Donec sed rutrum neque, vitae mattis velit. Donec non neque a erat finibus rutrum. Proin tincidunt leo hendrerit, sagittis lacus quis, finibus massa.',
-                    quizStatus: 'Active',
-                    quizNumberOfQuestions: Random().nextInt(50),
-                  ),
-                ));
+                context.router.push(const TakeQuizzRoute());
               },
               icon: SvgPicture.asset(MediaRes.generate, width: 24, height: 24),
             ),

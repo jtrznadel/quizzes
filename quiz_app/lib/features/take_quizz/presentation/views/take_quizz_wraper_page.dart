@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/basic_button.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/quizz_take_controller.dart';
 import '../widgets/finish_quizz_dialog.dart';
-import '../widgets/quizz_multiple_answer_card.dart';
 import '../widgets/quizz_progress_indicator.dart';
 import '../widgets/quizz_step_content.dart';
 
@@ -24,37 +22,6 @@ class TakeQuizzWraperPage extends ConsumerStatefulWidget {
 class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
   final stepController = PageController();
 
-  List<QuizzStepContent> pages = [
-    QuizzStepContent(
-      question: QuestionEntity(
-        question: '1. What is one of the key features of cryptocurrencies?',
-        answers: ['Physical existence', 'Cannot be counterfeited and double-spent', 'They are centralized', 'They are regulated'],
-        questionId: '1',
-      ),
-    ),
-    QuizzStepContent(
-      question: QuestionEntity(
-        question: '2. What is the underlying technology behind cryptocurrencies?',
-        answers: ['Blockchain', 'Cloud Computing', 'Quantum Computing', 'Artificial Intelligence'],
-        questionId: '2',
-      ),
-    ),
-    QuizzStepContent(
-      question: QuestionEntity(
-        question: '3. Which of the following is a popular cryptocurrency?',
-        answers: ['Bitcoin', 'Dollar', 'Euro', 'Yen'],
-        questionId: '3',
-      ),
-    ),
-    QuizzStepContent(
-      question: QuestionEntity(
-        question: '4. What is the process of verifying transactions in a blockchain called?',
-        answers: ['Mining', 'Harvesting', 'Plowing', 'Sowing'],
-        questionId: '4',
-      ),
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     final quizzState = ref.watch(quizzTakeControllerProvider);
@@ -64,9 +31,9 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: quizzState.maybeWhen(
-          loaded: (currentStep, answers) => QuizzProgressIndicator(
+          loaded: (quiz, userAnswers, currentStep) => QuizzProgressIndicator(
             currentStep: currentStep,
-            numberOfSteps: pages.length,
+            numberOfSteps: quiz.questions.length,
           ),
           orElse: () => const SizedBox.shrink(),
         ),
@@ -77,17 +44,25 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
           child: Column(
             children: [
               Expanded(
-                child: PageView(
-                  controller: stepController,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: pages,
+                child: quizzState.maybeWhen(
+                  loaded: (quiz, userAnswers, currentStep) => PageView.builder(
+                    controller: stepController,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: quiz.questions.length,
+                    itemBuilder: (context, index) {
+                      return QuizzStepContent(
+                        question: quiz.questions[index],
+                      );
+                    },
+                  ),
+                  orElse: () => const LoadingIndicator(),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   quizzState.maybeWhen(
-                    loaded: (currentStep, answers) => currentStep > 1
+                    loaded: (quiz, answers, currentStep) => currentStep > 1
                         ? BasicButton(
                             onPressed: () {
                               if (currentStep > 0) {
@@ -100,10 +75,10 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                     orElse: () => const Spacer(),
                   ),
                   quizzState.maybeWhen(
-                    loaded: (currentStep, answers) => currentStep < pages.length
+                    loaded: (quiz, answers, currentStep) => currentStep < quiz.questions.length
                         ? BasicButton(
                             onPressed: () {
-                              if (currentStep < pages.length) {
+                              if (currentStep < quiz.questions.length) {
                                 stepController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
                                 quizzController.nextStep();
                               }

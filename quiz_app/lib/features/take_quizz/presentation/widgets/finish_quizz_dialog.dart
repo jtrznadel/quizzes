@@ -44,7 +44,8 @@ class FinishQuizzDialog extends ConsumerWidget {
         const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
-            quizzController.finishQuizz(id: '1');
+            //TODO: Implement finish quizz
+            //quizzController.finishQuizz(id: '1');
             ref.read(appRouterProvider).replace(const TakeQuizzSummaryRoute());
           },
           text: S.of(context).quizzTakeFinishButton,

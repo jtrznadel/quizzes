@@ -20,7 +20,8 @@ mixin _$QuizzTakeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int currentStep, Map<String, String> answers)
+    required TResult Function(QuizDetailsModel quiz,
+            List<UserAnswerModel> userAnswers, int currentStep)
         loaded,
     required TResult Function(String message) error,
     required TResult Function() finished,
@@ -30,7 +31,9 @@ mixin _$QuizzTakeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult? Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult? Function(String message)? error,
     TResult? Function()? finished,
   }) =>
@@ -39,7 +42,9 @@ mixin _$QuizzTakeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult Function(String message)? error,
     TResult Function()? finished,
     required TResult orElse(),
@@ -133,7 +138,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int currentStep, Map<String, String> answers)
+    required TResult Function(QuizDetailsModel quiz,
+            List<UserAnswerModel> userAnswers, int currentStep)
         loaded,
     required TResult Function(String message) error,
     required TResult Function() finished,
@@ -146,7 +152,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult? Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult? Function(String message)? error,
     TResult? Function()? finished,
   }) {
@@ -158,7 +166,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult Function(String message)? error,
     TResult Function()? finished,
     required TResult orElse(),
@@ -254,7 +264,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int currentStep, Map<String, String> answers)
+    required TResult Function(QuizDetailsModel quiz,
+            List<UserAnswerModel> userAnswers, int currentStep)
         loaded,
     required TResult Function(String message) error,
     required TResult Function() finished,
@@ -267,7 +278,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult? Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult? Function(String message)? error,
     TResult? Function()? finished,
   }) {
@@ -279,7 +292,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult Function(String message)? error,
     TResult Function()? finished,
     required TResult orElse(),
@@ -341,7 +356,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int currentStep, Map<String, String> answers});
+  $Res call(
+      {QuizDetailsModel quiz,
+      List<UserAnswerModel> userAnswers,
+      int currentStep});
+
+  $QuizDetailsModelCopyWith<$Res> get quiz;
 }
 
 /// @nodoc
@@ -355,19 +375,32 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? quiz = null,
+    Object? userAnswers = null,
     Object? currentStep = null,
-    Object? answers = null,
   }) {
     return _then(_$LoadedImpl(
+      quiz: null == quiz
+          ? _value.quiz
+          : quiz // ignore: cast_nullable_to_non_nullable
+              as QuizDetailsModel,
+      userAnswers: null == userAnswers
+          ? _value._userAnswers
+          : userAnswers // ignore: cast_nullable_to_non_nullable
+              as List<UserAnswerModel>,
       currentStep: null == currentStep
           ? _value.currentStep
           : currentStep // ignore: cast_nullable_to_non_nullable
               as int,
-      answers: null == answers
-          ? _value._answers
-          : answers // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $QuizDetailsModelCopyWith<$Res> get quiz {
+    return $QuizDetailsModelCopyWith<$Res>(_value.quiz, (value) {
+      return _then(_value.copyWith(quiz: value));
+    });
   }
 }
 
@@ -375,22 +408,27 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(
-      {required this.currentStep, required final Map<String, String> answers})
-      : _answers = answers;
+      {required this.quiz,
+      required final List<UserAnswerModel> userAnswers,
+      required this.currentStep})
+      : _userAnswers = userAnswers;
 
   @override
-  final int currentStep;
-  final Map<String, String> _answers;
+  final QuizDetailsModel quiz;
+  final List<UserAnswerModel> _userAnswers;
   @override
-  Map<String, String> get answers {
-    if (_answers is EqualUnmodifiableMapView) return _answers;
+  List<UserAnswerModel> get userAnswers {
+    if (_userAnswers is EqualUnmodifiableListView) return _userAnswers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_answers);
+    return EqualUnmodifiableListView(_userAnswers);
   }
 
   @override
+  final int currentStep;
+
+  @override
   String toString() {
-    return 'QuizzTakeState.loaded(currentStep: $currentStep, answers: $answers)';
+    return 'QuizzTakeState.loaded(quiz: $quiz, userAnswers: $userAnswers, currentStep: $currentStep)';
   }
 
   @override
@@ -398,14 +436,16 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
+            (identical(other.quiz, quiz) || other.quiz == quiz) &&
+            const DeepCollectionEquality()
+                .equals(other._userAnswers, _userAnswers) &&
             (identical(other.currentStep, currentStep) ||
-                other.currentStep == currentStep) &&
-            const DeepCollectionEquality().equals(other._answers, _answers));
+                other.currentStep == currentStep));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, currentStep, const DeepCollectionEquality().hash(_answers));
+  int get hashCode => Object.hash(runtimeType, quiz,
+      const DeepCollectionEquality().hash(_userAnswers), currentStep);
 
   @JsonKey(ignore: true)
   @override
@@ -418,12 +458,13 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int currentStep, Map<String, String> answers)
+    required TResult Function(QuizDetailsModel quiz,
+            List<UserAnswerModel> userAnswers, int currentStep)
         loaded,
     required TResult Function(String message) error,
     required TResult Function() finished,
   }) {
-    return loaded(currentStep, answers);
+    return loaded(quiz, userAnswers, currentStep);
   }
 
   @override
@@ -431,11 +472,13 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult? Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult? Function(String message)? error,
     TResult? Function()? finished,
   }) {
-    return loaded?.call(currentStep, answers);
+    return loaded?.call(quiz, userAnswers, currentStep);
   }
 
   @override
@@ -443,13 +486,15 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult Function(String message)? error,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(currentStep, answers);
+      return loaded(quiz, userAnswers, currentStep);
     }
     return orElse();
   }
@@ -497,11 +542,13 @@ class _$LoadedImpl implements _Loaded {
 
 abstract class _Loaded implements QuizzTakeState {
   const factory _Loaded(
-      {required final int currentStep,
-      required final Map<String, String> answers}) = _$LoadedImpl;
+      {required final QuizDetailsModel quiz,
+      required final List<UserAnswerModel> userAnswers,
+      required final int currentStep}) = _$LoadedImpl;
 
+  QuizDetailsModel get quiz;
+  List<UserAnswerModel> get userAnswers;
   int get currentStep;
-  Map<String, String> get answers;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -573,7 +620,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int currentStep, Map<String, String> answers)
+    required TResult Function(QuizDetailsModel quiz,
+            List<UserAnswerModel> userAnswers, int currentStep)
         loaded,
     required TResult Function(String message) error,
     required TResult Function() finished,
@@ -586,7 +634,9 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult? Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult? Function(String message)? error,
     TResult? Function()? finished,
   }) {
@@ -598,7 +648,9 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult Function(String message)? error,
     TResult Function()? finished,
     required TResult orElse(),
@@ -699,7 +751,8 @@ class _$FinishedImpl implements _Finished {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(int currentStep, Map<String, String> answers)
+    required TResult Function(QuizDetailsModel quiz,
+            List<UserAnswerModel> userAnswers, int currentStep)
         loaded,
     required TResult Function(String message) error,
     required TResult Function() finished,
@@ -712,7 +765,9 @@ class _$FinishedImpl implements _Finished {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult? Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult? Function(String message)? error,
     TResult? Function()? finished,
   }) {
@@ -724,7 +779,9 @@ class _$FinishedImpl implements _Finished {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(int currentStep, Map<String, String> answers)? loaded,
+    TResult Function(QuizDetailsModel quiz, List<UserAnswerModel> userAnswers,
+            int currentStep)?
+        loaded,
     TResult Function(String message)? error,
     TResult Function()? finished,
     required TResult orElse(),
