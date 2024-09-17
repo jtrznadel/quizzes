@@ -22,33 +22,6 @@ class _TakeQuizClient implements TakeQuizClient {
   String? baseUrl;
 
   @override
-  Future<QuizDetailsModel> getQuiz(String id) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<QuizDetailsModel>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'quiz/${id}',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final _value = QuizDetailsModel.fromJson(_result.data!);
-    return _value;
-  }
-
-  @override
   Future<void> submitParticipation(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -74,20 +47,21 @@ class _TakeQuizClient implements TakeQuizClient {
   }
 
   @override
-  Future<QuizResultModel> getQuizResult(String id) async {
+  Future<QuizParticipationModel> getQuizParticipation(
+      String quizParticipationId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<QuizResultModel>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<QuizParticipationModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'participations/{quizParticipationId}',
+              'participations/${quizParticipationId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -96,7 +70,7 @@ class _TakeQuizClient implements TakeQuizClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = QuizResultModel.fromJson(_result.data!);
+    final _value = QuizParticipationModel.fromJson(_result.data!);
     return _value;
   }
 

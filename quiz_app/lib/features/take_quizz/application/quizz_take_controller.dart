@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../data/repositories/take_quiz_repository.dart';
-import '../domain/quiz_participation_model.dart';
+import '../domain/submit_quiz_model.dart';
 import '../domain/user_answer_model.dart';
 import 'quizz_take_state.dart';
 
@@ -14,12 +14,11 @@ class QuizzTakeController extends _$QuizzTakeController {
   @override
   QuizzTakeState build() {
     return const QuizzTakeState.initial();
-    //TODO: Remove when the real implementation is done and UI handle it
   }
 
   Future<void> startQuizz({required String id}) async {
     state = const QuizzTakeState.loading();
-    final result = await ref.read(takeQuizProvider).getQuizByInvitation(id: id);
+    final result = await ref.read(takeQuizProvider).getQuizParticipation(id: id);
     result.fold(
       (error) => state = QuizzTakeState.error(error.message),
       (quizz) => state = QuizzTakeState.loaded(
@@ -74,9 +73,9 @@ class QuizzTakeController extends _$QuizzTakeController {
     );
   }
 
-  Future<void> finishQuizz({required QuizParticipationModel participationModel}) async {
+  Future<void> finishQuizz({required SubmitQuizModel submitQuizModel}) async {
     state = const QuizzTakeState.loading();
-    final result = await ref.read(takeQuizProvider).submitQuiz(participationModel: participationModel);
+    final result = await ref.read(takeQuizProvider).submitQuiz(submitQuizModel: submitQuizModel);
     result.fold(
       (error) => state = QuizzTakeState.error(error.message),
       (_) => state = const QuizzTakeState.finished(),

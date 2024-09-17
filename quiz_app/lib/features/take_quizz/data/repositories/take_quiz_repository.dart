@@ -3,18 +3,18 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
-import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../domain/quiz_participation_model.dart';
+import '../../domain/submit_quiz_model.dart';
 import '../data_sources/take_quiz_client.dart';
 
 part 'take_quiz_repository.g.dart';
 
 abstract class TakeQuizRepository {
   ResultFuture<void> submitQuiz({
-    required QuizParticipationModel participationModel,
+    required SubmitQuizModel submitQuizModel,
   });
-  //TODO: Change with the actual method (its temporary)
-  ResultFuture<QuizDetailsModel> getQuizByInvitation({required String id});
+
+  ResultFuture<QuizParticipationModel> getQuizParticipation({required String id});
 }
 
 class TakeQuizRepositoryImpl implements TakeQuizRepository {
@@ -24,21 +24,20 @@ class TakeQuizRepositoryImpl implements TakeQuizRepository {
 
   @override
   ResultFuture<void> submitQuiz({
-    required QuizParticipationModel participationModel,
+    required SubmitQuizModel submitQuizModel,
   }) async {
     try {
-      await _takeQuizClient.submitParticipation(participationModel.toJson());
+      await _takeQuizClient.submitParticipation(submitQuizModel.toJson());
       return const Right(null);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
     }
   }
 
-  //TODO: Change with the actual method (its temporary)
   @override
-  ResultFuture<QuizDetailsModel> getQuizByInvitation({required String id}) async {
+  ResultFuture<QuizParticipationModel> getQuizParticipation({required String id}) async {
     try {
-      final result = await _takeQuizClient.getQuiz(id);
+      final result = await _takeQuizClient.getQuizParticipation(id);
       return Right(result);
     } catch (e) {
       return Left(ServerException(message: e.toString()));

@@ -33,7 +33,7 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
         title: quizzState.maybeWhen(
           loaded: (quiz, userAnswers, currentStep) => QuizzProgressIndicator(
             currentStep: currentStep,
-            numberOfSteps: quiz.questions.length,
+            numberOfSteps: quiz.quizResponse.questions.length,
           ),
           orElse: () => const SizedBox.shrink(),
         ),
@@ -48,10 +48,10 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                   loaded: (quiz, userAnswers, currentStep) => PageView.builder(
                     controller: stepController,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: quiz.questions.length,
+                    itemCount: quiz.quizResponse.questions.length,
                     itemBuilder: (context, index) {
                       return QuizzStepContent(
-                        question: quiz.questions[index],
+                        question: quiz.quizResponse.questions[index],
                       );
                     },
                   ),
@@ -75,10 +75,10 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                     orElse: () => const Spacer(),
                   ),
                   quizzState.maybeWhen(
-                    loaded: (quiz, answers, currentStep) => currentStep < quiz.questions.length
+                    loaded: (quiz, answers, currentStep) => currentStep < quiz.quizResponse.questions.length
                         ? BasicButton(
                             onPressed: () {
-                              if (currentStep < quiz.questions.length) {
+                              if (currentStep < quiz.quizResponse.questions.length) {
                                 stepController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
                                 quizzController.nextStep();
                               }
