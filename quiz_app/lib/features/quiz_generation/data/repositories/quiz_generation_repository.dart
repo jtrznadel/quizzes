@@ -5,6 +5,7 @@ import '../../../../core/errors/server_exception.dart';
 import '../../../../core/services/file_reader.dart';
 import '../../../../core/utils/typedefs.dart';
 import '../../domain/create_quiz_model.dart';
+import '../../domain/created_quiz_result.dart';
 import '../../domain/generate_quiz_model.dart';
 import '../../domain/quiz_request_model.dart';
 import '../data_sources/quiz_generation_client.dart';
@@ -16,7 +17,7 @@ abstract class QuizGenerationRepository {
     required QuizRequestModel quizRequestModel,
   });
 
-  ResultFuture<String> createQuiz({
+  ResultFuture<CreatedQuizResult> createQuiz({
     required CreateQuizModel quizModel,
   });
 }
@@ -45,12 +46,12 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
   }
 
   @override
-  ResultFuture<String> createQuiz({
+  ResultFuture<CreatedQuizResult> createQuiz({
     required CreateQuizModel quizModel,
   }) async {
     try {
-      final model = await _quizGenerationClient.createQuiz(quizModel.toJson());
-      return Right(model);
+      final quizResult = await _quizGenerationClient.createQuiz(quizModel.toJson());
+      return Right(quizResult);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
     }
@@ -58,6 +59,5 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
 }
 
 @riverpod
-QuizGenerationRepository quizGenerationRepository(
-        QuizGenerationRepositoryRef ref) =>
+QuizGenerationRepository quizGenerationRepository(QuizGenerationRepositoryRef ref) =>
     QuizGenerationRepositoryImpl(ref.read(quizGenerationClientProvider));
