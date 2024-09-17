@@ -272,6 +272,82 @@ class SuccessfulPasswordResetRequestRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [TakeQuizzPage]
+class TakeQuizzRoute extends PageRouteInfo<void> {
+  const TakeQuizzRoute({List<PageRouteInfo>? children})
+      : super(
+          TakeQuizzRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TakeQuizzRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TakeQuizzPage();
+    },
+  );
+}
+
+/// generated route for
+/// [TakeQuizzResultPage]
+class TakeQuizzResultRoute extends PageRouteInfo<void> {
+  const TakeQuizzResultRoute({List<PageRouteInfo>? children})
+      : super(
+          TakeQuizzResultRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TakeQuizzResultRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TakeQuizzResultPage();
+    },
+  );
+}
+
+/// generated route for
+/// [TakeQuizzSummaryPage]
+class TakeQuizzSummaryRoute extends PageRouteInfo<void> {
+  const TakeQuizzSummaryRoute({List<PageRouteInfo>? children})
+      : super(
+          TakeQuizzSummaryRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TakeQuizzSummaryRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TakeQuizzSummaryPage();
+    },
+  );
+}
+
+/// generated route for
+/// [TakeQuizzWraperPage]
+class TakeQuizzWraperRoute extends PageRouteInfo<void> {
+  const TakeQuizzWraperRoute({List<PageRouteInfo>? children})
+      : super(
+          TakeQuizzWraperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TakeQuizzWraperRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const TakeQuizzWraperPage();
+    },
+  );
+}
+
+/// generated route for
 /// [TempPage]
 class TempRoute extends PageRouteInfo<void> {
   const TempRoute({List<PageRouteInfo>? children})

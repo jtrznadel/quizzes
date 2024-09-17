@@ -34,7 +34,7 @@ class QuitQuizzCreationDialog extends ConsumerWidget {
             ref.read(quizGenerationControllerProvider.notifier).resetState();
             ref.read(appRouterProvider).replace(const DashboardRoute());
           },
-          text: S.of(context).quizzCreationQuitButton,
+          text: S.of(context).quizzQuitButton,
           width: null,
           bgColor: AppColorScheme.error,
           contentColor: AppColorScheme.textContrast,

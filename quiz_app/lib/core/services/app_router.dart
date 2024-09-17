@@ -1,6 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../features/take_quizz/presentation/views/take_quizz_page.dart';
+import '../../features/take_quizz/presentation/views/take_quizz_result_page.dart';
+import '../../features/take_quizz/presentation/views/take_quizz_summary_page.dart';
+import '../../features/take_quizz/presentation/views/take_quizz_wraper_page.dart';
 import '../common/widgets/errors/basic_error_page.dart';
 import 'auth_guard.dart';
 
@@ -54,5 +59,9 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: QuizzCreationRoute.page, guards: [AuthGuard(ref)]),
         AutoRoute(page: QuizzDetailsRoute.page, guards: [AuthGuard(ref)]),
         AutoRoute(page: BasicErrorRoute.page),
+        AutoRoute(page: TakeQuizzRoute.page),
+        AutoRoute(page: TakeQuizzWraperRoute.page),
+        AutoRoute(page: TakeQuizzSummaryRoute.page),
+        AutoRoute(page: TakeQuizzResultRoute.page),
       ];
 }

@@ -1,4 +1,5 @@
 {
+    "@@locale": "en",
     "loginButton": "Log In",
     "registerButton": "Register",
     "emailLabel": "E-mail",
@@ -142,7 +143,7 @@
 
     "quizzCreationQuitHeading": "Are you sure?",
     "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",
-    "quizzCreationQuitButton": "Yes, quit",
+    "quizzQuitButton": "Yes, quit",
 
     "quizzCreationAddQuestionHeading": "New question",
     "quizzCreationAddQuestionTitleLabel": "Question Title",
@@ -182,6 +183,27 @@
     },
     "addNewQuizzButton": "Add new quizz",
     "dashboardQuizzesEmpty": "You do not have any quizzes yet. Create one now!",
+
+    "quizzTakeAppBarTitle": "Take quizz",
+    "quizzTakeQuitHeading": "Quit quizz?",
+    "quizzTakeQuitSubheading": "If you leave now, your progress will be lost. You''ll need access the quizz again from the link to retake it. Are you sure you want to quit?",
+    "quizzTakeHeading": "Quizz",
+    "quizzTakeSubheading": "Engage with our quizz designed to evaluate your understanding and knowledge on various topics.",
+    "quizzTakeFormFieldLabel": "Name",
+    "quizzTakeFormFieldHint": "Your name",
+    "quizzTakeFinishHeading": "Finish quizz",
+    "quizzTakeFinishDescription": "Are you sure that all questions have been answered? Once you submit, you won''t be able to make any changes.",
+    "quizzTakeFinishButton": "Finish",
+    "quizzTakeSummaryHeading": "Summary",
+    "quizzTakeSummaryDescription": "Congratulations on finishing the quiz! Your responses have been recorded. Review your results below, and see how you did. Thank you for participating!",
+    "quizzTakeSummaryYourScore": "Your score is...",
+    "quizzTakeScoreURGenius": "You are a genius!",
+    "quizzTakeScoreAwesome": "Awesome!",
+    "quizzTakeScoreGood": "Good!",
+    "quizzTakeScoreCouldBeBetter": "Could be better!",
+    "quizzTakeScoreBad": "This is not your day...",
+    "quizzTakeSummarySeeResults": "See results",
+    "quizzTakeSummaryBackToDashboard": "Back to dashboard",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",

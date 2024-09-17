@@ -10,6 +10,9 @@ abstract class AppTheme {
   static const double mediumRadius = 8;
   static const double smallRadius = 4;
 
+  static const double radiusFull = 9999;
+  static const double radiusMedium = 8;
+
   static const double answerTextAreaPadding = 8;
   static const double quizStatusBadgeVerticalPadding = 8;
   static const double statusBadgeBorderRadius = 32;
@@ -59,6 +62,9 @@ abstract class AppTheme {
 
   static const double checkboxDefaultHeight = 24;
   static const double checkboxDefaultWidth = 24;
+
+  static const double takeQuizzInfoContainerBorderRadius = 8;
+  static const double takeQuizzInfoContainerPadding = 16;
 
   static const double profileSpacerValue = 32;
 

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +15,7 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../take_quizz/presentation/views/take_quizz_page.dart';
 import '../../application/dashboard_controller.dart';
 import '../../domain/quiz_dashboard_model.dart';
 import '../widgets/new_quiz_button.dart';
@@ -99,6 +102,13 @@ class DashboardTopBar extends ConsumerWidget {
             Text(
               S.of(context).dashboardTopHeading,
               style: context.theme.textTheme.headlineLarge,
+            ),
+            IconButton(
+              onPressed: () {
+                //TODO: Replace with real data
+                context.router.push(const TakeQuizzRoute());
+              },
+              icon: SvgPicture.asset(MediaRes.generate, width: 24, height: 24),
             ),
             IconButton(
               onPressed: () {

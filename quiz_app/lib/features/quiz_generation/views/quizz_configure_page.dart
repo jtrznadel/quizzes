@@ -18,16 +18,14 @@ class QuizzConfigurePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quizGenerationController =
-        ref.read(quizGenerationControllerProvider.notifier);
+    final quizGenerationController = ref.read(quizGenerationControllerProvider.notifier);
     final state = ref.watch(quizGenerationControllerProvider);
     return SafeArea(
       child: Stack(
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
-                  .copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

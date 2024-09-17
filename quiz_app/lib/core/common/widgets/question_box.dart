@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../models/question_model_interface.dart';
+import '../../utils/enums/answer_result_enum.dart';
 import 'dotted_border_container.dart';
 import 'new_question/add_new_question_dialog.dart';
 import 'new_question/add_question_dialog_answer_section.dart';
@@ -89,14 +90,17 @@ class QuestionBox extends ConsumerWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
+                final result = correctAnswerVisible
+                    ? question.answers[index].isCorrect
+                        ? AnswerResult.correct
+                        : AnswerResult.neutral
+                    : AnswerResult.neutral;
                 return Column(
                   children: [
                     AnswerTile(
                       leading: Answer.values[index].name,
                       text: question.answers[index].content,
-                      isCorrect: correctAnswerVisible
-                          ? question.answers[index].isCorrect
-                          : false,
+                      result: result,
                     ),
                     const SmallVSpacer(),
                   ],
