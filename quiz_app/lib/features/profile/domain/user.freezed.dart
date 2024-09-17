@@ -22,7 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   @JsonKey(includeToJson: false)
   String get id => throw _privateConstructorUsedError;
-  String get userName => throw _privateConstructorUsedError;
+  String get displayName => throw _privateConstructorUsedError;
   @JsonKey(includeToJson: false)
   String get email => throw _privateConstructorUsedError;
 
@@ -38,7 +38,7 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(includeToJson: false) String id,
-      String userName,
+      String displayName,
       @JsonKey(includeToJson: false) String email});
 }
 
@@ -56,7 +56,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? userName = null,
+    Object? displayName = null,
     Object? email = null,
   }) {
     return _then(_value.copyWith(
@@ -64,9 +64,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -85,7 +85,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(includeToJson: false) String id,
-      String userName,
+      String displayName,
       @JsonKey(includeToJson: false) String email});
 }
 
@@ -100,7 +100,7 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? userName = null,
+    Object? displayName = null,
     Object? email = null,
   }) {
     return _then(_$UserImpl(
@@ -108,9 +108,9 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userName: null == userName
-          ? _value.userName
-          : userName // ignore: cast_nullable_to_non_nullable
+      displayName: null == displayName
+          ? _value.displayName
+          : displayName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -125,7 +125,7 @@ class __$$UserImplCopyWithImpl<$Res>
 class _$UserImpl implements _User {
   const _$UserImpl(
       {@JsonKey(includeToJson: false) this.id = '',
-      required this.userName,
+      required this.displayName,
       @JsonKey(includeToJson: false) this.email = ''});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -135,14 +135,14 @@ class _$UserImpl implements _User {
   @JsonKey(includeToJson: false)
   final String id;
   @override
-  final String userName;
+  final String displayName;
   @override
   @JsonKey(includeToJson: false)
   final String email;
 
   @override
   String toString() {
-    return 'User(id: $id, userName: $userName, email: $email)';
+    return 'User(id: $id, displayName: $displayName, email: $email)';
   }
 
   @override
@@ -151,14 +151,14 @@ class _$UserImpl implements _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userName, userName) ||
-                other.userName == userName) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
             (identical(other.email, email) || other.email == email));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userName, email);
+  int get hashCode => Object.hash(runtimeType, id, displayName, email);
 
   @JsonKey(ignore: true)
   @override
@@ -177,7 +177,7 @@ class _$UserImpl implements _User {
 abstract class _User implements User {
   const factory _User(
       {@JsonKey(includeToJson: false) final String id,
-      required final String userName,
+      required final String displayName,
       @JsonKey(includeToJson: false) final String email}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -186,7 +186,7 @@ abstract class _User implements User {
   @JsonKey(includeToJson: false)
   String get id;
   @override
-  String get userName;
+  String get displayName;
   @override
   @JsonKey(includeToJson: false)
   String get email;
