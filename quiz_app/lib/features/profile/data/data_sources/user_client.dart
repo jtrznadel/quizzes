@@ -1,6 +1,5 @@
 
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:retrofit/http.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -20,7 +19,7 @@ abstract class UserClient {
   @PUT(ApiConstants.updateUserEndpoint)
   Future<void> updateUser(@Body() Map<String, dynamic> body);
 
-  @POST('auth/${ApiConstants.signOutEndpoint}')
+  @POST(ApiConstants.signOutEndpoint)
   Future<void> signOut();
 }
 

@@ -138,6 +138,9 @@
     "quizzDetailsTabGeneralQuizDescriptionHint": "Wprowadź opis quizzu",
     "quizzDetailsTabGeneralSuccessfullSave": "Pomyślnie zapisano zmiany.",
 
+    "quizzDetailsAddNewQuestionSuccess": "Pomyślnie dodano nowe pytanie.",
+    "quizzDetailsAddNewQuestionFailure": "Nie udało się dodać nowego pytania.",
+
     "quizzCreationQuitHeading": "Czy jesteś pewien?",
     "quizzCreationQuitSubheading": "Zamierzasz przerwać proces tworzenia quizzu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta.",
     "quizzQuitButton": "Tak, zakończ",
@@ -149,7 +152,7 @@
     "quizzCreationAddQuestionDescriptionHint": "Wprowadź opis pytania",
     "quizzCreationAddQuestionAnswersLabel": "Odpowiedzi",
     "quizzCreationSaveQuestion": "Zapisz",
-    "quizzCreationAddQuestionAnswerPlaceholder": "Jakie jest jedno z kluczowych cech kryptowalut?",
+    "quizzCreationAddQuestionAnswerPlaceholder": "Twoja odpowiedź",
 
     "quizzCreationGenerateQuestionHeading": "Wygeneruj nowe pytanie",
     "quizzCreationGenerateQuestionPromptLabel": "Monit tekstowy",
@@ -244,5 +247,7 @@
     "dividerOr": "LUB",
     "language": "Język",
     "languagePolish": "Polski",
-    "languageEnglish": "Angielski"
+    "languageEnglish": "Angielski",
+
+    "refreshButton": "Odśwież"
 }

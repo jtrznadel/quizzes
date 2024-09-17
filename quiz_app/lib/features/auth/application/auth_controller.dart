@@ -2,7 +2,6 @@ import 'dart:core';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
 import '../data/repositories/auth_repository.dart';
 import '../domain/user_auth.dart';
@@ -12,51 +11,59 @@ part 'auth_controller.g.dart';
 
 @riverpod
 class AuthController extends _$AuthController {
-
   final _authRepostiory = authRepositoryProvider;
 
   @override
   AuthState build() {
-    return const AuthState.initial();
+    return const AuthState.unauthenticated(true);
   }
 
-  Future<void> signUp({required String email, required String password}) async {
-    state = const AuthState.loading();
+  Future<bool> signUp({required String email, required String password}) async {
+    final obscurePassword = state.maybeWhen(
+      unauthenticated: (obscurePassword) => obscurePassword,
+      orElse: () => true,
+    );
+    state = AuthState.loading(obscurePassword);
     final userAuth = UserAuth(email: email, password: password);
     final result = await ref.read(_authRepostiory).signUp(userAuth: userAuth);
-    result.fold(
-      (error) => state = AuthState.error(error.message),
-      (_) => state = const AuthState.success(),
-    );
+    return result.fold((error) {
+      state = AuthState.unauthenticated(obscurePassword);
+      return false;
+    }, (_) {
+      state = AuthState.unauthenticated(obscurePassword);
+      return true;
+    });
   }
 
-  Future<void> signIn({required String email, required String password}) async {
+  Future<bool> signIn({required String email, required String password}) async {
     final userAuth = UserAuth(email: email, password: password);
-    state = const AuthState.loading();
+    final obscurePassword = state.maybeWhen(
+      unauthenticated: (obscurePassword) => obscurePassword,
+      orElse: () => true,
+    );
+    state = AuthState.loading(obscurePassword);
     final result = await ref.read(_authRepostiory).signIn(userAuth: userAuth);
-    result.fold(
-      (error) => state = AuthState.error(error.message),
+    return result.fold(
+      (error) {
+        state = AuthState.unauthenticated(obscurePassword);
+        return false;
+      },
       (tokens) async {
         await ref.read(sessionProvider).saveTokens(
               accessToken: tokens.accessToken,
               refreshToken: tokens.refreshToken,
             );
-        state = const AuthState.authenticated();
+        return true;
       },
     );
   }
 
-  Future<void> signOut() async {
-    state = const AuthState.loading();
-    final result = await ref.read(_authRepostiory).signOut();
-    final router = ref.read(appRouterProvider);
-    result.fold(
-      (error) => state = AuthState.error(error.message),
-      (_) async {
-        await ref.read(sessionProvider).deleteTokens();
-        state = const AuthState.unauthenticated();
-        router.replaceAll([const SignInRoute()]);
+  void togglePasswordVisibility() {
+    state.maybeWhen(
+      unauthenticated: (obscurePassword) {
+        state = AuthState.unauthenticated(!obscurePassword);
       },
+      orElse: () {},
     );
   }
 }

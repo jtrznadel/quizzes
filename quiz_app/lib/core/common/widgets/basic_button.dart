@@ -63,7 +63,7 @@ class BasicButton extends StatelessWidget {
     }
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: AppTheme.buttonVerticalPadding, horizontal: AppTheme.buttonHorizontalPadding),
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
         gradient: const LinearGradient(
@@ -95,11 +95,26 @@ class BasicButton extends StatelessWidget {
           ),
         ],
       ),
-      child: InkWell(
-        onTap: onPressed,
-        child: Row(
-          mainAxisAlignment: contentAlignment,
-          children: children,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onPressed,
+          customBorder: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppTheme.buttonBorderRadius),
+          ),
+          splashColor: AppColorScheme.primaryDark,
+          highlightColor: AppColorScheme.primaryDark,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: AppTheme.buttonVerticalPadding,
+              horizontal: AppTheme.buttonHorizontalPadding,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: contentAlignment,
+              children: children,
+            ),
+          ),
         ),
       ),
     );

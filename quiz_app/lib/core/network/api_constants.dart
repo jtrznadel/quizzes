@@ -7,7 +7,7 @@ class ApiConstants {
   static const String updateUserEndpoint = '/profile';
   //TODO: not implemented on backend yet
   static const String deleteUserEndpoint = '/delete_user';
-  static const String signOutEndpoint = '/logout';
+  static const String signOutEndpoint = 'auth/logout';
 
   static const String refreshAccessTokenEndpoint = 'auth/refresh-token';
 
@@ -29,6 +29,8 @@ class ApiConstants {
   static const String updateQuizDetailsEndpoint = 'quiz';
 
   static const String deleteQuestionEndpoint = 'questionsandanswers/{id}';
+  static const String addQuestionEndpoint = 'questionsandanswers/create-question';
+  static const String updateQuestionEndpoint = 'questionsandanswers/update-question';
 
   static const String quizListEndpoint = 'quiz';
   static const String deleteQuizEndpoint = 'quiz/{id}';

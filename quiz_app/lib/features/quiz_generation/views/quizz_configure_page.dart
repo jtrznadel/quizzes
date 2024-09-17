@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/common/widgets/basic_button.dart';
+import '../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/theme/app_color_scheme.dart';
@@ -64,12 +65,9 @@ class QuizzConfigurePage extends ConsumerWidget {
                         await quizGenerationController.generate(request);
                       } else {
                         if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                S.of(context).quizzCreationConfigurationError,
-                              ),
-                            ),
+                          ErrorSnackbar.show(
+                            context,
+                            S.of(context).quizzCreationConfigurationError,
                           );
                         }
                       }

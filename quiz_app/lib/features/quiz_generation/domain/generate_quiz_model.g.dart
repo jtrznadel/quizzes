@@ -12,7 +12,8 @@ _$GenerateQuizModelImpl _$$GenerateQuizModelImplFromJson(
       title: json['title'] as String,
       description: json['description'] as String,
       generateQuestions: (json['generateQuestions'] as List<dynamic>)
-          .map((e) => GenerateQuestionModel.fromJson(e as Map<String, dynamic>))
+          .map((e) => const QuestionModelConverter()
+              .fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -21,5 +22,7 @@ Map<String, dynamic> _$$GenerateQuizModelImplToJson(
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
-      'generateQuestions': instance.generateQuestions,
+      'generateQuestions': instance.generateQuestions
+          .map(const QuestionModelConverter().toJson)
+          .toList(),
     };

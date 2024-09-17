@@ -1,5 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/services/app_router.dart';
+import '../../../core/services/session_provider.dart';
 import '../data/repositories/user_repository.dart';
 import '../domain/user.dart';
 import 'user_state.dart';
@@ -37,5 +39,18 @@ class UserController extends _$UserController {
     } on Exception catch (e) {
       state = UserState.error(e);
     }
+  }
+
+  Future<void> signOut() async {
+    state = const UserState.loading();
+    final result = await ref.read(_userRepository).signOut();
+    final router = ref.read(appRouterProvider);
+    result.fold(
+      (error) => state = UserState.error(error),
+      (_) async {
+        await ref.read(sessionProvider).deleteTokens();
+        router.replaceAll([const SignInRoute()]);
+      },
+    );
   }
 }

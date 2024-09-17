@@ -86,7 +86,7 @@ class _UserClient implements UserClient {
     )
         .compose(
           _dio.options,
-          'auth//logout',
+          'auth/logout',
           queryParameters: queryParameters,
           data: _data,
         )

@@ -215,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzTakeSummaryHeading": MessageLookupByLibrary.simpleMessage("Summary"),
         "quizzTakeSummarySeeResults": MessageLookupByLibrary.simpleMessage("See results"),
         "quizzTakeSummaryYourScore": MessageLookupByLibrary.simpleMessage("Your score is..."),
+        "refreshButton": MessageLookupByLibrary.simpleMessage("Refresh"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "saveQuizzButton": MessageLookupByLibrary.simpleMessage("Save Quizz"),
         "sessionExpired": MessageLookupByLibrary.simpleMessage("Session expired, please log in again."),

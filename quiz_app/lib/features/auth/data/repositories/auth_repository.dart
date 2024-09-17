@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
@@ -16,7 +15,6 @@ abstract class AuthRepository {
   ResultFuture<TokenAuth> signIn({
     required UserAuth userAuth,
   });
-  ResultFuture<void> signOut();
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -43,16 +41,6 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final result = await _authClient.signIn(userAuth.toJson());
       return Right(result);
-    } catch (e) {
-      return Left(ServerException(message: e.toString()));
-    }
-  }
-
-  @override
-  ResultFuture<void> signOut() async {
-    try {
-      await _authClient.signOut();
-      return const Right(null);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
     }

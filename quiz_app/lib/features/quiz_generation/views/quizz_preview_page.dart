@@ -12,6 +12,7 @@ import '../../../../generated/l10n.dart';
 import '../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../core/common/widgets/error_page.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
+import '../../../core/models/question_model_interface.dart';
 import '../application/quiz_generation_controller.dart';
 import '../application/quiz_generation_state.dart';
 import '../domain/create_quiz_model.dart';
@@ -85,6 +86,10 @@ class QuizzPreviewPage extends ConsumerWidget {
                                         context, index, state, controller);
                                   },
                                   correctAnswerVisible: true,
+                                  onEdit: (question){
+                                    controller.deleteQuestion(quiz, index);
+                                    addQuestion(controller, quiz, question);
+                                  },
                                 ),
                                 const CustomVSpacer(32),
                               ],
@@ -150,14 +155,15 @@ class QuizzPreviewPage extends ConsumerWidget {
               },
               orElse: () {},
             );
+            Navigator.of(context).pop();
           },
         );
       },
     );
   }
 
-  void addQuestion(QuizGenerationController controller, GenerateQuizModel quiz, GenerateQuestionModel question) {
-    final tempQuestions = List<GenerateQuestionModel>.from(quiz.generateQuestions);
+  void addQuestion(QuizGenerationController controller, GenerateQuizModel quiz, QuestionModelInterface question) {
+    final tempQuestions = List<QuestionModelInterface>.from(quiz.generateQuestions);
     tempQuestions.add(question);
     quiz = quiz.copyWith(
       generateQuestions: tempQuestions,

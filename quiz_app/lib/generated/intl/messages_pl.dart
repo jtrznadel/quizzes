@@ -197,6 +197,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzShareHeading": MessageLookupByLibrary.simpleMessage("Udostępnij quizz"),
         "quizzShareMessage": MessageLookupByLibrary.simpleMessage("Udostępnij ten quizz swoim znajomym"),
         "quizzSummaryTitle": MessageLookupByLibrary.simpleMessage("Tytuł: "),
+        "refreshButton": MessageLookupByLibrary.simpleMessage("Odśwież"),
         "quizzTakeAppBarTitle": MessageLookupByLibrary.simpleMessage("Rozpocznij quizz"),
         "quizzTakeFinishButton": MessageLookupByLibrary.simpleMessage("Zakończ"),
         "quizzTakeFinishDescription": MessageLookupByLibrary.simpleMessage(

@@ -7,7 +7,7 @@ import '../../../../core/common/widgets/text_divider.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../generated/l10n.dart';
-import '../refactors/sign_up_form.dart';
+import 'sign_up_form.dart';
 import '../widgets/auth_redirect_button.dart';
 
 @RoutePage()
