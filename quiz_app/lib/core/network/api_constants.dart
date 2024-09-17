@@ -38,6 +38,7 @@ class ApiConstants {
   static const String quizListPageQuery = 'Page';
   static const String quizListPageSizeQuery = 'PageSize';
 
+  static const String joinQuizEndpoint = '{joinCode}';
   static const String submitParticipationEndpoint = 'participations/submit';
   static const String getQuizParticipation = 'participations/{quizParticipationId}';
 }

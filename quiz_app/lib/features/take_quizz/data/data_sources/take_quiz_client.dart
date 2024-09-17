@@ -12,11 +12,14 @@ part 'take_quiz_client.g.dart';
 abstract class TakeQuizClient {
   factory TakeQuizClient(Dio dio, {String baseUrl}) = _TakeQuizClient;
 
-  @POST(ApiConstants.submitParticipationEndpoint)
-  Future<void> submitParticipation(@Body() Map<String, dynamic> body);
+  @POST(ApiConstants.joinQuizEndpoint)
+  Future<String> joinQuiz(@Path('joinCode') String joinCode);
 
   @GET(ApiConstants.getQuizParticipation)
   Future<QuizParticipationModel> getQuizParticipation(@Path('quizParticipationId') String quizParticipationId);
+
+  @POST(ApiConstants.submitParticipationEndpoint)
+  Future<void> submitParticipation(@Body() Map<String, dynamic> body);
 }
 
 @riverpod

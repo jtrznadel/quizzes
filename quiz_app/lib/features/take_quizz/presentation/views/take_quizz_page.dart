@@ -29,8 +29,7 @@ class TakeQuizzPage extends ConsumerStatefulWidget {
 class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
   @override
   void initState() {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: '57e06bca-bbc6-4067-b50e-d45116ee825e'));
+    WidgetsBinding.instance.addPostFrameCallback((_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: '5c722313'));
     //TODO: Remove when the real implementation is done and UI handle it //93b48c1a-3c1b-48d1-816d-5a7110cecc20
     super.initState();
   }

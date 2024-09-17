@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../data/repositories/take_quiz_repository.dart';
@@ -18,6 +20,28 @@ class QuizzTakeController extends _$QuizzTakeController {
 
   Future<void> startQuizz({required String id}) async {
     state = const QuizzTakeState.loading();
+    final joinResult = await ref.read(takeQuizProvider).joinQuiz(joinCode: id);
+
+    joinResult.fold(
+      (error) {
+        state = QuizzTakeState.error(error.message);
+        return;
+      },
+      (participationId) async {
+        state = const QuizzTakeState.loading();
+        final id = jsonDecode(participationId)['id'] as String;
+        final result = await ref.read(takeQuizProvider).getQuizParticipation(id: id);
+        result.fold(
+          (error) => state = QuizzTakeState.error(error.message),
+          (quizz) => state = QuizzTakeState.loaded(
+            quiz: quizz,
+            userAnswers: [],
+            currentStep: 1,
+          ),
+        );
+      },
+    );
+
     final result = await ref.read(takeQuizProvider).getQuizParticipation(id: id);
     result.fold(
       (error) => state = QuizzTakeState.error(error.message),

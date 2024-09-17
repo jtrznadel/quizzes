@@ -22,20 +22,19 @@ class _TakeQuizClient implements TakeQuizClient {
   String? baseUrl;
 
   @override
-  Future<void> submitParticipation(Map<String, dynamic> body) async {
+  Future<String> joinQuiz(String joinCode) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(body);
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'participations/submit',
+          '${joinCode}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -44,6 +43,8 @@ class _TakeQuizClient implements TakeQuizClient {
           _dio.options.baseUrl,
           baseUrl,
         ))));
+    final _value = _result.data!;
+    return _value;
   }
 
   @override
@@ -72,6 +73,31 @@ class _TakeQuizClient implements TakeQuizClient {
             ))));
     final _value = QuizParticipationModel.fromJson(_result.data!);
     return _value;
+  }
+
+  @override
+  Future<void> submitParticipation(Map<String, dynamic> body) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body);
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'participations/submit',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
