@@ -4,6 +4,7 @@ import '../../../../core/network/api_constants.dart';
 import '../../../../core/network/base_dio_client.dart';
 import 'package:retrofit/http.dart';
 
+import '../../domain/created_quiz_result.dart';
 import '../../domain/generate_quiz_model.dart';
 
 part 'quiz_generation_client.g.dart';
@@ -22,7 +23,7 @@ abstract class QuizGenerationClient {
   });
 
   @POST(ApiConstants.quizCreateEndpoint)
-  Future<String> createQuiz(@Body() Map<String, dynamic> body);
+  Future<CreatedQuizResult> createQuiz(@Body() Map<String, dynamic> body);
 }
 
 @riverpod
