@@ -40,7 +40,6 @@ class ShareLinkContainer extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              context.maybePop();
               Clipboard.setData(ClipboardData(text: link));
               InfoSnackbar.show(context, S.of(context).linkCopied, color: AppColorScheme.primary);
             },

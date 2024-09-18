@@ -12,57 +12,58 @@ import '../../../generated/l10n.dart';
 import '../../../mocks.dart';
 
 class ShareQuizzBottomSheet extends ConsumerWidget {
-  const ShareQuizzBottomSheet({super.key});
+  const ShareQuizzBottomSheet({super.key, required this.link});
+
+  final String link;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: AppTheme.pageDefaultTopPaddingSize),
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                S.of(context).quizzShareHeading,
-                style: context.theme.textTheme.headlineMedium,
-              ),
-              const SmallVSpacer(),
-              //TODO: Replace with actual link
-              const ShareLinkContainer(link: mockLink),
-              const MediumVSpacer(),
-              SecondaryButton(
-                onPressed: () async {
-                  await Share.share(S.of(context).quizzShareMessage);
-                },
-                text: S.of(context).quizzShareButton,
-                width: double.infinity,
-              ),
-              const ExtraLargeVSpacer(),
-              SecondaryButton(
-                onPressed: () {
-                  ref.read(appRouterProvider).maybePop();
-                },
-                text: S.of(context).cancelButton,
-                width: double.infinity,
-              ),
-            ],
-          ),
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
+            .copyWith(top: AppTheme.pageDefaultTopPaddingSize),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              S.of(context).quizzShareHeading,
+              style: context.theme.textTheme.headlineMedium,
+            ),
+            const SmallVSpacer(),
+            ShareLinkContainer(link: link),
+            const MediumVSpacer(),
+            SecondaryButton(
+              onPressed: () async {
+                await Share.share(S.of(context).quizzShareMessage);
+              },
+              text: S.of(context).quizzShareButton,
+              width: double.infinity,
+            ),
+            const LargeVSpacer(),
+            SecondaryButton(
+              onPressed: () {
+                ref.read(appRouterProvider).maybePop();
+              },
+              text: S.of(context).cancelButton,
+              width: double.infinity,
+            ),
+          ],
         ),
       ),
     );
   }
 
-  static void show(BuildContext context) {
+  static void show(BuildContext context, String link) {
     showModalBottomSheet(
-      isScrollControlled: true,
       context: context,
       backgroundColor: Colors.white,
-      builder: (context) => const Wrap(
-        children: [
-          ShareQuizzBottomSheet(),
-        ],
+      builder: (context) => SizedBox(
+        height: context.height * 0.3,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: ShareQuizzBottomSheet(link: link),
+        ),
       ),
     );
   }
