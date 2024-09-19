@@ -24,6 +24,7 @@ mixin _$QuizDetailsModel {
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   QuizAvailability get availability => throw _privateConstructorUsedError;
+  String get shareLink => throw _privateConstructorUsedError;
   QuizStatus get status => throw _privateConstructorUsedError;
   List<QuestionDetailsModel> get questions =>
       throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $QuizDetailsModelCopyWith<$Res> {
       String title,
       String description,
       QuizAvailability availability,
+      String shareLink,
       QuizStatus status,
       List<QuestionDetailsModel> questions});
 }
@@ -66,6 +68,7 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
     Object? title = null,
     Object? description = null,
     Object? availability = null,
+    Object? shareLink = null,
     Object? status = null,
     Object? questions = null,
   }) {
@@ -86,6 +89,10 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
               as QuizAvailability,
+      shareLink: null == shareLink
+          ? _value.shareLink
+          : shareLink // ignore: cast_nullable_to_non_nullable
+              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -111,6 +118,7 @@ abstract class _$$QuizDetailsModelImplCopyWith<$Res>
       String title,
       String description,
       QuizAvailability availability,
+      String shareLink,
       QuizStatus status,
       List<QuestionDetailsModel> questions});
 }
@@ -130,6 +138,7 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? description = null,
     Object? availability = null,
+    Object? shareLink = null,
     Object? status = null,
     Object? questions = null,
   }) {
@@ -150,6 +159,10 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
           ? _value.availability
           : availability // ignore: cast_nullable_to_non_nullable
               as QuizAvailability,
+      shareLink: null == shareLink
+          ? _value.shareLink
+          : shareLink // ignore: cast_nullable_to_non_nullable
+              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -170,6 +183,7 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
       required this.title,
       required this.description,
       required this.availability,
+      required this.shareLink,
       required this.status,
       required final List<QuestionDetailsModel> questions})
       : _questions = questions;
@@ -186,6 +200,8 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
   @override
   final QuizAvailability availability;
   @override
+  final String shareLink;
+  @override
   final QuizStatus status;
   final List<QuestionDetailsModel> _questions;
   @override
@@ -197,7 +213,7 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
 
   @override
   String toString() {
-    return 'QuizDetailsModel(id: $id, title: $title, description: $description, availability: $availability, status: $status, questions: $questions)';
+    return 'QuizDetailsModel(id: $id, title: $title, description: $description, availability: $availability, shareLink: $shareLink, status: $status, questions: $questions)';
   }
 
   @override
@@ -211,6 +227,8 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
                 other.description == description) &&
             (identical(other.availability, availability) ||
                 other.availability == availability) &&
+            (identical(other.shareLink, shareLink) ||
+                other.shareLink == shareLink) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions));
@@ -218,8 +236,15 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description,
-      availability, status, const DeepCollectionEquality().hash(_questions));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      availability,
+      shareLink,
+      status,
+      const DeepCollectionEquality().hash(_questions));
 
   @JsonKey(ignore: true)
   @override
@@ -242,6 +267,7 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
           required final String title,
           required final String description,
           required final QuizAvailability availability,
+          required final String shareLink,
           required final QuizStatus status,
           required final List<QuestionDetailsModel> questions}) =
       _$QuizDetailsModelImpl;
@@ -257,6 +283,8 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
   String get description;
   @override
   QuizAvailability get availability;
+  @override
+  String get shareLink;
   @override
   QuizStatus get status;
   @override

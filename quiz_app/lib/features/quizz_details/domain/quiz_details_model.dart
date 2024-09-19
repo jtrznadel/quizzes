@@ -16,6 +16,7 @@ class QuizDetailsModel with _$QuizDetailsModel {
     required String title,
     required String description,
     required QuizAvailability availability,
+    required String shareLink,
     required QuizStatus status,
     required List<QuestionDetailsModel> questions,
   }) = _QuizDetailsModel;

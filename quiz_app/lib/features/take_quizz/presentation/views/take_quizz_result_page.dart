@@ -29,6 +29,7 @@ class TakeQuizzResultPage extends StatelessWidget {
           id: '312312',
           title: 'TEst',
           description: '423423',
+          shareLink: '423423',
           availability: QuizAvailability.Public,
           status: QuizStatus.Active,
           questions: [
