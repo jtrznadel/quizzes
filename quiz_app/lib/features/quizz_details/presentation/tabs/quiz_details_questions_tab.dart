@@ -22,29 +22,17 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(quizDetailsControllerProvider);
     return Column(
       children: [
-        Column(
-          children: [
-            const MediumVSpacer(),
-            Text(
-              S.of(context).quizzDetailsTabQuestionsSubheading,
-              style: context.textTheme.bodyMedium!
-                  .copyWith(color: AppColorScheme.textSecondary),
-            ),
-            const MediumVSpacer(),
-            const AnswersSwitchRow(),
-            Consumer(builder: (context, ref, child) {
-              return state.maybeWhen(
-                loaded: (quizDetails, _) {
-                  return const NewQuestionButton();
-                },
-                orElse: () => const SizedBox.shrink(),
-              );
-            }),
-          ],
+        const MediumVSpacer(),
+        Text(
+          S.of(context).quizzDetailsTabQuestionsSubheading,
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         ),
+        const MediumVSpacer(),
+        const AnswersSwitchRow(),
+        const NewQuestionButton(),
         const QuestionsList(),
       ],
     );

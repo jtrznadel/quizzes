@@ -14,23 +14,12 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const MediumVSpacer(),
-        statisticsHeader(context),
+        Text(
+          S.of(context).quizzDetailsTabStatisticsSubheading,
+          style: context.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
+        ),
         const MediumVSpacer(),
-        statisticsList(context),
-      ],
-    );
-  }
-
-  Widget statisticsHeader(BuildContext context) {
-    return Text(
-      S.of(context).quizzDetailsTabStatisticsSubheading,
-      style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-    );
-  }
-
-  Widget statisticsList(context) {
-    return Column(
-      children: [
         ListView.separated(
           itemCount: 10,
           shrinkWrap: true,
