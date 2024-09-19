@@ -1170,6 +1170,16 @@ class S {
     );
   }
 
+  /// `Successfully deleted the question.`
+  String get quizzDetailsDeleteQuestionSuccess {
+    return Intl.message(
+      'Successfully deleted the question.',
+      name: 'quizzDetailsDeleteQuestionSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get quizzCreationQuitHeading {
     return Intl.message(

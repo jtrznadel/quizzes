@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/new_question/add_question_dialog_answer_section.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -48,7 +49,13 @@ class DeleteQuestionDialog extends ConsumerWidget {
         if (context.mounted) {
           if (!success) {
             ErrorSnackbar.show(context, S.of(context).deleteQuestionFailure);
-          } 
+          } else {
+            InfoSnackbar.show(
+              context,
+              S.of(context).quizzDetailsDeleteQuestionSuccess,
+              color: AppColorScheme.success,
+            );
+          }
           Navigator.of(context).pop();
         }
       },
