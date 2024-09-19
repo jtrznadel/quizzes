@@ -21,6 +21,9 @@ abstract class UserClient {
 
   @POST(ApiConstants.signOutEndpoint)
   Future<void> signOut();
+
+  @POST(ApiConstants.guestAccountCreationEndpoint)
+  Future<void> convertGuestToUser(@Body() Map<String, dynamic> body);
 }
 
 @riverpod

@@ -42,4 +42,5 @@ class ApiConstants {
   static const String getQuizResult = 'participations/{quizParticipationId}';
 
   static const String guestSignInEndpoint = '/guests';
+  static const String guestAccountCreationEndpoint = '/profile/convert-guest';
 }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
+import '../../domain/guest_auth.dart';
 import '../../domain/user.dart';
 import '../data_sources/user_client.dart';
 
@@ -15,6 +16,10 @@ abstract class UserRepository {
   });
 
   ResultFuture<void> signOut();
+
+  ResultFuture<void> convertGuestToUser(
+    GuestAuth user,
+  );
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -48,6 +53,18 @@ class UserRepositoryImpl implements UserRepository {
   ResultFuture<void> signOut() async {
     try {
       await _userClient.signOut();
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerException(message: e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<void> convertGuestToUser(
+    GuestAuth user,
+  ) async {
+    try {
+      await _userClient.convertGuestToUser(user.toJson());
       return const Right(null);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
