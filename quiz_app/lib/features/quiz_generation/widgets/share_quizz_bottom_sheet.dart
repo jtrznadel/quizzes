@@ -9,7 +9,6 @@ import '../../../core/extensions/context_extension.dart';
 import '../../../core/services/app_router.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../generated/l10n.dart';
-import '../../../mocks.dart';
 
 class ShareQuizzBottomSheet extends ConsumerWidget {
   const ShareQuizzBottomSheet({super.key, required this.link});

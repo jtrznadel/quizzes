@@ -12,7 +12,6 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../quiz_generation/domain/generate_question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
-import '../../application/quiz_details_state.dart';
 import '../../domain/new_question_model.dart';
 import '../widgets/delete_question_dialog.dart';
 import '../widgets/switch_button.dart';
@@ -24,111 +23,42 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(quizDetailsControllerProvider);
-    final controller = ref.read(quizDetailsControllerProvider.notifier);
     return Column(
       children: [
-        questionsHeader(context, state, controller),
-        questionsList(context, state, controller),
-      ],
-    );
-  }
-
-  Widget questionsHeader(BuildContext context, QuizDetailsState state,
-      QuizDetailsController controller) {
-    return Column(
-      children: [
-        const MediumVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabQuestionsSubheading,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
-        ),
-        const MediumVSpacer(),
-        answersSwitchRow(context, state, controller),
-        //const MediumVSpacer(),
-        Consumer(builder: (context, ref, child) {
-          return state.maybeWhen(
-            loaded: (quizDetails, _) {
-              return newQuestionButton(context, quizDetails.id, controller);
-            },
-            orElse: () => const SizedBox.shrink(),
-          );
-        }),
-      ],
-    );
-  }
-
-  Widget questionsList(
-    BuildContext context,
-    QuizDetailsState state,
-    QuizDetailsController controller,
-  ) {
-    return state.maybeWhen(
-      loaded: (quizDetails, answersVisible) {
-        return Column(
+        Column(
           children: [
             const MediumVSpacer(),
-            ListView.builder(
-              itemCount: quizDetails.questions.length,
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    QuestionBox(
-                      questionIndex: index,
-                      question: GenerateQuestionModel(
-                        title: quizDetails.questions[index].title,
-                        generateAnswers: quizDetails.questions[index].answers,
-                      ),
-                      onDelete: () {
-                        DeleteQuestionDialog.show(
-                            context, quizDetails.questions[index]);
-                      },
-                      correctAnswerVisible: answersVisible,
-                      onEdit: (question) async {
-                        await controller
-                            .deleteQuestion(quizDetails.questions[index].id);
-                        final newQuestionModel = NewQuestionModel(
-                          title: question.title,
-                          createAnswers: question.answers,
-                          quizID: quizDetails.id,
-                        );
-                        final success =
-                            await controller.addNewQuestion(newQuestionModel);
-                        if (context.mounted) {
-                          success
-                              ? InfoSnackbar.show(
-                                  context,
-                                  S
-                                      .of(context)
-                                      .quizzDetailsAddNewQuestionSuccess,
-                                  color: AppColorScheme.success,
-                                )
-                              : ErrorSnackbar.show(
-                                  context,
-                                  S
-                                      .of(context)
-                                      .quizzDetailsAddNewQuestionFailure,
-                                );
-                        }
-                      },
-                    ),
-                    const LargeVSpacer(),
-                  ],
-                );
-              },
+            Text(
+              S.of(context).quizzDetailsTabQuestionsSubheading,
+              style: context.textTheme.bodyMedium!
+                  .copyWith(color: AppColorScheme.textSecondary),
             ),
-            const LargeVSpacer()
+            const MediumVSpacer(),
+            const AnswersSwitchRow(),
+            Consumer(builder: (context, ref, child) {
+              return state.maybeWhen(
+                loaded: (quizDetails, _) {
+                  return const NewQuestionButton();
+                },
+                orElse: () => const SizedBox.shrink(),
+              );
+            }),
           ],
-        );
-      },
-      orElse: () => const SizedBox.shrink(),
+        ),
+        const QuestionsList(),
+      ],
     );
   }
+}
 
-  Widget answersSwitchRow(BuildContext context, QuizDetailsState state,
-      QuizDetailsController controller) {
+class AnswersSwitchRow extends ConsumerWidget {
+  const AnswersSwitchRow({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(quizDetailsControllerProvider);
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
+
     return state.maybeWhen(
       loaded: (quizDetails, answersVisible) {
         return Row(
@@ -170,41 +100,124 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
       orElse: () => const SizedBox.shrink(),
     );
   }
+}
 
-  Widget newQuestionButton(
-      BuildContext context, String quizID, QuizDetailsController controller) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: ElevatedButton(
-        onPressed: () {
-          AddNewQuestionBottomSheet.show(
-            context,
-            onQuestionAdd: (question) async {
-              final newQuestionModel = NewQuestionModel(
-                  title: question.title,
-                  createAnswers: question.answers,
-                  quizID: quizID);
-              await controller.addNewQuestion(newQuestionModel);
+class NewQuestionButton extends ConsumerWidget {
+  const NewQuestionButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
+    final state = ref.watch(quizDetailsControllerProvider);
+
+    return state.maybeWhen(
+      loaded: (quizDetails, _) {
+        return Align(
+          alignment: Alignment.centerRight,
+          child: ElevatedButton(
+            onPressed: () {
+              AddNewQuestionBottomSheet.show(
+                context,
+                onQuestionAdd: (question) async {
+                  final newQuestionModel = NewQuestionModel(
+                      title: question.title,
+                      createAnswers: question.answers,
+                      quizID: quizDetails.id);
+                  await controller.addNewQuestion(newQuestionModel);
+                },
+              );
             },
-          );
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColorScheme.secondary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(48),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColorScheme.secondary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(48),
+              ),
+              shadowColor: Colors.transparent,
+              elevation: 0,
+            ),
+            child: Text(
+              S.of(context).quizzDetailsTabQuestionsAddNewQuestion,
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: AppColorScheme.primary,
+                fontWeight: FontWeight.w700,
+                fontFamily: GoogleFonts.inter().fontFamily,
+              ),
+            ),
           ),
-          shadowColor: Colors.transparent,
-          elevation: 0,
-        ),
-        child: Text(
-          S.of(context).quizzDetailsTabQuestionsAddNewQuestion,
-          style: context.textTheme.bodyMedium?.copyWith(
-            color: AppColorScheme.primary,
-            fontWeight: FontWeight.w700,
-            fontFamily: GoogleFonts.inter().fontFamily,
-          ),
-        ),
-      ),
+        );
+      },
+      orElse: () => const SizedBox.shrink(),
+    );
+  }
+}
+
+class QuestionsList extends ConsumerWidget {
+  const QuestionsList({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(quizDetailsControllerProvider);
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
+
+    return state.maybeWhen(
+      loaded: (quizDetails, answersVisible) {
+        return Column(
+          children: [
+            const MediumVSpacer(),
+            ListView.builder(
+              itemCount: quizDetails.questions.length,
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    QuestionBox(
+                      questionIndex: index,
+                      question: GenerateQuestionModel(
+                        title: quizDetails.questions[index].title,
+                        generateAnswers: quizDetails.questions[index].answers,
+                      ),
+                      onDelete: () {
+                        DeleteQuestionDialog.show(
+                            context, quizDetails.questions[index]);
+                      },
+                      correctAnswerVisible: answersVisible,
+                      onEdit: (question) async {
+                        final newQuestionModel = NewQuestionModel(
+                          title: question.title,
+                          createAnswers: question.answers,
+                          quizID: quizDetails.id,
+                        );
+                        final success = await controller.updateQuestion(
+                            newQuestionModel, quizDetails.questions[index].id);
+                        if (context.mounted) {
+                          success
+                              ? InfoSnackbar.show(
+                                  context,
+                                  S
+                                      .of(context)
+                                      .quizzDetailsUpdateQuestionSuccess,
+                                  color: AppColorScheme.success,
+                                )
+                              : ErrorSnackbar.show(
+                                  context,
+                                  S
+                                      .of(context)
+                                      .quizzDetailsAddNewQuestionFailure,
+                                );
+                        }
+                      },
+                    ),
+                    const LargeVSpacer(),
+                  ],
+                );
+              },
+            ),
+            const LargeVSpacer()
+          ],
+        );
+      },
+      orElse: () => const SizedBox.shrink(),
     );
   }
 }
