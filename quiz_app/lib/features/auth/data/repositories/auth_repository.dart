@@ -15,6 +15,9 @@ abstract class AuthRepository {
   ResultFuture<TokenAuth> signIn({
     required UserAuth userAuth,
   });
+  ResultFuture<void> guestSignIn({
+    required String guestDisplayName,
+  });
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -40,6 +43,20 @@ class AuthRepositoryImpl implements AuthRepository {
   }) async {
     try {
       final result = await _authClient.signIn(userAuth.toJson());
+      return Right(result);
+    } catch (e) {
+      return Left(ServerException(message: e.toString()));
+    }
+  }
+
+  @override
+  ResultFuture<TokenAuth> guestSignIn({
+    required String guestDisplayName,
+  }) async {
+    try {
+      final result = await _authClient.guestSignIn(Map<String, dynamic>.from({
+        'displayName': guestDisplayName,
+      }));
       return Right(result);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
