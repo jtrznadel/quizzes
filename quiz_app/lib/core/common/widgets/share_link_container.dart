@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -40,7 +39,6 @@ class ShareLinkContainer extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              context.maybePop();
               Clipboard.setData(ClipboardData(text: link));
               InfoSnackbar.show(context, S.of(context).linkCopied, color: AppColorScheme.primary);
             },

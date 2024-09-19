@@ -34,7 +34,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
   @override
   Widget build(BuildContext context) {
     var selectedValue = ref.watch(languageProvider).languageCode;
-    usernameTextController.text = widget.user.userName;
+    usernameTextController.text = widget.user.displayName;
     emailTextController.text = widget.user.email;
 
     return Padding(

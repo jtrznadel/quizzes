@@ -11,7 +11,7 @@ class User with _$User {
     @JsonKey(includeToJson: false)
     @Default('')
     String id,
-    required String userName,
+    required String displayName,
     @JsonKey(includeToJson: false)
     @Default('')
     String email

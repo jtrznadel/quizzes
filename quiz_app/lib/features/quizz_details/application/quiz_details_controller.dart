@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_details_repository.dart';
 import '../domain/new_question_model.dart';
+import '../domain/question_details_model.dart';
 import '../domain/quiz_details_model.dart';
 import '../domain/update_question_model.dart';
 import 'quiz_details_state.dart';
@@ -116,10 +117,8 @@ class QuizDetailsController extends _$QuizDetailsController {
 
   Future<bool> addNewQuestion(NewQuestionModel question) async {
     try {
-      state = const QuizDetailsState.loading();
       await ref.read(_quizDetailsRepository).addQuestion(question);
-      //_reloadQuestionList();
-      getQuizDetails(question.quizID);
+      _reloadQuestionsAfterAdding();
       return true;
     } catch (e) {
       state = QuizDetailsState.error(S.current.somethingWentWrong);
@@ -127,11 +126,11 @@ class QuizDetailsController extends _$QuizDetailsController {
     }
   }
 
-  Future<bool> updateQuestion(UpdateQuestionModel question) async {
+  //TODO: Use this method once it's possible to add answers to questions in the API
+  Future<bool> _updateQuestion(UpdateQuestionModel question) async {
     try {
       state = const QuizDetailsState.loading();
-      ref.read(_quizDetailsRepository).updateQuestion(question);
-      //_reloadQuestionList();
+      await ref.read(_quizDetailsRepository).updateQuestion(question);
       getQuizDetails(question.quizID);
       return true;
     } catch (e) {
@@ -140,14 +139,42 @@ class QuizDetailsController extends _$QuizDetailsController {
     }
   }
 
-  Future<void> _reloadQuestionList() async {
+  Future<bool> updateQuestion(NewQuestionModel question, String questionId,) async {
+    try {
+      await ref.read(_quizDetailsRepository).deleteQuestion(questionId);
+      await ref.read(_quizDetailsRepository).addQuestion(NewQuestionModel(
+            title: question.title,
+            createAnswers: question.answers,
+            quizID: question.quizID,
+          ));
+      _reloadQuestionsAfterUpdating(questionId);
+      return true;
+    } catch (e) {
+      state = QuizDetailsState.error(S.current.somethingWentWrong);
+      return false;
+    }
+  }
+
+  Future<void> _reloadQuestionsAfterUpdating(String oldQuestionId) async {
     try {
       state.maybeWhen(
         loaded: (quizDetails, answersVisible) async {
+          final listWithoutOldQuestion = quizDetails.questions
+              .where((q) => q.id != oldQuestionId)
+              .toList();
           final updatedQuizDetails = await ref
               .read(_quizDetailsRepository)
               .getQuizDetails(quizDetails.id);
-          state = QuizDetailsState.loaded(updatedQuizDetails, answersVisible);
+          final newQuestion = _findNewQuestion(
+            listWithoutOldQuestion,
+            updatedQuizDetails.questions,
+          );
+
+          final newQuestionList = quizDetails.questions
+              .map((q) => q.id == oldQuestionId ? newQuestion : q)
+              .toList();
+
+          state = QuizDetailsState.loaded(quizDetails.copyWith(questions: newQuestionList), answersVisible);
         },
         orElse: () => state,
       );
@@ -155,4 +182,31 @@ class QuizDetailsController extends _$QuizDetailsController {
       state = QuizDetailsState.error(S.current.somethingWentWrong);
     }
   }
+
+  Future<void> _reloadQuestionsAfterAdding() async {
+    try {
+      state.maybeWhen(
+        loaded: (quizDetails, answersVisible) async {
+          final updatedQuizDetails = await ref
+              .read(_quizDetailsRepository)
+              .getQuizDetails(quizDetails.id);
+          final newQuestion = _findNewQuestion(
+              quizDetails.questions, updatedQuizDetails.questions);
+          final newQuestionList = quizDetails.questions + [newQuestion];
+          state = QuizDetailsState.loaded(
+              quizDetails.copyWith(questions: newQuestionList), answersVisible);
+        },
+        orElse: () => state,
+      );
+    } catch (e) {
+      state = QuizDetailsState.error(S.current.somethingWentWrong);
+    }
+  }
+}
+
+QuestionDetailsModel _findNewQuestion(List<QuestionDetailsModel> oldQuestions,
+    List<QuestionDetailsModel> newQuestions) {
+  return newQuestions.firstWhere(
+    (element) => !oldQuestions.any((q) => q.id == element.id),
+  );
 }

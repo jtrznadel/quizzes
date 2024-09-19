@@ -21,7 +21,7 @@ mixin _$QuizGenerationState {
     required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
-    required TResult Function(String quizID) created,
+    required TResult Function(CreatedQuizResult quizResult) created,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$QuizGenerationState {
     TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
-    TResult? Function(String quizID)? created,
+    TResult? Function(CreatedQuizResult quizResult)? created,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$QuizGenerationState {
     TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
-    TResult Function(String quizID)? created,
+    TResult Function(CreatedQuizResult quizResult)? created,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,7 +163,7 @@ class _$GeneratingImpl implements _Generating {
     required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
-    required TResult Function(String quizID) created,
+    required TResult Function(CreatedQuizResult quizResult) created,
   }) {
     return generating(request);
   }
@@ -174,7 +174,7 @@ class _$GeneratingImpl implements _Generating {
     TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
-    TResult? Function(String quizID)? created,
+    TResult? Function(CreatedQuizResult quizResult)? created,
   }) {
     return generating?.call(request);
   }
@@ -185,7 +185,7 @@ class _$GeneratingImpl implements _Generating {
     TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
-    TResult Function(String quizID)? created,
+    TResult Function(CreatedQuizResult quizResult)? created,
     required TResult orElse(),
   }) {
     if (generating != null) {
@@ -318,7 +318,7 @@ class _$GeneratedImpl implements _Generated {
     required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
-    required TResult Function(String quizID) created,
+    required TResult Function(CreatedQuizResult quizResult) created,
   }) {
     return generated(quiz);
   }
@@ -329,7 +329,7 @@ class _$GeneratedImpl implements _Generated {
     TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
-    TResult? Function(String quizID)? created,
+    TResult? Function(CreatedQuizResult quizResult)? created,
   }) {
     return generated?.call(quiz);
   }
@@ -340,7 +340,7 @@ class _$GeneratedImpl implements _Generated {
     TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
-    TResult Function(String quizID)? created,
+    TResult Function(CreatedQuizResult quizResult)? created,
     required TResult orElse(),
   }) {
     if (generated != null) {
@@ -463,7 +463,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
-    required TResult Function(String quizID) created,
+    required TResult Function(CreatedQuizResult quizResult) created,
   }) {
     return error(message);
   }
@@ -474,7 +474,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
-    TResult? Function(String quizID)? created,
+    TResult? Function(CreatedQuizResult quizResult)? created,
   }) {
     return error?.call(message);
   }
@@ -485,7 +485,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
-    TResult Function(String quizID)? created,
+    TResult Function(CreatedQuizResult quizResult)? created,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -547,7 +547,9 @@ abstract class _$$InitialImplCopyWith<$Res> {
           _$InitialImpl value, $Res Function(_$InitialImpl) then) =
       __$$InitialImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String quizID});
+  $Res call({CreatedQuizResult quizResult});
+
+  $CreatedQuizResultCopyWith<$Res> get quizResult;
 }
 
 /// @nodoc
@@ -561,28 +563,36 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? quizID = null,
+    Object? quizResult = null,
   }) {
     return _then(_$InitialImpl(
-      null == quizID
-          ? _value.quizID
-          : quizID // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == quizResult
+          ? _value.quizResult
+          : quizResult // ignore: cast_nullable_to_non_nullable
+              as CreatedQuizResult,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreatedQuizResultCopyWith<$Res> get quizResult {
+    return $CreatedQuizResultCopyWith<$Res>(_value.quizResult, (value) {
+      return _then(_value.copyWith(quizResult: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl(this.quizID);
+  const _$InitialImpl(this.quizResult);
 
   @override
-  final String quizID;
+  final CreatedQuizResult quizResult;
 
   @override
   String toString() {
-    return 'QuizGenerationState.created(quizID: $quizID)';
+    return 'QuizGenerationState.created(quizResult: $quizResult)';
   }
 
   @override
@@ -590,11 +600,12 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            (identical(other.quizID, quizID) || other.quizID == quizID));
+            (identical(other.quizResult, quizResult) ||
+                other.quizResult == quizResult));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, quizID);
+  int get hashCode => Object.hash(runtimeType, quizResult);
 
   @JsonKey(ignore: true)
   @override
@@ -608,9 +619,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(QuizRequestModel request) generating,
     required TResult Function(GenerateQuizModel quiz) generated,
     required TResult Function(String message) error,
-    required TResult Function(String quizID) created,
+    required TResult Function(CreatedQuizResult quizResult) created,
   }) {
-    return created(quizID);
+    return created(quizResult);
   }
 
   @override
@@ -619,9 +630,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(QuizRequestModel request)? generating,
     TResult? Function(GenerateQuizModel quiz)? generated,
     TResult? Function(String message)? error,
-    TResult? Function(String quizID)? created,
+    TResult? Function(CreatedQuizResult quizResult)? created,
   }) {
-    return created?.call(quizID);
+    return created?.call(quizResult);
   }
 
   @override
@@ -630,11 +641,11 @@ class _$InitialImpl implements _Initial {
     TResult Function(QuizRequestModel request)? generating,
     TResult Function(GenerateQuizModel quiz)? generated,
     TResult Function(String message)? error,
-    TResult Function(String quizID)? created,
+    TResult Function(CreatedQuizResult quizResult)? created,
     required TResult orElse(),
   }) {
     if (created != null) {
-      return created(quizID);
+      return created(quizResult);
     }
     return orElse();
   }
@@ -678,9 +689,9 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements QuizGenerationState {
-  const factory _Initial(final String quizID) = _$InitialImpl;
+  const factory _Initial(final CreatedQuizResult quizResult) = _$InitialImpl;
 
-  String get quizID;
+  CreatedQuizResult get quizResult;
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;

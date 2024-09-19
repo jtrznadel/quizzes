@@ -1,3 +1,5 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,16 +33,26 @@ class MyAppState extends ConsumerState<MyApp> {
     final appRouter = ref.read(appRouterProvider);
     final appLocale = ref.watch(languageProvider);
     return MaterialApp.router(
-        locale: appLocale,
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        theme: AppTheme.theme,
-        debugShowCheckedModeBanner: false,
-        routerConfig: appRouter.config());
+      locale: appLocale,
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      theme: AppTheme.theme,
+      debugShowCheckedModeBanner: false,
+      routerConfig: appRouter.config(
+        deepLinkTransformer: (uri) {
+          print(uri);
+          return SynchronousFuture(uri);
+        },
+        deepLinkBuilder: (deepLink) {
+          print(deepLink.uri);
+          return const DeepLink([DashboardRoute()]);
+        },
+      ),
+    );
   }
 }

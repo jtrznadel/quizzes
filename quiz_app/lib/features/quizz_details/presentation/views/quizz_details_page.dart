@@ -99,7 +99,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
                 IconButton(
                   icon: SvgPicture.asset(MediaRes.share),
                   onPressed: () {
-                    ShareQuizzBottomSheet.show(context);
+                    ShareQuizzBottomSheet.show(context, quizDetails.shareLink);
                   },
                 ),
                 const SmallHSpacer(),

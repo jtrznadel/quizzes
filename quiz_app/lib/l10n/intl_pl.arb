@@ -140,6 +140,7 @@
 
     "quizzDetailsAddNewQuestionSuccess": "Pomyślnie dodano nowe pytanie.",
     "quizzDetailsAddNewQuestionFailure": "Nie udało się dodać nowego pytania.",
+    "quizzDetailsUpdateQuestionSuccess": "Pomyślnie zaktualizowano pytanie.",
 
     "quizzCreationQuitHeading": "Czy jesteś pewien?",
     "quizzCreationQuitSubheading": "Zamierzasz przerwać proces tworzenia quizzu. Wszelkie dotychczasowe postępy zostaną utracone. Ta operacja nie może zostać cofnięta.",
