@@ -40,4 +40,6 @@ class ApiConstants {
 
   static const String submitParticipationEndpoint = 'participations/submit';
   static const String getQuizResult = 'participations/{quizParticipationId}';
+
+  static const String guestSignInEndpoint = '/guests';
 }
