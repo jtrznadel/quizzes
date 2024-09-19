@@ -33,8 +33,8 @@ class QuizzTakeController extends _$QuizzTakeController {
         final result = await ref.read(takeQuizProvider).getQuizParticipation(id: id);
         result.fold(
           (error) => state = QuizzTakeState.error(error.message),
-          (quizz) => state = QuizzTakeState.loaded(
-            quiz: quizz,
+          (participation) => state = QuizzTakeState.loaded(
+            participationModel: participation,
             userAnswers: [],
             currentStep: 1,
           ),
@@ -45,8 +45,8 @@ class QuizzTakeController extends _$QuizzTakeController {
     final result = await ref.read(takeQuizProvider).getQuizParticipation(id: id);
     result.fold(
       (error) => state = QuizzTakeState.error(error.message),
-      (quizz) => state = QuizzTakeState.loaded(
-        quiz: quizz,
+      (participation) => state = QuizzTakeState.loaded(
+        participationModel: participation,
         userAnswers: [],
         currentStep: 1,
       ),
@@ -55,8 +55,8 @@ class QuizzTakeController extends _$QuizzTakeController {
 
   void nextStep() {
     state.maybeWhen(
-      loaded: (quiz, userAnswers, currentStep) => state = QuizzTakeState.loaded(
-        quiz: quiz,
+      loaded: (participation, userAnswers, currentStep) => state = QuizzTakeState.loaded(
+        participationModel: participation,
         userAnswers: userAnswers,
         currentStep: currentStep + 1,
       ),
@@ -66,8 +66,8 @@ class QuizzTakeController extends _$QuizzTakeController {
 
   void previousStep() {
     state.maybeWhen(
-      loaded: (quiz, userAnswers, currentStep) => state = QuizzTakeState.loaded(
-        quiz: quiz,
+      loaded: (participation, userAnswers, currentStep) => state = QuizzTakeState.loaded(
+        participationModel: participation,
         userAnswers: userAnswers,
         currentStep: currentStep - 1,
       ),
@@ -77,7 +77,7 @@ class QuizzTakeController extends _$QuizzTakeController {
 
   void answerQuestion({required String questionId, required String answerId}) {
     state.maybeWhen(
-      loaded: (quiz, userAnswers, currentStep) {
+      loaded: (participation, userAnswers, currentStep) {
         final updatedAnswers = List<UserAnswerModel>.from(userAnswers);
         final existingAnswerIndex = updatedAnswers.indexWhere((element) => element.questionId == questionId);
 
@@ -88,7 +88,7 @@ class QuizzTakeController extends _$QuizzTakeController {
         }
 
         state = QuizzTakeState.loaded(
-          quiz: quiz,
+          participationModel: participation,
           userAnswers: updatedAnswers,
           currentStep: currentStep,
         );
@@ -97,15 +97,29 @@ class QuizzTakeController extends _$QuizzTakeController {
     );
   }
 
-  Future<void> finishQuizz({required SubmitQuizModel submitQuizModel}) async {
-    state = const QuizzTakeState.loading();
-    final result = await ref.read(takeQuizProvider).submitQuiz(submitQuizModel: submitQuizModel);
-    result.fold(
-      (error) => state = QuizzTakeState.error(error.message),
-      (_) => state = const QuizzTakeState.finished(),
+  Future<void> finishQuizz() async {
+    state.maybeWhen(
+      loaded: (participation, userAnswers, currentStep) async {
+        final submitQuizModel = SubmitQuizModel(
+          quizParticipationId: participation.id,
+          questionsId: userAnswers.map((e) => e.questionId).toList(),
+          answersId: userAnswers.map((e) => e.answerId).toList(),
+        );
+        final result = await ref.read(takeQuizProvider).submitQuiz(submitQuizModel: submitQuizModel);
+        result.fold(
+          (error) => state = QuizzTakeState.error(error.message),
+          (_) async {
+            final result = await ref.read(takeQuizProvider).getQuizResult(id: participation.id);
+            result.fold(
+              (error) => state = QuizzTakeState.error(error.message),
+              (quizResult) => state = QuizzTakeState.resultReceived(quizResult: quizResult),
+            );
+          },
+        );
+      },
+      orElse: () {
+        state = const QuizzTakeState.error('Error');
+      },
     );
-    Future.delayed(const Duration(seconds: 2), () {
-      state = const QuizzTakeState.finished();
-    });
   }
 }

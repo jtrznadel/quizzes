@@ -7,7 +7,7 @@ part of 'quizz_take_controller.dart';
 // **************************************************************************
 
 String _$quizzTakeControllerHash() =>
-    r'6ef5f84c50b319f548edc29e24fb4ffb372f4bf0';
+    r'0eb8ced2698a1abcee4287e239080717ad321499';
 
 /// See also [QuizzTakeController].
 @ProviderFor(QuizzTakeController)

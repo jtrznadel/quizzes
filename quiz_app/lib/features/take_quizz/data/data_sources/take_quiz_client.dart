@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/network/api_constants.dart';
 import '../../../../core/network/base_dio_client.dart';
 import '../../domain/quiz_participation_model.dart';
+import '../../domain/quiz_result_model.dart';
 
 part 'take_quiz_client.g.dart';
 
@@ -20,6 +21,9 @@ abstract class TakeQuizClient {
 
   @POST(ApiConstants.submitParticipationEndpoint)
   Future<void> submitParticipation(@Body() Map<String, dynamic> body);
+
+  @GET(ApiConstants.getQuizResult)
+  Future<QuizResultModel> getQuizResult(@Path('quizParticipationId') String quizParticipationId);
 }
 
 @riverpod

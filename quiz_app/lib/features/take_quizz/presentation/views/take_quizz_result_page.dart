@@ -19,60 +19,12 @@ import '../../domain/user_answer_model.dart';
 
 @RoutePage()
 class TakeQuizzResultPage extends StatelessWidget {
-  const TakeQuizzResultPage({super.key});
+  const TakeQuizzResultPage({super.key, required this.quizResult});
+
+  final QuizResultModel quizResult;
 
   @override
   Widget build(BuildContext context) {
-    QuizResultModel mockResult = const QuizResultModel(
-        quizParticipationId: '432423',
-        quizDetails: QuizDetailsModel(
-          id: '312312',
-          title: 'TEst',
-          description: '423423',
-          availability: QuizAvailability.Public,
-          status: QuizStatus.Active,
-          questions: [
-            QuestionDetailsModel(
-              id: '1a',
-              title: 'Temporary Question 1',
-              answers: [
-                AnswerDetailsModel(id: '1aa', content: 'Answer 1aa', isCorrect: false),
-                AnswerDetailsModel(id: '1ab', content: 'Answer 2ab', isCorrect: false),
-                AnswerDetailsModel(id: '1ac', content: 'Answer 3ac', isCorrect: true),
-                AnswerDetailsModel(id: '1ad', content: 'Answer 4ad', isCorrect: false),
-              ],
-            ),
-            QuestionDetailsModel(
-              id: '2a',
-              title: 'Temporary Question 2',
-              answers: [
-                AnswerDetailsModel(id: '2aa', content: 'Answer 1aa', isCorrect: false),
-                AnswerDetailsModel(id: '2ab', content: 'Answer 2ab', isCorrect: false),
-                AnswerDetailsModel(id: '2ac', content: 'Answer 3ac', isCorrect: false),
-                AnswerDetailsModel(id: '2ad', content: 'Answer 4ad', isCorrect: true),
-              ],
-            ),
-            QuestionDetailsModel(
-              id: '3a',
-              title: 'Temporary Question 3',
-              answers: [
-                AnswerDetailsModel(id: '3aa', content: 'Answer 1aa', isCorrect: false),
-                AnswerDetailsModel(id: '3ab', content: 'Answer 2ab', isCorrect: true),
-                AnswerDetailsModel(id: '3ac', content: 'Answer 3ac', isCorrect: false),
-                AnswerDetailsModel(id: '3ad', content: 'Answer 4ad', isCorrect: false),
-              ],
-            ),
-          ],
-        ),
-        userAnswers: [
-          UserAnswerModel(questionId: '1a', answerId: '1ab'),
-          UserAnswerModel(questionId: '2a', answerId: '2aa'),
-          UserAnswerModel(questionId: '3a', answerId: '3ab'),
-        ],
-        totalQuestions: 3,
-        correctAnswers: 3,
-        scorePercentage: 100);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quizz Results'),
@@ -88,15 +40,15 @@ class TakeQuizzResultPage extends StatelessWidget {
             ),
             Expanded(
               child: ListView.separated(
-                itemCount: mockResult.quizDetails.questions.length,
+                itemCount: quizResult.quizDetails.questions.length,
                 itemBuilder: (context, index) {
                   return QuestionResultBox(
-                    questionModel: mockResult.quizDetails.questions[index],
-                    userAnswerId: mockResult.userAnswers
-                        .where((element) => element.questionId == mockResult.quizDetails.questions[index].id)
+                    questionModel: quizResult.quizDetails.questions[index],
+                    userAnswerId: quizResult.userAnswers
+                        .where((element) => element.questionId == quizResult.quizDetails.questions[index].id)
                         .first
                         .answerId,
-                    correctAnswerId: mockResult.quizDetails.questions[index].answers.where((element) => element.isCorrect).first.id,
+                    correctAnswerId: quizResult.quizDetails.questions[index].answers.where((element) => element.isCorrect).first.id,
                   );
                 },
                 separatorBuilder: (context, index) {

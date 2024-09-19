@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -17,6 +19,7 @@ class FinishQuizzDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quizzController = ref.read(quizzTakeControllerProvider.notifier);
+    final state = ref.watch(quizzTakeControllerProvider);
 
     return BasicDialog(
       title: S.of(context).quizzTakeFinishHeading,
@@ -44,9 +47,18 @@ class FinishQuizzDialog extends ConsumerWidget {
         const SmallHSpacer(),
         SecondaryButton(
           onPressed: () {
-            //TODO: Implement finish quizz
-            //quizzController.finishQuizz(id: '1');
-            ref.read(appRouterProvider).replace(const TakeQuizzSummaryRoute());
+            quizzController.finishQuizz();
+            state.maybeWhen(
+              resultReceived: (quizResult) {
+                ref.read(appRouterProvider).maybePop();
+                ref.read(appRouterProvider).push(TakeQuizzSummaryRoute(quizResult: quizResult));
+              },
+              error: (error) {
+                ref.read(appRouterProvider).maybePop();
+                ErrorSnackbar.show(context, error);
+              },
+              orElse: () => const LoadingIndicator(),
+            );
           },
           text: S.of(context).quizzTakeFinishButton,
           width: null,

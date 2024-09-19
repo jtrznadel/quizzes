@@ -11,17 +11,18 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/quizz_score_enum.dart';
 import '../../../../generated/l10n.dart';
+import '../../domain/quiz_result_model.dart';
 
 @RoutePage()
 class TakeQuizzSummaryPage extends ConsumerWidget {
-  const TakeQuizzSummaryPage({super.key});
+  const TakeQuizzSummaryPage(this.quizResult, {super.key});
+
+  final QuizResultModel quizResult;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const total = 5;
-    const score = 1;
     QuizzScore getQuizzScore() {
-      double percentage = score / total;
+      final percentage = quizResult.scorePercentage;
       if (percentage >= 0.9) {
         return QuizzScore.genius;
       } else if (percentage >= 0.8) {
@@ -67,7 +68,7 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
                     ),
                     const MediumVSpacer(),
                     Text(
-                      '$score/$total',
+                      '${quizResult.correctAnswers}/${quizResult.totalQuestions}',
                       style: TextStyle(
                         color: quizzScore.getColor(),
                         fontSize: 64,
@@ -90,7 +91,7 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
               const Spacer(),
               BasicButton(
                 onPressed: () {
-                  ref.read(appRouterProvider).push(const TakeQuizzResultRoute());
+                  ref.read(appRouterProvider).push(TakeQuizzResultRoute(quizResult: quizResult));
                 },
                 text: S.of(context).quizzTakeSummarySeeResults,
                 width: double.infinity,
