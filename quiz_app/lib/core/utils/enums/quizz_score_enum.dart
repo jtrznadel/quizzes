@@ -4,15 +4,33 @@ import '../../../generated/l10n.dart';
 import '../../res/media_res.dart';
 
 enum QuizzScore {
-  genius,
-  awesome,
-  good,
-  couldBeBetter,
-  bad,
-}
+  genius(
+    Colors.green,
+    MediaRes.quizzScoreGood,
+  ),
+  awesome(
+    Colors.lightGreen,
+    MediaRes.quizzScoreGood,
+  ),
+  good(
+    Colors.yellow,
+    MediaRes.quizzScoreGood,
+  ),
+  couldBeBetter(
+    Colors.orange,
+    MediaRes.quizzScoreBad,
+  ),
+  bad(
+    Colors.red,
+    MediaRes.quizzScoreBad,
+  );
 
-extension QuizzScoreEx on QuizzScore {
-  String getMessage() {
+  final Color color;
+  final String image;
+
+  const QuizzScore(this.color, this.image);
+
+  String get message {
     switch (this) {
       case QuizzScore.genius:
         return S.current.quizzTakeScoreURGenius;
@@ -24,42 +42,20 @@ extension QuizzScoreEx on QuizzScore {
         return S.current.quizzTakeScoreCouldBeBetter;
       case QuizzScore.bad:
         return S.current.quizzTakeScoreBad;
-      default:
-        return '';
     }
   }
 
-  Color getColor() {
-    switch (this) {
-      case QuizzScore.genius:
-        return Colors.green;
-      case QuizzScore.awesome:
-        return Colors.lightGreen;
-      case QuizzScore.good:
-        return Colors.yellow;
-      case QuizzScore.couldBeBetter:
-        return Colors.orange;
-      case QuizzScore.bad:
-        return Colors.red;
-      default:
-        return Colors.black;
-    }
-  }
-
-  String getImage() {
-    switch (this) {
-      case QuizzScore.genius:
-        return MediaRes.quizzScoreGood;
-      case QuizzScore.awesome:
-        return MediaRes.quizzScoreGood;
-      case QuizzScore.good:
-        return MediaRes.quizzScoreGood;
-      case QuizzScore.couldBeBetter:
-        return MediaRes.quizzScoreBad;
-      case QuizzScore.bad:
-        return MediaRes.quizzScoreBad;
-      default:
-        return MediaRes.quizzScoreBad;
+  static QuizzScore getQuizzScore(double percentage) {
+    if (percentage >= 90) {
+      return QuizzScore.genius;
+    } else if (percentage >= 80) {
+      return QuizzScore.awesome;
+    } else if (percentage >= 60) {
+      return QuizzScore.good;
+    } else if (percentage >= 40) {
+      return QuizzScore.couldBeBetter;
+    } else {
+      return QuizzScore.bad;
     }
   }
 }

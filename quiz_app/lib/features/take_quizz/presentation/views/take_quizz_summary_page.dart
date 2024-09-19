@@ -21,22 +21,7 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    QuizzScore getQuizzScore() {
-      final percentage = quizResult.scorePercentage;
-      if (percentage >= 90) {
-        return QuizzScore.genius;
-      } else if (percentage >= 80) {
-        return QuizzScore.awesome;
-      } else if (percentage >= 60) {
-        return QuizzScore.good;
-      } else if (percentage >= 40) {
-        return QuizzScore.couldBeBetter;
-      } else {
-        return QuizzScore.bad;
-      }
-    }
-
-    QuizzScore quizzScore = getQuizzScore();
+    final quizzScore = QuizzScore.getQuizzScore(quizResult.scorePercentage);
 
     return Scaffold(
       body: Padding(
@@ -68,22 +53,22 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
                     ),
                     const MediumVSpacer(),
                     Text(
-                      '${quizResult.correctAnswers}/${quizResult.totalQuestions}',
+                      '${quizResult.scorePercentage.round()}%',
                       style: TextStyle(
-                        color: quizzScore.getColor(),
+                        color: quizzScore.color,
                         fontSize: 64,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      quizzScore.getMessage(),
+                      quizzScore.message,
                       style: context.textTheme.headlineMedium?.copyWith(
-                        color: quizzScore.getColor(),
+                        color: quizzScore.color,
                       ),
                     ),
                     const MediumVSpacer(),
                     SvgPicture.asset(
-                      quizzScore.getImage(),
+                      quizzScore.image,
                     ),
                   ],
                 ),

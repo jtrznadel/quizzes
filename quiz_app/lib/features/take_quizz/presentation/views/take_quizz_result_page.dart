@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/widgets/answer_tile.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
@@ -101,12 +102,13 @@ class QuestionResultBox extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final answer = questionModel.answers[index];
-                  final answerResult = getAnswerState(answer.id, correctAnswerId, userAnswerId);
+                  final answerResult = AnswerResult.getAnswerState(answer.id, correctAnswerId, userAnswerId);
+
                   return AnswerTile(
                     leading: AnswerIndicators.values[index].name,
                     text: questionModel.answers[index].content,
                     result: answerResult,
-                    trailing: answerResult.getAnswerIcon(),
+                    iconPath: answerResult.iconPath,
                   );
                 },
                 separatorBuilder: (context, index) {

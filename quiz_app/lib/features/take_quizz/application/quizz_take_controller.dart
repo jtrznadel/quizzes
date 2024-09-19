@@ -119,7 +119,7 @@ class QuizzTakeController extends _$QuizzTakeController {
               },
               (quizResult) async {
                 state = QuizzTakeState.resultReceived(quizResult: quizResult);
-                ref.read(appRouterProvider).push(TakeQuizzSummaryRoute(quizResult: quizResult));
+                ref.read(appRouterProvider).replaceAll([TakeQuizzSummaryRoute(quizResult: quizResult)]);
               },
             );
           },
