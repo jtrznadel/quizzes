@@ -1,21 +1,19 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/widgets/answer_tile.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
-import '../../../../core/res/media_res.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/answer_indicator_enum.dart';
 import '../../../../core/utils/enums/answer_result_enum.dart';
-import '../../../quizz_details/domain/answer_details_model.dart';
+import '../../../../generated/l10n.dart';
 import '../../../quizz_details/domain/question_details_model.dart';
-import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../domain/quiz_result_model.dart';
-import '../../domain/user_answer_model.dart';
+import '../../domain/take_quiz_question_model.dart';
+import '../../domain/take_quiz_result_question_model.dart';
 
 @RoutePage()
 class TakeQuizzResultPage extends StatelessWidget {
@@ -34,10 +32,12 @@ class TakeQuizzResultPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Align(
+            Align(
               alignment: Alignment.centerRight,
-              child: Text('Your result is: 1/5'),
+              child: Text(
+                  '${S.of(context).quizzTakeSummaryYourResult}: ${quizResult.correctAnswers}/${quizResult.quizDetails.questions.length}'),
             ),
+            const SmallVSpacer(),
             Expanded(
               child: ListView.separated(
                 itemCount: quizResult.quizDetails.questions.length,
@@ -71,7 +71,7 @@ class QuestionResultBox extends StatelessWidget {
     required this.userAnswerId,
   });
 
-  final QuestionDetailsModel questionModel;
+  final TakeQuizResultQuestionModel questionModel;
   final String correctAnswerId;
   final String userAnswerId;
 

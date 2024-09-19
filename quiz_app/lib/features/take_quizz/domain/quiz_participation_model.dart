@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/utils/date_time_json_converter.dart';
-import '../../quizz_details/domain/quiz_details_model.dart';
 import 'quiz_response_model.dart';
 
 part 'quiz_participation_model.freezed.dart';

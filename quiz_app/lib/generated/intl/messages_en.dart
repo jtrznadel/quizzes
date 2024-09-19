@@ -365,6 +365,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Summary"),
         "quizzTakeSummarySeeResults":
             MessageLookupByLibrary.simpleMessage("See results"),
+        "quizzTakeSummaryYourResult":
+            MessageLookupByLibrary.simpleMessage("Your result is"),
         "quizzTakeSummaryYourScore":
             MessageLookupByLibrary.simpleMessage("Your score is..."),
         "refreshButton": MessageLookupByLibrary.simpleMessage("Refresh"),

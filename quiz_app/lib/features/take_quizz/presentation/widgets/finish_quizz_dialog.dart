@@ -12,6 +12,7 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/quizz_take_controller.dart';
+import '../../application/quizz_take_state.dart';
 
 class FinishQuizzDialog extends ConsumerWidget {
   const FinishQuizzDialog({super.key});
@@ -19,7 +20,6 @@ class FinishQuizzDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final quizzController = ref.read(quizzTakeControllerProvider.notifier);
-    final state = ref.watch(quizzTakeControllerProvider);
 
     return BasicDialog(
       title: S.of(context).quizzTakeFinishHeading,
@@ -46,19 +46,9 @@ class FinishQuizzDialog extends ConsumerWidget {
         ),
         const SmallHSpacer(),
         SecondaryButton(
-          onPressed: () {
-            quizzController.finishQuizz();
-            state.maybeWhen(
-              resultReceived: (quizResult) {
-                ref.read(appRouterProvider).maybePop();
-                ref.read(appRouterProvider).push(TakeQuizzSummaryRoute(quizResult: quizResult));
-              },
-              error: (error) {
-                ref.read(appRouterProvider).maybePop();
-                ErrorSnackbar.show(context, error);
-              },
-              orElse: () => const LoadingIndicator(),
-            );
+          onPressed: () async {
+            ref.read(appRouterProvider).maybePop();
+            await quizzController.finishQuizz();
           },
           text: S.of(context).quizzTakeFinishButton,
           width: null,

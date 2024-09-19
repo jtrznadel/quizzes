@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/services/app_router.dart';
 import '../data/repositories/take_quiz_repository.dart';
 import '../domain/submit_quiz_model.dart';
 import '../domain/user_answer_model.dart';
@@ -105,21 +106,26 @@ class QuizzTakeController extends _$QuizzTakeController {
           questionsId: userAnswers.map((e) => e.questionId).toList(),
           answersId: userAnswers.map((e) => e.answerId).toList(),
         );
-        final result = await ref.read(takeQuizProvider).submitQuiz(submitQuizModel: submitQuizModel);
-        result.fold(
-          (error) => state = QuizzTakeState.error(error.message),
+        final submitResult = await ref.read(takeQuizProvider).submitQuiz(submitQuizModel: submitQuizModel);
+        submitResult.fold(
+          (error) async {
+            state = QuizzTakeState.error(error.message);
+          },
           (_) async {
             final result = await ref.read(takeQuizProvider).getQuizResult(id: participation.id);
             result.fold(
-              (error) => state = QuizzTakeState.error(error.message),
-              (quizResult) => state = QuizzTakeState.resultReceived(quizResult: quizResult),
+              (error) async {
+                state = QuizzTakeState.error(error.message);
+              },
+              (quizResult) async {
+                state = QuizzTakeState.resultReceived(quizResult: quizResult);
+                ref.read(appRouterProvider).push(TakeQuizzSummaryRoute(quizResult: quizResult));
+              },
             );
           },
         );
       },
-      orElse: () {
-        state = const QuizzTakeState.error('Error');
-      },
+      orElse: () {},
     );
   }
 }

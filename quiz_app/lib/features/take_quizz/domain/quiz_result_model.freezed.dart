@@ -21,7 +21,7 @@ QuizResultModel _$QuizResultModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$QuizResultModel {
   String get quizParticipationId => throw _privateConstructorUsedError;
-  QuizDetailsModel get quizDetails => throw _privateConstructorUsedError;
+  QuizDetailsResultModel get quizDetails => throw _privateConstructorUsedError;
   List<UserAnswerModel> get userAnswers => throw _privateConstructorUsedError;
   int get totalQuestions => throw _privateConstructorUsedError;
   int get correctAnswers => throw _privateConstructorUsedError;
@@ -41,13 +41,13 @@ abstract class $QuizResultModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String quizParticipationId,
-      QuizDetailsModel quizDetails,
+      QuizDetailsResultModel quizDetails,
       List<UserAnswerModel> userAnswers,
       int totalQuestions,
       int correctAnswers,
       double scorePercentage});
 
-  $QuizDetailsModelCopyWith<$Res> get quizDetails;
+  $QuizDetailsResultModelCopyWith<$Res> get quizDetails;
 }
 
 /// @nodoc
@@ -78,7 +78,7 @@ class _$QuizResultModelCopyWithImpl<$Res, $Val extends QuizResultModel>
       quizDetails: null == quizDetails
           ? _value.quizDetails
           : quizDetails // ignore: cast_nullable_to_non_nullable
-              as QuizDetailsModel,
+              as QuizDetailsResultModel,
       userAnswers: null == userAnswers
           ? _value.userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
@@ -100,8 +100,8 @@ class _$QuizResultModelCopyWithImpl<$Res, $Val extends QuizResultModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $QuizDetailsModelCopyWith<$Res> get quizDetails {
-    return $QuizDetailsModelCopyWith<$Res>(_value.quizDetails, (value) {
+  $QuizDetailsResultModelCopyWith<$Res> get quizDetails {
+    return $QuizDetailsResultModelCopyWith<$Res>(_value.quizDetails, (value) {
       return _then(_value.copyWith(quizDetails: value) as $Val);
     });
   }
@@ -117,14 +117,14 @@ abstract class _$$QuizResultModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String quizParticipationId,
-      QuizDetailsModel quizDetails,
+      QuizDetailsResultModel quizDetails,
       List<UserAnswerModel> userAnswers,
       int totalQuestions,
       int correctAnswers,
       double scorePercentage});
 
   @override
-  $QuizDetailsModelCopyWith<$Res> get quizDetails;
+  $QuizDetailsResultModelCopyWith<$Res> get quizDetails;
 }
 
 /// @nodoc
@@ -153,7 +153,7 @@ class __$$QuizResultModelImplCopyWithImpl<$Res>
       quizDetails: null == quizDetails
           ? _value.quizDetails
           : quizDetails // ignore: cast_nullable_to_non_nullable
-              as QuizDetailsModel,
+              as QuizDetailsResultModel,
       userAnswers: null == userAnswers
           ? _value._userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$QuizResultModelImpl implements _QuizResultModel {
   @override
   final String quizParticipationId;
   @override
-  final QuizDetailsModel quizDetails;
+  final QuizDetailsResultModel quizDetails;
   final List<UserAnswerModel> _userAnswers;
   @override
   List<UserAnswerModel> get userAnswers {
@@ -261,7 +261,7 @@ class _$QuizResultModelImpl implements _QuizResultModel {
 abstract class _QuizResultModel implements QuizResultModel {
   const factory _QuizResultModel(
       {required final String quizParticipationId,
-      required final QuizDetailsModel quizDetails,
+      required final QuizDetailsResultModel quizDetails,
       required final List<UserAnswerModel> userAnswers,
       required final int totalQuestions,
       required final int correctAnswers,
@@ -273,7 +273,7 @@ abstract class _QuizResultModel implements QuizResultModel {
   @override
   String get quizParticipationId;
   @override
-  QuizDetailsModel get quizDetails;
+  QuizDetailsResultModel get quizDetails;
   @override
   List<UserAnswerModel> get userAnswers;
   @override

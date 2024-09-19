@@ -23,13 +23,13 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     QuizzScore getQuizzScore() {
       final percentage = quizResult.scorePercentage;
-      if (percentage >= 0.9) {
+      if (percentage >= 90) {
         return QuizzScore.genius;
-      } else if (percentage >= 0.8) {
+      } else if (percentage >= 80) {
         return QuizzScore.awesome;
-      } else if (percentage >= 0.6) {
+      } else if (percentage >= 60) {
         return QuizzScore.good;
-      } else if (percentage >= 0.4) {
+      } else if (percentage >= 40) {
         return QuizzScore.couldBeBetter;
       } else {
         return QuizzScore.bad;
