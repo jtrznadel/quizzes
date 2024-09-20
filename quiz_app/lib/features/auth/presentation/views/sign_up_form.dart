@@ -55,8 +55,10 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
                 passwordController: passwordController, validate: true),
             const ExtraLargeVSpacer(),
             RegisterButton(
-                emailController: emailController,
-                passwordController: passwordController)
+              emailController: emailController,
+              passwordController: passwordController,
+              formKey: formKey,
+            ),
           ],
         ),
       ),
@@ -68,10 +70,12 @@ class RegisterButton extends ConsumerWidget {
   const RegisterButton(
       {super.key,
       required this.emailController,
-      required this.passwordController});
+      required this.passwordController,
+      required this.formKey});
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -83,6 +87,9 @@ class RegisterButton extends ConsumerWidget {
       orElse: () {
         return BasicButton(
           onPressed: () async {
+            if (!formKey.currentState!.validate()) {
+              return;
+            }
             final success = await controller.signUp(
               email: emailController.text,
               password: passwordController.text,
