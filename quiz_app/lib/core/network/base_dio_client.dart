@@ -6,6 +6,7 @@ import '../../features/auth/domain/token_auth.dart';
 import '../errors/access_token_refresh_failure_exception.dart';
 import '../errors/invalid_refresh_token_exception.dart';
 import '../errors/refresh_token_missing_exception.dart';
+import '../services/app_router.dart';
 import '../services/session_provider.dart';
 import 'api_constants.dart';
 
@@ -34,8 +35,8 @@ Dio buildDioClient(String base, Ref ref) {
               return;
             }
             try {
-              final tokenResponse =
-                  await refreshAccessToken(refreshToken, refreshTokenDioClient(base, ref));
+              final tokenResponse = await refreshAccessToken(
+                  refreshToken, refreshTokenDioClient(base, ref));
               if (tokenResponse == null) {
                 handler.reject(
                   AccessTokenRefreshFailureException(requestOptions: options),
@@ -48,6 +49,7 @@ Dio buildDioClient(String base, Ref ref) {
                   );
             } on InvalidRefreshTokenException catch (e) {
               ref.read(sessionProvider).deleteTokens();
+              ref.read(appRouterProvider).replaceAll([const DashboardRoute()]);
               handler.reject(e);
               return;
             }
@@ -81,21 +83,16 @@ Dio buildDioClient(String base, Ref ref) {
 }
 
 Future<TokenAuth?> refreshAccessToken(String refreshToken, Dio dio) async {
-  try {
-    dio.options = BaseOptions(baseUrl: ApiConstants.baseUrl);
-    final response = await dio.post(
-      ApiConstants.refreshAccessTokenEndpoint,
-      data: {ApiConstants.refreshTokenStorageKey: refreshToken},
-    );
-    if (response.statusCode == 200) {
-      return TokenAuth.fromJson(response.data);
-    } else if (response.statusCode == 401) {
-      throw InvalidRefreshTokenException(
-          requestOptions: response.requestOptions);
-    } else {
-      return null;
-    }
-  } catch (e) {
+  dio.options = BaseOptions(baseUrl: ApiConstants.baseUrl);
+  final response = await dio.post(
+    ApiConstants.refreshAccessTokenEndpoint,
+    data: {ApiConstants.refreshTokenStorageKey: refreshToken},
+  );
+  if (response.statusCode == 200) {
+    return TokenAuth.fromJson(response.data);
+  } else if (response.statusCode == 401 || response.statusCode == 400) {
+    throw InvalidRefreshTokenException(requestOptions: response.requestOptions);
+  } else {
     return null;
   }
 }
@@ -118,6 +115,10 @@ Dio refreshTokenDioClient(String base, Ref ref) {
         return handler.next(options);
       },
       onError: (error, handler) async {
+        if (error.response?.statusCode == 401 ||
+            error.response?.statusCode == 400) {
+          return handler.resolve(error.response!);
+        }
         return handler.next(error);
       },
       onResponse: (response, handler) async {
