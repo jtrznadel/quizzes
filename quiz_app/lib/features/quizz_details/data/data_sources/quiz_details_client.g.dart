@@ -141,7 +141,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
         .compose(
           _dio.options,
-          'questionsandanswers/create-question',
+          'questions/create-question',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -166,7 +166,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
         .compose(
           _dio.options,
-          'questionsandanswers/update-question',
+          'questions/update-question',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -190,7 +190,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
         .compose(
           _dio.options,
-          'questionsandanswers/${id}',
+          'questions/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
