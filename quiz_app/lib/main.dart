@@ -47,13 +47,22 @@ class MyAppState extends ConsumerState<MyApp> {
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(
-        deepLinkTransformer: (uri) {
+        deepLinkTransformer: (uri) async {
           print(uri);
+          if (uri.host == ApiConstants.domain) {
+            if (await ref.read(sessionProvider).isLoggedIn()) {
+              ref.read(appRouterProvider).replaceAll([
+                const DashboardRoute(),
+                TakeQuizzRoute(joinCode: uri.pathSegments.last)
+              ]);
+              return SynchronousFuture(uri);
+            } else {
+              //TODO: replace with guest user take quiz when implemented
+              ref.read(appRouterProvider).push(const WelcomeRoute());
+              return SynchronousFuture(uri);
+            }
+          }
           return SynchronousFuture(uri);
-        },
-        deepLinkBuilder: (deepLink) {
-          print(deepLink.uri);
-          return const DeepLink([DashboardRoute()]);
         },
       ),
     );

@@ -20,7 +20,9 @@ import '../widgets/quit_quizz_taking_dialog.dart';
 
 @RoutePage()
 class TakeQuizzPage extends ConsumerStatefulWidget {
-  const TakeQuizzPage({super.key});
+  const TakeQuizzPage({super.key, required this.joinCode});
+
+  final String joinCode;
 
   @override
   ConsumerState<TakeQuizzPage> createState() => _TakeQuizzPageState();
@@ -29,7 +31,11 @@ class TakeQuizzPage extends ConsumerStatefulWidget {
 class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: '5c722313'));
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => ref
+          .read(quizzTakeControllerProvider.notifier)
+          .startQuizz(id: widget.joinCode),
+    );
     //TODO: Remove when the real implementation is done and UI handle it //93b48c1a-3c1b-48d1-816d-5a7110cecc20
     super.initState();
   }
@@ -74,7 +80,8 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
             ),
             const LargeVSpacer(),
             quizState.maybeWhen(
-              loaded: (quiz, userNaswers, currentStep) => TakeQuizzInfoBox(quizModel: quiz.quizResponse),
+              loaded: (quiz, userNaswers, currentStep) =>
+                  TakeQuizzInfoBox(quizModel: quiz.quizResponse),
               orElse: () => const LoadingIndicator(),
             ),
             const LargeVSpacer(),
@@ -117,7 +124,8 @@ class TakeQuizzInfoBox extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(AppTheme.takeQuizzInfoContainerPadding),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppTheme.takeQuizzInfoContainerBorderRadius),
+          borderRadius: BorderRadius.circular(
+              AppTheme.takeQuizzInfoContainerBorderRadius),
           color: AppColorScheme.surfaceContainer,
         ),
         child: Column(

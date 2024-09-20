@@ -273,10 +273,17 @@ class SuccessfulPasswordResetRequestRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TakeQuizzPage]
-class TakeQuizzRoute extends PageRouteInfo<void> {
-  const TakeQuizzRoute({List<PageRouteInfo>? children})
-      : super(
+class TakeQuizzRoute extends PageRouteInfo<TakeQuizzRouteArgs> {
+  TakeQuizzRoute({
+    Key? key,
+    required String joinCode,
+    List<PageRouteInfo>? children,
+  }) : super(
           TakeQuizzRoute.name,
+          args: TakeQuizzRouteArgs(
+            key: key,
+            joinCode: joinCode,
+          ),
           initialChildren: children,
         );
 
@@ -285,9 +292,29 @@ class TakeQuizzRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const TakeQuizzPage();
+      final args = data.argsAs<TakeQuizzRouteArgs>();
+      return TakeQuizzPage(
+        key: args.key,
+        joinCode: args.joinCode,
+      );
     },
   );
+}
+
+class TakeQuizzRouteArgs {
+  const TakeQuizzRouteArgs({
+    this.key,
+    required this.joinCode,
+  });
+
+  final Key? key;
+
+  final String joinCode;
+
+  @override
+  String toString() {
+    return 'TakeQuizzRouteArgs{key: $key, joinCode: $joinCode}';
+  }
 }
 
 /// generated route for

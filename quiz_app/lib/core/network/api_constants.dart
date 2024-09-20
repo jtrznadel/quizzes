@@ -1,5 +1,6 @@
 class ApiConstants {
-  static const String baseUrl = 'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/';
+  static const String domain = 'mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io';
+  static const String baseUrl = 'https://$domain/api/';
   static const String authUrl = '${baseUrl}auth';
   static const String signUpEndpoint = '/signup';
   static const String signInEndpoint = '/signin';

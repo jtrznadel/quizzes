@@ -106,7 +106,7 @@ class DashboardTopBar extends ConsumerWidget {
             IconButton(
               onPressed: () {
                 //TODO: Replace with real data
-                context.router.push(const TakeQuizzRoute());
+                context.router.push(TakeQuizzRoute(joinCode: "6ec295ee"));
               },
               icon: SvgPicture.asset(MediaRes.generate, width: 24, height: 24),
             ),

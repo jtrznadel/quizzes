@@ -50,6 +50,7 @@ class _AddQuestionDialogAnswerSectionState
 
   @override
   Widget build(BuildContext context) {
+    //TODO: add error handling for when there's no correct answer (the AI model didn't return any)
     _selectedAnswer ??= widget.answerControllers.entries.firstWhere((element) => element.value.isCorrect).key;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
