@@ -239,6 +239,9 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Successfully added a new question."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Quiz Detail"),
+        "quizzDetailsDeleteQuestionSuccess":
+            MessageLookupByLibrary.simpleMessage(
+                "Successfully deleted the question."),
         "quizzDetailsSaveChangesButton":
             MessageLookupByLibrary.simpleMessage("Save changes"),
         "quizzDetailsTabGeneral":

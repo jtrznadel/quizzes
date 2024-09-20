@@ -111,7 +111,20 @@ class NewQuestionButton extends ConsumerWidget {
                       title: question.title,
                       createAnswers: question.answers,
                       quizID: quizDetails.id);
-                  await controller.addNewQuestion(newQuestionModel);
+                  final success = await controller.addNewQuestion(newQuestionModel);
+
+                  if (context.mounted) {
+                    success
+                        ? InfoSnackbar.show(
+                            context,
+                            S.of(context).quizzDetailsAddNewQuestionSuccess,
+                            color: AppColorScheme.success,
+                          )
+                        : ErrorSnackbar.show(
+                            context,
+                            S.of(context).quizzDetailsAddNewQuestionFailure,
+                          );
+                  }
                 },
               );
             },

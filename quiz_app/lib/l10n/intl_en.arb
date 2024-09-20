@@ -141,6 +141,7 @@
     "quizzDetailsAddNewQuestionSuccess": "Successfully added a new question.",
     "quizzDetailsAddNewQuestionFailure": "Failed to add a new question.",
     "quizzDetailsUpdateQuestionSuccess": "Successfully updated the question.",
+    "quizzDetailsDeleteQuestionSuccess": "Successfully deleted the question.",
 
     "quizzCreationQuitHeading": "Are you sure?",
     "quizzCreationQuitSubheading": "You are about to quit the quiz creation process. Any progress made so far will be lost. This action cannot be undone.",

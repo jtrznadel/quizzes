@@ -238,6 +238,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Pomyślnie dodano nowe pytanie."),
         "quizzDetailsAppbarTitle":
             MessageLookupByLibrary.simpleMessage("Szczegóły quizzu"),
+        "quizzDetailsDeleteQuestionSuccess":
+            MessageLookupByLibrary.simpleMessage("Pomyślnie usunięto pytanie."),
         "quizzDetailsSaveChangesButton":
             MessageLookupByLibrary.simpleMessage("Zapisz zmiany"),
         "quizzDetailsTabGeneral":
