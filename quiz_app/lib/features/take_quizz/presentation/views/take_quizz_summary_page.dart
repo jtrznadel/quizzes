@@ -11,31 +11,17 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/quizz_score_enum.dart';
 import '../../../../generated/l10n.dart';
+import '../../domain/quiz_result_model.dart';
 
 @RoutePage()
 class TakeQuizzSummaryPage extends ConsumerWidget {
-  const TakeQuizzSummaryPage({super.key});
+  const TakeQuizzSummaryPage(this.quizResult, {super.key});
+
+  final QuizResultModel quizResult;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const total = 5;
-    const score = 1;
-    QuizzScore getQuizzScore() {
-      double percentage = score / total;
-      if (percentage >= 0.9) {
-        return QuizzScore.genius;
-      } else if (percentage >= 0.8) {
-        return QuizzScore.awesome;
-      } else if (percentage >= 0.6) {
-        return QuizzScore.good;
-      } else if (percentage >= 0.4) {
-        return QuizzScore.couldBeBetter;
-      } else {
-        return QuizzScore.bad;
-      }
-    }
-
-    QuizzScore quizzScore = getQuizzScore();
+    final quizzScore = QuizzScore.getQuizzScore(quizResult.scorePercentage);
 
     return Scaffold(
       body: Padding(
@@ -67,22 +53,22 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
                     ),
                     const MediumVSpacer(),
                     Text(
-                      '$score/$total',
+                      '${quizResult.scorePercentage.round()}%',
                       style: TextStyle(
-                        color: quizzScore.getColor(),
+                        color: quizzScore.color,
                         fontSize: 64,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      quizzScore.getMessage(),
+                      quizzScore.message,
                       style: context.textTheme.headlineMedium?.copyWith(
-                        color: quizzScore.getColor(),
+                        color: quizzScore.color,
                       ),
                     ),
                     const MediumVSpacer(),
                     SvgPicture.asset(
-                      quizzScore.getImage(),
+                      quizzScore.image,
                     ),
                   ],
                 ),
@@ -90,7 +76,7 @@ class TakeQuizzSummaryPage extends ConsumerWidget {
               const Spacer(),
               BasicButton(
                 onPressed: () {
-                  ref.read(appRouterProvider).push(const TakeQuizzResultRoute());
+                  ref.read(appRouterProvider).push(TakeQuizzResultRoute(quizResult: quizResult));
                 },
                 text: S.of(context).quizzTakeSummarySeeResults,
                 width: double.infinity,

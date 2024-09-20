@@ -1580,6 +1580,16 @@ class S {
     );
   }
 
+  /// `Your result is`
+  String get quizzTakeSummaryYourResult {
+    return Intl.message(
+      'Your result is',
+      name: 'quizzTakeSummaryYourResult',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `You are a genius!`
   String get quizzTakeScoreURGenius {
     return Intl.message(

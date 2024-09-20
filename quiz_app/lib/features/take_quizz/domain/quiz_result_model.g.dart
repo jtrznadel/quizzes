@@ -10,7 +10,7 @@ _$QuizResultModelImpl _$$QuizResultModelImplFromJson(
         Map<String, dynamic> json) =>
     _$QuizResultModelImpl(
       quizParticipationId: json['quizParticipationId'] as String,
-      quizDetails: QuizDetailsModel.fromJson(
+      quizDetails: QuizDetailsResultModel.fromJson(
           json['quizDetails'] as Map<String, dynamic>),
       userAnswers: (json['userAnswers'] as List<dynamic>)
           .map((e) => UserAnswerModel.fromJson(e as Map<String, dynamic>))

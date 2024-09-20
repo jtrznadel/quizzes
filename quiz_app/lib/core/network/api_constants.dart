@@ -38,8 +38,10 @@ class ApiConstants {
   static const String quizListPageQuery = 'Page';
   static const String quizListPageSizeQuery = 'PageSize';
 
+  static const String joinQuizEndpoint = '{joinCode}';
   static const String submitParticipationEndpoint = 'participations/submit';
-  static const String getQuizResult = 'participations/{quizParticipationId}';
+  static const String getQuizParticipation = 'participations/{quizParticipationId}';
+  static const String getQuizResult = 'participations/{quizParticipationId}/result';
 
   static const String guestSignInEndpoint = '/guests';
   static const String guestAccountCreationEndpoint = '/profile/convert-guest';

@@ -292,10 +292,17 @@ class TakeQuizzRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TakeQuizzResultPage]
-class TakeQuizzResultRoute extends PageRouteInfo<void> {
-  const TakeQuizzResultRoute({List<PageRouteInfo>? children})
-      : super(
+class TakeQuizzResultRoute extends PageRouteInfo<TakeQuizzResultRouteArgs> {
+  TakeQuizzResultRoute({
+    Key? key,
+    required QuizResultModel quizResult,
+    List<PageRouteInfo>? children,
+  }) : super(
           TakeQuizzResultRoute.name,
+          args: TakeQuizzResultRouteArgs(
+            key: key,
+            quizResult: quizResult,
+          ),
           initialChildren: children,
         );
 
@@ -304,17 +311,44 @@ class TakeQuizzResultRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const TakeQuizzResultPage();
+      final args = data.argsAs<TakeQuizzResultRouteArgs>();
+      return TakeQuizzResultPage(
+        key: args.key,
+        quizResult: args.quizResult,
+      );
     },
   );
 }
 
+class TakeQuizzResultRouteArgs {
+  const TakeQuizzResultRouteArgs({
+    this.key,
+    required this.quizResult,
+  });
+
+  final Key? key;
+
+  final QuizResultModel quizResult;
+
+  @override
+  String toString() {
+    return 'TakeQuizzResultRouteArgs{key: $key, quizResult: $quizResult}';
+  }
+}
+
 /// generated route for
 /// [TakeQuizzSummaryPage]
-class TakeQuizzSummaryRoute extends PageRouteInfo<void> {
-  const TakeQuizzSummaryRoute({List<PageRouteInfo>? children})
-      : super(
+class TakeQuizzSummaryRoute extends PageRouteInfo<TakeQuizzSummaryRouteArgs> {
+  TakeQuizzSummaryRoute({
+    required QuizResultModel quizResult,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           TakeQuizzSummaryRoute.name,
+          args: TakeQuizzSummaryRouteArgs(
+            quizResult: quizResult,
+            key: key,
+          ),
           initialChildren: children,
         );
 
@@ -323,9 +357,29 @@ class TakeQuizzSummaryRoute extends PageRouteInfo<void> {
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const TakeQuizzSummaryPage();
+      final args = data.argsAs<TakeQuizzSummaryRouteArgs>();
+      return TakeQuizzSummaryPage(
+        args.quizResult,
+        key: args.key,
+      );
     },
   );
+}
+
+class TakeQuizzSummaryRouteArgs {
+  const TakeQuizzSummaryRouteArgs({
+    required this.quizResult,
+    this.key,
+  });
+
+  final QuizResultModel quizResult;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'TakeQuizzSummaryRouteArgs{quizResult: $quizResult, key: $key}';
+  }
 }
 
 /// generated route for

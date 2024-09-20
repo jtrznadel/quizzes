@@ -22,20 +22,47 @@ class _TakeQuizClient implements TakeQuizClient {
   String? baseUrl;
 
   @override
-  Future<QuizDetailsModel> getQuiz(String id) async {
+  Future<String> joinQuiz(String joinCode) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<QuizDetailsModel>(Options(
+    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '${joinCode}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final _value = _result.data!;
+    return _value;
+  }
+
+  @override
+  Future<QuizParticipationModel> getQuizParticipation(
+      String quizParticipationId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<QuizParticipationModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'quiz/${id}',
+              'participations/${quizParticipationId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -44,7 +71,7 @@ class _TakeQuizClient implements TakeQuizClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = QuizDetailsModel.fromJson(_result.data!);
+    final _value = QuizParticipationModel.fromJson(_result.data!);
     return _value;
   }
 
@@ -74,7 +101,7 @@ class _TakeQuizClient implements TakeQuizClient {
   }
 
   @override
-  Future<QuizResultModel> getQuizResult(String id) async {
+  Future<QuizResultModel> getQuizResult(String quizParticipationId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -87,7 +114,7 @@ class _TakeQuizClient implements TakeQuizClient {
     )
             .compose(
               _dio.options,
-              'participations/{quizParticipationId}',
+              'participations/${quizParticipationId}/result',
               queryParameters: queryParameters,
               data: _data,
             )

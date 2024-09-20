@@ -21,9 +21,10 @@ QuizParticipationModel _$QuizParticipationModelFromJson(
 
 /// @nodoc
 mixin _$QuizParticipationModel {
-  String get quizParticipationId => throw _privateConstructorUsedError;
-  List<String> get questionsId => throw _privateConstructorUsedError;
-  List<String> get answersId => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  @DateTimeJsonConverter()
+  DateTime get participationDate => throw _privateConstructorUsedError;
+  QuizResponseModel get quizResponse => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,9 +39,11 @@ abstract class $QuizParticipationModelCopyWith<$Res> {
       _$QuizParticipationModelCopyWithImpl<$Res, QuizParticipationModel>;
   @useResult
   $Res call(
-      {String quizParticipationId,
-      List<String> questionsId,
-      List<String> answersId});
+      {String id,
+      @DateTimeJsonConverter() DateTime participationDate,
+      QuizResponseModel quizResponse});
+
+  $QuizResponseModelCopyWith<$Res> get quizResponse;
 }
 
 /// @nodoc
@@ -57,24 +60,32 @@ class _$QuizParticipationModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? quizParticipationId = null,
-    Object? questionsId = null,
-    Object? answersId = null,
+    Object? id = null,
+    Object? participationDate = null,
+    Object? quizResponse = null,
   }) {
     return _then(_value.copyWith(
-      quizParticipationId: null == quizParticipationId
-          ? _value.quizParticipationId
-          : quizParticipationId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      questionsId: null == questionsId
-          ? _value.questionsId
-          : questionsId // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      answersId: null == answersId
-          ? _value.answersId
-          : answersId // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      participationDate: null == participationDate
+          ? _value.participationDate
+          : participationDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      quizResponse: null == quizResponse
+          ? _value.quizResponse
+          : quizResponse // ignore: cast_nullable_to_non_nullable
+              as QuizResponseModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $QuizResponseModelCopyWith<$Res> get quizResponse {
+    return $QuizResponseModelCopyWith<$Res>(_value.quizResponse, (value) {
+      return _then(_value.copyWith(quizResponse: value) as $Val);
+    });
   }
 }
 
@@ -88,9 +99,12 @@ abstract class _$$QuizParticipationModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String quizParticipationId,
-      List<String> questionsId,
-      List<String> answersId});
+      {String id,
+      @DateTimeJsonConverter() DateTime participationDate,
+      QuizResponseModel quizResponse});
+
+  @override
+  $QuizResponseModelCopyWith<$Res> get quizResponse;
 }
 
 /// @nodoc
@@ -106,23 +120,23 @@ class __$$QuizParticipationModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? quizParticipationId = null,
-    Object? questionsId = null,
-    Object? answersId = null,
+    Object? id = null,
+    Object? participationDate = null,
+    Object? quizResponse = null,
   }) {
     return _then(_$QuizParticipationModelImpl(
-      quizParticipationId: null == quizParticipationId
-          ? _value.quizParticipationId
-          : quizParticipationId // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
-      questionsId: null == questionsId
-          ? _value._questionsId
-          : questionsId // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      answersId: null == answersId
-          ? _value._answersId
-          : answersId // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      participationDate: null == participationDate
+          ? _value.participationDate
+          : participationDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      quizResponse: null == quizResponse
+          ? _value.quizResponse
+          : quizResponse // ignore: cast_nullable_to_non_nullable
+              as QuizResponseModel,
     ));
   }
 }
@@ -131,36 +145,24 @@ class __$$QuizParticipationModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$QuizParticipationModelImpl implements _QuizParticipationModel {
   const _$QuizParticipationModelImpl(
-      {required this.quizParticipationId,
-      required final List<String> questionsId,
-      required final List<String> answersId})
-      : _questionsId = questionsId,
-        _answersId = answersId;
+      {required this.id,
+      @DateTimeJsonConverter() required this.participationDate,
+      required this.quizResponse});
 
   factory _$QuizParticipationModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$QuizParticipationModelImplFromJson(json);
 
   @override
-  final String quizParticipationId;
-  final List<String> _questionsId;
+  final String id;
   @override
-  List<String> get questionsId {
-    if (_questionsId is EqualUnmodifiableListView) return _questionsId;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_questionsId);
-  }
-
-  final List<String> _answersId;
+  @DateTimeJsonConverter()
+  final DateTime participationDate;
   @override
-  List<String> get answersId {
-    if (_answersId is EqualUnmodifiableListView) return _answersId;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_answersId);
-  }
+  final QuizResponseModel quizResponse;
 
   @override
   String toString() {
-    return 'QuizParticipationModel(quizParticipationId: $quizParticipationId, questionsId: $questionsId, answersId: $answersId)';
+    return 'QuizParticipationModel(id: $id, participationDate: $participationDate, quizResponse: $quizResponse)';
   }
 
   @override
@@ -168,21 +170,17 @@ class _$QuizParticipationModelImpl implements _QuizParticipationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuizParticipationModelImpl &&
-            (identical(other.quizParticipationId, quizParticipationId) ||
-                other.quizParticipationId == quizParticipationId) &&
-            const DeepCollectionEquality()
-                .equals(other._questionsId, _questionsId) &&
-            const DeepCollectionEquality()
-                .equals(other._answersId, _answersId));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.participationDate, participationDate) ||
+                other.participationDate == participationDate) &&
+            (identical(other.quizResponse, quizResponse) ||
+                other.quizResponse == quizResponse));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      quizParticipationId,
-      const DeepCollectionEquality().hash(_questionsId),
-      const DeepCollectionEquality().hash(_answersId));
+  int get hashCode =>
+      Object.hash(runtimeType, id, participationDate, quizResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -201,19 +199,21 @@ class _$QuizParticipationModelImpl implements _QuizParticipationModel {
 
 abstract class _QuizParticipationModel implements QuizParticipationModel {
   const factory _QuizParticipationModel(
-      {required final String quizParticipationId,
-      required final List<String> questionsId,
-      required final List<String> answersId}) = _$QuizParticipationModelImpl;
+          {required final String id,
+          @DateTimeJsonConverter() required final DateTime participationDate,
+          required final QuizResponseModel quizResponse}) =
+      _$QuizParticipationModelImpl;
 
   factory _QuizParticipationModel.fromJson(Map<String, dynamic> json) =
       _$QuizParticipationModelImpl.fromJson;
 
   @override
-  String get quizParticipationId;
+  String get id;
   @override
-  List<String> get questionsId;
+  @DateTimeJsonConverter()
+  DateTime get participationDate;
   @override
-  List<String> get answersId;
+  QuizResponseModel get quizResponse;
   @override
   @JsonKey(ignore: true)
   _$$QuizParticipationModelImplCopyWith<_$QuizParticipationModelImpl>

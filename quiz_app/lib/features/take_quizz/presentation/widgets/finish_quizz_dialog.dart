@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/dialogs/basic_dialog.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -10,6 +12,7 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/quizz_take_controller.dart';
+import '../../application/quizz_take_state.dart';
 
 class FinishQuizzDialog extends ConsumerWidget {
   const FinishQuizzDialog({super.key});
@@ -43,10 +46,9 @@ class FinishQuizzDialog extends ConsumerWidget {
         ),
         const SmallHSpacer(),
         SecondaryButton(
-          onPressed: () {
-            //TODO: Implement finish quizz
-            //quizzController.finishQuizz(id: '1');
-            ref.read(appRouterProvider).replace(const TakeQuizzSummaryRoute());
+          onPressed: () async {
+            ref.read(appRouterProvider).maybePop();
+            await quizzController.finishQuizz();
           },
           text: S.of(context).quizzTakeFinishButton,
           width: null,

@@ -15,6 +15,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../../quizz_details/domain/quiz_details_model.dart';
 import '../../application/quizz_take_controller.dart';
+import '../../domain/quiz_response_model.dart';
 import '../widgets/quit_quizz_taking_dialog.dart';
 
 @RoutePage()
@@ -28,9 +29,8 @@ class TakeQuizzPage extends ConsumerStatefulWidget {
 class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
   @override
   void initState() {
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: '93b48c1a-3c1b-48d1-816d-5a7110cecc20'));
-    //TODO: Remove when the real implementation is done and UI handle it
+    WidgetsBinding.instance.addPostFrameCallback((_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: '5c722313'));
+    //TODO: Remove when the real implementation is done and UI handle it //93b48c1a-3c1b-48d1-816d-5a7110cecc20
     super.initState();
   }
 
@@ -74,7 +74,7 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
             ),
             const LargeVSpacer(),
             quizState.maybeWhen(
-              loaded: (quiz, userNaswers, currentStep) => TakeQuizzInfoBox(quizModel: quiz),
+              loaded: (quiz, userNaswers, currentStep) => TakeQuizzInfoBox(quizModel: quiz.quizResponse),
               orElse: () => const LoadingIndicator(),
             ),
             const LargeVSpacer(),
@@ -102,7 +102,7 @@ class TakeQuizzInfoBox extends StatelessWidget {
     required this.quizModel,
   });
 
-  final QuizDetailsModel quizModel;
+  final QuizResponseModel quizModel;
 
   @override
   Widget build(BuildContext context) {
@@ -135,29 +135,9 @@ class TakeQuizzInfoBox extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.justify,
             ),
-            const MediumVSpacer(),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                QuizStatusBadge(
-                  text: quizModel.status.name,
-                  backgroundColor: AppColorScheme.secondary,
-                  textColor: AppColorScheme.primary,
-                ),
-              ],
-            ),
           ],
         ),
       ),
     );
   }
-}
-
-class TestQuizEntity {
-  final String quizTitle;
-  final String quizDescription;
-  final String quizStatus;
-  final int quizNumberOfQuestions;
-
-  TestQuizEntity({required this.quizTitle, required this.quizDescription, required this.quizStatus, required this.quizNumberOfQuestions});
 }
