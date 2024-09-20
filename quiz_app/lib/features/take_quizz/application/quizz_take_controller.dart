@@ -42,16 +42,6 @@ class QuizzTakeController extends _$QuizzTakeController {
         );
       },
     );
-
-    final result = await ref.read(takeQuizProvider).getQuizParticipation(id: id);
-    result.fold(
-      (error) => state = QuizzTakeState.error(error.message),
-      (participation) => state = QuizzTakeState.loaded(
-        participationModel: participation,
-        userAnswers: [],
-        currentStep: 1,
-      ),
-    );
   }
 
   void nextStep() {
