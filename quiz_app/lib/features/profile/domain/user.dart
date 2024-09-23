@@ -14,7 +14,7 @@ class User with _$User {
     required String displayName,
     @JsonKey(includeToJson: false)
     @Default('')
-    String email
+    String email,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

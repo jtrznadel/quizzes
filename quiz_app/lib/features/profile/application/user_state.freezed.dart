@@ -21,6 +21,7 @@ mixin _$UserState {
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
+    required TResult Function(User user) guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$UserState {
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
+    TResult? Function(User user)? guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$UserState {
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
+    TResult Function(User user)? guest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$UserState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$UserState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$UserState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +126,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
+    required TResult Function(User user) guest,
   }) {
     return loading();
   }
@@ -130,6 +137,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
+    TResult? Function(User user)? guest,
   }) {
     return loading?.call();
   }
@@ -140,6 +148,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
+    TResult Function(User user)? guest,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -154,6 +163,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) {
     return loading(this);
   }
@@ -164,6 +174,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) {
     return loading?.call(this);
   }
@@ -174,6 +185,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -274,6 +286,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
+    required TResult Function(User user) guest,
   }) {
     return success(user, isUsernameUpdating);
   }
@@ -284,6 +297,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
+    TResult? Function(User user)? guest,
   }) {
     return success?.call(user, isUsernameUpdating);
   }
@@ -294,6 +308,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
+    TResult Function(User user)? guest,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -308,6 +323,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) {
     return success(this);
   }
@@ -318,6 +334,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) {
     return success?.call(this);
   }
@@ -328,6 +345,7 @@ class _$SuccessImpl implements _Success {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -415,6 +433,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function(User user, bool isUsernameUpdating) success,
     required TResult Function(Exception message) error,
+    required TResult Function(User user) guest,
   }) {
     return error(message);
   }
@@ -425,6 +444,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(User user, bool isUsernameUpdating)? success,
     TResult? Function(Exception message)? error,
+    TResult? Function(User user)? guest,
   }) {
     return error?.call(message);
   }
@@ -435,6 +455,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(User user, bool isUsernameUpdating)? success,
     TResult Function(Exception message)? error,
+    TResult Function(User user)? guest,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -449,6 +470,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) {
     return error(this);
   }
@@ -459,6 +481,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) {
     return error?.call(this);
   }
@@ -469,6 +492,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -484,5 +508,160 @@ abstract class _Error implements UserState {
   Exception get message;
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GuestImplCopyWith<$Res> {
+  factory _$$GuestImplCopyWith(
+          _$GuestImpl value, $Res Function(_$GuestImpl) then) =
+      __$$GuestImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$GuestImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$GuestImpl>
+    implements _$$GuestImplCopyWith<$Res> {
+  __$$GuestImplCopyWithImpl(
+      _$GuestImpl _value, $Res Function(_$GuestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$GuestImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GuestImpl implements _Guest {
+  const _$GuestImpl(this.user);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'UserState.guest(user: $user)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GuestImpl &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GuestImplCopyWith<_$GuestImpl> get copyWith =>
+      __$$GuestImplCopyWithImpl<_$GuestImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(User user, bool isUsernameUpdating) success,
+    required TResult Function(Exception message) error,
+    required TResult Function(User user) guest,
+  }) {
+    return guest(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(User user, bool isUsernameUpdating)? success,
+    TResult? Function(Exception message)? error,
+    TResult? Function(User user)? guest,
+  }) {
+    return guest?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(User user, bool isUsernameUpdating)? success,
+    TResult Function(Exception message)? error,
+    TResult Function(User user)? guest,
+    required TResult orElse(),
+  }) {
+    if (guest != null) {
+      return guest(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
+  }) {
+    return guest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
+  }) {
+    return guest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
+    required TResult orElse(),
+  }) {
+    if (guest != null) {
+      return guest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Guest implements UserState {
+  const factory _Guest(final User user) = _$GuestImpl;
+
+  User get user;
+  @JsonKey(ignore: true)
+  _$$GuestImplCopyWith<_$GuestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

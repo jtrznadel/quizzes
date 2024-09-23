@@ -1,6 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/models/user_type.dart';
 import '../../../core/network/api_constants.dart';
+import '../../../core/services/session_provider.dart';
 import '../../../generated/l10n.dart';
 import '../../quizz_details/domain/quiz_details_model.dart';
 import '../data/repositories/dashboard_repository.dart';
@@ -13,6 +15,7 @@ part 'dashboard_controller.g.dart';
 class DashboardController extends _$DashboardController {
   
   final _dashboardRepository = dashboardRepositoryProvider;
+  final _sessionProvider = sessionProvider;
 
   @override
   DashboardState build() {
@@ -20,6 +23,12 @@ class DashboardController extends _$DashboardController {
   }
 
   void initLoad() async {
+    final session = ref.read(_sessionProvider);
+    if(await session.getUserType() == UserType.guest){
+      state = const DashboardState.guest();
+      return;
+    }
+
     state = const DashboardState.loading();
 
     try {

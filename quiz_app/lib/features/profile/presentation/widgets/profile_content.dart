@@ -61,6 +61,8 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
             controller: usernameTextController,
             maxLines: 3,
             labelText: S.of(context).profileNameLabel,
+            //TODO: add change username functionality
+            enabled: false
           ),
           const CustomVSpacer(AppTheme.profileSpacerValue),
           LanguageProfileSection(selectedValue: selectedValue),

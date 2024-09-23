@@ -1,10 +1,10 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:paginated_list/paginated_list.dart';
 
+import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -43,42 +43,71 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
 
     return Scaffold(
       body: SafeArea(
-        child: state.when(
-          loading: () => const LoadingIndicator(),
-          loaded: (quizListModel, currentPage) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppTheme.pageDefaultSpacingSize),
-              child: Column(
-                children: [
-                  const DashboardTopBar(),
-                  const SmallVSpacer(),
-                  quizListModel.items.isEmpty
-                      ? Column(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppTheme.pageDefaultSpacingSize),
+          child: Column(
+            children: [
+              const DashboardTopBar(),
+              state.when(
+                  loading: () => const LoadingIndicator(),
+                  loaded: (quizListModel, currentPage) {
+                    return Column(
+                      children: [
+                        const SmallVSpacer(),
+                        quizListModel.items.isEmpty
+                            ? Column(
+                                children: [
+                                  const NewQuizButton(),
+                                  const LargeVSpacer(),
+                                  Text(
+                                    S.of(context).dashboardQuizzesEmpty,
+                                    style: context.theme.textTheme.bodyLarge,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              )
+                            : const Expanded(
+                                child: QuizList(),
+                              ),
+                      ],
+                    );
+                  },
+                  error: (message) => Center(
+                        child: BasicErrorPage(
+                          errorText: S.of(context).somethingWentWrong,
+                          onRefresh: () => controller.initLoad(),
+                          refreshButtonText: S.of(context).refreshButton,
+                          imageAsset: MediaRes.basicError,
+                        ),
+                      ),
+                  guest: () {
+                    return Expanded(
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            const NewQuizButton(),
+                            SvgPicture.asset(
+                              MediaRes.basicError,
+                              width: 128,
+                              height: 128,
+                            ),
                             const LargeVSpacer(),
                             Text(
-                              S.of(context).dashboardQuizzesEmpty,
-                              style: context.theme.textTheme.bodyLarge,
+                              'You are logged in as as a guest user. Register to access all the app features.',
+                              style: context.theme.textTheme.bodyMedium,
                               textAlign: TextAlign.center,
                             ),
-                          ],
-                        )
-                      : const Expanded(
-                          child: QuizList(),
-                        ),
-                ],
-              ),
-            );
-          },
-          error: (message) => Center(
-            child: BasicErrorPage(
-              errorText: S.of(context).somethingWentWrong,
-              onRefresh: () => controller.initLoad(),
-              refreshButtonText: S.of(context).refreshButton,
-              imageAsset: MediaRes.basicError,
-            ),
+                            const LargeVSpacer(),
+                            BasicButton(onPressed: (){
+                              ref.read(appRouterProvider).push(const SignUpRoute());
+                            }, text: 'Register')
+                          ],),
+                      ),
+                    );
+                  })
+            ],
           ),
         ),
       ),

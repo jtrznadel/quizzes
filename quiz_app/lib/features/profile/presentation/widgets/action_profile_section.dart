@@ -9,7 +9,7 @@ import '../../../../core/res/media_res.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
-import '../widgets/profile_action_button.dart';
+import 'profile_action_button.dart';
 
 class ActionProfileSection extends ConsumerWidget {
   const ActionProfileSection({

@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/models/user_type.dart';
 import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
 import '../data/repositories/user_repository.dart';
@@ -10,8 +11,8 @@ part 'user_controller.g.dart';
 
 @riverpod
 class UserController extends _$UserController {
-
   final _userRepository = userRepositoryProvider;
+  final _sessionRepository = sessionProvider;
 
   @override
   UserState build() {
@@ -21,10 +22,14 @@ class UserController extends _$UserController {
   Future<void> getUser() async {
     try {
       final user = await ref.read(_userRepository).getUser();
-      user.fold(
-        (error) => state = UserState.error(error),
-        (user) => state = UserState.success(user),
-      );
+      return user.fold((error) => state = UserState.error(error), (user) async {
+        final session = ref.read(_sessionRepository);
+        if(await session.getUserType() == UserType.guest) {
+          state = UserState.guest(user);
+          return;
+        }
+        state = UserState.success(user);
+      });
     } on Exception catch (e) {
       state = UserState.error(e);
     }
