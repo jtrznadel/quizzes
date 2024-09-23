@@ -208,6 +208,13 @@
     "quizzTakeSummarySeeResults": "Zobacz wyniki",
     "quizzTakeSummaryBackToDashboard": "Wróć do pulpitu",
 
+    "joinByCodeAppBarTitle": "Dołącz do Quizzu",
+    "joinByCodeHeading": "Podaj kod",
+    "joinByCodeSubheading": "Tutaj możesz wprowadzić kod dla konkretnego quizzu.",
+    "joinByCodeFormFieldLabel": "Kod Quizzu",
+    "joinByCodeFormFieldHint": "Podaj 8-znakowy kod",
+    "joinByCodeAccessButton": "Dołącz",
+
 
     "deleteQuizzHeading": "Czy jesteś pewien?",
     "deleteQuizzDescription": "Ta operacja nie może zostać cofnięta. Po usunięciu quizu nie będzie możliwości jego przywrócenia.",

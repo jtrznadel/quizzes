@@ -208,6 +208,13 @@
     "quizzTakeSummarySeeResults": "See results",
     "quizzTakeSummaryBackToDashboard": "Back to dashboard",
 
+    "joinByCodeAppBarTitle": "Join Quizz",
+    "joinByCodeHeading": "Enter code",
+    "joinByCodeSubheading": "Here, you can enter the code for the specific quizz.",
+    "joinByCodeFormFieldLabel": "Quizz Code",
+    "joinByCodeFormFieldHint": "Enter 8-character code",
+    "joinByCodeAccessButton": "Access",
+
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",
     "deleteAccountHeading": "Deleting account",

@@ -1660,6 +1660,66 @@ class S {
     );
   }
 
+  /// `Join Quizz`
+  String get joinByCodeAppBarTitle {
+    return Intl.message(
+      'Join Quizz',
+      name: 'joinByCodeAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter code`
+  String get joinByCodeHeading {
+    return Intl.message(
+      'Enter code',
+      name: 'joinByCodeHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here, you can enter the code for the specific quizz.`
+  String get joinByCodeSubheading {
+    return Intl.message(
+      'Here, you can enter the code for the specific quizz.',
+      name: 'joinByCodeSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizz Code`
+  String get joinByCodeFormFieldLabel {
+    return Intl.message(
+      'Quizz Code',
+      name: 'joinByCodeFormFieldLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter 8-character code`
+  String get joinByCodeFormFieldHint {
+    return Intl.message(
+      'Enter 8-character code',
+      name: 'joinByCodeFormFieldHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access`
+  String get joinByCodeAccessButton {
+    return Intl.message(
+      'Access',
+      name: 'joinByCodeAccessButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get deleteQuizzHeading {
     return Intl.message(

@@ -81,6 +81,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid e-mail address."),
         "invalidEmailOrPassword":
             MessageLookupByLibrary.simpleMessage("Invalid e-mail or password."),
+        "joinByCodeAccessButton":
+            MessageLookupByLibrary.simpleMessage("Access"),
+        "joinByCodeAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Join Quizz"),
+        "joinByCodeFormFieldHint":
+            MessageLookupByLibrary.simpleMessage("Enter 8-character code"),
+        "joinByCodeFormFieldLabel":
+            MessageLookupByLibrary.simpleMessage("Quizz Code"),
+        "joinByCodeHeading": MessageLookupByLibrary.simpleMessage("Enter code"),
+        "joinByCodeSubheading": MessageLookupByLibrary.simpleMessage(
+            "Here, you can enter the code for the specific quizz."),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languageEnglish": MessageLookupByLibrary.simpleMessage("English"),
         "languagePolish": MessageLookupByLibrary.simpleMessage("Polish"),
