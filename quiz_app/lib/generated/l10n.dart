@@ -2030,6 +2030,16 @@ class S {
     );
   }
 
+  /// `Unknown`
+  String get unknownUsername {
+    return Intl.message(
+      'Unknown',
+      name: 'unknownUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Understanding Cryptocurrencies and Their Impact on Finance`
   String get tempQuizzSummaryTitle {
     return Intl.message(

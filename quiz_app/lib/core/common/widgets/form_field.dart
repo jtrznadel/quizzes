@@ -17,6 +17,7 @@ class IFormField extends StatelessWidget {
     this.bgColor = AppColorScheme.dialogBackground,
     required this.controller,
     this.validator,
+    this.enabled = true,
   });
 
   final TextEditingController controller;
@@ -28,6 +29,7 @@ class IFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? bgColor;
   final String? Function(String?)? validator;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +57,7 @@ class IFormField extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: TextFormField(
+                enabled: enabled,
                 controller: controller,
                 validator: validator ??
                     (value) {

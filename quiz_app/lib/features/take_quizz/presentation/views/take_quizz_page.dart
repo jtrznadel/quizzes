@@ -6,7 +6,6 @@ import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
-import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
@@ -14,7 +13,7 @@ import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
-import '../../../quizz_details/domain/quiz_details_model.dart';
+import '../../../profile/application/user_controller.dart';
 import '../../application/quizz_take_controller.dart';
 import '../../domain/quiz_response_model.dart';
 import '../widgets/quit_quizz_taking_dialog.dart';
@@ -35,7 +34,7 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: widget.joinCode),
     );
-    //TODO: Remove when the real implementation is done and UI handle it //93b48c1a-3c1b-48d1-816d-5a7110cecc20
+    WidgetsBinding.instance.addPostFrameCallback((_) => ref.read(userControllerProvider.notifier).getUser());
     super.initState();
   }
 
@@ -45,6 +44,7 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     final quizState = ref.watch(quizzTakeControllerProvider);
+    final userState = ref.watch(userControllerProvider);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -73,8 +73,13 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
               key: formKey,
               child: IFormField(
                 labelText: S.of(context).quizzTakeFormFieldLabel,
-                hintText: S.of(context).quizzTakeFormFieldHint,
+                hintText: userState.maybeWhen(
+                  success: (user, _) => user.displayName,
+                  orElse: () => S.of(context).unknownUsername,
+                ),
                 controller: usernameController,
+                enabled: false,
+                isRequired: false,
               ),
             ),
             const LargeVSpacer(),

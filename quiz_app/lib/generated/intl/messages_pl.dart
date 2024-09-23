@@ -429,6 +429,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Zrozumienie kryptowalut i ich wpływu na finanse"),
         "thisFieldIsRequired":
             MessageLookupByLibrary.simpleMessage("To pole jest wymagane"),
+        "unknownUsername":
+            MessageLookupByLibrary.simpleMessage("Nieznana nazwa użytkownika"),
         "usernameHint":
             MessageLookupByLibrary.simpleMessage("Twoja nazwa użytkownika"),
         "usernameLabel":
