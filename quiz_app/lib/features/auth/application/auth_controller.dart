@@ -1,8 +1,13 @@
 import 'dart:core';
 
+import 'package:dartz/dartz.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/errors/server_exception.dart';
+import '../../../core/models/user_type.dart';
 import '../../../core/services/session_provider.dart';
+import '../../profile/data/repositories/user_repository.dart';
+import '../../profile/domain/guest_auth.dart';
 import '../data/repositories/auth_repository.dart';
 import '../domain/user_auth.dart';
 import 'auth_state.dart';
@@ -12,6 +17,9 @@ part 'auth_controller.g.dart';
 @riverpod
 class AuthController extends _$AuthController {
   final _authRepostiory = authRepositoryProvider;
+  final _sessionProvider = sessionProvider;
+  final _profileRepository = userRepositoryProvider;
+  
 
   @override
   AuthState build() {
@@ -24,8 +32,17 @@ class AuthController extends _$AuthController {
       orElse: () => true,
     );
     state = AuthState.loading(obscurePassword);
-    final userAuth = UserAuth(email: email, password: password);
-    final result = await ref.read(_authRepostiory).signUp(userAuth: userAuth);
+
+    Either<ServerException, void> result;
+
+    if(await ref.read(_sessionProvider).getUserType() == UserType.guest){
+      final guestAuth = GuestAuth(email: email, password: password);
+      result = await ref.read(_profileRepository).convertGuestToUser(guestAuth);
+    } else{
+      final userAuth = UserAuth(email: email, password: password);
+      result = await ref.read(_authRepostiory).signUp(userAuth: userAuth);
+    }
+
     return result.fold((error) {
       state = AuthState.unauthenticated(obscurePassword);
       return false;

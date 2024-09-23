@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
+import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
@@ -29,7 +30,7 @@ class GuestActionProfileSection extends ConsumerWidget {
         ProfileActionButton(
           title: 'Register',
           onPressed: () {
-            //TODO: navigate to guest user registration page
+            ref.read(appRouterProvider).push(const SignUpRoute());
           },
           trailing: const Icon(
             Icons.person_add,
