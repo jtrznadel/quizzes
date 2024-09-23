@@ -49,8 +49,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
           loading: () => const LoadingIndicator(),
           loaded: (quizListModel, currentPage) {
             return Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppTheme.pageDefaultSpacingSize),
+              padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
               child: Column(
                 children: [
                   const DashboardTopBar(),
@@ -103,12 +102,12 @@ class DashboardTopBar extends ConsumerWidget {
               S.of(context).dashboardTopHeading,
               style: context.theme.textTheme.headlineLarge,
             ),
+            const Spacer(),
             IconButton(
               onPressed: () {
-                //TODO: Replace with real data
-                context.router.push(TakeQuizzRoute(joinCode: "6ec295ee"));
+                ref.read(appRouterProvider).push(const JoinByCodeRoute());
               },
-              icon: SvgPicture.asset(MediaRes.generate, width: 24, height: 24),
+              icon: SvgPicture.asset(MediaRes.joinByCode),
             ),
             IconButton(
               onPressed: () {
@@ -125,8 +124,7 @@ class DashboardTopBar extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );
@@ -151,8 +149,7 @@ class QuizList extends ConsumerWidget {
             loadingIndicator: const LoadingIndicator(),
             items: quizListModel.items,
             isRecentSearch: false,
-            isLastPage:
-                quizListModel.totalItemsCount <= quizListModel.items.length,
+            isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
             onLoadMore: (index) {
               controller.loadMore();
             },

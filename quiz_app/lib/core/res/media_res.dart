@@ -39,4 +39,5 @@ class MediaRes {
   static const String attachment = 'assets/icons/attachment.svg';
   static const String correctAnswer = 'assets/icons/check_circle.svg';
   static const String wrongAnswer = 'assets/icons/circle_cancel.svg';
+  static const String joinByCode = 'assets/icons/join_by_code.svg';
 }

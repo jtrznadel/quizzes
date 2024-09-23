@@ -81,6 +81,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
         "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(
             "Nieprawidłowy adres e-mail lub hasło."),
+        "joinByCodeAccessButton":
+            MessageLookupByLibrary.simpleMessage("Dołącz"),
+        "joinByCodeAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Dołącz do Quizzu"),
+        "joinByCodeFormFieldHint":
+            MessageLookupByLibrary.simpleMessage("Podaj 8-znakowy kod"),
+        "joinByCodeFormFieldLabel":
+            MessageLookupByLibrary.simpleMessage("Kod Quizzu"),
+        "joinByCodeHeading": MessageLookupByLibrary.simpleMessage("Podaj kod"),
+        "joinByCodeInvalidCode": MessageLookupByLibrary.simpleMessage(
+            "Nieprawidłowy kod. Spróbuj ponownie."),
+        "joinByCodeSubheading": MessageLookupByLibrary.simpleMessage(
+            "Tutaj możesz wprowadzić kod dla konkretnego quizzu."),
         "language": MessageLookupByLibrary.simpleMessage("Język"),
         "languageEnglish": MessageLookupByLibrary.simpleMessage("Angielski"),
         "languagePolish": MessageLookupByLibrary.simpleMessage("Polski"),
@@ -341,6 +354,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Twoje imię"),
         "quizzTakeFormFieldLabel": MessageLookupByLibrary.simpleMessage("Imię"),
         "quizzTakeHeading": MessageLookupByLibrary.simpleMessage("Quizz"),
+        "quizzTakeLoadingError": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się załadować Quizzu. Istnieje szansa, że podany przez Ciebie kod jest nieprawidłowy. Spróbuj ponownie."),
         "quizzTakeQuitHeading":
             MessageLookupByLibrary.simpleMessage("Opuścić quizz?"),
         "quizzTakeQuitSubheading": MessageLookupByLibrary.simpleMessage(
@@ -354,6 +369,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzTakeScoreGood": MessageLookupByLibrary.simpleMessage("Dobrze!"),
         "quizzTakeScoreURGenius":
             MessageLookupByLibrary.simpleMessage("Jesteś geniuszem!"),
+        "quizzTakeStartButton":
+            MessageLookupByLibrary.simpleMessage("Rozpocznij Quizz"),
         "quizzTakeSubheading": MessageLookupByLibrary.simpleMessage(
             "Weź udział w naszym quizie, którego celem jest ocena twojego zrozumienia i wiedzy na różne tematy."),
         "quizzTakeSummaryBackToDashboard":
@@ -412,6 +429,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Zrozumienie kryptowalut i ich wpływu na finanse"),
         "thisFieldIsRequired":
             MessageLookupByLibrary.simpleMessage("To pole jest wymagane"),
+        "unknownUsername":
+            MessageLookupByLibrary.simpleMessage("Nieznana nazwa użytkownika"),
         "usernameHint":
             MessageLookupByLibrary.simpleMessage("Twoja nazwa użytkownika"),
         "usernameLabel":

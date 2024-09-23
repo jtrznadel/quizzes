@@ -112,6 +112,25 @@ class ForgotPasswordRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [JoinByCodePage]
+class JoinByCodeRoute extends PageRouteInfo<void> {
+  const JoinByCodeRoute({List<PageRouteInfo>? children})
+      : super(
+          JoinByCodeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'JoinByCodeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const JoinByCodePage();
+    },
+  );
+}
+
+/// generated route for
 /// [NewPasswordPage]
 class NewPasswordRoute extends PageRouteInfo<void> {
   const NewPasswordRoute({List<PageRouteInfo>? children})

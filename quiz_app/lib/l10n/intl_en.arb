@@ -207,6 +207,17 @@
     "quizzTakeScoreBad": "This is not your day...",
     "quizzTakeSummarySeeResults": "See results",
     "quizzTakeSummaryBackToDashboard": "Back to dashboard",
+    "quizzTakeLoadingError": "There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.",
+    "quizzTakeStartButton": "Start Quizz",
+
+    "joinByCodeAppBarTitle": "Join Quizz",
+    "joinByCodeHeading": "Enter code",
+    "joinByCodeSubheading": "Here, you can enter the code for the specific quizz.",
+    "joinByCodeFormFieldLabel": "Quizz Code",
+    "joinByCodeFormFieldHint": "Enter 8-character code",
+    "joinByCodeAccessButton": "Access",
+    "joinByCodeInvalidCode": "Invalid code. Please check if the code is correct and try again.",
+    "joinByCodeQuizzNotFound": "Quizz not found. Please check if the code is correct and try again.",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",
@@ -236,7 +247,7 @@
     "profileSignOutButton": "Sign out",
     "profileSignOutDescription": "Sign out from your account",
     "profileActionsHeading": "Profile actions",
-    
+    "unknownUsername": "Unknown",
 
     "tempQuizzSummaryTitle": "Understanding Cryptocurrencies and Their Impact on Finance",
     "tempQuizzSummaryDescription": "Explore how cryptocurrencies like Bitcoin and Ethereum are transforming the financial landscape through decentralization, blockchain technology, and the potential for high returns, while also addressing risks and regulatory challenges.",
