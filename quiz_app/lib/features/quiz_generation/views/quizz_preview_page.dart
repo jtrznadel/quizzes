@@ -87,8 +87,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                                   },
                                   correctAnswerVisible: true,
                                   onEdit: (question){
-                                    controller.deleteQuestion(quiz, index);
-                                    addQuestion(controller, quiz, question);
+                                    controller.updateQuestion(question, index);
                                   },
                                 ),
                                 const CustomVSpacer(32),

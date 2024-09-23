@@ -1,5 +1,6 @@
 class ApiConstants {
-  static const String baseUrl = 'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/';
+  static const String domain = 'mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io';
+  static const String baseUrl = 'https://$domain/api/';
   static const String authUrl = '${baseUrl}auth';
   static const String signUpEndpoint = '/signup';
   static const String signInEndpoint = '/signin';
@@ -28,9 +29,9 @@ class ApiConstants {
   static const String updateQuizAvailabilityEndpoint = 'quiz/{id}/availability';
   static const String updateQuizDetailsEndpoint = 'quiz';
 
-  static const String deleteQuestionEndpoint = 'questionsandanswers/{id}';
-  static const String addQuestionEndpoint = 'questionsandanswers/create-question';
-  static const String updateQuestionEndpoint = 'questionsandanswers/update-question';
+  static const String deleteQuestionEndpoint = 'questions/{id}';
+  static const String addQuestionEndpoint = 'questions';
+  static const String updateQuestionEndpoint = 'questions';
 
   static const String quizListEndpoint = 'quiz';
   static const String deleteQuizEndpoint = 'quiz/{id}';
