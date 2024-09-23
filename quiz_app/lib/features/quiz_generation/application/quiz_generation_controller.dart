@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../core/models/question_model_interface.dart';
 import '../../../generated/l10n.dart';
 import '../data/repositories/quiz_generation_repository.dart';
 import '../domain/create_quiz_model.dart';
@@ -78,6 +79,18 @@ class QuizGenerationController extends _$QuizGenerationController {
 
   void modifyGeneratedQuiz(GenerateQuizModel quiz) {
     state = QuizGenerationState.generated(quiz);
+  }
+
+  void updateQuestion(QuestionModelInterface question, int index){
+    state.maybeWhen(
+      generated: (quiz) {
+        final questionListCopy = List<QuestionModelInterface>.from(quiz.generateQuestions);
+        questionListCopy[index] = question;
+        quiz = quiz.copyWith(generateQuestions: questionListCopy);
+        state = QuizGenerationState.generated(quiz);
+      },
+      orElse: () {},
+    );
   }
 
   bool validateRequest(QuizRequestModel requestModel) {

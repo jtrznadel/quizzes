@@ -1,5 +1,6 @@
 class ApiConstants {
-  static const String baseUrl = 'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/';
+  static const String domain = 'mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io';
+  static const String baseUrl = 'https://$domain/api/';
   static const String authUrl = '${baseUrl}auth';
   static const String signUpEndpoint = '/signup';
   static const String signInEndpoint = '/signin';
@@ -20,20 +21,20 @@ class ApiConstants {
   static const String accessTokenStorageKey = 'accessToken';
   static const String refreshTokenStorageKey = 'refreshToken';
 
-  static const String quizGenerationEndpoint = 'quiz/generate-quiz';
-  static const String quizCreateEndpoint = 'quiz/create-quiz';
+  static const String quizGenerationEndpoint = 'quizzes/generate-quiz';
+  static const String quizCreateEndpoint = 'quizzes';
 
-  static const String getQuizEndpoint = 'quiz/{id}';
-  static const String updateQuizStatusEndpoint = 'quiz/{id}/status';
-  static const String updateQuizAvailabilityEndpoint = 'quiz/{id}/availability';
-  static const String updateQuizDetailsEndpoint = 'quiz';
+  static const String getQuizEndpoint = 'quizzes/{id}';
+  static const String updateQuizStatusEndpoint = 'quizzes/{id}/status';
+  static const String updateQuizAvailabilityEndpoint = 'quizzes/{id}/availability';
+  static const String updateQuizDetailsEndpoint = 'quizzes';
 
-  static const String deleteQuestionEndpoint = 'questionsandanswers/{id}';
-  static const String addQuestionEndpoint = 'questionsandanswers/create-question';
-  static const String updateQuestionEndpoint = 'questionsandanswers/update-question';
+  static const String deleteQuestionEndpoint = 'questions/{id}';
+  static const String addQuestionEndpoint = 'questions';
+  static const String updateQuestionEndpoint = 'questions';
 
-  static const String quizListEndpoint = 'quiz';
-  static const String deleteQuizEndpoint = 'quiz/{id}';
+  static const String quizListEndpoint = 'quizzes';
+  static const String deleteQuizEndpoint = 'quizzes/{id}';
   static const int quizPageSize = 10;
   static const String quizListPageQuery = 'Page';
   static const String quizListPageSizeQuery = 'PageSize';
@@ -45,4 +46,6 @@ class ApiConstants {
 
   static const String guestSignInEndpoint = '/guests';
   static const String guestAccountCreationEndpoint = '/profile/convert-guest';
-}
+
+  static const String userRoleTokenKey = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+  }

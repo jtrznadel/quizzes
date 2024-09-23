@@ -3,9 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import 'core/network/api_constants.dart';
 import 'core/services/app_router.dart';
 import 'core/services/language_provider.dart';
+import 'core/services/session_provider.dart';
 import 'core/theme/app_theme.dart';
 import 'generated/l10n.dart';
 
@@ -44,13 +47,22 @@ class MyAppState extends ConsumerState<MyApp> {
       theme: AppTheme.theme,
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(
-        deepLinkTransformer: (uri) {
+        deepLinkTransformer: (uri) async {
           print(uri);
+          if (uri.host == ApiConstants.domain) {
+            if (await ref.read(sessionProvider).isLoggedIn()) {
+              ref.read(appRouterProvider).replaceAll([
+                const DashboardRoute(),
+                TakeQuizzRoute(joinCode: uri.pathSegments.last)
+              ]);
+              return SynchronousFuture(uri);
+            } else {
+              //TODO: replace with guest user take quiz when implemented
+              ref.read(appRouterProvider).push(const WelcomeRoute());
+              return SynchronousFuture(uri);
+            }
+          }
           return SynchronousFuture(uri);
-        },
-        deepLinkBuilder: (deepLink) {
-          print(deepLink.uri);
-          return const DeepLink([DashboardRoute()]);
         },
       ),
     );
