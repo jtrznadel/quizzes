@@ -1,6 +1,5 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/widgets/answer_tile.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
@@ -11,9 +10,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/answer_indicator_enum.dart';
 import '../../../../core/utils/enums/answer_result_enum.dart';
 import '../../../../generated/l10n.dart';
-import '../../../quizz_details/domain/question_details_model.dart';
 import '../../domain/quiz_result_model.dart';
-import '../../domain/take_quiz_question_model.dart';
 import '../../domain/take_quiz_result_question_model.dart';
 
 @RoutePage()

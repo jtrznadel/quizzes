@@ -74,6 +74,52 @@ class BasicErrorRouteArgs {
 }
 
 /// generated route for
+/// [CreateGuestUserPage]
+class CreateGuestUserRoute extends PageRouteInfo<CreateGuestUserRouteArgs> {
+  CreateGuestUserRoute({
+    Key? key,
+    required String joinCode,
+    List<PageRouteInfo>? children,
+  }) : super(
+          CreateGuestUserRoute.name,
+          args: CreateGuestUserRouteArgs(
+            key: key,
+            joinCode: joinCode,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateGuestUserRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<CreateGuestUserRouteArgs>();
+      return CreateGuestUserPage(
+        key: args.key,
+        joinCode: args.joinCode,
+      );
+    },
+  );
+}
+
+class CreateGuestUserRouteArgs {
+  const CreateGuestUserRouteArgs({
+    this.key,
+    required this.joinCode,
+  });
+
+  final Key? key;
+
+  final String joinCode;
+
+  @override
+  String toString() {
+    return 'CreateGuestUserRouteArgs{key: $key, joinCode: $joinCode}';
+  }
+}
+
+/// generated route for
 /// [DashboardPage]
 class DashboardRoute extends PageRouteInfo<void> {
   const DashboardRoute({List<PageRouteInfo>? children})

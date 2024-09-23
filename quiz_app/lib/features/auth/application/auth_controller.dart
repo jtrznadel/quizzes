@@ -58,6 +58,22 @@ class AuthController extends _$AuthController {
     );
   }
 
+  Future<bool> guestSignIn({required String username}) async {
+    final result = await ref.read(_authRepostiory).guestSignIn(guestDisplayName: username);
+    return result.fold(
+      (error) {
+        return false;
+      },
+      (tokens) async {
+        await ref.read(sessionProvider).saveTokens(
+              accessToken: tokens.accessToken,
+              refreshToken: tokens.refreshToken,
+            );
+        return true;
+      },
+    );
+  }
+
   void togglePasswordVisibility() {
     state.maybeWhen(
       unauthenticated: (obscurePassword) {

@@ -54,7 +54,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
     )
             .compose(
               _dio.options,
-              'quiz/generate-quiz',
+              'quizzes/generate-quiz',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -82,7 +82,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
     )
             .compose(
               _dio.options,
-              'quiz/create-quiz',
+              'quizzes',
               queryParameters: queryParameters,
               data: _data,
             )
