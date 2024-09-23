@@ -41,7 +41,7 @@ class _DashboardClient implements DashboardClient {
     )
             .compose(
               _dio.options,
-              'quiz',
+              'quizzes',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -67,7 +67,7 @@ class _DashboardClient implements DashboardClient {
     )
         .compose(
           _dio.options,
-          'quiz/${id}',
+          'quizzes/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
