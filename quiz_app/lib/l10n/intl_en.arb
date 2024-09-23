@@ -207,6 +207,8 @@
     "quizzTakeScoreBad": "This is not your day...",
     "quizzTakeSummarySeeResults": "See results",
     "quizzTakeSummaryBackToDashboard": "Back to dashboard",
+    "quizzTakeLoadingError": "There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.",
+    "quizzTakeStartButton": "Start Quizz",
 
     "joinByCodeAppBarTitle": "Join Quizz",
     "joinByCodeHeading": "Enter code",
@@ -214,6 +216,8 @@
     "joinByCodeFormFieldLabel": "Quizz Code",
     "joinByCodeFormFieldHint": "Enter 8-character code",
     "joinByCodeAccessButton": "Access",
+    "joinByCodeInvalidCode": "Invalid code. Please check if the code is correct and try again.",
+    "joinByCodeQuizzNotFound": "Quizz not found. Please check if the code is correct and try again.",
 
     "deleteQuizzHeading": "Are you sure?",
     "deleteQuizzDescription": "This action cannot be undone. Once you delete the quiz there is no going back.",

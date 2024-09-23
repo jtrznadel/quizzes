@@ -1660,6 +1660,26 @@ class S {
     );
   }
 
+  /// `There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.`
+  String get quizzTakeLoadingError {
+    return Intl.message(
+      'There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.',
+      name: 'quizzTakeLoadingError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Quizz`
+  String get quizzTakeStartButton {
+    return Intl.message(
+      'Start Quizz',
+      name: 'quizzTakeStartButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Join Quizz`
   String get joinByCodeAppBarTitle {
     return Intl.message(
@@ -1715,6 +1735,26 @@ class S {
     return Intl.message(
       'Access',
       name: 'joinByCodeAccessButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid code. Please check if the code is correct and try again.`
+  String get joinByCodeInvalidCode {
+    return Intl.message(
+      'Invalid code. Please check if the code is correct and try again.',
+      name: 'joinByCodeInvalidCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizz not found. Please check if the code is correct and try again.`
+  String get joinByCodeQuizzNotFound {
+    return Intl.message(
+      'Quizz not found. Please check if the code is correct and try again.',
+      name: 'joinByCodeQuizzNotFound',
       desc: '',
       args: [],
     );

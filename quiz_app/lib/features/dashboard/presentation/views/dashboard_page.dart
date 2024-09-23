@@ -102,16 +102,9 @@ class DashboardTopBar extends ConsumerWidget {
               S.of(context).dashboardTopHeading,
               style: context.theme.textTheme.headlineLarge,
             ),
+            const Spacer(),
             IconButton(
               onPressed: () {
-                //TODO: Replace with real data
-                context.router.push(TakeQuizzRoute(joinCode: "6ec295ee"));
-              },
-              icon: SvgPicture.asset(MediaRes.generate, width: 24, height: 24),
-            ),
-            IconButton(
-              onPressed: () {
-                //TODO: Replace with real data
                 ref.read(appRouterProvider).push(const JoinByCodeRoute());
               },
               icon: SvgPicture.asset(MediaRes.joinByCode),
