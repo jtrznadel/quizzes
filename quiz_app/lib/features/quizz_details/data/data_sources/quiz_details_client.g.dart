@@ -35,7 +35,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
             .compose(
               _dio.options,
-              'quiz/${id}',
+              'quizzes/${id}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -64,7 +64,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
         .compose(
           _dio.options,
-          'quiz/${id}/status',
+          'quizzes/${id}/status',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -91,7 +91,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
         .compose(
           _dio.options,
-          'quiz/${id}/availability',
+          'quizzes/${id}/availability',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -116,7 +116,7 @@ class _QuizDetailsClient implements QuizDetailsClient {
     )
         .compose(
           _dio.options,
-          'quiz',
+          'quizzes',
           queryParameters: queryParameters,
           data: _data,
         )
