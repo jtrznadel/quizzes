@@ -263,6 +263,8 @@
     "languagePolish": "Polish",
     "languageEnglish": "English",
 
-    "refreshButton": "Refresh"
+    "refreshButton": "Refresh",
+
+    "quizLanguageSelectionHeading": "Select language"
 }
       

@@ -20,6 +20,7 @@ mixin _$QuizRequestModel {
   int get numberOfQuestions => throw _privateConstructorUsedError;
   List<String> get questionTypes => throw _privateConstructorUsedError;
   List<PlatformFile> get attachments => throw _privateConstructorUsedError;
+  String get language => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuizRequestModelCopyWith<QuizRequestModel> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $QuizRequestModelCopyWith<$Res> {
       {String content,
       int numberOfQuestions,
       List<String> questionTypes,
-      List<PlatformFile> attachments});
+      List<PlatformFile> attachments,
+      String language});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$QuizRequestModelCopyWithImpl<$Res, $Val extends QuizRequestModel>
     Object? numberOfQuestions = null,
     Object? questionTypes = null,
     Object? attachments = null,
+    Object? language = null,
   }) {
     return _then(_value.copyWith(
       content: null == content
@@ -74,6 +77,10 @@ class _$QuizRequestModelCopyWithImpl<$Res, $Val extends QuizRequestModel>
           ? _value.attachments
           : attachments // ignore: cast_nullable_to_non_nullable
               as List<PlatformFile>,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -90,7 +97,8 @@ abstract class _$$QuizRequestModelImplCopyWith<$Res>
       {String content,
       int numberOfQuestions,
       List<String> questionTypes,
-      List<PlatformFile> attachments});
+      List<PlatformFile> attachments,
+      String language});
 }
 
 /// @nodoc
@@ -108,6 +116,7 @@ class __$$QuizRequestModelImplCopyWithImpl<$Res>
     Object? numberOfQuestions = null,
     Object? questionTypes = null,
     Object? attachments = null,
+    Object? language = null,
   }) {
     return _then(_$QuizRequestModelImpl(
       content: null == content
@@ -126,6 +135,10 @@ class __$$QuizRequestModelImplCopyWithImpl<$Res>
           ? _value._attachments
           : attachments // ignore: cast_nullable_to_non_nullable
               as List<PlatformFile>,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -137,7 +150,8 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
       {required this.content,
       required this.numberOfQuestions,
       required final List<String> questionTypes,
-      required final List<PlatformFile> attachments})
+      required final List<PlatformFile> attachments,
+      required this.language})
       : _questionTypes = questionTypes,
         _attachments = attachments;
 
@@ -162,8 +176,11 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
   }
 
   @override
+  final String language;
+
+  @override
   String toString() {
-    return 'QuizRequestModel(content: $content, numberOfQuestions: $numberOfQuestions, questionTypes: $questionTypes, attachments: $attachments)';
+    return 'QuizRequestModel(content: $content, numberOfQuestions: $numberOfQuestions, questionTypes: $questionTypes, attachments: $attachments, language: $language)';
   }
 
   @override
@@ -177,7 +194,9 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
             const DeepCollectionEquality()
                 .equals(other._questionTypes, _questionTypes) &&
             const DeepCollectionEquality()
-                .equals(other._attachments, _attachments));
+                .equals(other._attachments, _attachments) &&
+            (identical(other.language, language) ||
+                other.language == language));
   }
 
   @override
@@ -186,7 +205,8 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
       content,
       numberOfQuestions,
       const DeepCollectionEquality().hash(_questionTypes),
-      const DeepCollectionEquality().hash(_attachments));
+      const DeepCollectionEquality().hash(_attachments),
+      language);
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +221,8 @@ abstract class _QuizRequestModel implements QuizRequestModel {
       {required final String content,
       required final int numberOfQuestions,
       required final List<String> questionTypes,
-      required final List<PlatformFile> attachments}) = _$QuizRequestModelImpl;
+      required final List<PlatformFile> attachments,
+      required final String language}) = _$QuizRequestModelImpl;
 
   @override
   String get content;
@@ -211,6 +232,8 @@ abstract class _QuizRequestModel implements QuizRequestModel {
   List<String> get questionTypes;
   @override
   List<PlatformFile> get attachments;
+  @override
+  String get language;
   @override
   @JsonKey(ignore: true)
   _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>

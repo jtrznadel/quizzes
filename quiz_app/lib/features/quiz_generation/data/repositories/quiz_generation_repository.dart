@@ -38,6 +38,7 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
         numberOfQuestions: quizRequestModel.numberOfQuestions,
         questionTypes: quizRequestModel.questionTypes.join(','),
         attachments: attachments,
+        language: quizRequestModel.language,
       );
       return Right(model);
     } catch (e) {

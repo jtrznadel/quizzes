@@ -63,6 +63,7 @@ dependencies:
   
   paginated_list: ^1.2.3
   jwt_decoder: ^2.0.1
+  dropdown_button2: ^2.3.9
 dev_dependencies:
   flutter_test:
     sdk: flutter

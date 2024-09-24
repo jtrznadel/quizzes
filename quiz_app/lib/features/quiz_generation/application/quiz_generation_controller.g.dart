@@ -7,7 +7,7 @@ part of 'quiz_generation_controller.dart';
 // **************************************************************************
 
 String _$quizGenerationControllerHash() =>
-    r'888e3b63bae1c220a243f154144d884724ab2f90';
+    r'c24ef428794ef6a2a4f6ac2a1064ca62a217ef4e';
 
 /// See also [QuizGenerationController].
 @ProviderFor(QuizGenerationController)

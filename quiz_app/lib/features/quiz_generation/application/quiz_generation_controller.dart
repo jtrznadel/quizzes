@@ -8,6 +8,7 @@ import '../domain/create_quiz_model.dart';
 import '../domain/generate_question_model.dart';
 import '../domain/generate_quiz_model.dart';
 import '../domain/quiz_request_model.dart';
+import '../views/quizz_text_prompt_page.dart';
 import 'quiz_generation_state.dart';
 
 part 'quiz_generation_controller.g.dart';
@@ -23,6 +24,7 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: 5,
       attachments: [],
+      language: 'English',
     );
     return const QuizGenerationState.generating(requestModel);
   }
@@ -62,6 +64,7 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: 5,
       attachments: [],
+      language: 'English',
     ));
   }
 
@@ -79,6 +82,16 @@ class QuizGenerationController extends _$QuizGenerationController {
 
   void modifyGeneratedQuiz(GenerateQuizModel quiz) {
     state = QuizGenerationState.generated(quiz);
+  }
+
+  void setLanguage(QuizLanguage language){
+    state.maybeWhen(
+      generating: (request) {
+        request = request.copyWith(language: language.name);
+        modifyRequest(request);
+      },
+      orElse: () {},
+    );
   }
 
   void updateQuestion(QuestionModelInterface question, int index){

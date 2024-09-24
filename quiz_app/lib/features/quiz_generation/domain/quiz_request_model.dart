@@ -10,6 +10,7 @@ class QuizRequestModel with _$QuizRequestModel {
     required int numberOfQuestions,
     required List<String> questionTypes,
     required List<PlatformFile> attachments,
+    required String language,
   }) = _QuizRequestModel;
 }
 

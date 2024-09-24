@@ -150,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),
+        "quizLanguageSelectionHeading":
+            MessageLookupByLibrary.simpleMessage("Select language"),
         "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(

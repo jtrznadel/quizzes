@@ -148,6 +148,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Aktualizuj"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Aktualizowanie..."),
+        "quizLanguageSelectionHeading":
+            MessageLookupByLibrary.simpleMessage("Wybierz język"),
         "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz stworzyć quizz na podstawie swojego tekstu źródłowego."),

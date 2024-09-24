@@ -1,4 +1,5 @@
 {
+    "@@locale": "pl",
     "loginButton": "Zaloguj się",
     "registerButton": "Zarejestruj się",   
     "emailLabel": "E-mail",
@@ -263,5 +264,7 @@
     "languagePolish": "Polski",
     "languageEnglish": "Angielski",
 
-    "refreshButton": "Odśwież"
+    "refreshButton": "Odśwież",
+
+    "quizLanguageSelectionHeading": "Wybierz język"
 }

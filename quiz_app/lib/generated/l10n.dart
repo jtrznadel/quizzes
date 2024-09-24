@@ -2179,6 +2179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Select language`
+  String get quizLanguageSelectionHeading {
+    return Intl.message(
+      'Select language',
+      name: 'quizLanguageSelectionHeading',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

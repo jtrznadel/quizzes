@@ -6,7 +6,7 @@ import '../application/quiz_generation_controller.dart';
 import 'question_type_button.dart';
 import '../../../../generated/l10n.dart';
 
-enum QuestionType { MultipleChoice, TrueFalse }
+enum QuestionType { SingleChoice, TrueFalse }
 
 class QuestionTypePicker extends ConsumerStatefulWidget {
   const QuestionTypePicker({super.key});
@@ -41,7 +41,7 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
                   generating: (request) {
                     request = request.copyWith(questionTypes: [
                       ...request.questionTypes,
-                      QuestionType.MultipleChoice.name
+                      QuestionType.SingleChoice.name
                     ]);
                     ref
                         .read(quizGenerationControllerProvider.notifier)
@@ -55,7 +55,7 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
                     request = request.copyWith(
                         questionTypes: request.questionTypes
                             .where((element) =>
-                                element != QuestionType.MultipleChoice.name)
+                                element != QuestionType.SingleChoice.name)
                             .toList());
                     ref
                         .read(quizGenerationControllerProvider.notifier)
