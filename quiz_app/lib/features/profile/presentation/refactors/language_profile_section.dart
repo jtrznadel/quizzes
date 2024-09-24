@@ -35,7 +35,7 @@ class LanguageProfileSection extends ConsumerWidget {
             languageController.setLocale(const Locale('en'));
           },
         ),
-        const MediumVSpacer(),
+        const SmallVSpacer(),
         LanguageRadioButton(
           value: 'pl',
           groupValue: selectedValue,

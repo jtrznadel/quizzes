@@ -19,6 +19,7 @@ class MediaRes {
   //ICONS
   static const String fluentEye = 'assets/icons/fluent_eye.svg';
   static const String arrowBack = 'assets/icons/arrow_back.svg';
+  static const String arrowForward = 'assets/icons/arrow_forward.svg';
   static const String uploadFile = 'assets/icons/upload_file.svg';
   static const String radioChecked = 'assets/icons/radio_checked.svg';
   static const String radioUnchecked = 'assets/icons/radio_unchecked.svg';

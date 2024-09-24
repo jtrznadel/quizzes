@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
+        "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archiwum"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
@@ -127,6 +128,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileActionsHeading":
             MessageLookupByLibrary.simpleMessage("Akcje profilu"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profil"),
+        "profileArchiveButton":
+            MessageLookupByLibrary.simpleMessage("Archiwum"),
+        "profileArchiveHeading": MessageLookupByLibrary.simpleMessage("Quizzy"),
         "profileDeleteButton":
             MessageLookupByLibrary.simpleMessage("Usuń konto"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
@@ -142,8 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileSignOutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
         "profileSignOutDescription": MessageLookupByLibrary.simpleMessage(
             "Wyloguj się ze swojego konta"),
-        "profileSubheading": MessageLookupByLibrary.simpleMessage(
-            "Zarządzaj ustawieniami swojego profilu tutaj."),
+        "profileSubheading":
+            MessageLookupByLibrary.simpleMessage("Zarządzaj swoim profilem."),
         "profileUpdateButton":
             MessageLookupByLibrary.simpleMessage("Aktualizuj"),
         "profileUpdatingUsername":

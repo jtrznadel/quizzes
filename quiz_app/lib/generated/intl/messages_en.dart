@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Manual"),
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Add new quizz"),
+        "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archive"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +130,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileActionsHeading":
             MessageLookupByLibrary.simpleMessage("Profile actions"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profileArchiveButton": MessageLookupByLibrary.simpleMessage("Archive"),
+        "profileArchiveHeading":
+            MessageLookupByLibrary.simpleMessage("Quizzes"),
         "profileDeleteButton":
             MessageLookupByLibrary.simpleMessage("Delete account"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
@@ -146,7 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileSignOutDescription":
             MessageLookupByLibrary.simpleMessage("Sign out from your account"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
-            "Manage your profile settings here."),
+            "Manage your profile settings."),
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),

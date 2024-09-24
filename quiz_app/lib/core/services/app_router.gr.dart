@@ -10,6 +10,25 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [ArchivePage]
+class ArchiveRoute extends PageRouteInfo<void> {
+  const ArchiveRoute({List<PageRouteInfo>? children})
+      : super(
+          ArchiveRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ArchiveRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ArchivePage();
+    },
+  );
+}
+
+/// generated route for
 /// [BasicErrorPage]
 class BasicErrorRoute extends PageRouteInfo<BasicErrorRouteArgs> {
   BasicErrorRoute({

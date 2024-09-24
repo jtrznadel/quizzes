@@ -59,7 +59,7 @@ class ActionProfileSection extends ConsumerWidget {
             colorFilter: const ColorFilter.mode(AppColorScheme.error, BlendMode.srcIn),
           ),
         ),
-        const MediumVSpacer(),
+        const SmallVSpacer(),
         ProfileActionButton(
           title: S.of(context).profileSignOutButton,
           onPressed: () async {

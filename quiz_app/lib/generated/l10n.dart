@@ -1860,10 +1860,10 @@ class S {
     );
   }
 
-  /// `Manage your profile settings here.`
+  /// `Manage your profile settings.`
   String get profileSubheading {
     return Intl.message(
-      'Manage your profile settings here.',
+      'Manage your profile settings.',
       name: 'profileSubheading',
       desc: '',
       args: [],
@@ -2030,11 +2030,41 @@ class S {
     );
   }
 
+  /// `Quizzes`
+  String get profileArchiveHeading {
+    return Intl.message(
+      'Quizzes',
+      name: 'profileArchiveHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Archive`
+  String get profileArchiveButton {
+    return Intl.message(
+      'Archive',
+      name: 'profileArchiveButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Unknown`
   String get unknownUsername {
     return Intl.message(
       'Unknown',
       name: 'unknownUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Archive`
+  String get archiveAppBarTitle {
+    return Intl.message(
+      'Archive',
+      name: 'archiveAppBarTitle',
       desc: '',
       args: [],
     );

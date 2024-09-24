@@ -64,13 +64,15 @@ class IFormField extends StatelessWidget {
                     child: TextFormField(
                       enabled: enabled,
                       controller: controller,
-                      validator: validator ??
-                          (value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return S.of(context).thisFieldIsRequired;
-                            }
-                            return null;
-                          },
+                      validator: (value) {
+                        if (!isRequired) {
+                          return null;
+                        }
+                        if (value == null || value.trim().isEmpty) {
+                          return S.of(context).thisFieldIsRequired;
+                        }
+                        return validator?.call(value);
+                      },
                       obscureText: obscureText,
                       keyboardType: keyboardType,
                       decoration: InputDecoration(

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/language_provider.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -11,6 +10,7 @@ import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
 import '../../domain/user.dart';
 import 'action_profile_section.dart';
+import 'archive_profile_section.dart';
 import 'language_profile_section.dart';
 
 class ProfileContent extends ConsumerStatefulWidget {
@@ -41,38 +41,42 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
 
     return Padding(
       padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            S.of(context).profileSubheading,
-            style: context.theme.textTheme.headlineMedium,
-            textAlign: TextAlign.start,
-          ),
-          const SmallVSpacer(),
-          IFormField(
-            hintText: S.of(context).profileNameHint,
-            controller: emailTextController,
-            labelText: S.of(context).profileEmailLabel,
-            enabled: false,
-          ),
-          const SmallVSpacer(),
-          IFormField(
-            hintText: S.of(context).profileNameHint,
-            controller: usernameTextController,
-            labelText: S.of(context).profileNameLabel,
-            formButton: TextButton(
-              onPressed: () async {
-                await userController.updateUser(user: widget.user.copyWith(displayName: usernameTextController.text));
-              },
-              child: Text(S.of(context).profileUpdateButton),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              S.of(context).profileSubheading,
+              style: context.theme.textTheme.headlineMedium,
+              textAlign: TextAlign.start,
             ),
-          ),
-          const CustomVSpacer(AppTheme.profileSpacerValue),
-          LanguageProfileSection(selectedValue: selectedValue),
-          const CustomVSpacer(AppTheme.profileSpacerValue),
-          const ActionProfileSection(),
-        ],
+            const SmallVSpacer(),
+            IFormField(
+              hintText: S.of(context).profileNameHint,
+              controller: emailTextController,
+              labelText: S.of(context).profileEmailLabel,
+              enabled: false,
+            ),
+            const SmallVSpacer(),
+            IFormField(
+              hintText: S.of(context).profileNameHint,
+              controller: usernameTextController,
+              labelText: S.of(context).profileNameLabel,
+              formButton: TextButton(
+                onPressed: () async {
+                  await userController.updateUser(user: widget.user.copyWith(displayName: usernameTextController.text));
+                },
+                child: Text(S.of(context).profileUpdateButton),
+              ),
+            ),
+            const CustomVSpacer(AppTheme.profileSpacerValue),
+            const ArchiveProfileSection(),
+            const CustomVSpacer(AppTheme.profileSpacerValue),
+            LanguageProfileSection(selectedValue: selectedValue),
+            const CustomVSpacer(AppTheme.profileSpacerValue),
+            const ActionProfileSection(),
+          ],
+        ),
       ),
     );
   }

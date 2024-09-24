@@ -66,7 +66,7 @@ abstract class AppTheme {
   static const double takeQuizzInfoContainerBorderRadius = 8;
   static const double takeQuizzInfoContainerPadding = 16;
 
-  static const double profileSpacerValue = 32;
+  static const double profileSpacerValue = 24;
 
   static const double extraSmallSpacerValue = 4;
   static const double smallSpacerValue = 8;
