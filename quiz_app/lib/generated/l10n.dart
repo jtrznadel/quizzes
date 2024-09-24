@@ -2189,6 +2189,66 @@ class S {
       args: [],
     );
   }
+
+  /// `English`
+  String get quizLanguageEnglish {
+    return Intl.message(
+      'English',
+      name: 'quizLanguageEnglish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Polish`
+  String get quizLanguagePolish {
+    return Intl.message(
+      'Polish',
+      name: 'quizLanguagePolish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spanish`
+  String get quizLanguageSpanish {
+    return Intl.message(
+      'Spanish',
+      name: 'quizLanguageSpanish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `German`
+  String get quizLanguageGerman {
+    return Intl.message(
+      'German',
+      name: 'quizLanguageGerman',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `French`
+  String get quizLanguageFrench {
+    return Intl.message(
+      'French',
+      name: 'quizLanguageFrench',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Italian`
+  String get quizLanguageItalian {
+    return Intl.message(
+      'Italian',
+      name: 'quizLanguageItalian',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

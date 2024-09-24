@@ -266,5 +266,11 @@
 
     "refreshButton": "Odśwież",
 
-    "quizLanguageSelectionHeading": "Wybierz język"
+    "quizLanguageSelectionHeading": "Wybierz język",
+    "quizLanguageEnglish": "Angielski",
+    "quizLanguagePolish": "Polski",
+    "quizLanguageSpanish": "Hiszpański",
+    "quizLanguageGerman": "Niemiecki",
+    "quizLanguageFrench": "Francuski",
+    "quizLanguageItalian": "Włoski"
 }

@@ -265,6 +265,12 @@
 
     "refreshButton": "Refresh",
 
-    "quizLanguageSelectionHeading": "Select language"
+    "quizLanguageSelectionHeading": "Select language",
+    "quizLanguageEnglish": "English",
+    "quizLanguagePolish": "Polish",
+    "quizLanguageSpanish": "Spanish",
+    "quizLanguageGerman": "German",
+    "quizLanguageFrench": "French",
+    "quizLanguageItalian": "Italian"
 }
       

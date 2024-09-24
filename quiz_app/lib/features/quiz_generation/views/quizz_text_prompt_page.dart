@@ -31,6 +31,25 @@ enum QuizLanguage {
   Italian,
 }
 
+extension QuizLanguageExtension on QuizLanguage {
+  String get name {
+    switch (this) {
+      case QuizLanguage.English:
+        return S.current.quizLanguageEnglish;
+      case QuizLanguage.Spanish:
+        return S.current.quizLanguageSpanish;
+      case QuizLanguage.Polish:
+        return S.current.quizLanguagePolish;
+      case QuizLanguage.German:
+        return S.current.quizLanguageGerman;
+      case QuizLanguage.French:
+        return S.current.quizLanguageFrench;
+      case QuizLanguage.Italian:
+        return S.current.quizLanguageItalian;
+    }
+  }
+} 
+
 class QuizzTextPromptPage extends ConsumerStatefulWidget {
   const QuizzTextPromptPage({super.key, required this.pageController});
   final PageController pageController;
