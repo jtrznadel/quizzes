@@ -46,69 +46,78 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(
               horizontal: AppTheme.pageDefaultSpacingSize),
-          child: Column(
-            children: [
-              const DashboardTopBar(),
-              state.when(
-                  loading: () => const LoadingIndicator(),
-                  loaded: (quizListModel, currentPage) {
-                    return Column(
-                      children: [
-                        const SmallVSpacer(),
-                        quizListModel.items.isEmpty
-                            ? Column(
-                                children: [
-                                  const NewQuizButton(),
-                                  const LargeVSpacer(),
-                                  Text(
-                                    S.of(context).dashboardQuizzesEmpty,
-                                    style: context.theme.textTheme.bodyLarge,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              )
-                            : const Expanded(
-                                child: QuizList(),
+          child: state.when(
+              loading: () => const LoadingIndicator(),
+              loaded: (quizListModel, currentPage) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const DashboardTopBar(),
+                    const SmallVSpacer(),
+                    quizListModel.items.isEmpty
+                        ? Column(
+                            children: [
+                              const NewQuizButton(),
+                              const LargeVSpacer(),
+                              Text(
+                                S.of(context).dashboardQuizzesEmpty,
+                                style: context.theme.textTheme.bodyLarge,
+                                textAlign: TextAlign.center,
                               ),
-                      ],
-                    );
-                  },
-                  error: (message) => Center(
-                        child: BasicErrorPage(
-                          errorText: S.of(context).somethingWentWrong,
-                          onRefresh: () => controller.initLoad(),
-                          refreshButtonText: S.of(context).refreshButton,
-                          imageAsset: MediaRes.basicError,
+                            ],
+                          )
+                        : const Expanded(child: QuizList()),
+                  ],
+                );
+              },
+              error: (message) => Center(
+                    child: BasicErrorPage(
+                      errorText: S.of(context).somethingWentWrong,
+                      onRefresh: () => controller.initLoad(),
+                      refreshButtonText: S.of(context).refreshButton,
+                      imageAsset: MediaRes.basicError,
+                    ),
+                  ),
+              guest: () {
+                return Expanded(
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const DashboardTopBar(),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                MediaRes.basicError,
+                                width: 128,
+                                height: 128,
+                              ),
+                              const LargeVSpacer(),
+                              Text(
+                                'You are logged in as as a guest user. Register to access all the app features.',
+                                style: context.theme.textTheme.bodyMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                              const LargeVSpacer(),
+                              BasicButton(
+                                  onPressed: () {
+                                    ref
+                                        .read(appRouterProvider)
+                                        .push(const SignUpRoute());
+                                  },
+                                  text: 'Register')
+                            ],
+                          ),
                         ),
-                      ),
-                  guest: () {
-                    return Expanded(
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              MediaRes.basicError,
-                              width: 128,
-                              height: 128,
-                            ),
-                            const LargeVSpacer(),
-                            Text(
-                              'You are logged in as as a guest user. Register to access all the app features.',
-                              style: context.theme.textTheme.bodyMedium,
-                              textAlign: TextAlign.center,
-                            ),
-                            const LargeVSpacer(),
-                            BasicButton(onPressed: (){
-                              ref.read(appRouterProvider).push(const SignUpRoute());
-                            }, text: 'Register')
-                          ],),
-                      ),
-                    );
-                  })
-            ],
-          ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
         ),
       ),
     );
@@ -121,6 +130,7 @@ class DashboardTopBar extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
