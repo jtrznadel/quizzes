@@ -98,18 +98,19 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                               ),
                               const LargeVSpacer(),
                               Text(
-                                'You are logged in as as a guest user. Register to access all the app features.',
+                                S.of(context).dashboardGuestUserMessage,
                                 style: context.theme.textTheme.bodyMedium,
                                 textAlign: TextAlign.center,
                               ),
                               const LargeVSpacer(),
                               BasicButton(
-                                  onPressed: () {
-                                    ref
-                                        .read(appRouterProvider)
-                                        .push(const SignUpRoute());
-                                  },
-                                  text: 'Register')
+                                onPressed: () {
+                                  ref
+                                      .read(appRouterProvider)
+                                      .push(const SignUpRoute());
+                                },
+                                text: S.of(context).registerButton,
+                              )
                             ],
                           ),
                         ),

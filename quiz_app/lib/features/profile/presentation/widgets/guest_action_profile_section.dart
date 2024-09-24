@@ -28,7 +28,7 @@ class GuestActionProfileSection extends ConsumerWidget {
         ),
         const MediumVSpacer(),
         ProfileActionButton(
-          title: 'Register',
+          title: S.of(context).registerButton,
           onPressed: () {
             ref.read(appRouterProvider).push(const SignUpRoute());
           },

@@ -252,6 +252,8 @@
     "languagePolish": "Polish",
     "languageEnglish": "English",
 
-    "refreshButton": "Refresh"
+    "refreshButton": "Refresh",
+
+    "dashboardGuestUserMessage": "You are logged in as as a guest user. Register to access all the app features."
 }
       

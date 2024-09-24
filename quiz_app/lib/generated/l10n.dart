@@ -2069,6 +2069,16 @@ class S {
       args: [],
     );
   }
+
+  /// `You are logged in as as a guest user. Register to access all the app features.`
+  String get dashboardGuestUserMessage {
+    return Intl.message(
+      'You are logged in as as a guest user. Register to access all the app features.',
+      name: 'dashboardGuestUserMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
