@@ -73,5 +73,4 @@ class UserRepositoryImpl implements UserRepository {
 }
 
 @riverpod
-UserRepository userRepository(UserRepositoryRef ref) =>
-    UserRepositoryImpl(ref.read(userClientProvider));
+UserRepository userRepository(UserRepositoryRef ref) => UserRepositoryImpl(ref.read(userClientProvider));

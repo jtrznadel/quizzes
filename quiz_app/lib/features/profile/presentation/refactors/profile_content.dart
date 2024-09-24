@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/common/widgets/text_area.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/language_provider.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../application/user_controller.dart';
 import '../../domain/user.dart';
 import 'action_profile_section.dart';
 import 'language_profile_section.dart';
 
 class ProfileContent extends ConsumerStatefulWidget {
-  const ProfileContent({super.key, required this.user, required this.isUsernameUpdating});
+  const ProfileContent({super.key, required this.user});
   final User user;
-  final bool isUsernameUpdating;
 
   @override
   ConsumerState<ProfileContent> createState() => _ProfileContentState();
@@ -36,6 +37,7 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
     var selectedValue = ref.watch(languageProvider).languageCode;
     usernameTextController.text = widget.user.displayName;
     emailTextController.text = widget.user.email;
+    final userController = ref.read(userControllerProvider.notifier);
 
     return Padding(
       padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
@@ -48,19 +50,23 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
             textAlign: TextAlign.start,
           ),
           const SmallVSpacer(),
-          TextArea(
+          IFormField(
             hintText: S.of(context).profileNameHint,
             controller: emailTextController,
-            maxLines: 3,
             labelText: S.of(context).profileEmailLabel,
             enabled: false,
           ),
           const SmallVSpacer(),
-          TextArea(
+          IFormField(
             hintText: S.of(context).profileNameHint,
             controller: usernameTextController,
-            maxLines: 3,
             labelText: S.of(context).profileNameLabel,
+            formButton: TextButton(
+              onPressed: () async {
+                await userController.updateUser(user: widget.user.copyWith(displayName: usernameTextController.text));
+              },
+              child: Text(S.of(context).profileUpdateButton),
+            ),
           ),
           const CustomVSpacer(AppTheme.profileSpacerValue),
           LanguageProfileSection(selectedValue: selectedValue),

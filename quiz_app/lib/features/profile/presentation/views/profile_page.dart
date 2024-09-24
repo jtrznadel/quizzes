@@ -38,8 +38,7 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
         title: S.of(context).profileAppbarTitle,
       ),
       body: state.maybeWhen(
-        success: (user, isUsernameUpdating) =>
-            ProfileContent(user: user, isUsernameUpdating: isUsernameUpdating),
+        success: (user, isUsernameUpdating) => ProfileContent(user: user),
         orElse: () => const LoadingIndicator(),
         error: (error) {
           return Center(
