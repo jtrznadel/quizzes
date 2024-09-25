@@ -12,10 +12,12 @@ class QuizzProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final availableWidth = context.width - AppTheme.pageDefaultSpacingSize * 2;
     return Stack(
       children: [
         Container(
           height: 8,
+          width: availableWidth,
           decoration: BoxDecoration(
             color: AppColorScheme.secondary,
             borderRadius: BorderRadius.circular(AppTheme.radiusFull),
@@ -29,7 +31,7 @@ class QuizzProgressIndicator extends StatelessWidget {
             color: AppColorScheme.primary,
             borderRadius: BorderRadius.circular(AppTheme.radiusFull),
           ),
-          width: context.width * currentStep / numberOfSteps,
+          width: availableWidth * (currentStep - 1) / (numberOfSteps - 1),
         ),
       ],
     );
