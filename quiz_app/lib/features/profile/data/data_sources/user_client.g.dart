@@ -105,7 +105,7 @@ class _UserClient implements UserClient {
     final _data = <String, dynamic>{};
     _data.addAll(body);
     await _dio.fetch<void>(_setStreamType<void>(Options(
-      method: 'POST',
+      method: 'PUT',
       headers: _headers,
       extra: _extra,
     )

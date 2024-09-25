@@ -22,7 +22,7 @@ abstract class UserClient {
   @POST(ApiConstants.signOutEndpoint)
   Future<void> signOut();
 
-  @POST(ApiConstants.guestAccountCreationEndpoint)
+  @PUT(ApiConstants.guestAccountCreationEndpoint)
   Future<void> convertGuestToUser(@Body() Map<String, dynamic> body);
 
   @GET(ApiConstants.quizzArchiveEndpoint)

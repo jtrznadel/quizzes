@@ -6,10 +6,8 @@ import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/answer_indicator_enum.dart';
-import '../../../quizz_details/domain/answer_details_model.dart';
 import '../../application/quizz_take_controller.dart';
 import '../../domain/take_quiz_answer_model.dart';
-import 'quizz_step_content.dart';
 
 class QuizzAnswerCard extends ConsumerWidget {
   const QuizzAnswerCard({required this.indicator, required this.questionId, super.key, required this.answer, this.isTrueFalseType = false});

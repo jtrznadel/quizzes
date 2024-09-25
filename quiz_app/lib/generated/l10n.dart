@@ -590,10 +590,10 @@ class S {
     );
   }
 
-  /// `Multiple choice`
+  /// `Single choice`
   String get quizzCreationConfigureType1 {
     return Intl.message(
-      'Multiple choice',
+      'Single choice',
       name: 'quizzCreationConfigureType1',
       desc: '',
       args: [],
@@ -2205,6 +2205,86 @@ class S {
     return Intl.message(
       'Refresh',
       name: 'refreshButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are logged in as as a guest user. Register to access all the app features.`
+  String get dashboardGuestUserMessage {
+    return Intl.message(
+      'You are logged in as as a guest user. Register to access all the app features.',
+      name: 'dashboardGuestUserMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select language`
+  String get quizLanguageSelectionHeading {
+    return Intl.message(
+      'Select language',
+      name: 'quizLanguageSelectionHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get quizLanguageEnglish {
+    return Intl.message(
+      'English',
+      name: 'quizLanguageEnglish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Polish`
+  String get quizLanguagePolish {
+    return Intl.message(
+      'Polish',
+      name: 'quizLanguagePolish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spanish`
+  String get quizLanguageSpanish {
+    return Intl.message(
+      'Spanish',
+      name: 'quizLanguageSpanish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `German`
+  String get quizLanguageGerman {
+    return Intl.message(
+      'German',
+      name: 'quizLanguageGerman',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `French`
+  String get quizLanguageFrench {
+    return Intl.message(
+      'French',
+      name: 'quizLanguageFrench',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Italian`
+  String get quizLanguageItalian {
+    return Intl.message(
+      'Italian',
+      name: 'quizLanguageItalian',
       desc: '',
       args: [],
     );

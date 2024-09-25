@@ -22,6 +22,7 @@ mixin _$DashboardState {
     required TResult Function(QuizListModel quizListModel, int currentPage)
         loaded,
     required TResult Function(String message) error,
+    required TResult Function() guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$DashboardState {
     TResult? Function()? loading,
     TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function()? guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$DashboardState {
     TResult Function()? loading,
     TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? guest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$DashboardState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$DashboardState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$DashboardState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -123,6 +129,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(QuizListModel quizListModel, int currentPage)
         loaded,
     required TResult Function(String message) error,
+    required TResult Function() guest,
   }) {
     return loading();
   }
@@ -133,6 +140,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function()? guest,
   }) {
     return loading?.call();
   }
@@ -143,6 +151,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? guest,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -157,6 +166,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) {
     return loading(this);
   }
@@ -167,6 +177,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) {
     return loading?.call(this);
   }
@@ -177,6 +188,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -278,6 +290,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(QuizListModel quizListModel, int currentPage)
         loaded,
     required TResult Function(String message) error,
+    required TResult Function() guest,
   }) {
     return loaded(quizListModel, currentPage);
   }
@@ -288,6 +301,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? loading,
     TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function()? guest,
   }) {
     return loaded?.call(quizListModel, currentPage);
   }
@@ -298,6 +312,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? loading,
     TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? guest,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -312,6 +327,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) {
     return loaded(this);
   }
@@ -322,6 +338,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) {
     return loaded?.call(this);
   }
@@ -332,6 +349,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -420,6 +438,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(QuizListModel quizListModel, int currentPage)
         loaded,
     required TResult Function(String message) error,
+    required TResult Function() guest,
   }) {
     return error(message);
   }
@@ -430,6 +449,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult? Function(String message)? error,
+    TResult? Function()? guest,
   }) {
     return error?.call(message);
   }
@@ -440,6 +460,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
     TResult Function(String message)? error,
+    TResult Function()? guest,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -454,6 +475,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
   }) {
     return error(this);
   }
@@ -464,6 +486,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
   }) {
     return error?.call(this);
   }
@@ -474,6 +497,7 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -490,4 +514,119 @@ abstract class _Error implements DashboardState {
   @JsonKey(ignore: true)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GuestImplCopyWith<$Res> {
+  factory _$$GuestImplCopyWith(
+          _$GuestImpl value, $Res Function(_$GuestImpl) then) =
+      __$$GuestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GuestImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$GuestImpl>
+    implements _$$GuestImplCopyWith<$Res> {
+  __$$GuestImplCopyWithImpl(
+      _$GuestImpl _value, $Res Function(_$GuestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GuestImpl implements _Guest {
+  const _$GuestImpl();
+
+  @override
+  String toString() {
+    return 'DashboardState.guest()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GuestImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(QuizListModel quizListModel, int currentPage)
+        loaded,
+    required TResult Function(String message) error,
+    required TResult Function() guest,
+  }) {
+    return guest();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(QuizListModel quizListModel, int currentPage)? loaded,
+    TResult? Function(String message)? error,
+    TResult? Function()? guest,
+  }) {
+    return guest?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(QuizListModel quizListModel, int currentPage)? loaded,
+    TResult Function(String message)? error,
+    TResult Function()? guest,
+    required TResult orElse(),
+  }) {
+    if (guest != null) {
+      return guest();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Guest value) guest,
+  }) {
+    return guest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Guest value)? guest,
+  }) {
+    return guest?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_Error value)? error,
+    TResult Function(_Guest value)? guest,
+    required TResult orElse(),
+  }) {
+    if (guest != null) {
+      return guest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Guest implements DashboardState {
+  const factory _Guest() = _$GuestImpl;
 }

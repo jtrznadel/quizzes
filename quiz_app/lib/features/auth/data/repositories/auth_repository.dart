@@ -15,7 +15,7 @@ abstract class AuthRepository {
   ResultFuture<TokenAuth> signIn({
     required UserAuth userAuth,
   });
-  ResultFuture<void> guestSignIn({
+  ResultFuture<TokenAuth> guestSignIn({
     required String guestDisplayName,
   });
 }

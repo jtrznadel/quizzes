@@ -4,7 +4,6 @@ import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/utils/enums/answer_indicator_enum.dart';
-import '../../../quizz_details/domain/question_details_model.dart';
 import '../../domain/take_quiz_question_model.dart';
 import 'quizz_answer_card.dart';
 

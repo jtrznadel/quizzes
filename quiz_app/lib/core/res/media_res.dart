@@ -41,4 +41,5 @@ class MediaRes {
   static const String correctAnswer = 'assets/icons/check_circle.svg';
   static const String wrongAnswer = 'assets/icons/circle_cancel.svg';
   static const String joinByCode = 'assets/icons/join_by_code.svg';
+  static const String arrowDropdown = 'assets/icons/arrow_dropdown.svg';
 }

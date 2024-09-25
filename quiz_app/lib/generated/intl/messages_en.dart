@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archive"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+        "dashboardGuestUserMessage": MessageLookupByLibrary.simpleMessage(
+            "You are logged in as as a guest user. Register to access all the app features."),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
             "You do not have any quizzes yet. Create one now!"),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
@@ -154,6 +156,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),
+        "quizLanguageEnglish": MessageLookupByLibrary.simpleMessage("English"),
+        "quizLanguageFrench": MessageLookupByLibrary.simpleMessage("French"),
+        "quizLanguageGerman": MessageLookupByLibrary.simpleMessage("German"),
+        "quizLanguageItalian": MessageLookupByLibrary.simpleMessage("Italian"),
+        "quizLanguagePolish": MessageLookupByLibrary.simpleMessage("Polish"),
+        "quizLanguageSelectionHeading":
+            MessageLookupByLibrary.simpleMessage("Select language"),
+        "quizLanguageSpanish": MessageLookupByLibrary.simpleMessage("Spanish"),
         "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
@@ -198,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationConfigureQuestionCount4":
             MessageLookupByLibrary.simpleMessage("Manual"),
         "quizzCreationConfigureType1":
-            MessageLookupByLibrary.simpleMessage("Multiple choice"),
+            MessageLookupByLibrary.simpleMessage("Single choice"),
         "quizzCreationConfigureType2":
             MessageLookupByLibrary.simpleMessage("True/False"),
         "quizzCreationConfigureType3":
