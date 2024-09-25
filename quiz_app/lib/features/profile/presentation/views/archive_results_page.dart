@@ -9,6 +9,7 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/answer_indicator_enum.dart';
 import '../../../../core/utils/enums/answer_result_enum.dart';
+import '../../../../generated/l10n.dart';
 import '../../domain/archive_models/quizz_archive_model.dart';
 import '../../domain/archive_models/quizz_archive_question_model.dart';
 
@@ -22,7 +23,7 @@ class ArchiveResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quizz Result Details'),
+        title: Text(S.of(context).archiveResultsAppBarTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),

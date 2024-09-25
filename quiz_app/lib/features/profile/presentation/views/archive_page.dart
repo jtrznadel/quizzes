@@ -56,9 +56,9 @@ class _ArchivePageState extends ConsumerState<ArchivePage> {
             onRefresh: () {
               ref.read(archiveControllerProvider.notifier).getQuizzArchive();
             },
-            refreshButtonText: 'Reload',
+            refreshButtonText: S.of(context).refreshButton,
             imageAsset: MediaRes.basicError,
-            errorText: 'Cannot load archive',
+            errorText: S.of(context).archiveLoadingError,
           ),
         ),
       ),

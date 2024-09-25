@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import '../../../generated/l10n.dart';
 import '../../theme/app_color_scheme.dart';
 
 enum ParticipationStatus {
@@ -30,6 +31,19 @@ enum ParticipationStatus {
         return ParticipationStatus.finished;
       default:
         return ParticipationStatus.stopped;
+    }
+  }
+
+  String get label {
+    switch (this) {
+      case ParticipationStatus.started:
+        return S.current.quizzDetailsTabStatisticsStartedStatusBadge;
+      case ParticipationStatus.stopped:
+        return S.current.quizzDetailsTabStatisticsStoppedStatusBadge;
+      case ParticipationStatus.finished:
+        return S.current.quizzDetailsTabStatisticsFinishedStatusBadge;
+      default:
+        return S.current.quizzDetailsTabStatisticsStoppedStatusBadge;
     }
   }
 }

@@ -35,6 +35,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Add new quizz"),
         "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archive"),
+        "archiveLoadingError": MessageLookupByLibrary.simpleMessage(
+            "There was an error with loading the archive. Please try again."),
+        "archiveResultsAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Quizz Result Details"),
+        "archiveResultsHeading":
+            MessageLookupByLibrary.simpleMessage("Result:"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "dashboardGuestUserMessage": MessageLookupByLibrary.simpleMessage(
@@ -346,6 +352,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Score"),
         "quizzDetailsTabStatisticsSecondsElapsed": m1,
+        "quizzDetailsTabStatisticsStartedStatusBadge":
+            MessageLookupByLibrary.simpleMessage("Started"),
         "quizzDetailsTabStatisticsStoppedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Stopped"),
         "quizzDetailsTabStatisticsSubheading":

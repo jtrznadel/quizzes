@@ -990,6 +990,16 @@ class S {
     );
   }
 
+  /// `Started`
+  String get quizzDetailsTabStatisticsStartedStatusBadge {
+    return Intl.message(
+      'Started',
+      name: 'quizzDetailsTabStatisticsStartedStatusBadge',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Score`
   String get quizzDetailsTabStatisticsScore {
     return Intl.message(
@@ -1445,6 +1455,16 @@ class S {
     return Intl.message(
       'You do not have any quizzes yet. Create one now!',
       name: 'dashboardQuizzesEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are logged in as as a guest user. Register to access all the app features.`
+  String get dashboardGuestUserMessage {
+    return Intl.message(
+      'You are logged in as as a guest user. Register to access all the app features.',
+      name: 'dashboardGuestUserMessage',
       desc: '',
       args: [],
     );
@@ -2070,6 +2090,36 @@ class S {
     );
   }
 
+  /// `There was an error with loading the archive. Please try again.`
+  String get archiveLoadingError {
+    return Intl.message(
+      'There was an error with loading the archive. Please try again.',
+      name: 'archiveLoadingError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizz Result Details`
+  String get archiveResultsAppBarTitle {
+    return Intl.message(
+      'Quizz Result Details',
+      name: 'archiveResultsAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Result:`
+  String get archiveResultsHeading {
+    return Intl.message(
+      'Result:',
+      name: 'archiveResultsHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Understanding Cryptocurrencies and Their Impact on Finance`
   String get tempQuizzSummaryTitle {
     return Intl.message(
@@ -2205,16 +2255,6 @@ class S {
     return Intl.message(
       'Refresh',
       name: 'refreshButton',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `You are logged in as as a guest user. Register to access all the app features.`
-  String get dashboardGuestUserMessage {
-    return Intl.message(
-      'You are logged in as as a guest user. Register to access all the app features.',
-      name: 'dashboardGuestUserMessage',
       desc: '',
       args: [],
     );

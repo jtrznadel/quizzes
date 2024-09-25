@@ -14,6 +14,7 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/enums/participation_status_enum.dart';
 import '../../../../core/utils/enums/quizz_score_enum.dart';
+import '../../../../generated/l10n.dart';
 import '../../domain/archive_models/quizz_archive_model.dart';
 
 class QuizzArchiveTile extends ConsumerWidget {
@@ -40,7 +41,7 @@ class QuizzArchiveTile extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Result: ${quizz.quizResult.scorePercentage.round()}%',
+                    '${S.of(context).archiveResultsHeading} ${quizz.quizResult.scorePercentage.round()}%',
                     style: context.textTheme.headlineLarge?.copyWith(
                       color: quizScore.color,
                     ),
@@ -72,7 +73,7 @@ class QuizzArchiveTile extends ConsumerWidget {
                   ),
                   const SmallHSpacer(),
                   QuizStatusBadge(
-                    text: quizz.status,
+                    text: participationStatus.label,
                     backgroundColor: participationStatus.backgroundColor,
                     textColor: participationStatus.textColor,
                   ),
@@ -82,7 +83,7 @@ class QuizzArchiveTile extends ConsumerWidget {
               Row(
                 children: [
                   QuizStatusBadge(
-                    text: 'Total ${quizz.quizResult.totalQuestions} questions',
+                    text: S.of(context).quizQuestionNumberBadge(quizz.quizResult.totalQuestions),
                     backgroundColor: AppColorScheme.secondary,
                     textColor: AppColorScheme.primary,
                   ),

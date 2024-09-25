@@ -11,7 +11,7 @@ class User with _$User {
     @JsonKey(includeToJson: false) @Default('') String id,
     @JsonKey(includeToJson: false) @Default('') String email,
     required String displayName,
-    @Default('https://s3.amazonaws.com/37assets/svn/765-default-avatar.png') String imageUrl,,
+    @Default('https://s3.amazonaws.com/37assets/svn/765-default-avatar.png') String imageUrl,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
