@@ -18,6 +18,8 @@ abstract class AuthRepository {
   ResultFuture<TokenAuth> guestSignIn({
     required String guestDisplayName,
   });
+
+  ResultFuture<void> deleteUser();
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -62,8 +64,17 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(ServerException(message: e.toString()));
     }
   }
+
+  @override
+  ResultFuture<void> deleteUser() async {
+    try {
+      await _authClient.deleteUser();
+      return const Right(null);
+    } catch (e) {
+      return Left(ServerException(message: e.toString()));
+    }
+  }
 }
 
 @riverpod
-AuthRepository authRepository(AuthRepositoryRef ref) =>
-    AuthRepositoryImpl(ref.read(authClientProvider));
+AuthRepository authRepository(AuthRepositoryRef ref) => AuthRepositoryImpl(ref.read(authClientProvider));

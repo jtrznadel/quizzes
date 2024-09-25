@@ -38,9 +38,7 @@ class DeleteDialog extends ConsumerWidget {
         ),
       ),
       ElevatedButton(
-        onPressed: () {
-          onConfirm();
-        },
+        onPressed: onConfirm,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColorScheme.error,
         ),

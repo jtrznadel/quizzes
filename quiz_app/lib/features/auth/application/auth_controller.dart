@@ -5,6 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/errors/server_exception.dart';
 import '../../../core/models/user_type.dart';
+import '../../../core/services/app_router.dart';
 import '../../../core/services/session_provider.dart';
 import '../../profile/data/repositories/user_repository.dart';
 import '../../profile/domain/guest_auth.dart';
@@ -19,7 +20,6 @@ class AuthController extends _$AuthController {
   final _authRepostiory = authRepositoryProvider;
   final _sessionProvider = sessionProvider;
   final _profileRepository = userRepositoryProvider;
-  
 
   @override
   AuthState build() {
@@ -35,10 +35,10 @@ class AuthController extends _$AuthController {
 
     Either<ServerException, void> result;
 
-    if(await ref.read(_sessionProvider).getUserType() == UserType.guest){
+    if (await ref.read(_sessionProvider).getUserType() == UserType.guest) {
       final guestAuth = GuestAuth(email: email, password: password);
       result = await ref.read(_profileRepository).convertGuestToUser(guestAuth);
-    } else{
+    } else {
       final userAuth = UserAuth(email: email, password: password);
       result = await ref.read(_authRepostiory).signUp(userAuth: userAuth);
     }
@@ -71,6 +71,17 @@ class AuthController extends _$AuthController {
               refreshToken: tokens.refreshToken,
             );
         return true;
+      },
+    );
+  }
+
+  Future<void> deleteUser() async {
+    final result = await ref.read(_authRepostiory).deleteUser();
+    result.fold(
+      (error) => AuthState.error(error.message),
+      (_) async {
+        await ref.read(_sessionProvider).deleteTokens();
+        ref.read(appRouterProvider).replaceAll([const WelcomeRoute()]);
       },
     );
   }

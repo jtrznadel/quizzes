@@ -8,7 +8,7 @@ import '../../domain/token_auth.dart';
 
 part 'auth_client.g.dart';
 
-@RestApi(baseUrl: ApiConstants.authUrl)
+@RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class AuthClient {
   factory AuthClient(Dio dio, {String baseUrl}) = _AuthClient;
 
@@ -20,8 +20,10 @@ abstract class AuthClient {
 
   @POST(ApiConstants.guestSignInEndpoint)
   Future<TokenAuth> guestSignIn(@Body() Map<String, dynamic> body);
+
+  @DELETE(ApiConstants.deleteUserEndpoint)
+  Future<void> deleteUser();
 }
 
 @riverpod
-AuthClient authClient(AuthClientRef ref) =>
-    AuthClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.authUrl);
+AuthClient authClient(AuthClientRef ref) => AuthClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.baseUrl);

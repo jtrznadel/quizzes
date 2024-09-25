@@ -14,7 +14,7 @@ class _AuthClient implements AuthClient {
     this.baseUrl,
   }) {
     baseUrl ??=
-        'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/auth';
+        'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/';
   }
 
   final Dio _dio;
@@ -35,7 +35,7 @@ class _AuthClient implements AuthClient {
     )
         .compose(
           _dio.options,
-          '/signup',
+          'auth/signup',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -61,7 +61,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/signin',
+              'auth/signin',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -89,7 +89,7 @@ class _AuthClient implements AuthClient {
     )
             .compose(
               _dio.options,
-              '/guests',
+              'auth/guests',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -100,6 +100,30 @@ class _AuthClient implements AuthClient {
             ))));
     final _value = TokenAuth.fromJson(_result.data!);
     return _value;
+  }
+
+  @override
+  Future<void> deleteUser() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    await _dio.fetch<void>(_setStreamType<void>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'profile',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
