@@ -20,7 +20,7 @@ mixin _$QuizRequestModel {
   int get numberOfQuestions => throw _privateConstructorUsedError;
   List<String> get questionTypes => throw _privateConstructorUsedError;
   List<PlatformFile> get attachments => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
+  QuizLanguage get language => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuizRequestModelCopyWith<QuizRequestModel> get copyWith =>
@@ -38,7 +38,7 @@ abstract class $QuizRequestModelCopyWith<$Res> {
       int numberOfQuestions,
       List<String> questionTypes,
       List<PlatformFile> attachments,
-      String language});
+      QuizLanguage language});
 }
 
 /// @nodoc
@@ -80,7 +80,7 @@ class _$QuizRequestModelCopyWithImpl<$Res, $Val extends QuizRequestModel>
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as QuizLanguage,
     ) as $Val);
   }
 }
@@ -98,7 +98,7 @@ abstract class _$$QuizRequestModelImplCopyWith<$Res>
       int numberOfQuestions,
       List<String> questionTypes,
       List<PlatformFile> attachments,
-      String language});
+      QuizLanguage language});
 }
 
 /// @nodoc
@@ -138,7 +138,7 @@ class __$$QuizRequestModelImplCopyWithImpl<$Res>
       language: null == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as QuizLanguage,
     ));
   }
 }
@@ -176,7 +176,7 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
   }
 
   @override
-  final String language;
+  final QuizLanguage language;
 
   @override
   String toString() {
@@ -222,7 +222,7 @@ abstract class _QuizRequestModel implements QuizRequestModel {
       required final int numberOfQuestions,
       required final List<String> questionTypes,
       required final List<PlatformFile> attachments,
-      required final String language}) = _$QuizRequestModelImpl;
+      required final QuizLanguage language}) = _$QuizRequestModelImpl;
 
   @override
   String get content;
@@ -233,7 +233,7 @@ abstract class _QuizRequestModel implements QuizRequestModel {
   @override
   List<PlatformFile> get attachments;
   @override
-  String get language;
+  QuizLanguage get language;
   @override
   @JsonKey(ignore: true)
   _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>

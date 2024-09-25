@@ -8,6 +8,7 @@ import '../../domain/create_quiz_model.dart';
 import '../../domain/created_quiz_result.dart';
 import '../../domain/generate_quiz_model.dart';
 import '../../domain/quiz_request_model.dart';
+import '../../views/quizz_text_prompt_page.dart';
 import '../data_sources/quiz_generation_client.dart';
 
 part 'quiz_generation_repository.g.dart';
@@ -32,13 +33,14 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
     required QuizRequestModel quizRequestModel,
   }) async {
     try {
+      final language = QuizLanguage.values.firstWhere((e) => e == quizRequestModel.language).name;
       final attachments = quizRequestModel.attachments.map((e) => FileReader.toMultipartFile(e)).toList();
       final model = await _quizGenerationClient.generateQuiz(
         content: quizRequestModel.content,
         numberOfQuestions: quizRequestModel.numberOfQuestions,
         questionTypes: quizRequestModel.questionTypes.join(','),
         attachments: attachments,
-        language: quizRequestModel.language,
+        language: language,
       );
       return Right(model);
     } catch (e) {

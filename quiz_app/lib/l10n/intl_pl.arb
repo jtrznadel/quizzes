@@ -63,7 +63,7 @@
     "quizzCreationConfigureHeading": "Konfiguracja quizzu",
     "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego tekstu źródłowego.",
     "quizzCreationConfigureTypeQuestion": "Jaki typ pytań?",
-    "quizzCreationConfigureType1": "Wielokrotny wybór",
+    "quizzCreationConfigureType1": "Jednokrotny wybór",
     "quizzCreationConfigureType2": "Prawda/Fałsz",
     "quizzCreationConfigureType3": "Uzupełnianie luk",
 

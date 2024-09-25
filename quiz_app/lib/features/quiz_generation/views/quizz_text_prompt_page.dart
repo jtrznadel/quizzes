@@ -32,7 +32,7 @@ enum QuizLanguage {
 }
 
 extension QuizLanguageExtension on QuizLanguage {
-  String get name {
+  String get language {
     switch (this) {
       case QuizLanguage.English:
         return S.current.quizLanguageEnglish;
@@ -212,7 +212,7 @@ class LanguageSelectionList extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var value = ref.watch(quizGenerationControllerProvider).maybeWhen(
           generating: (request) => QuizLanguage.values.firstWhere(
-            (element) => element.name == request.language,
+            (element) => element == request.language,
             orElse: () => QuizLanguage.English,
           ),
           orElse: () => QuizLanguage.English,
@@ -271,42 +271,42 @@ class LanguageSelectionList extends ConsumerWidget {
         DropdownMenuItem(
           value: QuizLanguage.English,
           child: Text(
-            QuizLanguage.English.name,
+            QuizLanguage.English.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
           value: QuizLanguage.Spanish,
           child: Text(
-            QuizLanguage.Spanish.name,
+            QuizLanguage.Spanish.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
           value: QuizLanguage.Polish,
           child: Text(
-            QuizLanguage.Polish.name,
+            QuizLanguage.Polish.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
           value: QuizLanguage.German,
           child: Text(
-            QuizLanguage.German.name,
+            QuizLanguage.German.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
           value: QuizLanguage.French,
           child: Text(
-            QuizLanguage.French.name,
+            QuizLanguage.French.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
           value: QuizLanguage.Italian,
           child: Text(
-            QuizLanguage.Italian.name,
+            QuizLanguage.Italian.language,
             style: textTheme.bodyMedium,
           ),
         ),

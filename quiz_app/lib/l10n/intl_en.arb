@@ -63,7 +63,7 @@
     "quizzCreationConfigureHeading": "Configure quizz",
     "quizzCraetionConfigureSubheading": "Here, you can create quizz based on your prompt.",
     "quizzCreationConfigureTypeQuestion": "What type of questions?",
-    "quizzCreationConfigureType1": "Multiple choice",
+    "quizzCreationConfigureType1": "Single choice",
     "quizzCreationConfigureType2": "True/False",
     "quizzCreationConfigureType3": "Fill in the blank",
 

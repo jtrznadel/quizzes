@@ -24,7 +24,7 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: 5,
       attachments: [],
-      language: 'English',
+      language: QuizLanguage.English,
     );
     return const QuizGenerationState.generating(requestModel);
   }
@@ -64,7 +64,7 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: 5,
       attachments: [],
-      language: 'English',
+      language: QuizLanguage.English,
     ));
   }
 
@@ -87,7 +87,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   void setLanguage(QuizLanguage language){
     state.maybeWhen(
       generating: (request) {
-        request = request.copyWith(language: language.name);
+        request = request.copyWith(language: language);
         modifyRequest(request);
       },
       orElse: () {},

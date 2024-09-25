@@ -202,7 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationConfigureQuestionCount4":
             MessageLookupByLibrary.simpleMessage("Manual"),
         "quizzCreationConfigureType1":
-            MessageLookupByLibrary.simpleMessage("Multiple choice"),
+            MessageLookupByLibrary.simpleMessage("Single choice"),
         "quizzCreationConfigureType2":
             MessageLookupByLibrary.simpleMessage("True/False"),
         "quizzCreationConfigureType3":

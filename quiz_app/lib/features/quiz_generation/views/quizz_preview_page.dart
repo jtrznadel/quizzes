@@ -10,9 +10,11 @@ import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../../core/common/widgets/dialogs/delete_dialog.dart';
-import '../../../core/common/widgets/error_page.dart';
+import '../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../../core/models/question_model_interface.dart';
+import '../../../core/res/media_res.dart';
+import '../../../core/services/app_router.dart';
 import '../application/quiz_generation_controller.dart';
 import '../application/quiz_generation_state.dart';
 import '../domain/create_quiz_model.dart';
@@ -127,7 +129,15 @@ class QuizzPreviewPage extends ConsumerWidget {
         );
       },
       error: (error) {
-        return ErrorPage(error: error);
+        return BasicErrorPage(
+          errorText: S.of(context).somethingWentWrong,
+          onRefresh: (){
+            ref.read(appRouterProvider).replaceAll([const DashboardRoute()]);
+            controller.resetState();
+          },
+          refreshButtonText: S.of(context).goBackToDashboard,
+          imageAsset: MediaRes.basicError,
+        );
       },
     );
   }

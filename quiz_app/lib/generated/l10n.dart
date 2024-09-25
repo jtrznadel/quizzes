@@ -590,10 +590,10 @@ class S {
     );
   }
 
-  /// `Multiple choice`
+  /// `Single choice`
   String get quizzCreationConfigureType1 {
     return Intl.message(
-      'Multiple choice',
+      'Single choice',
       name: 'quizzCreationConfigureType1',
       desc: '',
       args: [],
