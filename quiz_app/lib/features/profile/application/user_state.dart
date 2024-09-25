@@ -12,4 +12,5 @@ class UserState with _$UserState {
     @Default(false) bool isUsernameUpdating,
   }) = _Success;
   const factory UserState.error(Exception message) = _Error;
+  const factory UserState.guest(User user) = _Guest;
 }

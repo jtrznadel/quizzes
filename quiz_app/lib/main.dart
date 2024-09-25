@@ -29,6 +29,13 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class MyAppState extends ConsumerState<MyApp> {
+
+  @override
+  void dispose(){
+    print('App disposed');
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final appRouter = ref.read(appRouterProvider);
@@ -46,17 +53,16 @@ class MyAppState extends ConsumerState<MyApp> {
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(
         deepLinkTransformer: (uri) async {
-          print(uri);
+          final session = ref.read(sessionProvider);
           if (uri.host == ApiConstants.domain) {
-            if (await ref.read(sessionProvider).isLoggedIn()) {
+            if (await session.isLoggedIn()) {
               ref.read(appRouterProvider).replaceAll([
                 const DashboardRoute(),
                 TakeQuizzRoute(joinCode: uri.pathSegments.last)
               ]);
               return SynchronousFuture(uri);
             } else {
-              //TODO: replace with guest user take quiz when implemented
-              ref.read(appRouterProvider).push(const WelcomeRoute());
+              ref.read(appRouterProvider).push(CreateGuestUserRoute(joinCode: uri.pathSegments.last));
               return SynchronousFuture(uri);
             }
           }

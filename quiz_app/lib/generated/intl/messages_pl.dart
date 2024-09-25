@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
+        "dashboardGuestUserMessage": MessageLookupByLibrary.simpleMessage(
+            "Jesteś zalogowany jako gość. Zarejestruj się, aby uzyskać dostęp do wszystkich funkcji aplikacji."),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
             "Nie masz jeszcze żadnych quizów. Możesz utworzyć nowy, klikając przycisk powyżej."),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(

@@ -5,7 +5,7 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/language_provider.dart';
 import '../../../../generated/l10n.dart';
-import '../widgets/language_radio_button.dart';
+import 'language_radio_button.dart';
 
 class LanguageProfileSection extends ConsumerWidget {
   const LanguageProfileSection({

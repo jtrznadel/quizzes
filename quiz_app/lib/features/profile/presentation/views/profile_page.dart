@@ -7,7 +7,8 @@ import '../../../../core/res/media_res.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
 import '../../../../core/common/widgets/basic_app_bar.dart';
-import '../refactors/profile_content.dart';
+import '../widgets/guest_profile_content.dart';
+import '../widgets/profile_content.dart';
 
 @RoutePage()
 class ProfilePage extends ConsumerStatefulWidget {
@@ -40,6 +41,9 @@ class _ProfilePageState extends ConsumerState<ProfilePage> {
       body: state.maybeWhen(
         success: (user, isUsernameUpdating) =>
             ProfileContent(user: user, isUsernameUpdating: isUsernameUpdating),
+        guest: (user) {
+          return GuestProfileContent(user: user);
+        },
         orElse: () => const LoadingIndicator(),
         error: (error) {
           return Center(

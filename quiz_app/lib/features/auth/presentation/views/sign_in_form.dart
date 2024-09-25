@@ -5,6 +5,7 @@ import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/services/app_router.dart';
+import '../../../dashboard/application/dashboard_controller.dart';
 import '../../application/auth_controller.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/basic_button.dart';
@@ -98,6 +99,7 @@ class LoginButton extends ConsumerWidget {
               password: passwordController.text,
             );
             if (success) {
+              ref.read(dashboardControllerProvider.notifier).initLoad();
               SchedulerBinding.instance.addPostFrameCallback((_) => ref
                   .read(appRouterProvider)
                   .replaceAll([const DashboardRoute()]));

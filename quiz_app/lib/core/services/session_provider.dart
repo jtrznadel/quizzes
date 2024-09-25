@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/user_type.dart';
+import '../network/api_constants.dart';
 
 final sessionProvider = Provider<SessionProvider>((ref) => SessionProvider());
 
@@ -27,6 +31,21 @@ class SessionProvider {
 
   Future<bool> isLoggedIn() async {
     return await refreshToken != null;
+  }
+
+  Future<UserType?> getUserType() async {
+    if(!await isLoggedIn()){
+      return null;
+    }
+
+    final accessToken = await this.accessToken;
+    if(JwtDecoder.decode(accessToken!)[ApiConstants.userRoleTokenKey] == 'Guest'){
+      return UserType.guest;
+    }
+    else if(JwtDecoder.decode(accessToken)[ApiConstants.userRoleTokenKey] == 'User'){
+      return UserType.user;
+    }
+    return null;
   }
 
   Future<void> saveTokens({required String accessToken, required String refreshToken}) async {
