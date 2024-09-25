@@ -1,4 +1,5 @@
 {
+    "@@locale": "pl",
     "loginButton": "Zaloguj się",
     "registerButton": "Zarejestruj się",   
     "emailLabel": "E-mail",
@@ -62,7 +63,7 @@
     "quizzCreationConfigureHeading": "Konfiguracja quizzu",
     "quizzCraetionConfigureSubheading": "Tutaj możesz stworzyć quizz na podstawie swojego tekstu źródłowego.",
     "quizzCreationConfigureTypeQuestion": "Jaki typ pytań?",
-    "quizzCreationConfigureType1": "Wielokrotny wybór",
+    "quizzCreationConfigureType1": "Jednokrotny wybór",
     "quizzCreationConfigureType2": "Prawda/Fałsz",
     "quizzCreationConfigureType3": "Uzupełnianie luk",
 
@@ -207,6 +208,16 @@
     "quizzTakeScoreBad": "To nie Twój dzień...",
     "quizzTakeSummarySeeResults": "Zobacz wyniki",
     "quizzTakeSummaryBackToDashboard": "Wróć do pulpitu",
+    "quizzTakeLoadingError": "Nie udało się załadować Quizzu. Istnieje szansa, że podany przez Ciebie kod jest nieprawidłowy. Spróbuj ponownie.",
+    "quizzTakeStartButton": "Rozpocznij Quizz",
+
+    "joinByCodeAppBarTitle": "Dołącz do Quizzu",
+    "joinByCodeHeading": "Podaj kod",
+    "joinByCodeSubheading": "Tutaj możesz wprowadzić kod dla konkretnego quizzu.",
+    "joinByCodeFormFieldLabel": "Kod Quizzu",
+    "joinByCodeFormFieldHint": "Podaj 8-znakowy kod",
+    "joinByCodeAccessButton": "Dołącz",
+    "joinByCodeInvalidCode": "Nieprawidłowy kod. Spróbuj ponownie.",
 
 
     "deleteQuizzHeading": "Czy jesteś pewien?",
@@ -237,6 +248,7 @@
     "profileSignOutButton": "Wyloguj",
     "profileSignOutDescription": "Wyloguj się ze swojego konta",
     "profileActionsHeading": "Akcje profilu",
+    "unknownUsername": "Nieznana nazwa użytkownika",
 
     "tempQuizzSummaryTitle": "Zrozumienie kryptowalut i ich wpływu na finanse",
     "tempQuizzSummaryDescription": "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne.",
@@ -253,5 +265,12 @@
     "languageEnglish": "Angielski",
 
     "refreshButton": "Odśwież",
-    "dashboardGuestUserMessage": "Jesteś zalogowany jako gość. Zarejestruj się, aby uzyskać dostęp do wszystkich funkcji aplikacji."
+
+    "quizLanguageSelectionHeading": "Wybierz język",
+    "quizLanguageEnglish": "Angielski",
+    "quizLanguagePolish": "Polski",
+    "quizLanguageSpanish": "Hiszpański",
+    "quizLanguageGerman": "Niemiecki",
+    "quizLanguageFrench": "Francuski",
+    "quizLanguageItalian": "Włoski"
 }

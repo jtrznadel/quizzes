@@ -6,12 +6,14 @@ import '../../../../core/common/widgets/basic_app_bar.dart';
 import '../../../../core/common/widgets/basic_button.dart';
 import '../../../../core/common/widgets/form_field.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
+import '../../../../core/common/widgets/secondary_button.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
+import '../../../profile/application/user_controller.dart';
 import '../../application/quizz_take_controller.dart';
 import '../../domain/quiz_response_model.dart';
 import '../widgets/quit_quizz_taking_dialog.dart';
@@ -30,11 +32,9 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => ref
-          .read(quizzTakeControllerProvider.notifier)
-          .startQuizz(id: widget.joinCode),
+      (_) => ref.read(quizzTakeControllerProvider.notifier).startQuizz(id: widget.joinCode),
     );
-    //TODO: Remove when the real implementation is done and UI handle it //93b48c1a-3c1b-48d1-816d-5a7110cecc20
+    WidgetsBinding.instance.addPostFrameCallback((_) => ref.read(userControllerProvider.notifier).getUser());
     super.initState();
   }
 
@@ -44,6 +44,7 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
     final quizState = ref.watch(quizzTakeControllerProvider);
+    final userState = ref.watch(userControllerProvider);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -72,27 +73,53 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
               key: formKey,
               child: IFormField(
                 labelText: S.of(context).quizzTakeFormFieldLabel,
-                hintText: S.of(context).quizzTakeFormFieldHint,
+                hintText: userState.maybeWhen(
+                  success: (user, _) => user.displayName,
+                  orElse: () => S.of(context).unknownUsername,
+                ),
                 controller: usernameController,
+                enabled: false,
+                isRequired: false,
               ),
             ),
             const LargeVSpacer(),
             quizState.maybeWhen(
-              loaded: (quiz, userNaswers, currentStep) =>
+              loaded: (quiz, userNaswers, currentStep) => Column(
+                children: [
                   TakeQuizzInfoBox(quizModel: quiz.quizResponse),
+                  const LargeVSpacer(),
+                  BasicButton(
+                    onPressed: () {
+                      if (formKey.currentState!.validate()) {
+                        context.router.push(
+                          const TakeQuizzWraperRoute(),
+                        );
+                      }
+                    },
+                    text: S.of(context).quizzTakeStartButton,
+                    width: double.infinity,
+                  ),
+                ],
+              ),
+              error: (error) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const ExtraLargeVSpacer(),
+                  Text(
+                    S.of(context).quizzTakeLoadingError,
+                    style: context.textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                  const LargeVSpacer(),
+                  SecondaryButton(
+                    onPressed: () => ref.read(appRouterProvider).replaceAll([const DashboardRoute()]),
+                    text: S.of(context).goBackToDashboard,
+                    width: double.infinity,
+                  ),
+                ],
+              ),
               orElse: () => const LoadingIndicator(),
-            ),
-            const LargeVSpacer(),
-            BasicButton(
-              onPressed: () {
-                if (formKey.currentState!.validate()) {
-                  context.router.push(
-                    const TakeQuizzWraperRoute(),
-                  );
-                }
-              },
-              text: 'Start Quizz',
-              width: double.infinity,
             ),
           ],
         ),
@@ -122,8 +149,7 @@ class TakeQuizzInfoBox extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(AppTheme.takeQuizzInfoContainerPadding),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-              AppTheme.takeQuizzInfoContainerBorderRadius),
+          borderRadius: BorderRadius.circular(AppTheme.takeQuizzInfoContainerBorderRadius),
           color: AppColorScheme.surfaceContainer,
         ),
         child: Column(

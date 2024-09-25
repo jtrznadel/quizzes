@@ -590,10 +590,10 @@ class S {
     );
   }
 
-  /// `Multiple choice`
+  /// `Single choice`
   String get quizzCreationConfigureType1 {
     return Intl.message(
-      'Multiple choice',
+      'Single choice',
       name: 'quizzCreationConfigureType1',
       desc: '',
       args: [],
@@ -1660,6 +1660,106 @@ class S {
     );
   }
 
+  /// `There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.`
+  String get quizzTakeLoadingError {
+    return Intl.message(
+      'There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.',
+      name: 'quizzTakeLoadingError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start Quizz`
+  String get quizzTakeStartButton {
+    return Intl.message(
+      'Start Quizz',
+      name: 'quizzTakeStartButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Join Quizz`
+  String get joinByCodeAppBarTitle {
+    return Intl.message(
+      'Join Quizz',
+      name: 'joinByCodeAppBarTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter code`
+  String get joinByCodeHeading {
+    return Intl.message(
+      'Enter code',
+      name: 'joinByCodeHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Here, you can enter the code for the specific quizz.`
+  String get joinByCodeSubheading {
+    return Intl.message(
+      'Here, you can enter the code for the specific quizz.',
+      name: 'joinByCodeSubheading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizz Code`
+  String get joinByCodeFormFieldLabel {
+    return Intl.message(
+      'Quizz Code',
+      name: 'joinByCodeFormFieldLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter 8-character code`
+  String get joinByCodeFormFieldHint {
+    return Intl.message(
+      'Enter 8-character code',
+      name: 'joinByCodeFormFieldHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access`
+  String get joinByCodeAccessButton {
+    return Intl.message(
+      'Access',
+      name: 'joinByCodeAccessButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid code. Please check if the code is correct and try again.`
+  String get joinByCodeInvalidCode {
+    return Intl.message(
+      'Invalid code. Please check if the code is correct and try again.',
+      name: 'joinByCodeInvalidCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quizz not found. Please check if the code is correct and try again.`
+  String get joinByCodeQuizzNotFound {
+    return Intl.message(
+      'Quizz not found. Please check if the code is correct and try again.',
+      name: 'joinByCodeQuizzNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Are you sure?`
   String get deleteQuizzHeading {
     return Intl.message(
@@ -1930,6 +2030,16 @@ class S {
     );
   }
 
+  /// `Unknown`
+  String get unknownUsername {
+    return Intl.message(
+      'Unknown',
+      name: 'unknownUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Understanding Cryptocurrencies and Their Impact on Finance`
   String get tempQuizzSummaryTitle {
     return Intl.message(
@@ -2075,6 +2185,76 @@ class S {
     return Intl.message(
       'You are logged in as as a guest user. Register to access all the app features.',
       name: 'dashboardGuestUserMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select language`
+  String get quizLanguageSelectionHeading {
+    return Intl.message(
+      'Select language',
+      name: 'quizLanguageSelectionHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get quizLanguageEnglish {
+    return Intl.message(
+      'English',
+      name: 'quizLanguageEnglish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Polish`
+  String get quizLanguagePolish {
+    return Intl.message(
+      'Polish',
+      name: 'quizLanguagePolish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spanish`
+  String get quizLanguageSpanish {
+    return Intl.message(
+      'Spanish',
+      name: 'quizLanguageSpanish',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `German`
+  String get quizLanguageGerman {
+    return Intl.message(
+      'German',
+      name: 'quizLanguageGerman',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `French`
+  String get quizLanguageFrench {
+    return Intl.message(
+      'French',
+      name: 'quizLanguageFrench',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Italian`
+  String get quizLanguageItalian {
+    return Intl.message(
+      'Italian',
+      name: 'quizLanguageItalian',
       desc: '',
       args: [],
     );

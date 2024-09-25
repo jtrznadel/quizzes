@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/common/widgets/basic_button.dart';
 import '../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../core/common/widgets/secondary_button.dart';
+import '../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../core/common/widgets/text_area.dart';
 import '../../../core/common/widgets/text_divider.dart';
@@ -12,12 +14,41 @@ import '../../../core/errors/file_read_exception.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/res/media_res.dart';
 import '../../../core/theme/app_color_scheme.dart';
+import '../../../core/theme/app_text_theme.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../generated/l10n.dart';
 
 import '../../../core/services/file_reader.dart';
 import '../application/quiz_generation_controller.dart';
 import '../widgets/attachment_tile.dart';
+
+enum QuizLanguage {
+  English,
+  Spanish,
+  Polish,
+  German,
+  French,
+  Italian,
+}
+
+extension QuizLanguageExtension on QuizLanguage {
+  String get language {
+    switch (this) {
+      case QuizLanguage.English:
+        return S.current.quizLanguageEnglish;
+      case QuizLanguage.Spanish:
+        return S.current.quizLanguageSpanish;
+      case QuizLanguage.Polish:
+        return S.current.quizLanguagePolish;
+      case QuizLanguage.German:
+        return S.current.quizLanguageGerman;
+      case QuizLanguage.French:
+        return S.current.quizLanguageFrench;
+      case QuizLanguage.Italian:
+        return S.current.quizLanguageItalian;
+    }
+  }
+} 
 
 class QuizzTextPromptPage extends ConsumerStatefulWidget {
   const QuizzTextPromptPage({super.key, required this.pageController});
@@ -67,7 +98,6 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
       child: Stack(
         children: [
           SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
                   .copyWith(top: 0), //TODO: Remove top padding if needed
@@ -133,7 +163,13 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                       orElse: () => [],
                     ),
                   ),
-                  const ExtraLargeVSpacer(),
+                  const MediumVSpacer(),
+                  Text(
+                    S.of(context).quizLanguageSelectionHeading,
+                    style: context.textTheme.bodyMedium,
+                  ),
+                  const MediumVSpacer(),
+                  const LanguageSelectionList(),
                 ],
               ),
             ),
@@ -167,4 +203,112 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
       ),
     );
   }
+}
+
+class LanguageSelectionList extends ConsumerWidget {
+  const LanguageSelectionList({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    var value = ref.watch(quizGenerationControllerProvider).maybeWhen(
+          generating: (request) => QuizLanguage.values.firstWhere(
+            (element) => element == request.language,
+            orElse: () => QuizLanguage.English,
+          ),
+          orElse: () => QuizLanguage.English,
+        );
+    return LayoutBuilder(builder: (context, constraints) {
+      return SizedBox(
+        width: constraints.maxWidth,
+        child: DropdownButtonHideUnderline(
+          child: ButtonTheme(
+            alignedDropdown: true,
+            child: DropdownButton2<QuizLanguage>(
+              value: value,
+              onChanged: (language) {
+                ref
+                    .read(quizGenerationControllerProvider.notifier)
+                    .setLanguage(language ?? QuizLanguage.English);
+              },
+              iconStyleData: IconStyleData(
+                icon: Row(
+                  children: [
+                    SvgPicture.asset(MediaRes.arrowDropdown),
+                    const SmallHSpacer(),
+                  ],
+                ),
+              ),
+              dropdownStyleData: DropdownStyleData(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(AppTheme.radiusMedium),
+                ),
+                scrollbarTheme: ScrollbarThemeData(
+                  radius: const Radius.circular(AppTheme.radiusFull),
+                  thumbColor: WidgetStateProperty.all(AppColorScheme.primary),
+                ),
+                maxHeight: AppTheme.dropdownListMaxHeight,
+                offset: AppTheme.dropdownListOffset,
+              ),
+              buttonStyleData: ButtonStyleData(
+                padding: const EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      color: AppColorScheme.border,
+                      width: AppTheme.dropdownBorderWidth),
+                  borderRadius: BorderRadius.circular(AppTheme.radiusMedium),
+                ),
+              ),
+              items: dropdownMenuEntries(),
+            ),
+          ),
+        ),
+      );
+    });
+  }
+
+  List<DropdownMenuItem<QuizLanguage>> dropdownMenuEntries() => [
+        DropdownMenuItem(
+          value: QuizLanguage.English,
+          child: Text(
+            QuizLanguage.English.language,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+        DropdownMenuItem(
+          value: QuizLanguage.Spanish,
+          child: Text(
+            QuizLanguage.Spanish.language,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+        DropdownMenuItem(
+          value: QuizLanguage.Polish,
+          child: Text(
+            QuizLanguage.Polish.language,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+        DropdownMenuItem(
+          value: QuizLanguage.German,
+          child: Text(
+            QuizLanguage.German.language,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+        DropdownMenuItem(
+          value: QuizLanguage.French,
+          child: Text(
+            QuizLanguage.French.language,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+        DropdownMenuItem(
+          value: QuizLanguage.Italian,
+          child: Text(
+            QuizLanguage.Italian.language,
+            style: textTheme.bodyMedium,
+          ),
+        ),
+      ];
 }

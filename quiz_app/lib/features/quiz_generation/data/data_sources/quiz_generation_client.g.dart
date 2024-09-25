@@ -27,6 +27,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
     required int numberOfQuestions,
     required String questionTypes,
     required List<MultipartFile> attachments,
+    required String language,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -45,6 +46,10 @@ class _QuizGenerationClient implements QuizGenerationClient {
       questionTypes,
     ));
     _data.files.addAll(attachments.map((i) => MapEntry('Attachments', i)));
+    _data.fields.add(MapEntry(
+      'Language',
+      language,
+    ));
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<GenerateQuizModel>(Options(
       method: 'POST',

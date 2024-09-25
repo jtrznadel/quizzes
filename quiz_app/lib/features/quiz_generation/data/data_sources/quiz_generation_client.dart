@@ -20,6 +20,7 @@ abstract class QuizGenerationClient {
     @Part(name: "NumberOfQuestions") required int numberOfQuestions,
     @Part(name: "QuestionTypes") required String questionTypes,
     @Part(name: "Attachments") required List<MultipartFile> attachments,
+    @Part(name: "Language") required String language,
   });
 
   @POST(ApiConstants.quizCreateEndpoint)
