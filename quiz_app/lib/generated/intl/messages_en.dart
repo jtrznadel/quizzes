@@ -150,6 +150,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),
+        "quizLanguageEnglish": MessageLookupByLibrary.simpleMessage("English"),
+        "quizLanguageFrench": MessageLookupByLibrary.simpleMessage("French"),
+        "quizLanguageGerman": MessageLookupByLibrary.simpleMessage("German"),
+        "quizLanguageItalian": MessageLookupByLibrary.simpleMessage("Italian"),
+        "quizLanguagePolish": MessageLookupByLibrary.simpleMessage("Polish"),
+        "quizLanguageSelectionHeading":
+            MessageLookupByLibrary.simpleMessage("Select language"),
+        "quizLanguageSpanish": MessageLookupByLibrary.simpleMessage("Spanish"),
         "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading":
             MessageLookupByLibrary.simpleMessage(
@@ -194,7 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationConfigureQuestionCount4":
             MessageLookupByLibrary.simpleMessage("Manual"),
         "quizzCreationConfigureType1":
-            MessageLookupByLibrary.simpleMessage("Multiple choice"),
+            MessageLookupByLibrary.simpleMessage("Single choice"),
         "quizzCreationConfigureType2":
             MessageLookupByLibrary.simpleMessage("True/False"),
         "quizzCreationConfigureType3":

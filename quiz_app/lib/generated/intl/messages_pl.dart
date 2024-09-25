@@ -148,6 +148,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Aktualizuj"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Aktualizowanie..."),
+        "quizLanguageEnglish":
+            MessageLookupByLibrary.simpleMessage("Angielski"),
+        "quizLanguageFrench": MessageLookupByLibrary.simpleMessage("Francuski"),
+        "quizLanguageGerman": MessageLookupByLibrary.simpleMessage("Niemiecki"),
+        "quizLanguageItalian": MessageLookupByLibrary.simpleMessage("Włoski"),
+        "quizLanguagePolish": MessageLookupByLibrary.simpleMessage("Polski"),
+        "quizLanguageSelectionHeading":
+            MessageLookupByLibrary.simpleMessage("Wybierz język"),
+        "quizLanguageSpanish":
+            MessageLookupByLibrary.simpleMessage("Hiszpański"),
         "quizQuestionNumberBadge": m0,
         "quizzCraetionConfigureSubheading": MessageLookupByLibrary.simpleMessage(
             "Tutaj możesz stworzyć quizz na podstawie swojego tekstu źródłowego."),
@@ -191,7 +201,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzCreationConfigureQuestionCount4":
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
         "quizzCreationConfigureType1":
-            MessageLookupByLibrary.simpleMessage("Wielokrotny wybór"),
+            MessageLookupByLibrary.simpleMessage("Jednokrotny wybór"),
         "quizzCreationConfigureType2":
             MessageLookupByLibrary.simpleMessage("Prawda/Fałsz"),
         "quizzCreationConfigureType3":

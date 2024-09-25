@@ -82,6 +82,10 @@ abstract class AppTheme {
 
   static const double deleteQuestionDetailsQuestionBoxPadding = 12;
 
+  static const double dropdownBorderWidth = 1;
+  static const double dropdownListMaxHeight = 200.0;
+  static const Offset dropdownListOffset = Offset(0, -5);
+
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,
     colorScheme: const ColorScheme.light(

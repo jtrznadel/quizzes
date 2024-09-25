@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../theme/app_color_scheme.dart';
 import '../../utils/enums/answer_result_enum.dart';
 import 'spacers/horizontal_spacers.dart';
 import 'vertical_divider.dart';
