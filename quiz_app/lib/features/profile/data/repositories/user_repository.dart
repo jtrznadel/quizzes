@@ -3,6 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/errors/server_exception.dart';
 import '../../../../core/utils/typedefs.dart';
 import '../../domain/guest_auth.dart';
+import '../../domain/archive_models/quizz_archive_model.dart';
 import '../../domain/user.dart';
 import '../data_sources/user_client.dart';
 
@@ -20,6 +21,8 @@ abstract class UserRepository {
   ResultFuture<void> convertGuestToUser(
     GuestAuth user,
   );
+
+  ResultFuture<List<QuizzArchiveModel>> getQuizzArchive();
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -70,8 +73,17 @@ class UserRepositoryImpl implements UserRepository {
       return Left(ServerException(message: e.toString()));
     }
   }
+
+  @override
+  ResultFuture<List<QuizzArchiveModel>> getQuizzArchive() async {
+    try {
+      final quizzArchive = await _userClient.getUserQuizzArchive();
+      return Right(quizzArchive);
+    } catch (e) {
+      return Left(ServerException(message: e.toString()));
+    }
+  }
 }
 
 @riverpod
-UserRepository userRepository(UserRepositoryRef ref) =>
-    UserRepositoryImpl(ref.read(userClientProvider));
+UserRepository userRepository(UserRepositoryRef ref) => UserRepositoryImpl(ref.read(userClientProvider));

@@ -6,6 +6,7 @@ class ApiConstants {
   static const String signInEndpoint = '/signin';
   static const String userEndpoint = '/profile';
   static const String updateUserEndpoint = '/profile';
+  static const String quizzArchiveEndpoint = '/participations/history';
   //TODO: not implemented on backend yet
   static const String deleteUserEndpoint = '/delete_user';
   static const String signOutEndpoint = 'auth/logout';
@@ -48,4 +49,4 @@ class ApiConstants {
   static const String guestAccountCreationEndpoint = '/profile/convert-guest';
 
   static const String userRoleTokenKey = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
-  }
+}

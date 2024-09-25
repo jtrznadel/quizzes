@@ -34,6 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Manual"),
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Add new quizz"),
+        "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archive"),
+        "archiveLoadingError": MessageLookupByLibrary.simpleMessage(
+            "There was an error with loading the archive. Please try again."),
+        "archiveResultsAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Quizz Result Details"),
+        "archiveResultsHeading":
+            MessageLookupByLibrary.simpleMessage("Result:"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Cancel"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "dashboardGuestUserMessage": MessageLookupByLibrary.simpleMessage(
@@ -131,6 +138,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileActionsHeading":
             MessageLookupByLibrary.simpleMessage("Profile actions"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profile"),
+        "profileArchiveButton": MessageLookupByLibrary.simpleMessage("Archive"),
+        "profileArchiveHeading":
+            MessageLookupByLibrary.simpleMessage("Quizzes"),
         "profileDeleteButton":
             MessageLookupByLibrary.simpleMessage("Delete account"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
@@ -148,7 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileSignOutDescription":
             MessageLookupByLibrary.simpleMessage("Sign out from your account"),
         "profileSubheading": MessageLookupByLibrary.simpleMessage(
-            "Manage your profile settings here."),
+            "Manage your profile settings."),
         "profileUpdateButton": MessageLookupByLibrary.simpleMessage("Update"),
         "profileUpdatingUsername":
             MessageLookupByLibrary.simpleMessage("Updating..."),
@@ -342,6 +352,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Score"),
         "quizzDetailsTabStatisticsSecondsElapsed": m1,
+        "quizzDetailsTabStatisticsStartedStatusBadge":
+            MessageLookupByLibrary.simpleMessage("Started"),
         "quizzDetailsTabStatisticsStoppedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Stopped"),
         "quizzDetailsTabStatisticsSubheading":

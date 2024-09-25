@@ -34,10 +34,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ręcznie"),
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
+        "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archiwum"),
+        "archiveLoadingError": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się załadować archiwum. Spróbuj ponownie."),
+        "archiveResultsAppBarTitle":
+            MessageLookupByLibrary.simpleMessage("Szczegóły wyników Quizzu"),
+        "archiveResultsHeading": MessageLookupByLibrary.simpleMessage("Wynik:"),
         "cancelButton": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardGuestUserMessage": MessageLookupByLibrary.simpleMessage(
-            "Jesteś zalogowany jako gość. Zarejestruj się, aby uzyskać dostęp do wszystkich funkcji aplikacji."),
+            "Zaloguj się, aby uzyskać dostęp do swoich quizów."),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
             "Nie masz jeszcze żadnych quizów. Możesz utworzyć nowy, klikając przycisk powyżej."),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +135,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileActionsHeading":
             MessageLookupByLibrary.simpleMessage("Akcje profilu"),
         "profileAppbarTitle": MessageLookupByLibrary.simpleMessage("Profil"),
+        "profileArchiveButton":
+            MessageLookupByLibrary.simpleMessage("Archiwum"),
+        "profileArchiveHeading": MessageLookupByLibrary.simpleMessage("Quizzy"),
         "profileDeleteButton":
             MessageLookupByLibrary.simpleMessage("Usuń konto"),
         "profileDeleteDialogDescription": MessageLookupByLibrary.simpleMessage(
@@ -144,8 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "profileSignOutButton": MessageLookupByLibrary.simpleMessage("Wyloguj"),
         "profileSignOutDescription": MessageLookupByLibrary.simpleMessage(
             "Wyloguj się ze swojego konta"),
-        "profileSubheading": MessageLookupByLibrary.simpleMessage(
-            "Zarządzaj ustawieniami swojego profilu tutaj."),
+        "profileSubheading":
+            MessageLookupByLibrary.simpleMessage("Zarządzaj swoim profilem."),
         "profileUpdateButton":
             MessageLookupByLibrary.simpleMessage("Aktualizuj"),
         "profileUpdatingUsername":
@@ -337,6 +346,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Wynik"),
         "quizzDetailsTabStatisticsSecondsElapsed": m1,
+        "quizzDetailsTabStatisticsStartedStatusBadge":
+            MessageLookupByLibrary.simpleMessage("Rozpoczęty"),
         "quizzDetailsTabStatisticsStoppedStatusBadge":
             MessageLookupByLibrary.simpleMessage("Zatrzymany"),
         "quizzDetailsTabStatisticsSubheading":

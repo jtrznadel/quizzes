@@ -112,6 +112,7 @@
     "quizzDetailsTabStatisticsDetailsStatusBadge": "Szczegóły",
     "quizzDetailsTabStatisticsFinishedStatusBadge": "Zakończony",
     "quizzDetailsTabStatisticsStoppedStatusBadge": "Zatrzymany",
+    "quizzDetailsTabStatisticsStartedStatusBadge": "Rozpoczęty",
     "quizzDetailsTabStatisticsScore": "Wynik",
     "quizzDetailsTabStatisticsName": "Imię",
     "quizzDetailsTabStatisticsDate": "Data",
@@ -186,6 +187,7 @@
         }
     },
     "dashboardQuizzesEmpty": "Nie masz jeszcze żadnych quizów. Możesz utworzyć nowy, klikając przycisk powyżej.",
+    "dashboardGuestUserMessage": "Zaloguj się, aby uzyskać dostęp do swoich quizów.",
 
     "quizzTakeAppBarTitle": "Rozpocznij quizz",
     "quizzTakeQuitHeading": "Opuścić quizz?",
@@ -230,7 +232,7 @@
     "linkCopied": "Skopiowano link do schowka",
 
     "profileAppbarTitle": "Profil",
-    "profileSubheading": "Zarządzaj ustawieniami swojego profilu tutaj.",
+    "profileSubheading": "Zarządzaj swoim profilem.",
     "profileNameDescription": "To jest Twoja publiczna nazwa.",
     "profileNameHint": "Wpisz swoje imię",
     "profileNameLabel": "Imię",
@@ -248,8 +250,15 @@
     "profileSignOutButton": "Wyloguj",
     "profileSignOutDescription": "Wyloguj się ze swojego konta",
     "profileActionsHeading": "Akcje profilu",
+    "profileArchiveHeading": "Quizzy",
+    "profileArchiveButton": "Archiwum",
     "unknownUsername": "Nieznana nazwa użytkownika",
 
+    "archiveAppBarTitle": "Archiwum",
+    "archiveLoadingError": "Nie udało się załadować archiwum. Spróbuj ponownie.",
+    "archiveResultsAppBarTitle": "Szczegóły wyników Quizzu",
+    "archiveResultsHeading": "Wynik:",
+   
     "tempQuizzSummaryTitle": "Zrozumienie kryptowalut i ich wpływu na finanse",
     "tempQuizzSummaryDescription": "Odkryj, jak kryptowaluty takie jak Bitcoin i Ethereum zmieniają krajobraz finansowy poprzez decentralizację, technologię blockchain i potencjalnie wysokie zwroty, jednocześnie omawiając ryzyka i wyzwania regulacyjne.",
     "tempQuestion": "Jakie jest jedno z kluczowych cech kryptowalut?",

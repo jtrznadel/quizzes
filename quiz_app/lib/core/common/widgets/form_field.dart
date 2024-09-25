@@ -18,6 +18,7 @@ class IFormField extends StatelessWidget {
     required this.controller,
     this.validator,
     this.enabled = true,
+    this.formButton,
   });
 
   final TextEditingController controller;
@@ -30,6 +31,7 @@ class IFormField extends StatelessWidget {
   final Color? bgColor;
   final String? Function(String?)? validator;
   final bool? enabled;
+  final Widget? formButton;
 
   @override
   Widget build(BuildContext context) {
@@ -56,31 +58,40 @@ class IFormField extends StatelessWidget {
             const ExtraSmallVSpacer(),
             SizedBox(
               width: double.infinity,
-              child: TextFormField(
-                enabled: enabled,
-                controller: controller,
-                validator: validator ??
-                    (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return S.of(context).thisFieldIsRequired;
-                      }
-                      return null;
-                    },
-                obscureText: obscureText,
-                keyboardType: keyboardType,
-                decoration: InputDecoration(
-                  hintText: hintText,
-                  suffixIcon: suffixIcon,
-                  errorMaxLines: 6,
-                ),
-                style: context.textTheme.labelMedium?.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontFamily: GoogleFonts.inter().fontFamily,
-                ),
-                onTapOutside: (event) {
-                  FocusManager.instance.primaryFocus?.unfocus();
-                  //FocusScope.of(context).unfocus();
-                },
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      enabled: enabled,
+                      controller: controller,
+                      validator: (value) {
+                        if (!isRequired) {
+                          return null;
+                        }
+                        if (value == null || value.trim().isEmpty) {
+                          return S.of(context).thisFieldIsRequired;
+                        }
+                        return validator?.call(value);
+                      },
+                      obscureText: obscureText,
+                      keyboardType: keyboardType,
+                      decoration: InputDecoration(
+                        hintText: hintText,
+                        suffixIcon: suffixIcon,
+                        errorMaxLines: 6,
+                      ),
+                      style: context.textTheme.labelMedium?.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: GoogleFonts.inter().fontFamily,
+                      ),
+                      onTapOutside: (event) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        //FocusScope.of(context).unfocus();
+                      },
+                    ),
+                  ),
+                  formButton ?? const SizedBox(),
+                ],
               ),
             ),
           ],
