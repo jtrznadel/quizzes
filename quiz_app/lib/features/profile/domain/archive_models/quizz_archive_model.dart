@@ -13,7 +13,7 @@ class QuizzArchiveModel with _$QuizzArchiveModel {
     required String quizId,
     required String quizTitle,
     required String quizDescription,
-    required String participtionDateUtc,
+    required String participationDateUtc,
     required String status,
     required List<QuizzArchiveQuestionModel> questions,
     required List<QuizzArchiveUserAnswerModel> userAnswers,

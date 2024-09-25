@@ -29,6 +29,52 @@ class ArchiveRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ArchiveResultsPage]
+class ArchiveResultsRoute extends PageRouteInfo<ArchiveResultsRouteArgs> {
+  ArchiveResultsRoute({
+    Key? key,
+    required QuizzArchiveModel archivedQuizz,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ArchiveResultsRoute.name,
+          args: ArchiveResultsRouteArgs(
+            key: key,
+            archivedQuizz: archivedQuizz,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ArchiveResultsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ArchiveResultsRouteArgs>();
+      return ArchiveResultsPage(
+        key: args.key,
+        archivedQuizz: args.archivedQuizz,
+      );
+    },
+  );
+}
+
+class ArchiveResultsRouteArgs {
+  const ArchiveResultsRouteArgs({
+    this.key,
+    required this.archivedQuizz,
+  });
+
+  final Key? key;
+
+  final QuizzArchiveModel archivedQuizz;
+
+  @override
+  String toString() {
+    return 'ArchiveResultsRouteArgs{key: $key, archivedQuizz: $archivedQuizz}';
+  }
+}
+
+/// generated route for
 /// [BasicErrorPage]
 class BasicErrorRoute extends PageRouteInfo<BasicErrorRouteArgs> {
   BasicErrorRoute({

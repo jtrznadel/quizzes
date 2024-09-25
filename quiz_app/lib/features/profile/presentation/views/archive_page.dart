@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/errors/basic_error_page.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
+import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
+import '../../../../core/res/media_res.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/archive_controller.dart';
+import '../widgets/quizz_archive_tile.dart';
 
 @RoutePage()
 class ArchivePage extends ConsumerStatefulWidget {
@@ -24,13 +30,36 @@ class _ArchivePageState extends ConsumerState<ArchivePage> {
   @override
   Widget build(BuildContext context) {
     final archiveState = ref.watch(archiveControllerProvider);
+    final archivedQuizzes = archiveState.maybeWhen(
+        success: (quizzList) {
+          return quizzList;
+        },
+        orElse: () => []);
     return Scaffold(
       appBar: BasicAppBar(title: S.of(context).archiveAppBarTitle),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
         child: archiveState.map(
-          loading: (_) => const CircularProgressIndicator(),
-          success: (_) => const Text('Success'),
-          error: (_) => const Text('Error'),
+          loading: (_) => const Center(child: LoadingIndicator()),
+          success: (_) => ListView.separated(
+            itemBuilder: (context, index) {
+              return QuizzArchiveTile(
+                quizz: archivedQuizzes[index],
+              );
+            },
+            separatorBuilder: (context, index) {
+              return const MediumVSpacer();
+            },
+            itemCount: archivedQuizzes.length,
+          ),
+          error: (_) => BasicErrorPage(
+            onRefresh: () {
+              ref.read(archiveControllerProvider.notifier).getQuizzArchive();
+            },
+            refreshButtonText: 'Reload',
+            imageAsset: MediaRes.basicError,
+            errorText: 'Cannot load archive',
+          ),
         ),
       ),
     );

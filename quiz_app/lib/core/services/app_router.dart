@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../features/profile/domain/archive_models/quizz_archive_model.dart';
 import '../../features/profile/presentation/views/archive_page.dart';
+import '../../features/profile/presentation/views/archive_results_page.dart';
 import '../../features/take_quizz/domain/quiz_result_model.dart';
 import '../../features/take_quizz/presentation/views/join_by_code_page.dart';
 import '../../features/take_quizz/presentation/views/take_quizz_page.dart';
@@ -68,5 +70,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: TakeQuizzResultRoute.page),
         AutoRoute(page: JoinByCodeRoute.page),
         AutoRoute(page: ArchiveRoute.page),
+        AutoRoute(page: ArchiveResultsRoute.page),
       ];
 }

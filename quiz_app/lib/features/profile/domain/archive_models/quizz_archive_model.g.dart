@@ -12,7 +12,7 @@ _$QuizzArchiveModelImpl _$$QuizzArchiveModelImplFromJson(
       quizId: json['quizId'] as String,
       quizTitle: json['quizTitle'] as String,
       quizDescription: json['quizDescription'] as String,
-      participtionDateUtc: json['participtionDateUtc'] as String,
+      participationDateUtc: json['participationDateUtc'] as String,
       status: json['status'] as String,
       questions: (json['questions'] as List<dynamic>)
           .map((e) =>
@@ -32,7 +32,7 @@ Map<String, dynamic> _$$QuizzArchiveModelImplToJson(
       'quizId': instance.quizId,
       'quizTitle': instance.quizTitle,
       'quizDescription': instance.quizDescription,
-      'participtionDateUtc': instance.participtionDateUtc,
+      'participationDateUtc': instance.participationDateUtc,
       'status': instance.status,
       'questions': instance.questions,
       'userAnswers': instance.userAnswers,

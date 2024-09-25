@@ -23,7 +23,7 @@ mixin _$QuizzArchiveModel {
   String get quizId => throw _privateConstructorUsedError;
   String get quizTitle => throw _privateConstructorUsedError;
   String get quizDescription => throw _privateConstructorUsedError;
-  String get participtionDateUtc => throw _privateConstructorUsedError;
+  String get participationDateUtc => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   List<QuizzArchiveQuestionModel> get questions =>
       throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $QuizzArchiveModelCopyWith<$Res> {
       {String quizId,
       String quizTitle,
       String quizDescription,
-      String participtionDateUtc,
+      String participationDateUtc,
       String status,
       List<QuizzArchiveQuestionModel> questions,
       List<QuizzArchiveUserAnswerModel> userAnswers,
@@ -73,7 +73,7 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
     Object? quizId = null,
     Object? quizTitle = null,
     Object? quizDescription = null,
-    Object? participtionDateUtc = null,
+    Object? participationDateUtc = null,
     Object? status = null,
     Object? questions = null,
     Object? userAnswers = null,
@@ -92,9 +92,9 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
           ? _value.quizDescription
           : quizDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      participtionDateUtc: null == participtionDateUtc
-          ? _value.participtionDateUtc
-          : participtionDateUtc // ignore: cast_nullable_to_non_nullable
+      participationDateUtc: null == participationDateUtc
+          ? _value.participationDateUtc
+          : participationDateUtc // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -137,7 +137,7 @@ abstract class _$$QuizzArchiveModelImplCopyWith<$Res>
       {String quizId,
       String quizTitle,
       String quizDescription,
-      String participtionDateUtc,
+      String participationDateUtc,
       String status,
       List<QuizzArchiveQuestionModel> questions,
       List<QuizzArchiveUserAnswerModel> userAnswers,
@@ -161,7 +161,7 @@ class __$$QuizzArchiveModelImplCopyWithImpl<$Res>
     Object? quizId = null,
     Object? quizTitle = null,
     Object? quizDescription = null,
-    Object? participtionDateUtc = null,
+    Object? participationDateUtc = null,
     Object? status = null,
     Object? questions = null,
     Object? userAnswers = null,
@@ -180,9 +180,9 @@ class __$$QuizzArchiveModelImplCopyWithImpl<$Res>
           ? _value.quizDescription
           : quizDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      participtionDateUtc: null == participtionDateUtc
-          ? _value.participtionDateUtc
-          : participtionDateUtc // ignore: cast_nullable_to_non_nullable
+      participationDateUtc: null == participationDateUtc
+          ? _value.participationDateUtc
+          : participationDateUtc // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
           ? _value.status
@@ -211,7 +211,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
       {required this.quizId,
       required this.quizTitle,
       required this.quizDescription,
-      required this.participtionDateUtc,
+      required this.participationDateUtc,
       required this.status,
       required final List<QuizzArchiveQuestionModel> questions,
       required final List<QuizzArchiveUserAnswerModel> userAnswers,
@@ -229,7 +229,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
   @override
   final String quizDescription;
   @override
-  final String participtionDateUtc;
+  final String participationDateUtc;
   @override
   final String status;
   final List<QuizzArchiveQuestionModel> _questions;
@@ -253,7 +253,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
 
   @override
   String toString() {
-    return 'QuizzArchiveModel(quizId: $quizId, quizTitle: $quizTitle, quizDescription: $quizDescription, participtionDateUtc: $participtionDateUtc, status: $status, questions: $questions, userAnswers: $userAnswers, quizResult: $quizResult)';
+    return 'QuizzArchiveModel(quizId: $quizId, quizTitle: $quizTitle, quizDescription: $quizDescription, participationDateUtc: $participationDateUtc, status: $status, questions: $questions, userAnswers: $userAnswers, quizResult: $quizResult)';
   }
 
   @override
@@ -266,8 +266,8 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
                 other.quizTitle == quizTitle) &&
             (identical(other.quizDescription, quizDescription) ||
                 other.quizDescription == quizDescription) &&
-            (identical(other.participtionDateUtc, participtionDateUtc) ||
-                other.participtionDateUtc == participtionDateUtc) &&
+            (identical(other.participationDateUtc, participationDateUtc) ||
+                other.participationDateUtc == participationDateUtc) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._questions, _questions) &&
@@ -284,7 +284,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
       quizId,
       quizTitle,
       quizDescription,
-      participtionDateUtc,
+      participationDateUtc,
       status,
       const DeepCollectionEquality().hash(_questions),
       const DeepCollectionEquality().hash(_userAnswers),
@@ -310,7 +310,7 @@ abstract class _QuizzArchiveModel implements QuizzArchiveModel {
           {required final String quizId,
           required final String quizTitle,
           required final String quizDescription,
-          required final String participtionDateUtc,
+          required final String participationDateUtc,
           required final String status,
           required final List<QuizzArchiveQuestionModel> questions,
           required final List<QuizzArchiveUserAnswerModel> userAnswers,
@@ -327,7 +327,7 @@ abstract class _QuizzArchiveModel implements QuizzArchiveModel {
   @override
   String get quizDescription;
   @override
-  String get participtionDateUtc;
+  String get participationDateUtc;
   @override
   String get status;
   @override
