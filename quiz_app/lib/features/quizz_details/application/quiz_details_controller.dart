@@ -119,19 +119,6 @@ class QuizDetailsController extends _$QuizDetailsController {
     }
   }
 
-  //TODO: Use this method once it's possible to add answers to questions in the API
-  Future<bool> _updateQuestion(UpdateQuestionModel question) async {
-    try {
-      state = const QuizDetailsState.loading();
-      await ref.read(_quizDetailsRepository).updateQuestion(question);
-      getQuizDetails(question.quizID);
-      return true;
-    } catch (e) {
-      state = QuizDetailsState.error(S.current.somethingWentWrong);
-      return false;
-    }
-  }
-
   Future<bool> updateQuestion(
     NewQuestionModel question,
     String questionId,
