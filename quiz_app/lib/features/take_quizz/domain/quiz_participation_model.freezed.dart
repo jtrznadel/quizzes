@@ -26,8 +26,12 @@ mixin _$QuizParticipationModel {
   DateTime get participationDate => throw _privateConstructorUsedError;
   QuizResponseModel get quizResponse => throw _privateConstructorUsedError;
 
+  /// Serializes this QuizParticipationModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizParticipationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizParticipationModelCopyWith<QuizParticipationModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$QuizParticipationModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizParticipationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class _$QuizParticipationModelCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of QuizParticipationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $QuizResponseModelCopyWith<$Res> get quizResponse {
@@ -117,6 +125,8 @@ class __$$QuizParticipationModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizParticipationModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizParticipationModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -177,12 +187,14 @@ class _$QuizParticipationModelImpl implements _QuizParticipationModel {
                 other.quizResponse == quizResponse));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, participationDate, quizResponse);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizParticipationModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizParticipationModelImplCopyWith<_$QuizParticipationModelImpl>
@@ -214,8 +226,11 @@ abstract class _QuizParticipationModel implements QuizParticipationModel {
   DateTime get participationDate;
   @override
   QuizResponseModel get quizResponse;
+
+  /// Create a copy of QuizParticipationModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizParticipationModelImplCopyWith<_$QuizParticipationModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

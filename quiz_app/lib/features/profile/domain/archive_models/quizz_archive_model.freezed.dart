@@ -32,8 +32,12 @@ mixin _$QuizzArchiveModel {
   QuizzArchiveQuizResultModel get quizResult =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this QuizzArchiveModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizzArchiveModelCopyWith<QuizzArchiveModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -67,6 +71,8 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +121,8 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
     ) as $Val);
   }
 
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $QuizzArchiveQuizResultModelCopyWith<$Res> get quizResult {
@@ -155,6 +163,8 @@ class __$$QuizzArchiveModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizzArchiveModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -215,7 +225,8 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
       required this.status,
       required final List<QuizzArchiveQuestionModel> questions,
       required final List<QuizzArchiveUserAnswerModel> userAnswers,
-      required this.quizResult})
+      this.quizResult = const QuizzArchiveQuizResultModel(
+          totalQuestions: 0, scorePercentage: 0, correctAnswers: 0)})
       : _questions = questions,
         _userAnswers = userAnswers;
 
@@ -249,6 +260,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
   }
 
   @override
+  @JsonKey()
   final QuizzArchiveQuizResultModel quizResult;
 
   @override
@@ -277,7 +289,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
                 other.quizResult == quizResult));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -290,7 +302,9 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
       const DeepCollectionEquality().hash(_userAnswers),
       quizResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizzArchiveModelImplCopyWith<_$QuizzArchiveModelImpl> get copyWith =>
@@ -307,15 +321,14 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
 
 abstract class _QuizzArchiveModel implements QuizzArchiveModel {
   const factory _QuizzArchiveModel(
-          {required final String quizId,
-          required final String quizTitle,
-          required final String quizDescription,
-          required final String participationDateUtc,
-          required final String status,
-          required final List<QuizzArchiveQuestionModel> questions,
-          required final List<QuizzArchiveUserAnswerModel> userAnswers,
-          required final QuizzArchiveQuizResultModel quizResult}) =
-      _$QuizzArchiveModelImpl;
+      {required final String quizId,
+      required final String quizTitle,
+      required final String quizDescription,
+      required final String participationDateUtc,
+      required final String status,
+      required final List<QuizzArchiveQuestionModel> questions,
+      required final List<QuizzArchiveUserAnswerModel> userAnswers,
+      final QuizzArchiveQuizResultModel quizResult}) = _$QuizzArchiveModelImpl;
 
   factory _QuizzArchiveModel.fromJson(Map<String, dynamic> json) =
       _$QuizzArchiveModelImpl.fromJson;
@@ -336,8 +349,11 @@ abstract class _QuizzArchiveModel implements QuizzArchiveModel {
   List<QuizzArchiveUserAnswerModel> get userAnswers;
   @override
   QuizzArchiveQuizResultModel get quizResult;
+
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizzArchiveModelImplCopyWith<_$QuizzArchiveModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

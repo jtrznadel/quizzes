@@ -24,11 +24,15 @@ class QuizzArchiveTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quizScore = QuizzScore.getQuizzScore(quizz.quizResult.scorePercentage);
-    final participationStatus = ParticipationStatus.getParticipationStatus(quizz.status);
+    final quizScore =
+        QuizzScore.getQuizzScore(quizz.quizResult.scorePercentage);
+    final participationStatus =
+        ParticipationStatus.getParticipationStatus(quizz.status);
     return InkWell(
       onTap: () {
-        ref.read(appRouterProvider).push(ArchiveResultsRoute(archivedQuizz: quizz));
+        ref
+            .read(appRouterProvider)
+            .push(ArchiveResultsRoute(archivedQuizz: quizz));
       },
       child: DottedBorderContainer(
         child: Container(
@@ -41,7 +45,7 @@ class QuizzArchiveTile extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${S.of(context).archiveResultsHeading} ${quizz.quizResult.scorePercentage.round()}%',
+                    '${S.of(context).archiveResultsHeading} ${(quizz.quizResult.scorePercentage).round()}%',
                     style: context.textTheme.headlineLarge?.copyWith(
                       color: quizScore.color,
                     ),
@@ -68,7 +72,8 @@ class QuizzArchiveTile extends ConsumerWidget {
               Row(
                 children: [
                   Text(
-                    DateFormat('dd.MM.yyyy').format(DateTime.parse(quizz.participationDateUtc).toLocal()),
+                    DateFormat('dd.MM.yyyy').format(
+                        DateTime.parse(quizz.participationDateUtc).toLocal()),
                     style: context.textTheme.bodySmall,
                   ),
                   const SmallHSpacer(),
@@ -83,7 +88,8 @@ class QuizzArchiveTile extends ConsumerWidget {
               Row(
                 children: [
                   QuizStatusBadge(
-                    text: S.of(context).quizQuestionNumberBadge(quizz.quizResult.totalQuestions),
+                    text: S.of(context).quizQuestionNumberBadge(
+                        quizz.quizResult.totalQuestions),
                     backgroundColor: AppColorScheme.secondary,
                     textColor: AppColorScheme.primary,
                   ),

@@ -25,8 +25,12 @@ mixin _$TakeQuizQuestionModel {
   String get title => throw _privateConstructorUsedError;
   List<TakeQuizAnswerModel> get answers => throw _privateConstructorUsedError;
 
+  /// Serializes this TakeQuizQuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TakeQuizQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TakeQuizQuestionModelCopyWith<TakeQuizQuestionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$TakeQuizQuestionModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TakeQuizQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -96,6 +102,8 @@ class __$$TakeQuizQuestionModelImplCopyWithImpl<$Res>
       $Res Function(_$TakeQuizQuestionModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TakeQuizQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,12 +167,14 @@ class _$TakeQuizQuestionModelImpl implements _TakeQuizQuestionModel {
             const DeepCollectionEquality().equals(other._answers, _answers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, const DeepCollectionEquality().hash(_answers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TakeQuizQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TakeQuizQuestionModelImplCopyWith<_$TakeQuizQuestionModelImpl>
@@ -195,8 +205,11 @@ abstract class _TakeQuizQuestionModel implements TakeQuizQuestionModel {
   String get title;
   @override
   List<TakeQuizAnswerModel> get answers;
+
+  /// Create a copy of TakeQuizQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TakeQuizQuestionModelImplCopyWith<_$TakeQuizQuestionModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -27,8 +27,12 @@ mixin _$UpdateQuestionModel {
       throw _privateConstructorUsedError;
   String get quizID => throw _privateConstructorUsedError;
 
+  /// Serializes this UpdateQuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UpdateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UpdateQuestionModelCopyWith<UpdateQuestionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$UpdateQuestionModelCopyWithImpl<$Res, $Val extends UpdateQuestionModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UpdateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class __$$UpdateQuestionModelImplCopyWithImpl<$Res>
       $Res Function(_$UpdateQuestionModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UpdateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,12 +193,14 @@ class _$UpdateQuestionModelImpl extends _UpdateQuestionModel {
             (identical(other.quizID, quizID) || other.quizID == quizID));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title,
       const DeepCollectionEquality().hash(_updateAnswers), quizID);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UpdateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateQuestionModelImplCopyWith<_$UpdateQuestionModelImpl> get copyWith =>
@@ -226,8 +236,11 @@ abstract class _UpdateQuestionModel extends UpdateQuestionModel {
   List<AnswerModelInterface> get updateAnswers;
   @override
   String get quizID;
+
+  /// Create a copy of UpdateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateQuestionModelImplCopyWith<_$UpdateQuestionModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

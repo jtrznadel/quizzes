@@ -23,8 +23,12 @@ mixin _$UserAnswerModel {
   String get questionId => throw _privateConstructorUsedError;
   String get answerId => throw _privateConstructorUsedError;
 
+  /// Serializes this UserAnswerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserAnswerModelCopyWith<UserAnswerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$UserAnswerModelCopyWithImpl<$Res, $Val extends UserAnswerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$UserAnswerModelImplCopyWithImpl<$Res>
       _$UserAnswerModelImpl _value, $Res Function(_$UserAnswerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,11 +143,13 @@ class _$UserAnswerModelImpl implements _UserAnswerModel {
                 other.answerId == answerId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, questionId, answerId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserAnswerModelImplCopyWith<_$UserAnswerModelImpl> get copyWith =>
@@ -166,8 +176,11 @@ abstract class _UserAnswerModel implements UserAnswerModel {
   String get questionId;
   @override
   String get answerId;
+
+  /// Create a copy of UserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserAnswerModelImplCopyWith<_$UserAnswerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

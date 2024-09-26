@@ -24,8 +24,12 @@ mixin _$QuizzArchiveUserAnswerModel {
   String get questionId => throw _privateConstructorUsedError;
   String get answerId => throw _privateConstructorUsedError;
 
+  /// Serializes this QuizzArchiveUserAnswerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizzArchiveUserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizzArchiveUserAnswerModelCopyWith<QuizzArchiveUserAnswerModel>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$QuizzArchiveUserAnswerModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizzArchiveUserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$QuizzArchiveUserAnswerModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizzArchiveUserAnswerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizzArchiveUserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,11 +152,13 @@ class _$QuizzArchiveUserAnswerModelImpl
                 other.answerId == answerId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, questionId, answerId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizzArchiveUserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizzArchiveUserAnswerModelImplCopyWith<_$QuizzArchiveUserAnswerModelImpl>
@@ -176,8 +186,11 @@ abstract class _QuizzArchiveUserAnswerModel
   String get questionId;
   @override
   String get answerId;
+
+  /// Create a copy of QuizzArchiveUserAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizzArchiveUserAnswerModelImplCopyWith<_$QuizzArchiveUserAnswerModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

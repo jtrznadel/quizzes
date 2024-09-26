@@ -22,7 +22,9 @@ mixin _$QuizRequestModel {
   List<PlatformFile> get attachments => throw _privateConstructorUsedError;
   QuizLanguage get language => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizRequestModelCopyWith<QuizRequestModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$QuizRequestModelCopyWithImpl<$Res, $Val extends QuizRequestModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$QuizRequestModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizRequestModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -208,7 +214,9 @@ class _$QuizRequestModelImpl implements _QuizRequestModel {
       const DeepCollectionEquality().hash(_attachments),
       language);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizRequestModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>
@@ -234,8 +242,11 @@ abstract class _QuizRequestModel implements QuizRequestModel {
   List<PlatformFile> get attachments;
   @override
   QuizLanguage get language;
+
+  /// Create a copy of QuizRequestModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizRequestModelImplCopyWith<_$QuizRequestModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

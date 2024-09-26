@@ -27,8 +27,12 @@ mixin _$QuizDetailsResultModel {
   List<TakeQuizResultQuestionModel> get questions =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this QuizDetailsResultModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizDetailsResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizDetailsResultModelCopyWith<QuizDetailsResultModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$QuizDetailsResultModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizDetailsResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,6 +118,8 @@ class __$$QuizDetailsResultModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizDetailsResultModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizDetailsResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,12 +194,14 @@ class _$QuizDetailsResultModelImpl implements _QuizDetailsResultModel {
                 .equals(other._questions, _questions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, description,
       const DeepCollectionEquality().hash(_questions));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizDetailsResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizDetailsResultModelImplCopyWith<_$QuizDetailsResultModelImpl>
@@ -225,8 +235,11 @@ abstract class _QuizDetailsResultModel implements QuizDetailsResultModel {
   String get description;
   @override
   List<TakeQuizResultQuestionModel> get questions;
+
+  /// Create a copy of QuizDetailsResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizDetailsResultModelImplCopyWith<_$QuizDetailsResultModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

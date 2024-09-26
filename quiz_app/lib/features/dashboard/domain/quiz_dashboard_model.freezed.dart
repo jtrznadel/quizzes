@@ -27,8 +27,12 @@ mixin _$QuizDashboardModel {
   QuizStatus get status => throw _privateConstructorUsedError;
   int get totalQuestions => throw _privateConstructorUsedError;
 
+  /// Serializes this QuizDashboardModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizDashboardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizDashboardModelCopyWith<QuizDashboardModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$QuizDashboardModelCopyWithImpl<$Res, $Val extends QuizDashboardModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizDashboardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$QuizDashboardModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizDashboardModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizDashboardModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,12 +217,14 @@ class _$QuizDashboardModelImpl implements _QuizDashboardModel {
                 other.totalQuestions == totalQuestions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, title, description,
       availability, status, totalQuestions);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizDashboardModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizDashboardModelImplCopyWith<_$QuizDashboardModelImpl> get copyWith =>
@@ -253,8 +263,11 @@ abstract class _QuizDashboardModel implements QuizDashboardModel {
   QuizStatus get status;
   @override
   int get totalQuestions;
+
+  /// Create a copy of QuizDashboardModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizDashboardModelImplCopyWith<_$QuizDashboardModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
