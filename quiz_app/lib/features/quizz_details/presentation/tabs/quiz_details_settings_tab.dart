@@ -23,12 +23,12 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabSettingsSubheading,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         ),
         const SmallVSpacer(),
         const QuizSettingsStatusSection(),
         const QuizSettingsAvailabilitySection(),
+        const MediumVSpacer(),
         const SettingsSaveButton(),
       ],
     );
@@ -107,10 +107,10 @@ class QuizSettingsStatusSection extends ConsumerWidget {
                   ),
                 ),
                 SwitchButton(
-                  value: quizDetails.status == QuizStatus.Active,
+                  value: quizDetails.status == QuizStatus.active,
                   onChanged: (value) {
                     controller.changeQuizStatus(
-                      value ? QuizStatus.Active : QuizStatus.Inactive,
+                      value ? QuizStatus.active : QuizStatus.inactive,
                     );
                   },
                 ),
@@ -149,20 +149,20 @@ class QuizSettingsAvailabilitySection extends ConsumerWidget {
           const MediumVSpacer(),
           TextCheckbox(
             text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPrivate,
-            value: quizDetails.availability == QuizAvailability.Private,
+            value: quizDetails.availability == QuizAvailability.private,
             onChanged: (value) {
               controller.changeQuizAvailability(
-                value! ? QuizAvailability.Private : QuizAvailability.Public,
+                value! ? QuizAvailability.private : QuizAvailability.public,
               );
             },
           ),
           const SmallVSpacer(),
           TextCheckbox(
             text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
-            value: quizDetails.availability == QuizAvailability.Public,
+            value: quizDetails.availability == QuizAvailability.public,
             onChanged: (value) {
               controller.changeQuizAvailability(
-                value! ? QuizAvailability.Public : QuizAvailability.Private,
+                value! ? QuizAvailability.public : QuizAvailability.private,
               );
             },
           ),

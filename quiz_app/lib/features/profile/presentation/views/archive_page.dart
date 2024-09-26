@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/basic_app_bar.dart';
+import '../../../../core/common/widgets/empty_list_widget.dart';
 import '../../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -41,17 +42,25 @@ class _ArchivePageState extends ConsumerState<ArchivePage> {
         padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
         child: archiveState.map(
           loading: (_) => const Center(child: LoadingIndicator()),
-          success: (_) => ListView.separated(
-            itemBuilder: (context, index) {
-              return QuizzArchiveTile(
-                quizz: archivedQuizzes[index],
+          success: (_) {
+            if (archivedQuizzes.isEmpty) {
+              return EmptyListInfo(
+                message: S.of(context).archiveEmpty,
               );
-            },
-            separatorBuilder: (context, index) {
-              return const MediumVSpacer();
-            },
-            itemCount: archivedQuizzes.length,
-          ),
+            } else {
+              return ListView.separated(
+                itemBuilder: (context, index) {
+                  return QuizzArchiveTile(
+                    quizz: archivedQuizzes[index],
+                  );
+                },
+                separatorBuilder: (context, index) {
+                  return const MediumVSpacer();
+                },
+                itemCount: archivedQuizzes.length,
+              );
+            }
+          },
           error: (_) => BasicErrorPage(
             onRefresh: () {
               ref.read(archiveControllerProvider.notifier).getQuizzArchive();

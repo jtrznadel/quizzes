@@ -7,9 +7,9 @@ import 'app_text_theme.dart';
 abstract class AppTheme {
   static const double pageDefaultSpacingSize = 16;
   static const double pageDefaultTopPaddingSize = 24;
+
   static const double mediumRadius = 8;
   static const double smallRadius = 4;
-
   static const double radiusFull = 9999;
   static const double radiusMedium = 8;
 
@@ -85,6 +85,8 @@ abstract class AppTheme {
   static const double dropdownBorderWidth = 1;
   static const double dropdownListMaxHeight = 200.0;
   static const Offset dropdownListOffset = Offset(0, -5);
+
+  static const double emptyListInfoIconSize = 64;
 
   static ThemeData theme = ThemeData(
     brightness: Brightness.light,

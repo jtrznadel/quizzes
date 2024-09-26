@@ -24,7 +24,6 @@ import '../../features/dashboard/presentation/views/dashboard_page.dart';
 import '../../features/profile/presentation/views/profile_page.dart';
 import '../../features/quiz_generation/views/quizz_creation_page.dart';
 import '../../features/quizz_details/presentation/views/quizz_details_page.dart';
-import '../../temp_page.dart';
 
 part 'app_router.gr.dart';
 

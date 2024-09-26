@@ -51,7 +51,7 @@ class _QuizzCreationPageState extends ConsumerState<QuizzCreationPage> {
     ref.watch(quizGenerationControllerProvider);
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, _) {
         if (!didPop) {
           SchedulerBinding.instance.addPostFrameCallback((_) {
             if (_controller.page!.toInt() == getPages().length - 1) {

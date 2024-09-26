@@ -24,15 +24,13 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: 5,
       attachments: [],
-      language: QuizLanguage.English,
+      language: QuizLanguage.english,
     );
     return const QuizGenerationState.generating(requestModel);
   }
 
   Future<void> generate(QuizRequestModel requestModel) async {
-    final result = await ref
-        .read(_quizGenerationRepository)
-        .generateQuiz(quizRequestModel: requestModel);
+    final result = await ref.read(_quizGenerationRepository).generateQuiz(quizRequestModel: requestModel);
 
     result.fold(
       (error) {
@@ -45,8 +43,7 @@ class QuizGenerationController extends _$QuizGenerationController {
   }
 
   Future<void> createQuiz(CreateQuizModel quiz) async {
-    final result =
-        await ref.read(_quizGenerationRepository).createQuiz(quizModel: quiz);
+    final result = await ref.read(_quizGenerationRepository).createQuiz(quizModel: quiz);
 
     result.fold(
       (error) {
@@ -64,13 +61,12 @@ class QuizGenerationController extends _$QuizGenerationController {
       questionTypes: [],
       numberOfQuestions: 5,
       attachments: [],
-      language: QuizLanguage.English,
+      language: QuizLanguage.english,
     ));
   }
 
   Future<void> deleteQuestion(GenerateQuizModel quiz, int index) async {
-    final questionListCopy =
-        List<GenerateQuestionModel>.from(quiz.generateQuestions);
+    final questionListCopy = List<GenerateQuestionModel>.from(quiz.generateQuestions);
     questionListCopy.removeAt(index);
     quiz = quiz.copyWith(generateQuestions: questionListCopy);
     state = QuizGenerationState.generated(quiz);
@@ -84,7 +80,7 @@ class QuizGenerationController extends _$QuizGenerationController {
     state = QuizGenerationState.generated(quiz);
   }
 
-  void setLanguage(QuizLanguage language){
+  void setLanguage(QuizLanguage language) {
     state.maybeWhen(
       generating: (request) {
         request = request.copyWith(language: language);
@@ -94,7 +90,7 @@ class QuizGenerationController extends _$QuizGenerationController {
     );
   }
 
-  void updateQuestion(QuestionModelInterface question, int index){
+  void updateQuestion(QuestionModelInterface question, int index) {
     state.maybeWhen(
       generated: (quiz) {
         final questionListCopy = List<QuestionModelInterface>.from(quiz.generateQuestions);

@@ -18,7 +18,9 @@ class DeleteQuizDialog extends StatelessWidget {
     return Consumer(builder: (context, ref, child) {
       return DeleteDialog(
         title: S.of(context).deleteQuizzHeading,
-        content: _dialogContent(context),
+        content: DeleteQuizDialogContent(
+          quiz: quiz,
+        ),
         onConfirm: () {
           ref.read(dashboardControllerProvider.notifier).deleteQuiz(quiz.id);
           Navigator.of(context).pop();
@@ -27,7 +29,21 @@ class DeleteQuizDialog extends StatelessWidget {
     });
   }
 
-  Widget _dialogContent(BuildContext context) {
+  static void show(BuildContext context, QuizDashboardModel quiz) {
+    showDialog(
+      context: context,
+      builder: (context) => DeleteQuizDialog(quiz: quiz),
+    );
+  }
+}
+
+class DeleteQuizDialogContent extends StatelessWidget {
+  const DeleteQuizDialogContent({super.key, required this.quiz});
+
+  final QuizDashboardModel quiz;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -39,13 +55,6 @@ class DeleteQuizDialog extends StatelessWidget {
         const LargeVSpacer(),
         QuizDeleteDialogItem(quizModel: quiz),
       ],
-    );
-  }
-
-  static void show(BuildContext context, QuizDashboardModel quiz) {
-    showDialog(
-      context: context,
-      builder: (context) => DeleteQuizDialog(quiz: quiz),
     );
   }
 }

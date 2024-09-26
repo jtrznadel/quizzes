@@ -20,7 +20,7 @@ class SignInPage extends ConsumerWidget {
       resizeToAvoidBottomInset: false,
       appBar: BasicAppBar(
         title: S.of(context).signInAppBarTitle,
-        onBack: () => ref.read(appRouterProvider).replaceAll([const WelcomeRoute()]),
+        onBack: () => ref.read(appRouterProvider).replaceAll([const DashboardRoute()]),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

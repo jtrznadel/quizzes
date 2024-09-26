@@ -16,19 +16,15 @@ import '../../../theme/app_color_scheme.dart';
 import '../../../../generated/l10n.dart';
 
 class AddNewQuestionDialog extends ConsumerStatefulWidget {
-  const AddNewQuestionDialog(
-      {super.key, required this.onQuestionAdd, this.question});
+  const AddNewQuestionDialog({super.key, required this.onQuestionAdd, this.question});
 
-  //TODO: change when implementing quesiton adding in quiz details
   final void Function(QuestionModelInterface question) onQuestionAdd;
   final QuestionModelInterface? question;
 
   @override
   ConsumerState createState() => _AddNewQuestionDialogState();
 
-  static void show(BuildContext context,
-      {required void Function(QuestionModelInterface) onQuestionAdd,
-      QuestionModelInterface? question}) {
+  static void show(BuildContext context, {required void Function(QuestionModelInterface) onQuestionAdd, QuestionModelInterface? question}) {
     showDialog(
       context: context,
       builder: (context) => Scaffold(
@@ -76,10 +72,8 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
     if (widget.question != null) {
       titleController.text = widget.question!.title;
       for (var i = 0; i < widget.question!.answers.length; i++) {
-        answerControllers[Answer.values[i]]!.controller.text =
-            widget.question!.answers[i].content;
-        answerControllers[Answer.values[i]]!.isCorrect =
-            widget.question!.answers[i].isCorrect;
+        answerControllers[Answer.values[i]]!.controller.text = widget.question!.answers[i].content;
+        answerControllers[Answer.values[i]]!.isCorrect = widget.question!.answers[i].isCorrect;
       }
     }
 
@@ -99,8 +93,7 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
         BasicButton(
           onPressed: () {
             if (validateQuestion()) {
-              final answers = answerControllers.values.toList().where(
-                  (element) => element.controller.text.trim().isNotEmpty);
+              final answers = answerControllers.values.toList().where((element) => element.controller.text.trim().isNotEmpty);
               final question = GenerateQuestionModel(
                 title: titleController.text,
                 generateAnswers: List.generate(
@@ -131,17 +124,13 @@ class _AddNewQuestionDialogState extends ConsumerState<AddNewQuestionDialog> {
       return false;
     }
 
-    final notEmptyAnswers = answerControllers.entries
-        .toList()
-        .where((element) => element.value.controller.text.trim().isNotEmpty);
+    final notEmptyAnswers = answerControllers.entries.toList().where((element) => element.value.controller.text.trim().isNotEmpty);
     if (notEmptyAnswers.length < 2) {
       return false;
     }
 
     final correctAnswers = answerControllers.entries.toList().where(
-          (element) =>
-              element.value.isCorrect &&
-              element.value.controller.text.trim().isNotEmpty,
+          (element) => element.value.isCorrect && element.value.controller.text.trim().isNotEmpty,
         );
     if (correctAnswers.isEmpty) {
       return false;

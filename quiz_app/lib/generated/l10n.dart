@@ -2110,6 +2110,16 @@ class S {
     );
   }
 
+  /// `You do not have any archived quizzes yet.`
+  String get archiveEmpty {
+    return Intl.message(
+      'You do not have any archived quizzes yet.',
+      name: 'archiveEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Quizz Result Details`
   String get archiveResultsAppBarTitle {
     return Intl.message(

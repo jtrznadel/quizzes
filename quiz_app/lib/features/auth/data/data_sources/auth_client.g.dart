@@ -161,7 +161,7 @@ class _AuthClient implements AuthClient {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$authClientHash() => r'84aa9401c0bc33600214cf7a867cb4e4f1c05752';
+String _$authClientHash() => r'98fc036f8fe3539bca346b1dec5342722b491af1';
 
 /// See also [authClient].
 @ProviderFor(authClient)

@@ -24,8 +24,8 @@ class QuizzStatusTile extends StatelessWidget {
         const MediumHSpacer(),
         QuizStatusBadge(
           text: quizz.status.name,
-          backgroundColor: quizz.status == QuizStatus.Active ? AppColorScheme.successLight : AppColorScheme.warningLight,
-          textColor: quizz.status == QuizStatus.Active ? AppColorScheme.success : AppColorScheme.warning,
+          backgroundColor: quizz.status == QuizStatus.active ? AppColorScheme.successLight : AppColorScheme.warningLight,
+          textColor: quizz.status == QuizStatus.active ? AppColorScheme.success : AppColorScheme.warning,
         ),
       ],
     );
