@@ -15,7 +15,7 @@ class QuizDetailsGeneralTab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(quizDetailsControllerProvider);
     return state.maybeWhen(
-      loaded: (quizDetails, _) {
+      loaded: (quizDetails, _, __) {
             TextEditingController(text: quizDetails.description);
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,

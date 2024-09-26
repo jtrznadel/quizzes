@@ -39,12 +39,12 @@ class _GeneralQuizPageSettingsState
   @override
   Widget build(BuildContext context) {
     titleController.text = ref.watch(quizDetailsControllerProvider).maybeWhen(
-          loaded: (quizDetails, _) => quizDetails.title,
+          loaded: (quizDetails, _, __) => quizDetails.title,
           orElse: () => '',
         );
     descriptionController.text =
         ref.watch(quizDetailsControllerProvider).maybeWhen(
-              loaded: (quizDetails, _) => quizDetails.description,
+              loaded: (quizDetails, _, __) => quizDetails.description,
               orElse: () => '',
             );
 
@@ -86,7 +86,7 @@ class _GeneralQuizPageSettingsState
         Align(
           alignment: Alignment.centerRight,
           child: state.maybeWhen(
-            loaded: (quiz, _) => BasicButton(
+            loaded: (quiz, _, __) => BasicButton(
               onPressed: () async {
                 final success = await controller.updateQuizDetails(
                   quiz.id,
