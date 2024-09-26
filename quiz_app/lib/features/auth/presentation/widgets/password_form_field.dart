@@ -1,20 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/validators/validators.dart';
 import '../../../../core/common/widgets/form_field.dart';
-import '../../../../core/res/media_res.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/auth_controller.dart';
 
 class PasswordFormField extends ConsumerWidget {
-  const PasswordFormField({
-    super.key,
-    required this.passwordController,
-    this.validate = false
-  });
+  const PasswordFormField(
+      {super.key, required this.passwordController, this.validate = false});
 
   final TextEditingController passwordController;
   final bool validate;
@@ -39,14 +33,8 @@ class PasswordFormField extends ConsumerWidget {
           controller.togglePasswordVisibility();
         },
         icon: obscurePassword
-            ? SvgPicture.asset(
-                MediaRes.fluentEye,
-                fit: BoxFit.scaleDown,
-              )
-            : SvgPicture.asset(
-                MediaRes.fluentEye,
-                fit: BoxFit.scaleDown,
-              ),
+            ? const Icon(Icons.visibility_outlined, color: Color(0xFF6A707C))
+            : const Icon(Icons.visibility_off_outlined, color: Color(0xFF6A707C)),
       ),
     );
   }
