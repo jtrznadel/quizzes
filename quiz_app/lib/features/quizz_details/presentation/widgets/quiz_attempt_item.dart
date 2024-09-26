@@ -5,7 +5,6 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../../core/utils/date_time_json_converter.dart';
 import '../../../../core/utils/enums/participation_status_enum.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/theme/app_color_scheme.dart';

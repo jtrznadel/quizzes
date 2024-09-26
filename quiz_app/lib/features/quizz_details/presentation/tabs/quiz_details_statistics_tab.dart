@@ -5,6 +5,7 @@ import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../domain/participant_model.dart';
 import '../widgets/quiz_attempt_item.dart';
@@ -37,24 +38,30 @@ class QuizDetailsStatisticsTab extends ConsumerWidget {
                 ),
               );
             }
-            return PaginatedList<ParticipantModel>(
-              items: quizDetails.participants.items,
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              builder: (context, index) {
-                return Column(
-                  children: [
-                    QuizAttemptItem(participant: quizDetails.participants.items[index]),
-                    const MediumVSpacer(),
-                  ],
-                );
-              },
-              isLastPage: quizDetails.participants.items.length >= quizDetails.participants.totalItemsCount,
-              isRecentSearch: false,
-              loadingIndicator: const LoadingIndicator(),
-              onLoadMore: (index) {
-                controller.loadParticipants();
-              },
+            return Theme(
+              data: AppTheme.theme.copyWith(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+              ),
+              child: PaginatedList<ParticipantModel>(
+                items: quizDetails.participants.items,
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
+                builder: (context, index) {
+                  return Column(
+                    children: [
+                      QuizAttemptItem(participant: quizDetails.participants.items[index]),
+                      const MediumVSpacer(),
+                    ],
+                  );
+                },
+                isLastPage: quizDetails.participants.items.length >= quizDetails.participants.totalItemsCount,
+                isRecentSearch: false,
+                loadingIndicator: const LoadingIndicator(),
+                onLoadMore: (index) {
+                  controller.loadParticipants();
+                },
+              ),
             );
           },
           orElse: () => const SizedBox.shrink(),

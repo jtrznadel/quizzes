@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../generated/l10n.dart';
 import '../../extensions/context_extension.dart';
 import '../../res/media_res.dart';
 import '../../theme/app_color_scheme.dart';
-import 'info_snackbar.dart';
+import '../../theme/app_theme.dart';
 
-class ShareLinkContainer extends StatelessWidget {
+class ShareLinkContainer extends StatefulWidget {
   const ShareLinkContainer({
     super.key,
     required this.link,
@@ -16,6 +15,12 @@ class ShareLinkContainer extends StatelessWidget {
 
   final String link;
 
+  @override
+  State<ShareLinkContainer> createState() => _ShareLinkContainerState();
+}
+
+class _ShareLinkContainerState extends State<ShareLinkContainer> {
+  bool copied = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +34,7 @@ class ShareLinkContainer extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              link,
+              widget.link,
               style: context.textTheme.bodyLarge?.copyWith(
                 color: Colors.black,
               ),
@@ -38,17 +43,31 @@ class ShareLinkContainer extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {
-              Clipboard.setData(ClipboardData(text: link));
-              InfoSnackbar.show(context, S.of(context).linkCopied, color: AppColorScheme.primary);
+            onPressed: () async {
+              Clipboard.setData(ClipboardData(text: widget.link));
+              //InfoSnackbar.show(context, S.of(context).linkCopied,
+              //    color: AppColorScheme.primary);
+              setState(() {
+                copied = true;
+              });
+              Future.delayed(const Duration(seconds: AppTheme.copyLinkIconChangeDuration), () {
+                setState(() {
+                  copied = false;
+                });
+              });
             },
-            icon: SvgPicture.asset(
-              MediaRes.copy,
-              colorFilter: const ColorFilter.mode(
-                AppColorScheme.primary,
-                BlendMode.srcIn,
-              ),
-            ),
+            icon: copied
+                ? const Icon(
+                    Icons.done,
+                    color: AppColorScheme.primary,
+                  )
+                : SvgPicture.asset(
+                    MediaRes.copy,
+                    colorFilter: const ColorFilter.mode(
+                      AppColorScheme.primary,
+                      BlendMode.srcIn,
+                    ),
+                  ),
           ),
         ],
       ),

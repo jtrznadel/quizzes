@@ -86,6 +86,7 @@ abstract class AppTheme {
   static const double dropdownListMaxHeight = 200.0;
   static const Offset dropdownListOffset = Offset(0, -5);
 
+  static const int copyLinkIconChangeDuration = 5;
   static const double emptyListInfoIconSize = 64;
 
   static ThemeData theme = ThemeData(
