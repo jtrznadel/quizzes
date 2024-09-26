@@ -18,18 +18,15 @@ enum Answer {
 }
 
 class AddQuestionDialogAnswerSection extends StatefulWidget {
-  const AddQuestionDialogAnswerSection(
-      {super.key, required this.answerControllers});
+  const AddQuestionDialogAnswerSection({super.key, required this.answerControllers});
 
   final Map<Answer, AnswerWithValidation> answerControllers;
 
   @override
-  State<AddQuestionDialogAnswerSection> createState() =>
-      _AddQuestionDialogAnswerSectionState();
+  State<AddQuestionDialogAnswerSection> createState() => _AddQuestionDialogAnswerSectionState();
 }
 
-class _AddQuestionDialogAnswerSectionState
-    extends State<AddQuestionDialogAnswerSection> {
+class _AddQuestionDialogAnswerSectionState extends State<AddQuestionDialogAnswerSection> {
   Answer? _selectedAnswer;
 
   void _onAnswerSelected(MapEntry<Answer, AnswerWithValidation> answer) {
@@ -50,7 +47,6 @@ class _AddQuestionDialogAnswerSectionState
 
   @override
   Widget build(BuildContext context) {
-    //TODO: add error handling for when there's no correct answer (the AI model didn't return any)
     _selectedAnswer ??= widget.answerControllers.entries.firstWhere((element) => element.value.isCorrect).key;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,8 +55,7 @@ class _AddQuestionDialogAnswerSectionState
           S.of(context).quizzCreationAddQuestionAnswersLabel,
           style: context.textTheme.bodyMedium,
         ),
-        for (final entry in widget.answerControllers.entries)
-          _buildAnswerTextArea(entry),
+        for (final entry in widget.answerControllers.entries) _buildAnswerTextArea(entry),
       ],
     );
   }

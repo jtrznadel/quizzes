@@ -17,15 +17,12 @@ class QuizAttemptItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final status =
-        ParticipationStatus.getParticipationStatus(participant.status);
-    final date = DateFormat('dd.MM.yyyy HH:mm')
-        .format(DateTime.parse(participant.participationDateUtc).toLocal());
+    final status = ParticipationStatus.getParticipationStatus(participant.status);
+    final date = DateFormat('dd.MM.yyyy HH:mm').format(DateTime.parse(participant.participationDateUtc).toLocal());
     return Container(
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surfaceContainer,
-        borderRadius:
-            BorderRadius.circular(AppTheme.quizAttemptItemBorderRadius),
+        borderRadius: BorderRadius.circular(AppTheme.quizAttemptItemBorderRadius),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -34,8 +31,7 @@ class QuizAttemptItem extends StatelessWidget {
           const SmallVSpacer(),
           Builder(
             builder: (context) {
-              if (status != ParticipationStatus.started &&
-                  status != ParticipationStatus.stopped) {
+              if (status != ParticipationStatus.started && status != ParticipationStatus.stopped) {
                 return Column(
                   children: [
                     InfoRow(
@@ -59,14 +55,12 @@ class QuizAttemptItem extends StatelessWidget {
             value: date.toString(),
           ),
         ],
-      ).addPadding(
-          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
+      ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
     );
   }
 
   Widget statusBadges(BuildContext context, String status) {
-    final participationStatus =
-        ParticipationStatus.getParticipationStatus(status);
+    final participationStatus = ParticipationStatus.getParticipationStatus(status);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

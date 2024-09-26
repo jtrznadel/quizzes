@@ -39,8 +39,7 @@ class QuizzSuccessPage extends ConsumerWidget {
       },
       created: (quizResult) {
         return Padding(
-          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
-              .copyWith(top: 0), //TODO: Remove top padding if needed
+          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,7 +53,6 @@ class QuizzSuccessPage extends ConsumerWidget {
                 style: context.textTheme.bodyMedium,
               ),
               const ExtraLargeVSpacer(),
-              //TODO: Replace with actual link
               ShareLinkContainer(link: quizResult.url),
               const ExtraLargeVSpacer(),
               BasicButton(
@@ -67,9 +65,7 @@ class QuizzSuccessPage extends ConsumerWidget {
               const MediumVSpacer(),
               SecondaryButton(
                 onPressed: () {
-                  ref
-                      .read(quizGenerationControllerProvider.notifier)
-                      .resetState();
+                  ref.read(quizGenerationControllerProvider.notifier).resetState();
                   ref.read(appRouterProvider).push(const DashboardRoute());
                 },
                 text: S.of(context).quizzCreationSuccessBackButton,

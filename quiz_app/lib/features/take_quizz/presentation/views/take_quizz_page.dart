@@ -75,6 +75,7 @@ class _TakeQuizzPageState extends ConsumerState<TakeQuizzPage> {
                 labelText: S.of(context).quizzTakeFormFieldLabel,
                 hintText: userState.maybeWhen(
                   success: (user, _) => user.displayName,
+                  guest: (user) => user.displayName,
                   orElse: () => S.of(context).unknownUsername,
                 ),
                 controller: usernameController,

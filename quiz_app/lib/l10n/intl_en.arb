@@ -258,6 +258,7 @@
 
     "archiveAppBarTitle": "Archive",
     "archiveLoadingError": "There was an error with loading the archive. Please try again.",
+    "archiveEmpty": "You do not have any archived quizzes yet.",
     "archiveResultsAppBarTitle": "Quizz Result Details",
     "archiveResultsHeading": "Result:",
 

@@ -19,7 +19,10 @@ class ArchiveController extends _$ArchiveController {
       final quizzArchive = await ref.read(_userRepository).getQuizzArchive();
       quizzArchive.fold(
         (error) => state = ArchiveState.error(error),
-        (quizzArchive) => state = ArchiveState.success(quizzArchive),
+        (quizzArchive) {
+          final fileredArchivedModel = quizzArchive.where((element) => element.status == 'Finished').toList();
+          state = ArchiveState.success(fileredArchivedModel);
+        },
       );
     } on Exception catch (e) {
       state = ArchiveState.error(e);

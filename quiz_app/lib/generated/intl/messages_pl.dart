@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewQuizzButton":
             MessageLookupByLibrary.simpleMessage("Dodaj nowy quizz"),
         "archiveAppBarTitle": MessageLookupByLibrary.simpleMessage("Archiwum"),
+        "archiveEmpty": MessageLookupByLibrary.simpleMessage(
+            "Nie masz jeszcze żadnych archiwalnych Quizzów."),
         "archiveLoadingError": MessageLookupByLibrary.simpleMessage(
             "Nie udało się załadować archiwum. Spróbuj ponownie."),
         "archiveResultsAppBarTitle":

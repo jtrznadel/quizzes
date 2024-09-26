@@ -25,7 +25,7 @@ class QuizzConfigurePage extends ConsumerWidget {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,7 +47,7 @@ class QuizzConfigurePage extends ConsumerWidget {
             ),
           ),
           Positioned(
-            bottom: 16,
+            bottom: 0,
             left: 16,
             right: 16,
             child: Container(

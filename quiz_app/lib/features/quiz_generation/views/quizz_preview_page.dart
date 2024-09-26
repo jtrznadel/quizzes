@@ -11,6 +11,7 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../core/common/widgets/errors/basic_error_page.dart';
+import '../../../core/common/widgets/loading_indicator.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../../core/models/question_model_interface.dart';
 import '../../../core/res/media_res.dart';
@@ -31,19 +32,15 @@ class QuizzPreviewPage extends ConsumerWidget {
     final controller = ref.read(quizGenerationControllerProvider.notifier);
     return state.maybeWhen(
       orElse: () {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
+        return const LoadingIndicator();
       },
       generated: (quiz) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 16),
+        return SafeArea(
           child: Stack(
             children: [
               SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
-                      .copyWith(top: 0), //TODO: Remove top padding if needed
+                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -56,7 +53,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                         title: quiz.title,
                         description: quiz.description,
                       ),
-                      const ExtraLargeVSpacer(),
+                      const MediumVSpacer(),
                       Align(
                         alignment: Alignment.centerRight,
                         child: SecondaryButton(
@@ -84,11 +81,10 @@ class QuizzPreviewPage extends ConsumerWidget {
                                   questionIndex: index,
                                   question: quiz.generateQuestions[index],
                                   onDelete: () async {
-                                    await onDelete(
-                                        context, index, state, controller);
+                                    await onDelete(context, index, state, controller);
                                   },
                                   correctAnswerVisible: true,
-                                  onEdit: (question){
+                                  onEdit: (question) {
                                     controller.updateQuestion(question, index);
                                   },
                                 ),
@@ -116,8 +112,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                         duration: const Duration(milliseconds: 500),
                         curve: Curves.easeInOut,
                       );
-                      final quizCreationModel =
-                          CreateQuizModel.fromGenerateQuizModel(model: quiz);
+                      final quizCreationModel = CreateQuizModel.fromGenerateQuizModel(model: quiz);
                       await controller.createQuiz(quizCreationModel);
                     },
                     text: S.of(context).saveQuizzButton,
@@ -131,7 +126,7 @@ class QuizzPreviewPage extends ConsumerWidget {
       error: (error) {
         return BasicErrorPage(
           errorText: S.of(context).somethingWentWrong,
-          onRefresh: (){
+          onRefresh: () {
             ref.read(appRouterProvider).replaceAll([const DashboardRoute()]);
             controller.resetState();
           },
@@ -142,8 +137,7 @@ class QuizzPreviewPage extends ConsumerWidget {
     );
   }
 
-  Future<void> onDelete(BuildContext context, int index,
-      QuizGenerationState state, QuizGenerationController controller) async {
+  Future<void> onDelete(BuildContext context, int index, QuizGenerationState state, QuizGenerationController controller) async {
     showDialog(
       context: context,
       builder: (context) {
@@ -156,8 +150,7 @@ class QuizzPreviewPage extends ConsumerWidget {
           onConfirm: () async {
             state.maybeWhen(
               generated: (quiz) async {
-                final questionListCopy =
-                    List<GenerateQuestionModel>.from(quiz.generateQuestions);
+                final questionListCopy = List<GenerateQuestionModel>.from(quiz.generateQuestions);
                 questionListCopy.removeAt(index);
                 quiz = quiz.copyWith(generateQuestions: questionListCopy);
                 controller.modifyGeneratedQuiz(quiz);

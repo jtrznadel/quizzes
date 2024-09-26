@@ -23,32 +23,49 @@ import '../application/quiz_generation_controller.dart';
 import '../widgets/attachment_tile.dart';
 
 enum QuizLanguage {
-  English,
-  Spanish,
-  Polish,
-  German,
-  French,
-  Italian,
+  english,
+  spanish,
+  polish,
+  german,
+  french,
+  italian,
 }
 
 extension QuizLanguageExtension on QuizLanguage {
   String get language {
     switch (this) {
-      case QuizLanguage.English:
+      case QuizLanguage.english:
         return S.current.quizLanguageEnglish;
-      case QuizLanguage.Spanish:
+      case QuizLanguage.spanish:
         return S.current.quizLanguageSpanish;
-      case QuizLanguage.Polish:
+      case QuizLanguage.polish:
         return S.current.quizLanguagePolish;
-      case QuizLanguage.German:
+      case QuizLanguage.german:
         return S.current.quizLanguageGerman;
-      case QuizLanguage.French:
+      case QuizLanguage.french:
         return S.current.quizLanguageFrench;
-      case QuizLanguage.Italian:
+      case QuizLanguage.italian:
         return S.current.quizLanguageItalian;
     }
   }
-} 
+
+  String get name {
+    switch (this) {
+      case QuizLanguage.english:
+        return 'English';
+      case QuizLanguage.spanish:
+        return 'Spanish';
+      case QuizLanguage.polish:
+        return 'Polish';
+      case QuizLanguage.german:
+        return 'German';
+      case QuizLanguage.french:
+        return 'French';
+      case QuizLanguage.italian:
+        return 'Italian';
+    }
+  }
+}
 
 class QuizzTextPromptPage extends ConsumerStatefulWidget {
   const QuizzTextPromptPage({super.key, required this.pageController});
@@ -70,15 +87,13 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
 
   @override
   Widget build(BuildContext context) {
-    final quizzGenerationController =
-        ref.read(quizGenerationControllerProvider.notifier);
+    final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
     final state = ref.watch(quizGenerationControllerProvider);
 
     Future<void> handleFileUpload() async {
       try {
         if (!quizzGenerationController.validateFileUpload()) {
-          ErrorSnackbar.show(
-              context, S.of(context).quizzCreationMaxAttachmentsError);
+          ErrorSnackbar.show(context, S.of(context).quizzCreationMaxAttachmentsError);
           return;
         }
         final file = await FileReader.pickFileAndRead();
@@ -99,8 +114,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
-                  .copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(bottom: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -116,10 +130,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                   Form(
                     key: _formKey,
                     child: TextArea(
-                      labelText:
-                          S.of(context).quizzCreationTextPromptTextAreaLabel,
-                      hintText:
-                          S.of(context).quizzCreationTextPromptTextAreaHint,
+                      labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
+                      hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
                       minLines: 5,
                       maxLines: 10,
                       controller: _promptController,
@@ -127,8 +139,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AppTheme.pageDefaultSpacingSize),
+                    padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
                     child: TextDivider(
                       text: S.of(context).dividerOr,
                       color: AppColorScheme.textSecondary,
@@ -145,20 +156,16 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                   const MediumVSpacer(),
                   Text(
                     S.of(context).quizzCreationAttachFileMaxSize,
-                    style: context.textTheme.bodySmall
-                        ?.copyWith(color: AppColorScheme.textSecondary),
+                    style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
                   ),
                   Text(
                     S.of(context).quizzCreationAttachFileAllowedTypes,
-                    style: context.textTheme.bodySmall
-                        ?.copyWith(color: AppColorScheme.textSecondary),
+                    style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
                   ),
                   Column(
                     children: state.maybeWhen(
                       generating: (request) {
-                        return request.attachments
-                            .map((file) => AttachmentTile(fileName: file.name))
-                            .toList();
+                        return request.attachments.map((file) => AttachmentTile(fileName: file.name)).toList();
                       },
                       orElse: () => [],
                     ),
@@ -175,7 +182,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
             ),
           ),
           Positioned(
-            bottom: 8,
+            bottom: 0,
             left: 16,
             right: 16,
             child: Container(
@@ -190,8 +197,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    ErrorSnackbar.show(context,
-                        S.of(context).quizzCreationYouNeedToProvideContent);
+                    ErrorSnackbar.show(context, S.of(context).quizzCreationYouNeedToProvideContent);
                   }
                 },
                 text: S.of(context).continueButton,
@@ -213,9 +219,9 @@ class LanguageSelectionList extends ConsumerWidget {
     var value = ref.watch(quizGenerationControllerProvider).maybeWhen(
           generating: (request) => QuizLanguage.values.firstWhere(
             (element) => element == request.language,
-            orElse: () => QuizLanguage.English,
+            orElse: () => QuizLanguage.english,
           ),
-          orElse: () => QuizLanguage.English,
+          orElse: () => QuizLanguage.english,
         );
     return LayoutBuilder(builder: (context, constraints) {
       return SizedBox(
@@ -226,9 +232,7 @@ class LanguageSelectionList extends ConsumerWidget {
             child: DropdownButton2<QuizLanguage>(
               value: value,
               onChanged: (language) {
-                ref
-                    .read(quizGenerationControllerProvider.notifier)
-                    .setLanguage(language ?? QuizLanguage.English);
+                ref.read(quizGenerationControllerProvider.notifier).setLanguage(language ?? QuizLanguage.english);
               },
               iconStyleData: IconStyleData(
                 icon: Row(
@@ -253,9 +257,7 @@ class LanguageSelectionList extends ConsumerWidget {
               buttonStyleData: ButtonStyleData(
                 padding: const EdgeInsets.all(0),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                      color: AppColorScheme.border,
-                      width: AppTheme.dropdownBorderWidth),
+                  border: Border.all(color: AppColorScheme.border, width: AppTheme.dropdownBorderWidth),
                   borderRadius: BorderRadius.circular(AppTheme.radiusMedium),
                 ),
               ),
@@ -269,44 +271,44 @@ class LanguageSelectionList extends ConsumerWidget {
 
   List<DropdownMenuItem<QuizLanguage>> dropdownMenuEntries() => [
         DropdownMenuItem(
-          value: QuizLanguage.English,
+          value: QuizLanguage.english,
           child: Text(
-            QuizLanguage.English.language,
+            QuizLanguage.english.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.Spanish,
+          value: QuizLanguage.spanish,
           child: Text(
-            QuizLanguage.Spanish.language,
+            QuizLanguage.spanish.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.Polish,
+          value: QuizLanguage.polish,
           child: Text(
-            QuizLanguage.Polish.language,
+            QuizLanguage.polish.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.German,
+          value: QuizLanguage.german,
           child: Text(
-            QuizLanguage.German.language,
+            QuizLanguage.german.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.French,
+          value: QuizLanguage.french,
           child: Text(
-            QuizLanguage.French.language,
+            QuizLanguage.french.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.Italian,
+          value: QuizLanguage.italian,
           child: Text(
-            QuizLanguage.Italian.language,
+            QuizLanguage.italian.language,
             style: textTheme.bodyMedium,
           ),
         ),

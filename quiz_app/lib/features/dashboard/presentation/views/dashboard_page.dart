@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:paginated_list/paginated_list.dart';
 
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/empty_list_widget.dart';
 import '../../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -44,8 +45,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppTheme.pageDefaultSpacingSize),
+          padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
           child: state.when(
               loading: () => const LoadingIndicator(),
               loaded: (quizListModel, currentPage) {
@@ -55,16 +55,16 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                     const DashboardTopBar(),
                     const SmallVSpacer(),
                     quizListModel.items.isEmpty
-                        ? Column(
-                            children: [
-                              const NewQuizButton(),
-                              const LargeVSpacer(),
-                              Text(
-                                S.of(context).dashboardQuizzesEmpty,
-                                style: context.theme.textTheme.bodyLarge,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                        ? Expanded(
+                            child: Column(
+                              children: [
+                                const NewQuizButton(),
+                                EmptyListInfo(
+                                  iconPath: MediaRes.wrongAnswer,
+                                  message: S.of(context).dashboardQuizzesEmpty,
+                                ),
+                              ],
+                            ),
                           )
                         : const Expanded(child: QuizList()),
                   ],
@@ -105,9 +105,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                               const LargeVSpacer(),
                               BasicButton(
                                 onPressed: () {
-                                  ref
-                                      .read(appRouterProvider)
-                                      .push(const SignUpRoute());
+                                  ref.read(appRouterProvider).push(const SignUpRoute());
                                 },
                                 text: S.of(context).registerButton,
                               )

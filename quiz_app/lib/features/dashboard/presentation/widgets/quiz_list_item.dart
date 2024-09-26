@@ -44,8 +44,10 @@ class QuizListItem extends ConsumerWidget {
 
   Widget quizContainer(List<Widget> children) {
     return Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius), color: Colors.transparent),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius),
+        color: AppColorScheme.surfaceContainer,
+      ),
       child: DottedBorderContainer(
         child:
             Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children).addPadding(
