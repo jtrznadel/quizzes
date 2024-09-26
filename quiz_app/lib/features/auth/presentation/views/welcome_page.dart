@@ -16,12 +16,18 @@ class WelcomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             height: double.infinity,
-            color: const Color(0xFF0D121F),
-          ),
-          SvgPicture.asset(
-            MediaRes.welcomeBackground,
-            width: double.infinity,
-            height: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xFF0D121F),
+                  Color(0x990D121F),
+                  Color.fromARGB(255, 238, 238, 238),
+                  Colors.white,
+                ],
+              ),
+            ),
           ),
           SvgPicture.asset(
             MediaRes.eclipse,

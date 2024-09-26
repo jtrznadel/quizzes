@@ -112,6 +112,7 @@
     "quizzDetailsTabStatisticsFinishedStatusBadge": "Finished",
     "quizzDetailsTabStatisticsStoppedStatusBadge": "Stopped",
     "quizzDetailsTabStatisticsStartedStatusBadge": "Started",
+    "quizzDetailsTabStatisticsNoParticipants": "No participants yet.",
 
     "quizzDetailsTabStatisticsScore": "Score",
     "quizzDetailsTabStatisticsName": "Name",

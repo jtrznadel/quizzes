@@ -59,7 +59,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage> with Single
       onPopInvokedWithResult: (didPop, _) {
         if (didPop) {
           state.maybeWhen(
-            loaded: (quizDetails, _) {
+            loaded: (quizDetails, _, __) {
               ref.read(dashboardControllerProvider.notifier).reloadItem(quizDetails);
             },
             orElse: () {},
@@ -85,7 +85,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage> with Single
             errorText: S.of(context).somethingWentWrong,
           );
         },
-        loaded: (quizDetails, _) {
+        loaded: (quizDetails, _, __) {
           return Scaffold(
             backgroundColor: AppColorScheme.surface,
             appBar: BasicAppBar(

@@ -19,7 +19,8 @@ mixin _$QuizDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizDetailsModel quizDetails, bool answersVisible)
+    required TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -27,7 +28,8 @@ mixin _$QuizDetailsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizDetailsModel quizDetails, bool answersVisible)?
+    TResult? Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
         loaded,
     TResult? Function(String message)? error,
   }) =>
@@ -35,7 +37,9 @@ mixin _$QuizDetailsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizDetailsModel quizDetails, bool answersVisible)? loaded,
+    TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -121,7 +125,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizDetailsModel quizDetails, bool answersVisible)
+    required TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -132,7 +137,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizDetailsModel quizDetails, bool answersVisible)?
+    TResult? Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -143,7 +149,9 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizDetailsModel quizDetails, bool answersVisible)? loaded,
+    TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -198,7 +206,8 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({QuizDetailsModel quizDetails, bool answersVisible});
+  $Res call(
+      {QuizDetailsModel quizDetails, bool answersVisible, int pageNumber});
 
   $QuizDetailsModelCopyWith<$Res> get quizDetails;
 }
@@ -216,6 +225,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? quizDetails = null,
     Object? answersVisible = null,
+    Object? pageNumber = null,
   }) {
     return _then(_$LoadedImpl(
       null == quizDetails
@@ -226,6 +236,10 @@ class __$$LoadedImplCopyWithImpl<$Res>
           ? _value.answersVisible
           : answersVisible // ignore: cast_nullable_to_non_nullable
               as bool,
+      null == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -241,16 +255,18 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(this.quizDetails, this.answersVisible);
+  const _$LoadedImpl(this.quizDetails, this.answersVisible, this.pageNumber);
 
   @override
   final QuizDetailsModel quizDetails;
   @override
   final bool answersVisible;
+  @override
+  final int pageNumber;
 
   @override
   String toString() {
-    return 'QuizDetailsState.loaded(quizDetails: $quizDetails, answersVisible: $answersVisible)';
+    return 'QuizDetailsState.loaded(quizDetails: $quizDetails, answersVisible: $answersVisible, pageNumber: $pageNumber)';
   }
 
   @override
@@ -261,11 +277,14 @@ class _$LoadedImpl implements _Loaded {
             (identical(other.quizDetails, quizDetails) ||
                 other.quizDetails == quizDetails) &&
             (identical(other.answersVisible, answersVisible) ||
-                other.answersVisible == answersVisible));
+                other.answersVisible == answersVisible) &&
+            (identical(other.pageNumber, pageNumber) ||
+                other.pageNumber == pageNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, quizDetails, answersVisible);
+  int get hashCode =>
+      Object.hash(runtimeType, quizDetails, answersVisible, pageNumber);
 
   @JsonKey(ignore: true)
   @override
@@ -277,34 +296,38 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizDetailsModel quizDetails, bool answersVisible)
+    required TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(quizDetails, answersVisible);
+    return loaded(quizDetails, answersVisible, pageNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizDetailsModel quizDetails, bool answersVisible)?
+    TResult? Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
         loaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(quizDetails, answersVisible);
+    return loaded?.call(quizDetails, answersVisible, pageNumber);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizDetailsModel quizDetails, bool answersVisible)? loaded,
+    TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(quizDetails, answersVisible);
+      return loaded(quizDetails, answersVisible, pageNumber);
     }
     return orElse();
   }
@@ -345,12 +368,12 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements QuizDetailsState {
-  const factory _Loaded(
-          final QuizDetailsModel quizDetails, final bool answersVisible) =
-      _$LoadedImpl;
+  const factory _Loaded(final QuizDetailsModel quizDetails,
+      final bool answersVisible, final int pageNumber) = _$LoadedImpl;
 
   QuizDetailsModel get quizDetails;
   bool get answersVisible;
+  int get pageNumber;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -421,7 +444,8 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(QuizDetailsModel quizDetails, bool answersVisible)
+    required TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -432,7 +456,8 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(QuizDetailsModel quizDetails, bool answersVisible)?
+    TResult? Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
         loaded,
     TResult? Function(String message)? error,
   }) {
@@ -443,7 +468,9 @@ class _$ErrorImpl implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(QuizDetailsModel quizDetails, bool answersVisible)? loaded,
+    TResult Function(
+            QuizDetailsModel quizDetails, bool answersVisible, int pageNumber)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

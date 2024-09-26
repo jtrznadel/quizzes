@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -14,15 +13,19 @@ abstract class QuizDetailsClient {
   factory QuizDetailsClient(Dio dio, {String baseUrl}) = _QuizDetailsClient;
 
   @GET(ApiConstants.getQuizEndpoint)
-  Future<QuizDetailsModel> getQuiz(@Path('id') String id);
+  Future<QuizDetailsModel> getQuiz(
+      @Path('id') String id,
+      @Query(ApiConstants.participationsPageQuery) int page,
+      @Query(ApiConstants.participationsPageSizeQuery) int pageSize);
 
   @PATCH(ApiConstants.updateQuizStatusEndpoint)
   Future<void> updateQuizStatus(@Path('id') String id, @Body() String status);
 
   @PATCH(ApiConstants.updateQuizAvailabilityEndpoint)
-  Future<void> updateQuizAvailability(@Path('id') String id, @Body() String availability);
+  Future<void> updateQuizAvailability(
+      @Path('id') String id, @Body() String availability);
 
-  @PUT(ApiConstants.updateQuizDetailsEndpoint)      
+  @PUT(ApiConstants.updateQuizDetailsEndpoint)
   Future<void> updateQuizDetails(@Body() Map<String, dynamic> quizDetails);
 
   @POST(ApiConstants.addQuestionEndpoint)
@@ -37,4 +40,5 @@ abstract class QuizDetailsClient {
 
 @riverpod
 QuizDetailsClient quizDetailsClient(QuizDetailsClientRef ref) =>
-    QuizDetailsClient(ref.read(baseDioClientProvider), baseUrl: ApiConstants.baseUrl);
+    QuizDetailsClient(ref.read(baseDioClientProvider),
+        baseUrl: ApiConstants.baseUrl);

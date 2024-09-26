@@ -345,6 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zakończony"),
         "quizzDetailsTabStatisticsName":
             MessageLookupByLibrary.simpleMessage("Imię"),
+        "quizzDetailsTabStatisticsNoParticipants":
+            MessageLookupByLibrary.simpleMessage("Brak rozwiązań quizzu."),
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Wynik"),
         "quizzDetailsTabStatisticsSecondsElapsed": m1,

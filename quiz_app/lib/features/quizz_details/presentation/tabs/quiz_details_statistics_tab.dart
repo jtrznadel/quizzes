@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:paginated_list/paginated_list.dart';
+import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../application/quiz_details_controller.dart';
+import '../../domain/participant_model.dart';
 import '../widgets/quiz_attempt_item.dart';
 import '../../../../generated/l10n.dart';
 
-class QuizDetailsStatisticsTab extends StatelessWidget {
+class QuizDetailsStatisticsTab extends ConsumerWidget {
   const QuizDetailsStatisticsTab({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.read(quizDetailsControllerProvider.notifier);
+    final state = ref.watch(quizDetailsControllerProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -20,14 +27,37 @@ class QuizDetailsStatisticsTab extends StatelessWidget {
               .copyWith(color: AppColorScheme.textSecondary),
         ),
         const MediumVSpacer(),
-        ListView.separated(
-          itemCount: 10,
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          itemBuilder: (context, index) {
-            return const QuizAttemptItem();
+        state.maybeWhen(
+          loaded: (quizDetails, _, pageNumber) {
+            if(quizDetails.participants.items.isEmpty) {
+              return Center(
+                child: Text(
+                  S.of(context).quizzDetailsTabStatisticsNoParticipants,
+                  style: context.textTheme.labelLarge
+                ),
+              );
+            }
+            return PaginatedList<ParticipantModel>(
+              items: quizDetails.participants.items,
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
+              builder: (context, index) {
+                return Column(
+                  children: [
+                    QuizAttemptItem(participant: quizDetails.participants.items[index]),
+                    const MediumVSpacer(),
+                  ],
+                );
+              },
+              isLastPage: quizDetails.participants.items.length >= quizDetails.participants.totalItemsCount,
+              isRecentSearch: false,
+              loadingIndicator: const LoadingIndicator(),
+              onLoadMore: (index) {
+                controller.loadParticipants();
+              },
+            );
           },
-          separatorBuilder: (context, index) => const MediumVSpacer(),
+          orElse: () => const SizedBox.shrink(),
         ),
       ],
     );

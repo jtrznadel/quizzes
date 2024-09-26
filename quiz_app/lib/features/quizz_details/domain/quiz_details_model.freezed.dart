@@ -28,6 +28,7 @@ mixin _$QuizDetailsModel {
   QuizStatus get status => throw _privateConstructorUsedError;
   List<QuestionDetailsModel> get questions =>
       throw _privateConstructorUsedError;
+  ParticipantsListModel get participants => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +49,10 @@ abstract class $QuizDetailsModelCopyWith<$Res> {
       QuizAvailability availability,
       String shareLink,
       QuizStatus status,
-      List<QuestionDetailsModel> questions});
+      List<QuestionDetailsModel> questions,
+      ParticipantsListModel participants});
+
+  $ParticipantsListModelCopyWith<$Res> get participants;
 }
 
 /// @nodoc
@@ -71,6 +75,7 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
     Object? shareLink = null,
     Object? status = null,
     Object? questions = null,
+    Object? participants = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,7 +106,19 @@ class _$QuizDetailsModelCopyWithImpl<$Res, $Val extends QuizDetailsModel>
           ? _value.questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionDetailsModel>,
+      participants: null == participants
+          ? _value.participants
+          : participants // ignore: cast_nullable_to_non_nullable
+              as ParticipantsListModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ParticipantsListModelCopyWith<$Res> get participants {
+    return $ParticipantsListModelCopyWith<$Res>(_value.participants, (value) {
+      return _then(_value.copyWith(participants: value) as $Val);
+    });
   }
 }
 
@@ -120,7 +137,11 @@ abstract class _$$QuizDetailsModelImplCopyWith<$Res>
       QuizAvailability availability,
       String shareLink,
       QuizStatus status,
-      List<QuestionDetailsModel> questions});
+      List<QuestionDetailsModel> questions,
+      ParticipantsListModel participants});
+
+  @override
+  $ParticipantsListModelCopyWith<$Res> get participants;
 }
 
 /// @nodoc
@@ -141,6 +162,7 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
     Object? shareLink = null,
     Object? status = null,
     Object? questions = null,
+    Object? participants = null,
   }) {
     return _then(_$QuizDetailsModelImpl(
       id: null == id
@@ -171,6 +193,10 @@ class __$$QuizDetailsModelImplCopyWithImpl<$Res>
           ? _value._questions
           : questions // ignore: cast_nullable_to_non_nullable
               as List<QuestionDetailsModel>,
+      participants: null == participants
+          ? _value.participants
+          : participants // ignore: cast_nullable_to_non_nullable
+              as ParticipantsListModel,
     ));
   }
 }
@@ -185,7 +211,8 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
       required this.availability,
       required this.shareLink,
       required this.status,
-      required final List<QuestionDetailsModel> questions})
+      required final List<QuestionDetailsModel> questions,
+      required this.participants})
       : _questions = questions;
 
   factory _$QuizDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -212,8 +239,11 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
   }
 
   @override
+  final ParticipantsListModel participants;
+
+  @override
   String toString() {
-    return 'QuizDetailsModel(id: $id, title: $title, description: $description, availability: $availability, shareLink: $shareLink, status: $status, questions: $questions)';
+    return 'QuizDetailsModel(id: $id, title: $title, description: $description, availability: $availability, shareLink: $shareLink, status: $status, questions: $questions, participants: $participants)';
   }
 
   @override
@@ -231,7 +261,9 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
                 other.shareLink == shareLink) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
-                .equals(other._questions, _questions));
+                .equals(other._questions, _questions) &&
+            (identical(other.participants, participants) ||
+                other.participants == participants));
   }
 
   @JsonKey(ignore: true)
@@ -244,7 +276,8 @@ class _$QuizDetailsModelImpl implements _QuizDetailsModel {
       availability,
       shareLink,
       status,
-      const DeepCollectionEquality().hash(_questions));
+      const DeepCollectionEquality().hash(_questions),
+      participants);
 
   @JsonKey(ignore: true)
   @override
@@ -269,7 +302,8 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
           required final QuizAvailability availability,
           required final String shareLink,
           required final QuizStatus status,
-          required final List<QuestionDetailsModel> questions}) =
+          required final List<QuestionDetailsModel> questions,
+          required final ParticipantsListModel participants}) =
       _$QuizDetailsModelImpl;
 
   factory _QuizDetailsModel.fromJson(Map<String, dynamic> json) =
@@ -289,6 +323,8 @@ abstract class _QuizDetailsModel implements QuizDetailsModel {
   QuizStatus get status;
   @override
   List<QuestionDetailsModel> get questions;
+  @override
+  ParticipantsListModel get participants;
   @override
   @JsonKey(ignore: true)
   _$$QuizDetailsModelImplCopyWith<_$QuizDetailsModelImpl> get copyWith =>

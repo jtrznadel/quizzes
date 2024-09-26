@@ -113,6 +113,7 @@
     "quizzDetailsTabStatisticsFinishedStatusBadge": "Zakończony",
     "quizzDetailsTabStatisticsStoppedStatusBadge": "Zatrzymany",
     "quizzDetailsTabStatisticsStartedStatusBadge": "Rozpoczęty",
+    "quizzDetailsTabStatisticsNoParticipants": "Brak rozwiązań quizzu.",
     "quizzDetailsTabStatisticsScore": "Wynik",
     "quizzDetailsTabStatisticsName": "Imię",
     "quizzDetailsTabStatisticsDate": "Data",

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'participant_model.dart';
+import 'participants_list_model.dart';
 import 'question_details_model.dart';
 
 part 'quiz_details_model.g.dart';
@@ -51,6 +53,7 @@ class QuizDetailsModel with _$QuizDetailsModel {
     required String shareLink,
     required QuizStatus status,
     required List<QuestionDetailsModel> questions,
+    required ParticipantsListModel participants,
   }) = _QuizDetailsModel;
 
   factory QuizDetailsModel.fromJson(Map<String, dynamic> json) => _$QuizDetailsModelFromJson(json);

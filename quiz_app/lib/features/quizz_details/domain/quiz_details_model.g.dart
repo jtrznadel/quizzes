@@ -14,6 +14,7 @@ _$QuizDetailsModelImpl _$$QuizDetailsModelImplFromJson(Map<String, dynamic> json
       shareLink: json['shareLink'] as String,
       status: $enumDecode(_$QuizStatusEnumMap, json['status']),
       questions: (json['questions'] as List<dynamic>).map((e) => QuestionDetailsModel.fromJson(e as Map<String, dynamic>)).toList(),
+      participants: ParticipantsListModel.fromJson(json['participants'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$QuizDetailsModelImplToJson(_$QuizDetailsModelImpl instance) => <String, dynamic>{
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$QuizDetailsModelImplToJson(_$QuizDetailsModelImpl instan
       'shareLink': instance.shareLink,
       'status': _$QuizStatusEnumMap[instance.status]!,
       'questions': instance.questions,
+      'participants': instance.participants,
     };
 
 const _$QuizAvailabilityEnumMap = {

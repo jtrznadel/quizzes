@@ -44,7 +44,7 @@ class SettingsSaveButton extends ConsumerWidget {
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails, _) {
+      loaded: (quizDetails, _, __) {
         return Align(
           alignment: Alignment.centerRight,
           child: BasicButton(
@@ -87,7 +87,7 @@ class QuizSettingsStatusSection extends ConsumerWidget {
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails, _) {
+      loaded: (quizDetails, _, __) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -134,7 +134,7 @@ class QuizSettingsAvailabilitySection extends ConsumerWidget {
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails, _) => Column(
+      loaded: (quizDetails, _, __) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(

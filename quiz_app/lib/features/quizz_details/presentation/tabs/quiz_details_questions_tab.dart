@@ -48,7 +48,7 @@ class AnswersSwitchRow extends ConsumerWidget {
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails, answersVisible) {
+      loaded: (quizDetails, answersVisible, __) {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,7 +99,7 @@ class NewQuestionButton extends ConsumerWidget {
     final state = ref.watch(quizDetailsControllerProvider);
 
     return state.maybeWhen(
-      loaded: (quizDetails, _) {
+      loaded: (quizDetails, _, __) {
         return Align(
           alignment: Alignment.centerRight,
           child: ElevatedButton(
@@ -161,7 +161,7 @@ class QuestionsList extends ConsumerWidget {
     final controller = ref.read(quizDetailsControllerProvider.notifier);
 
     return state.maybeWhen(
-      loaded: (quizDetails, answersVisible) {
+      loaded: (quizDetails, answersVisible, __) {
         return Column(
           children: [
             const MediumVSpacer(),

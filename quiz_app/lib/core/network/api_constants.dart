@@ -23,10 +23,13 @@ class ApiConstants {
   static const String quizGenerationEndpoint = 'quizzes/generate-quiz';
   static const String quizCreateEndpoint = 'quizzes';
 
+  static const int participationsPageSize = 10;
   static const String getQuizEndpoint = 'quizzes/{id}';
   static const String updateQuizStatusEndpoint = 'quizzes/{id}/status';
   static const String updateQuizAvailabilityEndpoint = 'quizzes/{id}/availability';
   static const String updateQuizDetailsEndpoint = 'quizzes';
+  static const String participationsPageQuery = 'Page';
+  static const String participationsPageSizeQuery = 'PageSize';
 
   static const String deleteQuestionEndpoint = 'questions/{id}';
   static const String addQuestionEndpoint = 'questions';
