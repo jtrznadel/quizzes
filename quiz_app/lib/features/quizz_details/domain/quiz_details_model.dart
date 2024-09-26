@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'participant_model.dart';
 import 'participants_list_model.dart';
 import 'question_details_model.dart';
 
