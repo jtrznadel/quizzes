@@ -17,8 +17,7 @@ class QuizzArchiveModel with _$QuizzArchiveModel {
     required String status,
     required List<QuizzArchiveQuestionModel> questions,
     required List<QuizzArchiveUserAnswerModel> userAnswers,
-    @Default(QuizzArchiveQuizResultModel(totalQuestions: 0, scorePercentage: 0, correctAnswers: 0))
-    QuizzArchiveQuizResultModel quizResult,
+    @Default(QuizzArchiveQuizResultModel(totalQuestions: 0, scorePercentage: 0, correctAnswers: 0)) QuizzArchiveQuizResultModel quizResult,
   }) = _QuizzArchiveModel;
 
   factory QuizzArchiveModel.fromJson(Map<String, dynamic> json) => _$QuizzArchiveModelFromJson(json);
