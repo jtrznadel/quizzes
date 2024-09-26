@@ -17,50 +17,41 @@ class QuizDeleteDialogItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        quizContainer([
-          quizHeader(context),
-          const SmallVSpacer(),
-          quizDescription(context),
-        ]),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(AppTheme.quizDeleteDialogItemBorderRadius),
+            color: AppColorScheme.surfaceContainer,
+          ),
+          child: DottedBorderContainer(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    quizModel.title,
+                    style: context.theme.textTheme.headlineSmall!.copyWith(
+                      fontSize: AppTheme.quizDeleteDialogHeaderFontSize,
+                    ),
+                    maxLines: AppTheme.quizDeleteDialogHeaderMaxLines,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    quizModel.description,
+                    style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+                    maxLines: AppTheme.quizDeleteDialogDescriptionMaxLines,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         const SmallVSpacer(),
         QuizzStatusTile(quizz: quizModel),
       ],
-    );
-  }
-
-  Widget quizContainer(List<Widget> children) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppTheme.quizDeleteDialogItemBorderRadius), color: AppColorScheme.surfaceContainer),
-      child: DottedBorderContainer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: children,
-        ).addPadding(
-          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-        ),
-      ),
-    );
-  }
-
-  Widget quizHeader(BuildContext context) {
-    return Text(
-      quizModel.title,
-      style: context.theme.textTheme.headlineSmall!.copyWith(
-        fontSize: AppTheme.quizDeleteDialogHeaderFontSize,
-      ),
-      maxLines: AppTheme.quizDeleteDialogHeaderMaxLines,
-      overflow: TextOverflow.ellipsis,
-    );
-  }
-
-  Widget quizDescription(BuildContext context) {
-    return Text(
-      quizModel.description,
-      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-      maxLines: AppTheme.quizDeleteDialogDescriptionMaxLines,
-      overflow: TextOverflow.ellipsis,
     );
   }
 }

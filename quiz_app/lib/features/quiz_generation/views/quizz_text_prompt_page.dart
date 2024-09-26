@@ -48,7 +48,7 @@ extension QuizLanguageExtension on QuizLanguage {
         return S.current.quizLanguageItalian;
     }
   }
-} 
+}
 
 class QuizzTextPromptPage extends ConsumerStatefulWidget {
   const QuizzTextPromptPage({super.key, required this.pageController});
@@ -70,15 +70,13 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
 
   @override
   Widget build(BuildContext context) {
-    final quizzGenerationController =
-        ref.read(quizGenerationControllerProvider.notifier);
+    final quizzGenerationController = ref.read(quizGenerationControllerProvider.notifier);
     final state = ref.watch(quizGenerationControllerProvider);
 
     Future<void> handleFileUpload() async {
       try {
         if (!quizzGenerationController.validateFileUpload()) {
-          ErrorSnackbar.show(
-              context, S.of(context).quizzCreationMaxAttachmentsError);
+          ErrorSnackbar.show(context, S.of(context).quizzCreationMaxAttachmentsError);
           return;
         }
         final file = await FileReader.pickFileAndRead();
@@ -99,8 +97,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
         children: [
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)
-                  .copyWith(top: 0), //TODO: Remove top padding if needed
+              padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(bottom: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -116,10 +113,8 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                   Form(
                     key: _formKey,
                     child: TextArea(
-                      labelText:
-                          S.of(context).quizzCreationTextPromptTextAreaLabel,
-                      hintText:
-                          S.of(context).quizzCreationTextPromptTextAreaHint,
+                      labelText: S.of(context).quizzCreationTextPromptTextAreaLabel,
+                      hintText: S.of(context).quizzCreationTextPromptTextAreaHint,
                       minLines: 5,
                       maxLines: 10,
                       controller: _promptController,
@@ -127,8 +122,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: AppTheme.pageDefaultSpacingSize),
+                    padding: const EdgeInsets.symmetric(vertical: AppTheme.pageDefaultSpacingSize),
                     child: TextDivider(
                       text: S.of(context).dividerOr,
                       color: AppColorScheme.textSecondary,
@@ -145,20 +139,16 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                   const MediumVSpacer(),
                   Text(
                     S.of(context).quizzCreationAttachFileMaxSize,
-                    style: context.textTheme.bodySmall
-                        ?.copyWith(color: AppColorScheme.textSecondary),
+                    style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
                   ),
                   Text(
                     S.of(context).quizzCreationAttachFileAllowedTypes,
-                    style: context.textTheme.bodySmall
-                        ?.copyWith(color: AppColorScheme.textSecondary),
+                    style: context.textTheme.bodySmall?.copyWith(color: AppColorScheme.textSecondary),
                   ),
                   Column(
                     children: state.maybeWhen(
                       generating: (request) {
-                        return request.attachments
-                            .map((file) => AttachmentTile(fileName: file.name))
-                            .toList();
+                        return request.attachments.map((file) => AttachmentTile(fileName: file.name)).toList();
                       },
                       orElse: () => [],
                     ),
@@ -175,7 +165,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
             ),
           ),
           Positioned(
-            bottom: 8,
+            bottom: 0,
             left: 16,
             right: 16,
             child: Container(
@@ -190,8 +180,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    ErrorSnackbar.show(context,
-                        S.of(context).quizzCreationYouNeedToProvideContent);
+                    ErrorSnackbar.show(context, S.of(context).quizzCreationYouNeedToProvideContent);
                   }
                 },
                 text: S.of(context).continueButton,
@@ -226,9 +215,7 @@ class LanguageSelectionList extends ConsumerWidget {
             child: DropdownButton2<QuizLanguage>(
               value: value,
               onChanged: (language) {
-                ref
-                    .read(quizGenerationControllerProvider.notifier)
-                    .setLanguage(language ?? QuizLanguage.English);
+                ref.read(quizGenerationControllerProvider.notifier).setLanguage(language ?? QuizLanguage.English);
               },
               iconStyleData: IconStyleData(
                 icon: Row(
@@ -253,9 +240,7 @@ class LanguageSelectionList extends ConsumerWidget {
               buttonStyleData: ButtonStyleData(
                 padding: const EdgeInsets.all(0),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                      color: AppColorScheme.border,
-                      width: AppTheme.dropdownBorderWidth),
+                  border: Border.all(color: AppColorScheme.border, width: AppTheme.dropdownBorderWidth),
                   borderRadius: BorderRadius.circular(AppTheme.radiusMedium),
                 ),
               ),

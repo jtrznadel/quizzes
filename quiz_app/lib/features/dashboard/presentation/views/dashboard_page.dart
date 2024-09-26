@@ -50,13 +50,21 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
               loading: () => const LoadingIndicator(),
               loaded: (quizListModel, currentPage) {
                 return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const DashboardTopBar(),
                     const SmallVSpacer(),
-                    const NewQuizButton(),
                     quizListModel.items.isEmpty
-                        ? EmptyListInfo(
-                            message: S.of(context).dashboardQuizzesEmpty,
+                        ? Expanded(
+                            child: Column(
+                              children: [
+                                const NewQuizButton(),
+                                EmptyListInfo(
+                                  iconPath: MediaRes.wrongAnswer,
+                                  message: S.of(context).dashboardQuizzesEmpty,
+                                ),
+                              ],
+                            ),
                           )
                         : const Expanded(child: QuizList()),
                   ],

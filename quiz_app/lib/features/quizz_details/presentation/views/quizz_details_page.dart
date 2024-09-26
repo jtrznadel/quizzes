@@ -34,8 +34,7 @@ class QuizzDetailsPage extends ConsumerStatefulWidget {
   }
 }
 
-class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
-    with SingleTickerProviderStateMixin {
+class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage> with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -47,9 +46,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
     );
     WidgetsBinding.instance.addPostFrameCallback(
       (_) {
-        ref
-            .watch(quizDetailsControllerProvider.notifier)
-            .getQuizDetails(widget.id);
+        ref.watch(quizDetailsControllerProvider.notifier).getQuizDetails(widget.id);
       },
     );
     super.initState();
@@ -63,9 +60,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
         if (didPop) {
           state.maybeWhen(
             loaded: (quizDetails, _) {
-              ref
-                  .read(dashboardControllerProvider.notifier)
-                  .reloadItem(quizDetails);
+              ref.read(dashboardControllerProvider.notifier).reloadItem(quizDetails);
             },
             orElse: () {},
           );
@@ -108,8 +103,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage>
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding:
-                      const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
                   child: Column(
                     children: [
                       QuizzSummary(

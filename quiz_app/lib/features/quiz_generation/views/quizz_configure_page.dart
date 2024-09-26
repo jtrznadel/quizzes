@@ -47,7 +47,7 @@ class QuizzConfigurePage extends ConsumerWidget {
             ),
           ),
           Positioned(
-            bottom: 16,
+            bottom: 0,
             left: 16,
             right: 16,
             child: Container(
