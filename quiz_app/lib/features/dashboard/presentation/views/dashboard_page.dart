@@ -56,14 +56,14 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                     const DashboardTopBar(),
                     const SmallVSpacer(),
                     quizListModel.items.isEmpty
-                        ? const Expanded(
+                        ? Expanded(
                             child: Column(
                               children: [
-                                NewQuizButton(),
-                                //EmptyListInfo(
-                                //  iconPath: MediaRes.wrongAnswer,
-                                //  message: S.of(context).dashboardQuizzesEmpty,
-                                //),
+                                const NewQuizButton(),
+                                EmptyListInfo(
+                                  iconPath: MediaRes.wrongAnswer,
+                                  message: S.of(context).dashboardQuizzesEmpty,
+                                ),
                               ],
                             ),
                           )
