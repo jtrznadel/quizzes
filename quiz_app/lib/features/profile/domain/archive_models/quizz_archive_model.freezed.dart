@@ -29,7 +29,7 @@ mixin _$QuizzArchiveModel {
       throw _privateConstructorUsedError;
   List<QuizzArchiveUserAnswerModel> get userAnswers =>
       throw _privateConstructorUsedError;
-  QuizzArchiveQuizResultModel get quizResult =>
+  QuizzArchiveQuizResultModel? get quizResult =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,9 +52,9 @@ abstract class $QuizzArchiveModelCopyWith<$Res> {
       String status,
       List<QuizzArchiveQuestionModel> questions,
       List<QuizzArchiveUserAnswerModel> userAnswers,
-      QuizzArchiveQuizResultModel quizResult});
+      QuizzArchiveQuizResultModel? quizResult});
 
-  $QuizzArchiveQuizResultModelCopyWith<$Res> get quizResult;
+  $QuizzArchiveQuizResultModelCopyWith<$Res>? get quizResult;
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
     Object? status = null,
     Object? questions = null,
     Object? userAnswers = null,
-    Object? quizResult = null,
+    Object? quizResult = freezed,
   }) {
     return _then(_value.copyWith(
       quizId: null == quizId
@@ -108,17 +108,21 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
           ? _value.userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
               as List<QuizzArchiveUserAnswerModel>,
-      quizResult: null == quizResult
+      quizResult: freezed == quizResult
           ? _value.quizResult
           : quizResult // ignore: cast_nullable_to_non_nullable
-              as QuizzArchiveQuizResultModel,
+              as QuizzArchiveQuizResultModel?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $QuizzArchiveQuizResultModelCopyWith<$Res> get quizResult {
-    return $QuizzArchiveQuizResultModelCopyWith<$Res>(_value.quizResult,
+  $QuizzArchiveQuizResultModelCopyWith<$Res>? get quizResult {
+    if (_value.quizResult == null) {
+      return null;
+    }
+
+    return $QuizzArchiveQuizResultModelCopyWith<$Res>(_value.quizResult!,
         (value) {
       return _then(_value.copyWith(quizResult: value) as $Val);
     });
@@ -141,10 +145,10 @@ abstract class _$$QuizzArchiveModelImplCopyWith<$Res>
       String status,
       List<QuizzArchiveQuestionModel> questions,
       List<QuizzArchiveUserAnswerModel> userAnswers,
-      QuizzArchiveQuizResultModel quizResult});
+      QuizzArchiveQuizResultModel? quizResult});
 
   @override
-  $QuizzArchiveQuizResultModelCopyWith<$Res> get quizResult;
+  $QuizzArchiveQuizResultModelCopyWith<$Res>? get quizResult;
 }
 
 /// @nodoc
@@ -165,7 +169,7 @@ class __$$QuizzArchiveModelImplCopyWithImpl<$Res>
     Object? status = null,
     Object? questions = null,
     Object? userAnswers = null,
-    Object? quizResult = null,
+    Object? quizResult = freezed,
   }) {
     return _then(_$QuizzArchiveModelImpl(
       quizId: null == quizId
@@ -196,10 +200,10 @@ class __$$QuizzArchiveModelImplCopyWithImpl<$Res>
           ? _value._userAnswers
           : userAnswers // ignore: cast_nullable_to_non_nullable
               as List<QuizzArchiveUserAnswerModel>,
-      quizResult: null == quizResult
+      quizResult: freezed == quizResult
           ? _value.quizResult
           : quizResult // ignore: cast_nullable_to_non_nullable
-              as QuizzArchiveQuizResultModel,
+              as QuizzArchiveQuizResultModel?,
     ));
   }
 }
@@ -215,7 +219,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
       required this.status,
       required final List<QuizzArchiveQuestionModel> questions,
       required final List<QuizzArchiveUserAnswerModel> userAnswers,
-      required this.quizResult})
+      this.quizResult})
       : _questions = questions,
         _userAnswers = userAnswers;
 
@@ -249,7 +253,7 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
   }
 
   @override
-  final QuizzArchiveQuizResultModel quizResult;
+  final QuizzArchiveQuizResultModel? quizResult;
 
   @override
   String toString() {
@@ -307,15 +311,14 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
 
 abstract class _QuizzArchiveModel implements QuizzArchiveModel {
   const factory _QuizzArchiveModel(
-          {required final String quizId,
-          required final String quizTitle,
-          required final String quizDescription,
-          required final String participationDateUtc,
-          required final String status,
-          required final List<QuizzArchiveQuestionModel> questions,
-          required final List<QuizzArchiveUserAnswerModel> userAnswers,
-          required final QuizzArchiveQuizResultModel quizResult}) =
-      _$QuizzArchiveModelImpl;
+      {required final String quizId,
+      required final String quizTitle,
+      required final String quizDescription,
+      required final String participationDateUtc,
+      required final String status,
+      required final List<QuizzArchiveQuestionModel> questions,
+      required final List<QuizzArchiveUserAnswerModel> userAnswers,
+      final QuizzArchiveQuizResultModel? quizResult}) = _$QuizzArchiveModelImpl;
 
   factory _QuizzArchiveModel.fromJson(Map<String, dynamic> json) =
       _$QuizzArchiveModelImpl.fromJson;
@@ -335,7 +338,7 @@ abstract class _QuizzArchiveModel implements QuizzArchiveModel {
   @override
   List<QuizzArchiveUserAnswerModel> get userAnswers;
   @override
-  QuizzArchiveQuizResultModel get quizResult;
+  QuizzArchiveQuizResultModel? get quizResult;
   @override
   @JsonKey(ignore: true)
   _$$QuizzArchiveModelImplCopyWith<_$QuizzArchiveModelImpl> get copyWith =>

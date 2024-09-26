@@ -22,8 +22,10 @@ _$QuizzArchiveModelImpl _$$QuizzArchiveModelImplFromJson(
           .map((e) =>
               QuizzArchiveUserAnswerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      quizResult: QuizzArchiveQuizResultModel.fromJson(
-          json['quizResult'] as Map<String, dynamic>),
+      quizResult: json['quizResult'] == null
+          ? null
+          : QuizzArchiveQuizResultModel.fromJson(
+              json['quizResult'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$QuizzArchiveModelImplToJson(

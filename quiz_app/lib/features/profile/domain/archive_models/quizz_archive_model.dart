@@ -17,7 +17,7 @@ class QuizzArchiveModel with _$QuizzArchiveModel {
     required String status,
     required List<QuizzArchiveQuestionModel> questions,
     required List<QuizzArchiveUserAnswerModel> userAnswers,
-    required QuizzArchiveQuizResultModel quizResult,
+    QuizzArchiveQuizResultModel? quizResult,
   }) = _QuizzArchiveModel;
 
   factory QuizzArchiveModel.fromJson(Map<String, dynamic> json) => _$QuizzArchiveModelFromJson(json);
