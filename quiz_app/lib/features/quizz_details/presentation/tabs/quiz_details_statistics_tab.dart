@@ -30,10 +30,11 @@ class QuizDetailsStatisticsTab extends ConsumerWidget {
         state.maybeWhen(
           loaded: (quizDetails, _, pageNumber) {
             if(quizDetails.participants.items.isEmpty) {
-              return Text(
-                'No participants yet',
-                style: context.textTheme.bodyMedium!
-                    .copyWith(color: AppColorScheme.textSecondary),
+              return Center(
+                child: Text(
+                  S.of(context).quizzDetailsTabStatisticsNoParticipants,
+                  style: context.textTheme.labelLarge
+                ),
               );
             }
             return PaginatedList<ParticipantModel>(

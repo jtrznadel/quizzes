@@ -349,6 +349,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Finished"),
         "quizzDetailsTabStatisticsName":
             MessageLookupByLibrary.simpleMessage("Name"),
+        "quizzDetailsTabStatisticsNoParticipants":
+            MessageLookupByLibrary.simpleMessage("No participants yet."),
         "quizzDetailsTabStatisticsScore":
             MessageLookupByLibrary.simpleMessage("Score"),
         "quizzDetailsTabStatisticsSecondsElapsed": m1,
