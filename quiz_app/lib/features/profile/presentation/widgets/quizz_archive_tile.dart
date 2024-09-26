@@ -24,7 +24,7 @@ class QuizzArchiveTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final quizScore = QuizzScore.getQuizzScore(quizz.quizResult.scorePercentage);
+    final quizScore = QuizzScore.getQuizzScore(quizz.quizResult?.scorePercentage ?? 0);
     final participationStatus = ParticipationStatus.getParticipationStatus(quizz.status);
     return InkWell(
       onTap: () {
@@ -83,7 +83,7 @@ class QuizzArchiveTile extends ConsumerWidget {
               Row(
                 children: [
                   QuizStatusBadge(
-                    text: S.of(context).quizQuestionNumberBadge(quizz.quizResult.totalQuestions),
+                    text: S.of(context).quizQuestionNumberBadge(quizz.quizResult?.totalQuestions ?? 0),
                     backgroundColor: AppColorScheme.secondary,
                     textColor: AppColorScheme.primary,
                   ),
