@@ -19,8 +19,12 @@ mixin _$GuestAuth {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
 
+  /// Serializes this GuestAuth to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GuestAuth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GuestAuthCopyWith<GuestAuth> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +47,8 @@ class _$GuestAuthCopyWithImpl<$Res, $Val extends GuestAuth>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GuestAuth
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$GuestAuthImplCopyWithImpl<$Res>
       _$GuestAuthImpl _value, $Res Function(_$GuestAuthImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GuestAuth
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,11 +133,13 @@ class _$GuestAuthImpl implements _GuestAuth {
                 other.password == password));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, email, password);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GuestAuth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GuestAuthImplCopyWith<_$GuestAuthImpl> get copyWith =>
@@ -152,8 +162,11 @@ abstract class _GuestAuth implements GuestAuth {
   String get email;
   @override
   String get password;
+
+  /// Create a copy of GuestAuth
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GuestAuthImplCopyWith<_$GuestAuthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

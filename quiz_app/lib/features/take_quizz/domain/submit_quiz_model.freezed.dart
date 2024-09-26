@@ -24,8 +24,12 @@ mixin _$SubmitQuizModel {
   List<String> get questionsId => throw _privateConstructorUsedError;
   List<String> get answersId => throw _privateConstructorUsedError;
 
+  /// Serializes this SubmitQuizModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SubmitQuizModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SubmitQuizModelCopyWith<SubmitQuizModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$SubmitQuizModelCopyWithImpl<$Res, $Val extends SubmitQuizModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SubmitQuizModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$SubmitQuizModelImplCopyWithImpl<$Res>
       _$SubmitQuizModelImpl _value, $Res Function(_$SubmitQuizModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SubmitQuizModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,7 +179,7 @@ class _$SubmitQuizModelImpl implements _SubmitQuizModel {
                 .equals(other._answersId, _answersId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -179,7 +187,9 @@ class _$SubmitQuizModelImpl implements _SubmitQuizModel {
       const DeepCollectionEquality().hash(_questionsId),
       const DeepCollectionEquality().hash(_answersId));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SubmitQuizModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubmitQuizModelImplCopyWith<_$SubmitQuizModelImpl> get copyWith =>
@@ -209,8 +219,11 @@ abstract class _SubmitQuizModel implements SubmitQuizModel {
   List<String> get questionsId;
   @override
   List<String> get answersId;
+
+  /// Create a copy of SubmitQuizModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubmitQuizModelImplCopyWith<_$SubmitQuizModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

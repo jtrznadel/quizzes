@@ -26,8 +26,12 @@ mixin _$QuizListModel {
   int get itemsFrom => throw _privateConstructorUsedError;
   int get itemsTo => throw _privateConstructorUsedError;
 
+  /// Serializes this QuizListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizListModelCopyWith<QuizListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$QuizListModelCopyWithImpl<$Res, $Val extends QuizListModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$QuizListModelImplCopyWithImpl<$Res>
       _$QuizListModelImpl _value, $Res Function(_$QuizListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -199,7 +207,7 @@ class _$QuizListModelImpl implements _QuizListModel {
             (identical(other.itemsTo, itemsTo) || other.itemsTo == itemsTo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -209,7 +217,9 @@ class _$QuizListModelImpl implements _QuizListModel {
       itemsFrom,
       itemsTo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizListModelImplCopyWith<_$QuizListModelImpl> get copyWith =>
@@ -244,8 +254,11 @@ abstract class _QuizListModel implements QuizListModel {
   int get itemsFrom;
   @override
   int get itemsTo;
+
+  /// Create a copy of QuizListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizListModelImplCopyWith<_$QuizListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

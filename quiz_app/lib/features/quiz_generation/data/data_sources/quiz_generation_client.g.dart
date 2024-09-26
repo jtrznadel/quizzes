@@ -12,6 +12,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
   _QuizGenerationClient(
     this._dio, {
     this.baseUrl,
+    this.errorLogger,
   }) {
     baseUrl ??=
         'https://mlab2024-backend.yellowocean-31330507.westeurope.azurecontainerapps.io/api/';
@@ -20,6 +21,8 @@ class _QuizGenerationClient implements QuizGenerationClient {
   final Dio _dio;
 
   String? baseUrl;
+
+  final ParseErrorLogger? errorLogger;
 
   @override
   Future<GenerateQuizModel> generateQuiz({
@@ -50,25 +53,31 @@ class _QuizGenerationClient implements QuizGenerationClient {
       'Language',
       language,
     ));
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<GenerateQuizModel>(Options(
+    final _options = _setStreamType<GenerateQuizModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',
     )
-            .compose(
-              _dio.options,
-              'quizzes/generate-quiz',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final _value = GenerateQuizModel.fromJson(_result.data!);
+        .compose(
+          _dio.options,
+          'quizzes/generate-quiz',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GenerateQuizModel _value;
+    try {
+      _value = GenerateQuizModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     return _value;
   }
 
@@ -79,24 +88,30 @@ class _QuizGenerationClient implements QuizGenerationClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body);
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CreatedQuizResult>(Options(
+    final _options = _setStreamType<CreatedQuizResult>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-            .compose(
-              _dio.options,
-              'quizzes',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final _value = CreatedQuizResult.fromJson(_result.data!);
+        .compose(
+          _dio.options,
+          'quizzes',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CreatedQuizResult _value;
+    try {
+      _value = CreatedQuizResult.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     return _value;
   }
 

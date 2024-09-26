@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:retrofit/error_logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../core/network/api_constants.dart';
 import '../../../../core/network/base_dio_client.dart';

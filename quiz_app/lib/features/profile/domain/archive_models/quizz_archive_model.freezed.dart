@@ -25,23 +25,22 @@ mixin _$QuizzArchiveModel {
   String get quizDescription => throw _privateConstructorUsedError;
   String get participationDateUtc => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
-  List<QuizzArchiveQuestionModel> get questions =>
-      throw _privateConstructorUsedError;
-  List<QuizzArchiveUserAnswerModel> get userAnswers =>
-      throw _privateConstructorUsedError;
-  QuizzArchiveQuizResultModel? get quizResult =>
-      throw _privateConstructorUsedError;
+  List<QuizzArchiveQuestionModel> get questions => throw _privateConstructorUsedError;
+  List<QuizzArchiveUserAnswerModel> get userAnswers => throw _privateConstructorUsedError;
+  QuizzArchiveQuizResultModel? get quizResult => throw _privateConstructorUsedError;
 
+  /// Serializes this QuizzArchiveModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $QuizzArchiveModelCopyWith<QuizzArchiveModel> get copyWith =>
-      throw _privateConstructorUsedError;
+
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $QuizzArchiveModelCopyWith<QuizzArchiveModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $QuizzArchiveModelCopyWith<$Res> {
-  factory $QuizzArchiveModelCopyWith(
-          QuizzArchiveModel value, $Res Function(QuizzArchiveModel) then) =
+  factory $QuizzArchiveModelCopyWith(QuizzArchiveModel value, $Res Function(QuizzArchiveModel) then) =
       _$QuizzArchiveModelCopyWithImpl<$Res, QuizzArchiveModel>;
   @useResult
   $Res call(
@@ -58,8 +57,7 @@ abstract class $QuizzArchiveModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
-    implements $QuizzArchiveModelCopyWith<$Res> {
+class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel> implements $QuizzArchiveModelCopyWith<$Res> {
   _$QuizzArchiveModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -67,6 +65,8 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +115,8 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
     ) as $Val);
   }
 
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $QuizzArchiveQuizResultModelCopyWith<$Res>? get quizResult {
@@ -122,18 +124,15 @@ class _$QuizzArchiveModelCopyWithImpl<$Res, $Val extends QuizzArchiveModel>
       return null;
     }
 
-    return $QuizzArchiveQuizResultModelCopyWith<$Res>(_value.quizResult!,
-        (value) {
+    return $QuizzArchiveQuizResultModelCopyWith<$Res>(_value.quizResult!, (value) {
       return _then(_value.copyWith(quizResult: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$QuizzArchiveModelImplCopyWith<$Res>
-    implements $QuizzArchiveModelCopyWith<$Res> {
-  factory _$$QuizzArchiveModelImplCopyWith(_$QuizzArchiveModelImpl value,
-          $Res Function(_$QuizzArchiveModelImpl) then) =
+abstract class _$$QuizzArchiveModelImplCopyWith<$Res> implements $QuizzArchiveModelCopyWith<$Res> {
+  factory _$$QuizzArchiveModelImplCopyWith(_$QuizzArchiveModelImpl value, $Res Function(_$QuizzArchiveModelImpl) then) =
       __$$QuizzArchiveModelImplCopyWithImpl<$Res>;
   @override
   @useResult
@@ -152,13 +151,13 @@ abstract class _$$QuizzArchiveModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$QuizzArchiveModelImplCopyWithImpl<$Res>
-    extends _$QuizzArchiveModelCopyWithImpl<$Res, _$QuizzArchiveModelImpl>
+class __$$QuizzArchiveModelImplCopyWithImpl<$Res> extends _$QuizzArchiveModelCopyWithImpl<$Res, _$QuizzArchiveModelImpl>
     implements _$$QuizzArchiveModelImplCopyWith<$Res> {
-  __$$QuizzArchiveModelImplCopyWithImpl(_$QuizzArchiveModelImpl _value,
-      $Res Function(_$QuizzArchiveModelImpl) _then)
+  __$$QuizzArchiveModelImplCopyWithImpl(_$QuizzArchiveModelImpl _value, $Res Function(_$QuizzArchiveModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -219,12 +218,11 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
       required this.status,
       required final List<QuizzArchiveQuestionModel> questions,
       required final List<QuizzArchiveUserAnswerModel> userAnswers,
-      this.quizResult})
+      this.quizResult = const QuizzArchiveQuizResultModel(totalQuestions: 0, scorePercentage: 0, correctAnswers: 0)})
       : _questions = questions,
         _userAnswers = userAnswers;
 
-  factory _$QuizzArchiveModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$QuizzArchiveModelImplFromJson(json);
+  factory _$QuizzArchiveModelImpl.fromJson(Map<String, dynamic> json) => _$$QuizzArchiveModelImplFromJson(json);
 
   @override
   final String quizId;
@@ -253,7 +251,8 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
   }
 
   @override
-  final QuizzArchiveQuizResultModel? quizResult;
+  @JsonKey()
+  final QuizzArchiveQuizResultModel quizResult;
 
   @override
   String toString() {
@@ -266,40 +265,27 @@ class _$QuizzArchiveModelImpl implements _QuizzArchiveModel {
         (other.runtimeType == runtimeType &&
             other is _$QuizzArchiveModelImpl &&
             (identical(other.quizId, quizId) || other.quizId == quizId) &&
-            (identical(other.quizTitle, quizTitle) ||
-                other.quizTitle == quizTitle) &&
-            (identical(other.quizDescription, quizDescription) ||
-                other.quizDescription == quizDescription) &&
-            (identical(other.participationDateUtc, participationDateUtc) ||
-                other.participationDateUtc == participationDateUtc) &&
+            (identical(other.quizTitle, quizTitle) || other.quizTitle == quizTitle) &&
+            (identical(other.quizDescription, quizDescription) || other.quizDescription == quizDescription) &&
+            (identical(other.participationDateUtc, participationDateUtc) || other.participationDateUtc == participationDateUtc) &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality()
-                .equals(other._questions, _questions) &&
-            const DeepCollectionEquality()
-                .equals(other._userAnswers, _userAnswers) &&
-            (identical(other.quizResult, quizResult) ||
-                other.quizResult == quizResult));
+            const DeepCollectionEquality().equals(other._questions, _questions) &&
+            const DeepCollectionEquality().equals(other._userAnswers, _userAnswers) &&
+            (identical(other.quizResult, quizResult) || other.quizResult == quizResult));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      quizId,
-      quizTitle,
-      quizDescription,
-      participationDateUtc,
-      status,
-      const DeepCollectionEquality().hash(_questions),
-      const DeepCollectionEquality().hash(_userAnswers),
-      quizResult);
+  int get hashCode => Object.hash(runtimeType, quizId, quizTitle, quizDescription, participationDateUtc, status,
+      const DeepCollectionEquality().hash(_questions), const DeepCollectionEquality().hash(_userAnswers), quizResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizzArchiveModelImplCopyWith<_$QuizzArchiveModelImpl> get copyWith =>
-      __$$QuizzArchiveModelImplCopyWithImpl<_$QuizzArchiveModelImpl>(
-          this, _$identity);
+      __$$QuizzArchiveModelImplCopyWithImpl<_$QuizzArchiveModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -318,10 +304,9 @@ abstract class _QuizzArchiveModel implements QuizzArchiveModel {
       required final String status,
       required final List<QuizzArchiveQuestionModel> questions,
       required final List<QuizzArchiveUserAnswerModel> userAnswers,
-      final QuizzArchiveQuizResultModel? quizResult}) = _$QuizzArchiveModelImpl;
+      final QuizzArchiveQuizResultModel quizResult}) = _$QuizzArchiveModelImpl;
 
-  factory _QuizzArchiveModel.fromJson(Map<String, dynamic> json) =
-      _$QuizzArchiveModelImpl.fromJson;
+  factory _QuizzArchiveModel.fromJson(Map<String, dynamic> json) = _$QuizzArchiveModelImpl.fromJson;
 
   @override
   String get quizId;
@@ -338,9 +323,11 @@ abstract class _QuizzArchiveModel implements QuizzArchiveModel {
   @override
   List<QuizzArchiveUserAnswerModel> get userAnswers;
   @override
-  QuizzArchiveQuizResultModel? get quizResult;
+  QuizzArchiveQuizResultModel get quizResult;
+
+  /// Create a copy of QuizzArchiveModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$QuizzArchiveModelImplCopyWith<_$QuizzArchiveModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$QuizzArchiveModelImplCopyWith<_$QuizzArchiveModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

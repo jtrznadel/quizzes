@@ -24,8 +24,12 @@ mixin _$QuestionDetailsModel {
   String get title => throw _privateConstructorUsedError;
   List<AnswerDetailsModel> get answers => throw _privateConstructorUsedError;
 
+  /// Serializes this QuestionDetailsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuestionDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuestionDetailsModelCopyWith<QuestionDetailsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$QuestionDetailsModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuestionDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$QuestionDetailsModelImplCopyWithImpl<$Res>
       $Res Function(_$QuestionDetailsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuestionDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,12 +164,14 @@ class _$QuestionDetailsModelImpl implements _QuestionDetailsModel {
             const DeepCollectionEquality().equals(other._answers, _answers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, const DeepCollectionEquality().hash(_answers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuestionDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuestionDetailsModelImplCopyWith<_$QuestionDetailsModelImpl>
@@ -193,8 +203,11 @@ abstract class _QuestionDetailsModel implements QuestionDetailsModel {
   String get title;
   @override
   List<AnswerDetailsModel> get answers;
+
+  /// Create a copy of QuestionDetailsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuestionDetailsModelImplCopyWith<_$QuestionDetailsModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

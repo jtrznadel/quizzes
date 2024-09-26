@@ -23,8 +23,12 @@ mixin _$TokenAuth {
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
 
+  /// Serializes this TokenAuth to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TokenAuth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TokenAuthCopyWith<TokenAuth> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$TokenAuthCopyWithImpl<$Res, $Val extends TokenAuth>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TokenAuth
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$TokenAuthImplCopyWithImpl<$Res>
       _$TokenAuthImpl _value, $Res Function(_$TokenAuthImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TokenAuth
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$TokenAuthImpl implements _TokenAuth {
                 other.refreshToken == refreshToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, accessToken, refreshToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TokenAuth
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TokenAuthImplCopyWith<_$TokenAuthImpl> get copyWith =>
@@ -164,8 +174,11 @@ abstract class _TokenAuth implements TokenAuth {
   String get accessToken;
   @override
   String get refreshToken;
+
+  /// Create a copy of TokenAuth
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokenAuthImplCopyWith<_$TokenAuthImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,8 +26,12 @@ mixin _$QuizzArchiveQuestionModel {
   List<QuizzArchiveAnswerModel> get answers =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this QuizzArchiveQuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizzArchiveQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizzArchiveQuestionModelCopyWith<QuizzArchiveQuestionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$QuizzArchiveQuestionModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizzArchiveQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$QuizzArchiveQuestionModelImplCopyWithImpl<$Res>
       $Res Function(_$QuizzArchiveQuestionModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizzArchiveQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,12 +169,14 @@ class _$QuizzArchiveQuestionModelImpl implements _QuizzArchiveQuestionModel {
             const DeepCollectionEquality().equals(other._answers, _answers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, const DeepCollectionEquality().hash(_answers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizzArchiveQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizzArchiveQuestionModelImplCopyWith<_$QuizzArchiveQuestionModelImpl>
@@ -197,8 +207,11 @@ abstract class _QuizzArchiveQuestionModel implements QuizzArchiveQuestionModel {
   String get title;
   @override
   List<QuizzArchiveAnswerModel> get answers;
+
+  /// Create a copy of QuizzArchiveQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizzArchiveQuestionModelImplCopyWith<_$QuizzArchiveQuestionModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

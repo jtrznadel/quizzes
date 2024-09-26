@@ -27,8 +27,12 @@ mixin _$ParticipantsListModel {
   int get itemsTo => throw _privateConstructorUsedError;
   List<ParticipantModel> get items => throw _privateConstructorUsedError;
 
+  /// Serializes this ParticipantsListModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ParticipantsListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ParticipantsListModelCopyWith<ParticipantsListModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$ParticipantsListModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ParticipantsListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class __$$ParticipantsListModelImplCopyWithImpl<$Res>
       $Res Function(_$ParticipantsListModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ParticipantsListModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,12 +210,14 @@ class _$ParticipantsListModelImpl implements _ParticipantsListModel {
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, totalPages, totalItemsCount,
       itemsFrom, itemsTo, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ParticipantsListModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ParticipantsListModelImplCopyWith<_$ParticipantsListModelImpl>
@@ -244,8 +254,11 @@ abstract class _ParticipantsListModel implements ParticipantsListModel {
   int get itemsTo;
   @override
   List<ParticipantModel> get items;
+
+  /// Create a copy of ParticipantsListModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ParticipantsListModelImplCopyWith<_$ParticipantsListModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

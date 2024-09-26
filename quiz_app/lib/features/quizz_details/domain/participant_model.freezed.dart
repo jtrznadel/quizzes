@@ -25,8 +25,12 @@ mixin _$ParticipantModel {
   String get status => throw _privateConstructorUsedError;
   String get participationDateUtc => throw _privateConstructorUsedError;
 
+  /// Serializes this ParticipantModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ParticipantModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ParticipantModelCopyWith<ParticipantModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$ParticipantModelCopyWithImpl<$Res, $Val extends ParticipantModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ParticipantModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$ParticipantModelImplCopyWithImpl<$Res>
       $Res Function(_$ParticipantModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ParticipantModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -175,12 +183,14 @@ class _$ParticipantModelImpl implements _ParticipantModel {
                 other.participationDateUtc == participationDateUtc));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, displayName, score, status, participationDateUtc);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ParticipantModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ParticipantModelImplCopyWith<_$ParticipantModelImpl> get copyWith =>
@@ -213,8 +223,11 @@ abstract class _ParticipantModel implements ParticipantModel {
   String get status;
   @override
   String get participationDateUtc;
+
+  /// Create a copy of ParticipantModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ParticipantModelImplCopyWith<_$ParticipantModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -25,8 +25,12 @@ mixin _$CreateQuestionModel {
   List<AnswerModelInterface> get createQuizAnswers =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CreateQuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateQuestionModelCopyWith<CreateQuestionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$CreateQuestionModelCopyWithImpl<$Res, $Val extends CreateQuestionModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$CreateQuestionModelImplCopyWithImpl<$Res>
       $Res Function(_$CreateQuestionModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,12 +158,14 @@ class _$CreateQuestionModelImpl implements _CreateQuestionModel {
                 .equals(other._createQuizAnswers, _createQuizAnswers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title,
       const DeepCollectionEquality().hash(_createQuizAnswers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateQuestionModelImplCopyWith<_$CreateQuestionModelImpl> get copyWith =>
@@ -185,8 +195,11 @@ abstract class _CreateQuestionModel implements CreateQuestionModel {
   @override
   @AnswerModelConverter()
   List<AnswerModelInterface> get createQuizAnswers;
+
+  /// Create a copy of CreateQuestionModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateQuestionModelImplCopyWith<_$CreateQuestionModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

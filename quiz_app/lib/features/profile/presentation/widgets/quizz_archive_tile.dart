@@ -41,7 +41,7 @@ class QuizzArchiveTile extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '${S.of(context).archiveResultsHeading} ${quizz.quizResult?.scorePercentage.round() ?? 0}%',
+                    '${S.of(context).archiveResultsHeading} ${(quizz.quizResult.scorePercentage).round()}%',
                     style: context.textTheme.headlineLarge?.copyWith(
                       color: quizScore.color,
                     ),

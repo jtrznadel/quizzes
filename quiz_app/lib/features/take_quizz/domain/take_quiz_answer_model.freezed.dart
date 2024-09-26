@@ -23,8 +23,12 @@ mixin _$TakeQuizAnswerModel {
   String get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
 
+  /// Serializes this TakeQuizAnswerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TakeQuizAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TakeQuizAnswerModelCopyWith<TakeQuizAnswerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$TakeQuizAnswerModelCopyWithImpl<$Res, $Val extends TakeQuizAnswerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TakeQuizAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$TakeQuizAnswerModelImplCopyWithImpl<$Res>
       $Res Function(_$TakeQuizAnswerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TakeQuizAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$TakeQuizAnswerModelImpl implements _TakeQuizAnswerModel {
             (identical(other.content, content) || other.content == content));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, content);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TakeQuizAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TakeQuizAnswerModelImplCopyWith<_$TakeQuizAnswerModelImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _TakeQuizAnswerModel implements TakeQuizAnswerModel {
   String get id;
   @override
   String get content;
+
+  /// Create a copy of TakeQuizAnswerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TakeQuizAnswerModelImplCopyWith<_$TakeQuizAnswerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

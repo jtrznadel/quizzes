@@ -23,8 +23,12 @@ mixin _$CreatedQuizResult {
   String get id => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
 
+  /// Serializes this CreatedQuizResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreatedQuizResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreatedQuizResultCopyWith<CreatedQuizResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$CreatedQuizResultCopyWithImpl<$Res, $Val extends CreatedQuizResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreatedQuizResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$CreatedQuizResultImplCopyWithImpl<$Res>
       $Res Function(_$CreatedQuizResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreatedQuizResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$CreatedQuizResultImpl implements _CreatedQuizResult {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreatedQuizResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreatedQuizResultImplCopyWith<_$CreatedQuizResultImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _CreatedQuizResult implements CreatedQuizResult {
   String get id;
   @override
   String get url;
+
+  /// Create a copy of CreatedQuizResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreatedQuizResultImplCopyWith<_$CreatedQuizResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -27,8 +27,12 @@ mixin _$QuizResultModel {
   int get correctAnswers => throw _privateConstructorUsedError;
   double get scorePercentage => throw _privateConstructorUsedError;
 
+  /// Serializes this QuizResultModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $QuizResultModelCopyWith<QuizResultModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$QuizResultModelCopyWithImpl<$Res, $Val extends QuizResultModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of QuizResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class _$QuizResultModelCopyWithImpl<$Res, $Val extends QuizResultModel>
     ) as $Val);
   }
 
+  /// Create a copy of QuizResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $QuizDetailsResultModelCopyWith<$Res> get quizDetails {
@@ -135,6 +143,8 @@ class __$$QuizResultModelImplCopyWithImpl<$Res>
       _$QuizResultModelImpl _value, $Res Function(_$QuizResultModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -232,7 +242,7 @@ class _$QuizResultModelImpl implements _QuizResultModel {
                 other.scorePercentage == scorePercentage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -243,7 +253,9 @@ class _$QuizResultModelImpl implements _QuizResultModel {
       correctAnswers,
       scorePercentage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizResultModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$QuizResultModelImplCopyWith<_$QuizResultModelImpl> get copyWith =>
@@ -282,8 +294,11 @@ abstract class _QuizResultModel implements QuizResultModel {
   int get correctAnswers;
   @override
   double get scorePercentage;
+
+  /// Create a copy of QuizResultModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$QuizResultModelImplCopyWith<_$QuizResultModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

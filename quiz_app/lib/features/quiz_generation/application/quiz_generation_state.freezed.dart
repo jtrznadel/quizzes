@@ -84,6 +84,9 @@ class _$QuizGenerationStateCopyWithImpl<$Res, $Val extends QuizGenerationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -105,6 +108,8 @@ class __$$GeneratingImplCopyWithImpl<$Res>
       _$GeneratingImpl _value, $Res Function(_$GeneratingImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +123,8 @@ class __$$GeneratingImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $QuizRequestModelCopyWith<$Res> get request {
@@ -151,7 +158,9 @@ class _$GeneratingImpl implements _Generating {
   @override
   int get hashCode => Object.hash(runtimeType, request);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GeneratingImplCopyWith<_$GeneratingImpl> get copyWith =>
@@ -236,7 +245,10 @@ abstract class _Generating implements QuizGenerationState {
   const factory _Generating(final QuizRequestModel request) = _$GeneratingImpl;
 
   QuizRequestModel get request;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GeneratingImplCopyWith<_$GeneratingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -260,6 +272,8 @@ class __$$GeneratedImplCopyWithImpl<$Res>
       _$GeneratedImpl _value, $Res Function(_$GeneratedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -273,6 +287,8 @@ class __$$GeneratedImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GenerateQuizModelCopyWith<$Res> get quiz {
@@ -306,7 +322,9 @@ class _$GeneratedImpl implements _Generated {
   @override
   int get hashCode => Object.hash(runtimeType, quiz);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GeneratedImplCopyWith<_$GeneratedImpl> get copyWith =>
@@ -391,7 +409,10 @@ abstract class _Generated implements QuizGenerationState {
   const factory _Generated(final GenerateQuizModel quiz) = _$GeneratedImpl;
 
   GenerateQuizModel get quiz;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GeneratedImplCopyWith<_$GeneratedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -413,6 +434,8 @@ class __$$ErrorImplCopyWithImpl<$Res>
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -451,7 +474,9 @@ class _$ErrorImpl implements _Error {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
@@ -536,7 +561,10 @@ abstract class _Error implements QuizGenerationState {
   const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -560,6 +588,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -573,6 +603,8 @@ class __$$InitialImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CreatedQuizResultCopyWith<$Res> get quizResult {
@@ -607,7 +639,9 @@ class _$InitialImpl implements _Initial {
   @override
   int get hashCode => Object.hash(runtimeType, quizResult);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -692,7 +726,10 @@ abstract class _Initial implements QuizGenerationState {
   const factory _Initial(final CreatedQuizResult quizResult) = _$InitialImpl;
 
   CreatedQuizResult get quizResult;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of QuizGenerationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
