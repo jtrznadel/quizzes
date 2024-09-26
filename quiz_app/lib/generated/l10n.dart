@@ -1000,6 +1000,16 @@ class S {
     );
   }
 
+  /// `No participants yet.`
+  String get quizzDetailsTabStatisticsNoParticipants {
+    return Intl.message(
+      'No participants yet.',
+      name: 'quizzDetailsTabStatisticsNoParticipants',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Score`
   String get quizzDetailsTabStatisticsScore {
     return Intl.message(

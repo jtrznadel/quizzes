@@ -1,58 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../../../core/common/widgets/quiz_status_badge.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/date_time_json_converter.dart';
+import '../../../../core/utils/enums/participation_status_enum.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../domain/participant_model.dart';
 
 class QuizAttemptItem extends StatelessWidget {
-  const QuizAttemptItem({super.key});
+  const QuizAttemptItem({super.key, required this.participant});
+
+  final ParticipantModel participant;
 
   @override
   Widget build(BuildContext context) {
+    final status =
+        ParticipationStatus.getParticipationStatus(participant.status);
+    final date = DateFormat('dd.MM.yyyy HH:mm')
+        .format(DateTime.parse(participant.participationDateUtc).toLocal());
     return Container(
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(AppTheme.quizAttemptItemBorderRadius),
+        borderRadius:
+            BorderRadius.circular(AppTheme.quizAttemptItemBorderRadius),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          statusBadges(context),
+          statusBadges(context, participant.status),
           const SmallVSpacer(),
-          InfoRow(
-            label: S.of(context).quizzDetailsTabStatisticsScore,
-            value: '40',
+          Builder(
+            builder: (context) {
+              if (status != ParticipationStatus.started &&
+                  status != ParticipationStatus.stopped) {
+                return Column(
+                  children: [
+                    InfoRow(
+                      label: S.of(context).quizzDetailsTabStatisticsScore,
+                      value: "${participant.score}%",
+                    ),
+                    const SmallVSpacer(),
+                  ],
+                );
+              }
+              return const SizedBox.shrink();
+            },
           ),
-          const SmallVSpacer(),
           InfoRow(
             label: S.of(context).quizzDetailsTabStatisticsName,
-            value: 'John B',
-          ),
-          const SmallVSpacer(),
-          InfoRow(
-            label: S.of(context).quizzDetailsTabStatisticsEmail,
-            value: '-',
-          ),
-          const SmallVSpacer(),
-          InfoRow(
-            label: S.of(context).quizzDetailsTabStatisticsTime,
-            //TODO: Replace with real data
-            value: S.of(context).quizzDetailsTabStatisticsSecondsElapsed(12),
+            value: participant.displayName,
           ),
           const SmallVSpacer(),
           InfoRow(
             label: S.of(context).quizzDetailsTabStatisticsDate,
-            value: '21.08.2024',
+            value: date.toString(),
           ),
         ],
-      ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
+      ).addPadding(
+          padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
     );
   }
 
-  Widget statusBadges(BuildContext context) {
+  Widget statusBadges(BuildContext context, String status) {
+    final participationStatus =
+        ParticipationStatus.getParticipationStatus(status);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -62,9 +77,9 @@ class QuizAttemptItem extends StatelessWidget {
           textColor: AppColorScheme.primary,
         ),
         QuizStatusBadge(
-          text: S.of(context).quizzDetailsTabStatisticsFinishedStatusBadge,
-          backgroundColor: AppColorScheme.successLight,
-          textColor: AppColorScheme.success,
+          text: participationStatus.label,
+          backgroundColor: participationStatus.backgroundColor,
+          textColor: participationStatus.textColor,
         )
       ],
     );

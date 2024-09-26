@@ -22,9 +22,16 @@ class _QuizDetailsClient implements QuizDetailsClient {
   String? baseUrl;
 
   @override
-  Future<QuizDetailsModel> getQuiz(String id) async {
+  Future<QuizDetailsModel> getQuiz(
+    String id,
+    int page,
+    int pageSize,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'Page': page,
+      r'PageSize': pageSize,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio

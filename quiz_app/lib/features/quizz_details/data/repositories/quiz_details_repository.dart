@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/network/api_constants.dart';
 import '../../domain/new_question_model.dart';
 import '../../domain/quiz_details_model.dart';
 import '../../domain/update_question_model.dart';
@@ -8,7 +9,7 @@ import '../data_sources/quiz_details_client.dart';
 part 'quiz_details_repository.g.dart';
 
 abstract class QuizDetailsRepository {
-  Future<QuizDetailsModel> getQuizDetails(String id);
+  Future<QuizDetailsModel> getQuizDetails(String id, int page);
 
   Future<void> updateQuizStatus(String id, QuizStatus status);
   Future<void> updateQuizAvailability(String id, QuizAvailability availability);
@@ -24,8 +25,8 @@ class QuizDetailsRepositoryImpl implements QuizDetailsRepository {
   QuizDetailsRepositoryImpl(this._quizDetailsClient);
 
   @override
-  Future<QuizDetailsModel> getQuizDetails(String id) async {
-    return await _quizDetailsClient.getQuiz(id);
+  Future<QuizDetailsModel> getQuizDetails(String id, int page) async {
+    return await _quizDetailsClient.getQuiz(id, page, ApiConstants.participationsPageSize);
   }
 
   @override

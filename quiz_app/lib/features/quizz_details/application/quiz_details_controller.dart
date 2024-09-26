@@ -23,8 +23,8 @@ class QuizDetailsController extends _$QuizDetailsController {
 
     try {
       final quizDetails =
-          await ref.read(_quizDetailsRepository).getQuizDetails(id);
-      state = QuizDetailsState.loaded(quizDetails, false);
+          await ref.read(_quizDetailsRepository).getQuizDetails(id, 1);
+      state = QuizDetailsState.loaded(quizDetails, false, 1);
     } catch (e) {
       state = QuizDetailsState.error(e.toString());
     }
@@ -32,22 +32,26 @@ class QuizDetailsController extends _$QuizDetailsController {
 
   void changeAnswerVisibility(bool isVisible) {
     state = state.maybeWhen(
-        loaded: (quizDetails, _) =>
-            state = QuizDetailsState.loaded(quizDetails, isVisible),
+        loaded: (quizDetails, _, pageNumber) =>
+            state = QuizDetailsState.loaded(quizDetails, isVisible, pageNumber),
         orElse: () => state);
   }
 
   void changeQuizStatus(QuizStatus status) {
     state = state.maybeWhen(
-        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(
-            quizDetails.copyWith(status: status), answersVisible),
+        loaded: (quizDetails, answersVisible, pageNumber) =>
+            QuizDetailsState.loaded(quizDetails.copyWith(status: status),
+                answersVisible, pageNumber),
         orElse: () => state);
   }
 
   void changeQuizAvailability(QuizAvailability availability) {
     state = state.maybeWhen(
-        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(
-            quizDetails.copyWith(availability: availability), answersVisible),
+        loaded: (quizDetails, answersVisible, pageNumber) =>
+            QuizDetailsState.loaded(
+                quizDetails.copyWith(availability: availability),
+                answersVisible,
+                pageNumber),
         orElse: () => state);
   }
 
@@ -81,10 +85,11 @@ class QuizDetailsController extends _$QuizDetailsController {
       await ref
           .read(_quizDetailsRepository)
           .updateQuizDetails(id, title, description);
-      state.maybeWhen(loaded: (quizDetails, answersVisible) {
+      state.maybeWhen(loaded: (quizDetails, answersVisible, pageNumber) {
         state = QuizDetailsState.loaded(
             quizDetails.copyWith(title: title, description: description),
-            answersVisible);
+            answersVisible,
+            pageNumber);
       }, orElse: () {
         state = QuizDetailsState.error(S.current.somethingWentWrong);
       });
@@ -98,12 +103,13 @@ class QuizDetailsController extends _$QuizDetailsController {
   Future<bool> deleteQuestion(String id) async {
     try {
       await ref.read(_quizDetailsRepository).deleteQuestion(id);
-      state.maybeWhen(loaded: (quizDetails, answersVisible) {
+      state.maybeWhen(loaded: (quizDetails, answersVisible, pageNumber) {
         state = QuizDetailsState.loaded(
           quizDetails.copyWith(
             questions: quizDetails.questions.where((q) => q.id != id).toList(),
           ),
           answersVisible,
+          pageNumber,
         );
       }, orElse: () {
         state = QuizDetailsState.error(S.current.somethingWentWrong);
@@ -139,7 +145,10 @@ class QuizDetailsController extends _$QuizDetailsController {
     }
   }
 
-  Future<bool> updateQuestion(NewQuestionModel question, String questionId,) async {
+  Future<bool> updateQuestion(
+    NewQuestionModel question,
+    String questionId,
+  ) async {
     try {
       await ref.read(_quizDetailsRepository).deleteQuestion(questionId);
       await ref.read(_quizDetailsRepository).addQuestion(NewQuestionModel(
@@ -158,13 +167,13 @@ class QuizDetailsController extends _$QuizDetailsController {
   Future<void> _reloadQuestionsAfterUpdating(String oldQuestionId) async {
     try {
       state.maybeWhen(
-        loaded: (quizDetails, answersVisible) async {
+        loaded: (quizDetails, answersVisible, pageNumber) async {
           final listWithoutOldQuestion = quizDetails.questions
               .where((q) => q.id != oldQuestionId)
               .toList();
           final updatedQuizDetails = await ref
               .read(_quizDetailsRepository)
-              .getQuizDetails(quizDetails.id);
+              .getQuizDetails(quizDetails.id, pageNumber);
           final newQuestion = _findNewQuestion(
             listWithoutOldQuestion,
             updatedQuizDetails.questions,
@@ -174,7 +183,10 @@ class QuizDetailsController extends _$QuizDetailsController {
               .map((q) => q.id == oldQuestionId ? newQuestion : q)
               .toList();
 
-          state = QuizDetailsState.loaded(quizDetails.copyWith(questions: newQuestionList), answersVisible);
+          state = QuizDetailsState.loaded(
+              quizDetails.copyWith(questions: newQuestionList),
+              answersVisible,
+              pageNumber);
         },
         orElse: () => state,
       );
@@ -186,21 +198,45 @@ class QuizDetailsController extends _$QuizDetailsController {
   Future<void> _reloadQuestionsAfterAdding() async {
     try {
       state.maybeWhen(
-        loaded: (quizDetails, answersVisible) async {
+        loaded: (quizDetails, answersVisible, pageNumber) async {
           final updatedQuizDetails = await ref
               .read(_quizDetailsRepository)
-              .getQuizDetails(quizDetails.id);
+              .getQuizDetails(quizDetails.id, pageNumber);
           final newQuestion = _findNewQuestion(
               quizDetails.questions, updatedQuizDetails.questions);
           final newQuestionList = quizDetails.questions + [newQuestion];
           state = QuizDetailsState.loaded(
-              quizDetails.copyWith(questions: newQuestionList), answersVisible);
+              quizDetails.copyWith(questions: newQuestionList),
+              answersVisible,
+              pageNumber);
         },
         orElse: () => state,
       );
     } catch (e) {
       state = QuizDetailsState.error(S.current.somethingWentWrong);
     }
+  }
+
+  void loadParticipants() async {
+    await state.maybeWhen(
+      loaded: (quizDetails, answersVisible, pageNumber) async {
+        final oldQuiz = quizDetails;
+        final newQuiz = await ref.read(_quizDetailsRepository).getQuizDetails(
+              oldQuiz.id,
+              pageNumber + 1,
+            );
+        state = QuizDetailsState.loaded(
+          oldQuiz.copyWith(
+              participants: newQuiz.participants.copyWith(items: [
+            ...oldQuiz.participants.items,
+            ...newQuiz.participants.items
+          ])),
+          answersVisible,
+          pageNumber + 1,
+        );
+      },
+      orElse: () => null,
+    );
   }
 }
 
