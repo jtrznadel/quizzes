@@ -45,7 +45,8 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppTheme.pageDefaultSpacingSize),
           child: state.when(
               loading: () => const LoadingIndicator(),
               loaded: (quizListModel, currentPage) {
@@ -55,14 +56,14 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                     const DashboardTopBar(),
                     const SmallVSpacer(),
                     quizListModel.items.isEmpty
-                        ? Expanded(
+                        ? const Expanded(
                             child: Column(
                               children: [
-                                const NewQuizButton(),
-                                EmptyListInfo(
-                                  iconPath: MediaRes.wrongAnswer,
-                                  message: S.of(context).dashboardQuizzesEmpty,
-                                ),
+                                NewQuizButton(),
+                                //EmptyListInfo(
+                                //  iconPath: MediaRes.wrongAnswer,
+                                //  message: S.of(context).dashboardQuizzesEmpty,
+                                //),
                               ],
                             ),
                           )
@@ -79,42 +80,40 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                     ),
                   ),
               guest: () {
-                return Expanded(
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const DashboardTopBar(),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                MediaRes.basicError,
-                                width: 128,
-                                height: 128,
-                              ),
-                              const LargeVSpacer(),
-                              Text(
-                                S.of(context).dashboardGuestUserMessage,
-                                style: context.theme.textTheme.bodyMedium,
-                                textAlign: TextAlign.center,
-                              ),
-                              const LargeVSpacer(),
-                              BasicButton(
-                                onPressed: () {
-                                  ref.read(appRouterProvider).push(const SignUpRoute());
-                                },
-                                text: S.of(context).registerButton,
-                              )
-                            ],
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const DashboardTopBar(),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            MediaRes.basicError,
+                            width: 128,
+                            height: 128,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                          const LargeVSpacer(),
+                          Text(
+                            S.of(context).dashboardGuestUserMessage,
+                            style: context.theme.textTheme.bodyMedium,
+                            textAlign: TextAlign.center,
+                          ),
+                          const LargeVSpacer(),
+                          BasicButton(
+                            onPressed: () {
+                              ref
+                                  .read(appRouterProvider)
+                                  .push(const SignUpRoute());
+                            },
+                            text: S.of(context).registerButton,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 );
               }),
         ),
@@ -161,7 +160,8 @@ class DashboardTopBar extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!
+              .copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );
@@ -186,7 +186,8 @@ class QuizList extends ConsumerWidget {
             loadingIndicator: const LoadingIndicator(),
             items: quizListModel.items,
             isRecentSearch: false,
-            isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
+            isLastPage:
+                quizListModel.totalItemsCount <= quizListModel.items.length,
             onLoadMore: (index) {
               controller.loadMore();
             },
