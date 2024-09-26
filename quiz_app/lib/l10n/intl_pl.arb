@@ -256,6 +256,7 @@
 
     "archiveAppBarTitle": "Archiwum",
     "archiveLoadingError": "Nie udało się załadować archiwum. Spróbuj ponownie.",
+    "archiveEmpty": "Nie masz jeszcze żadnych archiwalnych Quizzów.",
     "archiveResultsAppBarTitle": "Szczegóły wyników Quizzu",
     "archiveResultsHeading": "Wynik:",
    
