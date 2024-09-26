@@ -44,8 +44,12 @@ class _ArchivePageState extends ConsumerState<ArchivePage> {
           loading: (_) => const Center(child: LoadingIndicator()),
           success: (_) {
             if (archivedQuizzes.isEmpty) {
-              return EmptyListInfo(
-                message: S.of(context).archiveEmpty,
+              return Column(
+                children: [
+                  EmptyListInfo(
+                    message: S.of(context).archiveEmpty,
+                  ),
+                ],
               );
             } else {
               return ListView.separated(
