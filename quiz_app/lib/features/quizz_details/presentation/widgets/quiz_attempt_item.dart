@@ -39,7 +39,6 @@ class QuizAttemptItem extends StatelessWidget {
           const SmallVSpacer(),
           InfoRow(
             label: S.of(context).quizzDetailsTabStatisticsTime,
-            //TODO: Replace with real data
             value: S.of(context).quizzDetailsTabStatisticsSecondsElapsed(12),
           ),
           const SmallVSpacer(),

@@ -29,10 +29,8 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class MyAppState extends ConsumerState<MyApp> {
-
   @override
-  void dispose(){
-    print('App disposed');
+  void dispose() {
     super.dispose();
   }
 
@@ -56,10 +54,7 @@ class MyAppState extends ConsumerState<MyApp> {
           final session = ref.read(sessionProvider);
           if (uri.host == ApiConstants.domain) {
             if (await session.isLoggedIn()) {
-              ref.read(appRouterProvider).replaceAll([
-                const DashboardRoute(),
-                TakeQuizzRoute(joinCode: uri.pathSegments.last)
-              ]);
+              ref.read(appRouterProvider).replaceAll([const DashboardRoute(), TakeQuizzRoute(joinCode: uri.pathSegments.last)]);
               return SynchronousFuture(uri);
             } else {
               ref.read(appRouterProvider).push(CreateGuestUserRoute(joinCode: uri.pathSegments.last));

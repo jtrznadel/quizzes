@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/common/widgets/dotted_border_container.dart';
 import '../../../../core/common/widgets/quizz_status_tile.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
-import '../../../../core/extensions/add_padding_extension.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';

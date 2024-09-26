@@ -40,7 +40,7 @@ class QuizzPreviewPage extends ConsumerWidget {
             children: [
               SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize).copyWith(top: 0), //TODO: Remove top padding if needed
+                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

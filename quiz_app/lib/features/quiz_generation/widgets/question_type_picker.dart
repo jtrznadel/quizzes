@@ -6,7 +6,18 @@ import '../application/quiz_generation_controller.dart';
 import 'question_type_button.dart';
 import '../../../../generated/l10n.dart';
 
-enum QuestionType { SingleChoice, TrueFalse }
+enum QuestionType { singleChoice, trueFalse }
+
+extension QuestionTypeEx on QuestionType {
+  String get name {
+    switch (this) {
+      case QuestionType.singleChoice:
+        return 'SingleChoice';
+      case QuestionType.trueFalse:
+        return 'TrueFalse';
+    }
+  }
+}
 
 class QuestionTypePicker extends ConsumerStatefulWidget {
   const QuestionTypePicker({super.key});
@@ -39,13 +50,8 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
               if (value) {
                 state.maybeWhen(
                   generating: (request) {
-                    request = request.copyWith(questionTypes: [
-                      ...request.questionTypes,
-                      QuestionType.SingleChoice.name
-                    ]);
-                    ref
-                        .read(quizGenerationControllerProvider.notifier)
-                        .modifyRequest(request);
+                    request = request.copyWith(questionTypes: [...request.questionTypes, QuestionType.singleChoice.name]);
+                    ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
                   },
                   orElse: () {},
                 );
@@ -53,13 +59,8 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
                 state.maybeWhen(
                   generating: (request) {
                     request = request.copyWith(
-                        questionTypes: request.questionTypes
-                            .where((element) =>
-                                element != QuestionType.SingleChoice.name)
-                            .toList());
-                    ref
-                        .read(quizGenerationControllerProvider.notifier)
-                        .modifyRequest(request);
+                        questionTypes: request.questionTypes.where((element) => element != QuestionType.singleChoice.name).toList());
+                    ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
                   },
                   orElse: () {},
                 );
@@ -78,13 +79,8 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
               if (value) {
                 state.maybeWhen(
                   generating: (request) {
-                    request = request.copyWith(questionTypes: [
-                      ...request.questionTypes,
-                      QuestionType.TrueFalse.name
-                    ]);
-                    ref
-                        .read(quizGenerationControllerProvider.notifier)
-                        .modifyRequest(request);
+                    request = request.copyWith(questionTypes: [...request.questionTypes, QuestionType.trueFalse.name]);
+                    ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
                   },
                   orElse: () {},
                 );
@@ -92,13 +88,8 @@ class _QuestionTypePickerState extends ConsumerState<QuestionTypePicker> {
                 state.maybeWhen(
                   generating: (request) {
                     request = request.copyWith(
-                        questionTypes: request.questionTypes
-                            .where((element) =>
-                                element != QuestionType.TrueFalse.name)
-                            .toList());
-                    ref
-                        .read(quizGenerationControllerProvider.notifier)
-                        .modifyRequest(request);
+                        questionTypes: request.questionTypes.where((element) => element != QuestionType.trueFalse.name).toList());
+                    ref.read(quizGenerationControllerProvider.notifier).modifyRequest(request);
                   },
                   orElse: () {},
                 );

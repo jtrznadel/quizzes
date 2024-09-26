@@ -23,29 +23,46 @@ import '../application/quiz_generation_controller.dart';
 import '../widgets/attachment_tile.dart';
 
 enum QuizLanguage {
-  English,
-  Spanish,
-  Polish,
-  German,
-  French,
-  Italian,
+  english,
+  spanish,
+  polish,
+  german,
+  french,
+  italian,
 }
 
 extension QuizLanguageExtension on QuizLanguage {
   String get language {
     switch (this) {
-      case QuizLanguage.English:
+      case QuizLanguage.english:
         return S.current.quizLanguageEnglish;
-      case QuizLanguage.Spanish:
+      case QuizLanguage.spanish:
         return S.current.quizLanguageSpanish;
-      case QuizLanguage.Polish:
+      case QuizLanguage.polish:
         return S.current.quizLanguagePolish;
-      case QuizLanguage.German:
+      case QuizLanguage.german:
         return S.current.quizLanguageGerman;
-      case QuizLanguage.French:
+      case QuizLanguage.french:
         return S.current.quizLanguageFrench;
-      case QuizLanguage.Italian:
+      case QuizLanguage.italian:
         return S.current.quizLanguageItalian;
+    }
+  }
+
+  String get name {
+    switch (this) {
+      case QuizLanguage.english:
+        return 'English';
+      case QuizLanguage.spanish:
+        return 'Spanish';
+      case QuizLanguage.polish:
+        return 'Polish';
+      case QuizLanguage.german:
+        return 'German';
+      case QuizLanguage.french:
+        return 'French';
+      case QuizLanguage.italian:
+        return 'Italian';
     }
   }
 }
@@ -202,9 +219,9 @@ class LanguageSelectionList extends ConsumerWidget {
     var value = ref.watch(quizGenerationControllerProvider).maybeWhen(
           generating: (request) => QuizLanguage.values.firstWhere(
             (element) => element == request.language,
-            orElse: () => QuizLanguage.English,
+            orElse: () => QuizLanguage.english,
           ),
-          orElse: () => QuizLanguage.English,
+          orElse: () => QuizLanguage.english,
         );
     return LayoutBuilder(builder: (context, constraints) {
       return SizedBox(
@@ -215,7 +232,7 @@ class LanguageSelectionList extends ConsumerWidget {
             child: DropdownButton2<QuizLanguage>(
               value: value,
               onChanged: (language) {
-                ref.read(quizGenerationControllerProvider.notifier).setLanguage(language ?? QuizLanguage.English);
+                ref.read(quizGenerationControllerProvider.notifier).setLanguage(language ?? QuizLanguage.english);
               },
               iconStyleData: IconStyleData(
                 icon: Row(
@@ -254,44 +271,44 @@ class LanguageSelectionList extends ConsumerWidget {
 
   List<DropdownMenuItem<QuizLanguage>> dropdownMenuEntries() => [
         DropdownMenuItem(
-          value: QuizLanguage.English,
+          value: QuizLanguage.english,
           child: Text(
-            QuizLanguage.English.language,
+            QuizLanguage.english.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.Spanish,
+          value: QuizLanguage.spanish,
           child: Text(
-            QuizLanguage.Spanish.language,
+            QuizLanguage.spanish.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.Polish,
+          value: QuizLanguage.polish,
           child: Text(
-            QuizLanguage.Polish.language,
+            QuizLanguage.polish.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.German,
+          value: QuizLanguage.german,
           child: Text(
-            QuizLanguage.German.language,
+            QuizLanguage.german.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.French,
+          value: QuizLanguage.french,
           child: Text(
-            QuizLanguage.French.language,
+            QuizLanguage.french.language,
             style: textTheme.bodyMedium,
           ),
         ),
         DropdownMenuItem(
-          value: QuizLanguage.Italian,
+          value: QuizLanguage.italian,
           child: Text(
-            QuizLanguage.Italian.language,
+            QuizLanguage.italian.language,
             style: textTheme.bodyMedium,
           ),
         ),

@@ -46,7 +46,6 @@ class AddNewQuestionBottomSheet extends StatelessWidget {
     ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize));
   }
 
-  //TODO: add return type to get question add mode (manual, AI generated)
   static void show(BuildContext context, {required void Function(QuestionModelInterface) onQuestionAdd}) {
     showModalBottomSheet(
       isScrollControlled: true,

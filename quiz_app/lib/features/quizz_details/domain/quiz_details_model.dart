@@ -5,9 +5,41 @@ import 'question_details_model.dart';
 part 'quiz_details_model.g.dart';
 part 'quiz_details_model.freezed.dart';
 
-enum QuizAvailability { @JsonValue('Public') Public, @JsonValue('Private') Private }
+enum QuizAvailability {
+  @JsonValue('Public')
+  public,
+  @JsonValue('Private')
+  private
+}
 
-enum QuizStatus { @JsonValue('Active') Active, @JsonValue('Inactive') Inactive }
+enum QuizStatus {
+  @JsonValue('Active')
+  active,
+  @JsonValue('Inactive')
+  inactive
+}
+
+extension QuizStatusEx on QuizStatus {
+  String get name {
+    switch (this) {
+      case QuizStatus.active:
+        return 'Active';
+      case QuizStatus.inactive:
+        return 'Inactive';
+    }
+  }
+}
+
+extension QuizAvailabilityEx on QuizAvailability {
+  String get name {
+    switch (this) {
+      case QuizAvailability.public:
+        return 'Public';
+      case QuizAvailability.private:
+        return 'Private';
+    }
+  }
+}
 
 @freezed
 class QuizDetailsModel with _$QuizDetailsModel {
@@ -21,6 +53,5 @@ class QuizDetailsModel with _$QuizDetailsModel {
     required List<QuestionDetailsModel> questions,
   }) = _QuizDetailsModel;
 
-  factory QuizDetailsModel.fromJson(Map<String, dynamic> json) =>
-      _$QuizDetailsModelFromJson(json);
+  factory QuizDetailsModel.fromJson(Map<String, dynamic> json) => _$QuizDetailsModelFromJson(json);
 }

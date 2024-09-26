@@ -6,7 +6,6 @@ import '../data/repositories/quiz_details_repository.dart';
 import '../domain/new_question_model.dart';
 import '../domain/question_details_model.dart';
 import '../domain/quiz_details_model.dart';
-import '../domain/update_question_model.dart';
 import 'quiz_details_state.dart';
 
 part 'quiz_details_controller.g.dart';
@@ -22,8 +21,7 @@ class QuizDetailsController extends _$QuizDetailsController {
     state = const QuizDetailsState.loading();
 
     try {
-      final quizDetails =
-          await ref.read(_quizDetailsRepository).getQuizDetails(id);
+      final quizDetails = await ref.read(_quizDetailsRepository).getQuizDetails(id);
       state = QuizDetailsState.loaded(quizDetails, false);
     } catch (e) {
       state = QuizDetailsState.error(e.toString());
@@ -31,23 +29,18 @@ class QuizDetailsController extends _$QuizDetailsController {
   }
 
   void changeAnswerVisibility(bool isVisible) {
-    state = state.maybeWhen(
-        loaded: (quizDetails, _) =>
-            state = QuizDetailsState.loaded(quizDetails, isVisible),
-        orElse: () => state);
+    state = state.maybeWhen(loaded: (quizDetails, _) => state = QuizDetailsState.loaded(quizDetails, isVisible), orElse: () => state);
   }
 
   void changeQuizStatus(QuizStatus status) {
     state = state.maybeWhen(
-        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(
-            quizDetails.copyWith(status: status), answersVisible),
+        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(quizDetails.copyWith(status: status), answersVisible),
         orElse: () => state);
   }
 
   void changeQuizAvailability(QuizAvailability availability) {
     state = state.maybeWhen(
-        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(
-            quizDetails.copyWith(availability: availability), answersVisible),
+        loaded: (quizDetails, answersVisible) => QuizDetailsState.loaded(quizDetails.copyWith(availability: availability), answersVisible),
         orElse: () => state);
   }
 
@@ -78,13 +71,9 @@ class QuizDetailsController extends _$QuizDetailsController {
     String description,
   ) async {
     try {
-      await ref
-          .read(_quizDetailsRepository)
-          .updateQuizDetails(id, title, description);
+      await ref.read(_quizDetailsRepository).updateQuizDetails(id, title, description);
       state.maybeWhen(loaded: (quizDetails, answersVisible) {
-        state = QuizDetailsState.loaded(
-            quizDetails.copyWith(title: title, description: description),
-            answersVisible);
+        state = QuizDetailsState.loaded(quizDetails.copyWith(title: title, description: description), answersVisible);
       }, orElse: () {
         state = QuizDetailsState.error(S.current.somethingWentWrong);
       });
@@ -126,20 +115,10 @@ class QuizDetailsController extends _$QuizDetailsController {
     }
   }
 
-  //TODO: Use this method once it's possible to add answers to questions in the API
-  Future<bool> _updateQuestion(UpdateQuestionModel question) async {
-    try {
-      state = const QuizDetailsState.loading();
-      await ref.read(_quizDetailsRepository).updateQuestion(question);
-      getQuizDetails(question.quizID);
-      return true;
-    } catch (e) {
-      state = QuizDetailsState.error(S.current.somethingWentWrong);
-      return false;
-    }
-  }
-
-  Future<bool> updateQuestion(NewQuestionModel question, String questionId,) async {
+  Future<bool> updateQuestion(
+    NewQuestionModel question,
+    String questionId,
+  ) async {
     try {
       await ref.read(_quizDetailsRepository).deleteQuestion(questionId);
       await ref.read(_quizDetailsRepository).addQuestion(NewQuestionModel(
@@ -159,20 +138,14 @@ class QuizDetailsController extends _$QuizDetailsController {
     try {
       state.maybeWhen(
         loaded: (quizDetails, answersVisible) async {
-          final listWithoutOldQuestion = quizDetails.questions
-              .where((q) => q.id != oldQuestionId)
-              .toList();
-          final updatedQuizDetails = await ref
-              .read(_quizDetailsRepository)
-              .getQuizDetails(quizDetails.id);
+          final listWithoutOldQuestion = quizDetails.questions.where((q) => q.id != oldQuestionId).toList();
+          final updatedQuizDetails = await ref.read(_quizDetailsRepository).getQuizDetails(quizDetails.id);
           final newQuestion = _findNewQuestion(
             listWithoutOldQuestion,
             updatedQuizDetails.questions,
           );
 
-          final newQuestionList = quizDetails.questions
-              .map((q) => q.id == oldQuestionId ? newQuestion : q)
-              .toList();
+          final newQuestionList = quizDetails.questions.map((q) => q.id == oldQuestionId ? newQuestion : q).toList();
 
           state = QuizDetailsState.loaded(quizDetails.copyWith(questions: newQuestionList), answersVisible);
         },
@@ -187,14 +160,10 @@ class QuizDetailsController extends _$QuizDetailsController {
     try {
       state.maybeWhen(
         loaded: (quizDetails, answersVisible) async {
-          final updatedQuizDetails = await ref
-              .read(_quizDetailsRepository)
-              .getQuizDetails(quizDetails.id);
-          final newQuestion = _findNewQuestion(
-              quizDetails.questions, updatedQuizDetails.questions);
+          final updatedQuizDetails = await ref.read(_quizDetailsRepository).getQuizDetails(quizDetails.id);
+          final newQuestion = _findNewQuestion(quizDetails.questions, updatedQuizDetails.questions);
           final newQuestionList = quizDetails.questions + [newQuestion];
-          state = QuizDetailsState.loaded(
-              quizDetails.copyWith(questions: newQuestionList), answersVisible);
+          state = QuizDetailsState.loaded(quizDetails.copyWith(questions: newQuestionList), answersVisible);
         },
         orElse: () => state,
       );
@@ -204,8 +173,7 @@ class QuizDetailsController extends _$QuizDetailsController {
   }
 }
 
-QuestionDetailsModel _findNewQuestion(List<QuestionDetailsModel> oldQuestions,
-    List<QuestionDetailsModel> newQuestions) {
+QuestionDetailsModel _findNewQuestion(List<QuestionDetailsModel> oldQuestions, List<QuestionDetailsModel> newQuestions) {
   return newQuestions.firstWhere(
     (element) => !oldQuestions.any((q) => q.id == element.id),
   );

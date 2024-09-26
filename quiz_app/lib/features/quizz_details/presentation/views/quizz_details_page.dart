@@ -56,7 +56,7 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage> with Single
   Widget build(BuildContext context) {
     final state = ref.watch(quizDetailsControllerProvider);
     return PopScope(
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, _) {
         if (didPop) {
           state.maybeWhen(
             loaded: (quizDetails, _) {

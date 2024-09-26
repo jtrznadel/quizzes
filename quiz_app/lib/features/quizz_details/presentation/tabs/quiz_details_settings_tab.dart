@@ -6,7 +6,6 @@ import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
-import '../../../../core/theme/app_theme.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
@@ -108,10 +107,10 @@ class QuizSettingsStatusSection extends ConsumerWidget {
                   ),
                 ),
                 SwitchButton(
-                  value: quizDetails.status == QuizStatus.Active,
+                  value: quizDetails.status == QuizStatus.active,
                   onChanged: (value) {
                     controller.changeQuizStatus(
-                      value ? QuizStatus.Active : QuizStatus.Inactive,
+                      value ? QuizStatus.active : QuizStatus.inactive,
                     );
                   },
                 ),
@@ -150,20 +149,20 @@ class QuizSettingsAvailabilitySection extends ConsumerWidget {
           const MediumVSpacer(),
           TextCheckbox(
             text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPrivate,
-            value: quizDetails.availability == QuizAvailability.Private,
+            value: quizDetails.availability == QuizAvailability.private,
             onChanged: (value) {
               controller.changeQuizAvailability(
-                value! ? QuizAvailability.Private : QuizAvailability.Public,
+                value! ? QuizAvailability.private : QuizAvailability.public,
               );
             },
           ),
           const SmallVSpacer(),
           TextCheckbox(
             text: S.of(context).quizzDetailsTabSettingsQuizAvailabilityPublic,
-            value: quizDetails.availability == QuizAvailability.Public,
+            value: quizDetails.availability == QuizAvailability.public,
             onChanged: (value) {
               controller.changeQuizAvailability(
-                value! ? QuizAvailability.Public : QuizAvailability.Private,
+                value! ? QuizAvailability.public : QuizAvailability.private,
               );
             },
           ),
