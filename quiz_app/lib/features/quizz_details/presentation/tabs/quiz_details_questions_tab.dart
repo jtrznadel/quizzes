@@ -9,6 +9,7 @@ import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../../quiz_generation/domain/generate_question_model.dart';
 import '../../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../application/quiz_details_controller.dart';
@@ -22,19 +23,22 @@ class QuizDetailsQuestionsTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      children: [
-        const MediumVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabQuestionsSubheading,
-          style: context.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+        child: Column(
+          children: [
+            Text(
+              S.of(context).quizzDetailsTabQuestionsSubheading,
+              style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+            ),
+            const MediumVSpacer(),
+            const AnswersSwitchRow(),
+            const NewQuestionButton(),
+            const QuestionsList(),
+          ],
         ),
-        const MediumVSpacer(),
-        const AnswersSwitchRow(),
-        const NewQuestionButton(),
-        const QuestionsList(),
-      ],
+      ),
     );
   }
 }
@@ -54,9 +58,7 @@ class AnswersSwitchRow extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             QuizStatusBadge(
-              text: S
-                  .of(context)
-                  .quizQuestionNumberBadge(quizDetails.questions.length),
+              text: S.of(context).quizQuestionNumberBadge(quizDetails.questions.length),
               backgroundColor: AppColorScheme.secondary,
               textColor: AppColorScheme.primary,
             ),
@@ -107,10 +109,7 @@ class NewQuestionButton extends ConsumerWidget {
               AddNewQuestionBottomSheet.show(
                 context,
                 onQuestionAdd: (question) async {
-                  final newQuestionModel = NewQuestionModel(
-                      title: question.title,
-                      createAnswers: question.answers,
-                      quizID: quizDetails.id);
+                  final newQuestionModel = NewQuestionModel(title: question.title, createAnswers: question.answers, quizID: quizDetails.id);
                   final success = await controller.addNewQuestion(newQuestionModel);
 
                   if (context.mounted) {
@@ -179,8 +178,7 @@ class QuestionsList extends ConsumerWidget {
                         generateAnswers: quizDetails.questions[index].answers,
                       ),
                       onDelete: () {
-                        DeleteQuestionDialog.show(
-                            context, quizDetails.questions[index]);
+                        DeleteQuestionDialog.show(context, quizDetails.questions[index]);
                       },
                       correctAnswerVisible: answersVisible,
                       onEdit: (question) async {
@@ -189,22 +187,17 @@ class QuestionsList extends ConsumerWidget {
                           createAnswers: question.answers,
                           quizID: quizDetails.id,
                         );
-                        final success = await controller.updateQuestion(
-                            newQuestionModel, quizDetails.questions[index].id);
+                        final success = await controller.updateQuestion(newQuestionModel, quizDetails.questions[index].id);
                         if (context.mounted) {
                           success
                               ? InfoSnackbar.show(
                                   context,
-                                  S
-                                      .of(context)
-                                      .quizzDetailsUpdateQuestionSuccess,
+                                  S.of(context).quizzDetailsUpdateQuestionSuccess,
                                   color: AppColorScheme.success,
                                 )
                               : ErrorSnackbar.show(
                                   context,
-                                  S
-                                      .of(context)
-                                      .quizzDetailsAddNewQuestionFailure,
+                                  S.of(context).quizzDetailsAddNewQuestionFailure,
                                 );
                         }
                       },

@@ -45,8 +45,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppTheme.pageDefaultSpacingSize),
+          padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
           child: state.when(
               loading: () => const LoadingIndicator(),
               loaded: (quizListModel, currentPage) {
@@ -104,9 +103,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                           const LargeVSpacer(),
                           BasicButton(
                             onPressed: () {
-                              ref
-                                  .read(appRouterProvider)
-                                  .push(const SignUpRoute());
+                              ref.read(appRouterProvider).push(const SignUpRoute());
                             },
                             text: S.of(context).registerButton,
                           )
@@ -139,12 +136,17 @@ class DashboardTopBar extends ConsumerWidget {
               style: context.theme.textTheme.headlineLarge,
             ),
             const Spacer(),
-            IconButton(
-              onPressed: () {
-                ref.read(appRouterProvider).push(const JoinByCodeRoute());
-              },
-              icon: SvgPicture.asset(MediaRes.joinByCode),
-            ),
+            TextButton(
+                onPressed: () {
+                  ref.read(appRouterProvider).push(const JoinByCodeRoute());
+                },
+                child: Text(S.of(context).dashboardJoinQuizzButton)),
+            // IconButton(
+            //   onPressed: () {
+            //     ref.read(appRouterProvider).push(const JoinByCodeRoute());
+            //   },
+            //   icon: SvgPicture.asset(MediaRes.joinByCode),
+            // ),
             IconButton(
               onPressed: () {
                 ref.read(appRouterProvider).push(const ProfileRoute());
@@ -160,8 +162,7 @@ class DashboardTopBar extends ConsumerWidget {
         const SmallVSpacer(),
         Text(
           S.of(context).dashboardSubheading,
-          style: context.theme.textTheme.bodyMedium!
-              .copyWith(color: AppColorScheme.textSecondary),
+          style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
         )
       ],
     );
@@ -186,8 +187,7 @@ class QuizList extends ConsumerWidget {
             loadingIndicator: const LoadingIndicator(),
             items: quizListModel.items,
             isRecentSearch: false,
-            isLastPage:
-                quizListModel.totalItemsCount <= quizListModel.items.length,
+            isLastPage: quizListModel.totalItemsCount <= quizListModel.items.length,
             onLoadMore: (index) {
               controller.loadMore();
             },

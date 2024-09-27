@@ -7,7 +7,6 @@ import '../../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/common/widgets/quizz_summary.dart';
 import '../../../../core/common/widgets/spacers/horizontal_spacers.dart';
-import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/res/media_res.dart';
 import '../../../../core/services/app_router.dart';
@@ -101,41 +100,56 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage> with Single
               ],
             ),
             body: SafeArea(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-                  child: Column(
-                    children: [
-                      QuizzSummary(
-                        title: quizDetails.title,
-                        description: quizDetails.description,
+              child: NestedScrollView(
+                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                  return [
+                    SliverPadding(
+                      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+                      sliver: SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            QuizzSummary(
+                              title: quizDetails.title,
+                              description: quizDetails.description,
+                            ),
+                          ],
+                        ),
                       ),
-                      const MediumVSpacer(),
-                      TabBar(
-                        dividerColor: AppColorScheme.border,
-                        labelColor: AppColorScheme.primary,
-                        labelStyle: context.textTheme.labelMedium!,
-                        unselectedLabelColor: AppColorScheme.textSecondary,
-                        isScrollable: true,
-                        tabAlignment: TabAlignment.start,
-                        splashBorderRadius: BorderRadius.circular(16),
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        dividerHeight: 2,
-                        indicatorWeight: 2,
-                        controller: tabController,
-                        onTap: (index) {
-                          setState(() {});
-                        },
-                        tabs: [
-                          Tab(text: S.of(context).quizzDetailsTabQuestions),
-                          Tab(text: S.of(context).quizzDetailsTabSettings),
-                          Tab(text: S.of(context).quizzDetailsTabStatistics),
-                          Tab(text: S.of(context).quizzDetailsTabGeneral),
-                        ],
+                    ),
+                    SliverPersistentHeader(
+                      pinned: true,
+                      delegate: _SliverAppBarDelegate(
+                        TabBar(
+                          dividerColor: AppColorScheme.border,
+                          labelColor: AppColorScheme.primary,
+                          labelStyle: context.textTheme.labelMedium!,
+                          unselectedLabelColor: AppColorScheme.textSecondary,
+                          isScrollable: true,
+                          tabAlignment: TabAlignment.start,
+                          splashBorderRadius: BorderRadius.circular(16),
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          dividerHeight: 2,
+                          indicatorWeight: 2,
+                          controller: tabController,
+                          tabs: [
+                            Tab(text: S.of(context).quizzDetailsTabGeneral),
+                            Tab(text: S.of(context).quizzDetailsTabQuestions),
+                            Tab(text: S.of(context).quizzDetailsTabStatistics),
+                            Tab(text: S.of(context).quizzDetailsTabSettings),
+                          ],
+                        ),
                       ),
-                      _getTabAtIndex(tabController.index),
-                    ],
-                  ),
+                    ),
+                  ];
+                },
+                body: TabBarView(
+                  controller: tabController,
+                  children: const [
+                    QuizDetailsGeneralTab(),
+                    QuizDetailsQuestionsTab(),
+                    QuizDetailsStatisticsTab(),
+                    QuizDetailsSettingsTab(),
+                  ],
                 ),
               ),
             ),
@@ -150,21 +164,29 @@ class _QuizzDetailsPageState extends ConsumerState<QuizzDetailsPage> with Single
     tabController.dispose();
     super.dispose();
   }
+}
 
-  Widget _getTabAtIndex(int index) {
-    switch (index) {
-      case 0:
-        return const QuizDetailsQuestionsTab();
-      case 1:
-        return const QuizDetailsSettingsTab();
-      case 2:
-        return const QuizDetailsStatisticsTab();
-      case 3:
-        return const QuizDetailsGeneralTab();
-      default:
-        return Center(
-          child: Text(S.of(context).quizzDetailsTabGeneral),
-        );
-    }
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._tabBar);
+
+  final TabBar _tabBar;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height;
+  @override
+  double get maxExtent => _tabBar.preferredSize.height;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: AppColorScheme.surface,
+      padding: const EdgeInsets.symmetric(horizontal: AppTheme.pageDefaultSpacingSize),
+      child: _tabBar,
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return false;
   }
 }

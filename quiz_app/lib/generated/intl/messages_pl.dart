@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Kontynuuj"),
         "dashboardGuestUserMessage": MessageLookupByLibrary.simpleMessage(
             "Zaloguj się, aby uzyskać dostęp do swoich quizów."),
+        "dashboardJoinQuizzButton":
+            MessageLookupByLibrary.simpleMessage("Dołącz"),
         "dashboardQuizzesEmpty": MessageLookupByLibrary.simpleMessage(
             "Nie masz jeszcze żadnych quizów. Możesz utworzyć nowy, klikając przycisk powyżej."),
         "dashboardSubheading": MessageLookupByLibrary.simpleMessage(

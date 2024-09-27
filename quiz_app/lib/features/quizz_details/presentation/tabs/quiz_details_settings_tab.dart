@@ -6,6 +6,7 @@ import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/theme/app_color_scheme.dart';
+import '../../../../core/theme/app_theme.dart';
 import '../../application/quiz_details_controller.dart';
 import '../../domain/quiz_details_model.dart';
 import '../widgets/switch_button.dart';
@@ -17,20 +18,22 @@ class QuizDetailsSettingsTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SmallVSpacer(),
-        Text(
-          S.of(context).quizzDetailsTabSettingsSubheading,
-          style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
-        ),
-        const SmallVSpacer(),
-        const QuizSettingsStatusSection(),
-        const QuizSettingsAvailabilitySection(),
-        const MediumVSpacer(),
-        const SettingsSaveButton(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            S.of(context).quizzDetailsTabSettingsSubheading,
+            style: context.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+          ),
+          const SmallVSpacer(),
+          const QuizSettingsStatusSection(),
+          const QuizSettingsAvailabilitySection(),
+          const MediumVSpacer(),
+          const SettingsSaveButton(),
+        ],
+      ),
     );
   }
 }

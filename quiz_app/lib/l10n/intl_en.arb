@@ -189,6 +189,7 @@
     "addNewQuizzButton": "Add new quizz",
     "dashboardQuizzesEmpty": "You do not have any quizzes yet. Create one now!",
     "dashboardGuestUserMessage": "You are logged in as as a guest user. Register to access all the app features.",
+    "dashboardJoinQuizzButton": "Join",
 
 
     "quizzTakeAppBarTitle": "Take quizz",

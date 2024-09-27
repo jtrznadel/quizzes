@@ -1480,6 +1480,16 @@ class S {
     );
   }
 
+  /// `Join`
+  String get dashboardJoinQuizzButton {
+    return Intl.message(
+      'Join',
+      name: 'dashboardJoinQuizzButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Take quizz`
   String get quizzTakeAppBarTitle {
     return Intl.message(

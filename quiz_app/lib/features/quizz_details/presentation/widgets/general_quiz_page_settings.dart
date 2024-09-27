@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,8 +18,7 @@ class GeneralQuizPageSettings extends ConsumerStatefulWidget {
   ConsumerState createState() => _GeneralQuizPageSettingsState();
 }
 
-class _GeneralQuizPageSettingsState
-    extends ConsumerState<GeneralQuizPageSettings> {
+class _GeneralQuizPageSettingsState extends ConsumerState<GeneralQuizPageSettings> {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
 
@@ -42,11 +40,10 @@ class _GeneralQuizPageSettingsState
           loaded: (quizDetails, _, __) => quizDetails.title,
           orElse: () => '',
         );
-    descriptionController.text =
-        ref.watch(quizDetailsControllerProvider).maybeWhen(
-              loaded: (quizDetails, _, __) => quizDetails.description,
-              orElse: () => '',
-            );
+    descriptionController.text = ref.watch(quizDetailsControllerProvider).maybeWhen(
+          loaded: (quizDetails, _, __) => quizDetails.description,
+          orElse: () => '',
+        );
 
     final controller = ref.read(quizDetailsControllerProvider.notifier);
     final state = ref.watch(quizDetailsControllerProvider);
@@ -63,8 +60,7 @@ class _GeneralQuizPageSettingsState
         const SmallVSpacer(),
         Text(
           S.of(context).quizzDetailsTabGeneralQuizTitleTextFieldDescription,
-          style: context.textTheme.bodyMedium
-              ?.copyWith(color: AppColorScheme.textSecondary),
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
         const LargeVSpacer(),
         TextArea(
@@ -76,13 +72,10 @@ class _GeneralQuizPageSettingsState
         ),
         const SmallVSpacer(),
         Text(
-          S
-              .of(context)
-              .quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
-          style: context.textTheme.bodyMedium
-              ?.copyWith(color: AppColorScheme.textSecondary),
+          S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
+          style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
-        const LargeVSpacer(),
+        const SmallVSpacer(),
         Align(
           alignment: Alignment.centerRight,
           child: state.maybeWhen(
