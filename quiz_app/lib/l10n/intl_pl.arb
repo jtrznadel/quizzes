@@ -287,5 +287,12 @@
     "quizLanguageSpanish": "Hiszpański",
     "quizLanguageGerman": "Niemiecki",
     "quizLanguageFrench": "Francuski",
-    "quizLanguageItalian": "Włoski"
+    "quizLanguageItalian": "Włoski",
+
+    "guestUserPageAppbar": "Logowanie gościa",
+    "guestUserPageHeading": "Witaj w Quizzie!",
+    "guestUserPageUsernameDescriptoin": "Podaj swoją nazwę użytkownika, aby rozpocząć Quizz.",
+    "guestUserPageUsernameHint": "Podaj swoją nazwę użytkownika",
+    "guestUserPageUsernameLabel": "Nazwa użytkownika",
+    "guestUserPageQuizJoinFailure": "Nie udało się dołączyć do Quizzu."
 }

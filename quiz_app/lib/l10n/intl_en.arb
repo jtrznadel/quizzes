@@ -287,6 +287,14 @@
     "quizLanguageSpanish": "Spanish",
     "quizLanguageGerman": "German",
     "quizLanguageFrench": "French",
-    "quizLanguageItalian": "Italian"
+    "quizLanguageItalian": "Italian",
+
+    "guestUserPageAppbar": "Guest login",
+    "guestUserPageHeading": "Welcome to the quiz!",
+    "guestUserPageUsernameDescriptoin": "Provider your username to join the quiz.",
+    "guestUserPageUsernameHint": "Enter your username",
+    "guestUserPageUsernameLabel": "Username",
+    "guestUserPageQuizJoinFailure": "Failed to join the quiz."
+
 }
       
