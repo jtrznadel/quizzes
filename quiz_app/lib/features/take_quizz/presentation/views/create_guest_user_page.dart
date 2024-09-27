@@ -9,6 +9,7 @@ import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../generated/l10n.dart';
 import '../../../auth/application/auth_controller.dart';
 
 @RoutePage()
@@ -31,7 +32,7 @@ class _CreateGuestUserPageState extends ConsumerState<CreateGuestUserPage> {
 
     return Scaffold(
       appBar: BasicAppBar(
-          title: 'Guest login',
+          title: S.of(context).guestUserPageAppbar,
           onBack: () {
             ref.read(appRouterProvider).replaceAll([const WelcomeRoute()]);
           }),
@@ -42,20 +43,20 @@ class _CreateGuestUserPageState extends ConsumerState<CreateGuestUserPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Welcome to the quiz!',
+              S.of(context).guestUserPageHeading,
               style: context.textTheme.headlineLarge,
             ),
             const SmallVSpacer(),
             Text(
-              'Provider your username to join the quiz.',
+              S.of(context).guestUserPageUsernameDescriptoin,
               style: context.textTheme.bodyMedium,
             ),
             const LargeVSpacer(),
             Form(
               key: formKey,
               child: IFormField(
-                labelText: 'Username',
-                hintText: 'Enter your username',
+                labelText: S.of(context).guestUserPageUsernameLabel,
+                hintText: S.of(context).guestUserPageUsernameHint,
                 controller: usernameController,
               ),
             ),
@@ -74,15 +75,15 @@ class _CreateGuestUserPageState extends ConsumerState<CreateGuestUserPage> {
                   } else {
                     if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Failed to join the quiz'),
+                        SnackBar(
+                          content: Text(S.of(context).guestUserPageQuizJoinFailure),
                         ),
                       );
                     }
                   }
                 }
               },
-              text: 'Start Quizz',
+              text: S.of(context).quizzTakeStartButton,
               width: double.infinity,
             ),
           ],

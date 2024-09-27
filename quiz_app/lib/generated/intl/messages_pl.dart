@@ -89,6 +89,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nie martw się! To się zdarza. Wprowadź adres e-mail powiązany z twoim kontem."),
         "goBackToDashboard":
             MessageLookupByLibrary.simpleMessage("Wróć do pulpitu"),
+        "guestUserPageAppbar":
+            MessageLookupByLibrary.simpleMessage("Logowanie gościa"),
+        "guestUserPageHeading":
+            MessageLookupByLibrary.simpleMessage("Witaj w Quizzie!"),
+        "guestUserPageQuizJoinFailure": MessageLookupByLibrary.simpleMessage(
+            "Nie udało się dołączyć do Quizzu."),
+        "guestUserPageUsernameDescriptoin":
+            MessageLookupByLibrary.simpleMessage(
+                "Podaj swoją nazwę użytkownika, aby rozpocząć Quizz."),
+        "guestUserPageUsernameHint": MessageLookupByLibrary.simpleMessage(
+            "Podaj swoją nazwę użytkownika"),
+        "guestUserPageUsernameLabel":
+            MessageLookupByLibrary.simpleMessage("Nazwa użytkownika"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Nieprawidłowy adres e-mail."),
         "invalidEmailOrPassword": MessageLookupByLibrary.simpleMessage(

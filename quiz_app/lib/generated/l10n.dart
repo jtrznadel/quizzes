@@ -2379,6 +2379,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Guest login`
+  String get guestUserPageAppbar {
+    return Intl.message(
+      'Guest login',
+      name: 'guestUserPageAppbar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to the quiz!`
+  String get guestUserPageHeading {
+    return Intl.message(
+      'Welcome to the quiz!',
+      name: 'guestUserPageHeading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Provider your username to join the quiz.`
+  String get guestUserPageUsernameDescriptoin {
+    return Intl.message(
+      'Provider your username to join the quiz.',
+      name: 'guestUserPageUsernameDescriptoin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your username`
+  String get guestUserPageUsernameHint {
+    return Intl.message(
+      'Enter your username',
+      name: 'guestUserPageUsernameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get guestUserPageUsernameLabel {
+    return Intl.message(
+      'Username',
+      name: 'guestUserPageUsernameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to join the quiz.`
+  String get guestUserPageQuizJoinFailure {
+    return Intl.message(
+      'Failed to join the quiz.',
+      name: 'guestUserPageQuizJoinFailure',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
