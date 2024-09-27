@@ -12,7 +12,6 @@ import '../../../../generated/l10n.dart';
 import '../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../core/common/widgets/loading_indicator.dart';
-import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
 import '../../../core/common/widgets/new_question/add_new_question_dialog.dart';
 import '../../../core/models/question_model_interface.dart';
 import '../../../core/res/media_res.dart';

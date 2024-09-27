@@ -65,27 +65,23 @@ class QuizzArchiveTile extends ConsumerWidget {
                 style: context.textTheme.bodyMedium,
               ),
               const SmallVSpacer(),
-              Row(
-                children: [
-                  Text(
-                    DateFormat('dd.MM.yyyy').format(DateTime.parse(quizz.participationDateUtc).toLocal()),
-                    style: context.textTheme.bodySmall,
-                  ),
-                  const SmallHSpacer(),
-                  QuizStatusBadge(
-                    text: participationStatus.label,
-                    backgroundColor: participationStatus.backgroundColor,
-                    textColor: participationStatus.textColor,
-                  ),
-                ],
+              Text(
+                DateFormat('dd.MM.yyyy').format(DateTime.parse(quizz.participationDateUtc).toLocal()),
+                style: context.textTheme.bodySmall,
               ),
-              const LargeVSpacer(),
+              const MediumVSpacer(),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   QuizStatusBadge(
                     text: S.of(context).quizQuestionNumberBadge(quizz.quizResult.totalQuestions),
                     backgroundColor: AppColorScheme.secondary,
                     textColor: AppColorScheme.primary,
+                  ),
+                  QuizStatusBadge(
+                    text: participationStatus.label,
+                    backgroundColor: participationStatus.backgroundColor,
+                    textColor: participationStatus.textColor,
                   ),
                 ],
               )
