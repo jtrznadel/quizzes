@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/validators/validators.dart';
 import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/res/media_res.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/auth_controller.dart';
 
@@ -32,8 +34,8 @@ class PasswordFormField extends ConsumerWidget {
         onPressed: () {
           controller.togglePasswordVisibility();
         },
-        icon: obscurePassword
-            ? const Icon(Icons.visibility_outlined, color: Color(0xFF6A707C))
+        icon: !obscurePassword
+            ? SvgPicture.asset(MediaRes.fluentEye)
             : const Icon(Icons.visibility_off_outlined, color: Color(0xFF6A707C)),
       ),
     );
