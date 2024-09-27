@@ -17,7 +17,7 @@ String? passwordValidator(String? value) {
   if (!RegExp(r'^(?=.*\d)').hasMatch(value)) {
     errors.add(S.current.passwordRequiresDigit);
   }
-  if (!RegExp(r'^(?=.*[@$!%*?&])').hasMatch(value)) {
+  if (!RegExp(r'^(?=.*[@$!%*?&-])').hasMatch(value)) {
     errors.add(S.current.passwordRequiresSpecialChar);
   }
 
