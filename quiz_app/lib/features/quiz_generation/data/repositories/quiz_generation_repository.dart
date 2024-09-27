@@ -33,8 +33,6 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
     required QuizRequestModel quizRequestModel,
   }) async {
     try {
-      final copyOfTypes = List<String>.from(quizRequestModel.questionTypes);
-      copyOfTypes.sort((a, b) => a.compareTo(b));
       final language = QuizLanguage.values
           .firstWhere((e) => e == quizRequestModel.language)
           .name;
@@ -44,7 +42,7 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
       final model = await _quizGenerationClient.generateQuiz(
         content: quizRequestModel.content,
         numberOfQuestions: quizRequestModel.numberOfQuestions,
-        questionTypes: copyOfTypes.join(','),
+        questionTypes: quizRequestModel.questionTypes,
         attachments: attachments,
         language: language,
       );

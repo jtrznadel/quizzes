@@ -214,6 +214,7 @@
     "quizzTakeSummaryBackToDashboard": "Back to dashboard",
     "quizzTakeLoadingError": "There was an error with loading the Quizz. There is a chance that code You provided is invalid. Please try again.",
     "quizzTakeStartButton": "Start Quizz",
+    "quizzTakeSelectAnswer": "Select an answer!",
 
     "joinByCodeAppBarTitle": "Join Quizz",
     "joinByCodeHeading": "Enter code",
@@ -255,6 +256,7 @@
     "profileArchiveHeading": "Quizzes",
     "profileArchiveButton": "Archive",
     "unknownUsername": "Unknown",
+    "successfulProfileUpdate": "Profile updated successfully.",
 
     "archiveAppBarTitle": "Archive",
     "archiveLoadingError": "There was an error with loading the archive. Please try again.",

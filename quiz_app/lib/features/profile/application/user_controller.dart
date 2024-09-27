@@ -35,14 +35,16 @@ class UserController extends _$UserController {
     }
   }
 
-  Future<void> updateUser({required User user}) async {
+  Future<bool> updateUser({required User user}) async {
     state = UserState.success(user, isUsernameUpdating: true);
     try {
       await ref.read(_userRepository).updateUser(user: user);
       await getUser();
       state = UserState.success(user);
+      return true;
     } on Exception catch (e) {
       state = UserState.error(e);
+      return false;
     }
   }
 

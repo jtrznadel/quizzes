@@ -396,6 +396,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzTakeScoreGood": MessageLookupByLibrary.simpleMessage("Dobrze!"),
         "quizzTakeScoreURGenius":
             MessageLookupByLibrary.simpleMessage("Jesteś geniuszem!"),
+        "quizzTakeSelectAnswer":
+            MessageLookupByLibrary.simpleMessage("Wybierz odpowiedź!"),
         "quizzTakeStartButton":
             MessageLookupByLibrary.simpleMessage("Rozpocznij Quizz"),
         "quizzTakeSubheading": MessageLookupByLibrary.simpleMessage(
@@ -437,6 +439,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "successfulPasswordResetRequestSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Sprawdź swoją skrzynkę pocztową, znajdziesz tam wiadomość z linkiem do resetowania hasła."),
+        "successfulProfileUpdate": MessageLookupByLibrary.simpleMessage(
+            "Pomyślnie zaktualizowano profil."),
         "successfulRegistration": MessageLookupByLibrary.simpleMessage(
             "Zarejestrowałeś się pomyślnie. Możesz teraz się zalogować."),
         "tempAnswer1": MessageLookupByLibrary.simpleMessage("Decentralizacja"),

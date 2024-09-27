@@ -87,7 +87,10 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                               if (!validateAnswerForQuestion(
                                   answers, currentStep)) {
                                 ErrorSnackbar.show(
-                                    context, 'Select an answer!', durationSeconds: 2);
+                                  context,
+                                  S.of(context).quizzTakeSelectAnswer,
+                                  durationSeconds: 2,
+                                );
                               } else if (currentStep <
                                   quiz.quizResponse.questions.length) {
                                 stepController.nextPage(
@@ -102,8 +105,8 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                             onPressed: () {
                               if (!validateAnswerForQuestion(
                                   answers, currentStep)) {
-                                ErrorSnackbar.show(
-                                    context, 'Select an answer!', durationSeconds: 2);
+                                ErrorSnackbar.show(context, 'Select an answer!',
+                                    durationSeconds: 2);
                               } else {
                                 FinishQuizzDialog.show(context);
                               }

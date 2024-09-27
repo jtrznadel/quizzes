@@ -1710,6 +1710,16 @@ class S {
     );
   }
 
+  /// `Select an answer!`
+  String get quizzTakeSelectAnswer {
+    return Intl.message(
+      'Select an answer!',
+      name: 'quizzTakeSelectAnswer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Join Quizz`
   String get joinByCodeAppBarTitle {
     return Intl.message(
@@ -2085,6 +2095,16 @@ class S {
     return Intl.message(
       'Unknown',
       name: 'unknownUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully.`
+  String get successfulProfileUpdate {
+    return Intl.message(
+      'Profile updated successfully.',
+      name: 'successfulProfileUpdate',
       desc: '',
       args: [],
     );

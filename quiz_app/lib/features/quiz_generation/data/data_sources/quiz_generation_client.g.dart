@@ -28,7 +28,7 @@ class _QuizGenerationClient implements QuizGenerationClient {
   Future<GenerateQuizModel> generateQuiz({
     required String content,
     required int numberOfQuestions,
-    required String questionTypes,
+    required List<String> questionTypes,
     required List<MultipartFile> attachments,
     required String language,
   }) async {
@@ -44,10 +44,9 @@ class _QuizGenerationClient implements QuizGenerationClient {
       'NumberOfQuestions',
       numberOfQuestions.toString(),
     ));
-    _data.fields.add(MapEntry(
-      'QuestionTypes',
-      questionTypes,
-    ));
+    questionTypes.forEach((i) {
+      _data.fields.add(MapEntry('QuestionTypes', i));
+    });
     _data.files.addAll(attachments.map((i) => MapEntry('Attachments', i)));
     _data.fields.add(MapEntry(
       'Language',

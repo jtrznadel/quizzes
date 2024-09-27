@@ -6,7 +6,7 @@ part of 'archive_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$archiveControllerHash() => r'b1d5fc17f751e93d5d681a15d8b8fd1f52c749af';
+String _$archiveControllerHash() => r'7ac8046a620c91523e5de5b664518b26c456a178';
 
 /// See also [ArchiveController].
 @ProviderFor(ArchiveController)

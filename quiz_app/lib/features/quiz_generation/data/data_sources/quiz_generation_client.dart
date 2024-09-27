@@ -19,7 +19,7 @@ abstract class QuizGenerationClient {
   Future<GenerateQuizModel> generateQuiz({
     @Part(name: "Content") required String content,
     @Part(name: "NumberOfQuestions") required int numberOfQuestions,
-    @Part(name: "QuestionTypes") required String questionTypes,
+    @Part(name: "QuestionTypes") required List<String> questionTypes,
     @Part(name: "Attachments") required List<MultipartFile> attachments,
     @Part(name: "Language") required String language,
   });
