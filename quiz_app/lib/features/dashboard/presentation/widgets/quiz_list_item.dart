@@ -21,10 +21,15 @@ class QuizListItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Material(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius)),
+      color: AppColorScheme.surfaceContainer,
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(AppTheme.quizListItemBorderRadius)),
       child: InkWell(
         onTap: () {
-          ref.read(appRouterProvider).push(QuizzDetailsRoute(id: quizEntity.id));
+          ref
+              .read(appRouterProvider)
+              .push(QuizzDetailsRoute(id: quizEntity.id));
         },
         borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius),
         splashColor: AppColorScheme.textPrimary.withOpacity(0.1),
@@ -46,11 +51,13 @@ class QuizListItem extends ConsumerWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppTheme.quizListItemBorderRadius),
-        color: AppColorScheme.surfaceContainer,
       ),
       child: DottedBorderContainer(
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: children).addPadding(
+        child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: children)
+            .addPadding(
           padding: const EdgeInsets.all(AppTheme.quizListItemPadding),
         ),
       ),
@@ -83,7 +90,9 @@ class QuizListItem extends ConsumerWidget {
               MediaRes.deleteQuiz,
               width: AppTheme.quizListItemDeleteIconSize,
               height: AppTheme.quizListItemDeleteIconSize,
-            ).addPadding(padding: const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
+            ).addPadding(
+                padding:
+                    const EdgeInsets.all(AppTheme.quizListItemIconPadding)),
           ),
         ),
       ],
@@ -93,7 +102,8 @@ class QuizListItem extends ConsumerWidget {
   Widget quizDescription(BuildContext context) {
     return Text(
       quizEntity.description,
-      style: context.theme.textTheme.bodyMedium!.copyWith(color: AppColorScheme.textSecondary),
+      style: context.theme.textTheme.bodyMedium!
+          .copyWith(color: AppColorScheme.textSecondary),
       maxLines: AppTheme.quizItemDescriptionMaxLines,
       overflow: TextOverflow.ellipsis,
     );
