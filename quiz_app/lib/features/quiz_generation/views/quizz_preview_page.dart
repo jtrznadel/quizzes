@@ -13,6 +13,7 @@ import '../../../core/common/widgets/dialogs/delete_dialog.dart';
 import '../../../core/common/widgets/errors/basic_error_page.dart';
 import '../../../core/common/widgets/loading_indicator.dart';
 import '../../../core/common/widgets/new_question/add_new_question_bottom_sheet.dart';
+import '../../../core/common/widgets/new_question/add_new_question_dialog.dart';
 import '../../../core/models/question_model_interface.dart';
 import '../../../core/res/media_res.dart';
 import '../../../core/services/app_router.dart';
@@ -58,12 +59,18 @@ class QuizzPreviewPage extends ConsumerWidget {
                         alignment: Alignment.centerRight,
                         child: SecondaryButton(
                           onPressed: () {
-                            AddNewQuestionBottomSheet.show(
+                            AddNewQuestionDialog.show(
                               context,
                               onQuestionAdd: (question) {
                                 addQuestion(controller, quiz, question);
                               },
                             );
+                            // AddNewQuestionBottomSheet.show(
+                            //   context,
+                            //   onQuestionAdd: (question) {
+                            //     addQuestion(controller, quiz, question);
+                            //   },
+                            // );
                           },
                           text: S.of(context).quizzCreationAddQuestionButton,
                         ),
@@ -100,22 +107,28 @@ class QuizzPreviewPage extends ConsumerWidget {
                 ),
               ),
               Positioned(
-                bottom: 16,
+                bottom: 0,
                 left: 16,
                 right: 16,
                 child: Container(
                   color: AppColorScheme.surface,
                   padding: const EdgeInsets.only(top: 8),
-                  child: BasicButton(
-                    onPressed: () async {
-                      pageController.nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      );
-                      final quizCreationModel = CreateQuizModel.fromGenerateQuizModel(model: quiz);
-                      await controller.createQuiz(quizCreationModel);
-                    },
-                    text: S.of(context).saveQuizzButton,
+                  child: Column(
+                    children: [
+                      BasicButton(
+                        onPressed: () async {
+                          pageController.nextPage(
+                            duration: const Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                          final quizCreationModel = CreateQuizModel.fromGenerateQuizModel(model: quiz);
+                          await controller.createQuiz(quizCreationModel);
+                        },
+                        text: S.of(context).saveQuizzButton,
+                        width: double.infinity,
+                      ),
+                      const CustomVSpacer(16),
+                    ],
                   ),
                 ),
               )

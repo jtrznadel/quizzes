@@ -182,26 +182,31 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
             ),
           ),
           Positioned(
-            bottom: 16,
+            bottom: 0,
             left: 16,
             right: 16,
             child: Container(
               color: AppColorScheme.surface,
               padding: const EdgeInsets.only(top: 8),
-              child: BasicButton(
-                onPressed: () {
-                  quizzGenerationController.setContent(_promptController.text);
-                  if (quizzGenerationController.validateInput()) {
-                    widget.pageController.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                    );
-                  } else {
-                    ErrorSnackbar.show(context, S.of(context).quizzCreationYouNeedToProvideContent);
-                  }
-                },
-                text: S.of(context).continueButton,
-                width: double.infinity,
+              child: Column(
+                children: [
+                  BasicButton(
+                    onPressed: () {
+                      quizzGenerationController.setContent(_promptController.text);
+                      if (quizzGenerationController.validateInput()) {
+                        widget.pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                      } else {
+                        ErrorSnackbar.show(context, S.of(context).quizzCreationYouNeedToProvideContent);
+                      }
+                    },
+                    text: S.of(context).continueButton,
+                    width: double.infinity,
+                  ),
+                  const CustomVSpacer(16),
+                ],
               ),
             ),
           )
