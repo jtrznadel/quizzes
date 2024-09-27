@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../data/repositories/user_repository.dart';
@@ -20,8 +21,13 @@ class ArchiveController extends _$ArchiveController {
       quizzArchive.fold(
         (error) => state = ArchiveState.error(error),
         (quizzArchive) {
-          final fileredArchivedModel = quizzArchive.where((element) => element.status == 'Finished').toList();
-          state = ArchiveState.success(fileredArchivedModel);
+          var filteredArchivedModel = quizzArchive.where((element) => element.status == 'Finished').toList();
+          filteredArchivedModel.sort((a, b) {
+            final aDate = DateFormat('yyyy-MM-ddTHH:mm:ss').parse(a.participationDateUtc);
+            final bDate = DateFormat('yyyy-MM-ddTHH:mm:ss').parse(b.participationDateUtc);
+            return bDate.compareTo(aDate);
+          });
+          state = ArchiveState.success(filteredArchivedModel);
         },
       );
     } on Exception catch (e) {
