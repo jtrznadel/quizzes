@@ -49,10 +49,10 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
               validator: emailValidator,
               obscureText: false,
               controller: emailController,
+              keyboardType: TextInputType.emailAddress,
             ),
             const MediumVSpacer(),
-            PasswordFormField(
-                passwordController: passwordController, validate: true),
+            PasswordFormField(passwordController: passwordController, validate: true),
             const ExtraLargeVSpacer(),
             RegisterButton(
               emailController: emailController,
@@ -67,11 +67,7 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
 }
 
 class RegisterButton extends ConsumerWidget {
-  const RegisterButton(
-      {super.key,
-      required this.emailController,
-      required this.passwordController,
-      required this.formKey});
+  const RegisterButton({super.key, required this.emailController, required this.passwordController, required this.formKey});
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -104,8 +100,7 @@ class RegisterButton extends ConsumerWidget {
                   ),
                 );
                 SchedulerBinding.instance.addPostFrameCallback(
-                  (_) =>
-                      ref.read(appRouterProvider).replace(const SignInRoute()),
+                  (_) => ref.read(appRouterProvider).replace(const SignInRoute()),
                 );
               }
             } else {
