@@ -49,6 +49,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
               labelText: S.of(context).emailLabel,
               hintText: S.of(context).emailHint,
               obscureText: false,
+              keyboardType: TextInputType.emailAddress,
             ),
             const MediumVSpacer(),
             PasswordFormField(passwordController: passwordController),
@@ -76,10 +77,7 @@ class _SignInFormState extends ConsumerState<SignInForm> {
 }
 
 class LoginButton extends ConsumerWidget {
-  const LoginButton(
-      {super.key,
-      required this.emailController,
-      required this.passwordController});
+  const LoginButton({super.key, required this.emailController, required this.passwordController});
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
@@ -100,9 +98,7 @@ class LoginButton extends ConsumerWidget {
             );
             if (success) {
               ref.read(dashboardControllerProvider.notifier).initLoad();
-              SchedulerBinding.instance.addPostFrameCallback((_) => ref
-                  .read(appRouterProvider)
-                  .replaceAll([const DashboardRoute()]));
+              SchedulerBinding.instance.addPostFrameCallback((_) => ref.read(appRouterProvider).replaceAll([const DashboardRoute()]));
             } else {
               context.mounted
                   ? SchedulerBinding.instance.addPostFrameCallback(

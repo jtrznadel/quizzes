@@ -63,6 +63,7 @@ class IFormField extends StatelessWidget {
                   Expanded(
                     child: TextFormField(
                       enabled: enabled,
+                      enableSuggestions: true,
                       controller: controller,
                       validator: (value) {
                         if (!isRequired) {
