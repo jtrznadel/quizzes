@@ -101,7 +101,7 @@ class _QuizzTextPromptPageState extends ConsumerState<QuizzTextPromptPage> {
       } on FileReadException catch (exception) {
         if (mounted) {
           if (context.mounted) {
-            ErrorSnackbar.show(context, S.of(context).fileReadException);
+            ErrorSnackbar.show(context, exception.message);
           }
         } else {
           kDebugMode ? debugPrint(exception.toString()) : null;
