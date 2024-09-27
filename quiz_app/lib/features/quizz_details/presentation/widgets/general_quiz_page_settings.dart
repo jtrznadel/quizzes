@@ -75,7 +75,7 @@ class _GeneralQuizPageSettingsState extends ConsumerState<GeneralQuizPageSetting
           S.of(context).quizzDetailsTabGeneralQuizDescriptionTextFieldDescription,
           style: context.textTheme.bodyMedium?.copyWith(color: AppColorScheme.textSecondary),
         ),
-        const SmallVSpacer(),
+        const MediumVSpacer(),
         Align(
           alignment: Alignment.centerRight,
           child: state.maybeWhen(
