@@ -11,9 +11,11 @@ class ShareLinkContainer extends StatefulWidget {
   const ShareLinkContainer({
     super.key,
     required this.link,
+    required this.color,
   });
 
   final String link;
+  final Color color;
 
   @override
   State<ShareLinkContainer> createState() => _ShareLinkContainerState();
@@ -26,7 +28,7 @@ class _ShareLinkContainerState extends State<ShareLinkContainer> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: widget.color,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(

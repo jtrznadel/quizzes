@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../core/common/widgets/basic_button.dart';
 import '../../../core/common/widgets/errors/basic_error_page.dart';
+import '../../../core/common/widgets/quizz_qr_code.dart';
 import '../../../core/common/widgets/secondary_button.dart';
 import '../../../core/common/widgets/share_link_container.dart';
 import '../../../core/common/widgets/spacers/vertical_spacers.dart';
@@ -40,38 +41,45 @@ class QuizzSuccessPage extends ConsumerWidget {
       created: (quizResult) {
         return Padding(
           padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                S.of(context).quizzCreationSuccessHeading,
-                style: context.textTheme.headlineLarge,
-              ),
-              const SmallVSpacer(),
-              Text(
-                S.of(context).quizzCreationSuccessSubheading,
-                style: context.textTheme.bodyMedium,
-              ),
-              const ExtraLargeVSpacer(),
-              ShareLinkContainer(link: quizResult.url),
-              const ExtraLargeVSpacer(),
-              BasicButton(
-                onPressed: () async {
-                  await Share.share(quizResult.url);
-                },
-                text: S.of(context).quizzCreationSuccessShareButton,
-                width: double.infinity,
-              ),
-              const MediumVSpacer(),
-              SecondaryButton(
-                onPressed: () {
-                  ref.read(quizGenerationControllerProvider.notifier).resetState();
-                  ref.read(appRouterProvider).push(const DashboardRoute());
-                },
-                text: S.of(context).quizzCreationSuccessBackButton,
-                width: double.infinity,
-              ),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  S.of(context).quizzCreationSuccessHeading,
+                  style: context.textTheme.headlineLarge,
+                ),
+                const SmallVSpacer(),
+                Text(
+                  S.of(context).quizzCreationSuccessSubheading,
+                  style: context.textTheme.bodyMedium,
+                ),
+                const LargeVSpacer(),
+                QuizzQrCode(link: quizResult.url),
+                const LargeVSpacer(),
+                ShareLinkContainer(
+                  link: quizResult.url,
+                  color: Colors.white,
+                ),
+                const LargeVSpacer(),
+                BasicButton(
+                  onPressed: () async {
+                    await Share.share(quizResult.url);
+                  },
+                  text: S.of(context).quizzCreationSuccessShareButton,
+                  width: double.infinity,
+                ),
+                const MediumVSpacer(),
+                SecondaryButton(
+                  onPressed: () {
+                    ref.read(quizGenerationControllerProvider.notifier).resetState();
+                    ref.read(appRouterProvider).push(const DashboardRoute());
+                  },
+                  text: S.of(context).quizzCreationSuccessBackButton,
+                  width: double.infinity,
+                ),
+              ],
+            ),
           ),
         );
       },
