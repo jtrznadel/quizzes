@@ -189,6 +189,8 @@
     },
     "dashboardQuizzesEmpty": "Nie masz jeszcze żadnych quizów. Możesz utworzyć nowy, klikając przycisk powyżej.",
     "dashboardGuestUserMessage": "Zaloguj się, aby uzyskać dostęp do swoich quizów.",
+    "dashboardJoinQuizzButton": "Dołącz",
+
 
     "quizzTakeAppBarTitle": "Rozpocznij quizz",
     "quizzTakeQuitHeading": "Opuścić quizz?",

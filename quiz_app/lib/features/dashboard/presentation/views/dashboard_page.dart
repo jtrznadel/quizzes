@@ -136,7 +136,11 @@ class DashboardTopBar extends ConsumerWidget {
               style: context.theme.textTheme.headlineLarge,
             ),
             const Spacer(),
-            TextButton(onPressed: () {}, child: const Text('Join Quizz')),
+            TextButton(
+                onPressed: () {
+                  ref.read(appRouterProvider).push(const JoinByCodeRoute());
+                },
+                child: Text(S.of(context).dashboardJoinQuizzButton)),
             // IconButton(
             //   onPressed: () {
             //     ref.read(appRouterProvider).push(const JoinByCodeRoute());
