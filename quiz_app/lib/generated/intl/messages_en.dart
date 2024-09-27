@@ -379,7 +379,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Take quizz"),
         "quizzTakeFinishButton": MessageLookupByLibrary.simpleMessage("Finish"),
         "quizzTakeFinishDescription": MessageLookupByLibrary.simpleMessage(
-            "Are you sure that all questions have been answered? Once you submit, you won\'\'t be able to make any changes."),
+            "Are you sure that all questions have been answered? Once you submit, you won\'t be able to make any changes."),
         "quizzTakeFinishHeading":
             MessageLookupByLibrary.simpleMessage("Finish quizz"),
         "quizzTakeFormFieldHint":
@@ -391,7 +391,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzTakeQuitHeading":
             MessageLookupByLibrary.simpleMessage("Quit quizz?"),
         "quizzTakeQuitSubheading": MessageLookupByLibrary.simpleMessage(
-            "If you leave now, your progress will be lost. You\'\'ll need access the quizz again from the link to retake it. Are you sure you want to quit?"),
+            "If you leave now, your progress will be lost. You\'ll need access the quizz again from the link to retake it. Are you sure you want to quit?"),
         "quizzTakeScoreAwesome":
             MessageLookupByLibrary.simpleMessage("Awesome!"),
         "quizzTakeScoreBad":
@@ -401,6 +401,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "quizzTakeScoreGood": MessageLookupByLibrary.simpleMessage("Good!"),
         "quizzTakeScoreURGenius":
             MessageLookupByLibrary.simpleMessage("You are a genius!"),
+        "quizzTakeSelectAnswer":
+            MessageLookupByLibrary.simpleMessage("Select an answer!"),
         "quizzTakeStartButton":
             MessageLookupByLibrary.simpleMessage("Start Quizz"),
         "quizzTakeSubheading": MessageLookupByLibrary.simpleMessage(
@@ -424,7 +426,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Session expired, please log in again."),
         "signInAppBarTitle": MessageLookupByLibrary.simpleMessage("Login"),
         "signInDontHaveAccount":
-            MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "signInHeading":
             MessageLookupByLibrary.simpleMessage("Enter credentials"),
         "signUpAlreadyHaveAccount":
@@ -441,6 +443,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "successfulPasswordResetRequestSubheading":
             MessageLookupByLibrary.simpleMessage(
                 "Check your e-mail, there will be an e-mail with password reset link."),
+        "successfulProfileUpdate": MessageLookupByLibrary.simpleMessage(
+            "Profile updated successfully."),
         "successfulRegistration": MessageLookupByLibrary.simpleMessage(
             "You have successfully registered. You can now log in."),
         "tempAnswer1": MessageLookupByLibrary.simpleMessage("Decentralization"),

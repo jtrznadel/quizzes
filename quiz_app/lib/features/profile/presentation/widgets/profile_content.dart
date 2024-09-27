@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/form_field.dart';
+import '../../../../core/common/widgets/info_snackbar.dart';
 import '../../../../core/common/widgets/spacers/vertical_spacers.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/services/language_provider.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/user_controller.dart';
@@ -64,7 +67,13 @@ class _ProfileContentState extends ConsumerState<ProfileContent> {
               labelText: S.of(context).profileNameLabel,
               formButton: TextButton(
                 onPressed: () async {
-                  await userController.updateUser(user: widget.user.copyWith(displayName: usernameTextController.text));
+                  final success = await userController.updateUser(user: widget.user.copyWith(displayName: usernameTextController.text));
+                  if(success){
+                    context.mounted ? InfoSnackbar.show(context, S.of(context).successfulProfileUpdate, color: AppColorScheme.success) : null;
+                  }
+                  else{
+                    context.mounted ? ErrorSnackbar.show(context, S.of(context).somethingWentWrong): null;
+                  }
                 },
                 child: Text(S.of(context).profileUpdateButton),
               ),

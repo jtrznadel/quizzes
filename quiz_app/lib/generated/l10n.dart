@@ -250,10 +250,10 @@ class S {
     );
   }
 
-  /// `Don''t have an account?`
+  /// `Don't have an account?`
   String get signInDontHaveAccount {
     return Intl.message(
-      'Don\'\'t have an account?',
+      'Don\'t have an account?',
       name: 'signInDontHaveAccount',
       desc: '',
       args: [],
@@ -1500,10 +1500,10 @@ class S {
     );
   }
 
-  /// `If you leave now, your progress will be lost. You''ll need access the quizz again from the link to retake it. Are you sure you want to quit?`
+  /// `If you leave now, your progress will be lost. You'll need access the quizz again from the link to retake it. Are you sure you want to quit?`
   String get quizzTakeQuitSubheading {
     return Intl.message(
-      'If you leave now, your progress will be lost. You\'\'ll need access the quizz again from the link to retake it. Are you sure you want to quit?',
+      'If you leave now, your progress will be lost. You\'ll need access the quizz again from the link to retake it. Are you sure you want to quit?',
       name: 'quizzTakeQuitSubheading',
       desc: '',
       args: [],
@@ -1560,10 +1560,10 @@ class S {
     );
   }
 
-  /// `Are you sure that all questions have been answered? Once you submit, you won''t be able to make any changes.`
+  /// `Are you sure that all questions have been answered? Once you submit, you won't be able to make any changes.`
   String get quizzTakeFinishDescription {
     return Intl.message(
-      'Are you sure that all questions have been answered? Once you submit, you won\'\'t be able to make any changes.',
+      'Are you sure that all questions have been answered? Once you submit, you won\'t be able to make any changes.',
       name: 'quizzTakeFinishDescription',
       desc: '',
       args: [],
@@ -1705,6 +1705,16 @@ class S {
     return Intl.message(
       'Start Quizz',
       name: 'quizzTakeStartButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select an answer!`
+  String get quizzTakeSelectAnswer {
+    return Intl.message(
+      'Select an answer!',
+      name: 'quizzTakeSelectAnswer',
       desc: '',
       args: [],
     );
@@ -2085,6 +2095,16 @@ class S {
     return Intl.message(
       'Unknown',
       name: 'unknownUsername',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully.`
+  String get successfulProfileUpdate {
+    return Intl.message(
+      'Profile updated successfully.',
+      name: 'successfulProfileUpdate',
       desc: '',
       args: [],
     );

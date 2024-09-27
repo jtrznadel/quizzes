@@ -100,7 +100,7 @@ class QuizzPreviewPage extends ConsumerWidget {
                 ),
               ),
               Positioned(
-                bottom: 0,
+                bottom: 16,
                 left: 16,
                 right: 16,
                 child: Container(

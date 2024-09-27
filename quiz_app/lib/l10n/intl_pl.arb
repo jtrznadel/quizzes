@@ -213,6 +213,7 @@
     "quizzTakeSummaryBackToDashboard": "Wróć do pulpitu",
     "quizzTakeLoadingError": "Nie udało się załadować Quizzu. Istnieje szansa, że podany przez Ciebie kod jest nieprawidłowy. Spróbuj ponownie.",
     "quizzTakeStartButton": "Rozpocznij Quizz",
+    "quizzTakeSelectAnswer": "Wybierz odpowiedź!",
 
     "joinByCodeAppBarTitle": "Dołącz do Quizzu",
     "joinByCodeHeading": "Podaj kod",
@@ -254,6 +255,7 @@
     "profileArchiveHeading": "Quizzy",
     "profileArchiveButton": "Archiwum",
     "unknownUsername": "Nieznana nazwa użytkownika",
+    "successfulProfileUpdate": "Pomyślnie zaktualizowano profil.",
 
     "archiveAppBarTitle": "Archiwum",
     "archiveLoadingError": "Nie udało się załadować archiwum. Spróbuj ponownie.",

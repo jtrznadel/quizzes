@@ -5,7 +5,7 @@ import '../../theme/app_color_scheme.dart';
 import '../../theme/app_theme.dart';
 
 class InfoSnackbar {
-  static void show(BuildContext context, String message, {Color color = AppColorScheme.textContrast}) {
+  static void show(BuildContext context, String message, {Color color = AppColorScheme.textContrast, int durationSeconds = 5}) {
     final snackBar = SnackBar(
       content: Text(
         message,
@@ -19,6 +19,7 @@ class InfoSnackbar {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppTheme.snackBarBorderRadius),
       ),
+      duration: Duration(seconds: durationSeconds),
     );
 
     ScaffoldMessenger.of(context).showSnackBar(snackBar);

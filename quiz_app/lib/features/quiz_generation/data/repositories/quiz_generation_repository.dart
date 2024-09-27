@@ -33,12 +33,16 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
     required QuizRequestModel quizRequestModel,
   }) async {
     try {
-      final language = QuizLanguage.values.firstWhere((e) => e == quizRequestModel.language).name;
-      final attachments = quizRequestModel.attachments.map((e) => FileReader.toMultipartFile(e)).toList();
+      final language = QuizLanguage.values
+          .firstWhere((e) => e == quizRequestModel.language)
+          .name;
+      final attachments = quizRequestModel.attachments
+          .map((e) => FileReader.toMultipartFile(e))
+          .toList();
       final model = await _quizGenerationClient.generateQuiz(
         content: quizRequestModel.content,
         numberOfQuestions: quizRequestModel.numberOfQuestions,
-        questionTypes: quizRequestModel.questionTypes.join(','),
+        questionTypes: quizRequestModel.questionTypes,
         attachments: attachments,
         language: language,
       );
@@ -53,7 +57,8 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
     required CreateQuizModel quizModel,
   }) async {
     try {
-      final quizResult = await _quizGenerationClient.createQuiz(quizModel.toJson());
+      final quizResult =
+          await _quizGenerationClient.createQuiz(quizModel.toJson());
       return Right(quizResult);
     } catch (e) {
       return Left(ServerException(message: e.toString()));
@@ -62,5 +67,6 @@ class QuizGenerationRepositoryImpl implements QuizGenerationRepository {
 }
 
 @riverpod
-QuizGenerationRepository quizGenerationRepository(QuizGenerationRepositoryRef ref) =>
+QuizGenerationRepository quizGenerationRepository(
+        QuizGenerationRepositoryRef ref) =>
     QuizGenerationRepositoryImpl(ref.read(quizGenerationClientProvider));

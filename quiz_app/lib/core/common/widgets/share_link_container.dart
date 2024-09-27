@@ -53,9 +53,11 @@ class _ShareLinkContainerState extends State<ShareLinkContainer> {
                 copied = true;
               });
               Future.delayed(const Duration(seconds: AppTheme.copyLinkIconChangeDuration), () {
-                setState(() {
-                  copied = false;
-                });
+                if(mounted){
+                  setState(() {
+                    copied = false;
+                  });
+                }
               });
             },
             icon: copied

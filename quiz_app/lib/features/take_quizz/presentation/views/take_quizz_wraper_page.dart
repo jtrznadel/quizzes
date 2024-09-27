@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/common/widgets/basic_button.dart';
+import '../../../../core/common/widgets/errors/error_snackbar.dart';
 import '../../../../core/common/widgets/loading_indicator.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../generated/l10n.dart';
 import '../../application/quizz_take_controller.dart';
+import '../../domain/user_answer_model.dart';
 import '../widgets/finish_quizz_dialog.dart';
 import '../widgets/quizz_progress_indicator.dart';
 import '../widgets/quizz_step_content.dart';
@@ -16,7 +18,8 @@ class TakeQuizzWraperPage extends ConsumerStatefulWidget {
   const TakeQuizzWraperPage({super.key});
 
   @override
-  ConsumerState<TakeQuizzWraperPage> createState() => _TakeQuizzWraperPageState();
+  ConsumerState<TakeQuizzWraperPage> createState() =>
+      _TakeQuizzWraperPageState();
 }
 
 class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
@@ -66,7 +69,9 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                         ? BasicButton(
                             onPressed: () {
                               if (currentStep > 0) {
-                                stepController.previousPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+                                stepController.previousPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut);
                                 quizzController.previousStep();
                               }
                             },
@@ -75,11 +80,22 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                     orElse: () => const Spacer(),
                   ),
                   quizzState.maybeWhen(
-                    loaded: (quiz, answers, currentStep) => currentStep < quiz.quizResponse.questions.length
+                    loaded: (quiz, answers, currentStep) => currentStep <
+                            quiz.quizResponse.questions.length
                         ? BasicButton(
                             onPressed: () {
-                              if (currentStep < quiz.quizResponse.questions.length) {
-                                stepController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
+                              if (!validateAnswerForQuestion(
+                                  answers, currentStep)) {
+                                ErrorSnackbar.show(
+                                  context,
+                                  S.of(context).quizzTakeSelectAnswer,
+                                  durationSeconds: 2,
+                                );
+                              } else if (currentStep <
+                                  quiz.quizResponse.questions.length) {
+                                stepController.nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut);
                                 quizzController.nextStep();
                               }
                             },
@@ -87,7 +103,13 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
                           )
                         : BasicButton(
                             onPressed: () {
-                              FinishQuizzDialog.show(context);
+                              if (!validateAnswerForQuestion(
+                                  answers, currentStep)) {
+                                ErrorSnackbar.show(context, 'Select an answer!',
+                                    durationSeconds: 2);
+                              } else {
+                                FinishQuizzDialog.show(context);
+                              }
                             },
                             text: S.of(context).quizzTakeFinishButton,
                           ),
@@ -100,5 +122,10 @@ class _TakeQuizzWraperPageState extends ConsumerState<TakeQuizzWraperPage> {
         ),
       ),
     );
+  }
+
+  bool validateAnswerForQuestion(
+      List<UserAnswerModel> answers, int currentStep) {
+    return currentStep <= answers.length;
   }
 }
