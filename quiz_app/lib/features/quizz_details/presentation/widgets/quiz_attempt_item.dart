@@ -18,7 +18,8 @@ class QuizAttemptItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = ParticipationStatus.getParticipationStatus(participant.status);
-    final date = DateFormat('dd.MM.yyyy HH:mm').format(DateTime.parse(participant.participationDateUtc).toLocal());
+    final dateParsed = DateFormat('yyyy-MM-ddTHH:mm:ss').parse(participant.participationDateUtc, true).toLocal();
+    final dateFormatted = DateFormat('dd-MM-yyyy HH:mm').format(dateParsed);
     return Container(
       decoration: BoxDecoration(
         color: context.theme.colorScheme.surfaceContainer,
@@ -52,7 +53,7 @@ class QuizAttemptItem extends StatelessWidget {
           const SmallVSpacer(),
           InfoRow(
             label: S.of(context).quizzDetailsTabStatisticsDate,
-            value: date.toString(),
+            value: dateFormatted.toString(),
           ),
         ],
       ).addPadding(padding: const EdgeInsets.all(AppTheme.pageDefaultSpacingSize)),
